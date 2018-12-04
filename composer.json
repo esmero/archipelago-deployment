@@ -20,6 +20,7 @@
         }
     ],
     "require": {
+        "archipelago/archipelago_subtheme": "dev-master",
         "aws/aws-php-sns-message-validator": "^1.5",
         "aws/aws-sdk-php": "^3.63",
         "composer/installers": "^1.2",
@@ -64,12 +65,12 @@
         "ml/json-ld": "^1.0",
         "mtdowling/jmespath.php": "^2.4",
         "solarium/solarium": "^4.1.0",
+        "strawberryfield/format_strawberryfield": "dev-master",
+        "strawberryfield/strawberryfield": "dev-master",
+        "strawberryfield/webform_strawberryfield": "dev-master",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
-        "wikibase/data-model": "^8.0",
-        "strawberryfield/strawberryfield": "dev-master",
-        "strawberryfield/format_strawberryfield": "dev-master",
-        "strawberryfield/webform_strawberryfield": "dev-master"
+        "wikibase/data-model": "^8.0"
     },
     "require-dev": {
         "webflo/drupal-core-require-dev": "~8.4"
