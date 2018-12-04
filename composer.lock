@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1562bf5c1534f8c27d1b19d58e6e868b",
+    "content-hash": "a49792993c0de65130864fb6a841bcf2",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -69,6 +69,40 @@
                 "zip"
             ],
             "time": "2016-11-03T16:10:31+00:00"
+        },
+        {
+            "name": "archipelago/archipelago_subtheme",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/esmero/archipelago_subtheme.git",
+                "reference": "497102b5ea787ec8e020f93788a7a1772cdf7a04"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/497102b5ea787ec8e020f93788a7a1772cdf7a04",
+                "reference": "497102b5ea787ec8e020f93788a7a1772cdf7a04",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/solid": "^1.1.0"
+            },
+            "type": "drupal-theme",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Diego Pino Navarro",
+                    "email": "dpino@metro.org",
+                    "homepage": "https://github.com/DiegoPino",
+                    "role": "Owner"
+                }
+            ],
+            "description": "Bare Bone Bootstrap4 to be further extended by nice people",
+            "homepage": "https://github.com/esmero/archipelago_subtheme",
+            "time": "2018-12-04T18:46:25+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -10632,6 +10666,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "archipelago/archipelago_subtheme": 20,
         "drupal/computed_field": 20,
         "drupal/config_inspector": 10,
         "drupal/context": 10,
@@ -10644,8 +10679,8 @@
         "drupal/s3fs": 20,
         "drupal/search_api_autocomplete": 5,
         "islandora/jsonld": 20,
-        "strawberryfield/strawberryfield": 20,
         "strawberryfield/format_strawberryfield": 20,
+        "strawberryfield/strawberryfield": 20,
         "strawberryfield/webform_strawberryfield": 20
     },
     "prefer-stable": true,
