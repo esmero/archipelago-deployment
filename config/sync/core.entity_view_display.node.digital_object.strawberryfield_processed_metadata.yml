@@ -1,0 +1,95 @@
+uuid: ed6a3c2d-2e63-4749-a335-e6f7c7bd9ee9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.strawberryfield_processed_metadata
+    - field.field.node.digital_object.body
+    - field.field.node.digital_object.field_descriptive_metadata
+    - node.type.digital_object
+  module:
+    - ds
+    - field_layout
+    - strawberryfield
+    - text
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      content:
+        - links
+        - node_title
+        - langcode
+        - body
+        - field_descriptive_metadata
+        - 'dynamic_block_field:node-ds_custom_iiif'
+        - 'display_field_copy:node-field_descriptive_metadata_image'
+    fields:
+      'display_field_copy:node-field_descriptive_metadata_image':
+        plugin_id: 'display_field_copy:node-field_descriptive_metadata_image'
+        weight: 6
+        label: inline
+        formatter: strawberry_image_formatter
+        settings:
+          formatter:
+            iiif_base_url: 'http://localhost:8183/iiif/2/'
+            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2/'
+            max_width: '160'
+            max_height: '0'
+      'dynamic_block_field:node-ds_custom_iiif':
+        plugin_id: 'dynamic_block_field:node-ds_custom_iiif'
+        weight: 5
+        label: inline
+        formatter: default
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: above
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
+id: node.digital_object.strawberryfield_processed_metadata
+targetEntityType: node
+bundle: digital_object
+mode: strawberryfield_processed_metadata
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_descriptive_metadata:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: strawberry_default_formatter
+    region: content
+  langcode:
+    type: language
+    weight: 2
+    region: content
+    label: inline
+    settings:
+      link_to_entity: false
+      native_language: false
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

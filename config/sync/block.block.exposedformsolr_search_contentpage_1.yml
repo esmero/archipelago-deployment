@@ -1,0 +1,23 @@
+uuid: 45cf1a78-e686-40fa-8f3b-6870f6f39a3d
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.solr_search_content
+  module:
+    - views
+  theme:
+    - seven
+id: exposedformsolr_search_contentpage_1
+theme: seven
+region: header
+weight: 0
+provider: null
+plugin: 'views_exposed_filter_block:solr_search_content-page_1'
+settings:
+  id: 'views_exposed_filter_block:solr_search_content-page_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: Discover
+visibility: {  }

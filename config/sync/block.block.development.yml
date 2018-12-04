@@ -1,0 +1,32 @@
+uuid: 63233d30-266c-4dc6-a388-9ad7180a9798
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.devel
+  module:
+    - system
+    - user
+  theme:
+    - seven
+id: development
+theme: seven
+region: content
+weight: -2
+provider: null
+plugin: 'system_menu_block:devel'
+settings:
+  id: 'system_menu_block:devel'
+  label: Development
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

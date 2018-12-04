@@ -1,0 +1,14 @@
+uuid: 5b7d5031-46a6-467d-a300-c95aac4e25ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.digital_fsu_object
+  module:
+    - node
+id: node.digital_fsu_object
+targetEntityType: node
+bundle: digital_fsu_object
+types:
+  - ''
+fieldMappings: {  }

@@ -1,0 +1,27 @@
+uuid: c206674c-9ccd-4c0c-98aa-5a143de2a302
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webform2
+    - node.type.webform
+  module:
+    - webform
+id: node.webform.field_webform2
+field_name: field_webform2
+entity_type: node
+bundle: webform
+label: 'webform 2'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  default_data: ''
+  status: open
+  open: ''
+  close: ''
+  handler: 'default:webform'
+  handler_settings: {  }
+field_type: webform

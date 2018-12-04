@@ -1,0 +1,22 @@
+uuid: 9ed8d613-a6a4-4c55-ae72-8f1390693b3e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.digital_object_collection
+  module:
+    - text
+id: node.digital_object_collection.body
+field_name: body
+entity_type: node
+bundle: digital_object_collection
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

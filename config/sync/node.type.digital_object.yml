@@ -1,0 +1,18 @@
+uuid: 76354f67-fa80-4bae-8c6f-0756dfdb6e92
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Digital Object'
+type: digital_object
+description: 'A Multi Purpose Digital Object '
+help: 'Place holder for our submission guidelines'
+new_revision: true
+preview_mode: 1
+display_submitted: false

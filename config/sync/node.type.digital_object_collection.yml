@@ -1,0 +1,18 @@
+uuid: 16df7d9a-6260-44e9-b95c-802afdc23dfa
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Digital Object Collection'
+type: digital_object_collection
+description: 'A Digital Object''s Collection'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

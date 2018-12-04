@@ -1,0 +1,32 @@
+schemas:
+  bootstrap: 8000
+_core:
+  default_config_hash: 1uFogeFphl0Hg6oVCacZZ8mM_0wMZ7PS_RrmLbK5tf0
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: 'http://localhost:8001/themes/contrib/bootstrap/favicon.ico'
+  use_default: true
+table_responsive: '-1'
+table: ''
+breadcrumb_home: 1
+button_size: ''
+forms_required_has_error: 1
+show_social_icon: 1
+facebook_url: 'https://www.facebook.com'
+google_plus_url: 'https://plus.google.com'
+twitter_url: 'https://twitter.com'
+linkedin_url: 'http://www.linkedin.com'
+ytube_url: 'https://www.youtube.com'
+show_credit_link: 1
+image_shape: img-rounded
+cdn_jsdelivr_theme: bootstrap_theme
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+  node_user_picture: true
+logo:
+  path: ''
+  url: ''
+  use_default: true

@@ -1,0 +1,9 @@
+uuid: 204e143d-3568-4d0d-9c56-6f67177eb5ef
+langcode: en
+status: true
+dependencies: {  }
+id: schema_org_creative_works
+label: 'Schema.org Creative Works'
+category: archipelago
+likert: false
+options: "Article: Article\nBook: Book\nCollection: Collection\nDataset: Dataset\nDigitalDocument: DigitalDocument\nMap: Map\nMovie: Movie\nMusicRecording: MusicRecording\nPainting: Painting\nPhotograph: Photograph\nSculpture: Sculpture\nVisualArtwork: VisualArtwork\nThesis: Thesis\nPublicationEvent: Podcast\n"

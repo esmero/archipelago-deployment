@@ -1,0 +1,30 @@
+uuid: 08a4ca43-16ac-4b6f-866b-867ef470667b
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.solr_search_homepage
+  module:
+    - system
+    - views
+  theme:
+    - bootstrap_barrio
+id: bootstrap_barrio_views_block__solr_search_homepage_block_1
+theme: bootstrap_barrio
+region: content
+weight: -4
+provider: null
+plugin: 'views_block:solr_search_homepage-block_1'
+settings:
+  id: 'views_block:solr_search_homepage-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

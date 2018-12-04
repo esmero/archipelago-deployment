@@ -1,0 +1,44 @@
+uuid: 3cc0b15f-d139-4ce2-9cf3-a13bde83bc69
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.digital_object.body
+    - field.field.node.digital_object.field_descriptive_metadata
+    - node.type.digital_object
+  module:
+    - field_layout
+    - strawberryfield
+    - text
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: node.digital_object.full
+targetEntityType: node
+bundle: digital_object
+mode: full
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_descriptive_metadata:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: strawberry_default_formatter
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,20 @@
+uuid: 207d8069-dd3c-469a-bb39-5f7c41ec5982
+langcode: en
+status: true
+dependencies:
+  theme:
+    - archipelago_subtheme
+_core:
+  default_config_hash: HHryZVJbeKi9WnuBGC8FOhBZmBnk2G1H6KxFuy-rC9A
+id: archipelago_subtheme_local_actions
+theme: archipelago_subtheme
+region: content
+weight: -5
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

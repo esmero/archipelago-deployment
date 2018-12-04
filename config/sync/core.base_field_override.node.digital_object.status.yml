@@ -1,0 +1,22 @@
+uuid: 11393db7-0b64-4e77-826f-eb9fc3867cd0
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.digital_object
+id: node.digital_object.status
+field_name: status
+entity_type: node
+bundle: digital_object
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

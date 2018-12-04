@@ -1,0 +1,19 @@
+uuid: 003928d0-d5e3-4a0a-a898-1a137dcd54fb
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - strawberryfield
+id: node.field_descriptive_metadata
+field_name: field_descriptive_metadata
+entity_type: node
+type: strawberryfield_field
+settings: {  }
+module: strawberryfield
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

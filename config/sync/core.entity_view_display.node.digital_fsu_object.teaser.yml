@@ -1,0 +1,38 @@
+uuid: f0b61396-ec62-4a77-ba75-3931c62f277a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.digital_fsu_object.body
+    - field.field.node.digital_fsu_object.field_fsu_json
+    - node.type.digital_fsu_object
+  module:
+    - field_layout
+    - text
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: node.digital_fsu_object.teaser
+targetEntityType: node
+bundle: digital_fsu_object
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_fsu_json: true
+  langcode: true

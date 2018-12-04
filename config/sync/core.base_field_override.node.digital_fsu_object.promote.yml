@@ -1,0 +1,22 @@
+uuid: 5dde5229-33c7-46ac-8cdf-75e205fe014d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.digital_fsu_object
+id: node.digital_fsu_object.promote
+field_name: promote
+entity_type: node
+bundle: digital_fsu_object
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

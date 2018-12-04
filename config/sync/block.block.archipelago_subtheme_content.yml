@@ -1,0 +1,22 @@
+uuid: 99c36af4-dc0e-4c53-8aa3-acd56f8d5936
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - archipelago_subtheme
+_core:
+  default_config_hash: YRY68JWkaUiGeZlWMv1nzeIgDm0ZZwXYgpqUpLFzwAY
+id: archipelago_subtheme_content
+theme: archipelago_subtheme
+region: content
+weight: -4
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

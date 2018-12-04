@@ -1,0 +1,14 @@
+uuid: b8f4029c-567d-45a7-a5b7-9ebe79ffa002
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.metadata_pro
+  module:
+    - user
+id: user_add_role_action.metadata_pro
+label: 'Add the Metadata Pro role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: metadata_pro

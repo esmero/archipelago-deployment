@@ -1,0 +1,36 @@
+uuid: 85289e10-5ea4-4317-bfe2-93a50b1a98ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.aggregator_item.summary
+  module:
+    - aggregator
+    - field_layout
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+_core:
+  default_config_hash: ei8DNHu3HVLFFuKrr2Y4MsxuHR8ZMt0kHQly-qfkTAU
+id: aggregator_item.aggregator_item.summary
+targetEntityType: aggregator_item
+bundle: aggregator_item
+mode: summary
+content:
+  timestamp:
+    weight: 0
+    region: content
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+    type: timestamp
+hidden:
+  author: true
+  description: true
+  feed: true
+  langcode: true
+  link: true

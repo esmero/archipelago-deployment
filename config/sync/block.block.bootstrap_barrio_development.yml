@@ -1,0 +1,32 @@
+uuid: 05d6ea8e-5986-4d13-8e76-f132c08e7450
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.devel
+  module:
+    - system
+    - user
+  theme:
+    - bootstrap_barrio
+id: bootstrap_barrio_development
+theme: bootstrap_barrio
+region: content
+weight: 0
+provider: null
+plugin: 'system_menu_block:devel'
+settings:
+  id: 'system_menu_block:devel'
+  label: Development
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

@@ -1,0 +1,21 @@
+uuid: 25e5a4f3-0796-46ef-bb24-0ce3c77776e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fsu_json
+    - node.type.digital_fsu_object
+  module:
+    - strawberryfield
+id: node.digital_fsu_object.field_fsu_json
+field_name: field_fsu_json
+entity_type: node
+bundle: digital_fsu_object
+label: fsu_json
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: strawberryfield_field

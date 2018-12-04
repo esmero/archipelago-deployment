@@ -1,0 +1,12 @@
+uuid: f1b80a9b-40cb-42c3-add2-1141293b9360
+langcode: en
+status: true
+dependencies: {  }
+id: schema_org
+label: schema.org
+pluginid: jsonld
+pluginconfig:
+  url: 'https://schema.org/docs/jsonldcontext.json'
+  filterurl: 'https://schema.org/Book.jsonld'
+  keys: ''
+active: true

@@ -1,0 +1,22 @@
+uuid: 542e5ece-a503-4904-a560-00708f16b233
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.digital_object
+  module:
+    - text
+id: node.digital_object.body
+field_name: body
+entity_type: node
+bundle: digital_object
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

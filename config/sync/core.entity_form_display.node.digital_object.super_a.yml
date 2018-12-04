@@ -1,0 +1,95 @@
+uuid: 97d545fd-eb4b-4edd-8536-84f1e436f3e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.node.super_a
+    - field.field.node.digital_object.body
+    - field.field.node.digital_object.field_descriptive_metadata
+    - node.type.digital_object
+  module:
+    - field_layout
+    - layout_discovery
+    - path
+    - strawberryfield
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: node.digital_object.super_a
+targetEntityType: node
+bundle: digital_object
+mode: super_a
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 7
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_descriptive_metadata:
+    weight: 26
+    settings:
+      rows: '20'
+      placeholder: 'Click to edit your Resource''s Descriptive metadata'
+    third_party_settings: {  }
+    type: strawberry_textarea
+    region: content
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    weight: 27
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  path:
+    type: path
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden:
+  promote: true
+  sticky: true

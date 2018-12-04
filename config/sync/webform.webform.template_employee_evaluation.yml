@@ -1,0 +1,174 @@
+langcode: en
+status: closed
+dependencies:
+  enforced:
+    module:
+      - webform_templates
+open: null
+close: null
+weight: 0
+uid: null
+template: true
+archive: false
+id: template_employee_evaluation
+title: 'Employee Evaluation'
+description: 'An employee evaluation webform template.'
+category: ''
+elements: "evaluator_information:\n  '#title': 'Your Information'\n  '#type': fieldset\n  evaluator_first_name:\n    '#title': 'First Name'\n    '#type': textfield\n    '#required': true\n  evaluator_last_name:\n    '#title': 'Last Name'\n    '#type': textfield\n    '#required': true\n  evaluator_job_title:\n    '#type': textfield\n    '#title': 'Job Title'\n    '#required': true\n  evaluator_relationship:\n    '#type': webform_select_other\n    '#title': 'Relationship with employee'\n    '#options':\n      Coworker: Coworker\n      Supervisor: Supervisor\n    '#required': true\nemployee_information:\n  '#title': 'Employee Information'\n  '#type': fieldset\n  employee_first_name:\n    '#title': 'First Name'\n    '#type': textfield\n    '#required': true\n  employee_last_name:\n    '#title': 'Last Name'\n    '#type': textfield\n    '#required': true\n  employee_job_title:\n    '#type': textfield\n    '#title': 'Job Title'\n    '#required': true\n  employee_ratings:\n    '#type': webform_likert\n    '#title': 'How would you rate the employee''s...'\n    '#questions':\n      attendance: Attendance\n      attire: Attire\n      professionalism: Professionalism\n      work_area: 'Work area'\n      ability: 'Ability to do the job'\n      work_with_others: 'Ability to work with others'\n      receive_feedback: 'Ability to receive feedback/criticism'\n      adaptabily: 'Ability to adapt'\n      learning: 'Willingness to learn'\n      participation: 'Willingness to participate'\n      work_ethic: 'Work ethic'\n      quality: 'Quality of work'\n    '#answers': likert_quality\n    '#required': true\n  employee_qualities:\n    '#type': textarea\n    '#title': 'What are the employee''s top qualities?'\n    '#required': true\n  employee_improve:\n    '#type': textarea\n    '#title': 'In what ways could the employee improve?'\n    '#required': true\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': Apply\n"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_title: both
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_remote_addr: true
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: 'Thank you for applying.'
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers: {  }
+uuid: d69aef7c-5a49-4abd-9fef-3866caa4c995
+_core:
+  default_config_hash: oUyWA861SiNPOO8Ia4rb7QpAzaoBbPpBp4TdPz9fyVc

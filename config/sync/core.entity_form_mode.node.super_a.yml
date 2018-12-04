@@ -1,0 +1,10 @@
+uuid: 3e40cf7e-f6e6-41bd-90c5-70323e3ba73f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.super_a
+label: 'Super admin'
+targetEntityType: node
+cache: true

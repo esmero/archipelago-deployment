@@ -1,0 +1,14 @@
+uuid: be73d3cd-07b6-483f-9b09-881f891a730c
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.metadata_pro
+  module:
+    - user
+id: user_remove_role_action.metadata_pro
+label: 'Remove the Metadata Pro role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: metadata_pro

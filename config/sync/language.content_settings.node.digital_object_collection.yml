@@ -1,0 +1,11 @@
+uuid: 892501fd-bab3-4c3c-9cf6-7c67f5514a39
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.digital_object_collection
+id: node.digital_object_collection
+target_entity_type_id: node
+target_bundle: digital_object_collection
+default_langcode: site_default
+language_alterable: true

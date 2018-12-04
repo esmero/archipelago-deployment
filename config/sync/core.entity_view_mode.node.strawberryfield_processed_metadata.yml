@@ -1,0 +1,10 @@
+uuid: 45ec1b93-edb6-4fb9-90b1-cc67615ebf87
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.strawberryfield_processed_metadata
+label: 'Strawberry field processed metadata'
+targetEntityType: node
+cache: true

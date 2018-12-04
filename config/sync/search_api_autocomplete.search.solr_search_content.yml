@@ -1,0 +1,49 @@
+uuid: fb66df24-68af-478d-ae17-774163d7d4d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.default_solr_index
+    - views.view.solr_search_content
+  module:
+    - views
+    - search_api_autocomplete
+id: solr_search_content
+label: 'Solr search content'
+index_id: default_solr_index
+suggester_settings:
+  live_results:
+    fields:
+      - label
+      - label_1
+      - name_1
+      - title
+    view_modes:
+      'entity:node':
+        article: ''
+        digital_fsu_object: ''
+        digital_object: ''
+        page: ''
+        webform: ''
+  server:
+    fields:
+      - label
+      - label_1
+      - name_1
+      - title
+suggester_weights:
+  live_results: 0
+  server: 0
+suggester_limits: {  }
+search_settings:
+  'views:solr_search_content':
+    displays:
+      default: true
+      selected: {  }
+options:
+  limit: 10
+  min_length: 3
+  show_count: false
+  autosubmit: true
+  submit_button_selector: ':submit'
+  delay: null

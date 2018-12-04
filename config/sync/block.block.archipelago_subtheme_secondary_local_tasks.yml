@@ -1,0 +1,22 @@
+uuid: c3d60bf2-129b-410b-872c-d39addb2f9ea
+langcode: en
+status: true
+dependencies:
+  theme:
+    - archipelago_subtheme
+_core:
+  default_config_hash: QeZBeCilQfeET3GeW6ZtJkEiwROADTZktFgKWwPieD4
+id: archipelago_subtheme_secondary_local_tasks
+theme: archipelago_subtheme
+region: top_header
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Secondary tabs'
+  provider: core
+  label_display: '0'
+  primary: false
+  secondary: true
+visibility: {  }

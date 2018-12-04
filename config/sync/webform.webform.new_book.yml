@@ -1,0 +1,191 @@
+langcode: en
+status: open
+dependencies:
+  module:
+    - webform_strawberryfield
+open: null
+close: null
+weight: 0
+uid: 1
+template: false
+archive: false
+id: new_book
+title: 'Describe your Thing'
+description: 'This form adds a Digital Object&#39;s metadata to your repository'
+category: Archipel
+elements: "ingest_new_book:\n  '#type': webform_wizard_page\n  '#title': 'Describe the Book'\n  '#open': true\n  '#next_button_label': 'Add media'\n  label:\n    '#type': textfield\n    '#title': Label\n    '#help': 'Book Label (Display)'\n    '#autocomplete': 'off'\n    '#required': true\n    '#required_error': 'A display label is required'\n    '#counter_type': character\n    '#counter_maximum': '256'\n    '#format_items': comma\n  a_uri:\n    '#type': url\n    '#title': 'A URI'\n    '#multiple': 2\n    '#description': 'Enter a WIKI DATA Item URI'\n    '#help_title': 'https://www.wikidata.org/wiki/Help:Items'\n    '#help': 'See&nbsp;https://www.wikidata.org/wiki/Wikidata:Glossary#Item'\n    '#placeholder': 'https://www.wikidata.org/wiki/Q180160'\n  date:\n    '#type': date\n    '#title': 'Modification date'\n    '#datepicker': true\nmedia:\n  '#type': webform_wizard_page\n  '#title': 'Accompanying Media'\n  '#open': true\n  '#prev_button_label': 'Back to describing the book'\n  '#next_button_label': 'Meta-meta info'\n  add_some_master_images:\n    '#type': webform_image_file\n    '#title': 'Add some master Images'\n    '#multiple': 4\n    '#uri_scheme': s3\n    '#file_extensions': 'gif jpg png svg tiff jp2'\n    '#file_name': '[webform_submission:values:label]-[webform_submission:langcode]-image-[random:hash:sha1]'\n    '#sanitize': true\nwhy_are_you_doing_this_:\n  '#type': webform_wizard_page\n  '#title': 'Why are you doing this?'\n  '#open': true\n  '#prev_button_label': 'Back to describing your Digital Resource'\n  '#next_button_label': 'Finish Ingest'\n  reasons_and_justifications:\n    '#type': textarea\n    '#title': 'Reasons and Justifications'\n    '#format_items': comma\nactions:\n  '#type': webform_actions\n  '#title': 'Save Book'"
+css: ''
+javascript: ''
+settings:
+  ajax: true
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_title: both
+  form_submit_once: true
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_remote_addr: true
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: true
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: true
+  form_disable_back: false
+  form_submit_back: true
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: true
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns:
+    - serial
+    - created
+    - remote_addr
+    - sid
+    - label
+    - completed
+    - changed
+    - langcode
+    - element__label
+    - operations
+  submission_user_duplicate: false
+  submission_access_denied: login
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: true
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 1
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: inline
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: draft
+  purge_days: 10
+  results_disabled: true
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  a_strawberryfield_harvester:
+    id: ' strawberryField_webform_handler'
+    label: 'A strawberryField harvester'
+    handler_id: a_strawberryfield_harvester
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      submission_url: 'https://api.example.org/SOME/ENDPOINT2'
+      upload_scheme: private
+uuid: 269e0825-37c1-4e4c-902a-6cf41f8937c4

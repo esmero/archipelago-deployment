@@ -1,0 +1,22 @@
+uuid: 596529f2-a238-470f-a44f-bdc7fe4c6b09
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access shortcuts'
+  - 'access site-wide contact form'
+  - 'post comments'
+  - 'search content'
+  - 'skip comment approval'
+  - 'use search_api_autocomplete for solr_search_content'
+  - 'use search_api_autocomplete for solr_search_homepage'
+  - 'use text format basic_html'
+  - 'view media'

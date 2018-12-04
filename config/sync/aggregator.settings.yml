@@ -1,0 +1,12 @@
+fetcher: aggregator
+parser: aggregator
+processors:
+  - aggregator
+items:
+  allowed_html: '<a> <b> <br> <dd> <dl> <dt> <em> <i> <li> <ol> <p> <strong> <u> <ul>'
+  teaser_length: 600
+  expire: 9676800
+source:
+  list_max: 3
+_core:
+  default_config_hash: oqQElnvorzLoHb68o4B3zFkGuMV5_GQEGi7pHfUseVM

@@ -1,0 +1,10 @@
+uuid: 42476f89-953e-469a-87eb-b60288f7c332
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_viewmode_fullitem
+label: 'Digital Object Full View'
+targetEntityType: node
+cache: true

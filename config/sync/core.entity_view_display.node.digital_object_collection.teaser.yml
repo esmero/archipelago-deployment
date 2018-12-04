@@ -1,0 +1,56 @@
+uuid: 7d31deed-f617-4235-aa07-d56d63cf14a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.digital_object_collection.body
+    - field.field.node.digital_object_collection.field_descriptive_metadata
+    - node.type.digital_object_collection
+  module:
+    - ds
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: bb_cardtopimage
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes: {  }
+        wrappers:
+          first: div
+          second: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      first:
+        - langcode
+        - field_descriptive_metadata
+        - links
+        - body
+id: node.digital_object_collection.teaser
+targetEntityType: node
+bundle: digital_object_collection
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_descriptive_metadata: true
+  langcode: true

@@ -1,0 +1,246 @@
+uuid: 0f8e8c19-7450-4356-b6a1-f5b0b99c6069
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - user
+    - search_api
+    - search_api_solr
+  config:
+    - field.storage.node.field_descriptive_metadata
+    - field.storage.node.field_fsu_json
+    - field.storage.node.field_tags
+    - search_api.server.esmero_solr_7_2
+_core:
+  default_config_hash: 5gcfQOCjXVt6We4_q02H8VjnECSON5NgKOchFAsncxU
+id: default_solr_index
+name: 'Drupal Content to Solr 7'
+description: 'Basic Content'
+read_only: false
+field_settings:
+  author:
+    label: 'Author name'
+    datasource_id: 'entity:node'
+    property_path: 'uid:entity:name'
+    type: string
+    dependencies:
+      module:
+        - node
+        - user
+        - user
+  author_1:
+    label: 'Descriptive Metadata » author'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:author'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+  changed:
+    label: Changed
+    datasource_id: 'entity:node'
+    property_path: changed
+    type: date
+    dependencies:
+      module:
+        - node
+  created:
+    label: 'Authored on'
+    datasource_id: 'entity:node'
+    property_path: created
+    type: date
+    dependencies:
+      module:
+        - node
+  field_tags:
+    label: Tags
+    datasource_id: 'entity:node'
+    property_path: field_tags
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_tags
+  image:
+    label: 'Descriptive Metadata » image'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:image'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+  label:
+    label: 'fsu_json » label'
+    datasource_id: 'entity:node'
+    property_path: 'field_fsu_json:label'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_fsu_json
+  label_1:
+    label: 'Descriptive Metadata » label'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:label'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+  label_2:
+    label: 'Descriptive Metadata » label'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:label'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+  name:
+    label: 'fsu_json » name'
+    datasource_id: 'entity:node'
+    property_path: 'field_fsu_json:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_fsu_json
+  name_1:
+    label: 'Descriptive Metadata » name'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
+  status:
+    label: 'Publishing status'
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  sticky:
+    label: 'Sticky at top of lists'
+    datasource_id: 'entity:node'
+    property_path: sticky
+    type: boolean
+    dependencies:
+      module:
+        - node
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: !!float 8
+    dependencies:
+      module:
+        - node
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - node
+  uid:
+    label: 'Author ID'
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  url:
+    label: 'Descriptive Metadata » url'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:url'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url:
+    weights:
+      preprocess_index: -30
+  aggregated_field:
+    weights:
+      add_properties: 20
+  content_access:
+    weights:
+      preprocess_index: -6
+      preprocess_query: -4
+  entity_status:
+    weights:
+      preprocess_index: -10
+  highlight:
+    highlight: always
+    highlight_partial: false
+    excerpt: true
+    excerpt_length: 256
+    exclude_fields: {  }
+    prefix: '<strong>'
+    suffix: '</strong>'
+    weights:
+      postprocess_query: 0
+  html_filter:
+    all_fields: false
+    fields: {  }
+    title: true
+    alt: true
+    tags:
+      b: 2
+      h1: 5
+      h2: 3
+      h3: 2
+      string: 2
+    weights:
+      preprocess_index: -3
+      preprocess_query: -6
+  rendered_item:
+    weights:
+      add_properties: 0
+      pre_index_save: -10
+  solr_date_range:
+    weights:
+      preprocess_index: 0
+  tokenizer:
+    all_fields: true
+    fields:
+      - image
+      - label
+      - label_1
+      - name_1
+      - title
+      - url
+    spaces: ''
+    overlap_cjk: 1
+    minimum_word_size: '3'
+    weights:
+      preprocess_index: -6
+      preprocess_query: -6
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  index_directly: true
+  cron_limit: 50
+server: esmero_solr_7_2

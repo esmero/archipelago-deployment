@@ -1,0 +1,23 @@
+uuid: 4323fb85-a2dd-40be-8aea-5ec09b544fa2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_descriptive_metadata
+    - node.type.digital_object_collection
+  module:
+    - strawberryfield
+id: node.digital_object_collection.field_descriptive_metadata
+field_name: field_descriptive_metadata
+entity_type: node
+bundle: digital_object_collection
+label: 'Descriptive Metadata'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: strawberryfield_field

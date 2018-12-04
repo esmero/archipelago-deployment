@@ -1,0 +1,19 @@
+uuid: 06c38253-26a5-477a-bdb1-5a16c93719f3
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access site-wide contact form'
+  - 'search content'
+  - 'use search_api_autocomplete for solr_search_content'
+  - 'use search_api_autocomplete for solr_search_homepage'
+  - 'use text format restricted_html'
+  - 'view media'

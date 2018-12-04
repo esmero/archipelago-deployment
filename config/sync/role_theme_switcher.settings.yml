@@ -1,0 +1,16 @@
+roles:
+  anonymous:
+    theme: archipelago_subtheme
+    weight: '-49'
+  authenticated:
+    theme: ''
+    weight: '-48'
+  administrator:
+    theme: ''
+    weight: '-47'
+  non_grata:
+    theme: ''
+    weight: '-46'
+  metadata_pro:
+    theme: bootstrap
+    weight: '-50'

@@ -1,0 +1,29 @@
+uuid: 7c2176b9-0ecd-4e58-bf80-1874a8d80504
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.solr_search_content
+  module:
+    - system
+    - views
+  theme:
+    - bootstrap
+id: exposedformsolr_search_contentpage_1_2
+theme: bootstrap
+region: highlighted
+weight: 0
+provider: null
+plugin: 'views_exposed_filter_block:solr_search_content-page_1'
+settings:
+  id: 'views_exposed_filter_block:solr_search_content-page_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: 'Repository wide search'
+visibility:
+  request_path:
+    id: request_path
+    pages: /search
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,21 @@
+uuid: 385891b6-aef1-4cf9-a1fe-be7c50635333
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_descriptive_metadata
+    - node.type.digital_object
+  module:
+    - strawberryfield
+id: node.digital_object.field_descriptive_metadata
+field_name: field_descriptive_metadata
+entity_type: node
+bundle: digital_object
+label: 'Descriptive Metadata'
+description: "<code>\r\nHere you will see a Help Message and some a link <a href=\"#\">with documentation</a>\r\n</code>"
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: strawberryfield_field
