@@ -1,0 +1,65 @@
+# Run docker-compose run -d
+# drush config-import
+
+version: '3.5'
+services:
+  web:
+    container_name: esmero-web
+    image: "esmero/drupal8-dev:8.4.5"
+    depends_on:
+      - solr
+    tty: true
+    ports:
+      - "8001:80"
+    networks:
+      - host-net
+      - esmero-net
+    volumes:
+      - /persistent/drupal8:/var/www/html:cached
+  solr:
+    container_name: esmero-solr
+    image: "esmero/solr4drupal8:7.2.0"
+    tty: true
+    ports:
+      - "8983:8983"
+    networks:
+      - host-net
+      - esmero-net
+    volumes:
+      - /persistent/solrcore:/opt/solr/server/solr/drupal
+      - /persistent/solrconfig:/drupalconfig
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - drupal
+      - /drupalconfig
+  # see https://hub.docker.com/_/mysql/
+  db:
+    image: mysql:5.7
+    container_name: esmero-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: esmerodb
+    networks:
+      - host-net
+      - esmero-net
+    volumes:
+      - /persistent/db:/var/lib/mysql
+iiif:
+    container_name: esmero-cantaloupe
+    image: "esmero/cantaloupe-s3:4.0.1"
+    restart: always
+    ports:
+      - "8183:8182"
+    networks:
+      - host-net
+      - esmero-net
+    volumes:
+      - /persistent/iiifconfig:/etc/cantaloupe
+      - /persistent/iiifcache:/var/cache/cantaloupe
+networks:
+  host-net:
+    driver: bridge
+  esmero-net:
+    driver: bridge
+    internal: true
