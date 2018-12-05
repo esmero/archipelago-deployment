@@ -18,7 +18,7 @@ services:
       - /persistent/drupal8:/var/www/html:cached
   solr:
     container_name: esmero-solr
-    image: "esmero/solr4drupal8:7.2.0"
+    image: "solr:7.5.0"
     tty: true
     ports:
       - "8983:8983"
@@ -26,7 +26,7 @@ services:
       - host-net
       - esmero-net
     volumes:
-      - /persistent/solrcore:/opt/solr/server/solr/drupal
+      - /persistent/solrcore:/opt/solr/server/solr/mycores
       - /persistent/solrconfig:/drupalconfig
     entrypoint:
       - docker-entrypoint.sh
@@ -45,7 +45,7 @@ services:
       - esmero-net
     volumes:
       - /persistent/db:/var/lib/mysql
-iiif:
+  iiif:
     container_name: esmero-cantaloupe
     image: "esmero/cantaloupe-s3:4.0.1"
     restart: always
