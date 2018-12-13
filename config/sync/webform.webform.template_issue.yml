@@ -1,9 +1,12 @@
+uuid: f9e2af3e-2f0e-4169-b077-471dab8e88d9
 langcode: en
 status: closed
 dependencies:
   enforced:
     module:
       - webform_templates
+_core:
+  default_config_hash: _HEQPo-M_8fSa3tXLmHdWlTBEkUJ2VontbfxweUmJAA
 open: null
 close: null
 weight: 0
@@ -169,6 +172,3 @@ access:
     users: {  }
     permissions: {  }
 handlers: {  }
-uuid: f9e2af3e-2f0e-4169-b077-471dab8e88d9
-_core:
-  default_config_hash: _HEQPo-M_8fSa3tXLmHdWlTBEkUJ2VontbfxweUmJAA

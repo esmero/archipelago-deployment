@@ -9,7 +9,6 @@ dependencies:
     - search_api_solr
   config:
     - field.storage.node.field_descriptive_metadata
-    - field.storage.node.field_fsu_json
     - field.storage.node.field_tags
     - search_api.server.esmero_solr_7_2
 _core:
@@ -69,14 +68,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_descriptive_metadata
-  label:
-    label: 'fsu_json » label'
-    datasource_id: 'entity:node'
-    property_path: 'field_fsu_json:label'
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_fsu_json
   label_1:
     label: 'Descriptive Metadata » label'
     datasource_id: 'entity:node'
@@ -93,14 +84,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_descriptive_metadata
-  name:
-    label: 'fsu_json » name'
-    datasource_id: 'entity:node'
-    property_path: 'field_fsu_json:name'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_fsu_json
   name_1:
     label: 'Descriptive Metadata » name'
     datasource_id: 'entity:node'
@@ -226,7 +209,6 @@ processor_settings:
     all_fields: true
     fields:
       - image
-      - label
       - label_1
       - name_1
       - title

@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.digital_object.field_descriptive_metadata
     - node.type.digital_object
   module:
+    - content_moderation
     - field_layout
     - layout_discovery
     - webform_strawberryfield
@@ -28,7 +29,7 @@ content:
   field_descriptive_metadata:
     weight: 4
     settings:
-      webform_id: new_book
+      webform_id: descriptive_metadata
       placeholder: 'Descriptive Metadata'
     third_party_settings: {  }
     type: strawberryfield_webform_widget
@@ -42,11 +43,9 @@ content:
     third_party_settings: {  }
   moderation_state:
     weight: 5
-    settings:
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: string_textfield
+    type: moderation_state_default
     region: content
   status:
     type: boolean_checkbox

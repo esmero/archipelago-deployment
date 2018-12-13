@@ -1,0 +1,9 @@
+uuid: 1b73b817-fab0-4ae4-8114-1c8dffff889a
+langcode: zxx
+status: true
+dependencies: {  }
+name: strawberryfield_voc_id
+vid: strawberryfield_voc_id
+description: 'Strawberryfield Metadata Keys'
+hierarchy: 0
+weight: 0

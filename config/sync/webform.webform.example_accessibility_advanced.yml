@@ -1,9 +1,12 @@
+uuid: 890c49ce-74fe-463e-9e6f-357fb433d4f1
 langcode: en
 status: open
 dependencies:
   enforced:
     module:
       - webform_examples_accessibility
+_core:
+  default_config_hash: EL_cfuvlLwBskukDl5JTuFji9AV-O52WYMXNvsPCEoM
 open: null
 close: null
 weight: 0
@@ -183,6 +186,3 @@ handlers:
       confirmation_url: ''
       confirmation_title: ''
       confirmation_message: ''
-uuid: 890c49ce-74fe-463e-9e6f-357fb433d4f1
-_core:
-  default_config_hash: EL_cfuvlLwBskukDl5JTuFji9AV-O52WYMXNvsPCEoM

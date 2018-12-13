@@ -12,5 +12,5 @@ roles:
     theme: ''
     weight: '-46'
   metadata_pro:
-    theme: bootstrap
+    theme: archipelago_subtheme
     weight: '-50'

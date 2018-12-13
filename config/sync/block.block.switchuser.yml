@@ -1,0 +1,31 @@
+uuid: 8a9e6d00-457f-4bbd-80a3-16add549aaf6
+langcode: en
+status: true
+dependencies:
+  module:
+    - devel
+    - user
+  theme:
+    - archipelago_subtheme
+id: switchuser
+theme: archipelago_subtheme
+region: featured_bottom_third
+weight: 0
+provider: null
+plugin: devel_switch_user
+settings:
+  id: devel_switch_user
+  label: 'Switch user'
+  provider: devel
+  label_display: visible
+  list_size: 12
+  include_anon: true
+  show_form: true
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

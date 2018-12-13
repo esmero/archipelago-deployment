@@ -31,45 +31,34 @@ third_party_settings:
         - body
         - field_descriptive_metadata
         - 'display_field_copy:node-field_descriptive_metadata_image'
-        - 'display_field_copy:node-static_media'
         - 'display_field_copy:node-formatted_metadata'
     fields:
       'display_field_copy:node-field_descriptive_metadata_image':
         plugin_id: 'display_field_copy:node-field_descriptive_metadata_image'
         weight: 5
-        label: inline
+        label: hidden
         formatter: strawberry_media_formatter
         settings:
           formatter:
-            iiif_base_url: 'http://localhost:8183/iiif/2/'
+            iiif_base_url: 'http://ec2-34-228-208-246.compute-1.amazonaws.com:8183/iiif/2/'
             iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2/'
             iiif_group: '1'
+            json_key_source: 'as:image'
             max_width: '720'
             max_height: '480'
       'display_field_copy:node-formatted_metadata':
         plugin_id: 'display_field_copy:node-formatted_metadata'
-        weight: 7
+        weight: 6
         label: hidden
         formatter: strawberry_metadata_formatter
         settings:
           formatter:
             specs: 'http://schema.org'
-            metadatadisplayentity_id: '2'
-      'display_field_copy:node-static_media':
-        plugin_id: 'display_field_copy:node-static_media'
-        weight: 6
-        label: hidden
-        formatter: strawberry_image_formatter
-        settings:
-          formatter:
-            iiif_base_url: 'http://localhost:8183/iiif/2/'
-            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2/'
-            max_width: '180'
-            max_height: '0'
+            metadatadisplayentity_id: '1'
       node_title:
         plugin_id: node_title
         weight: 0
-        label: inline
+        label: hidden
         formatter: default
         settings:
           link: true
@@ -108,4 +97,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  content_moderation_control: true

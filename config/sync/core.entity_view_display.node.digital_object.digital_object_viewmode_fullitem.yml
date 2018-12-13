@@ -27,6 +27,7 @@ third_party_settings:
     regions:
       content:
         - links
+        - node_changed_date
         - node_title
         - langcode
         - body
@@ -37,22 +38,27 @@ third_party_settings:
         plugin_id: 'display_field_copy:node-field_descriptive_metadata_image'
         weight: 6
         label: inline
-        formatter: strawberry_image_formatter
+        formatter: strawberry_metadata_formatter
         settings:
           formatter:
-            iiif_base_url: 'http://localhost:8183/iiif/2/'
+            iiif_base_url: 'http://ec2-34-228-208-246.compute-1.amazonaws.com:8183/iiif/2/'
             iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2/'
             max_width: '160'
             max_height: '0'
       node_title:
         plugin_id: node_title
-        weight: 1
+        weight: 2
         label: hidden
         formatter: default
         settings:
           link: true
           wrapper: h2
           class: ''
+      node_changed_date:
+        plugin_id: node_changed_date
+        weight: 1
+        label: hidden
+        formatter: ds_post_date_long
 id: node.digital_object.digital_object_viewmode_fullitem
 targetEntityType: node
 bundle: digital_object
@@ -61,12 +67,12 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     region: content
   field_descriptive_metadata:
-    weight: 4
+    weight: 5
     label: above
     settings: {  }
     third_party_settings: {  }
@@ -74,7 +80,7 @@ content:
     region: content
   langcode:
     type: language
-    weight: 2
+    weight: 3
     region: content
     label: visually_hidden
     settings:
@@ -86,4 +92,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  content_moderation_control: true

@@ -1,9 +1,12 @@
+uuid: c38f6474-9e3d-4819-8727-d3eaefca9f94
 langcode: en
 status: open
 dependencies:
   enforced:
     module:
       - webform_examples_accessibility
+_core:
+  default_config_hash: sAwJATc031mKnb5tk4CBAwWI3T4BHj7JAidTG4YtUjs
 open: null
 close: null
 weight: 0
@@ -169,6 +172,3 @@ access:
     users: {  }
     permissions: {  }
 handlers: {  }
-uuid: c38f6474-9e3d-4819-8727-d3eaefca9f94
-_core:
-  default_config_hash: sAwJATc031mKnb5tk4CBAwWI3T4BHj7JAidTG4YtUjs

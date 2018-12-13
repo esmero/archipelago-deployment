@@ -1,0 +1,32 @@
+uuid: b7f9dc65-ef32-4eec-b4d0-5a4d84630667
+langcode: en
+status: false
+dependencies:
+  module:
+    - ctools
+    - system
+  theme:
+    - seven
+id: sitebranding
+theme: seven
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      article: article
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

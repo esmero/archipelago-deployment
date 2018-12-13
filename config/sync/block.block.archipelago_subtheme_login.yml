@@ -10,8 +10,8 @@ _core:
   default_config_hash: IItlF4SKHgxduIysVQdvirDJ_v3HGuAviOkidAOJYRE
 id: archipelago_subtheme_login
 theme: archipelago_subtheme
-region: footer_first
-weight: -5
+region: sidebar_first
+weight: -6
 provider: null
 plugin: user_login_block
 settings:

@@ -1,0 +1,11 @@
+uuid: 5c85bf8e-103a-4c64-9680-a21bd27de71e
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.strawberryfield_voc_id
+id: taxonomy_term.strawberryfield_voc_id
+target_entity_type_id: taxonomy_term
+target_bundle: strawberryfield_voc_id
+default_langcode: site_default
+language_alterable: false

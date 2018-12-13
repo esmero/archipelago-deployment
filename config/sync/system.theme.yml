@@ -1,4 +1,4 @@
-admin: seven
+admin: '0'
 default: seven
 _core:
   default_config_hash: fOjer9hADYYnbCJVZMFZIIM1azTFWyg84ZkFDHfAbUg

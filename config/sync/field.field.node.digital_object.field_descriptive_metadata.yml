@@ -12,10 +12,13 @@ field_name: field_descriptive_metadata
 entity_type: node
 bundle: digital_object
 label: 'Descriptive Metadata'
-description: "<code>\r\nHere you will see a Help Message and some a link <a href=\"#\">with documentation</a>\r\n</code>"
+description: ''
 required: true
 translatable: false
-default_value: {  }
+default_value:
+  -
+    creation_method: descriptive_metadata
+    value: "{\n    \"as:generator\": {\n        \"@context\": \"https:\\/\\/www.w3.org\\/ns\\/activitystreams\",\n        \"type\": \"Create\",\n        \"summary\": \"Generator\",\n        \"endTime\": \"2018-12-10T09:18:49-05:00\",\n        \"actor\": {\n            \"type\": \"Service\",\n            \"name\": \"descriptive_metadata\",\n            \"url\": \"http:\\/\\/ec2-34-228-208-246.compute-1.amazonaws.com\\/form\\/descriptive-metadata\"\n        }\n    }\n}"
 default_value_callback: ''
 settings: {  }
 field_type: strawberryfield_field

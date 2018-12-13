@@ -10,8 +10,8 @@ _core:
   default_config_hash: NU5A_49mwLHfs5xFzMFrZ850w9pgUolxMS9NNF3vv4c
 id: archipelago_subtheme_help
 theme: archipelago_subtheme
-region: top_header
-weight: 0
+region: highlighted
+weight: -5
 provider: null
 plugin: help_block
 settings:

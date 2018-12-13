@@ -2,6 +2,9 @@ uuid: a98e9988-db28-4eb4-8ed7-cadd66081d9d
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.digital_object
+    - node.type.digital_object_collection
   module:
     - content_moderation
 _core:
@@ -59,4 +62,7 @@ type_settings:
       from:
         - draft
         - published
-  entity_types: {  }
+  entity_types:
+    node:
+      - digital_object
+      - digital_object_collection

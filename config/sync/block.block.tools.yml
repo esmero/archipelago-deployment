@@ -1,0 +1,29 @@
+uuid: edae0a4c-fe42-488d-95f3-23de2086f27c
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.tools
+  module:
+    - system
+  theme:
+    - archipelago_subtheme
+id: tools
+theme: archipelago_subtheme
+region: sidebar_first
+weight: -5
+provider: null
+plugin: 'system_menu_block:tools'
+settings:
+  id: 'system_menu_block:tools'
+  label: Tools
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: '/node/add/*'
+    negate: true
+    context_mapping: {  }

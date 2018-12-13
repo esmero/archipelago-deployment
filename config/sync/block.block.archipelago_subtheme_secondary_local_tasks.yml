@@ -8,8 +8,8 @@ _core:
   default_config_hash: QeZBeCilQfeET3GeW6ZtJkEiwROADTZktFgKWwPieD4
 id: archipelago_subtheme_secondary_local_tasks
 theme: archipelago_subtheme
-region: top_header
-weight: 0
+region: featured_top
+weight: -6
 provider: null
 plugin: local_tasks_block
 settings:

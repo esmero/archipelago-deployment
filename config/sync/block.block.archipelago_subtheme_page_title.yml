@@ -8,8 +8,8 @@ _core:
   default_config_hash: ZSpc3IoSaLd0PkB02nxjVPBMztIdsTdHek9SiGaqZ_c
 id: archipelago_subtheme_page_title
 theme: archipelago_subtheme
-region: header
-weight: -6
+region: highlighted
+weight: -7
 provider: null
 plugin: page_title_block
 settings:
