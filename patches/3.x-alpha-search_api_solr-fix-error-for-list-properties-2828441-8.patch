@@ -1,0 +1,22 @@
+diff --git a/src/Plugin/search_api/backend/SearchApiSolrBackend.php b/src/Plugin/search_api/backend/SearchApiSolrBackend.php
+index 3dd40f7..f6d4747 100644
+--- a/src/Plugin/search_api/backend/SearchApiSolrBackend.php
++++ b/src/Plugin/search_api/backend/SearchApiSolrBackend.php
+@@ -17,6 +17,7 @@ use Drupal\Core\Language\LanguageManagerInterface;
+ use Drupal\Core\Plugin\PluginFormInterface;
+ use Drupal\Core\TypedData\ComplexDataDefinitionInterface;
+ use Drupal\Core\TypedData\DataDefinition;
++use Drupal\Core\TypedData\ListDataDefinitionInterface;
+ use Drupal\Core\Url;
+ use Drupal\search_api\Item\Field;
+ use Drupal\search_api\Item\FieldInterface;
+@@ -1507,6 +1508,9 @@ class SearchApiSolrBackend extends BackendPluginBase implements SolrBackendInter
+           }
+           $cardinality *= $storage->getCardinality();
+         }
++      } elseif ($property instanceof ListDataDefinitionInterface) {
++        // Lists have unpecified cardinality
++        return FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED;
+       }
+ 
+       if (isset($nested_path)) {

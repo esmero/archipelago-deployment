@@ -1,0 +1,190 @@
+diff --git a/src/WebformSubmissionStorage.php b/src/WebformSubmissionStorage.php
+index 5286f388..8f63f450 100644
+--- a/src/WebformSubmissionStorage.php
++++ b/src/WebformSubmissionStorage.php
+@@ -886,7 +886,12 @@ class WebformSubmissionStorage extends SqlContentEntityStorage implements Webfor
+    */
+   protected function doPreSave(EntityInterface $entity) {
+     /** @var \Drupal\webform\WebformSubmissionInterface $entity */
+-    $id = parent::doPreSave($entity);
++    if ($entity->getWebform()->getSetting('results_disabled')) {
++      $id = WebformSubmissionStorageInterface::SAVED_DISABLED;
++    }
++    else {
++      $id = parent::doPreSave($entity);
++    }
+     $this->invokeWebformElements('preSave', $entity);
+     $this->invokeWebformHandlers('preSave', $entity);
+     return $id;
+@@ -927,95 +932,96 @@ class WebformSubmissionStorage extends SqlContentEntityStorage implements Webfor
+    */
+   protected function doPostSave(EntityInterface $entity, $update) {
+     /** @var \Drupal\webform\WebformSubmissionInterface $entity */
+-    parent::doPostSave($entity, $update);
+-
+     $webform = $entity->getWebform();
+ 
+-    if ($webform->hasSubmissionLog()) {
+-      // Log webform submission events to the 'webform_submission' log.
+-      $context = [
+-        '@title' => $entity->label(),
+-        'link' => $entity->toLink($this->t('Edit'), 'edit-form')->toString(),
+-        'webform_submission' => $entity,
+-      ];
+-      switch ($entity->getState()) {
+-        case WebformSubmissionInterface::STATE_DRAFT:
+-          if ($update) {
+-            $message = '@title draft updated.';
+-            $context['operation'] = 'draft updated';
+-          }
+-          else {
+-            $message = '@title draft created.';
+-            $context['operation'] = 'draft created';
+-          }
+-          break;
++    if (!$webform->isResultsDisabled()) {
++      parent::doPostSave($entity, $update);
++      if ($webform->hasSubmissionLog()) {
++        // Log webform submission events to the 'webform_submission' log.
++        $context = [
++          '@title' => $entity->label(),
++          'link' => $entity->toLink($this->t('Edit'), 'edit-form')->toString(),
++          'webform_submission' => $entity,
++        ];
++        switch ($entity->getState()) {
++          case WebformSubmissionInterface::STATE_DRAFT:
++            if ($update) {
++              $message = '@title draft updated.';
++              $context['operation'] = 'draft updated';
++            }
++            else {
++              $message = '@title draft created.';
++              $context['operation'] = 'draft created';
++            }
++            break;
+ 
+-        case WebformSubmissionInterface::STATE_COMPLETED:
+-          if ($update) {
+-            $message = '@title completed using saved draft.';
+-            $context['operation'] = 'submission completed';
+-          }
+-          else {
+-            $message = '@title created.';
+-            $context['operation'] = 'submission created';
+-          }
+-          break;
++          case WebformSubmissionInterface::STATE_COMPLETED:
++            if ($update) {
++              $message = '@title completed using saved draft.';
++              $context['operation'] = 'submission completed';
++            }
++            else {
++              $message = '@title created.';
++              $context['operation'] = 'submission created';
++            }
++            break;
+ 
+-        case WebformSubmissionInterface::STATE_CONVERTED:
+-          $message = '@title converted from anonymous to @user.';
+-          $context['operation'] = 'submission converted';
+-          $context['@user'] = $entity->getOwner()->label();
+-          break;
++          case WebformSubmissionInterface::STATE_CONVERTED:
++            $message = '@title converted from anonymous to @user.';
++            $context['operation'] = 'submission converted';
++            $context['@user'] = $entity->getOwner()->label();
++            break;
+ 
+-        case WebformSubmissionInterface::STATE_UPDATED:
+-          $message = '@title updated.';
+-          $context['operation'] = 'submission updated';
+-          break;
++          case WebformSubmissionInterface::STATE_UPDATED:
++            $message = '@title updated.';
++            $context['operation'] = 'submission updated';
++            break;
+ 
+-        case WebformSubmissionInterface::STATE_UNSAVED:
+-          $message = '@title submitted.';
+-          $context['operation'] = 'submission submitted';
+-          break;
++          case WebformSubmissionInterface::STATE_UNSAVED:
++            $message = '@title submitted.';
++            $context['operation'] = 'submission submitted';
++            break;
+ 
+-        case WebformSubmissionInterface::STATE_LOCKED:
+-          $message = '@title locked.';
+-          $context['operation'] = 'submission locked';
+-          break;
++          case WebformSubmissionInterface::STATE_LOCKED:
++            $message = '@title locked.';
++            $context['operation'] = 'submission locked';
++            break;
+ 
+-        default:
+-          throw new \Exception('Unexpected webform submission state');
++          default:
++            throw new \Exception('Unexpected webform submission state');
++        }
++        \Drupal::logger('webform_submission')->notice($message, $context);
+       }
+-      \Drupal::logger('webform_submission')->notice($message, $context);
+-    }
+-    elseif (!$webform->getSetting('results_disabled')) {
+-      // Log general events to the 'webform'.
+-      switch ($entity->getState()) {
+-        case WebformSubmissionInterface::STATE_DRAFT:
+-          $message = '@title draft saved.';
+-          break;
++      else {
++        // Log general events to the 'webform'.
++        switch ($entity->getState()) {
++          case WebformSubmissionInterface::STATE_DRAFT:
++            $message = '@title draft saved.';
++            break;
+ 
+-        case WebformSubmissionInterface::STATE_UPDATED:
+-          $message = '@title updated.';
+-          break;
++          case WebformSubmissionInterface::STATE_UPDATED:
++            $message = '@title updated.';
++            break;
+ 
+-        case WebformSubmissionInterface::STATE_COMPLETED:
+-          $message = ($update) ? '@title completed.' : '@title created.';
+-          break;
++          case WebformSubmissionInterface::STATE_COMPLETED:
++            $message = ($update) ? '@title completed.' : '@title created.';
++            break;
+ 
+-        default:
+-          $message = NULL;
+-          break;
+-      }
+-      if ($message) {
+-        $context = [
+-          '@id' => $entity->id(),
+-          '@title' => $entity->label(),
+-          'link' => $entity->toLink($this->t('Edit'), 'edit-form')->toString(),
+-        ];
+-        \Drupal::logger('webform')->notice($message, $context);
++          default:
++            $message = NULL;
++            break;
++        }
++        if ($message) {
++          $context = [
++            '@id' => $entity->id(),
++            '@title' => $entity->label(),
++            'link' => $entity->toLink($this->t('Edit'), 'edit-form')->toString(
++            ),
++          ];
++          \Drupal::logger('webform')->notice($message, $context);
++        }
+       }
+     }
+-
+     $this->invokeWebformElements('postSave', $entity, $update);
+     $this->invokeWebformHandlers('postSave', $entity, $update);
+   }
