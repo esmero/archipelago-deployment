@@ -1,0 +1,17 @@
+uuid: ae7286b7-e2ec-4c12-9fe2-0485d71d415c
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.metro
+  enforced:
+    config:
+      - user.role.administrator
+id: metro-a416e6833
+label: Administrator
+weight: 2
+internal: true
+audience: outsider
+group_type: metro
+permissions_ui: false
+permissions: {  }

@@ -10,5 +10,5 @@ id: node.digital_object
 targetEntityType: node
 bundle: digital_object
 types:
-  - 'schema:Thing'
+  - ''
 fieldMappings: {  }

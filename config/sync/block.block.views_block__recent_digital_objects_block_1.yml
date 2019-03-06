@@ -1,0 +1,30 @@
+uuid: fe6bf0b0-d244-4596-98ce-daab0e6d94dc
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.recent_digital_objects
+  module:
+    - system
+    - views
+  theme:
+    - archipelago_subtheme
+id: views_block__recent_digital_objects_block_1
+theme: archipelago_subtheme
+region: content
+weight: -6
+provider: null
+plugin: 'views_block:recent_digital_objects-block_1'
+settings:
+  id: 'views_block:recent_digital_objects-block_1'
+  label: 'Recently Updated Content'
+  provider: views
+  label_display: visible
+  views_label: 'Recently Updated Content'
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '/user/*'
+    negate: false
+    context_mapping: {  }

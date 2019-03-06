@@ -12,7 +12,7 @@ dependencies:
 id: development
 theme: seven
 region: content
-weight: -2
+weight: -1
 provider: null
 plugin: 'system_menu_block:devel'
 settings:

@@ -2,7 +2,7 @@ page_alter: false
 raw_names: false
 error_handlers:
   1: 1
-rebuild_theme: true
+rebuild_theme: false
 debug_mail_file_format: '%to-%subject-%datetime.mail.txt'
 debug_mail_directory: 'temporary://devel-mails'
 devel_dumper: var_dumper

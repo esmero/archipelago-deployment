@@ -7,13 +7,16 @@ module:
   block_content: 0
   breakpoint: 0
   ckeditor: 0
+  codemirror_editor: 0
   color: 0
   comment: 0
-  components: 0
   computed_field: 0
   computed_field_php_formatter: 0
   config: 0
   config_inspector: 0
+  config_update: 0
+  config_update_ui: 0
+  conflict: 0
   contact: 0
   content_moderation: 0
   context: 0
@@ -38,15 +41,23 @@ module:
   field_layout: 0
   field_ui: 0
   file: 0
+  file_mdm: 0
+  file_mdm_exif: 0
   filter: 0
+  form_mode_manager: 0
+  form_mode_manager_theme_switcher: 0
   format_strawberryfield: 0
+  gnode: 0
+  group: 0
   hal: 0
   help: 0
   history: 0
   image: 0
+  imagemagick: 0
   inline_entity_form: 0
   inline_form_errors: 0
   jsonld: 0
+  key_value: 0
   kint: 0
   language: 0
   layout_discovery: 0
@@ -55,13 +66,13 @@ module:
   media_library: 0
   menu_ui: 0
   migrate: 0
-  migrate_plus: 0
-  migrate_source_csv: 0
-  migrate_tools: 0
+  migrate_drupal: 0
+  module_missing_message_fixer: 0
   node: 0
   options: 0
   page_cache: 0
   path: 0
+  quick_node_clone: 0
   quickedit: 0
   rdf: 0
   rdf_builder: 0
@@ -74,7 +85,6 @@ module:
   search_api_autocomplete: 0
   search_api_solr: 0
   search_api_solr_defaults: 0
-  search_api_solr_devel: 0
   serialization: 0
   settings_tray: 0
   shortcut: 0
@@ -85,9 +95,11 @@ module:
   telephone: 0
   text: 0
   token: 0
+  tokenuuid: 0
   toolbar: 0
   tour: 0
   tracker: 0
+  twig_field: 0
   twig_tweak: 0
   update: 0
   user: 0
@@ -99,6 +111,7 @@ module:
   webform_node: 0
   webform_scheduled_email: 0
   webform_strawberryfield: 0
+  webform_submission_log: 0
   webform_templates: 0
   webform_ui: 0
   webform_views: 0

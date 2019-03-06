@@ -11,7 +11,7 @@ dependencies:
 id: mainnavigation
 theme: archipelago_subtheme
 region: top_header_form
-weight: -7
+weight: -10
 provider: null
 plugin: 'system_menu_block:main'
 settings:

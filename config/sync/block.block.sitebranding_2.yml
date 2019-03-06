@@ -8,8 +8,8 @@ dependencies:
     - archipelago_subtheme
 id: sitebranding_2
 theme: archipelago_subtheme
-region: header
-weight: 0
+region: top_header
+weight: -11
 provider: null
 plugin: system_branding_block
 settings:

@@ -11,8 +11,8 @@ third_party_settings:
     parent: 'main:'
 name: 'Digital Object'
 type: digital_object
-description: 'A Multi Purpose Digital Object '
-help: 'Place holder for our submission guidelines'
+description: 'Use this to add photographs, videos, books, datasets or any other type of object to your repository.'
+help: ''
 new_revision: true
 preview_mode: 1
 display_submitted: false

@@ -1,0 +1,85 @@
+
+# Run docker-compose run -d
+# drush config-import
+# If running Linux, make sure /persistent/iiifcache has 100:100 ownership
+# If running Linux, make sure /persistent/solrcore has 8983:8983 ownership
+# enabling :cache for the volumens can bypass that need.
+# on OSX brew install minio/stable/mc for the minio client
+version: '3.5'
+services:
+  web:
+    container_name: esmero-web
+    restart: always
+    image: "esmero/drupal8-dev:8.4.5"
+    depends_on:
+      - solr
+    tty: true
+    ports:
+      - "8001:80"
+    networks:
+      - host-net
+      - esmero-net
+    volumes:
+      - ${PWD}:/var/www/html:cached
+  solr:
+    container_name: esmero-solr
+    restart: always
+    image: "solr:7.5.0"
+    tty: true
+    ports:
+      - "8983:8983"
+    networks:
+      - host-net
+      - esmero-net
+    volumes:
+      - ${PWD}/persistent/solrcore:/opt/solr/server/solr/mycores:cached
+      - ${PWD}/persistent/solrconfig:/drupalconfig
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - drupal
+      - /drupalconfig
+  # see https://hub.docker.com/_/mysql/
+  db:
+    image: mysql:5.7
+    container_name: esmero-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: esmerodb
+    networks:
+      - host-net
+      - esmero-net
+    volumes:
+      - ${PWD}/persistent/db:/var/lib/mysql
+  iiif:
+    container_name: esmero-cantaloupe
+    image: "esmero/cantaloupe-s3:4.0.1"
+    restart: always
+    ports:
+      - "8183:8182"
+    networks:
+      - host-net
+      - esmero-net
+    volumes:
+      - ${PWD}/persistent/iiifconfig:/etc/cantaloupe
+      - ${PWD}/persistent/iiifcache:/var/cache/cantaloupe
+  minio:
+    container_name: esmero-minio
+    image: minio/minio:RELEASE.2019-02-26T19-51-46Z
+    volumes:
+         - ${PWD}/persistent/miniodata:/data
+    ports:
+         - "9001:9000"
+    networks:
+      - host-net
+      - esmero-net
+    environment:
+         MINIO_ACCESS_KEY: minio
+         MINIO_SECRET_KEY: minio123
+    command: server /data
+networks:
+  host-net:
+    driver: bridge
+  esmero-net:
+    driver: bridge
+    internal: true

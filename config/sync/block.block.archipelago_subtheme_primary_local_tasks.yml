@@ -9,7 +9,7 @@ _core:
 id: archipelago_subtheme_primary_local_tasks
 theme: archipelago_subtheme
 region: highlighted
-weight: -3
+weight: -8
 provider: null
 plugin: local_tasks_block
 settings:

@@ -1,0 +1,14 @@
+uuid: cd624325-630c-4af3-b734-3cd1b761f154
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.metro
+id: metro-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: metro
+permissions_ui: true
+permissions: {  }

@@ -21,7 +21,7 @@ third_party_settings:
       settings: {  }
     regions:
       content:
-        - node_title
+        - node_changed_date
         - langcode
         - links
         - body
@@ -32,16 +32,16 @@ third_party_settings:
         plugin_id: 'display_field_copy:node-raw_metadata'
         weight: 5
         label: hidden
-        formatter: strawberry_default_formatter
-      node_title:
-        plugin_id: node_title
+        formatter: strawberry_metadata_formatter
+        settings:
+          formatter:
+            specs: 'http://schema.org'
+            metadatadisplayentity_id: '1'
+      node_changed_date:
+        plugin_id: node_changed_date
         weight: 0
         label: hidden
-        formatter: default
-        settings:
-          link: true
-          wrapper: h2
-          class: ''
+        formatter: ds_post_date_long
 id: node.digital_object_collection.default
 targetEntityType: node
 bundle: digital_object_collection
@@ -56,24 +56,22 @@ content:
     region: content
   field_descriptive_metadata:
     weight: 4
-    label: above
+    label: hidden
     settings:
-      iiif_base_url: 'http://localhost:8183/iiif/2/'
+      iiif_base_url: 'http://ec2-3-81-3-204.compute-1.amazonaws.com:8183/iiif/2/'
       iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2/'
-      max_width: '300'
-      max_height: '0'
-      json_key_source: Media
-      image_type: jpg
-      quality: default
-      rotation: '0'
+      iiif_group: true
+      json_key_source: 'as:image'
+      max_width: 720
+      max_height: 0
     third_party_settings: {  }
-    type: strawberry_image_formatter
+    type: strawberry_media_formatter
     region: content
   langcode:
     type: language
     weight: 1
     region: content
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
       native_language: false
@@ -83,4 +81,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  content_moderation_control: true

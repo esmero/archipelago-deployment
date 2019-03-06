@@ -11,7 +11,7 @@ _core:
 id: seven_login
 theme: seven
 region: content
-weight: -1
+weight: -2
 provider: null
 plugin: user_login_block
 settings:

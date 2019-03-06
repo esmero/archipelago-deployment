@@ -1,0 +1,22 @@
+uuid: 3c26fb19-50e5-4a43-9080-afccae885abd
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.block_with_twig_templating_
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.block_with_twig_templating_.body
+field_name: body
+entity_type: block_content
+bundle: block_with_twig_templating_
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

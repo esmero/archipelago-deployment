@@ -1,0 +1,61 @@
+uuid: 527a9465-a826-40ac-a868-1e025d785c6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.collection_listing
+    - field.field.node.digital_object_collection.body
+    - field.field.node.digital_object_collection.field_descriptive_metadata
+    - node.type.digital_object_collection
+  module:
+    - ds
+    - format_strawberryfield
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      content:
+        - field_descriptive_metadata
+        - node_title
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: span
+          class: ''
+id: node.digital_object_collection.collection_listing
+targetEntityType: node
+bundle: digital_object_collection
+mode: collection_listing
+content:
+  field_descriptive_metadata:
+    weight: 0
+    label: hidden
+    settings:
+      iiif_base_url: 'http://ec2-3-81-3-204.compute-1.amazonaws.com:8183/iiif/2/'
+      iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2/'
+      json_key_source: 'as:image'
+      number_images: '1'
+      max_width: '240'
+      max_height: '0'
+      image_type: jpg
+      quality: default
+      rotation: '0'
+    third_party_settings: {  }
+    type: strawberry_image_formatter
+    region: content
+hidden:
+  body: true
+  content_moderation_control: true
+  langcode: true
+  links: true

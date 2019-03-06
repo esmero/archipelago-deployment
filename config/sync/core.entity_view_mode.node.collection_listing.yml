@@ -1,0 +1,10 @@
+uuid: 26cddde0-3ba8-463b-beb4-eacb61bcd52c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.collection_listing
+label: 'Collection listing'
+targetEntityType: node
+cache: true

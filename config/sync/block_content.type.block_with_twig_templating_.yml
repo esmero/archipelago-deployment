@@ -1,0 +1,8 @@
+uuid: 4885591b-96e6-480f-9415-4f8a63504ca3
+langcode: en
+status: true
+dependencies: {  }
+id: block_with_twig_templating_
+label: 'Block with Twig Templating '
+revision: 1
+description: 'Custom Block with a Twig field'

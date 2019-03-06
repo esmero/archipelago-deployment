@@ -1,0 +1,25 @@
+uuid: 3f37400c-73d3-4d0f-a930-71e25ffbf567
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:d381066b-a200-4b7d-a423-e83e1ee4d655'
+  module:
+    - block_content
+  theme:
+    - archipelago_subtheme
+id: submissionguidelines
+theme: archipelago_subtheme
+region: breadcrumb
+weight: -12
+provider: null
+plugin: 'block_content:d381066b-a200-4b7d-a423-e83e1ee4d655'
+settings:
+  id: 'block_content:d381066b-a200-4b7d-a423-e83e1ee4d655'
+  label: 'Submission Guidelines'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

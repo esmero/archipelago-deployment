@@ -6,24 +6,27 @@ dependencies:
     - system.menu.tools
   module:
     - system
+    - user
   theme:
     - archipelago_subtheme
 id: tools
 theme: archipelago_subtheme
-region: sidebar_first
-weight: -5
+region: header
+weight: -11
 provider: null
 plugin: 'system_menu_block:tools'
 settings:
   id: 'system_menu_block:tools'
   label: Tools
   provider: system
-  label_display: visible
+  label_display: '0'
   level: 1
   depth: 0
 visibility:
-  request_path:
-    id: request_path
-    pages: '/node/add/*'
-    negate: true
-    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

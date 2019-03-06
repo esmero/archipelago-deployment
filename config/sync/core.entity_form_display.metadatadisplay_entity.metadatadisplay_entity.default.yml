@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies:
   module:
+    - codemirror_editor
     - field_layout
     - format_strawberryfield
     - layout_discovery
-    - text
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -25,10 +25,16 @@ content:
       placeholder: ''
     third_party_settings: {  }
   twig:
-    type: text_textarea
+    type: codemirror_editor
     settings:
-      rows: 10
+      rows: 40
       placeholder: ''
+      mode: text/x-twig
+      toolbar: true
+      lineNumbers: true
+      foldGutter: true
+      autoCloseTags: true
+      styleActiveLine: true
     weight: 0
     region: content
     third_party_settings: {  }

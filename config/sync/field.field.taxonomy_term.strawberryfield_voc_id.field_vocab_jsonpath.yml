@@ -1,0 +1,19 @@
+uuid: 8ca9a202-c21c-4147-891b-e1aa39f1b260
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_vocab_jsonpath
+    - taxonomy.vocabulary.strawberryfield_voc_id
+id: taxonomy_term.strawberryfield_voc_id.field_vocab_jsonpath
+field_name: field_vocab_jsonpath
+entity_type: taxonomy_term
+bundle: strawberryfield_voc_id
+label: jsonpath
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,12 +1,11 @@
-uuid: 1bb6b04e-7c74-4c26-b435-037f521ab84b
+uuid: 07ea794d-a1e1-4838-9734-b28cb1ea9f3d
 langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: S81hE6hESfmMxhFbNN73R3xAozXsxpDzXfZePNwpeJs
+  default_config_hash: vRhPEwhfZE7fmfkfquB6sunZwtGIJfzASjGixpfwmd4
 id: text_en_6_0_0
 label: 'English Text Field'
-managed_schema: false
 minimum_solr_version: 6.0.0
 custom_code: ''
 field_type_language_code: en
@@ -91,8 +90,76 @@ field_type:
           protected: protwords_en.txt
         -
           class: solr.RemoveDuplicatesTokenFilterFactory
+spellcheck_field_type:
+  name: text_spell_en
+  class: solr.TextField
+  positionIncrementGap: 100
+  analyzer:
+    charFilters:
+      -
+        class: solr.MappingCharFilterFactory
+        mapping: accents_en.txt
+    tokenizer:
+      class: solr.WhitespaceTokenizerFactory
+    filters:
+      -
+        class: solr.LengthFilterFactory
+        min: 2
+        max: 100
+      -
+        class: solr.StopFilterFactory
+        ignoreCase: true
+        words: stopwords_en.txt
+      -
+        class: solr.RemoveDuplicatesTokenFilterFactory
+collated_field_type:
+  name: collated_en
+  class: solr.ICUCollationField
+  locale: en
+  strength: primary
+  caseLevel: false
 solr_configs:
   searchComponents:
+    -
+      name: spellcheck
+      class: solr.SpellCheckComponent
+      lst:
+        -
+          name: spellchecker
+          str:
+            -
+              name: name
+              VALUE: en
+            -
+              name: field
+              VALUE: spellcheck_en
+            -
+              name: classname
+              VALUE: solr.DirectSolrSpellChecker
+            -
+              name: distanceMeasure
+              VALUE: internal
+            -
+              name: accuracy
+              VALUE: '0.5'
+            -
+              name: maxEdits
+              VALUE: '2'
+            -
+              name: minPrefix
+              VALUE: '1'
+            -
+              name: maxInspections
+              VALUE: '5'
+            -
+              name: minQueryLength
+              VALUE: '4'
+            -
+              name: maxQueryFrequency
+              VALUE: '0.01'
+            -
+              name: thresholdTokenFrequency
+              VALUE: '.01'
     -
       name: suggest
       class: solr.SuggestComponent

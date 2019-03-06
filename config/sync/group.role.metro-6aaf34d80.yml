@@ -1,0 +1,17 @@
+uuid: ffea6d70-65a1-4eb9-adee-1a2216561bee
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.metro
+  enforced:
+    config:
+      - user.role.non_grata
+id: metro-6aaf34d80
+label: non_grata
+weight: 3
+internal: true
+audience: outsider
+group_type: metro
+permissions_ui: false
+permissions: {  }

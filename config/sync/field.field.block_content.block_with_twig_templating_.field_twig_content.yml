@@ -1,0 +1,22 @@
+uuid: 5fec2e0b-601e-4c99-a9a1-e3abd2802aae
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.block_with_twig_templating_
+    - field.storage.block_content.field_twig_content
+  module:
+    - twig_field
+id: block_content.block_with_twig_templating_.field_twig_content
+field_name: field_twig_content
+entity_type: block_content
+bundle: block_with_twig_templating_
+label: 'Twig Content'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_mode: block_content.block_with_twig_templating_.default
+field_type: twig

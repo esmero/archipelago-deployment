@@ -1,12 +1,13 @@
 uuid: 03fd0607-d300-4bdc-8db6-5700eb1c53c5
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - search_api_solr.solr_field_type.text_und_7_0_0
 _core:
-  default_config_hash: Ye2FhOSG8T_4MuWyDTDgz3kVKbAVWIQIt6CC7PQv4tQ
+  default_config_hash: WpLFwsk7duNa2sQ1G_KO16bKL06d1JVveVjbkG9u5DI
 id: text_phonetic_und_7_0_0
 label: 'Fulltext Phonetic'
-managed_schema: false
 minimum_solr_version: 7.0.0
 custom_code: phonetic
 field_type_language_code: und
@@ -24,12 +25,12 @@ field_type:
         -
           class: solr.StopFilterFactory
           ignoreCase: true
-          words: stopwords_phonetic_und.txt
+          words: stopwords_und.txt
         -
           class: solr.WordDelimiterGraphFilterFactory
           catenateNumbers: 1
           generateNumberParts: 1
-          protected: protwords_phonetic_und.txt
+          protected: protwords_und.txt
           splitOnCaseChange: 0
           generateWordParts: 1
           preserveOriginal: 1
@@ -57,12 +58,12 @@ field_type:
         -
           class: solr.StopFilterFactory
           ignoreCase: true
-          words: stopwords_phonetic_und.txt
+          words: stopwords_und.txt
         -
           class: solr.WordDelimiterGraphFilterFactory
           catenateNumbers: 0
           generateNumberParts: 1
-          protected: protwords_phonetic_und.txt
+          protected: protwords_und.txt
           splitOnCaseChange: 0
           generateWordParts: 1
           preserveOriginal: 1
@@ -82,7 +83,7 @@ field_type:
           concat: true
         -
           class: solr.RemoveDuplicatesTokenFilterFactory
+spellcheck_field_type: null
+collated_field_type: null
 solr_configs: {  }
-text_files:
-  stopwords: "a\nan\nand\nare\nas\nat\nbe\nbut\nby\nfor\nif\nin\ninto\nis\nit\nno\nnot\nof\non\nor\ns\nsuch\nt\nthat\nthe\ntheir\nthen\nthere\nthese\nthey\nthis\nto\nwas\nwill\nwith\n"
-  protwords: ''
+text_files: {  }

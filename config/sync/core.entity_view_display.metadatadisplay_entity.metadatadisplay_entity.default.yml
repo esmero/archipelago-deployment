@@ -1,0 +1,40 @@
+uuid: 6f213501-cf46-4a37-a652-2754cb0913e9
+langcode: en
+status: true
+dependencies:
+  module:
+    - codemirror_editor
+    - format_strawberryfield
+id: metadatadisplay_entity.metadatadisplay_entity.default
+targetEntityType: metadatadisplay_entity
+bundle: metadatadisplay_entity
+mode: default
+content:
+  name:
+    label: above
+    type: string
+    weight: -6
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  twig:
+    label: hidden
+    type: codemirror_editor
+    weight: 0
+    region: content
+    settings:
+      mode: text/x-twig
+      lineNumbers: true
+      foldGutter: true
+    third_party_settings: {  }
+  user_id:
+    label: above
+    type: entity_reference_label
+    weight: -3
+    region: content
+    settings:
+      link: true
+    third_party_settings: {  }
+hidden:
+  link: true

@@ -20,39 +20,26 @@ targetEntityType: node
 bundle: digital_object
 mode: default
 content:
-  created:
-    type: datetime_timestamp
-    weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_descriptive_metadata:
-    weight: 4
+    weight: 1
     settings:
       webform_id: descriptive_metadata
       placeholder: 'Descriptive Metadata'
     third_party_settings: {  }
-    type: strawberryfield_webform_widget
+    type: strawberryfield_webform_inline_widget
     region: content
-  langcode:
-    type: language_select
-    weight: 1
-    region: content
-    settings:
-      include_locked: true
-    third_party_settings: {  }
   moderation_state:
-    weight: 5
-    settings: {  }
-    third_party_settings: {  }
     type: moderation_state_default
-    region: content
-  status:
-    type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 3
     region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -64,6 +51,8 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
+  created: true
+  langcode: true
   path: true
   promote: true
   sticky: true

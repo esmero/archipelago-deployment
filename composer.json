@@ -20,51 +20,51 @@
         }
     ],
     "require": {
-        "archipelago/archipelago_subtheme": "dev-master",
+        "archipelago/archipelago_subtheme": "dev-public_demo_green",
         "aws/aws-php-sns-message-validator": "^1.5",
         "aws/aws-sdk-php": "^3.63",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
         "drupal-composer/drupal-scaffold": "^2.2",
-        "drupal/bootstrap": "^3.10",
-        "drupal/bootstrap_barrio": "^4.17",
-        "drupal/bootstrap_mint": "^5.0",
-        "drupal/bulk_user_registration": "^1.1",
+        "drupal/bootstrap_barrio": "^4.22",
         "drupal/computed_field": "2.x-dev",
         "drupal/config_inspector": "^1.0@beta",
         "drupal/config_installer": "^1.7",
+        "drupal/config_update": "^1.6",
         "drupal/console": "^1.0.2",
         "drupal/context": "^4.0@beta",
-        "drupal/core": "~8.4",
+        "drupal/core": "~8.6.10",
+        "drupal/deploy": "1.x-dev",
         "drupal/devel": "^1.2",
         "drupal/display_field_copy": "^1.1",
         "drupal/ds": "3.x-dev",
         "drupal/facets": "^1.0@beta",
         "drupal/field_permissions": "^1.0@RC",
         "drupal/flag": "^4.0",
+        "drupal/form_mode_manager": "2.x-dev",
+        "drupal/group": "^1.0@RC",
+        "drupal/imagemagick": "^2.3",
         "drupal/imce": "^1.7",
         "drupal/inline_entity_form": "1.x-dev",
-        "drupal/migrate_plus": "^2.0",
-        "drupal/migrate_source_csv": "^2.1",
-        "drupal/migrate_tools": "^2.0",
+        "drupal/key_value": "1.x-dev",
+        "drupal/module_missing_message_fixer": "1.x-dev",
         "drupal/pathauto": "^1.1",
-        "drupal/permissions_by_term": "^1.57",
-        "drupal/radix": "^4.0",
+        "drupal/quick_node_clone": "^1.11",
         "drupal/rdfui": "1.x-dev",
         "drupal/role_theme_switcher": "1.x-dev",
         "drupal/s3fs": "3.x-dev",
         "drupal/schema_metatag": "^1.3",
         "drupal/search_api_autocomplete": "^1.0@RC",
-        "drupal/search_api_solr": "^2.2",
-        "drupal/solid": "^1.1",
+        "drupal/tokenuuid": "^1.2",
+        "drupal/twig_field": "^1.0",
         "drupal/twig_tweak": "^2.1",
-        "drupal/webform": "^5.0",
+        "drupal/webform": "^5.2",
         "drupal/webform_views": "^5.0",
+        "drupal/workflow": "^1.1",
         "drush/drush": "^9.0.0",
         "islandora/jsonld": "dev-8.x-1.x",
         "ml/json-ld": "^1.0",
         "mtdowling/jmespath.php": "^2.4",
-        "solarium/solarium": "^4.1.0",
         "strawberryfield/format_strawberryfield": "dev-master",
         "strawberryfield/strawberryfield": "dev-master",
         "strawberryfield/webform_strawberryfield": "dev-master",
@@ -73,7 +73,9 @@
         "wikibase/data-model": "^8.0"
     },
     "require-dev": {
-        "webflo/drupal-core-require-dev": "~8.4"
+        "drupal/search_api_solr": "3.x-dev",
+        "solarium/solarium": "^4.3.0-alpha.2",
+        "webflo/drupal-core-require-dev": "~8.6.10"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -111,6 +113,15 @@
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
+        },
+        "enable-patching": true,
+        "patches": {
+            "drupal/display_field_copy": {
+            "Fix missing Field Formatter settings": "https://raw.githubusercontent.com/esmero/archipelago-aws-demo/master/patches/copied-field-does-not-have-widget-field-settings-2822398-22.patch"
+            },
+            "drupal/s3fs": {
+            "Enable Path Style of Minio": "https://www.drupal.org/files/issues/2018-12-23/3022288-3.patch"
+            }
         }
     }
 }

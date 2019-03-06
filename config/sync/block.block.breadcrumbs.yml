@@ -1,0 +1,43 @@
+uuid: 9efe7afd-f7a5-4a3f-bc6c-d7e7ad683690
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - node
+    - system
+  theme:
+    - archipelago_subtheme
+id: breadcrumbs
+theme: archipelago_subtheme
+region: highlighted
+weight: -6
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      digital_object: digital_object
+      digital_object_collection: digital_object_collection
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  node_type:
+    id: node_type
+    bundles:
+      digital_object: digital_object
+      digital_object_collection: digital_object_collection
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  request_path:
+    id: request_path
+    pages: "/search\r\n/node/*"
+    negate: false
+    context_mapping: {  }

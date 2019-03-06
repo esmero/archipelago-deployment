@@ -1,0 +1,11 @@
+uuid: f657d9f6-a8d3-4e00-87a7-d4abf6df31ca
+langcode: en
+status: true
+dependencies: {  }
+id: metro
+label: Metro
+description: 'Metro Group'
+creator_membership: true
+creator_wizard: true
+creator_roles:
+  - metro-admin

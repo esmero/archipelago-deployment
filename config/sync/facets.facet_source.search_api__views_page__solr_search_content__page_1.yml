@@ -1,0 +1,12 @@
+uuid: 3bed2c21-e8ba-4494-b104-be2897929571
+langcode: en
+status: true
+dependencies: {  }
+id: search_api__views_page__solr_search_content__page_1
+name: 'search_api:views_page__solr_search_content__page_1'
+filter_key: ''
+url_processor: query_string
+breadcrumb:
+  active: true
+  before: true
+  group: false

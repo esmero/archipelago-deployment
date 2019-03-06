@@ -1,6 +1,6 @@
 uuid: 3452e816-9438-4b92-b770-8b6ee4b6b3c6
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - user
@@ -10,8 +10,8 @@ _core:
   default_config_hash: IItlF4SKHgxduIysVQdvirDJ_v3HGuAviOkidAOJYRE
 id: archipelago_subtheme_login
 theme: archipelago_subtheme
-region: sidebar_first
-weight: -6
+region: footer_first
+weight: -8
 provider: null
 plugin: user_login_block
 settings:

@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: rRWxAX-IQkJ5viACQRovRkC784EyCl9493GU_G23n2Q
 id: files
-label: Files
+label: 'Media Files'
 module: file
 description: 'Find and manage files.'
 tag: default
@@ -697,7 +697,7 @@ display:
           entity_type: file
           entity_field: status
       sorts: {  }
-      title: Files
+      title: 'Media Files'
       header: {  }
       footer: {  }
       empty:
@@ -739,11 +739,13 @@ display:
       path: admin/content/files
       menu:
         type: tab
-        title: Files
+        title: 'Media Files'
         description: ''
-        menu_name: admin
+        expanded: false
+        parent: ''
         weight: 0
-        context: ''
+        context: '0'
+        menu_name: admin
       display_description: ''
       defaults:
         pager: true

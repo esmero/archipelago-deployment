@@ -11,7 +11,7 @@ _core:
 id: archipelago_subtheme_help
 theme: archipelago_subtheme
 region: highlighted
-weight: -5
+weight: -10
 provider: null
 plugin: help_block
 settings:

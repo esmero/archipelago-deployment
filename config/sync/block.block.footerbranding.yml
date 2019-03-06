@@ -1,0 +1,25 @@
+uuid: 18107f94-b64c-41e2-ab7f-7337de0deb00
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:block_with_twig_templating_:29bba485-6f56-4738-9227-9950b9514f7e'
+  module:
+    - block_content
+  theme:
+    - seven
+id: footerbranding
+theme: seven
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:29bba485-6f56-4738-9227-9950b9514f7e'
+settings:
+  id: 'block_content:29bba485-6f56-4738-9227-9950b9514f7e'
+  label: 'footer branding'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

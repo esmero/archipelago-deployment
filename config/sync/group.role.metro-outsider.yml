@@ -1,0 +1,14 @@
+uuid: 9e275ef0-b971-4619-a025-49c0ee043702
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.metro
+id: metro-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: metro
+permissions_ui: true
+permissions: {  }

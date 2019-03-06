@@ -1,0 +1,23 @@
+uuid: 225c912f-25c7-4877-87e8-2498dd37d332
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: digital_object_uuid
+label: 'Digital Object UUID'
+type: 'canonical_entities:node'
+pattern: '/do/[node:uuid]'
+selection_criteria:
+  b81bd56a-c753-4756-9aff-a39dacf31da6:
+    id: node_type
+    bundles:
+      digital_object: digital_object
+      digital_object_collection: digital_object_collection
+    negate: false
+    context_mapping:
+      node: node
+    uuid: b81bd56a-c753-4756-9aff-a39dacf31da6
+selection_logic: and
+weight: -5
+relationships: {  }

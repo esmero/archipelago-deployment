@@ -11,7 +11,7 @@ third_party_settings:
     parent: 'main:'
 name: 'Digital Object Collection'
 type: digital_object_collection
-description: 'A Digital Object''s Collection'
+description: 'Create a collection that you can add digital objects to.'
 help: ''
 new_revision: true
 preview_mode: 0

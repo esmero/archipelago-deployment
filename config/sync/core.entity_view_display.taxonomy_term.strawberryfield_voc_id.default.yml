@@ -1,0 +1,31 @@
+uuid: ad8fc9ca-d0fc-4ebf-b273-a10c184797f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.strawberryfield_voc_id.field_vocab_jsonpath
+    - taxonomy.vocabulary.strawberryfield_voc_id
+  module:
+    - text
+id: taxonomy_term.strawberryfield_voc_id.default
+targetEntityType: taxonomy_term
+bundle: strawberryfield_voc_id
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_vocab_jsonpath:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  langcode: true

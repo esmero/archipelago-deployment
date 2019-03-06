@@ -2,6 +2,8 @@ uuid: f619d250-e047-4101-a6bf-00f7aad4ba7b
 langcode: en
 status: true
 dependencies:
+  module:
+    - system
   theme:
     - seven
 _core:
@@ -17,4 +19,9 @@ settings:
   label: 'Page title'
   provider: core
   label_display: '0'
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: true
+    context_mapping: {  }

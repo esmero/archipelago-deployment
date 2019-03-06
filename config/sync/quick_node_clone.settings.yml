@@ -1,0 +1,6 @@
+text_to_prepend_to_title: 'Clone of'
+exclude:
+  node: {  }
+  paragraph: {  }
+_core:
+  default_config_hash: _AJpIkohiE2tiFJKn19MrJ9rG-woB_KzR1uN6GwaGN4

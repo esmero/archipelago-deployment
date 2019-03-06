@@ -1,0 +1,11 @@
+uuid: 08584a3a-7946-4ae4-9bcd-ac56528faf66
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.block_with_twig_templating_
+id: block_content.block_with_twig_templating_
+target_entity_type_id: block_content
+target_bundle: block_with_twig_templating_
+default_langcode: site_default
+language_alterable: false

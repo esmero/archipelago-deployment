@@ -1,0 +1,25 @@
+uuid: de1d746a-4dfe-4357-b0c5-e7117d9835e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.block_with_twig_templating_
+    - field.field.block_content.block_with_twig_templating_.body
+    - field.field.block_content.block_with_twig_templating_.field_twig_content
+  module:
+    - twig_field
+id: block_content.block_with_twig_templating_.default
+targetEntityType: block_content
+bundle: block_with_twig_templating_
+mode: default
+content:
+  field_twig_content:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: twig
+    region: content
+hidden:
+  body: true
+  langcode: true

@@ -5,13 +5,14 @@ dependencies:
   config:
     - views.view.solr_search_content
   module:
+    - system
     - views
   theme:
     - archipelago_subtheme
 id: archipelago_subtheme_exposedformsolr_search_contentpage_1
 theme: archipelago_subtheme
-region: highlighted
-weight: -6
+region: top_header_form
+weight: -11
 provider: null
 plugin: 'views_exposed_filter_block:solr_search_content-page_1'
 settings:
@@ -19,5 +20,10 @@ settings:
   label: ''
   provider: views
   label_display: '0'
-  views_label: Discover
-visibility: {  }
+  views_label: 'Discover test'
+visibility:
+  request_path:
+    id: request_path
+    pages: '*'
+    negate: false
+    context_mapping: {  }

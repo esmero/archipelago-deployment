@@ -1,0 +1,25 @@
+uuid: 985a328c-4293-44d3-b0bf-4715240a6438
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:block_with_twig_templating_:29bba485-6f56-4738-9227-9950b9514f7e'
+  module:
+    - block_content
+  theme:
+    - archipelago_subtheme
+id: footerbranding_2
+theme: archipelago_subtheme
+region: footer_first
+weight: 0
+provider: null
+plugin: 'block_content:29bba485-6f56-4738-9227-9950b9514f7e'
+settings:
+  id: 'block_content:29bba485-6f56-4738-9227-9950b9514f7e'
+  label: 'footer branding'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

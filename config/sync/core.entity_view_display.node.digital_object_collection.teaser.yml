@@ -1,6 +1,6 @@
 uuid: 7d31deed-f617-4235-aa07-d56d63cf14a5
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
@@ -44,6 +44,11 @@ content:
     weight: 101
     settings:
       trim_length: 600
+    third_party_settings: {  }
+    region: content
+  content_moderation_control:
+    weight: -20
+    settings: {  }
     third_party_settings: {  }
     region: content
   links:

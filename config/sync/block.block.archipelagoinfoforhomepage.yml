@@ -1,0 +1,31 @@
+uuid: 367a3b09-10e2-448c-ac00-f9812219ae2e
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:6cda3019-1e23-48ed-aece-aece483ad857'
+  module:
+    - block_content
+    - system
+  theme:
+    - archipelago_subtheme
+id: archipelagoinfoforhomepage
+theme: archipelago_subtheme
+region: highlighted
+weight: -11
+provider: null
+plugin: 'block_content:6cda3019-1e23-48ed-aece-aece483ad857'
+settings:
+  id: 'block_content:6cda3019-1e23-48ed-aece-aece483ad857'
+  label: 'Archipelago info for home page'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

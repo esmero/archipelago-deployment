@@ -1,6 +1,6 @@
 uuid: ecfdb21e-a4a2-4341-b7f5-f31ebcdd43ba
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -10,8 +10,8 @@ _core:
   default_config_hash: WWu2OQswgCztl9OeXjD1stexIEMZsSgPMYIdC-JHx9c
 id: archipelago_subtheme_breadcrumbs
 theme: archipelago_subtheme
-region: breadcrumb
-weight: 0
+region: highlighted
+weight: -7
 provider: null
 plugin: system_breadcrumb_block
 settings:

@@ -1,0 +1,18 @@
+local_tasks:
+  node:
+    position: secondary
+  user:
+    position: secondary
+  block_content:
+    position: secondary
+  comment:
+    position: primary
+  contact_message:
+    position: primary
+  media:
+    position: secondary
+  taxonomy_term:
+    position: secondary
+langcode: en
+_core:
+  default_config_hash: GgQPFR9_W7yU3PXDjhT5ktVYWuoA5S4H-y88-l_5t_g

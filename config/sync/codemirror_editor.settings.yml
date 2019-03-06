@@ -1,0 +1,9 @@
+cdn: true
+minified: true
+theme: default
+language_modes:
+  - twig
+  - xml
+  - yaml
+_core:
+  default_config_hash: OQEHakzIUDx3nWOx2W5M-867WqcYLA_4mWia4mgdaqA

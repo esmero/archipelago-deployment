@@ -3,14 +3,19 @@ langcode: en
 status: true
 dependencies:
   module:
+    - search_api_solr
     - node
     - user
     - search_api
-    - search_api_solr
   config:
     - field.storage.node.field_descriptive_metadata
     - field.storage.node.field_tags
-    - search_api.server.esmero_solr_7_2
+    - search_api.server.esmero_solr_7_5
+third_party_settings:
+  search_api_solr:
+    multilingual:
+      limit_to_content_language: false
+      include_language_independent: true
 _core:
   default_config_hash: 5gcfQOCjXVt6We4_q02H8VjnECSON5NgKOchFAsncxU
 id: default_solr_index
@@ -18,6 +23,14 @@ name: 'Drupal Content to Solr 7'
 description: 'Basic Content'
 read_only: false
 field_settings:
+  agents:
+    label: 'Descriptive Metadata » agents'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:name_label'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   author:
     label: 'Author name'
     datasource_id: 'entity:node'
@@ -60,16 +73,16 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_tags
-  image:
-    label: 'Descriptive Metadata » image'
+  ismemberof:
+    label: 'Descriptive Metadata » ismemberof'
     datasource_id: 'entity:node'
-    property_path: 'field_descriptive_metadata:image'
-    type: text
+    property_path: 'field_descriptive_metadata:ismemberof'
+    type: string
     dependencies:
       config:
         - field.storage.node.field_descriptive_metadata
   label_1:
-    label: 'Descriptive Metadata » label'
+    label: 'Descriptive Metadata » Full text labels'
     datasource_id: 'entity:node'
     property_path: 'field_descriptive_metadata:label'
     type: text
@@ -117,6 +130,14 @@ field_settings:
     dependencies:
       module:
         - node
+  str_flatten_keys:
+    label: 'Descriptive Metadata » JSON keys defined in this field'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:str_flatten_keys'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -134,6 +155,14 @@ field_settings:
     dependencies:
       module:
         - node
+  type_1:
+    label: 'Descriptive Metadata » type'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:type'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   uid:
     label: 'Author ID'
     datasource_id: 'entity:node'
@@ -144,14 +173,6 @@ field_settings:
     dependencies:
       module:
         - node
-  url:
-    label: 'Descriptive Metadata » url'
-    datasource_id: 'entity:node'
-    property_path: 'field_descriptive_metadata:url'
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_descriptive_metadata
 datasource_settings:
   'entity:node':
     bundles:
@@ -202,17 +223,16 @@ processor_settings:
     weights:
       add_properties: 0
       pre_index_save: -10
+  reverse_entity_references: {  }
   solr_date_range:
     weights:
       preprocess_index: 0
   tokenizer:
     all_fields: true
     fields:
-      - image
       - label_1
       - name_1
       - title
-      - url
     spaces: ''
     overlap_cjk: 1
     minimum_word_size: '3'
@@ -225,4 +245,4 @@ tracker_settings:
 options:
   index_directly: true
   cron_limit: 50
-server: esmero_solr_7_2
+server: esmero_solr_7_5

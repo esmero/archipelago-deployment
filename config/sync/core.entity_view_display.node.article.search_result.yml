@@ -7,7 +7,6 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.comment
     - field.field.node.article.field_image
-    - field.field.node.article.field_islandora_access
     - field.field.node.article.field_tags
     - image.style.thumbnail
     - node.type.article
@@ -51,6 +50,5 @@ content:
     region: content
 hidden:
   comment: true
-  field_islandora_access: true
   field_tags: true
   langcode: true

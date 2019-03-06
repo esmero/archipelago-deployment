@@ -1,0 +1,36 @@
+uuid: 57aec62c-8b31-40c3-8b96-18753a04b74b
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api_solr.solr_field_type.text_phonetic_und_7_0_0
+    - search_api_solr.solr_field_type.text_und_7_0_0
+  module:
+    - search_api_solr
+id: esmero_solr_7_5
+name: 'Esmero Solr 7.5'
+description: ''
+backend: search_api_solr
+backend_config:
+  connector: standard
+  connector_config:
+    scheme: http
+    host: esmero-solr
+    port: '8983'
+    path: /
+    core: drupal
+    timeout: 5
+    index_timeout: 5
+    optimize_timeout: 10
+    finalize_timeout: 30
+    commit_within: 1000
+    solr_version: ''
+    http_method: AUTO
+    jmx: false
+  retrieve_data: true
+  highlight_data: true
+  skip_schema_check: false
+  server_prefix: ''
+  domain: generic
+  site_hash: false
+  optimize: false

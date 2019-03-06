@@ -10,8 +10,7 @@ dependencies:
   module:
     - ds
     - field_layout
-    - strawberryfield
-    - text
+    - format_strawberryfield
     - user
 third_party_settings:
   field_layout:
@@ -19,41 +18,36 @@ third_party_settings:
     settings: {  }
   ds:
     layout:
-      id: layout_onecol
-      library: layout_discovery/onecol
+      id: layout_twocol
+      library: layout_discovery/twocol
       disable_css: false
-      entity_classes: all_classes
+      entity_classes: no_classes
       settings: {  }
     regions:
-      content:
-        - links
+      top:
         - node_title
-        - langcode
-        - body
+      first:
+        - 'display_field_copy:node-static_media'
+      second:
         - field_descriptive_metadata
-        - 'dynamic_block_field:node-ds_custom_iiif'
-        - 'display_field_copy:node-field_descriptive_metadata_image'
     fields:
-      'display_field_copy:node-field_descriptive_metadata_image':
-        plugin_id: 'display_field_copy:node-field_descriptive_metadata_image'
-        weight: 6
-        label: inline
+      'display_field_copy:node-static_media':
+        plugin_id: 'display_field_copy:node-static_media'
+        weight: 1
+        label: hidden
         formatter: strawberry_image_formatter
         settings:
           formatter:
-            iiif_base_url: 'http://localhost:8183/iiif/2/'
+            iiif_base_url: 'http://ec2-3-81-3-204.compute-1.amazonaws.com:8183/iiif/2/'
             iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2/'
-            max_width: '160'
+            json_key_source: 'as:image'
+            number_images: '1'
+            max_width: '240'
             max_height: '0'
-      'dynamic_block_field:node-ds_custom_iiif':
-        plugin_id: 'dynamic_block_field:node-ds_custom_iiif'
-        weight: 5
-        label: inline
-        formatter: default
       node_title:
         plugin_id: node_title
-        weight: 1
-        label: above
+        weight: 0
+        label: hidden
         formatter: default
         settings:
           link: true
@@ -64,32 +58,18 @@ targetEntityType: node
 bundle: digital_object
 mode: strawberryfield_processed_metadata
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 3
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   field_descriptive_metadata:
-    weight: 4
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: strawberry_default_formatter
-    region: content
-  langcode:
-    type: language
+    type: strawberry_metadata_formatter
     weight: 2
-    region: content
-    label: inline
+    region: second
+    label: hidden
     settings:
-      link_to_entity: false
-      native_language: false
+      specs: 'http://schema.org'
+      metadatadisplayentity_id: '4'
+      label: 'Descriptive Metadata'
     third_party_settings: {  }
-  links:
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  body: true
+  content_moderation_control: true
+  langcode: true
+  links: true

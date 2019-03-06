@@ -5,6 +5,7 @@ dependencies:
   config:
     - views.view.solr_search_content
   module:
+    - system
     - views
   theme:
     - seven
@@ -19,5 +20,10 @@ settings:
   label: ''
   provider: views
   label_display: '0'
-  views_label: Discover
-visibility: {  }
+  views_label: ''
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

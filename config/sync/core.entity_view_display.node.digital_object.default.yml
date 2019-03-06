@@ -25,22 +25,21 @@ third_party_settings:
       settings: {  }
     regions:
       content:
-        - node_title
-        - langcode
         - links
         - body
-        - field_descriptive_metadata
         - 'display_field_copy:node-field_descriptive_metadata_image'
         - 'display_field_copy:node-formatted_metadata'
+        - field_descriptive_metadata
+        - 'display_field_copy:node-static_media'
     fields:
       'display_field_copy:node-field_descriptive_metadata_image':
         plugin_id: 'display_field_copy:node-field_descriptive_metadata_image'
-        weight: 5
+        weight: 2
         label: hidden
         formatter: strawberry_media_formatter
         settings:
           formatter:
-            iiif_base_url: 'http://ec2-34-228-208-246.compute-1.amazonaws.com:8183/iiif/2/'
+            iiif_base_url: 'http://ec2-3-81-3-204.compute-1.amazonaws.com:8183/iiif/2/'
             iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2/'
             iiif_group: '1'
             json_key_source: 'as:image'
@@ -48,22 +47,22 @@ third_party_settings:
             max_height: '480'
       'display_field_copy:node-formatted_metadata':
         plugin_id: 'display_field_copy:node-formatted_metadata'
-        weight: 6
+        weight: 3
         label: hidden
         formatter: strawberry_metadata_formatter
         settings:
           formatter:
             specs: 'http://schema.org'
             metadatadisplayentity_id: '1'
-      node_title:
-        plugin_id: node_title
-        weight: 0
+      'display_field_copy:node-static_media':
+        plugin_id: 'display_field_copy:node-static_media'
+        weight: 5
         label: hidden
-        formatter: default
+        formatter: strawberry_metadata_formatter
         settings:
-          link: true
-          wrapper: h3
-          class: ''
+          formatter:
+            specs: 'http://schema.org'
+            metadatadisplayentity_id: '3'
 id: node.digital_object.default
 targetEntityType: node
 bundle: digital_object
@@ -72,30 +71,22 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 3
+    weight: 1
     settings: {  }
     third_party_settings: {  }
     region: content
   field_descriptive_metadata:
     weight: 4
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: strawberry_default_formatter
     region: content
-  langcode:
-    type: language
-    weight: 1
-    region: content
-    label: above
-    settings:
-      link_to_entity: false
-      native_language: false
-    third_party_settings: {  }
   links:
-    weight: 2
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   content_moderation_control: true
+  langcode: true

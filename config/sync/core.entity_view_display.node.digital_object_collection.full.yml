@@ -1,0 +1,96 @@
+uuid: bfe45160-7464-4113-bb27-ee27dd347cdf
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.digital_object_collection.body
+    - field.field.node.digital_object_collection.field_descriptive_metadata
+    - node.type.digital_object_collection
+  module:
+    - ds
+    - format_strawberryfield
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      content:
+        - node_title
+        - node_changed_date
+        - langcode
+        - links
+        - body
+        - field_descriptive_metadata
+        - 'display_field_copy:node-raw_metadata'
+    fields:
+      'display_field_copy:node-raw_metadata':
+        plugin_id: 'display_field_copy:node-raw_metadata'
+        weight: 6
+        label: hidden
+        formatter: strawberry_metadata_formatter
+        settings:
+          formatter:
+            specs: 'http://schema.org'
+            metadatadisplayentity_id: '1'
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
+      node_changed_date:
+        plugin_id: node_changed_date
+        weight: 1
+        label: hidden
+        formatter: ds_post_date_long
+id: node.digital_object_collection.full
+targetEntityType: node
+bundle: digital_object_collection
+mode: full
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_descriptive_metadata:
+    weight: 5
+    label: hidden
+    settings:
+      iiif_base_url: 'http://ec2-3-81-3-204.compute-1.amazonaws.com:8183/iiif/2/'
+      iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2/'
+      iiif_group: true
+      json_key_source: 'as:image'
+      max_width: 720
+      max_height: 480
+    third_party_settings: {  }
+    type: strawberry_media_formatter
+    region: content
+  langcode:
+    type: language
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+      native_language: false
+    third_party_settings: {  }
+  links:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  content_moderation_control: true

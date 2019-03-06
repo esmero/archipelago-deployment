@@ -1,0 +1,81 @@
+uuid: 412a9ca3-36f4-46be-8c20-55f626d648b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.strawberryfield_processed_metadata
+    - field.field.node.digital_object_collection.body
+    - field.field.node.digital_object_collection.field_descriptive_metadata
+    - node.type.digital_object_collection
+  module:
+    - ds
+    - format_strawberryfield
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      content:
+        - node_title
+        - langcode
+        - node_changed_date
+        - links
+        - field_descriptive_metadata
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: 'fas fa-archive'
+      node_changed_date:
+        plugin_id: node_changed_date
+        weight: 2
+        label: hidden
+        formatter: ds_post_date_long
+id: node.digital_object_collection.strawberryfield_processed_metadata
+targetEntityType: node
+bundle: digital_object_collection
+mode: strawberryfield_processed_metadata
+content:
+  field_descriptive_metadata:
+    weight: 4
+    label: hidden
+    settings:
+      iiif_base_url: 'http://ec2-3-81-3-204.compute-1.amazonaws.com:8183/iiif/2/'
+      iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2/'
+      json_key_source: 'as:image'
+      number_images: '1'
+      max_width: '160'
+      max_height: '0'
+      image_type: jpg
+      quality: default
+      rotation: '0'
+    third_party_settings: {  }
+    type: strawberry_image_formatter
+    region: content
+  langcode:
+    type: language
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+      native_language: false
+    third_party_settings: {  }
+  links:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  content_moderation_control: true

@@ -1,0 +1,18 @@
+uuid: eab4873d-3b43-480d-b03c-5349f249a6c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.digital_object
+id: node.digital_object.title
+field_name: title
+entity_type: node
+bundle: digital_object
+label: 'Object Title'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

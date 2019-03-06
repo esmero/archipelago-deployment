@@ -9,7 +9,7 @@ _core:
 id: seven_local_actions
 theme: seven
 region: content
-weight: -4
+weight: -5
 provider: null
 plugin: local_actions_block
 settings:

@@ -1,0 +1,24 @@
+uuid: f5581789-a696-4222-8a1b-1165e7748bd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - archipelago_subtheme
+id: useraccountmenu
+theme: archipelago_subtheme
+region: top_header
+weight: -10
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility: {  }

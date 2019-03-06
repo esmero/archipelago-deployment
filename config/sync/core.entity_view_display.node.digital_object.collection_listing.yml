@@ -1,0 +1,62 @@
+uuid: ce4aecc4-7b15-424e-b555-f852123b6cff
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.collection_listing
+    - field.field.node.digital_object.body
+    - field.field.node.digital_object.field_descriptive_metadata
+    - node.type.digital_object
+  module:
+    - ds
+    - field_layout
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      content:
+        - 'display_field_copy:node-static_media'
+        - node_title
+    fields:
+      'display_field_copy:node-static_media':
+        plugin_id: 'display_field_copy:node-static_media'
+        weight: 0
+        label: hidden
+        formatter: strawberry_image_formatter
+        settings:
+          formatter:
+            iiif_base_url: 'http://ec2-3-81-3-204.compute-1.amazonaws.com:8183/iiif/2/'
+            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2/'
+            json_key_source: 'as:image'
+            number_images: '1'
+            max_width: '240'
+            max_height: '0'
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: span
+          class: ''
+id: node.digital_object.collection_listing
+targetEntityType: node
+bundle: digital_object
+mode: collection_listing
+content: {  }
+hidden:
+  body: true
+  content_moderation_control: true
+  field_descriptive_metadata: true
+  langcode: true
+  links: true

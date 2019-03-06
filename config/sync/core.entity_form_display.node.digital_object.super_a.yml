@@ -8,11 +8,10 @@ dependencies:
     - field.field.node.digital_object.field_descriptive_metadata
     - node.type.digital_object
   module:
+    - content_moderation
     - field_layout
     - layout_discovery
-    - path
-    - strawberryfield
-    - text
+    - webform_strawberryfield
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -22,56 +21,26 @@ targetEntityType: node
 bundle: digital_object
 mode: super_a
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 7
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-    third_party_settings: {  }
-    region: content
-  created:
-    type: datetime_timestamp
-    weight: 3
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_descriptive_metadata:
-    weight: 26
+    weight: 1
     settings:
-      rows: '20'
+      webform_id: descriptive_metadata
       placeholder: 'Click to edit your Resource''s Descriptive metadata'
     third_party_settings: {  }
-    type: strawberry_textarea
+    type: strawberryfield_webform_inline_widget
     region: content
-  langcode:
-    type: language_select
-    weight: 1
-    region: content
-    settings:
-      include_locked: true
-    third_party_settings: {  }
   moderation_state:
-    weight: 27
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  path:
-    type: path
-    weight: 4
+    type: moderation_state_default
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
+    weight: 2
+    region: content
     settings:
       display_label: true
-    weight: 6
-    region: content
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -81,15 +50,11 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  uid:
-    type: entity_reference_autocomplete
-    weight: 2
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    region: content
-    third_party_settings: {  }
 hidden:
+  body: true
+  created: true
+  langcode: true
+  path: true
   promote: true
   sticky: true
+  uid: true
