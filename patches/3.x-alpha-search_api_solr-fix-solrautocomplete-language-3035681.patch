@@ -1,0 +1,14 @@
+diff --git a/src/Plugin/search_api/backend/SearchApiSolrBackend.php b/src/Plugin/search_api/backend/SearchApiSolrBackend.php
+index 934837f..52829e7 100644
+--- a/src/Plugin/search_api/backend/SearchApiSolrBackend.php
++++ b/src/Plugin/search_api/backend/SearchApiSolrBackend.php
+@@ -2895,6 +2895,9 @@ class SearchApiSolrBackend extends BackendPluginBase implements SolrBackendInter
+   protected function getAutocompleteFields(QueryInterface $query) {
+     $fl = [];
+     $language_ids = $query->getLanguages();
++    if (empty($language_ids)) {
++      $language_ids = array_keys(\Drupal::languageManager()->getLanguages());
++    }
+     $field_names = $this->getSolrFieldNamesKeyedByLanguage($language_ids, $query->getIndex());
+     foreach ($this->getQueryFulltextFields($query) as $fulltext_field) {
+       $fl = array_merge($fl, array_values($field_names[$fulltext_field]));
