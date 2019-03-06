@@ -58,7 +58,7 @@ content:
     weight: 4
     label: hidden
     settings:
-      iiif_base_url: 'http://ec2-3-81-3-204.compute-1.amazonaws.com:8183/iiif/2/'
+      iiif_base_url: 'http://localhost:8183/iiif/2/'
       iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2/'
       iiif_group: true
       json_key_source: 'as:image'

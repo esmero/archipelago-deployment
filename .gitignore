@@ -9,6 +9,8 @@
 /persistent/db/
 /persistent/iiifcache/
 /persistent/solrcore/
+/persistent/miniodata/
+
 
 # Ignore sensitive information
 /web/sites/*/settings.php
