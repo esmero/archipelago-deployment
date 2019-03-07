@@ -17,7 +17,7 @@ docker-compose up -d
 
 Once all containers are up and running
 
-Access localhost:9001
+Access http://localhost:9001 using your most loved Web Browser
 user:minio
 pass:minio123
 create a bucket named "archipelago"
@@ -49,7 +49,7 @@ This will give you an admin user with archipelago as password (!change this if r
 
 Note: About Steps 2-3, you don't need to/nor should do this more than once. You can destroy/stop/update and recreated your Docker containers and start again, `git pull` and your Drupal will persist once you passed `Installation complete` message. All other container's data is persistet inside the "persistent/" folder inside this cloned repository. Drupal and all is code is visible and stable inside your web/ folder.
 
-Optional: create a demo user using drush 
+# Step 5: Optional, create a demo user using drush 
 ```Shell
 docker exec -ti esmero-web bash -c 'drush ucrt demo --password="demo"; drush urol metadata_pro "demo"'
 ```
