@@ -2,11 +2,11 @@ access_key: ''
 secret_key: ''
 use_instance_profile: false
 credentials_file: ''
-bucket: esmero
+bucket: archipelago
 region: us-east-1
 use_cname: false
-use_customhost: false
-hostname: ''
+use_customhost: true
+hostname: 'esmero-minio:9000'
 domain: ''
 cache_control_header: ''
 encryption: ''
@@ -14,7 +14,7 @@ use_https: false
 ignore_cache: false
 redirect_styles_ttl: 0
 no_rewrite_cssjs: false
-root_folder: archipelago-test/media
+root_folder: ''
 public_folder: ''
 private_folder: ''
 presigned_urls: ''
@@ -22,3 +22,4 @@ saveas: ''
 torrents: ''
 _core:
   default_config_hash: XB-f-XhPo-I1_3q7Xf3WpnuGRr2ioacLa0iKWYAPwJg
+use_path_style_endpoint: true
