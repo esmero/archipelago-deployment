@@ -105,7 +105,6 @@ module:
   user: 0
   views_ui: 0
   webform: 0
-  webform_devel: 0
   webform_examples_accessibility: 0
   webform_image_select: 0
   webform_node: 0
