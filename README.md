@@ -3,7 +3,7 @@
 WIP quick Archipelago Skeleton. This repository serves as bootstrap for a Demo Archipelago deployment using minio.io 
 as S3 alternative. The skeleton project contains all the pieces needed to run a local deployment of a basic Archipelago except (for now) content.
 
-# Deployment
+# Step 1: Deployment
 
 ```Shell
 git clone https://github.com/esmero/archipelago-aws-demo.git
@@ -12,7 +12,19 @@ git checkout minio
 cp docker-compose-minio.yml docker-compose.yml
 docker-compose up -d
 ```
-Once all containers are up and running, run composer inside the esmero-web container to download all dependencies and Drupal core
+
+# Step 2: Set up your S3 bucket
+
+Once all containers are up and running
+
+Access localhost:9001
+user:minio
+pass:minio123
+create a bucket named "archipelago"
+
+# Step 3: Deploy Drupal 8
+
+run composer inside the esmero-web container to download all dependencies and Drupal core
 
 ```Shell
 docker exec -ti esmero-web bash -c "composer install"
@@ -35,7 +47,7 @@ docker exec -ti -u www-data esmero-web bash -c "cd web;../vendor/bin/drush -y si
 
 This will give you an admin user with archipelago as password (!change this if running on a public instance!)
 
-Note: You don't need to/nor should do this more than once. You can destroy/stop/update and recreated your Docker containers and start again, `git pull` and your Drupal will persist once you passed `Installation complete` message. All other container's data is persistet inside the "persistent/" folder inside this cloned repository. Drupal and all is code is visible and stable inside your web/ folder.
+Note: About Steps 2-3, you don't need to/nor should do this more than once. You can destroy/stop/update and recreated your Docker containers and start again, `git pull` and your Drupal will persist once you passed `Installation complete` message. All other container's data is persistet inside the "persistent/" folder inside this cloned repository. Drupal and all is code is visible and stable inside your web/ folder.
 
 Optional: create a demo user using drush 
 ```Shell
