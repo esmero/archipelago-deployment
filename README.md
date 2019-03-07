@@ -15,7 +15,7 @@ docker-compose up -d
 Once all containers are up and running, run composer inside the esmero-web container to download all dependencies and Drupal core
 
 ```Shell
-docker exec -ti -u www-data esmero-web bash -c "composer install"
+docker exec -ti esmero-web bash -c "composer install"
 ```
 Add the following lines at the end of your `local` web/sites/default/settings.php
 
