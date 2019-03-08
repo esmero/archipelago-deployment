@@ -65,7 +65,8 @@ services:
       - ${PWD}/persistent/iiifcache:/var/cache/cantaloupe
   minio:
     container_name: esmero-minio
-    image: minio/minio:RELEASE.2019-02-26T19-51-46Z
+    restart: always
+    image: minio/minio:RELEASE.2019-03-06T22-47-10Z
     volumes:
          - ${PWD}/persistent/miniodata:/data
     ports:
