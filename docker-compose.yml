@@ -4,6 +4,7 @@
 # If running Linux, make sure /persistent/iiifcache has 100:100 ownership
 # If running Linux, make sure /persistent/solrcore has 8983:8983 ownership
 # enabling :cache for the volumens can bypass that need.
+# on OSX brew install minio/stable/mc for the minio client
 version: '3.5'
 services:
   web:
@@ -14,12 +15,12 @@ services:
       - solr
     tty: true
     ports:
-      - "80:80"
+      - "8001:80"
     networks:
       - host-net
       - esmero-net
     volumes:
-      - /persistent/drupal8:/var/www/html:cached
+      - ${PWD}:/var/www/html:cached
   solr:
     container_name: esmero-solr
     restart: always
@@ -31,8 +32,8 @@ services:
       - host-net
       - esmero-net
     volumes:
-      - /persistent/solrcore:/opt/solr/server/solr/mycores
-      - /persistent/solrconfig:/drupalconfig
+      - ${PWD}/persistent/solrcore:/opt/solr/server/solr/mycores:cached
+      - ${PWD}/persistent/solrconfig:/drupalconfig
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
@@ -49,10 +50,10 @@ services:
       - host-net
       - esmero-net
     volumes:
-      - /persistent/db:/var/lib/mysql
+      - ${PWD}/persistent/db:/var/lib/mysql
   iiif:
     container_name: esmero-cantaloupe
-    image: "esmero/cantaloupe-s3:4.0.1"
+    image: "esmero/cantaloupe-s3:4.0.3"
     restart: always
     ports:
       - "8183:8182"
@@ -60,8 +61,23 @@ services:
       - host-net
       - esmero-net
     volumes:
-      - /persistent/iiifconfig:/etc/cantaloupe
-      - /persistent/iiifcache:/var/cache/cantaloupe
+      - ${PWD}/persistent/iiifconfig:/etc/cantaloupe
+      - ${PWD}/persistent/iiifcache:/var/cache/cantaloupe
+  minio:
+    container_name: esmero-minio
+    restart: always
+    image: minio/minio:RELEASE.2019-03-06T22-47-10Z
+    volumes:
+         - ${PWD}/persistent/miniodata:/data
+    ports:
+         - "9000:9000"
+    networks:
+      - host-net
+      - esmero-net
+    environment:
+         MINIO_ACCESS_KEY: minio
+         MINIO_SECRET_KEY: minio123
+    command: server /data
 networks:
   host-net:
     driver: bridge
