@@ -53,7 +53,7 @@ services:
       - ${PWD}/persistent/db:/var/lib/mysql
   iiif:
     container_name: esmero-cantaloupe
-    image: "esmero/cantaloupe-s3:4.0.1"
+    image: "esmero/cantaloupe-s3:4.0.3"
     restart: always
     ports:
       - "8183:8182"
@@ -70,7 +70,7 @@ services:
     volumes:
          - ${PWD}/persistent/miniodata:/data
     ports:
-         - "9001:9000"
+         - "9000:9000"
     networks:
       - host-net
       - esmero-net
