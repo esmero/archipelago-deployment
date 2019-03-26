@@ -35,7 +35,7 @@
         "drupal/context": "^4.0@beta",
         "drupal/core": "~8.6.10",
         "drupal/deploy": "1.x-dev",
-        "drupal/devel": "^1.2",
+        "drupal/devel": "^2.0",
         "drupal/display_field_copy": "^1.1",
         "drupal/ds": "3.x-dev",
         "drupal/facets": "^1.0@beta",
