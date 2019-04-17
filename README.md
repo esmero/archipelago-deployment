@@ -112,7 +112,7 @@ docker exec -ti esmero-web bash -c "composer install"
 That last command will use the updated `composer.lock` file to download/use exactly the same package versions and dependencies we have tested during development. Just in case and to see Archipelago is still in shape, clear your Drupal caches
 
 ```Shell
-docker exec -ti esmero-web bash -c "cd web; drush cr"
+docker exec -ti esmero-web bash -c "drush cr"
 ```
 
 And done!
