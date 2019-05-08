@@ -1,0 +1,60 @@
+uuid: 1d185816-55db-4100-8da7-da7f7f2f83f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.node.super_admin_raw_json
+    - field.field.node.digital_object.body
+    - field.field.node.digital_object.field_descriptive_metadata
+    - node.type.digital_object
+  module:
+    - content_moderation
+    - field_layout
+    - layout_discovery
+    - strawberryfield
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: node.digital_object.super_admin_raw_json
+targetEntityType: node
+bundle: digital_object
+mode: super_admin_raw_json
+content:
+  field_descriptive_metadata:
+    weight: 1
+    settings:
+      rows: '10'
+      placeholder: 'Descriptive Metadata'
+    third_party_settings: {  }
+    type: strawberry_textarea
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  body: true
+  created: true
+  langcode: true
+  path: true
+  promote: true
+  sticky: true
+  uid: true

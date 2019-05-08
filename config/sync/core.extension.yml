@@ -27,6 +27,7 @@ module:
   datetime_range: 0
   dblog: 0
   devel: 0
+  devel_php: 0
   display_field_copy: 0
   ds_devel: 0
   ds_switch_view_mode: 0
@@ -39,6 +40,7 @@ module:
   facets_summary: 0
   field: 0
   field_layout: 0
+  field_permissions: 0
   field_ui: 0
   file: 0
   file_mdm: 0
@@ -48,6 +50,8 @@ module:
   form_mode_manager_theme_switcher: 0
   format_strawberryfield: 0
   gnode: 0
+  graphql: 0
+  graphql_core: 0
   group: 0
   hal: 0
   help: 0
@@ -56,6 +60,7 @@ module:
   imagemagick: 0
   inline_entity_form: 0
   inline_form_errors: 0
+  jsonapi: 0
   jsonld: 0
   key_value: 0
   kint: 0
@@ -79,6 +84,7 @@ module:
   rdfui: 0
   responsive_image: 0
   rest: 0
+  restui: 0
   role_theme_switcher: 0
   s3fs: 0
   search_api: 0

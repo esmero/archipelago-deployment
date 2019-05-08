@@ -10,8 +10,8 @@ dependencies:
     - archipelago_subtheme
 id: useraccountmenu
 theme: archipelago_subtheme
-region: top_header
-weight: -10
+region: header
+weight: -12
 provider: null
 plugin: 'system_menu_block:account'
 settings:

@@ -1,0 +1,96 @@
+uuid: c96808f4-e5ff-437f-8489-304dffa6ec3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.digital_object_with_book_reader
+    - field.field.node.digital_object.body
+    - field.field.node.digital_object.field_descriptive_metadata
+    - node.type.digital_object
+  module:
+    - ds
+    - field_layout
+    - strawberryfield
+    - text
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      content:
+        - links
+        - body
+        - 'display_field_copy:node-field_descriptive_metadata_image'
+        - 'display_field_copy:node-formatted_metadata'
+        - field_descriptive_metadata
+        - 'display_field_copy:node-static_media'
+    fields:
+      'display_field_copy:node-field_descriptive_metadata_image':
+        plugin_id: 'display_field_copy:node-field_descriptive_metadata_image'
+        weight: 2
+        label: hidden
+        formatter: strawberry_paged_formatter
+        settings:
+          formatter:
+            iiif_base_url: 'http://localhost:8183/iiif/2/'
+            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2/'
+            mediasource: metadatadisplayentity
+            json_key_source: 'as:image'
+            manifesturl_source: ''
+            metadatadisplayentity_source: '3'
+            max_width: '720'
+            max_height: '800'
+      'display_field_copy:node-formatted_metadata':
+        plugin_id: 'display_field_copy:node-formatted_metadata'
+        weight: 3
+        label: hidden
+        formatter: strawberry_metadata_formatter
+        settings:
+          formatter:
+            specs: 'http://schema.org'
+            metadatadisplayentity_id: '1'
+      'display_field_copy:node-static_media':
+        plugin_id: 'display_field_copy:node-static_media'
+        weight: 5
+        label: hidden
+        formatter: strawberry_metadata_formatter
+        settings:
+          formatter:
+            specs: 'https://iiif.io/api/presentation/3.0/'
+            metadatadisplayentity_id: '3'
+            metadatadisplayentity_uselabel: '1'
+id: node.digital_object.digital_object_with_book_reader
+targetEntityType: node
+bundle: digital_object
+mode: digital_object_with_book_reader
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_descriptive_metadata:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: strawberry_default_formatter
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  content_moderation_control: true
+  langcode: true

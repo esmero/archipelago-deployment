@@ -1,0 +1,10 @@
+uuid: 364bf016-1b00-4fb7-8673-781b1d25d9f3
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_with_book_reader
+label: 'Digital Object with Book Reader'
+targetEntityType: node
+cache: true

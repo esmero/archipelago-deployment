@@ -1,19 +1,19 @@
 roles:
   anonymous:
     theme: archipelago_subtheme
-    weight: '-49'
+    weight: '-48'
   replicator:
     theme: ''
-    weight: '0'
+    weight: '-45'
   authenticated:
     theme: ''
-    weight: '-48'
-  administrator:
-    theme: archipelago_subtheme
     weight: '-47'
+  administrator:
+    theme: ''
+    weight: '-50'
   non_grata:
     theme: ''
     weight: '-46'
   metadata_pro:
     theme: archipelago_subtheme
-    weight: '-50'
+    weight: '-49'

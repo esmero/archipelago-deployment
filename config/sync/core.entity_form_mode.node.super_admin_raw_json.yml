@@ -1,0 +1,10 @@
+uuid: 780e02b8-afcf-4cfb-8e3d-dc7dabcafe6c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.super_admin_raw_json
+label: 'Super admin Raw JSON'
+targetEntityType: node
+cache: true

@@ -9,7 +9,7 @@ dependencies:
 id: sitebranding_2
 theme: archipelago_subtheme
 region: top_header
-weight: -11
+weight: -10
 provider: null
 plugin: system_branding_block
 settings:

@@ -11,5 +11,29 @@ definitions:
     parent: ''
     expanded: false
     weight: 0
+  user__page:
+    weight: -49
+    menu_name: account
+    parent: ''
+    enabled: true
+    expanded: false
+  user__logout:
+    weight: -48
+    menu_name: account
+    parent: ''
+    expanded: false
+    enabled: true
+  node__add_page:
+    weight: -50
+    parent: 'menu_link_content:79510730-8557-43b0-b522-40de2307e44b'
+    menu_name: tools
+    enabled: true
+    expanded: false
+  tracker__page:
+    weight: -49
+    parent: 'menu_link_content:79510730-8557-43b0-b522-40de2307e44b'
+    menu_name: tools
+    expanded: false
+    enabled: true
 _core:
   default_config_hash: jdY7AU0tU-QsjmiOw3W8vwpYMb-By--_MSFgbqKUTYM
