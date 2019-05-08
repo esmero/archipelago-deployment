@@ -16,7 +16,7 @@ backend_config:
   connector_config:
     scheme: http
     host: esmero-solr
-    port: '8983'
+    port: 8983
     path: /
     core: drupal
     timeout: 5

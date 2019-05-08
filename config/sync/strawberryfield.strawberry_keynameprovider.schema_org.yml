@@ -8,5 +8,5 @@ pluginid: jsonld
 pluginconfig:
   url: 'https://schema.org/docs/jsonldcontext.json'
   filterurl: 'https://schema.org/Book.jsonld'
-  keys: 'ismemberof,name_label,type'
+  keys: 'ismemberof,name_label,type,hocr'
 active: true

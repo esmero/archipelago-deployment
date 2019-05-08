@@ -1,0 +1,10 @@
+uuid: b64daa71-f31d-4d72-840d-b0059b71e32c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_with_pannellum_panorama_
+label: 'Digital Object with Pannellum Panorama '
+targetEntityType: node
+cache: true

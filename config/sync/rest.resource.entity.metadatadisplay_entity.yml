@@ -1,0 +1,22 @@
+uuid: 10981f1a-9e35-4e4e-8b8e-c77bf8c270a2
+langcode: en
+status: true
+dependencies:
+  module:
+    - basic_auth
+    - format_strawberryfield
+    - hal
+    - serialization
+    - user
+id: entity.metadatadisplay_entity
+plugin_id: 'entity:metadatadisplay_entity'
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - hal_json
+    - json
+  authentication:
+    - basic_auth
+    - cookie

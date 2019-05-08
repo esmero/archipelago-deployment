@@ -11,8 +11,8 @@ dependencies:
     - archipelago_subtheme
 id: tools
 theme: archipelago_subtheme
-region: header
-weight: -11
+region: top_header
+weight: -8
 provider: null
 plugin: 'system_menu_block:tools'
 settings:

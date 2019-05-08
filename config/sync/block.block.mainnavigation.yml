@@ -10,8 +10,8 @@ dependencies:
     - archipelago_subtheme
 id: mainnavigation
 theme: archipelago_subtheme
-region: top_header_form
-weight: -10
+region: top_header
+weight: -9
 provider: null
 plugin: 'system_menu_block:main'
 settings:
