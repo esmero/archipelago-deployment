@@ -8,6 +8,33 @@ as S3 alternative. The skeleton project contains all the pieces needed to run a 
 
 # Starting from CERO
 
+## Prerequisites
+
+### OSX: 
+- [Install Docker for Mac](https://docs.docker.com/docker-for-mac/)
+- [Instal Github Desktop](https://desktop.github.com)
+- At least 10 Gbytes of free space (to get started)
+
+### Ubuntu 18.04:
+- Install Docker
+```Shell
+apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+apt update
+apt-cache policy docker-ce
+apt install docker-ce
+systemctl status docker
+
+sudo usermod -aG docker ${USER}
+
+// Log out, log in again!
+
+sudo apt  install docker-compose
+```
+Git tools are included by default in Ubuntu 18.04
+- At least 10 Gbytes of free space (to get started)
+
 ## Step 1: Deployment
 
 ```Shell
@@ -19,20 +46,21 @@ docker-compose up -d
 ```
 
 
-#### Ubuntu 16/18.04 note: 
+#### Ubuntu 18.04: 
 If you run docker-compose as root user (using `sudo`) some enviromental variables, like the current folder used inside the docker-compose.yml to mount the Volumens will not work and you will see a bunch of errors. 
 
 There are two possible solutions. The best is to add your [user to the docker group](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) (so no `sudo` needed). 
 Second option is to replace every `{$PWD}` inside your `docker-compose.yml` with either the full path to your current folder, or with a `.` and wrap that whole line in double quotes, basically making the paths for volumens relatives. 
 Instead of: `- ${PWD}:/var/www/html:cached` 
 use: `- ".:/var/www/html:cached"` 
+
 Finally, as documented here https://github.com/esmero/archipelago-aws-demo/blob/minio/docker-compose-minio.yml#L4-L5
 Linux users need to make sure Docker can read/write to their local Drives a.k.a volumens (specially if you decided not to run it as `root`, because we told you so!)
 
 This means in practice
 ```Shell
 sudo chown -R 100:100 persistent/iiifcache
-sudo chown -R 8983:898 persistent/solrcore
+sudo chown -R 8983:8983 persistent/solrcore
 sudo chown -R www-data:www-data web/sites/default/files
 sudo chown -R www-data:www-data private
 ```
