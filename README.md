@@ -1,7 +1,10 @@
 # archipelago-aws-demo
 
-WIP quick Archipelago Skeleton. This repository serves as bootstrap for a Demo Archipelago deployment using minio.io 
+Updated: May 7th 2019
+
+Quick Archipelago Skeleton. This repository serves as bootstrap for a Demo Archipelago deployment using minio.io 
 as S3 alternative. The skeleton project contains all the pieces needed to run a local deployment of a basic Archipelago except (for now) content.
+
 
 # Starting from CERO
 
@@ -14,6 +17,26 @@ git checkout minio
 cp docker-compose-minio.yml docker-compose.yml
 docker-compose up -d
 ```
+
+
+#### Ubuntu 16/18.04 note: 
+If you run docker-compose as root user (using `sudo`) some enviromental variables, like the current folder used inside the docker-compose.yml to mount the Volumens will not work and you will see a bunch of errors. 
+
+There are two possible solutions. The best is to add your [user to the docker group](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) (so no `sudo` needed). 
+Second option is to replace every `{$PWD}` inside your `docker-compose.yml` with either the full path to your current folder, or with a `.` and wrap that whole line in double quotes, basically making the paths for volumens relatives. 
+Instead of: `- ${PWD}:/var/www/html:cached` 
+use: `- ".:/var/www/html:cached"` 
+Finally, as documented here https://github.com/esmero/archipelago-aws-demo/blob/minio/docker-compose-minio.yml#L4-L5
+Linux users need to make sure Docker can read/write to their local Drives a.k.a volumens (specially if you decided not to run it as `root`, because we told you so!)
+
+This means in practice
+```Shell
+sudo chown -R 100:100 persistent/iiifcache
+sudo chown -R 8983:898 persistent/solrcore
+sudo chown -R www-data:www-data web/sites/default/files
+sudo chown -R www-data:www-data private
+```
+Let us know if that works/not for you! 
 
 ## Step 2: Set up your S3 bucket
 
@@ -55,14 +78,27 @@ This will give you an admin user with archipelago as password (!change this if r
 
 Note: About Steps 2-3, you don't need to/nor should do this more than once. You can destroy/stop/update and recreated your Docker containers and start again, `git pull` and your Drupal will persist once you passed `Installation complete` message. All other container's data is persistet inside the "persistent/" folder inside this cloned repository. Drupal and all its code is visible and stable inside your web/ folder.
 
-## Step 4: Optional, create a demo user using drush 
+## Step 4: Create a demo and a jsonapi user using drush 
 ```Shell
 docker exec -ti esmero-web bash -c 'drush ucrt demo --password="demo"; drush urol metadata_pro "demo"'
+docker exec -ti esmero-web bash -c 'drush ucrt jsonapi --password="jsonapi"; drush urol metadata_pro "jsonapi"'
 ```
 
 Open your most loved Web Browser and point it to http://localhost:8001
 
-See any errors? Let us know.
+See any errors? Let us know (ASAP!)
+
+## Step 5: Ingest some Metadata Displays to make playing much more interactive
+
+Archipelago is more fun without having to start writing Metadata Displays (in Twig) before you know what they actually are. Since you should now have a `jsonapi` user and jsonapi should be enabled, you can use that awesome functionality of D8 to get that done. We have 3 demo Metadata displays that go well with the demo Webform we provided. To do that execute in your shell (copy and paste)
+```Shell
+curl --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://localhost:8001/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @d8content/metadatadisplay_entity_01.json
+
+curl --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://localhost:8001/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @d8content/metadatadisplay_entity_02.json
+
+curl --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://localhost:8001/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @d8content/metadatadisplay_entity_03.json
+```
+Issues? Let us know please.
 
 # Updating an existing Archipelago pulled from here (minio branch)
 
