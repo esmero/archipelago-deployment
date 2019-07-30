@@ -73,8 +73,10 @@ Now that you got it, lets deploy:
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
 git checkout 8.x-1.0-beta1
+cp docker-compose-nginx.yml docker-compose.yml
 docker-compose up -d
 ```
+Note: `docker-compose.yml` is git ignored in case you make local adjustments or changes to it. 
 
 You need to make sure Docker can read/write to your local Drive a.k.a mounted volumens (specially if you decided not to run it as `root`, because we told you so!)
 
