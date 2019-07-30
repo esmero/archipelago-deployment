@@ -1,6 +1,6 @@
 # archipelago-deployment
 
-**Updated:** July 29th 2019
+**Updated:** July 30th 2019
 
 This repository serves as bootstrap for a Archipelago 8.x-1.0-beta1 deployment using: 
 - minio.io (lastest) S3 alternative
