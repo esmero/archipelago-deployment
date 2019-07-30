@@ -46,8 +46,10 @@ Ok, now we are ready to start.
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
 git checkout 8.x-1.0-beta1
+cp docker-compose-nginx.yml docker-compose.yml
 docker-compose up -d
 ```
+Note: `docker-compose.yml` is git ignored in case you make local adjustments or changes to it. 
 
 ## Step 2: Set up your Minio S3 bucket
 
