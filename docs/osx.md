@@ -10,7 +10,7 @@
 
 ### Wait! Question: Do you have a previous version of Archipelago running? 
 
-If so, let's give that hard working repository a break first. If not, skip to [Step 1](#step-1):
+If so, let's give that hard working repository a break first. If not, skip to [Step 1](#step-1-docker-deployment):
 
 - Open a terminal (you have that already right?) and go to your previous download/git clone folder and run:
 
