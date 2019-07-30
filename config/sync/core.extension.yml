@@ -27,6 +27,7 @@ module:
   devel: 0
   display_field_copy: 0
   ds_devel: 0
+  ds_switch_view_mode: 0
   dynamic_page_cache: 0
   editor: 0
   entity_reference: 0
