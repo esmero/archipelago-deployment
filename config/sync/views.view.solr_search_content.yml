@@ -45,7 +45,7 @@ display:
       pager:
         type: mini
         options:
-          items_per_page: 50
+          items_per_page: 25
           offset: 0
           id: 0
           total_pages: null
@@ -53,7 +53,7 @@ display:
             previous: '‹ previous'
             next: 'next ›'
           expose:
-            items_per_page: false
+            items_per_page: true
             items_per_page_label: 'Items per page'
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false

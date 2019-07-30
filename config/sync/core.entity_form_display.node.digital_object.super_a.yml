@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.digital_object.body
     - field.field.node.digital_object.field_descriptive_metadata
     - node.type.digital_object
+    - workflows.workflow.editorial
   module:
     - content_moderation
     - field_layout
@@ -27,7 +28,7 @@ content:
       webform_id: descriptive_metadata
       placeholder: 'Click to edit your Resource''s Descriptive metadata'
     third_party_settings: {  }
-    type: strawberryfield_webform_inline_widget
+    type: strawberryfield_webform_widget
     region: content
   moderation_state:
     type: moderation_state_default

@@ -14,6 +14,7 @@ negotiation:
       language-url-fallback: 1
   language_interface:
     enabled:
+      language-graphql: -999
       language-url: 0
 _core:
   default_config_hash: dqouFqVseNJNvEjsoYKxbinFOITuCxYhi4y2OTNQP_8

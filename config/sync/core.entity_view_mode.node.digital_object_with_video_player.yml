@@ -1,0 +1,10 @@
+uuid: f801bee2-744f-44ac-9c9a-4e3208153732
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_with_video_player
+label: 'Digital Object with Video Player'
+targetEntityType: node
+cache: true

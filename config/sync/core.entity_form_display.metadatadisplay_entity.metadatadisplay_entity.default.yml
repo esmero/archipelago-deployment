@@ -16,9 +16,15 @@ targetEntityType: metadatadisplay_entity
 bundle: metadatadisplay_entity
 mode: default
 content:
+  mimetype:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   name:
     type: string_textfield
-    weight: -6
+    weight: 0
     region: content
     settings:
       size: 60
@@ -35,7 +41,7 @@ content:
       foldGutter: true
       autoCloseTags: true
       styleActiveLine: true
-    weight: 0
+    weight: 2
     region: content
     third_party_settings: {  }
   user_id:
@@ -44,7 +50,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
-    weight: -3
+    weight: 1
     region: content
     third_party_settings: {  }
 hidden: {  }

@@ -1,7 +1,9 @@
 uuid: ff9eb967-548a-4982-9c87-5cce4e03c030
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - codemirror_editor
 _core:
   default_config_hash: NIKBt6kw_uPhNI0qtR2DnRf7mSOgAQdx7Q94SKMjXbQ
 name: 'Plain text'
@@ -27,3 +29,11 @@ filters:
     status: true
     weight: 0
     settings: {  }
+  codemirror_editor:
+    id: codemirror_editor
+    provider: codemirror_editor
+    status: true
+    weight: 0
+    settings:
+      lineNumbers: true
+      foldGutter: false

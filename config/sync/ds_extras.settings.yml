@@ -6,6 +6,6 @@ override_node_revision: false
 override_node_revision_view_mode: full
 region_to_block: false
 region_blocks: {  }
-switch_field: true
+switch_field: false
 _core:
   default_config_hash: LYs_s2QdJ4ivdf6ERxvWa1ZRSKecbSoLKA85NkzrSkw

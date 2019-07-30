@@ -5,5 +5,4 @@ dependencies: {  }
 name: strawberryfield_voc_id
 vid: strawberryfield_voc_id
 description: 'Strawberryfield Metadata Keys'
-hierarchy: 0
 weight: 0

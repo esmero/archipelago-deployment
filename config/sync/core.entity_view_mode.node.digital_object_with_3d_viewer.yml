@@ -1,0 +1,10 @@
+uuid: b705c1c9-9af6-407d-8b78-1ccca3b7faed
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_with_3d_viewer
+label: 'Digital Object with 3D Viewer'
+targetEntityType: node
+cache: true

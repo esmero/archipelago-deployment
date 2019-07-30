@@ -7,15 +7,36 @@ dependencies:
     - node
     - user
     - search_api
+    - strawberryfield
   config:
     - field.storage.node.field_descriptive_metadata
     - field.storage.node.field_tags
     - search_api.server.esmero_solr_7_5
 third_party_settings:
   search_api_solr:
+    finalize: false
+    commit_before_finalize: false
+    commit_after_finalize: false
     multilingual:
       limit_to_content_language: false
       include_language_independent: true
+    highlighter:
+      maxAnalyzedChars: 51200
+      fragmenter: gap
+      regex:
+        slop: 0.5
+        pattern: blank
+        maxAnalyzedChars: 10000
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
+      highlight:
+        mergeContiguous: false
+        requireFieldMatch: false
+        snippets: 3
+        fragsize: 0
+    advanced:
+      index_prefix: ''
 _core:
   default_config_hash: 5gcfQOCjXVt6We4_q02H8VjnECSON5NgKOchFAsncxU
 id: default_solr_index
@@ -73,6 +94,19 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_tags
+  fulltext:
+    label: 'FullText test'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: fulltext
+    type: string
+  hocr:
+    label: 'Descriptive Metadata » hocr'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:hocr'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   ismemberof:
     label: 'Descriptive Metadata » ismemberof'
     datasource_id: 'entity:node'
@@ -97,6 +131,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_descriptive_metadata
+  license:
+    label: 'Descriptive Metadata » license'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:license'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   name_1:
     label: 'Descriptive Metadata » name'
     datasource_id: 'entity:node'
@@ -112,6 +154,16 @@ field_settings:
     indexed_locked: true
     type_locked: true
     hidden: true
+  parent_id:
+    label: 'Parent ID'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: parent_id
+    type: string
+  sequence_id:
+    label: 'Sequence ID'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: sequence_id
+    type: string
   status:
     label: 'Publishing status'
     datasource_id: 'entity:node'
@@ -122,6 +174,13 @@ field_settings:
     dependencies:
       module:
         - node
+  status_1:
+    label: Status
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
   sticky:
     label: 'Sticky at top of lists'
     datasource_id: 'entity:node'
@@ -173,6 +232,18 @@ field_settings:
     dependencies:
       module:
         - node
+  uid_1:
+    label: UID
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+  uuid:
+    label: 'Parent Node » UUID'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: 'target_id:uuid'
+    type: string
 datasource_settings:
   'entity:node':
     bundles:
@@ -181,6 +252,16 @@ datasource_settings:
     languages:
       default: true
       selected: {  }
+  strawberryfield_flavor_datasource:
+    bundles:
+      default: '0'
+      selected:
+        digital_object: digital_object
+        digital_object_collection: 0
+    languages:
+      default: '1'
+      selected:
+        en: 0
 processor_settings:
   add_url:
     weights:

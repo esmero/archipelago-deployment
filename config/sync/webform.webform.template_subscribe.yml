@@ -1,12 +1,9 @@
-uuid: 2250310f-fd15-4b0e-90f4-de93726717c4
 langcode: en
 status: closed
 dependencies:
   enforced:
     module:
       - webform_templates
-_core:
-  default_config_hash: 0k_sXcVbrp93WlFxd52KvuqdnjPtMNG35MGlPjcGeqc
 open: null
 close: null
 weight: 0
@@ -23,9 +20,13 @@ javascript: ''
 settings:
   ajax: false
   ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
   page: true
   page_submit_path: ''
   page_confirm_path: ''
+  page_admin_theme: false
   form_title: both
   form_submit_once: false
   form_exception_message: ''
@@ -97,6 +98,8 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
   confirmation_type: page
   confirmation_title: ''
   confirmation_message: 'Thank you for subscribing.'
@@ -107,6 +110,7 @@ settings:
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
   confirmation_exclude_token: false
+  confirmation_update: false
   limit_total: null
   limit_total_interval: null
   limit_total_message: ''
@@ -206,3 +210,6 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
+uuid: 2250310f-fd15-4b0e-90f4-de93726717c4
+_core:
+  default_config_hash: 0k_sXcVbrp93WlFxd52KvuqdnjPtMNG35MGlPjcGeqc

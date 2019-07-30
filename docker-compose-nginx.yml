@@ -4,22 +4,35 @@
 # If running Linux, make sure /persistent/iiifcache has 100:100 ownership
 # If running Linux, make sure /persistent/solrcore has 8983:8983 ownership
 # enabling :cache for the volumens can bypass that need.
+# on OSX brew install minio/stable/mc for the minio client
 version: '3.5'
 services:
   web:
     container_name: esmero-web
     restart: always
-    image: "esmero/drupal8-dev:8.4.5"
+    image: "nginx"
     depends_on:
       - solr
+      - php
     tty: true
     ports:
-      - "80:80"
+      - "8001:80"
     networks:
       - host-net
       - esmero-net
     volumes:
-      - /persistent/drupal8:/var/www/html:cached
+      - ${PWD}/nginxconfigford8/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ${PWD}:/var/www/html:cached
+  php:
+    container_name: esmero-php
+    restart: always
+    image: "esmero/php-7.3-fpm:8.x-1.0-beta1"
+    tty: true
+    networks:
+      - host-net
+      - esmero-net
+    volumes:
+      - ${PWD}:/var/www/html:cached
   solr:
     container_name: esmero-solr
     restart: always
@@ -31,8 +44,8 @@ services:
       - host-net
       - esmero-net
     volumes:
-      - /persistent/solrcore:/opt/solr/server/solr/mycores
-      - /persistent/solrconfig:/drupalconfig
+      - ${PWD}/persistent/solrcore:/opt/solr/server/solr/mycores:cached
+      - ${PWD}/persistent/solrconfig:/drupalconfig:cached
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
@@ -49,7 +62,7 @@ services:
       - host-net
       - esmero-net
     volumes:
-      - /persistent/db:/var/lib/mysql
+      - ${PWD}/persistent/db:/var/lib/mysql:cached
   iiif:
     container_name: esmero-cantaloupe
     image: "esmero/cantaloupe-s3:4.0.3"
@@ -60,8 +73,23 @@ services:
       - host-net
       - esmero-net
     volumes:
-      - /persistent/iiifconfig:/etc/cantaloupe
-      - /persistent/iiifcache:/var/cache/cantaloupe
+      - ${PWD}/persistent/iiifconfig:/etc/cantaloupe
+      - ${PWD}/persistent/iiifcache:/var/cache/cantaloupe
+  minio:
+    container_name: esmero-minio
+    restart: always
+    image: minio/minio:latest
+    volumes:
+         - ${PWD}/persistent/miniodata:/data:cached
+    ports:
+         - "9000:9000"
+    networks:
+      - host-net
+      - esmero-net
+    environment:
+         MINIO_ACCESS_KEY: minio
+         MINIO_SECRET_KEY: minio123
+    command: server /data
 networks:
   host-net:
     driver: bridge

@@ -1,0 +1,18 @@
+uuid: 3c67b30c-9b7f-4ba5-a6d8-dacb54ed753d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: iiifmanifest
+label: iiifmanifest
+target_entity_types:
+  digital_object: digital_object
+  article: 0
+  digital_object_collection: 0
+  page: 0
+  webform: 0
+source_entityfield_name: null
+processor_entity_id: '3'
+cache: true
+active: true

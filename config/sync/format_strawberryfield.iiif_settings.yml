@@ -1,0 +1,2 @@
+pub_server_url: 'http://localhost:8183/iiif/2'
+int_server_url: 'http://esmero-cantaloupe:8182/iiif/2'

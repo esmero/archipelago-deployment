@@ -1,0 +1,11 @@
+uuid: 5e2051ce-5037-4816-93c6-7ad462d88205
+langcode: en
+status: true
+dependencies: {  }
+id: hocr_service
+label: 'hoCR Service'
+pluginid: flavor
+pluginconfig:
+  source_key: 'ap:hocr'
+  exposed_key: ap_hocr
+active: true

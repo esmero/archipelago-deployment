@@ -5,6 +5,6 @@ dependencies:
   module:
     - node
 id: node.super_admin_raw_json
-label: 'Super admin Raw JSON'
+label: 'Raw JSON Metadata'
 targetEntityType: node
 cache: true

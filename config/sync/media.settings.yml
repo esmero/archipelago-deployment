@@ -3,3 +3,4 @@ _core:
   default_config_hash: f_ouXNygByhTko09cj2hDG_CeERO4jKCV8zrIvORnd0
 iframe_domain: ''
 oembed_providers_url: 'https://oembed.com/providers.json'
+standalone_url: true

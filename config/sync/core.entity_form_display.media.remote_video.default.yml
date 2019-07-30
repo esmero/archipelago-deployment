@@ -42,14 +42,6 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
-  moderation_state:
-    weight: 101
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   path:
     type: path
     weight: 30

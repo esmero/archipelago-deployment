@@ -1,0 +1,10 @@
+uuid: 1d69e97c-c67a-44d5-b588-5381f35350fa
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_with_a_v_player
+label: 'Digital Object with A/V Player'
+targetEntityType: node
+cache: true

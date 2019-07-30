@@ -1,0 +1,12 @@
+{
+  "data": {
+    "type": "metadatadisplay_entity--metadatadisplay_entity",
+    "id": "4dff9ccc-e455-4cc9-ab73-922d44b971ab",
+    "attributes": {
+      "name": "MODS 3.6",
+      "twig": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<mods xmlns=\"http://www.loc.gov/mods/v3\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-6.xsd\" version=\"3.6\">\r\n<titleInfo>\r\n<title>{{ node.label.value|escape('html_attr')  }}</title>\r\n</titleInfo>\r\n<name type=\"personal\">\r\n{% for people in attribute(data, 'edm_agent') %}\r\n<namePart>{{ people.name_label|escape('html_attr') }}</namePart>\r\n{% endfor %} \r\n</name>\r\n<typeOfResource>{{ data.type|escape('html_attr') }}</typeOfResource>\r\n<originInfo>\r\n<place>\r\n<placeTerm type=\"text\">{{ data.geographic_place|escape('html_attr') }}</placeTerm></place>\r\n<publisher>Archipelago Commons</publisher>\r\n<dateIssued>{{ data.date_published|date(\"Y-m-d\") }}</dateIssued>\r\n</originInfo>\r\n<language>\r\n<languageTerm type=\"code\" authority=\"iso639-2b\">eng</languageTerm></language>\r\n<physicalDescription>\r\n<form authority=\"marcform\">electronic</form>\r\n<form authority=\"gmd\">electronic resource</form>\r\n<form>{{ data.type|escape('html_attr') }}</form>\r\n</physicalDescription>\r\n<abstract type=\"Summary\">\r\n{{ data.description|escape('html_attr') }}\r\n</abstract>\r\n<note type=\"statement of responsibility\" altRepGroup=\"00\">Archipelago Demo</note>\r\n<note>This is a demo MODS record, not all data in this repository was mapped to MODS elements.</note>\r\n<subject authority=\"lcsh\">\r\n{% for subjectinfo in attribute(data, 'subject_loc') %}\r\n<topic>{{ subjectinfo.label|escape('html_attr') }}</topic>\r\n{% endfor %} \r\n</subject>\r\n<subject>\r\n{% for subjectinfowikidata in attribute(data, 'subject_wikidata') %}\r\n<topic authority=\"wikidata\" valueURI=\"{{ subjectinfowikidata.uri }}\">{{ subjectinfowikidata.label }}</topic>\r\n{% endfor %} \r\n</subject>\r\n<location>\r\n<url displayLabel=\"electronic resource\" usage=\"primary display\">{{ url('<current>') }}</url>\r\n</location>\r\n<identifier type=\"local\">{{ data.local_identifier }}</identifier>\r\n</mods>",
+      "langcode": "und",
+      "mimetype": "application/xml"
+    }
+  }
+}
