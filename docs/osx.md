@@ -101,7 +101,7 @@ docker exec -ti esmero-php bash -c 'drush ucrt jsonapi --password="jsonapi"; dru
 Archipelago is more fun without having to start writing Metadata Displays (in Twig) before you know what they actually are. Since you should now have a `jsonapi` user and jsonapi should be enabled, you can use that awesome functionality of D8 to get that done. We have 4 demo Metadata Display Entities that go well with the demo Webform we provided. To do that execute in your shell (copy and paste)
 
 ```Shell
-docker exec -ti esmero-php bash -c 'scripts/archipelago/deploys.sh'
+docker exec -ti esmero-php bash -c 'scripts/archipelago/deploy.sh'
 ```
 Open your most loved Web Browser and point it to http://localhost:8001
 
