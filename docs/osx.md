@@ -102,7 +102,10 @@ Archipelago is more fun without having to start writing Metadata Displays (in Tw
 docker exec -ti esmero-php bash -c 'scripts/archipelago/deploys.sh'
 ```
 Open your most loved Web Browser and point it to http://localhost:8001
-Note: It can take some time to start the first time (Drupal needs some warming up). Also, to make this docker-compose easier to use we are doing something named bind mounting your folders. Good thing is you can edit files in your machine and they get updated instantly to docker. bad thing, it runs slower than on Linux. Speed is a huge factor here, but, you get the flexibility of changing, backing up and persisting files without having a Docker University Degree.
+
+Note: It can take some time to start the first time (Drupal needs some warming up). 
+
+Also, to make this docker-compose easier to use we are doing something named `bind mounting` (or similar...) your folders. Good thing is you can edit files in your machine and they get updated instantly to docker. bad thing, OSX driver runs slower than on Linux. Speed is a huge factor here, but you get the flexibility of changing, backing up and persisting files without needing a Docker University Degree.
 
 ### Need help? Blue Screen? Missed a step? Need a hug?
 If you see any issues or errors or need help with a step, please let us know (ASAP!). You can either open an `issue` in this repository or use the [Google Group](https://groups.google.com/forum/#!forum/archipelago-commons). We are here to help.
