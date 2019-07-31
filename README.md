@@ -1,8 +1,8 @@
-# archipelago-deployment
+# Archipelago Docker Deployment
 
 **Updated:** July 30th 2019
 
-This repository serves as bootstrap for a Archipelago 8.x-1.0-beta1 deployment using: 
+This repository serves as bootstrap for a Archipelago 8.x-1.0-beta1 deployment via Docker using: 
 - minio.io (lastest) S3 alternative
 - Apache Solr 7.5
 - Mysql 5.7
@@ -33,6 +33,10 @@ This is our first beta release and even when we have a Longer Path to travel unt
 
 * [Diego Pino](https://github.com/DiegoPino)
 * [Giancarlo Birello](https://github.com/giancarlobi)
+
+## Acknowledgments
+
+This software is a [Metropolitan New York Library Council](metro.org) Open-Source initiative and part of the Archipelago Commons project.
 
 ## License
 
