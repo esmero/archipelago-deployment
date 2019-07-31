@@ -6,13 +6,13 @@
 - 2-4 Gbytes of RAM
 - Install Docker if you don't have it already by running:
 ```Shell
-apt install apt-transport-https ca-certificates curl software-properties-common
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-apt update
-apt-cache policy docker-ce
-apt install docker-ce
-systemctl status docker
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt update
+sudo apt-cache policy docker-ce
+sudo apt install docker-ce
+sudo systemctl status docker
 
 sudo usermod -aG docker ${USER}
 
@@ -84,9 +84,13 @@ This means in practice running:
 ```Shell
 sudo chown -R 100:100 persistent/iiifcache
 sudo chown -R 8983:8983 persistent/solrcore
-sudo chown -R www-data:www-data web/sites/default/files
-sudo chown -R www-data:www-data private
 ```
+
+And then
+```Shell
+docker exec -ti esmero-php bash -c "chown -R www-data:www-data private"
+```
+*Question:* why this last command different: Answer: Just a variation. Long answer is the internal `www-data` user in that container (Alpine Linux) has uid:82, but on ubuntu the www-data user has a different one so we let docker assing the uid from inside instead. In practice you could also run  directly `sudo chown -R 82:82 private` which would only apply to an Alpine use case, which can differ in the future! Does this make sense? No worries if not.
 
 ## Step 2: Set up your Minio S3 bucket
 
@@ -108,7 +112,7 @@ The following will run composer inside the esmero-php container to download all 
 ```Shell
 docker exec -ti esmero-php bash -c "composer install"
 ```
-Once that command finishes run our setup script:
+You will see a warning: `Do not run Composer as root/super user! See https://getcomposer.org/root for details` and the a long list of PHP packages, don't worry, all is good here, keep following the instructions! Once that command finishes run our setup script:
 
 ```Shell
 docker exec -ti esmero-php bash -c 'scripts/archipelago/setup.sh'
@@ -121,10 +125,10 @@ Note: We say `local` because your whole Drupal web root (the one you cloned) is 
 If this is the first time you Deploy Drupal using the provided Configurations run:
 
 ```Shell
-docker exec -ti esmero-php bash -c "cd web;../vendor/bin/drush -y si --verbose config_installer  config_installer_sync_configure_form.sync_directory=/var/www/html/config/sync/ --db-url=mysql://root:esmerodb@esmero-db/drupal8 --account-name=admin --account-pass=archipelago -r=/var/www/html/web --sites-subdir=default --notify=false install_configure_form.enable_update_status_module=NULL install_configure_form.enable_update_status_emails=NULL;drush cr"
+docker exec -ti esmero-php bash -c "cd web;../vendor/bin/drush -y si --verbose config_installer  config_installer_sync_configure_form.sync_directory=/var/www/html/config/sync/ --db-url=mysql://root:esmerodb@esmero-db/drupal8 --account-name=admin --account-pass=archipelago -r=/var/www/html/web --sites-subdir=default --notify=false install_configure_form.enable_update_status_module=NULL install_configure_form.enable_update_status_emails=NULL;drush cr;chown -R www-data:www-data sites;"
 ```
 
-This will give you an `admin` Drupal user with `archipelago` as password (!change this if running on a public instance!)
+This will give you an `admin` Drupal user with `archipelago` as password (!change this if running on a public instance!) and also set the right Docker Container owner for your Drupal installation files.
 
 Note: About Steps 2-3, you don't need to/nor should do this more than once. You can destroy/stop/update and recreated your Docker containers and start again, `git pull` and your Drupal and Data will persist once you passed `Installation complete` message. I repeat, all other container's data is persistet inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable and stable inside your `web/` folder.
 
