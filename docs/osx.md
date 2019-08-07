@@ -15,6 +15,7 @@ If so, let's give that hard working repository a break first. If not, skip to [S
 - Open a terminal (you have that already right?) and go to your previous download/git clone folder and run:
 
 ```Shell
+docker-compose down
 docker-compose rm
 ```
 
