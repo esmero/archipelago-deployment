@@ -65,7 +65,8 @@ content:
     label: hidden
     settings:
       specs: 'http://schema.org'
-      metadatadisplayentity_id: '4'
+      metadatadisplayentity_id: '1'
+      metadatadisplayentity_uselabel: 0
       label: 'Descriptive Metadata'
     third_party_settings: {  }
 hidden:
@@ -73,3 +74,4 @@ hidden:
   content_moderation_control: true
   langcode: true
   links: true
+  search_api_excerpt: true
