@@ -3,7 +3,7 @@
 **Updated:** July 30th 2019
 
 This repository serves as bootstrap for a Archipelago 8.x-1.0-beta1 deployment via Docker using: 
-- minio.io (lastest) S3 alternative
+- minio.io (latest) S3 alternative
 - Apache Solr 7.5
 - Mysql 5.7
 - Ngnix 11
