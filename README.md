@@ -36,7 +36,7 @@ This is our first beta release and even when we have a Longer Path to travel unt
 
 ## Acknowledgments
 
-This software is a [Metropolitan New York Library Council](metro.org) Open-Source initiative and part of the Archipelago Commons project.
+This software is a [Metropolitan New York Library Council](https://metro.org) Open-Source initiative and part of the Archipelago Commons project.
 
 ## License
 
