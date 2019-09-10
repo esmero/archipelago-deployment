@@ -15,7 +15,7 @@ If so, let's give that hard working repository a break first. If not, skip to [S
 - Open a terminal (you have that already right?) and go to your previous download/git clone folder and run:
 
 ```Shell
-docker-compose down
+docker-compose down ;
 docker-compose rm
 ```
 
@@ -24,18 +24,18 @@ docker-compose rm
 Let's stop the containers gracefully first, run: 
 
 ```Shell
-docker stop esmero-web
-docker stop esmero-solr
-docker stop esmero-db
-docker stop esmero-cantaloupe
+docker stop esmero-web ;
+docker stop esmero-solr ;
+docker stop esmero-db ;
+docker stop esmero-cantaloupe 
 ```
 
 Now we need to remove them, run:
 
 ```Shell
-docker rm esmero-web
-docker rm esmero-solr
-docker rm esmero-db
+docker rm esmero-web ;
+docker rm esmero-solr ;
+docker rm esmero-db ;
 docker rm esmero-cantaloupe
 ```
 
@@ -44,10 +44,10 @@ Ok, now we are ready to start.
 ## Step 1: Docker Deployment
 
 ```Shell
-git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
-cd archipelago-deployment
-git checkout 8.x-1.0-beta1
-cp docker-compose-nginx.yml docker-compose.yml
+git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment ;
+cd archipelago-deployment ;
+git checkout 8.x-1.0-beta1 ;
+cp docker-compose-nginx.yml docker-compose.yml ;
 docker-compose up -d
 ```
 Note: `docker-compose.yml` is git ignored in case you make local adjustments or changes to it. 
@@ -93,7 +93,7 @@ Note: About Steps 2-3, you don't need to/nor should do this more than once. You 
 
 ## Step 4: Create a "demo "and a "jsonapi" user using drush 
 ```Shell
-docker exec -ti esmero-php bash -c 'drush ucrt demo --password="demo"; drush urol metadata_pro "demo"'
+docker exec -ti esmero-php bash -c 'drush ucrt demo --password="demo"; drush urol metadata_pro "demo"' ;
 docker exec -ti esmero-php bash -c 'drush ucrt jsonapi --password="jsonapi"; drush urol metadata_pro "jsonapi"'
 ```
 
