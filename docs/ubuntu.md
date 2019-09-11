@@ -1,20 +1,35 @@
 # Installing Archipelago on Ubuntu 18.04
 
+## About running terminal commands
+
+This guide assumes you are comfortable enough running terminal (bash) commands on a Linux Computer.
+
+We made sure that you can `copy` and `paste` each of these commands from this guide directly into your terminal.
+
+You will notice sometimes commands **span more than a single line** of text. If that is the case, always make sure you copy
+and paste **a single line at a time** and press the `Enter` key afterwards. We suggest also you look at the output. 
+
+If something fails (and we hope it does not) troubleshooting will be much easier if
+you can share that output when asking for help.
+
+Happy deploying!
+
 ## Prerequisites
 - At least 10 Gbytes of free space (to get started)
 - Some basic Unix/Terminal Skills
 - 2-4 Gbytes of RAM
 - Install Docker if you don't have it already by running:
-```Shell
-sudo apt install apt-transport-https ca-certificates curl software-properties-common ;
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - ;
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" ;
-sudo apt update ;
-sudo apt-cache policy docker-ce ;
-sudo apt install docker-ce ;
-sudo systemctl status docker ; 
 
-sudo usermod -aG docker ${USER} ;
+```Shell
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - 
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt update
+sudo apt-cache policy docker-ce
+sudo apt install docker-ce
+sudo systemctl status docker
+
+sudo usermod -aG docker ${USER}
 ```
 
 Log out, log in again!
@@ -31,7 +46,7 @@ If so, let's give that hard working repository a break first. If not, [Step 1](#
 - Open a terminal (you have that already right?) and go to your previous download/git clone folder and run:
 
 ```Shell
-docker-compose down ;
+docker-compose down
 docker-compose rm
 ```
 
@@ -40,18 +55,18 @@ docker-compose rm
 Let's stop the containers gracefully first, run: 
 
 ```Shell
-docker stop esmero-web ;
-docker stop esmero-solr ;
-docker stop esmero-db ;
+docker stop esmero-web
+docker stop esmero-solr
+docker stop esmero-db
 docker stop esmero-cantaloupe
 ```
 
 Now we need to remove them, run:
 
 ```Shell
-docker rm esmero-web ;
-docker rm esmero-solr ;
-docker rm esmero-db ;
+docker rm esmero-web
+docker rm esmero-solr
+docker rm esmero-db
 docker rm esmero-cantaloupe
 ```
 
@@ -73,10 +88,10 @@ use: `- ".:/var/www/html:cached"`
 Now that you got it, lets deploy:
 
 ```Shell
-git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment ;
-cd archipelago-deployment ;
-git checkout 8.x-1.0-beta1 ;
-cp docker-compose-nginx.yml docker-compose.yml ;
+git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
+cd archipelago-deployment
+git checkout 8.x-1.0-beta1
+cp docker-compose-nginx.yml docker-compose.yml
 docker-compose up -d
 ```
 Note: `docker-compose.yml` is git ignored in case you make local adjustments or changes to it. 
@@ -85,13 +100,13 @@ You need to make sure Docker can read/write to your local Drive a.k.a mounted vo
 
 This means in practice running:
 ```Shell
-sudo chown -R 100:100 persistent/iiifcache ;
-sudo chown -R 8983:8983 persistent/solrcore ;
+sudo chown -R 100:100 persistent/iiifcache
+sudo chown -R 8983:8983 persistent/solrcore
 ```
 
 And then
 ```Shell
-docker exec -ti esmero-php bash -c "chown -R www-data:www-data private" ;
+docker exec -ti esmero-php bash -c "chown -R www-data:www-data private"
 ```
 *Question:* why this last command different: Answer: Just a variation. Long answer is the internal `www-data` user in that container (Alpine Linux) has uid:82, but on ubuntu the www-data user has a different one so we let docker assing the uid from inside instead. In practice you could also run  directly `sudo chown -R 82:82 private` which would only apply to an Alpine use case, which can differ in the future! Does this make sense? No worries if not.
 
@@ -138,7 +153,7 @@ Note: About Steps 2-3, you don't need to/nor should do this more than once. You 
 ## Step 4: Create a "demo "and a "jsonapi" user using drush 
 
 ```Shell
-docker exec -ti esmero-php bash -c 'drush ucrt demo --password="demo"; drush urol metadata_pro "demo"' ;
+docker exec -ti esmero-php bash -c 'drush ucrt demo --password="demo"; drush urol metadata_pro "demo"'
 docker exec -ti esmero-php bash -c 'drush ucrt jsonapi --password="jsonapi"; drush urol metadata_pro "jsonapi"'
 ```
 
