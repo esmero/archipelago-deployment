@@ -1,13 +1,28 @@
 # Installing Archipelago on Ubuntu 18.04
 
+## About running terminal commands
+
+This guide assumes you are comfortable enough running terminal (bash) commands on a Linux Computer.
+
+We made sure that you can `copy` and `paste` each of these commands from this guide directly into your terminal.
+
+You will notice sometimes commands **span more than a single line** of text. If that is the case, always make sure you copy
+and paste **a single line at a time** and press the `Enter` key afterwards. We suggest also you look at the output. 
+
+If something fails (and we hope it does not) troubleshooting will be much easier if
+you can share that output when asking for help.
+
+Happy deploying!
+
 ## Prerequisites
 - At least 10 Gbytes of free space (to get started)
 - Some basic Unix/Terminal Skills
 - 2-4 Gbytes of RAM
 - Install Docker if you don't have it already by running:
+
 ```Shell
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - 
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 sudo apt update
 sudo apt-cache policy docker-ce
@@ -15,10 +30,12 @@ sudo apt install docker-ce
 sudo systemctl status docker
 
 sudo usermod -aG docker ${USER}
+```
 
-// Log out, log in again!
+Log out, log in again!
 
-sudo apt  install docker-compose
+```Shell
+sudo apt install docker-compose
 ```
 Git tools are included by default in Ubuntu 18.04
 
@@ -29,6 +46,7 @@ If so, let's give that hard working repository a break first. If not, [Step 1](#
 - Open a terminal (you have that already right?) and go to your previous download/git clone folder and run:
 
 ```Shell
+docker-compose down
 docker-compose rm
 ```
 

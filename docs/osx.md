@@ -1,5 +1,18 @@
 # Installing Archipelago on OSX
 
+## About running terminal commands
+
+This guide assumes you are comfortable enough running terminal (bash) commands on an OSX Computer.
+
+We made sure that you can `copy` and `paste` each of these commands from this guide directly into your terminal.
+
+You will notice sometimes commands **span more than a single line** of text. If that is the case, always make sure you copy
+and paste **a single line at a time** and press the `Enter` key afterwards. We suggest also you look at the output. 
+
+If something fails (and we hope it does not) troubleshooting will be much easier if you can share that output when asking for help.
+
+Happy deploying!
+
 ## Prerequisites
 
 ### OSX: 
@@ -27,7 +40,7 @@ Let's stop the containers gracefully first, run:
 docker stop esmero-web
 docker stop esmero-solr
 docker stop esmero-db
-docker stop esmero-cantaloupe
+docker stop esmero-cantaloupe 
 ```
 
 Now we need to remove them, run:
