@@ -74,6 +74,8 @@ Ok, now we are ready to start.
 
 ## Step 1: Deployment
 
+##### Prefer to watch a video of how to install? Go to our [`user contributed documentation`](https://github.com/esmero/archipelago-documentation#contributing)!
+
 #### IMPORTANT
 
 If you run `docker-compose` as root user (using `sudo`) some enviromental variables, like the current folder used inside the `docker-compose.yml` to mount the Volumens will not work and you will see a bunch of errors. 
@@ -173,6 +175,9 @@ Note: It can take some time to start the first time (Drupal needs some warming u
 If you see any issues or errors or need help with a step, please let us know (ASAP!). You can either open an `issue` in this repository or use the [Google Group](https://groups.google.com/forum/#!forum/archipelago-commons). We are here to help.
 
 This is our first beta release and even when we have a longer Path to travel until we feel we are ready for a full `8.x-1.0`, we are pretty excited about how far we have gotten in less than a year. If you like this, let us know.
+
+### User contributed documentation:
+_Insatlling Archipelago on AWS Ubuntu_ by Zach Spalding: https://youtu.be/RBy7UMxSmyQ
 
 ## Caring & Coding + Fixing
 
