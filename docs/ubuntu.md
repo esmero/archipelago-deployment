@@ -74,7 +74,7 @@ Ok, now we are ready to start.
 
 ## Step 1: Deployment
 
-##### Prefer to watch a video of how to install? Go to our [`user contributed documentation`](https://github.com/esmero/archipelago-documentation#contributing)!
+##### Prefer to watch a video of how to install? Go to our [`user contributed documentation`](https://github.com/esmero/archipelago-deployment/blob/8.x-1.0-beta1/docs/ubuntu.md#user-contributed-documentation)!
 
 #### IMPORTANT
 
