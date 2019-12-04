@@ -55,6 +55,7 @@ services:
   db:
     image: mysql:5.7
     container_name: esmero-db
+    command: --max_allowed_packet=256M
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: esmerodb
