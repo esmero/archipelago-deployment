@@ -54,6 +54,7 @@ services:
   # see https://hub.docker.com/_/mysql/
   db:
     image: mysql:5.7
+    command: --max_allowed_packet=256M
     container_name: esmero-db
     restart: always
     environment:
