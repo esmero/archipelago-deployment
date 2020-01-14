@@ -1,0 +1,13 @@
+version: '3.5'
+# Override the image for development. Has Xdebug and more logging enabled.
+services:
+  php:
+    container_name: esmero-php
+    restart: always
+    image: esmero-php:development
+    tty: true
+    networks:
+      - host-net
+      - esmero-net
+    volumes:
+      - ${PWD}:/var/www/html:cached
