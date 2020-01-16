@@ -14,7 +14,6 @@ module:
   config_inspector: 0
   config_update: 0
   config_update_ui: 0
-  conflict: 0
   contact: 0
   content_moderation: 0
   context: 0
@@ -34,7 +33,6 @@ module:
   facets: 0
   facets_range_widget: 0
   facets_rest: 0
-  facets_summary: 0
   field: 0
   field_layout: 0
   field_permissions: 0
@@ -54,9 +52,7 @@ module:
   inline_entity_form: 0
   inline_form_errors: 0
   jsonapi: 0
-  jsonld: 0
   key_value: 0
-  kint: 0
   language: 0
   layout_discovery: 0
   link: 0
@@ -70,6 +66,7 @@ module:
   options: 0
   page_cache: 0
   path: 0
+  path_alias: 0
   quick_node_clone: 0
   quickedit: 0
   rdf: 0

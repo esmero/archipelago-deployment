@@ -11,9 +11,6 @@ roles:
   administrator:
     theme: ''
     weight: '-50'
-  non_grata:
-    theme: ''
-    weight: '-46'
   metadata_pro:
     theme: archipelago_subtheme
     weight: '-49'

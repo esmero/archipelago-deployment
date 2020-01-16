@@ -69,6 +69,7 @@ field_type:
           class: solr.LowerCaseFilterFactory
         -
           class: solr.RemoveDuplicatesTokenFilterFactory
+unstemmed_field_type: null
 spellcheck_field_type: null
 collated_field_type: null
 solr_configs: {  }

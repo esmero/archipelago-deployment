@@ -36,3 +36,4 @@ content:
 hidden:
   field_descriptive_metadata: true
   langcode: true
+  search_api_excerpt: true

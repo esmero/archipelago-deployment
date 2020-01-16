@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.digital_object_with_pannellum_panorama_
+    - core.entity_view_mode.node.digital_object_with_pannellum_panorama
     - field.field.node.digital_object.body
     - field.field.node.digital_object.field_descriptive_metadata
     - node.type.digital_object
@@ -93,3 +93,4 @@ content:
 hidden:
   content_moderation_control: true
   langcode: true
+  search_api_excerpt: true

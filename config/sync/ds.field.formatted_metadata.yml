@@ -1,5 +1,5 @@
 id: formatted_metadata
-label: 'Formatted Object Metadata'
+label: 'Virtual Clone 2 of Descriptive Metadata'
 ui_limit: 'digital_object|*'
 properties:
   field_id: node.digital_object.field_descriptive_metadata

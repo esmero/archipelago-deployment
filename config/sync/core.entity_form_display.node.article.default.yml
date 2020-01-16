@@ -20,7 +20,8 @@ dependencies:
 third_party_settings:
   field_layout:
     id: layout_onecol
-    settings: {  }
+    settings:
+      label: ''
 _core:
   default_config_hash: buc38w3gxCqFnjINJhMiJvPpj9jWflKvlKDyBVMPVvw
 id: node.article.default
@@ -61,7 +62,11 @@ content:
     type: entity_reference_autocomplete_tags
     weight: 3
     region: content
-    settings: {  }
+    settings:
+      match_limit: 10
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -119,5 +124,6 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
 hidden: {  }

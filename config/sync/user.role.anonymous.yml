@@ -14,6 +14,5 @@ permissions:
   - 'access site-wide contact form'
   - 'search content'
   - 'use search_api_autocomplete for solr_search_content'
-  - 'use search_api_autocomplete for solr_search_homepage'
   - 'use text format restricted_html'
   - 'view media'

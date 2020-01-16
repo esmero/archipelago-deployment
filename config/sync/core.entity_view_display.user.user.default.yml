@@ -36,3 +36,4 @@ content:
     label: hidden
 hidden:
   langcode: true
+  search_api_excerpt: true
