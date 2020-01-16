@@ -13,10 +13,6 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-	{
-            "type": "vcs",
-            "url": "https://github.com/mnylc/jsonld"
         }
     ],
     "require": {
@@ -128,6 +124,9 @@
         "patches": {
             "drupal/form_mode_manager": {
             "Fix Form Mode title": "https://www.drupal.org/files/issues/2019-12-10/form_mode_manager-bundle-label-in-title-3100112-2-D8.patch"
+            },
+            "drupal/devel": {
+            "Fix BlockdataCollector for 3.x": "patches/devel-webprofiler-BlocksDataCollector-3106747-2-D8.patch"
             }
         }
     }

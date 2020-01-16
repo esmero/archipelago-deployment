@@ -1,0 +1,13 @@
+diff --git a/webprofiler/src/DataCollector/BlocksDataCollector.php b/webprofiler/src/DataCollector/BlocksDataCollector.php
+index 079c237..65bea84 100644
+--- a/webprofiler/src/DataCollector/BlocksDataCollector.php
++++ b/webprofiler/src/DataCollector/BlocksDataCollector.php
+@@ -38,7 +38,7 @@ class BlocksDataCollector extends DataCollector implements DrupalDataCollectorIn
+    * {@inheritdoc}
+    */
+   public function collect(Request $request, Response $response, \Exception $exception = NULL) {
+-    $storage = $this->entityManager->getStorage('block');
++    $storage = $this->entityTypeManager->getStorage('block');
+ 
+     $loaded = $this->entityTypeManager->getLoaded('config', 'block');
+     $rendered = $this->entityTypeManager->getRendered('block');
