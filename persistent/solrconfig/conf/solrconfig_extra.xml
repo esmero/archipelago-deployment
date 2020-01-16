@@ -25,6 +25,7 @@
       <str name="minQueryLength">4</str>
       <str name="maxQueryFrequency">0.01</str>
       <str name="thresholdTokenFrequency">.01</str>
+      <str name="onlyMorePopular">true</str>
     </lst>
   </searchComponent>
 <searchComponent name="suggest" class="solr.SuggestComponent">

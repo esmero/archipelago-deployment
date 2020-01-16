@@ -9,7 +9,7 @@
      For more details about configurations options that may appear in
      this file, see http://wiki.apache.org/solr/SolrConfigXml.
 -->
-<config name="drupal-8.3.1-solr-7.x" >
+<config name="drupal-8.3.4-solr-7.x" >
   <!-- In all configuration below, a prefix of "solr." for class names
        is an alias that causes solr to search appropriate packages,
        including org.apache.solr.(search|update|request|core|analysis)
@@ -80,9 +80,6 @@
 
   <lib dir="${solr.install.dir:../../../..}/contrib/langid/lib/" regex=".*\.jar" />
   <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-langid-\d.*\.jar" />
-
-  <lib dir="${solr.install.dir:../../../..}/contrib/velocity/lib" regex=".*\.jar" />
-  <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-velocity-\d.*\.jar" />
 
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" regex=".*\.jar" />
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" regex=".*\.jar" />
@@ -729,14 +726,8 @@
       <bool name="omitHeader">true</bool>
       <!-- Don't abort searches for the /select request handler (set in solrcore.properties) -->
       <int name="timeAllowed">${solr.selectSearchHandler.timeAllowed:-1}</int>
-
       <!-- By default, don't spell check -->
       <str name="spellcheck">false</str>
-      <!-- Defaults for the spell checker when used -->
-      <str name="spellcheck.onlyMorePopular">true</str>
-      <str name="spellcheck.extendedResults">false</str>
-      <!--  The number of suggestions to return -->
-      <str name="spellcheck.count">1</str>
     </lst>
     <arr name="last-components">
       <str>spellcheck</str>
@@ -750,7 +741,7 @@
       <str name="echoParams">explicit</str>
       <str name="wt">json</str>
       <str name="indent">true</str>
-      <str name="df">text</str>
+      <str name="df">id</str>
     </lst>
   </requestHandler>
 
@@ -790,12 +781,8 @@
      when performing moreLikeThis requests.-->
   <requestHandler name="/mlt" class="solr.MoreLikeThisHandler">
     <lst name="defaults">
-      <str name="df">content</str>
       <str name="mlt.mintf">1</str>
       <str name="mlt.mindf">1</str>
-      <str name="mlt.minwl">3</str>
-      <str name="mlt.maxwl">15</str>
-      <str name="mlt.maxqt">20</str>
       <str name="mlt.match.include">false</str>
       <!-- Abort any searches longer than 2 seconds (set in solrcore.properties) -->
       <int name="timeAllowed">${solr.mlt.timeAllowed:2000}</int>
@@ -805,7 +792,7 @@
   <!-- A minimal query type for doing lucene queries -->
   <requestHandler name="standard" class="solr.SearchHandler">
      <lst name="defaults">
-       <str name="df">content</str>
+       <str name="df">id</str>
        <str name="echoParams">explicit</str>
        <bool name="omitHeader">true</bool>
      </lst>
@@ -813,7 +800,7 @@
 
   <initParams path="/update/**,/query,/select,/tvrh,/elevate,/spell,/browse">
     <lst name="defaults">
-      <str name="df">text</str>
+      <str name="df">id</str>
     </lst>
   </initParams>
 
@@ -1000,7 +987,7 @@
     -->
   <requestHandler name="/spell" class="solr.SearchHandler" startup="lazy">
     <lst name="defaults">
-      <str name="df">spell</str>
+      <str name="df">id</str>
       <str name="spellcheck.dictionary">und</str>
       <str name="spellcheck">on</str>
       <str name="spellcheck.onlyMorePopular">false</str>
@@ -1043,7 +1030,7 @@
     -->
   <requestHandler name="/tvrh" class="solr.SearchHandler" startup="lazy">
     <lst name="defaults">
-      <str name="df">text</str>
+      <str name="df">id</str>
       <bool name="tv">true</bool>
     </lst>
     <arr name="last-components">
@@ -1108,7 +1095,7 @@
   <requestHandler name="/elevate" class="solr.SearchHandler" startup="lazy">
     <lst name="defaults">
       <str name="echoParams">explicit</str>
-      <str name="df">text</str>
+      <str name="df">id</str>
     </lst>
     <arr name="last-components">
       <str>elevator</str>
