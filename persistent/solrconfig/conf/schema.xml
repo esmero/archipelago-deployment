@@ -49,7 +49,7 @@
     that avoids logging every request
 -->
 
-<schema name="drupal-8.3.1-solr-7.x" version="1.6">
+<schema name="drupal-8.3.4-solr-7.x" version="1.6">
   <!-- attribute "name" is the name of this schema and is only used for display purposes.
        version="x.y" is Solr's version number for the schema syntax and
        semantics.  It should not normally be changed by applications.
@@ -166,8 +166,8 @@
        the last letter is 's' for single valued, 'm' for multi-valued -->
 
   <!-- We use plong for integer since 64 bit ints are now common in PHP. -->
-  <dynamicField name="is_*"  type="plong"    indexed="true"  stored="false" multiValued="false" docValues="true"/>
-  <dynamicField name="im_*"  type="plong"    indexed="true"  stored="false" multiValued="true" docValues="true"/>
+  <dynamicField name="is_*"  type="plong"    indexed="true"  stored="false" multiValued="false" docValues="true" termVectors="true"/>
+  <dynamicField name="im_*"  type="plong"    indexed="true"  stored="false" multiValued="true" docValues="true" termVectors="true"/>
   <!-- List of floats can be saved in a regular float field -->
   <dynamicField name="fs_*"  type="pfloat"   indexed="true"  stored="false" multiValued="false" docValues="true"/>
   <dynamicField name="fm_*"  type="pfloat"   indexed="true"  stored="false" multiValued="true" docValues="true"/>
@@ -175,17 +175,14 @@
   <dynamicField name="ps_*"  type="pdouble"   indexed="true"  stored="false" multiValued="false" docValues="true"/>
   <dynamicField name="pm_*"  type="pdouble"   indexed="true"  stored="false" multiValued="true" docValues="true"/>
   <!-- List of booleans can be saved in a regular boolean field -->
-  <dynamicField name="bm_*"  type="boolean" indexed="true"  stored="false" multiValued="true" docValues="true"/>
-  <dynamicField name="bs_*"  type="boolean" indexed="true"  stored="false" multiValued="false" docValues="true"/>
+  <dynamicField name="bm_*"  type="boolean" indexed="true"  stored="false" multiValued="true" docValues="true" termVectors="true"/>
+  <dynamicField name="bs_*"  type="boolean" indexed="true"  stored="false" multiValued="false" docValues="true" termVectors="true"/>
   <!-- Regular text (without processing) can be stored in a string field-->
-  <dynamicField name="ss_*"  type="string"  indexed="true"  stored="false" multiValued="false" docValues="true"/>
+  <dynamicField name="ss_*"  type="string"  indexed="true"  stored="false" multiValued="false" docValues="true" termVectors="true"/>
   <!-- For field types using SORTED_SET, multiple identical entries are collapsed into a single value.
        Thus if I insert values 4, 5, 2, 4, 1, my return will be 1, 2, 4, 5 when enabling docValues.
        If you need to preserve the order and duplicate entries, consider to store the values as zm_* (twice). -->
-  <dynamicField name="sm_*"  type="string"  indexed="true"  stored="false" multiValued="true" docValues="true"/>
-  <!-- Unstemmed text fields for full text - the relevance of a match depends on the length of the text -->
-  <dynamicField name="tus_*" type="text_und" indexed="true"  stored="true" multiValued="false" termVectors="true"/>
-  <dynamicField name="tum_*" type="text_und" indexed="true"  stored="true" multiValued="true" termVectors="true"/>
+  <dynamicField name="sm_*"  type="string"  indexed="true"  stored="false" multiValued="true" docValues="true" termVectors="true"/>
   <!-- Special-purpose text fields -->
   <dynamicField name="tws_*" type="text_ws" indexed="true" stored="true" multiValued="false"/>
   <dynamicField name="twm_*" type="text_ws" indexed="true" stored="true" multiValued="true"/>
@@ -196,8 +193,8 @@
   <!-- This field is used to store date ranges -->
   <dynamicField name="drs_*" type="date_range" indexed="true" stored="true" multiValued="false"/>
   <dynamicField name="drm_*" type="date_range" indexed="true" stored="true" multiValued="true"/>
-  <dynamicField name="its_*" type="plong"   indexed="true"  stored="false" multiValued="false" docValues="true"/>
-  <dynamicField name="itm_*" type="plong"   indexed="true"  stored="false" multiValued="true" docValues="true"/>
+  <dynamicField name="its_*" type="plong"   indexed="true"  stored="false" multiValued="false" docValues="true" termVectors="true"/>
+  <dynamicField name="itm_*" type="plong"   indexed="true"  stored="false" multiValued="true" docValues="true" termVectors="true"/>
   <dynamicField name="fts_*" type="pfloat"  indexed="true"  stored="false" multiValued="false" docValues="true"/>
   <dynamicField name="ftm_*" type="pfloat"  indexed="true"  stored="false" multiValued="true" docValues="true"/>
   <dynamicField name="pts_*" type="pdouble" indexed="true"  stored="false" multiValued="false" docValues="true"/>
