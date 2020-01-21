@@ -1,5 +1,5 @@
 id: static_media
-label: 'Virtual Clone 4 of Descriptive Metadata'
+label: "\U0001F353 Dah woozh"
 ui_limit: 'digital_object|*'
 properties:
   field_id: node.digital_object.field_descriptive_metadata
