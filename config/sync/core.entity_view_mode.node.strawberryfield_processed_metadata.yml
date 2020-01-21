@@ -5,6 +5,6 @@ dependencies:
   module:
     - node
 id: node.strawberryfield_processed_metadata
-label: 'Digital Object abstract View with thumbnail'
+label: 'Digital Object with thumbnail and abstract'
 targetEntityType: node
 cache: true

@@ -34,3 +34,5 @@ backend_config:
   domain: generic
   site_hash: false
   optimize: false
+  disabled_field_types: {  }
+  rows: 10

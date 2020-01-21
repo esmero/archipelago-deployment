@@ -34,3 +34,4 @@ hidden:
   feed: true
   langcode: true
   link: true
+  search_api_excerpt: true

@@ -21,7 +21,6 @@ suggester_settings:
     view_modes:
       'entity:node':
         article: ''
-        digital_fsu_object: ''
         digital_object: ''
         page: ''
         webform: ''

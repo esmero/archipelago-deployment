@@ -1,5 +1,5 @@
 id: raw_metadata
-label: 'Raw Collection Metadata'
+label: "\U0001F353 Frutilla"
 ui_limit: 'digital_object_collection|*'
 properties:
   field_id: node.digital_object_collection.field_descriptive_metadata

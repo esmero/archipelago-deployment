@@ -90,6 +90,7 @@ field_type:
           protected: protwords_en.txt
         -
           class: solr.RemoveDuplicatesTokenFilterFactory
+unstemmed_field_type: null
 spellcheck_field_type:
   name: text_spell_en
   class: solr.TextField
