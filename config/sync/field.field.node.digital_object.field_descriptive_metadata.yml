@@ -11,7 +11,7 @@ id: node.digital_object.field_descriptive_metadata
 field_name: field_descriptive_metadata
 entity_type: node
 bundle: digital_object
-label: 'Descriptive Metadata'
+label:  "\U0001F353 Strawberry (Descriptive Metadata source)"
 description: ''
 required: true
 translatable: false
