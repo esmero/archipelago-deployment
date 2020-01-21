@@ -127,6 +127,9 @@
             },
             "drupal/devel": {
             "Fix BlockdataCollector for 3.x": "patches/devel-webprofiler-BlocksDataCollector-3106747-2-D8.patch"
+            },
+            "drupal/display_field_copy": {
+            "Fix missing schema 1.x": "patches/1.x-display_field_copy-missing-schema-3107615-2-D8.patch"
             }
         }
     }
