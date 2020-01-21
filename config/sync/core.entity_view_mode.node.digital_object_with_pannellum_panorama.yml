@@ -4,7 +4,7 @@ status: true
 dependencies:
   module:
     - node
-id: node.digital_object_with_pannellum_panorama_
-label: 'Digital Object with Pannellum Panorama '
+id: node.digital_object_with_pannellum_panorama
+label: 'Digital Object with Pannellum Panorama'
 targetEntityType: node
 cache: true

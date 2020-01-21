@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.digital_object_with_pannellum_panorama_
+    - core.entity_view_mode.node.digital_object_with_pannellum_panorama
     - field.field.node.digital_object.body
     - field.field.node.digital_object.field_descriptive_metadata
     - node.type.digital_object
@@ -66,10 +66,10 @@ third_party_settings:
             specs: 'https://iiif.io/api/presentation/3.0/'
             metadatadisplayentity_id: '3'
             metadatadisplayentity_uselabel: '1'
-id: node.digital_object.digital_object_with_pannellum_panorama_
+id: node.digital_object.digital_object_with_pannellum_panorama
 targetEntityType: node
 bundle: digital_object
-mode: digital_object_with_pannellum_panorama_
+mode: digital_object_with_pannellum_panorama
 content:
   body:
     label: hidden
