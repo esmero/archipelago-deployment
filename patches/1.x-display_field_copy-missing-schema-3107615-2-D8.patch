@@ -1,0 +1,14 @@
+diff --git a/config/schema/display_field_copy.schema.yml b/config/schema/display_field_copy.schema.yml
+new file mode 100644
+index 0000000..2a87ecf
+--- /dev/null
++++ b/config/schema/display_field_copy.schema.yml
+@@ -0,0 +1,8 @@
++ds.field.properties.display_field_copy:
++  type: mapping
++  label: 'Display Suite copy field properties'
++  mapping:
++    field_id:
++      type: string
++      label: 'Field ID'
++
