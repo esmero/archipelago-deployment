@@ -1,4 +1,4 @@
-uuid: 1986adee-fc53-4fdd-8950-64b7171ba11d
+uuid: c76f9c44-ef17-474f-8793-6ba30838056c
 langcode: en
 status: open
 dependencies:
@@ -10,8 +10,8 @@ weight: 0
 uid: 1
 template: false
 archive: false
-id: curator
-title: 'Webform for Curator role'
+id: descriptive_metadata
+title: 'Descriptive Metadata'
 description: 'This form adds Digital Object&#39;s metadata to your archipelago'
 category: Archipel
 elements: |
