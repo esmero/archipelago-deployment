@@ -1,4 +1,4 @@
-uuid: c76f9c44-ef17-474f-8793-6ba30838056c
+uuid: 1986adee-fc53-4fdd-8950-64b7171ba11d
 langcode: en
 status: open
 dependencies:
@@ -7,14 +7,305 @@ dependencies:
 open: null
 close: null
 weight: 0
-uid: 1
+uid: 14
 template: false
 archive: false
-id: descriptive_metadata
-title: 'Descriptive Metadata'
+id: curator
+title: 'Webform for Curator role'
 description: 'This form adds Digital Object&#39;s metadata to your archipelago'
 category: Archipel
-elements: "metadata:\n  '#type': webform_wizard_page\n  '#title': 'My Metadata'\n  '#access_create_roles':\n    - administrator\n    - metadata_pro\n  '#access_update_roles':\n    - authenticated\n  '#access_view_roles':\n    - authenticated\n  '#prev_button_label': 'Back: General Metadata'\n  '#next_button_label': 'Next: Linked Data'\n  label:\n    '#type': textfield\n    '#title': Title\n    '#help': 'Primary title given to described resource'\n    '#minlength': '3'\n    '#maxlength': '256'\n    '#placeholder': 'Title of this Object'\n    '#required': true\n    '#label_attributes':\n      class:\n        - custom-form-input-heading\n    '#format_items': comma\n    '#access_create_roles':\n      - administrator\n    '#access_update_roles':\n      - administrator\n  description:\n    '#type': textarea\n    '#title': Description\n    '#title_display': before\n    '#rows': '4'\n    '#autocomplete': 'off'\n    '#required': true\n    '#required_error': 'Please describe this object. It''s super needed.'\n    '#label_attributes':\n      class:\n        - custom-form-input-heading\n    '#format_items': comma\n  type:\n    '#type': select\n    '#title': 'Media Type'\n    '#options': schema_org_creative_works\n    '#required': true\n    '#label_attributes':\n      class:\n        - custom-form-input-heading\n  local_identifier:\n    '#type': textfield\n    '#title': 'Local Identifier'\n    '#autocomplete': 'off'\n    '#label_attributes':\n      class:\n        - custom-form-input-heading\n    '#format_items': comma\n  owner:\n    '#type': textfield\n    '#title': Owner\n    '#title_display': before\n    '#label_attributes':\n      class:\n        - custom-form-input-heading\n    '#format_items': comma\n  date_published:\n    '#type': date\n    '#title': 'date published'\n    '#format_items': comma\n    '#datepicker': true\n  geographic_place:\n    '#type': textfield\n    '#title': 'Place or Geographic Location'\n    '#description': 'A place name related to this Object.'\n    '#autocomplete': 'off'\n    '#format_items': comma\nagent:\n  '#type': webform_wizard_page\n  '#title': 'Linked Data'\n  '#open': true\n  '#prev_button_label': 'Prev: My Metadata'\n  '#next_button_label': 'Next: Collections'\n  subject_loc:\n    '#type': webform_metadata_loc\n    '#title': 'Subjects: Library of Congress'\n    '#multiple': 4\n    '#multiple__header': true\n    '#multiple__min_items': '1'\n    '#multiple__empty_items': '0'\n    '#multiple__sorting': false\n    '#multiple__add_more': false\n    '#multiple__add_more_button_label': ''\n    '#multiple__add_more_input_label': ''\n    '#label_attributes':\n      class:\n        - custom-form-input-heading\n    '#format_items': ol\n    '#access_create_roles':\n      - authenticated\n    '#access_update_roles':\n      - authenticated\n    '#access_view_roles':\n      - authenticated\n    '#label__required': true\n    '#uri__required': true\n  subject_wikidata:\n    '#type': webform_metadata_wikidata\n    '#title': 'Subjects: Wikidata'\n    '#multiple': 4\n    '#title_display': before\n    '#multiple__header': true\n    '#multiple__min_items': '1'\n    '#multiple__empty_items': '0'\n    '#multiple__sorting': false\n    '#multiple__add_more': false\n    '#multiple__add_more_button_label': ''\n    '#multiple__add_more_input_label': ''\n    '#label_attributes':\n      class:\n        - custom-form-input-heading\n    '#label__required': true\n    '#uri__required': true\n  edm_agent:\n    '#type': webform_metadata_wikidataagent\n    '#title': 'Person/Agent and their role'\n    '#multiple': 3\n    '#multiple__sorting': false\n    '#multiple__add_more': false\n    '#label_attributes':\n      class:\n        - custom-form-input-heading\n    '#role_label__title': 'This Agent''s Role'\n    '#role_uri__title': 'Role URL'\n  term_aat_getty:\n    '#type': webform_metadata_getty\n    '#title': 'Getty Vocabulary AAT term'\nrelationship_to_other_objects:\n  '#type': webform_wizard_page\n  '#title': Collections\n  '#prev_button_label': 'Back: Linked Data'\n  '#next_button_label': 'Next: Upload Files'\n  ismemberof:\n    '#type': entity_autocomplete\n    '#title': 'Collection Membership'\n    '#unique': true\n    '#format_items': comma\n    '#target_type': node\n    '#selection_handler': 'default:node'\n    '#selection_settings':\n      target_bundles:\n        digital_object_collection: digital_object_collection\n      sort:\n        field: title\n        direction: ASC\nmedia:\n  '#type': webform_wizard_page\n  '#title': 'Upload Files'\n  '#open': true\n  '#prev_button_label': 'Back to Collections'\n  images:\n    '#type': webform_image_file\n    '#title': 'Upload associated Digital Images'\n    '#multiple': 10\n    '#format': custom\n    '#format_html': '<img src=\"{{  item.link }}\">'\n    '#format_items': ol\n    '#access_create_roles':\n      - authenticated\n    '#access_update_roles':\n      - authenticated\n    '#access_view_roles':\n      - authenticated\n    '#uri_scheme': s3\n    '#max_filesize': '256'\n    '#file_extensions': 'jp2 jpg jpeg png svg tiff'\n    '#file_name': '[random:hash:sha1]-[webform_submission:langcode]-image-[random:hash:sha1]'\n    '#sanitize': true\n  documents:\n    '#type': webform_document_file\n    '#title': documents\n    '#multiple': 1000\n    '#file_name': '[random:hash:sha1]-[webform_submission:langcode]-doc-[random:hash:sha1]'\n    '#sanitize': true\n  audios:\n    '#type': webform_audio_file\n    '#title': audios\n    '#states':\n      visible:\n        ':input[name=\"type\"]':\n          value: Podcast\n    '#states_clear': false\n    '#format_items': comma\n    '#file_preview': file\n    '#max_filesize': '2'\n    '#file_extensions': mp3\n  videos:\n    '#type': webform_video_file\n    '#title': Videos\n    '#states':\n      visible:\n        ':input[name=\"type\"]':\n          value: Movie\n    '#states_clear': false\n    '#format_items': comma\n    '#file_preview': file\n    '#max_filesize': '50'\n    '#file_extensions': mp4\n  models:\n    '#type': managed_file\n    '#title': '3D Models'\n    '#states':\n      visible:\n        - ':input[name=\"type\"]':\n            value: 3DModel\n        - or\n        - ':input[name=\"type\"]':\n            value: Sculpture\n    '#states_clear': false\n    '#format_items': comma\n    '#max_filesize': '50'\n    '#file_extensions': stl\nhotspots:\n  '#type': webform_wizard_page\n  '#title': hotspots\n  '#open': true\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: Panorama\n  '#states_clear': false\n  hotspot:\n    '#type': webform_custom_composite\n    '#title': hotspot\n    '#element':\n      pitch:\n        '#type': textfield\n        '#required': true\n        '#title': 'Pitch in degrees'\n      yaw:\n        '#type': textfield\n        '#required': true\n        '#title': 'Yaw in degrees'\n      type:\n        '#type': select\n        '#options':\n          - info: info\n          - scene: scene\n        '#required': true\n        '#title': 'Hotspot Type'\n      text:\n        '#type': textarea\n        '#title': 'Text to display'\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': 'Save Metadata'\n  '#reset__label': 'Clear Form'\n  '#preview_prev_hide': true"
+elements: |
+  metadata:
+    '#type': webform_wizard_page
+    '#title': Metadata
+    '#access_create_roles':
+      - administrator
+      - metadata_pro
+      - curator
+    '#access_update_roles':
+      - authenticated
+    '#access_view_roles':
+      - authenticated
+    '#next_button_label': 'Move on to next step'
+    label:
+      '#type': textfield
+      '#title': Title
+      '#help': 'Primary title given to described resource'
+      '#minlength': '3'
+      '#maxlength': '256'
+      '#placeholder': 'Title of this Object'
+      '#required': true
+      '#label_attributes':
+        class:
+          - custom-form-input-heading
+      '#format_items': comma
+      '#access_create_roles':
+        - administrator
+      '#access_update_roles':
+        - administrator
+    type:
+      '#type': select
+      '#title': 'Media type'
+      '#options': schema_org_creative_works
+      '#required': true
+      '#label_attributes':
+        class:
+          - custom-form-input-heading
+    description:
+      '#type': textarea
+      '#title': Description
+      '#title_display': before
+      '#rows': '4'
+      '#autocomplete': 'off'
+      '#required': true
+      '#required_error': 'Please describe this object. It''s super needed.'
+      '#label_attributes':
+        class:
+          - custom-form-input-heading
+      '#format_items': comma
+    geographic_location:
+      '#type': webform_metadata_nominatim
+      '#title': 'Location of asset'
+      '#description': 'Example: <em>Central Park, Manhattan, New York County, New York, United States of America</em>'
+      '#help_title': Help
+      '#help': |
+        The location is meant to describe where the panorama was made with as much information as possible.<br />
+        <br />
+        Example: <em>Central Park, Manhattan, New York County, New York, United States of America</em>
+        
+      '#required': true
+      '#format_items': ol
+      '#lat__access': true
+      '#lng__access': true
+      '#display_name__title': 'Display Name'
+      '#display_name__access': true
+      '#city__access': true
+      '#country__access': true
+    creator:
+      '#type': textfield
+      '#title': Creator
+      '#description': 'Who captured this panorama? Please type the full name using <em>Last Name, First Name</em> notation. E.g.&nbsp;<em>Doe, Jane</em>'
+      '#title_display': before
+      '#label_attributes':
+        class:
+          - custom-form-input-heading
+      '#format_items': comma
+    owner:
+      '#type': textfield
+      '#title': 'Institutional owner'
+      '#title_display': before
+      '#label_attributes':
+        class:
+          - custom-form-input-heading
+      '#format_items': comma
+    local_identifier:
+      '#type': textfield
+      '#title': 'Local identifier'
+      '#autocomplete': 'off'
+      '#label_attributes':
+        class:
+          - custom-form-input-heading
+      '#format_items': comma
+    date_published:
+      '#type': date
+      '#title': 'Date asset was created'
+      '#format_items': comma
+      '#datepicker': true
+  agent:
+    '#type': webform_wizard_page
+    '#title': 'Linked Data'
+    '#open': true
+    '#prev_button_label': 'Back to previous step'
+    '#next_button_label': 'Move on to next step'
+    subject_loc:
+      '#type': webform_metadata_loc
+      '#title': 'Subjects: Library of Congress'
+      '#multiple': 4
+      '#help_title': 'LoC Help'
+      '#help': 'The LoC fields are meant to describe <em>what&nbsp;</em>is being metacatalogued.&nbsp;Example: a digital panorama of Washington Square Arch. One could add <em>architecture,</em><em> Fifth Avenue, </em>and <em>Washington Square</em>.'
+      '#title_display': before
+      '#description_display': before
+      '#multiple__header': true
+      '#multiple__min_items': '1'
+      '#multiple__empty_items': '0'
+      '#multiple__sorting': false
+      '#multiple__add_more': false
+      '#multiple__add_more_button_label': ''
+      '#multiple__add_more_input_label': ''
+      '#label_attributes':
+        class:
+          - custom-form-input-heading
+      '#format_items': ol
+      '#access_create_roles':
+        - authenticated
+      '#access_update_roles':
+        - authenticated
+      '#access_view_roles':
+        - authenticated
+      '#label__required': true
+      '#uri__required': true
+    subject_wikidata:
+      '#type': webform_metadata_wikidata
+      '#title': 'Subjects: Wikidata'
+      '#multiple': 4
+      '#help_title': 'Wikidata Help'
+      '#help': 'The Wikidata fields are meant to describe <em>what</em> is being metacatalogued. Example: a digital panorama of Washington Square Arch. One could add <em>urban park, architecture,</em> and<em> Fifth Avenue.</em>'
+      '#title_display': before
+      '#description_display': before
+      '#multiple__header': true
+      '#multiple__min_items': '1'
+      '#multiple__empty_items': '0'
+      '#multiple__sorting': false
+      '#multiple__add_more': false
+      '#multiple__add_more_button_label': ''
+      '#multiple__add_more_input_label': ''
+      '#label_attributes':
+        class:
+          - custom-form-input-heading
+      '#label__required': true
+      '#uri__required': true
+    edm_agent:
+      '#type': webform_metadata_wikidataagent
+      '#title': 'Agents and Roles'
+      '#multiple': 3
+      '#help_title': 'Agents and Roles Help'
+      '#help': 'This field uses Wikidata <strong>agents</strong> and their <strong>roles</strong>&nbsp;to describe <em>who</em> and their <em>involvement</em> of what is being metacatelogued. For example, a digital panorama of Washington Square Arch. The <strong>agent</strong> would be <em>Stanford White</em> and the <strong>role</strong> would be <em>architect</em>.'
+      '#title_display': before
+      '#description_display': before
+      '#multiple__sorting': false
+      '#multiple__add_more': false
+      '#label_attributes':
+        class:
+          - custom-form-input-heading
+      '#role_label__title': 'This Agent''s Role'
+      '#role_uri__title': 'Role URL'
+    term_aat_getty:
+      '#type': webform_metadata_getty
+      '#title': 'Getty Vocabulary AAT term'
+      '#states_clear': false
+      '#format_items': ol
+  relationship_to_other_objects:
+    '#type': webform_wizard_page
+    '#title': Collections
+    '#prev_button_label': 'Back: Linked Data'
+    '#next_button_label': 'Next: Upload Files'
+    ismemberof:
+      '#type': entity_autocomplete
+      '#title': 'Collection Membership'
+      '#unique': true
+      '#format_items': comma
+      '#target_type': node
+      '#selection_handler': 'default:node'
+      '#selection_settings':
+        target_bundles:
+          digital_object_collection: digital_object_collection
+        sort:
+          field: title
+          direction: ASC
+  media:
+    '#type': webform_wizard_page
+    '#title': 'Attach Files'
+    '#open': true
+    '#prev_button_label': 'Back to Collections'
+    images:
+      '#type': webform_image_file
+      '#title': 'Upload Associated Images'
+      '#multiple': 10
+      '#description': 'This image will be used as a preview thumbnail.'
+      '#format': custom
+      '#format_html': '<img src="{{  item.link }}">'
+      '#format_items': ol
+      '#access_create_roles':
+        - authenticated
+      '#access_update_roles':
+        - authenticated
+      '#access_view_roles':
+        - authenticated
+      '#uri_scheme': s3
+      '#max_filesize': '256'
+      '#file_extensions': 'jp2 jpg jpeg png svg tiff'
+      '#file_name': '[random:hash:sha1]-[webform_submission:langcode]-image-[random:hash:sha1]'
+      '#sanitize': true
+    documents:
+      '#type': webform_document_file
+      '#title': 'Upload Associated Documents'
+      '#multiple': 1000
+      '#states':
+        visible:
+          - ':input[name="type"]':
+              value: DigitalDocument
+          - xor
+          - ':input[name="type"]':
+              value: Thesis
+          - xor
+          - ':input[name="type"]':
+              value: Book
+      '#file_placeholder': 'This text will appear in the preview of the panorama.'
+      '#file_name': '[random:hash:sha1]-[webform_submission:langcode]-doc-[random:hash:sha1]'
+      '#sanitize': true
+    audios:
+      '#type': webform_audio_file
+      '#title': 'Upload Audio File'
+      '#states':
+        visible:
+          ':input[name="type"]':
+            value: Podcast
+      '#states_clear': false
+      '#format_items': comma
+      '#file_preview': file
+      '#max_filesize': '2'
+      '#file_extensions': mp3
+    videos:
+      '#type': webform_video_file
+      '#title': Videos
+      '#states':
+        visible:
+          ':input[name="type"]':
+            value: Movie
+      '#states_clear': false
+      '#format_items': comma
+      '#file_preview': file
+      '#max_filesize': '50'
+      '#file_extensions': mp4
+    models:
+      '#type': managed_file
+      '#title': '3D Models'
+      '#states':
+        visible:
+          - ':input[name="type"]':
+              value: 3DModel
+          - or
+          - ':input[name="type"]':
+              value: Sculpture
+      '#states_clear': false
+      '#format_items': comma
+      '#max_filesize': '50'
+      '#file_extensions': stl
+    terms_of_service:
+      '#type': webform_terms_of_service
+      '#title': 'I agree to the {terms of service}'
+      '#required': true
+      '#required_error': 'You need to agree to the License Agreement'
+      '#terms_title': 'Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) Licence'
+      '#terms_content': |
+        You agree on publishing your Panorama Image under&nbsp;<br />
+        <br />
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">https://creativecommons.org/licenses/by-nc-sa/4.0/</a><br />
+        &nbsp;
+        <h3 rel="cc:permits" resource="http://creativecommons.org/ns#Reproduction">You are accepting that other users will be free to</h3>
+        
+        <ul>
+        	<li rel="cc:permits" resource="http://creativecommons.org/ns#Distribution"><strong>Share</strong>&nbsp;&mdash; copy and redistribute the material in any medium or format</li>
+        	<li rel="cc:permits" resource="http://creativecommons.org/ns#DerivativeWorks"><strong>Adapt</strong>&nbsp;&mdash; remix, transform, and build upon the materia</li>
+        </ul>
+        You, the licensor cannot revoke these freedoms as long as other users follow the license terms.
+        
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit__label': 'Save Metadata'
+    '#reset__label': 'Clear Form'
+    '#preview_prev_hide': true
 css: ''
 javascript: ''
 settings:
