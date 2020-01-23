@@ -12,7 +12,7 @@ template: false
 archive: false
 id: descriptive_metadata
 title: 'Descriptive Metadata'
-description: 'This form adds Digital Object&#39;s metadata to your archipelago'
+description: 'This form adds metadata to your Digital Object.'
 category: Archipel
 elements: |
   metadata:
@@ -58,18 +58,18 @@ elements: |
       '#rows': '4'
       '#autocomplete': 'off'
       '#required': true
-      '#required_error': 'Please describe this object. It''s super needed.'
+      '#required_error': 'Please describe this object. It is super needed.'
       '#label_attributes':
         class:
           - custom-form-input-heading
       '#format_items': comma
     geographic_location:
       '#type': webform_metadata_nominatim
-      '#title': 'Location of asset'
+      '#title': 'Location related to this Digital Object'
       '#description': 'Example: <em>Central Park, Manhattan, New York County, New York, United States of America</em>'
       '#help_title': Help
       '#help': |
-        The location is meant to describe where the panorama was made with as much information as possible.<br />
+        This is meant to describe a geographic location cloesly related to this Digital Object. Such as the origin of the object, where it was created, etc.<br />
         <br />
         Example: <em>Central Park, Manhattan, New York County, New York, United States of America</em>
         
@@ -84,7 +84,7 @@ elements: |
     creator:
       '#type': textfield
       '#title': Creator
-      '#description': 'Who captured this panorama? Please type the full name using <em>Last Name, First Name</em> notation. E.g.&nbsp;<em>Doe, Jane</em>'
+      '#description': 'The names of the individuals / organizations responsible for the creation of this Digital Object.'
       '#title_display': before
       '#label_attributes':
         class:
@@ -122,7 +122,7 @@ elements: |
       '#title': 'Subjects: Library of Congress'
       '#multiple': 4
       '#help_title': 'LoC Help'
-      '#help': 'The LoC fields are meant to describe <em>what&nbsp;</em>is being metacatalogued.&nbsp;Example: a digital panorama of Washington Square Arch. One could add <em>architecture,</em><em> Fifth Avenue, </em>and <em>Washington Square</em>.'
+      '#help': 'The LoC fields are meant to describe <em>what&nbsp;</em>is being metacatalogued.&nbsp;E.g. Photograph of Washington Square Arch. One could add <em>architecture,</em><em> Fifth Avenue, </em>and <em>Washington Square</em>.'
       '#title_display': before
       '#description_display': before
       '#multiple__header': true
@@ -149,7 +149,7 @@ elements: |
       '#title': 'Subjects: Wikidata'
       '#multiple': 4
       '#help_title': 'Wikidata Help'
-      '#help': 'The Wikidata fields are meant to describe <em>what</em> is being metacatalogued. Example: a digital panorama of Washington Square Arch. One could add <em>urban park, architecture,</em> and<em> Fifth Avenue.</em>'
+      '#help': 'The Wikidata fields are meant to describe <em>what</em> is being metacatalogued. E.g. Photograph of Washington Square Arch. One could add <em>urban park, architecture,</em> and<em> Fifth Avenue.</em>'
       '#title_display': before
       '#description_display': before
       '#multiple__header': true
@@ -169,7 +169,7 @@ elements: |
       '#title': 'Agents and Roles'
       '#multiple': 3
       '#help_title': 'Agents and Roles Help'
-      '#help': 'This field uses Wikidata <strong>agents</strong> and their <strong>roles</strong>&nbsp;to describe <em>who</em> and their <em>involvement</em> of what is being metacatelogued. For example, a digital panorama of Washington Square Arch. The <strong>agent</strong> would be <em>Stanford White</em> and the <strong>role</strong> would be <em>architect</em>.'
+      '#help': 'This field uses Wikidata agents and roles to describe <em>who</em> and their <em>involvement</em> of what is being metacatelogued. E.g. a photograph of Washington Square Arch. The <strong>agent</strong> would be <em>Stanford White</em> and the <strong>role</strong> would be <em>architect</em>.'
       '#title_display': before
       '#description_display': before
       '#multiple__sorting': false
@@ -281,25 +281,6 @@ elements: |
       '#format_items': comma
       '#max_filesize': '50'
       '#file_extensions': stl
-    terms_of_service:
-      '#type': webform_terms_of_service
-      '#title': 'I agree to the {terms of service}'
-      '#required': true
-      '#required_error': 'You need to agree to the License Agreement'
-      '#terms_title': 'Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) Licence'
-      '#terms_content': |
-        You agree on publishing your Panorama Image under&nbsp;<br />
-        <br />
-        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">https://creativecommons.org/licenses/by-nc-sa/4.0/</a><br />
-        &nbsp;
-        <h3 rel="cc:permits" resource="http://creativecommons.org/ns#Reproduction">You are accepting that other users will be free to</h3>
-        
-        <ul>
-        	<li rel="cc:permits" resource="http://creativecommons.org/ns#Distribution"><strong>Share</strong>&nbsp;&mdash; copy and redistribute the material in any medium or format</li>
-        	<li rel="cc:permits" resource="http://creativecommons.org/ns#DerivativeWorks"><strong>Adapt</strong>&nbsp;&mdash; remix, transform, and build upon the materia</li>
-        </ul>
-        You, the licensor cannot revoke these freedoms as long as other users follow the license terms.
-        
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'
