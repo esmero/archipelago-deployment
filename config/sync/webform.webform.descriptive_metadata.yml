@@ -69,7 +69,7 @@ elements: |
       '#description': 'Example: <em>Central Park, Manhattan, New York County, New York, United States of America</em>'
       '#help_title': Help
       '#help': |
-        This is meant to describe a geographic location cloesly related to this Digital Object. Such as the origin of the object, where it was created, etc.<br />
+        This is meant to describe a geographic location closely related to this Digital Object. Such as the origin of the object, where it was created, etc.<br />
         <br />
         Example: <em>Central Park, Manhattan, New York County, New York, United States of America</em>
         
