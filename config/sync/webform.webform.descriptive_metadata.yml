@@ -240,7 +240,6 @@ elements: |
           - xor
           - ':input[name="type"]':
               value: Book
-      '#file_placeholder': 'This text will appear in the preview of the panorama.'
       '#file_name': '[random:hash:sha1]-[webform_submission:langcode]-doc-[random:hash:sha1]'
       '#sanitize': true
     audios:
