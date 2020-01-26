@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ff165a3b0a956cb5a6a966bc4be7ed2",
+    "content-hash": "9697e957c2b8a60c3fc22851a2624f95",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4075,6 +4075,9 @@
                     "services": {
                         "drush.services.yml": "^9 || ^10"
                     }
+                },
+                "patches_applied": {
+                    "Fix BlockdataCollector for 3.x": "patches/devel-webprofiler-BlocksDataCollector-3106747-2-D8.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4132,17 +4135,11 @@
         },
         {
             "name": "drupal/display_field_copy",
-            "version": "1.2.0",
+            "version": "dev-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/display_field_copy.git",
-                "reference": "8.x-1.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/display_field_copy-8.x-1.2.zip",
-                "reference": "8.x-1.2",
-                "shasum": "60a582fe0d7a6dc00240a73b96aecfa4c1fb3564"
+                "reference": "20f0cf9899719e9be22bd25767927aa0a4419e60"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -4154,12 +4151,15 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.2",
+                    "version": "8.x-1.2+0-dev",
                     "datestamp": "1563664081",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
+                },
+                "patches_applied": {
+                    "Fix missing schema 1.x": "patches/1.x-display_field_copy-missing-schema-3107615-2-D8.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4176,7 +4176,8 @@
             "homepage": "https://www.drupal.org/project/display_field_copy",
             "support": {
                 "source": "https://git.drupalcode.org/project/display_field_copy"
-            }
+            },
+            "time": "2019-07-20T23:05:47+00:00"
         },
         {
             "name": "drupal/ds",
@@ -10332,24 +10333,24 @@
         },
         {
             "name": "strawberryfield/format_strawberryfield",
-            "version": "dev-8.x-1.0-beta1",
+            "version": "dev-8.x-1.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "02c73b54a732c06e003de0227fb65217843ea8d6"
+                "reference": "1906f6ad21b25eb1960963938e9a29644cb999dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/02c73b54a732c06e003de0227fb65217843ea8d6",
-                "reference": "02c73b54a732c06e003de0227fb65217843ea8d6",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/1906f6ad21b25eb1960963938e9a29644cb999dc",
+                "reference": "1906f6ad21b25eb1960963938e9a29644cb999dc",
                 "shasum": ""
             },
             "require": {
-                "drupal/webform": "^5.0",
+                "drupal/webform": "^5.6",
                 "drupal/webform_views": "^5.0",
-                "ml/json-ld": "^1.0",
-                "mtdowling/jmespath.php": "^2.4",
-                "strawberryfield/strawberryfield": "dev-8.x-1.0-beta1"
+                "ml/json-ld": "^1.1",
+                "mtdowling/jmespath.php": "^2.5",
+                "strawberryfield/strawberryfield": "dev-8.x-1.0-beta2"
             },
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -10359,34 +10360,35 @@
             "authors": [
                 {
                     "name": "Diego Pino Navarro",
-                    "role": "Owner",
                     "email": "dpino@metro.org",
-                    "homepage": "https://github.com/DiegoPino"
+                    "homepage": "https://github.com/DiegoPino",
+                    "role": "Owner"
                 }
             ],
             "description": "Strawberryfield Mash/Smash/extractor/formatters for Drupal 8",
             "homepage": "https://github.com/esmero/format_strawberryfield",
-            "time": "2019-07-28T22:19:34+00:00"
+            "time": "2020-01-21T20:36:09+00:00"
         },
         {
             "name": "strawberryfield/strawberryfield",
-            "version": "dev-8.x-1.0-beta1",
+            "version": "dev-8.x-1.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "9f8f5750d54e69d4009ff00df9ee0965ee160921"
+                "reference": "8b6a98378d0da44ebbaed8d97d52c52a4870cfe0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/9f8f5750d54e69d4009ff00df9ee0965ee160921",
-                "reference": "9f8f5750d54e69d4009ff00df9ee0965ee160921",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/8b6a98378d0da44ebbaed8d97d52c52a4870cfe0",
+                "reference": "8b6a98378d0da44ebbaed8d97d52c52a4870cfe0",
                 "shasum": ""
             },
             "require": {
+                "drupal/search_api": "~1.14",
                 "frictionlessdata/datapackage": "dev-master",
-                "ml/json-ld": "^1.0",
-                "mtdowling/jmespath.php": "^2.4",
-                "swaggest/json-schema": "^0.12.11"
+                "ml/json-ld": "^1.1",
+                "mtdowling/jmespath.php": "^2.5",
+                "swaggest/json-schema": "^0.12.25"
             },
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -10396,35 +10398,35 @@
             "authors": [
                 {
                     "name": "Diego Pino Navarro",
-                    "role": "Owner",
                     "email": "dpino@metro.org",
-                    "homepage": "https://github.com/DiegoPino"
+                    "homepage": "https://github.com/DiegoPino",
+                    "role": "Owner"
                 }
             ],
             "description": "A strawberry field for Drupal 8",
             "homepage": "https://github.com/esmero/strawberryfield",
-            "time": "2019-07-26T18:54:13+00:00"
+            "time": "2020-01-21T20:34:46+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",
-            "version": "dev-8.x-1.0-beta1",
+            "version": "dev-8.x-1.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/webform_strawberryfield.git",
-                "reference": "7d250c0b19c5bcc154f280cdda0bf7bac530488e"
+                "reference": "54a61171f67c87e9c1537bd51ec52246ca7afb82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/7d250c0b19c5bcc154f280cdda0bf7bac530488e",
-                "reference": "7d250c0b19c5bcc154f280cdda0bf7bac530488e",
+                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/54a61171f67c87e9c1537bd51ec52246ca7afb82",
+                "reference": "54a61171f67c87e9c1537bd51ec52246ca7afb82",
                 "shasum": ""
             },
             "require": {
-                "drupal/webform": "^5.3",
+                "drupal/webform": "^5.6",
                 "drupal/webform_views": "^5.0",
-                "ml/json-ld": "^1.0",
-                "mtdowling/jmespath.php": "^2.4",
-                "strawberryfield/strawberryfield": "dev-8.x-1.0-beta1"
+                "ml/json-ld": "^1.1",
+                "mtdowling/jmespath.php": "^2.5",
+                "strawberryfield/strawberryfield": "dev-8.x-1.0-beta2"
             },
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -10434,14 +10436,14 @@
             "authors": [
                 {
                     "name": "Diego Pino Navarro",
-                    "role": "Owner",
                     "email": "dpino@metro.org",
-                    "homepage": "https://github.com/DiegoPino"
+                    "homepage": "https://github.com/DiegoPino",
+                    "role": "Owner"
                 }
             ],
             "description": "A Webform/strawberryfield integration module for Drupal 8",
             "homepage": "https://github.com/esmero/webform_strawberryfield",
-            "time": "2019-07-26T21:52:27+00:00"
+            "time": "2020-01-21T20:31:18+00:00"
         },
         {
             "name": "swaggest/json-diff",
@@ -13449,6 +13451,7 @@
         "drupal/config_inspector": 10,
         "drupal/context": 10,
         "drupal/devel": 20,
+        "drupal/display_field_copy": 20,
         "drupal/ds": 20,
         "drupal/field_permissions": 5,
         "drupal/form_mode_manager": 20,
