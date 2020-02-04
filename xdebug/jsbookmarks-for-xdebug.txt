@@ -1,0 +1,6 @@
+# This javascripts should be used as Bookmark elements(in the address/url part) to switch XDEBUG v/s normal PHP docker containers
+
+# Enabled XDEBUG on Current page
+javascript:(/**%20@version%200.5.2%20*/function()%20%7Bdocument.cookie='XDEBUG_SESSION='+'xdebug'+';path=/;';%7D)()
+# Disable XDEBUG on Current page
+javascript:(/**%20@version%200.5.2%20*/function()%20%7Bdocument.cookie='XDEBUG_SESSION='+''+';expires=Mon,%2005%20Jul%202000%2000:00:00%20GMT;path=/;';%7D)()
