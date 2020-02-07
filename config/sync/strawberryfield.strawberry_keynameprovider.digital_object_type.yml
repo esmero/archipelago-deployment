@@ -1,0 +1,11 @@
+uuid: 7a084ce7-99af-4dd9-80c1-53c84c19f676
+langcode: en
+status: true
+dependencies: {  }
+id: digital_object_type
+label: 'Digital Object Type'
+pluginid: jmespath
+pluginconfig:
+  source_key: type
+  exposed_key: digital_object_type
+active: true
