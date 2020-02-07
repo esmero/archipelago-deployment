@@ -35,8 +35,21 @@ third_party_settings:
         requireFieldMatch: false
         snippets: 3
         fragsize: 0
+    mlt:
+      mintf: 1
+      mindf: 1
+      maxdf: 0
+      maxdfpct: 0
+      minwl: 0
+      maxwl: 0
+      maxqt: 100
+      maxntp: 2000
+      boost: false
+      interestingTerms: none
     advanced:
       index_prefix: ''
+      collection: ''
+      timezone: ''
 _core:
   default_config_hash: 5gcfQOCjXVt6We4_q02H8VjnECSON5NgKOchFAsncxU
 id: default_solr_index
@@ -45,7 +58,7 @@ description: 'Basic Content'
 read_only: false
 field_settings:
   agents:
-    label: 'Descriptive Metadata » agents'
+    label: '🍓 Strawberry (Descriptive Metadata source) » agents'
     datasource_id: 'entity:node'
     property_path: 'field_descriptive_metadata:name_label'
     type: string
@@ -63,7 +76,7 @@ field_settings:
         - user
         - user
   author_1:
-    label: 'Descriptive Metadata » author'
+    label: '🍓 Strawberry (Descriptive Metadata source) » author'
     datasource_id: 'entity:node'
     property_path: 'field_descriptive_metadata:author'
     type: string
@@ -86,6 +99,14 @@ field_settings:
     dependencies:
       module:
         - node
+  digital_object_type:
+    label: '🍓 Strawberry (Descriptive Metadata source) » digital_object_type'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:digital_object_type'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   field_tags:
     label: Tags
     datasource_id: 'entity:node'
@@ -100,7 +121,7 @@ field_settings:
     property_path: fulltext
     type: string
   hocr:
-    label: 'Descriptive Metadata » hocr'
+    label: '🍓 Strawberry (Descriptive Metadata source) » hocr'
     datasource_id: 'entity:node'
     property_path: 'field_descriptive_metadata:hocr'
     type: string
@@ -108,7 +129,7 @@ field_settings:
       config:
         - field.storage.node.field_descriptive_metadata
   ismemberof:
-    label: 'Descriptive Metadata » ismemberof'
+    label: '🍓 Strawberry (Descriptive Metadata source) » ismemberof'
     datasource_id: 'entity:node'
     property_path: 'field_descriptive_metadata:ismemberof'
     type: string
@@ -116,7 +137,7 @@ field_settings:
       config:
         - field.storage.node.field_descriptive_metadata
   label_1:
-    label: 'Descriptive Metadata » Full text labels'
+    label: '🍓 Strawberry (Descriptive Metadata source) » Full text labels'
     datasource_id: 'entity:node'
     property_path: 'field_descriptive_metadata:label'
     type: text
@@ -124,7 +145,7 @@ field_settings:
       config:
         - field.storage.node.field_descriptive_metadata
   label_2:
-    label: 'Descriptive Metadata » label'
+    label: '🍓 Strawberry (Descriptive Metadata source) » label'
     datasource_id: 'entity:node'
     property_path: 'field_descriptive_metadata:label'
     type: string
@@ -132,7 +153,7 @@ field_settings:
       config:
         - field.storage.node.field_descriptive_metadata
   license:
-    label: 'Descriptive Metadata » license'
+    label: '🍓 Strawberry (Descriptive Metadata source) » license'
     datasource_id: 'entity:node'
     property_path: 'field_descriptive_metadata:license'
     type: string
@@ -140,13 +161,21 @@ field_settings:
       config:
         - field.storage.node.field_descriptive_metadata
   name_1:
-    label: 'Descriptive Metadata » name'
+    label: '🍓 Strawberry (Descriptive Metadata source) » name'
     datasource_id: 'entity:node'
     property_path: 'field_descriptive_metadata:name'
     type: text
     dependencies:
       config:
         - field.storage.node.field_descriptive_metadata
+  nid:
+    label: ID
+    datasource_id: 'entity:node'
+    property_path: nid
+    type: integer
+    dependencies:
+      module:
+        - node
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -190,7 +219,7 @@ field_settings:
       module:
         - node
   str_flatten_keys:
-    label: 'Descriptive Metadata » JSON keys defined in this field'
+    label: '🍓 Strawberry (Descriptive Metadata source) » JSON keys defined in this field'
     datasource_id: 'entity:node'
     property_path: 'field_descriptive_metadata:str_flatten_keys'
     type: string
@@ -206,6 +235,14 @@ field_settings:
     dependencies:
       module:
         - node
+  title_autocomplete:
+    label: 'Title for autocomplete'
+    datasource_id: 'entity:node'
+    property_path: title
+    type: 'solr_text_custom:ngram'
+    dependencies:
+      module:
+        - node
   type:
     label: 'Content type'
     datasource_id: 'entity:node'
@@ -215,7 +252,7 @@ field_settings:
       module:
         - node
   type_1:
-    label: 'Descriptive Metadata » type'
+    label: '🍓 Strawberry (Descriptive Metadata source) » type'
     datasource_id: 'entity:node'
     property_path: 'field_descriptive_metadata:type'
     type: string
@@ -254,14 +291,14 @@ datasource_settings:
       selected: {  }
   strawberryfield_flavor_datasource:
     bundles:
-      default: '0'
+      default: false
       selected:
-        digital_object: digital_object
-        digital_object_collection: 0
+        - '0'
+        - digital_object
     languages:
-      default: '1'
+      default: true
       selected:
-        en: 0
+        - '0'
 processor_settings:
   add_url:
     weights:
@@ -300,6 +337,7 @@ processor_settings:
     weights:
       preprocess_index: -3
       preprocess_query: -6
+  language_with_fallback: {  }
   rendered_item:
     weights:
       add_properties: 0
@@ -314,6 +352,7 @@ processor_settings:
       - label_1
       - name_1
       - title
+      - title_autocomplete
     spaces: ''
     overlap_cjk: 1
     minimum_word_size: '3'
