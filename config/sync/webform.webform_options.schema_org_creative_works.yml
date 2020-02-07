@@ -6,4 +6,4 @@ id: schema_org_creative_works
 label: 'Schema.org Creative Works'
 category: archipelago
 likert: false
-options: "Article: Article\nBook: Book\nCollection: Collection\nDataset: Dataset\nDigitalDocument: DigitalDocument\nMap: Map\nMovie: Movie\nMusicRecording: MusicRecording\nPainting: Painting\nPhotograph: Photograph\nSculpture: Sculpture\nVisualArtwork: VisualArtwork\nThesis: Thesis\nPodcast: Podcast\nPanorama: 'Panorama (http://ns.google.com/photos/1.0/panorama)'\n3DModel: '3D Model'\n"
+options: "Article: Article\nBook: Book\nCollection: Collection\nDataset: Dataset\nDigitalDocument: DigitalDocument\nMap: Map\nMovie: Movie\nMusicRecording: MusicRecording\nPainting: Painting\nPhotograph: Photograph\nSculpture: Sculpture\nVisualArtwork: VisualArtwork\nThesis: Thesis\nPodcast: Podcast\nPanorama: 'Panorama (http://ns.google.com/photos/1.0/panorama)'\nPanoramaTour: 'Panorama Tour (http://ns.google.com/photos/1.0/panorama)'\n3DModel: '3D Model'\nWebPage: 'Web Page'\nDataset: 'Dataset'\n"
