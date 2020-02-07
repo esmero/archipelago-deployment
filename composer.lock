@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9697e957c2b8a60c3fc22851a2624f95",
+    "content-hash": "2f21bf1ea9f6c2789d536b7119a30a7a",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -72,16 +72,16 @@
         },
         {
             "name": "archipelago/archipelago_subtheme",
-            "version": "dev-8.x-1.0-beta1",
+            "version": "dev-8.x-1.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme.git",
-                "reference": "3be24b38c9f97da6b4b378bda0117a90d5d61c90"
+                "reference": "facd1e355cf16a5512945ed320615661ad0f0445"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/3be24b38c9f97da6b4b378bda0117a90d5d61c90",
-                "reference": "3be24b38c9f97da6b4b378bda0117a90d5d61c90",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/facd1e355cf16a5512945ed320615661ad0f0445",
+                "reference": "facd1e355cf16a5512945ed320615661ad0f0445",
                 "shasum": ""
             },
             "require": {
@@ -95,14 +95,14 @@
             "authors": [
                 {
                     "name": "Diego Pino Navarro",
-                    "role": "Owner",
                     "email": "dpino@metro.org",
-                    "homepage": "https://github.com/DiegoPino"
+                    "homepage": "https://github.com/DiegoPino",
+                    "role": "Owner"
                 }
             ],
             "description": "Bare Bone Bootstrap4 to be further extended by nice people",
             "homepage": "https://github.com/esmero/archipelago_subtheme",
-            "time": "2019-07-26T21:07:42+00:00"
+            "time": "2019-09-04T18:17:48+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -10337,12 +10337,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "1906f6ad21b25eb1960963938e9a29644cb999dc"
+                "reference": "6d3fcfb48757a16980be470283a724462357b954"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/1906f6ad21b25eb1960963938e9a29644cb999dc",
-                "reference": "1906f6ad21b25eb1960963938e9a29644cb999dc",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/6d3fcfb48757a16980be470283a724462357b954",
+                "reference": "6d3fcfb48757a16980be470283a724462357b954",
                 "shasum": ""
             },
             "require": {
@@ -10367,7 +10367,7 @@
             ],
             "description": "Strawberryfield Mash/Smash/extractor/formatters for Drupal 8",
             "homepage": "https://github.com/esmero/format_strawberryfield",
-            "time": "2020-01-21T20:36:09+00:00"
+            "time": "2020-02-07T15:24:13+00:00"
         },
         {
             "name": "strawberryfield/strawberryfield",
@@ -10375,12 +10375,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "8b6a98378d0da44ebbaed8d97d52c52a4870cfe0"
+                "reference": "761ddf7e925592a60b98c6b1d05319bf0682f786"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/8b6a98378d0da44ebbaed8d97d52c52a4870cfe0",
-                "reference": "8b6a98378d0da44ebbaed8d97d52c52a4870cfe0",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/761ddf7e925592a60b98c6b1d05319bf0682f786",
+                "reference": "761ddf7e925592a60b98c6b1d05319bf0682f786",
                 "shasum": ""
             },
             "require": {
@@ -10405,7 +10405,7 @@
             ],
             "description": "A strawberry field for Drupal 8",
             "homepage": "https://github.com/esmero/strawberryfield",
-            "time": "2020-01-21T20:34:46+00:00"
+            "time": "2020-02-07T16:04:33+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",
@@ -10413,12 +10413,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/webform_strawberryfield.git",
-                "reference": "54a61171f67c87e9c1537bd51ec52246ca7afb82"
+                "reference": "7885a2c3d17cd94a9b133c39bfc1c2e70f532067"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/54a61171f67c87e9c1537bd51ec52246ca7afb82",
-                "reference": "54a61171f67c87e9c1537bd51ec52246ca7afb82",
+                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/7885a2c3d17cd94a9b133c39bfc1c2e70f532067",
+                "reference": "7885a2c3d17cd94a9b133c39bfc1c2e70f532067",
                 "shasum": ""
             },
             "require": {
@@ -10443,7 +10443,7 @@
             ],
             "description": "A Webform/strawberryfield integration module for Drupal 8",
             "homepage": "https://github.com/esmero/webform_strawberryfield",
-            "time": "2020-01-21T20:31:18+00:00"
+            "time": "2020-02-07T19:36:08+00:00"
         },
         {
             "name": "swaggest/json-diff",
