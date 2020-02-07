@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "archipelago/archipelago_subtheme": "dev-8.x-1.0-beta1",
+        "archipelago/archipelago_subtheme": "dev-8.x-1.0-beta2",
         "aws/aws-php-sns-message-validator": "^1.5",
         "aws/aws-sdk-php": "^3.63",
         "composer/installers": "^1.2",
