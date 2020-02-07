@@ -1,0 +1,10 @@
+uuid: 69084744-0a06-4594-9143-adffd4bc7ed5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_with_pdf
+label: 'Digital Object with PDF Viewer'
+targetEntityType: node
+cache: true
