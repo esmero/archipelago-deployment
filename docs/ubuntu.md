@@ -74,7 +74,7 @@ Ok, now we are ready to start.
 
 ## Step 1: Deployment
 
-##### Prefer to watch a video of how to install? Go to our [`user contributed documentation`](https://github.com/esmero/archipelago-deployment/blob/8.x-1.0-beta1/docs/ubuntu.md#user-contributed-documentation)!
+##### Prefer to watch a video of how to install? Go to our [`user contributed documentation`](https://github.com/esmero/archipelago-deployment/blob/8.x-1.0-beta2/docs/ubuntu.md#user-contributed-documentation)!
 
 #### IMPORTANT
 
@@ -92,7 +92,7 @@ Now that you got it, lets deploy:
 ```Shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 8.x-1.0-beta1
+git checkout 8.x-1.0-beta2
 cp docker-compose-nginx.yml docker-compose.yml
 docker-compose up -d
 ```
@@ -125,7 +125,7 @@ pass:minio123
 and create a bucket named "archipelago". To do so press the red/coral `+` button on the bottom-right side and press the `Bucket` icon , it has a tooltip that says "create bucket". Write `archipelago` and submit, done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
 
-## Step 3: Deploy Drupal 8.7.5 and the awesome Archipelago Modules
+## Step 3: Deploy Drupal 8.8.1 and the awesome Archipelago Modules
 
 The following will run composer inside the esmero-php container to download all dependencies and Drupal Core too.
 
@@ -174,9 +174,9 @@ Note: It can take some time to start the first time (Drupal needs some warming u
 
 If you see any issues or errors or need help with a step, please let us know (ASAP!). You can either open an `issue` in this repository or use the [Google Group](https://groups.google.com/forum/#!forum/archipelago-commons). We are here to help.
 
-This is our first beta release and even when we have a longer Path to travel until we feel we are ready for a full `8.x-1.0`, we are pretty excited about how far we have gotten in less than a year. If you like this, let us know.
+This is our second beta release and still lots `@TODOS` ahead before we are ready for a full `8.x-1.0`, we are pretty excited about how far we have gotten in the last 14 months, since we made the first pieces of code public. If you like this, let us know!
 
-### User contributed documentation:
+### User contributed documentation (A Video!):
 _Installing Archipelago on AWS Ubuntu_ by [Zach Spalding](https://github.com/senyzspalding): https://youtu.be/RBy7UMxSmyQ
 
 ## Caring & Coding + Fixing
