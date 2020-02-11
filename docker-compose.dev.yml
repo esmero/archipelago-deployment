@@ -28,7 +28,7 @@ services:
   php-debug:
     container_name: esmero-php-debug
     restart: always
-    image: esmero-php:development
+    image: esmero/php-7.3-fpm:development
     tty: true
     networks:
       - host-net
