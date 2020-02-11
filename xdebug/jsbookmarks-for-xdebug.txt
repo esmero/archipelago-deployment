@@ -1,0 +1,12 @@
+# This javascript should be used as Bookmark elements (in the address/url part) to set and unset the XDEBUG_SESSION cookie
+# When XDEBUG_SESSION=archipelago is enabled (by hitting the "Start XDEBUG" marklet), if we are running the xdebug.conf nginx server, that will trigger use of the php-debug Docker container.
+# You resume using the normal php Docker container by hitting the "Stop XDEBUG" marklet. This unsets the XDEBUG=SESSION cookie value.
+# For more info see https://www.jetbrains.com/phpstorm/marklets/
+
+# Create 2 bookmarks with the URLS below:
+
+# Start XDEBUG on Current page
+javascript:(/**%20@version%200.5.2%20*/function()%20%7Bdocument.cookie='XDEBUG_SESSION='+'archipelago'+';path=/;';%7D)()
+
+# Stop XDEBUG on Current page
+javascript:(/**%20@version%200.5.2%20*/function()%20%7Bdocument.cookie='XDEBUG_SESSION='+''+';expires=Mon,%2005%20Jul%202000%2000:00:00%20GMT;path=/;';%7D)()
