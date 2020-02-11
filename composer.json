@@ -24,7 +24,7 @@
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/bamboo_twig": "5.x-dev",
         "drupal/bootstrap_barrio": "^4.22",
-        "drupal/config_inspector": "^1.0@beta",
+        "drupal/config_inspector": "dev-1.x",
         "drupal/config_installer": "^1.7",
         "drupal/config_update": "^1.6",
         "drupal/config_update_ui": "^1.6",
