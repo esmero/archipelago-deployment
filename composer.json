@@ -122,6 +122,9 @@
         },
         "enable-patching": true,
         "patches": {
+            "drupal/drupal": {
+            "Fix Drupal.ajax 8.8.x for bigpipe and CDN":"https://www.drupal.org/files/issues/2019-12-30/1988968-162.patch"
+            },
             "drupal/form_mode_manager": {
             "Fix Form Mode title": "https://www.drupal.org/files/issues/2019-12-10/form_mode_manager-bundle-label-in-title-3100112-2-D8.patch"
             },

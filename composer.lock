@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "148b58e6b9c3d74a82db063fcf635c8b",
+    "content-hash": "3d13cc66dc6e3ce4eb1f22cad5bb0fab",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -76,12 +76,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme.git",
-                "reference": "facd1e355cf16a5512945ed320615661ad0f0445"
+                "reference": "3f6951a65f56a23b79eb2215da6bc13f4de1dd47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/facd1e355cf16a5512945ed320615661ad0f0445",
-                "reference": "facd1e355cf16a5512945ed320615661ad0f0445",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/3f6951a65f56a23b79eb2215da6bc13f4de1dd47",
+                "reference": "3f6951a65f56a23b79eb2215da6bc13f4de1dd47",
                 "shasum": ""
             },
             "require": {
@@ -102,7 +102,7 @@
             ],
             "description": "Bare Bone Bootstrap4 to be further extended by nice people",
             "homepage": "https://github.com/esmero/archipelago_subtheme",
-            "time": "2019-09-04T18:17:48+00:00"
+            "time": "2020-02-13T22:11:08+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -10332,12 +10332,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "6d3fcfb48757a16980be470283a724462357b954"
+                "reference": "7535e15ce09f3b9c6d653b7f31738df512bd6dd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/6d3fcfb48757a16980be470283a724462357b954",
-                "reference": "6d3fcfb48757a16980be470283a724462357b954",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/7535e15ce09f3b9c6d653b7f31738df512bd6dd9",
+                "reference": "7535e15ce09f3b9c6d653b7f31738df512bd6dd9",
                 "shasum": ""
             },
             "require": {
@@ -10362,7 +10362,7 @@
             ],
             "description": "Strawberryfield Mash/Smash/extractor/formatters for Drupal 8",
             "homepage": "https://github.com/esmero/format_strawberryfield",
-            "time": "2020-02-07T15:24:13+00:00"
+            "time": "2020-02-14T21:57:46+00:00"
         },
         {
             "name": "strawberryfield/strawberryfield",
