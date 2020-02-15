@@ -66,7 +66,7 @@ services:
       - ${PWD}/persistent/db:/var/lib/mysql:cached
   iiif:
     container_name: esmero-cantaloupe
-    image: "esmero/cantaloupe-s3:4.0.3"
+    image: "esmero/cantaloupe-s3:4.1.5"
     restart: always
     ports:
       - "8183:8182"
