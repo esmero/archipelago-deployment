@@ -10370,12 +10370,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "761ddf7e925592a60b98c6b1d05319bf0682f786"
+                "reference": "d3181d2d83e514d6abf5dfafbc65d64d532b1a09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/761ddf7e925592a60b98c6b1d05319bf0682f786",
-                "reference": "761ddf7e925592a60b98c6b1d05319bf0682f786",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/d3181d2d83e514d6abf5dfafbc65d64d532b1a09",
+                "reference": "d3181d2d83e514d6abf5dfafbc65d64d532b1a09",
                 "shasum": ""
             },
             "require": {
@@ -10400,7 +10400,7 @@
             ],
             "description": "A strawberry field for Drupal 8",
             "homepage": "https://github.com/esmero/strawberryfield",
-            "time": "2020-02-07T16:04:33+00:00"
+            "time": "2020-02-15T00:21:13+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",
