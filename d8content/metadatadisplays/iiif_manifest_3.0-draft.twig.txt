@@ -1,0 +1,134 @@
+{% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %}
+  {% set IIIFserverurl = iiif_server ? iiif_server : Webserverurl %}
+    {% set currenturl = '<current>' %}
+      {% if node.id %}
+        {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+          {% else %}
+          {% set nodeurl = currenturl %}
+            {% endif%}
+            {% set len = language.getId() ? language.getId() : "en" %}
+              {
+                "@context":  [
+                "http://www.w3.org/ns/anno.jsonld",
+                "http://iiif.io/api/presentation/3/context.json"
+                ],
+                "type": "Manifest",
+                "id": "{{ nodeurl }}",
+                "label": {
+                  "{{ len }}": [
+                  "{{ node.title() }}"
+                  ]
+                },
+                "description":  {
+                  "{{ len }}": [
+                  "{{ data.description }}"
+                  ]
+                },
+                "requiredStatement": {
+                  "label": { "en": [ "Attribution" ] },
+                  "value": { "en": [ "Provided by Archipelago Deployment" ] }
+                },
+                "metadata": [
+                {% for agent in attribute(data, 'edm_agent') %}
+                  {
+                    "label": {
+                      "{{ len }}": [
+                      "{{ agent.role_label }}"
+                      ]
+                    },
+                    "value": {
+                      "{{ len }}": [
+                      "{{ agent.name_label }}"
+                      ]
+                    }
+                  },
+                {% endfor %}
+                {
+                  "label": {
+                    "{{ len }}": [
+                    "description"
+                    ]
+                  },     
+                  "value": {
+                    "{{ len }}": [
+                    "{{ data.description }}"
+                    ]
+                  }   
+                },
+                {
+                  "label": {
+                    "{{ len }}": [
+                    "navDate"
+                    ]
+                  },
+                  "value":  {
+                    "{{ len }}": [
+                    "{{ node.getChangedTime|date("F jS \\a\\t g:ia") }}"
+                    ]
+                  }
+                },
+                {
+                  "label": {
+                    "{{ len }}": [
+                    "license"
+                    ]
+                  },
+                  "value": {
+                    "{{ len }}": [
+                    "http://rightsstatements.org/vocab/InC-EDU/1.0/"
+                    ]
+                  } 
+                }
+                ],
+                {% if attribute(data, 'memberof') %}
+                  {% set currentnode = 'node/' ~ data.memberof %}
+                    "within": "{{ url(currentnode) }}",
+                    {% else %}
+                    {% set currentnode = '<current>' %}
+                    {% endif %}
+                    "items": [
+                    {% for page in attribute(data, 'as:image') %}
+                      {
+                        "id": "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}",
+                        "type": "Canvas",
+                        "label": "p. {{ loop.index }}",
+                        "width": 3,
+                        "height": 4,
+                        "items": [{
+                          "type": "AnnotationPage",
+                          "items": [{
+                            "id": "{{ nodeurl }}/iiif/annotation/p{{ loop.index }}",
+                            "type": "Annotation",
+                            "motivation": "painting",
+                            "target": "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}",
+                            "body": {
+                              "id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}/full/,1500/0/default.jpg",
+                              "type": "Image",
+                              "format": "image/jpeg",
+                              "height": 1500,
+                              "service": {
+                                "type": "ImageService2",
+                                "profile": "level2",
+                                "id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}"
+                              }
+                            }
+                          }]
+                        }]
+                      }{{ not loop.last ? ',' : '' }}
+                    {% endfor %}     
+                    ],
+                    "structures": [{
+                      "id": "{{ nodeurl }}/iiif/range/r1",
+                      "type": "Range",
+                      "label": {
+                        "{{ len }}": [
+                        "{{ node.title() }}"
+                        ]
+                      },
+                      "items": [
+                      {% for range in attribute(data, 'as:image') %}
+                        "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}"{{ not loop.last ? ',' : '' }}
+                      {% endfor %}
+                      ]
+                    }] 
+                  }
