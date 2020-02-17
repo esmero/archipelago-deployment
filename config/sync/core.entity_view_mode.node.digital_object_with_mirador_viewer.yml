@@ -1,0 +1,10 @@
+uuid: 084747df-adbe-4bbc-a2e9-ba0906708b6a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_with_mirador_viewer
+label: 'Digital Object with Mirador Viewer'
+targetEntityType: node
+cache: true

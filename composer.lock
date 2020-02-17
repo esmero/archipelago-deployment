@@ -10332,12 +10332,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "7535e15ce09f3b9c6d653b7f31738df512bd6dd9"
+                "reference": "f8323a9e9707e06a23248aa080e7354f7f4c360d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/7535e15ce09f3b9c6d653b7f31738df512bd6dd9",
-                "reference": "7535e15ce09f3b9c6d653b7f31738df512bd6dd9",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/f8323a9e9707e06a23248aa080e7354f7f4c360d",
+                "reference": "f8323a9e9707e06a23248aa080e7354f7f4c360d",
                 "shasum": ""
             },
             "require": {
@@ -10362,7 +10362,7 @@
             ],
             "description": "Strawberryfield Mash/Smash/extractor/formatters for Drupal 8",
             "homepage": "https://github.com/esmero/format_strawberryfield",
-            "time": "2020-02-14T21:57:46+00:00"
+            "time": "2020-02-17T17:18:33+00:00"
         },
         {
             "name": "strawberryfield/strawberryfield",

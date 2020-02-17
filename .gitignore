@@ -29,3 +29,4 @@
 /web/.editorconfig
 docker-compose.yml
 web/sites/default/services.yml
+persistent/miniodata/.minio.sys/config/config.json
