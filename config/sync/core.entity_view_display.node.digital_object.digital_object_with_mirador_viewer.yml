@@ -1,0 +1,104 @@
+uuid: c254204e-a2d4-4ed0-a47c-51ad1bd448c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.digital_object_with_mirador_viewer
+    - field.field.node.digital_object.body
+    - field.field.node.digital_object.field_descriptive_metadata
+    - node.type.digital_object
+  module:
+    - ds
+    - field_layout
+    - strawberryfield
+    - text
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      content:
+        - links
+        - body
+        - 'display_field_copy:node-field_descriptive_metadata_image'
+        - 'display_field_copy:node-formatted_metadata'
+        - field_descriptive_metadata
+        - 'display_field_copy:node-static_media'
+    fields:
+      'display_field_copy:node-field_descriptive_metadata_image':
+        plugin_id: 'display_field_copy:node-field_descriptive_metadata_image'
+        weight: 2
+        label: hidden
+        formatter: strawberry_mirador_formatter
+        settings:
+          formatter:
+            mediasource:
+              metadataexposeentity: metadataexposeentity
+              manifesturl: manifesturl
+              manifestnodelist: manifestnodelist
+            main_mediasource: metadataexposeentity
+            metadataexposeentity_source: iiifmanifest
+            manifesturl_json_key_source: iiifmanifest
+            manifestnodelist_json_key_source: isrelatedto
+            max_width: '0'
+            max_height: '960'
+            use_iiif_globals: '1'
+            iiif_base_url: 'http://localhost:8183/iiif/2'
+            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+      'display_field_copy:node-formatted_metadata':
+        plugin_id: 'display_field_copy:node-formatted_metadata'
+        weight: 3
+        label: hidden
+        formatter: strawberry_metadata_formatter
+        settings:
+          formatter:
+            specs: 'http://schema.org'
+            metadatadisplayentity_id: '1'
+            metadatadisplayentity_uselabel: 0
+      'display_field_copy:node-static_media':
+        plugin_id: 'display_field_copy:node-static_media'
+        weight: 5
+        label: hidden
+        formatter: strawberry_metadata_formatter
+        settings:
+          formatter:
+            specs: 'http://schema.org'
+            metadatadisplayentity_id: '3'
+            metadatadisplayentity_uselabel: '1'
+id: node.digital_object.digital_object_with_mirador_viewer
+targetEntityType: node
+bundle: digital_object
+mode: digital_object_with_mirador_viewer
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_descriptive_metadata:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: strawberry_default_formatter
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  content_moderation_control: true
+  langcode: true
+  search_api_excerpt: true
