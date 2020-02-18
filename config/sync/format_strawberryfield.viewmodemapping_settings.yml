@@ -11,7 +11,7 @@ type_to_viewmode:
     weight: 2
   -
     jsontype: Photograph
-    view_mode: digital_object_with_mirador_viewer
+    view_mode: digital_object_viewmode_fullitem
     active: true
     weight: 3
   -
@@ -26,19 +26,14 @@ type_to_viewmode:
     weight: 7
   -
     jsontype: Book
-    view_mode: digital_object_with_pannellum_panorama
+    view_mode:  digital_object_with_book_reader
     active: true
     weight: 7
   -
     jsontype: Podcast
-    view_mode: digital_object_with_book_reader
-    active: true
-    weight: 8
-  -
-    jsontype: Video
     view_mode: digital_object_with_a_v_player
     active: true
-    weight: 9
+    weight: 8
   -
     jsontype: Collection
     view_mode: collection_listing
