@@ -34,8 +34,8 @@ third_party_settings:
         formatter: strawberry_image_formatter
         settings:
           formatter:
-            iiif_base_url: 'http://localhost:8183/iiif/2/'
-            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2/'
+            iiif_base_url: 'http://localhost:8183/iiif/2'
+            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
             json_key_source: 'as:image'
             number_images: '1'
             max_width: '240'
