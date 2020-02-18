@@ -76,12 +76,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme.git",
-                "reference": "3f6951a65f56a23b79eb2215da6bc13f4de1dd47"
+                "reference": "18382d125a26df1189760954c0900e62200d7ec1"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/3f6951a65f56a23b79eb2215da6bc13f4de1dd47",
-                "reference": "3f6951a65f56a23b79eb2215da6bc13f4de1dd47",
+                "reference": "18382d125a26df1189760954c0900e62200d7ec1",
                 "shasum": ""
             },
             "require": {
