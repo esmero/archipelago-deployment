@@ -76,12 +76,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme.git",
-                "reference": "3f6951a65f56a23b79eb2215da6bc13f4de1dd47"
+                "reference": "18382d125a26df1189760954c0900e62200d7ec1"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/3f6951a65f56a23b79eb2215da6bc13f4de1dd47",
-                "reference": "3f6951a65f56a23b79eb2215da6bc13f4de1dd47",
+                "reference": "18382d125a26df1189760954c0900e62200d7ec1",
                 "shasum": ""
             },
             "require": {
@@ -102,7 +102,7 @@
             ],
             "description": "Bare Bone Bootstrap4 to be further extended by nice people",
             "homepage": "https://github.com/esmero/archipelago_subtheme",
-            "time": "2020-02-13T22:11:08+00:00"
+            "time": "2020-02-18T14:38:08+00:00"
         },
         {
             "name": "asm89/stack-cors",
