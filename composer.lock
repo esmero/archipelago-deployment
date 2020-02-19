@@ -76,12 +76,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme.git",
-                "reference": "18382d125a26df1189760954c0900e62200d7ec1"
+                "reference": "82357f39abcf24d98556bcfff87befbe7bb11622"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/3f6951a65f56a23b79eb2215da6bc13f4de1dd47",
-                "reference": "18382d125a26df1189760954c0900e62200d7ec1",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/82357f39abcf24d98556bcfff87befbe7bb11622",
+                "reference": "82357f39abcf24d98556bcfff87befbe7bb11622",
                 "shasum": ""
             },
             "require": {
@@ -102,7 +102,7 @@
             ],
             "description": "Bare Bone Bootstrap4 to be further extended by nice people",
             "homepage": "https://github.com/esmero/archipelago_subtheme",
-            "time": "2020-02-18T14:38:08+00:00"
+            "time": "2020-02-18T20:01:58+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -10370,12 +10370,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "d3181d2d83e514d6abf5dfafbc65d64d532b1a09"
+                "reference": "21d900cb0f1b84f41dd3dfa56c24bf755ebeaf74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/d3181d2d83e514d6abf5dfafbc65d64d532b1a09",
-                "reference": "d3181d2d83e514d6abf5dfafbc65d64d532b1a09",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/21d900cb0f1b84f41dd3dfa56c24bf755ebeaf74",
+                "reference": "21d900cb0f1b84f41dd3dfa56c24bf755ebeaf74",
                 "shasum": ""
             },
             "require": {
@@ -10400,7 +10400,7 @@
             ],
             "description": "A strawberry field for Drupal 8",
             "homepage": "https://github.com/esmero/strawberryfield",
-            "time": "2020-02-15T00:21:13+00:00"
+            "time": "2020-02-19T00:47:01+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",

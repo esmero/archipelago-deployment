@@ -56,8 +56,6 @@
                     {
                       "@id": "{{ nodeurl }}/canvas/p{{ loop.index }}",
                       "@type": "sc:Canvas",
-                      "width": 3,
-                      "height": 4,
                       "label": "p. {{ loop.index }}",
                       "images": [{
                         "@type": "oa:Annotation",
@@ -72,7 +70,7 @@
                             "profile": "http://iiif.io/api/image/2/level2.json"
                           },
 
-                          "height": 1613
+                          "width": 1200
                         },
                         "on": "{{ nodeurl }}/canvas/p{{ loop.index }}"
                       }]   
