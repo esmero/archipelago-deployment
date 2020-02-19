@@ -45,7 +45,7 @@ third_party_settings:
             mediasource: metadatadisplayentity
             json_key_source: 'as:image'
             manifesturl_source: ''
-            metadatadisplayentity_source: '3'
+            metadatadisplayentity_source: '5'
             max_width: '720'
             max_height: '800'
       'display_field_copy:node-formatted_metadata':
