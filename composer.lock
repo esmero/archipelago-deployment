@@ -4041,7 +4041,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/devel.git",
-                "reference": "ffac60a86eab00105a9afe947c3758511c8285f6"
+                "reference": "37836316a0c321606b952f79228569ccf8e78adc"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -4059,8 +4059,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-beta1+18-dev",
-                    "datestamp": "1576053780",
+                    "version": "8.x-3.0-beta1+32-dev",
+                    "datestamp": "1582325576",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -4126,7 +4126,7 @@
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2019-12-11T08:41:57+00:00"
+            "time": "2020-02-22T19:54:13+00:00"
         },
         {
             "name": "drupal/display_field_copy",
