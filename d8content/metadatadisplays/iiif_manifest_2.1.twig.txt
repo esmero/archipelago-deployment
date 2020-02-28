@@ -1,91 +1,110 @@
+{# This Template generates IIIF 2.1 Presentation API Manifest from a Strawberry Field
+JSON.
+
+Structures passed from Archipelago are
+- node
+  The full Node entity
+- data
+  The Full JSON Structure converted in an Array
+- iiif_server
+  The publicly available IIIF Server (Global Setting)
+
+Since JSON was decoded into the 'data' values are valid PHP but could not
+be valid JSON when outputting. So We use data.description|json_encode|raw
+Without Double quotes.
+
+#}
 {% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %}
   {% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %}
     {% if node.id %}
-      {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
-        {% else %}
+        {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+    {% else %}
         {% set nodeurl = '<current>' ~ '/iiif/manifest' %}
-          {% endif%}
-          { 
-            "@context": [
-            "http://www.w3.org/ns/anno.jsonld",
-            "http://iiif.io/api/presentation/2/context.json"
-            ],
-            "@type": "sc:Manifest",
-            "@id": "{{ nodeurl }} ",
-            "label": "{{ node.label }}",
-            "description":  "{{ data.description }}",
-            "metadata": [
-            {% for agent in attribute(data, 'edm_agent') %}
-              {
-                "label": "{{ agent.role_label }}",
-                "value": "{{ agent.name_label }}"
-              },
-            {% endfor %}
-            {
-              "label": "description",
-              "value": "{{ data.description }}"
-            },
-            {
-              "label": "navDate",
-              "value": "{{ node.getChangedTime|date("F jS \\a\\t g:ia") }}"
-            },
-            {
-              "label": "license",
-              "value": "http://rightsstatements.org/vocab/InC-EDU/1.0/"
-            },
-            {
-              "label": "attribution",
-              "value": "Provided by Archipelago's demo"
-            }
-            ],
-            {% if attribute(data, 'memberof') %}
-              {% set currentnode = 'node/' ~ data.memberof %}
-                "within": "{{ url(currentnode) }}",
-                {% else %}
-                {% set currentnode = '<current>' %}
-                {% endif %}
-                "sequences": [
-                {
-                  "@id": "{{ nodeurl }}/sequence/normal",
-                  "@type": "sc:Sequence",
-                  "label": "Current Page Order",
-                  "viewingDirection": "left-to-right",
-                  "viewingHint": "paged",
-                  "canvases": [
-                  {% for page in attribute(data, 'as:image') %}
-                    {
-                      "@id": "{{ nodeurl }}/canvas/p{{ loop.index }}",
-                      "@type": "sc:Canvas",
-                      "label": "p. {{ loop.index }}",
-                      "images": [{
-                        "@type": "oa:Annotation",
-                        "motivation": "sc:painting",
-                        "resource":{
-                          "@id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}/full/1200,/0/default.jpg",
-                          "@type": "dctypes:Image",
-                          "format": "image/jpeg",
-                          "service": {
-                            "@context": "http://iiif.io/api/image/2/context.json",
-                            "@id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}",
-                            "profile": "http://iiif.io/api/image/2/level2.json"
-                          },
-
-                          "width": 1200
-                        },
-                        "on": "{{ nodeurl }}/canvas/p{{ loop.index }}"
-                      }]   
-                    }{{ not loop.last ? ',' : '' }}
-                  {% endfor %}     
-                  ]
-                }],
-                "structures": [{
-                  "@id": "{{ nodeurl }}/range/r1",
-                  "@type": "sc:Range",
-                  "label": "Introduction",
-                  "canvases": [
-                  {% for range in attribute(data, 'as:image') %}
-                    "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}"{{ not loop.last ? ',' : '' }}
-                  {% endfor %}
-                  ]
-                }] 
-              }
+    {% endif%}
+{
+"@context": [
+"http://www.w3.org/ns/anno.jsonld",
+"http://iiif.io/api/presentation/2/context.json"
+],
+"@type": "sc:Manifest",
+"@id": "{{ nodeurl }} ",
+"label": "{{ node.label }}",
+"description": {{ data.description|json_encode|raw }},
+"metadata": [
+{% for agent in attribute(data, 'edm_agent') %}
+    {
+    "label": {{ agent.role_label|json_encode|raw }},
+    "value": {{ agent.name_label|json_encode|raw }}
+    },
+{% endfor %}
+{
+"label": "description",
+"value": {{ data.description|json_encode|raw }}
+},
+{
+"label": "type",
+"value": {{ data.type|json_encode|raw }}
+},
+{
+"label": "navDate",
+"value": "{{ node.getChangedTime|date("F jS \\a\\t g:ia") }}"
+},
+{
+"label": "license",
+"value": "http://rightsstatements.org/vocab/InC-EDU/1.0/"
+},
+{
+"label": "attribution",
+"value": "Provided by Archipelago's demo"
+}
+],
+{% if attribute(data, 'memberof') %}
+    {% set currentnode = 'node/' ~ data.memberof %}
+    "within": "{{ url(currentnode) }}",
+{% else %}
+    {% set currentnode = '<current>' %}
+{% endif %}
+"sequences": [
+{
+"@id": "{{ nodeurl }}/sequence/normal",
+"@type": "sc:Sequence",
+"label": "Current Page Order",
+"viewingDirection": "left-to-right",
+"viewingHint": "paged",
+"canvases": [
+{% for page in attribute(data, 'as:image') %}
+    {
+    "@id": "{{ nodeurl }}/canvas/p{{ loop.index }}",
+    "@type": "sc:Canvas",
+    "label": "p. {{ loop.index }}",
+    "images": [{
+    "@type": "oa:Annotation",
+    "motivation": "sc:painting",
+    "resource":{
+    "@id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}/full/1200,/0/default.jpg",
+    "@type": "dctypes:Image",
+    "format": "image/jpeg",
+    "service": {
+    "@context": "http://iiif.io/api/image/2/context.json",
+    "@id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}",
+    "profile": "http://iiif.io/api/image/2/level2.json"
+    },
+    "width": 1200
+    },
+    "on": "{{ nodeurl }}/canvas/p{{ loop.index }}"
+    }]
+    }{{ not loop.last ? ',' : '' }}
+{% endfor %}
+]
+}],
+"structures": [{
+"@id": "{{ nodeurl }}/range/r1",
+"@type": "sc:Range",
+"label": "Introduction",
+"canvases": [
+{% for range in attribute(data, 'as:image') %}
+    "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}"{{ not loop.last ? ',' : '' }}
+{% endfor %}
+]
+}]
+}
