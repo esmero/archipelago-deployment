@@ -21,6 +21,10 @@ echo -e "IIIF 2.1 Manifest for Books\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/05fe574d-7534-4261-b49b-895b94ac3fce --data-binary @d8content/metadatadisplay_entity_05.json;
 
+echo -e "GeoJSON for Maps\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/2b4f4fee-7202-4bc3-bae0-2a6d2d134c4b --data-binary @d8content/metadatadisplay_entity_06.json;
+
 echo -e "Last pass, setting web owner to tmp files folder\n"
 
 chown -R www-data:www-data /var/www/html/web/sites/default/files
