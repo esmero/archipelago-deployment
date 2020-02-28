@@ -1,0 +1,12 @@
+{
+  "data": {
+    "type": "metadatadisplay_entity--metadatadisplay_entity",
+    "id": "2b4f4fee-7202-4bc3-bae0-2a6d2d134c4b",
+    "attributes": {
+      "name": "GeoJSON",
+      "twig": "{# This Template generates GeoJSON from a Strawberry Field\r\nJSON.\r\n\r\nStructures passed from Archipelago are\r\n- node\r\n  The full Node entity\r\n- data\r\n  The Full JSON Structure converted in an Array\r\n- iiif_server\r\n  The publicly available IIIF Server (Global Setting)\r\n\r\nSince JSON was decoded into the 'data' values are valid PHP but could not\r\nbe valid JSON when outputting. So We use data.description|json_encode|raw\r\nWithout Double quotes.\r\n\r\n#}\r\n{\r\n  \"type\": \"FeatureCollection\",\r\n  \"features\": [\r\n    {\r\n{% if data.geographic_location %}\r\n    \"type\": \"Feature\",\r\n    \"geometry\": {\r\n      \"type\": \"Point\",\r\n      \"coordinates\": [{{ data.geographic_location.lng }},{{ data.geographic_location.lat }} ]\r\n     },\r\n    \"properties\": {\r\n      \"id\": \"{{ node.uuid.value }}\",\r\n      \"name\": {{ data.geographic_location.display_name|json_encode|raw }}\r\n    }\r\n{% endif%}\r\n    }\r\n  ]\r\n}",
+      "langcode": "und",
+      "mimetype": "application/json"
+    }
+  }
+}
