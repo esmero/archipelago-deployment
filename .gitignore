@@ -31,6 +31,6 @@
 /web/.editorconfig
 docker-compose.yml
 web/sites/default/services.yml
-.*
-!/.gitignore
-persistent/miniodata/.minio.sys/config/config.json
+# Cached json-ld
+!web/sites/default/files/jsonld/36c4de8d45f712d0eaba5fd31d3a7fc9.jsonld
+!web/sites/default/files/jsonld/36c4de8d45f712d0eaba5fd31d3a7fc9.jsonld
