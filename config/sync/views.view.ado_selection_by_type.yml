@@ -463,8 +463,10 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - 'user.node_grants:view'
         - user.roles
-      tags: {  }
+      tags:
+        - 'config:search_api.index.default_solr_index'
   entity_reference_1:
     display_plugin: entity_reference
     id: entity_reference_1
@@ -493,8 +495,10 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - 'user.node_grants:view'
         - user.roles
-      tags: {  }
+      tags:
+        - 'config:search_api.index.default_solr_index'
   entity_reference_solr_1:
     display_plugin: entity_reference_solr
     id: entity_reference_solr_1
@@ -523,8 +527,10 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - 'user.node_grants:view'
         - user.roles
-      tags: {  }
+      tags:
+        - 'config:search_api.index.default_solr_index'
   entity_reference_solr_2:
     display_plugin: entity_reference_solr
     id: entity_reference_solr_2
@@ -592,5 +598,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - 'user.node_grants:view'
         - user.roles
-      tags: {  }
+      tags:
+        - 'config:search_api.index.default_solr_index'

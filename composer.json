@@ -30,7 +30,7 @@
         "drupal/config_update_ui": "^1.6",
         "drupal/console": "^1.0.2",
         "drupal/context": "^4.0@beta",
-        "drupal/core": "8.8.1",
+        "drupal/core": "8.8.2",
         "drupal/core-dev": "^8.8",
         "drupal/devel": "3.x-dev",
         "drupal/display_field_copy": "1.x-dev",

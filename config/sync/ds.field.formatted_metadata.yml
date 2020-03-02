@@ -1,5 +1,5 @@
 id: formatted_metadata
-label: "\U0001F353 Fragola"
+label: '🍓 Fragola'
 ui_limit: 'digital_object|*'
 properties:
   field_id: node.digital_object.field_descriptive_metadata

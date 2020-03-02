@@ -11,12 +11,12 @@ dependencies:
 id: descriptivemetadatajsonkeysdefinedinthisfield
 theme: archipelago_subtheme
 region: sidebar_second
-weight: 0
+weight: -7
 provider: null
 plugin: 'facet_block:descriptive_metadata_json_keys_defined_in_this_fie'
 settings:
   id: 'facet_block:descriptive_metadata_json_keys_defined_in_this_fie'
-  label: 'Descriptive Metadata » JSON keys defined in this field'
+  label: 'JSON keys present'
   provider: facets
   label_display: visible
   block_id: descriptivemetadatajsonkeysdefinedinthisfield

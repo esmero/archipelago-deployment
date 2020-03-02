@@ -18,15 +18,16 @@ third_party_settings:
       library: layout_discovery/onecol
       disable_css: false
       entity_classes: all_classes
-      settings: {  }
+      settings:
+        label: null
     regions:
       content:
-        - field_descriptive_metadata
         - node_title
+        - field_descriptive_metadata
     fields:
       node_title:
         plugin_id: node_title
-        weight: 1
+        weight: 0
         label: hidden
         formatter: default
         settings:
@@ -39,15 +40,17 @@ bundle: digital_object_collection
 mode: collection_listing
 content:
   field_descriptive_metadata:
-    weight: 0
+    weight: 1
     label: hidden
     settings:
-      iiif_base_url: 'http://localhost:8183/iiif/2'
-      iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
       json_key_source: 'as:image'
       number_images: '1'
+      image_link: true
       max_width: '240'
       max_height: '0'
+      use_iiif_globals: '1'
+      iiif_base_url: 'http://localhost:8183/iiif/2'
+      iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
       image_type: jpg
       quality: default
       rotation: '0'

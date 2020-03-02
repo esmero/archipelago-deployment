@@ -22,13 +22,15 @@ third_party_settings:
       library: layout_discovery/twocol
       disable_css: false
       entity_classes: no_classes
-      settings: {  }
+      settings:
+        label: ''
     regions:
       top:
         - node_title
       first:
         - 'display_field_copy:node-static_media'
       second:
+        - node_changed_date
         - field_descriptive_metadata
     fields:
       'display_field_copy:node-static_media':
@@ -38,12 +40,19 @@ third_party_settings:
         formatter: strawberry_image_formatter
         settings:
           formatter:
-            iiif_base_url: 'http://localhost:8183/iiif/2'
-            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
             json_key_source: 'as:image'
             number_images: '1'
+            image_link: true
             max_width: '240'
             max_height: '0'
+            use_iiif_globals: '1'
+            iiif_base_url: 'http://localhost:8183/iiif/2'
+            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+      node_changed_date:
+        plugin_id: node_changed_date
+        weight: 2
+        label: inline
+        formatter: ds_post_date_long
       node_title:
         plugin_id: node_title
         weight: 0
@@ -60,14 +69,17 @@ mode: strawberryfield_processed_metadata
 content:
   field_descriptive_metadata:
     type: strawberry_metadata_formatter
-    weight: 2
+    weight: 3
     region: second
     label: hidden
     settings:
-      specs: 'http://schema.org'
       metadatadisplayentity_id: '1'
-      metadatadisplayentity_uselabel: 0
+      specs: 'http://schema.org'
       label: 'Descriptive Metadata'
+      metadatadisplayentity_uselabel: '0'
+      iiif_base_url: 'http://localhost:8183/iiif/2'
+      iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+      use_iiif_globals: '1'
     third_party_settings: {  }
 hidden:
   body: true

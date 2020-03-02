@@ -1,23 +1,23 @@
-uuid: 3af4c2ad-2fa1-4702-94cc-d814f4f9bc00
+uuid: 61762985-40c0-46f4-88a0-feea09d72473
 langcode: en
 status: true
 dependencies:
   config:
-    - facets.facet.object_type
+    - facets.facet.authored_on
   module:
     - facets
   theme:
     - archipelago_subtheme
-id: objecttype
+id: authoredon
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -11
+weight: -8
 provider: null
-plugin: 'facet_block:object_type'
+plugin: 'facet_block:authored_on'
 settings:
-  id: 'facet_block:object_type'
-  label: 'Object Type'
+  id: 'facet_block:authored_on'
+  label: 'Authored on'
   provider: facets
   label_display: visible
-  block_id: objecttype
+  block_id: authoredon
 visibility: {  }

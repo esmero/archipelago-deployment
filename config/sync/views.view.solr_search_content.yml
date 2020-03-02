@@ -200,9 +200,11 @@ display:
         - url.query_args
         - 'url.query_args:sort_by'
         - 'url.query_args:sort_order'
+        - 'user.node_grants:view'
       cacheable: false
       max-age: -1
-      tags: {  }
+      tags:
+        - 'config:search_api.index.default_solr_index'
   block_1:
     display_plugin: block
     id: block_1
@@ -288,7 +290,9 @@ display:
         - url.query_args
         - 'url.query_args:sort_by'
         - 'url.query_args:sort_order'
-      tags: {  }
+        - 'user.node_grants:view'
+      tags:
+        - 'config:search_api.index.default_solr_index'
   page_1:
     display_plugin: page
     id: page_1
@@ -309,6 +313,8 @@ display:
         - url.query_args
         - 'url.query_args:sort_by'
         - 'url.query_args:sort_order'
+        - 'user.node_grants:view'
       cacheable: false
       max-age: -1
-      tags: {  }
+      tags:
+        - 'config:search_api.index.default_solr_index'

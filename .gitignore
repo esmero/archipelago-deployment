@@ -10,6 +10,8 @@
 /persistent/iiifcache/
 /persistent/solrcore/
 /persistent/miniodata/
+/persistent/miniodata/**
+/persistent/miniodata/.*/*
 /private
 
 
@@ -29,4 +31,6 @@
 /web/.editorconfig
 docker-compose.yml
 web/sites/default/services.yml
+.*
+!/.gitignore
 persistent/miniodata/.minio.sys/config/config.json

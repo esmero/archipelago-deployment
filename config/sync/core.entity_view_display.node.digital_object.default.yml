@@ -22,7 +22,8 @@ third_party_settings:
       library: layout_discovery/onecol
       disable_css: false
       entity_classes: all_classes
-      settings: {  }
+      settings:
+        label: ''
     regions:
       content:
         - links
@@ -39,13 +40,14 @@ third_party_settings:
         formatter: strawberry_media_formatter
         settings:
           formatter:
+            iiif_group: true
+            thumbnails: true
+            json_key_source: 'as:image'
+            max_width: '0'
+            max_height: '520'
+            use_iiif_globals: '1'
             iiif_base_url: 'http://localhost:8183/iiif/2'
             iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
-            iiif_group: '1'
-            thumbnails: '1'
-            json_key_source: 'as:image'
-            max_width: '720'
-            max_height: '480'
       'display_field_copy:node-formatted_metadata':
         plugin_id: 'display_field_copy:node-formatted_metadata'
         weight: 3
@@ -53,9 +55,10 @@ third_party_settings:
         formatter: strawberry_metadata_formatter
         settings:
           formatter:
-            specs: 'http://schema.org'
             metadatadisplayentity_id: '1'
-            metadatadisplayentity_uselabel: 0
+            specs: 'http://schema.org'
+            label: 'Descriptive Metadata'
+            metadatadisplayentity_uselabel: '0'
       'display_field_copy:node-static_media':
         plugin_id: 'display_field_copy:node-static_media'
         weight: 5
@@ -63,8 +66,9 @@ third_party_settings:
         formatter: strawberry_metadata_formatter
         settings:
           formatter:
-            specs: 'http://schema.org'
             metadatadisplayentity_id: '3'
+            specs: 'http://schema.org'
+            label: 'Descriptive Metadata'
             metadatadisplayentity_uselabel: '1'
 id: node.digital_object.default
 targetEntityType: node

@@ -8,12 +8,12 @@ dependencies:
   module:
     - search_api
 id: object_type
-name: Types
+name: '🍓 Strawberry (Descriptive Metadata source) » digital_object_type'
 url_alias: object_type
 weight: 0
 min_count: 1
 show_only_one_result: false
-field_identifier: type_1
+field_identifier: digital_object_type
 facet_source_id: 'search_api:views_page__solr_search_content__page_1'
 widget:
   type: links

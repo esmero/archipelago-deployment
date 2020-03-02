@@ -54,8 +54,8 @@ services:
   # see https://hub.docker.com/_/mysql/
   db:
     image: mysql:5.7
-    container_name: esmero-db
     command: --max_allowed_packet=256M
+    container_name: esmero-db
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: esmerodb
