@@ -1,0 +1,34 @@
+uuid: b942435f-6853-4595-891a-a0200973e0f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.map_display_for_digital_objects_sql
+  module:
+    - ctools
+    - views
+  theme:
+    - archipelago_subtheme
+id: views_block__map_display_for_digital_objects_sql_block_1
+theme: archipelago_subtheme
+region: sidebar_second
+weight: -5
+provider: null
+plugin: 'views_block:map_display_for_digital_objects_sql-block_1'
+settings:
+  id: 'views_block:map_display_for_digital_objects_sql-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      digital_object: digital_object
+      digital_object_collection: digital_object_collection
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

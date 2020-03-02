@@ -1,0 +1,18 @@
+uuid: 3c8fdb3d-894a-4f73-ac68-42cad7b10bee
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: geojson
+label: GeoJSON
+target_entity_types:
+  digital_object: digital_object
+  digital_object_collection: digital_object_collection
+  article: 0
+  page: 0
+  webform: 0
+source_entityfield_name: null
+processor_entity_id: '6'
+cache: true
+active: true

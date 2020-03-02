@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d13cc66dc6e3ce4eb1f22cad5bb0fab",
+    "content-hash": "03465fb6ca7f6ceafba0ffc1518badce",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3668,16 +3668,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.8.1",
+            "version": "8.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "d339279f4c4b89477e0f4a8b775eb5dcb86b3087"
+                "reference": "f997857003276c2ae6d27db30f0eab9c7dd10e62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/d339279f4c4b89477e0f4a8b775eb5dcb86b3087",
-                "reference": "d339279f4c4b89477e0f4a8b775eb5dcb86b3087",
+                "url": "https://api.github.com/repos/drupal/core/zipball/f997857003276c2ae6d27db30f0eab9c7dd10e62",
+                "reference": "f997857003276c2ae6d27db30f0eab9c7dd10e62",
                 "shasum": ""
             },
             "require": {
@@ -3871,8 +3871,7 @@
                         "[web-root]/profiles/README.txt": "assets/scaffold/files/profiles.README.txt",
                         "[web-root]/themes/README.txt": "assets/scaffold/files/themes.README.txt"
                     }
-                },
-                "patches_applied": []
+                }
             },
             "autoload": {
                 "psr-4": {
@@ -3895,7 +3894,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2019-12-18T10:34:03+00:00"
+            "time": "2020-02-01T19:51:15+00:00"
         },
         {
             "name": "drupal/core-dev",
@@ -4041,7 +4040,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/devel.git",
-                "reference": "37836316a0c321606b952f79228569ccf8e78adc"
+                "reference": "339ed2bd7d9d8861eea8e0820565d17e6a695b6d"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -4059,8 +4058,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-beta1+32-dev",
-                    "datestamp": "1582325576",
+                    "version": "8.x-3.0-beta1+35-dev",
+                    "datestamp": "1582825208",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -4070,9 +4069,6 @@
                     "services": {
                         "drush.services.yml": "^9 || ^10"
                     }
-                },
-                "patches_applied": {
-                    "Fix BlockdataCollector for 3.x": "patches/devel-webprofiler-BlocksDataCollector-3106747-2-D8.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4126,7 +4122,7 @@
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2020-02-22T19:54:13+00:00"
+            "time": "2020-02-28T10:42:24+00:00"
         },
         {
             "name": "drupal/display_field_copy",
@@ -10332,12 +10328,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "30209df342278cbdb17c7ec559fe6fa7f69b9aed"
+                "reference": "f76822a23077e03598f0a9481e735a369846c0a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/30209df342278cbdb17c7ec559fe6fa7f69b9aed",
-                "reference": "30209df342278cbdb17c7ec559fe6fa7f69b9aed",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/f76822a23077e03598f0a9481e735a369846c0a3",
+                "reference": "f76822a23077e03598f0a9481e735a369846c0a3",
                 "shasum": ""
             },
             "require": {
@@ -10362,7 +10358,7 @@
             ],
             "description": "Strawberryfield Mash/Smash/extractor/formatters for Drupal 8",
             "homepage": "https://github.com/esmero/format_strawberryfield",
-            "time": "2020-02-18T19:25:23+00:00"
+            "time": "2020-02-29T01:15:17+00:00"
         },
         {
             "name": "strawberryfield/strawberryfield",
@@ -10370,12 +10366,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "21d900cb0f1b84f41dd3dfa56c24bf755ebeaf74"
+                "reference": "1d3a3dd59c69465aaf8349463e5dd0a96937353c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/21d900cb0f1b84f41dd3dfa56c24bf755ebeaf74",
-                "reference": "21d900cb0f1b84f41dd3dfa56c24bf755ebeaf74",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/1d3a3dd59c69465aaf8349463e5dd0a96937353c",
+                "reference": "1d3a3dd59c69465aaf8349463e5dd0a96937353c",
                 "shasum": ""
             },
             "require": {
@@ -10400,7 +10396,7 @@
             ],
             "description": "A strawberry field for Drupal 8",
             "homepage": "https://github.com/esmero/strawberryfield",
-            "time": "2020-02-19T00:47:01+00:00"
+            "time": "2020-02-24T15:54:53+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",
@@ -10408,12 +10404,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/webform_strawberryfield.git",
-                "reference": "7885a2c3d17cd94a9b133c39bfc1c2e70f532067"
+                "reference": "89445ee34ab9e130ab8878413f905b99a5cee987"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/7885a2c3d17cd94a9b133c39bfc1c2e70f532067",
-                "reference": "7885a2c3d17cd94a9b133c39bfc1c2e70f532067",
+                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/89445ee34ab9e130ab8878413f905b99a5cee987",
+                "reference": "89445ee34ab9e130ab8878413f905b99a5cee987",
                 "shasum": ""
             },
             "require": {
@@ -10438,7 +10434,7 @@
             ],
             "description": "A Webform/strawberryfield integration module for Drupal 8",
             "homepage": "https://github.com/esmero/webform_strawberryfield",
-            "time": "2020-02-07T19:36:08+00:00"
+            "time": "2020-02-25T15:30:05+00:00"
         },
         {
             "name": "swaggest/json-diff",

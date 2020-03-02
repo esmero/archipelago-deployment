@@ -1,23 +1,23 @@
-uuid: 3af4c2ad-2fa1-4702-94cc-d814f4f9bc00
+uuid: cb3c70ff-de5f-4898-8733-a0ec0e51b929
 langcode: en
 status: true
 dependencies:
   config:
-    - facets.facet.object_type
+    - facets.facet.subjects
   module:
     - facets
   theme:
     - archipelago_subtheme
-id: objecttype
+id: subjects
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -11
+weight: -10
 provider: null
-plugin: 'facet_block:object_type'
+plugin: 'facet_block:subjects'
 settings:
-  id: 'facet_block:object_type'
-  label: 'Object Type'
+  id: 'facet_block:subjects'
+  label: Subjects
   provider: facets
   label_display: visible
-  block_id: objecttype
+  block_id: subjects
 visibility: {  }

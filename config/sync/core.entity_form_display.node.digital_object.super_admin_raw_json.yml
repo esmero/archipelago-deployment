@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.digital_object.body
     - field.field.node.digital_object.field_descriptive_metadata
     - node.type.digital_object
+    - workflows.workflow.editorial
   module:
     - content_moderation
     - field_layout
@@ -25,7 +26,7 @@ content:
   field_descriptive_metadata:
     weight: 1
     settings:
-      rows: '10'
+      rows: '20'
       placeholder: 'Descriptive Metadata'
     third_party_settings: {  }
     type: strawberry_textarea

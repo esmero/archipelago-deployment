@@ -26,7 +26,7 @@ type_to_viewmode:
     weight: 7
   -
     jsontype: Book
-    view_mode:  digital_object_with_book_reader
+    view_mode: digital_object_with_book_reader
     active: true
     weight: 7
   -

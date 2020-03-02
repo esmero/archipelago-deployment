@@ -23,6 +23,9 @@ widget:
     soft_limit_settings:
       show_less_label: 'Show less'
       show_more_label: 'Show more'
+    show_reset_link: false
+    reset_text: 'Show all'
+    hide_reset_when_no_selection: true
 query_operator: and
 use_hierarchy: false
 expand_hierarchy: false
@@ -56,5 +59,7 @@ processor_configs:
       build: 15
     settings: {  }
 empty_behavior:
-  behavior: none
+  behavior: text
+  text_format: plain_text
+  text: 'No results'
 show_title: false

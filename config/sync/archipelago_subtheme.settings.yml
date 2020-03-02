@@ -90,6 +90,6 @@ bootstrap_barrio_messages_widget: alerts
 bootstrap_barrio_radio: custom
 bootstrap_barrio_checkbox: switch
 bootstrap_barrio_select: custom
-bootstrap_barrio_file: custom
+bootstrap_barrio_file: standard
 bootstrap_barrio_region_clean_editor_toolbar: 0
 bootstrap_barrio_region_class_editor_toolbar: row

@@ -226,6 +226,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_descriptive_metadata
+  subject_labels:
+    label: '🍓 Strawberry (Descriptive Metadata source) » subject_labels'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:subject_labels'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -293,8 +301,8 @@ datasource_settings:
     bundles:
       default: false
       selected:
-        - '0'
         - digital_object
+        - digital_object_collection
     languages:
       default: true
       selected:
