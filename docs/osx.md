@@ -17,7 +17,7 @@ Happy deploying!
 
 ### OSX: 
 - [Install Docker for Mac](https://docs.docker.com/docker-for-mac/)
-- [Instal Github Desktop](https://desktop.github.com)
+- [Install Github Desktop](https://desktop.github.com)
 - At least 10 Gbytes of free space (to get started)
 - Open a terminal
 
