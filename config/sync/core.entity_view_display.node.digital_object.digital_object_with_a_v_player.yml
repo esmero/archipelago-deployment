@@ -43,8 +43,8 @@ third_party_settings:
           formatter:
             json_key_source: 'as:audio'
             number_media: 1
-            max_width: '320'
-            max_height: '240'
+            max_width: '720'
+            max_height: '50'
       'display_field_copy:node-formatted_metadata':
         plugin_id: 'display_field_copy:node-formatted_metadata'
         weight: 3
