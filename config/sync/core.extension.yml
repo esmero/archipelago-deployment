@@ -5,6 +5,7 @@ module:
   basic_auth: 0
   block: 0
   block_content: 0
+  bamboo_twig: 0 
   breakpoint: 0
   ckeditor: 0
   codemirror_editor: 0
@@ -52,6 +53,7 @@ module:
   inline_entity_form: 0
   inline_form_errors: 0
   jsonapi: 0
+  jsonapi_earlyrendering_workaround: 0
   key_value: 0
   language: 0
   layout_discovery: 0
@@ -62,6 +64,7 @@ module:
   migrate: 0
   migrate_drupal: 0
   module_missing_message_fixer: 0
+  moderated_content_bulk_publish: 0
   node: 0
   options: 0
   page_cache: 0
@@ -70,8 +73,6 @@ module:
   quick_node_clone: 0
   quickedit: 0
   rdf: 0
-  rdf_builder: 0
-  rdfui: 0
   responsive_image: 0
   rest: 0
   restui: 0
@@ -122,10 +123,7 @@ module:
   standard: 1000
 theme:
   stable: 0
-  classy: 0
-  bartik: 0
   seven: 0
-  bootstrap_barrio: 0
   archipelago_subtheme: 0
 profile: standard
 _core:
