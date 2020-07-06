@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73d22bc3ae7f0e80f400d2a04c6c65eb",
+    "content-hash": "73df7f222902148450411783b74ff3d7",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -10895,16 +10895,16 @@
         },
         {
             "name": "strawberryfield/format_strawberryfield",
-            "version": "dev-ISSUE-80",
+            "version": "dev-8.x-1.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "5f47765160e283c3b367c290f67837449dee5e0d"
+                "reference": "1f86796194449bce28c8d03d98bbc102a5972868"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/5f47765160e283c3b367c290f67837449dee5e0d",
-                "reference": "5f47765160e283c3b367c290f67837449dee5e0d",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/1f86796194449bce28c8d03d98bbc102a5972868",
+                "reference": "1f86796194449bce28c8d03d98bbc102a5972868",
                 "shasum": ""
             },
             "require": {
@@ -10929,20 +10929,20 @@
             ],
             "description": "Strawberryfield Mash/Smash/extractor/formatters for Drupal 8",
             "homepage": "https://github.com/esmero/format_strawberryfield",
-            "time": "2020-06-25T23:28:16+00:00"
+            "time": "2020-07-06T19:39:41+00:00"
         },
         {
             "name": "strawberryfield/strawberryfield",
-            "version": "dev-ISSUE-86",
+            "version": "dev-8.x-1.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "b2517b4f9fcf274e3905b3503d98f6702efb0f77"
+                "reference": "925fb58372149056ef3c0b76ab5420c08e6fa150"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/b2517b4f9fcf274e3905b3503d98f6702efb0f77",
-                "reference": "b2517b4f9fcf274e3905b3503d98f6702efb0f77",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/925fb58372149056ef3c0b76ab5420c08e6fa150",
+                "reference": "925fb58372149056ef3c0b76ab5420c08e6fa150",
                 "shasum": ""
             },
             "require": {
@@ -10974,7 +10974,7 @@
             ],
             "description": "A strawberry field for Drupal 8",
             "homepage": "https://github.com/esmero/strawberryfield",
-            "time": "2020-06-30T22:21:10+00:00"
+            "time": "2020-07-06T19:40:58+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",
@@ -13963,6 +13963,49 @@
                 "qa"
             ],
             "time": "2019-01-21T19:22:34+00:00"
+        },
+        {
+            "name": "zaporylie/composer-drupal-optimizations",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zaporylie/composer-drupal-optimizations.git",
+                "reference": "fb231d92adc862a2c9276bccbc90f684816dc75d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zaporylie/composer-drupal-optimizations/zipball/fb231d92adc862a2c9276bccbc90f684816dc75d",
+                "reference": "fb231d92adc862a2c9276bccbc90f684816dc75d",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1"
+            },
+            "require-dev": {
+                "composer/composer": "^1.6",
+                "phpunit/phpunit": "^6"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "zaporylie\\ComposerDrupalOptimizations\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "zaporylie\\ComposerDrupalOptimizations\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Piasecki",
+                    "email": "jakub@piaseccy.pl"
+                }
+            ],
+            "description": "Composer plugin to improve composer performance for Drupal projects",
+            "time": "2019-10-02T17:01:11+00:00"
         }
     ],
     "packages-dev": [
@@ -14500,18 +14543,6 @@
         }
     ],
     "aliases": [
-        {
-            "alias": "dev-8.x-1.0-beta3",
-            "alias_normalized": "dev-8.x-1.0-beta3",
-            "version": "dev-ISSUE-80",
-            "package": "strawberryfield/format_strawberryfield"
-        },
-        {
-            "alias": "dev-8.x-1.0-beta3",
-            "alias_normalized": "dev-8.x-1.0-beta3",
-            "version": "dev-ISSUE-86",
-            "package": "strawberryfield/strawberryfield"
-        },
         {
             "alias": "3.4.99",
             "alias_normalized": "3.4.99.0",
