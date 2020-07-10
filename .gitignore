@@ -34,3 +34,6 @@ web/sites/default/services.yml
 # Cached json-ld
 !web/sites/default/files/jsonld/36c4de8d45f712d0eaba5fd31d3a7fc9.jsonld
 !web/sites/default/files/jsonld/36c4de8d45f712d0eaba5fd31d3a7fc9.jsonld
+
+# Ignore Demo Objects and assets
+/d8content/archipelago-recyclables/
