@@ -62,6 +62,7 @@
         "drupal/tokenuuid": "^1.2",
         "drupal/twig_field": "^1.0",
         "drupal/twig_tweak": "^2.6",
+        "drupal/views_bootstrap": "^4.3",
         "drupal/webform": "^5.14",
         "drupal/webform_views": "^5.0",
         "drupal/workflow": "^1.1",
