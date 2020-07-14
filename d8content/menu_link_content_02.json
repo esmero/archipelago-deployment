@@ -1,0 +1,26 @@
+{
+  "data": {
+    "type": "menu_link_content--menu_link_content",
+    "id": "2c576406-2a37-4fb8-b988-cd6db1105084",
+    "attributes": {
+      "bundle": "menu_link_content",
+      "enabled": true,
+      "title": "SBF Taxonomy",
+      "description": "Metadata Vocabulary used in this repository",
+      "menu_name": "tools",
+      "link": {
+        "uri": "internal:/admin/structure/taxonomy/manage/strawberryfield_voc_id/overview",
+        "title": "",
+        "options": [
+
+        ]
+      },
+      "external": false,
+      "rediscover": true,
+      "weight": -47,
+      "expanded": false,
+      "parent": "menu_link_content:a580dad6-5932-4f9d-bdaa-06b5563c386c",
+      "default_langcode": true
+    }
+  }
+}

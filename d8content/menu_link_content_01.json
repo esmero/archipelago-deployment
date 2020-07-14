@@ -1,0 +1,26 @@
+{
+  "data": {
+    "type": "menu_link_content--menu_link_content",
+    "id": "a580dad6-5932-4f9d-bdaa-06b5563c386c",
+    "attributes": {
+      "bundle": "menu_link_content",
+      "enabled": true,
+      "title": "Tools",
+      "description": "Repository Content Tools",
+      "menu_name": "tools",
+      "link": {
+        "uri": "internal:#",
+        "title": "",
+        "options": [
+
+        ]
+      },
+      "external": false,
+      "rediscover": true,
+      "weight": 0,
+      "expanded": true,
+      "parent": null,
+      "default_langcode": true
+    }
+  }
+}
