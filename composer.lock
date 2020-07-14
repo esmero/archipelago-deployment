@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4465d103900bf0340f3670f126356b7a",
+    "content-hash": "0e6297f07e78ae57e6a32ff42be8eda8",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -76,16 +76,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme.git",
-                "reference": "382cdca73b70cf8936457ba888509c013ace8a8e"
+                "reference": "d4822969601d4dde875fff2f1e75f23eb0e5fe07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/382cdca73b70cf8936457ba888509c013ace8a8e",
-                "reference": "382cdca73b70cf8936457ba888509c013ace8a8e",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/d4822969601d4dde875fff2f1e75f23eb0e5fe07",
+                "reference": "d4822969601d4dde875fff2f1e75f23eb0e5fe07",
                 "shasum": ""
             },
             "require": {
-                "drupal/solid": "^1.1.0"
+                "drupal/bootstrap_barrio": "^4.2"
             },
             "type": "drupal-theme",
             "notification-url": "https://packagist.org/downloads/",
@@ -102,7 +102,7 @@
             ],
             "description": "Bare Bone Bootstrap4 to be further extended by nice people",
             "homepage": "https://github.com/esmero/archipelago_subtheme",
-            "time": "2020-06-19T16:43:02+00:00"
+            "time": "2020-07-13T21:13:57+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -2973,17 +2973,17 @@
         },
         {
             "name": "drupal/bootstrap_barrio",
-            "version": "4.30.0",
+            "version": "4.32.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/bootstrap_barrio.git",
-                "reference": "8.x-4.30"
+                "reference": "8.x-4.32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap_barrio-8.x-4.30.zip",
-                "reference": "8.x-4.30",
-                "shasum": "9de043aa126cdd7ebe383369e0a9d2f54d38db98"
+                "url": "https://ftp.drupal.org/files/projects/bootstrap_barrio-8.x-4.32.zip",
+                "reference": "8.x-4.32",
+                "shasum": "fe0ed5e3658096ef0759f489431e2a0e58482e49"
             },
             "require": {
                 "drupal/core": "^8 || ^9",
@@ -2992,8 +2992,8 @@
             "type": "drupal-theme",
             "extra": {
                 "drupal": {
-                    "version": "8.x-4.30",
-                    "datestamp": "1592500696",
+                    "version": "8.x-4.32",
+                    "datestamp": "1594567900",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3678,16 +3678,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.9.1",
+            "version": "8.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "e8ee964c562870381876e85d3f5eaaf8c8ecc9ee"
+                "reference": "8f0e24555c093669ce41edbb30637fe19df16802"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/e8ee964c562870381876e85d3f5eaaf8c8ecc9ee",
-                "reference": "e8ee964c562870381876e85d3f5eaaf8c8ecc9ee",
+                "url": "https://api.github.com/repos/drupal/core/zipball/8f0e24555c093669ce41edbb30637fe19df16802",
+                "reference": "8f0e24555c093669ce41edbb30637fe19df16802",
                 "shasum": ""
             },
             "require": {
@@ -3882,7 +3882,8 @@
                         "[web-root]/profiles/README.txt": "assets/scaffold/files/profiles.README.txt",
                         "[web-root]/themes/README.txt": "assets/scaffold/files/themes.README.txt"
                     }
-                }
+                },
+                "patches_applied": []
             },
             "autoload": {
                 "psr-4": {
@@ -3905,7 +3906,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2020-06-17T17:57:48+00:00"
+            "time": "2020-07-08T18:53:45+00:00"
         },
         {
             "name": "drupal/core-dev",
@@ -5796,50 +5797,6 @@
                 "source": "http://git.drupal.org/project/search_api_solr.git",
                 "issues": "https://www.drupal.org/project/issues/search_api_solr",
                 "chat": "https://drupalchat.me/channel/search"
-            }
-        },
-        {
-            "name": "drupal/solid",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/solid.git",
-                "reference": "8.x-1.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/solid-8.x-1.1.zip",
-                "reference": "8.x-1.1",
-                "shasum": "73425565bb09bcf8df79b49120b113a39109e139"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "type": "drupal-theme",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-1.1",
-                    "datestamp": "1492876443",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "tregismoreira",
-                    "homepage": "https://www.drupal.org/user/277221"
-                }
-            ],
-            "description": "Bootstrap-based theme ideal for web agencies and freelancers (designed by BlackTie).",
-            "homepage": "https://www.drupal.org/project/solid",
-            "support": {
-                "source": "https://git.drupalcode.org/project/solid"
             }
         },
         {
@@ -11138,15 +11095,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "925fb58372149056ef3c0b76ab5420c08e6fa150"
+                "reference": "5ea184548a71f200dfe6ad9fa61e04d8d959f062"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/925fb58372149056ef3c0b76ab5420c08e6fa150",
-                "reference": "925fb58372149056ef3c0b76ab5420c08e6fa150",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/5ea184548a71f200dfe6ad9fa61e04d8d959f062",
+                "reference": "5ea184548a71f200dfe6ad9fa61e04d8d959f062",
                 "shasum": ""
             },
             "require": {
+                "drupal/core": "^8.8 || ^9",
                 "drupal/search_api": "~1.14",
                 "frictionlessdata/datapackage": "dev-master",
                 "ml/json-ld": "^1.1",
@@ -11175,7 +11133,7 @@
             ],
             "description": "A strawberry field for Drupal 8",
             "homepage": "https://github.com/esmero/strawberryfield",
-            "time": "2020-07-06T19:40:58+00:00"
+            "time": "2020-07-14T13:15:14+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",
@@ -11183,18 +11141,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/webform_strawberryfield.git",
-                "reference": "ed1aedb328493ac4200622585821d32dea55ae86"
+                "reference": "af22cab87a548e8d39109bbb8d0135991cd7d357"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/ed1aedb328493ac4200622585821d32dea55ae86",
-                "reference": "ed1aedb328493ac4200622585821d32dea55ae86",
+                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/af22cab87a548e8d39109bbb8d0135991cd7d357",
+                "reference": "af22cab87a548e8d39109bbb8d0135991cd7d357",
                 "shasum": ""
             },
             "require": {
-                "drupal/webform": "^5.9",
+                "drupal/webform": "^5.19",
                 "drupal/webform_views": "^5.0",
-                "ml/json-ld": "^1.1",
+                "ml/json-ld": "^1.2",
                 "mtdowling/jmespath.php": "^2.5",
                 "strawberryfield/format_strawberryfield": "dev-8.x-1.0-beta3",
                 "strawberryfield/strawberryfield": "dev-8.x-1.0-beta3"
@@ -11214,7 +11172,7 @@
             ],
             "description": "A Webform/strawberryfield integration module for Drupal 8",
             "homepage": "https://github.com/esmero/webform_strawberryfield",
-            "time": "2020-07-02T16:46:07+00:00"
+            "time": "2020-07-09T21:01:48+00:00"
         },
         {
             "name": "swaggest/json-diff",
@@ -14089,6 +14047,50 @@
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
             "time": "2020-06-19T07:59:31+00:00"
+        },
+        {
+            "name": "drupal/solid",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/solid.git",
+                "reference": "8.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/solid-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "73425565bb09bcf8df79b49120b113a39109e139"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-theme",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.1",
+                    "datestamp": "1492876443",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "tregismoreira",
+                    "homepage": "https://www.drupal.org/user/277221"
+                }
+            ],
+            "description": "Bootstrap-based theme ideal for web agencies and freelancers (designed by BlackTie).",
+            "homepage": "https://www.drupal.org/project/solid",
+            "support": {
+                "source": "https://git.drupalcode.org/project/solid"
+            }
         },
         {
             "name": "jean85/pretty-package-versions",
