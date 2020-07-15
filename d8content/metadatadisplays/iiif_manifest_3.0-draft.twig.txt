@@ -23,6 +23,8 @@ Without Double quotes.
           {% set nodeurl = currenturl %}
       {% endif%}
             {% set len = language.getId() ? language.getId() : "en" %}
+{% apply spaceless %}    
+{% spaceless %}
 {
 "@context": [
   "http://www.w3.org/ns/anno.jsonld",
@@ -104,12 +106,22 @@ Without Double quotes.
 {% endif %}
 "items": [
 {% for page in attribute(data, 'as:image') %}
-    {
+  {
+  {% if page["flv:exif"] %}
+  {% set width = page["flv:exif"].ImageWidth %}
+  {% else  %}
+  {% set width = 1200 %}
+  {% endif %}
+  {% if page["flv:exif"] %}
+  {% set height = page["flv:exif"].ImageHeight %}
+  {% else  %}
+  {% set height = 1600 %}
+  {% endif %}
     "id": "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}",
     "type": "Canvas",
     "label": "p. {{ loop.index }}",
-    "width": 3,
-    "height": 4,
+    "width": {{ width }},
+    "height": {{ height }},
     "items": [{
     "type": "AnnotationPage",
     "items": [{
@@ -121,7 +133,7 @@ Without Double quotes.
     "id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}/full/1200,/0/default.jpg",
     "type": "Image",
     "format": "image/jpeg",
-    "width": 1200,
+    "width": {{ width }},
     "service": {
     "type": "ImageService2",
     "profile": "level2",
@@ -148,3 +160,6 @@ Without Double quotes.
 ]
 }]
 }
+
+{% endspaceless %}
+{% endapply %}
