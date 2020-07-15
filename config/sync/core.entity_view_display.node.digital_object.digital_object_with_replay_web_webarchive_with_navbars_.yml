@@ -44,7 +44,7 @@ third_party_settings:
             json_key_starting_url: website_url
             max_width: '0'
             max_height: '960'
-            navbar: '1'
+            navbar: true
             warcurl_json_key_source: ''
             use_iiif_globals: '1'
             iiif_base_url: 'http://localhost:8183/iiif/2'
