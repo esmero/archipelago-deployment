@@ -1,4 +1,4 @@
-# Adding Demo Archipelago Digital Objects (ADOs) to repository
+# Adding Demo Archipelago Digital Objects (ADOs) to your Repository
 
 We make this optional since we feel  not everyone wants to have Digital Objects from other people using space in their system. 
 Still, if you are new to Archipelago we encourage you to do this. Its a simply way to get started without thinking too much. 
