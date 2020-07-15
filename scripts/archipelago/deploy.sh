@@ -33,12 +33,11 @@ echo -e "General HTML Description block for Search Results\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @d8content/metadatadisplay_entity_08.json;
 
-echo -e "Deploying Menu Items:\n"
+echo -e "Deploying Menu Items\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/menu_link_content/menu_link_content --data-binary @d8content/menu_link_content_01.json;
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/menu_link_content/menu_link_content --data-binary @d8content/menu_link_content_02.json;
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/menu_link_content/menu_link_content --data-binary @d8content/menu_link_content_03.json;
-
 
 echo -e "Last pass, setting web owner to tmp files folder\n"
 

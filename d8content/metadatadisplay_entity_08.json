@@ -1,0 +1,12 @@
+{
+  "data": {
+    "type": "metadatadisplay_entity--metadatadisplay_entity",
+    "id": "0ccc85b4-ed72-4c58-b585-ba652ebcfcaf",
+    "attributes": {
+      "name": "Object Metadata Abstract for Search Results",
+      "twig": "<blockquote class=\"blockquote\">\r\n {% if attribute(data, 'ismemberof') %}\r\n {% if attribute(data, 'ismemberof') is iterable %}\r\n {% for collection in attribute(data, 'ismemberof')%}\r\n   {% set parentnode = bamboo_load_entity('node', collection) %}\r\n   {% set parentnodeurl = url('entity.node.canonical', {'node': collection}, {'absolute': true}) %}\r\n <footer class=\"blockquote-footer\">In <cite title=\"{{ parentnode.title.value }}\"><a href=\"{{ parentnodeurl }}\">{{  parentnode.title.value }}<\/a><\/cite><\/footer>\r\n{% endfor %}\r\n{% else %}\r\n  {% set parentnode = bamboo_load_entity('node', attribute(data, 'ismemberof')) %}\r\n  {% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ismemberof')}, {'absolute': true}) %}\r\n<footer class=\"blockquote-footer\">In <cite title=\"{{ parentnode.title.value }}\"><a href=\"{{ parentnodeurl }}\">{{  parentnode.title.value }}<\/a><\/cite><\/footer>\r\n{% endif %}\r\n{% endif %}\r\n<\/blockquote>\r\n  <h3>Description<\/h3>\r\n  <p>{{ data.description }}<\/p>\r\n  <h4>Type of Resource<\/h4>\r\n  <p>{{ data.type }}<\/p>\r\n  <h4>Rights Statements<\/h4>\r\n  <a href=\"http:\/\/rightsstatements.org\/vocab\/InC-EDU\/1.0\/\"><img src=\"https:\/\/rightsstatements.org\/files\/buttons\/InC-EDU.white.svg\" title=\"In Copyright - Educational Use Permitted\" style=\"max-width:120px;height:auto;background-color:pink ;padding:1em\"><\/a>",
+      "langcode": "und",
+      "mimetype": "text/html"
+    }
+  }
+}
