@@ -1,4 +1,4 @@
-uuid: ac5a4d8a-bd90-4160-b183-076f30354c9d
+uuid: 302f29b1-765d-4585-b99c-6d43e4e7936e
 langcode: en
 status: true
 dependencies:
@@ -7,9 +7,9 @@ dependencies:
     - views.view.solr_search_content
   module:
     - search_api
-id: descriptive_metadata_agents
-name: 'Descriptive Metadata » agents'
-url_alias: descriptive_metadata_agents
+id: descriptive_metadata_agent_labels
+name: '🍓 Strawberry (Descriptive Metadata source) » agents'
+url_alias: descriptive_metadata_agent_labels
 weight: 0
 min_count: 1
 show_only_one_result: false
@@ -18,15 +18,15 @@ facet_source_id: 'search_api:views_page__solr_search_content__page_1'
 widget:
   type: links
   config:
-    show_numbers: true
+    show_numbers: false
     soft_limit: 0
     soft_limit_settings:
       show_less_label: 'Show less'
       show_more_label: 'Show more'
     show_reset_link: false
     reset_text: 'Show all'
-    hide_reset_when_no_selection: true
-query_operator: and
+    hide_reset_when_no_selection: false
+query_operator: or
 use_hierarchy: false
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: true
@@ -59,7 +59,5 @@ processor_configs:
       build: 15
     settings: {  }
 empty_behavior:
-  behavior: text
-  text_format: plain_text
-  text: 'No results'
+  behavior: none
 show_title: false

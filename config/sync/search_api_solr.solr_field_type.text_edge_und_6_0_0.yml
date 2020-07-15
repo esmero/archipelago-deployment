@@ -1,9 +1,7 @@
 uuid: a546b6be-0f63-45b2-b872-98367fb76e4d
 langcode: en
 status: true
-dependencies:
-  config:
-    - search_api_solr.solr_field_type.text_und_6_0_0
+dependencies: {  }
 _core:
   default_config_hash: yW20VJKElb-oT85z7mW5B-hMiAUsl4B-UDLZzCZPats
 id: text_edge_und_6_0_0

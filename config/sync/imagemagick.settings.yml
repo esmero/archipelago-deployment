@@ -2,15 +2,14 @@ quality: 75
 binaries: imagemagick
 path_to_binaries: /usr/bin/
 prepend: ''
-prepend_pre_source: false
 log_warnings: true
 debug: false
-use_identify: true
 locale: en_US.UTF-8
 advanced:
   density: 0
   colorspace: '0'
   profile: ''
+  coalesce: false
 image_formats:
   PNG:
     mime_type: image/png

@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.digital_object_with_a_v_player
     - field.field.node.digital_object.body
     - field.field.node.digital_object.field_descriptive_metadata
     - node.type.digital_object
@@ -82,7 +81,8 @@ content:
   field_descriptive_metadata:
     weight: 4
     label: hidden
-    settings: {  }
+    settings:
+      limit_access: edit
     third_party_settings: {  }
     type: strawberry_default_formatter
     region: content

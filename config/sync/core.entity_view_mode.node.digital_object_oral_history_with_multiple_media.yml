@@ -1,0 +1,10 @@
+uuid: 63fad58e-1840-4be2-a2fd-e7bdafd7caa1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_oral_history_with_multiple_media
+label: 'Digital Object Oral History with Multiple Media'
+targetEntityType: node
+cache: true

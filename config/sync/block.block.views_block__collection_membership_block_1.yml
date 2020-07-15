@@ -14,7 +14,7 @@ dependencies:
 id: views_block__collection_membership_block_1
 theme: archipelago_subtheme
 region: content
-weight: -8
+weight: -7
 provider: null
 plugin: 'views_block:collection_membership-block_1'
 settings:
@@ -41,6 +41,6 @@ visibility:
       node: '@node.node_route_context:node'
   request_path:
     id: request_path
-    pages: '/node/*'
-    negate: false
+    pages: "/node/*/edit\r\n*/add/*\r\n/search"
+    negate: true
     context_mapping: {  }

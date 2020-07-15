@@ -88,7 +88,8 @@ content:
   field_descriptive_metadata:
     weight: 4
     label: hidden
-    settings: {  }
+    settings:
+      limit_access: edit
     third_party_settings: {  }
     type: strawberry_default_formatter
     region: content

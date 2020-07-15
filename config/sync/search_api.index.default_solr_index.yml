@@ -12,6 +12,7 @@ dependencies:
     - field.storage.node.field_descriptive_metadata
     - field.storage.node.field_tags
     - search_api.server.esmero_solr_7_5
+    - core.entity_view_mode.node.digital_object_image_only_for_carousel
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -65,6 +66,22 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_descriptive_metadata
+  as_image_exif_focallength:
+    label: '🍓 Strawberry (Descriptive Metadata source) » as_image_exif_focallength'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:as_image_exif_focallength'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+  as_image_exif_mimetype:
+    label: '🍓 Strawberry (Descriptive Metadata source) » as_image_exif_mimetype'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:as_image_exif_mimetype'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   author:
     label: 'Author name'
     datasource_id: 'entity:node'
@@ -73,7 +90,6 @@ field_settings:
     dependencies:
       module:
         - node
-        - user
         - user
   author_1:
     label: '🍓 Strawberry (Descriptive Metadata source) » author'
@@ -91,6 +107,14 @@ field_settings:
     dependencies:
       module:
         - node
+  city:
+    label: '🍓 Strawberry (Descriptive Metadata source) » city'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:city'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   created:
     label: 'Authored on'
     datasource_id: 'entity:node'
@@ -188,6 +212,40 @@ field_settings:
     datasource_id: strawberryfield_flavor_datasource
     property_path: parent_id
     type: string
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:node':
+          article: ''
+          digital_object: default
+          digital_object_collection: ''
+          page: ''
+          webform: ''
+        strawberryfield_flavor_datasource:
+          digital_object: ''
+          digital_object_collection: ''
+  rendered_item_iiif_img:
+    label: 'IIIF Image Tag for ADO'
+    property_path: rendered_item
+    type: string
+    configuration:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:node':
+          article: ''
+          digital_object: digital_object_image_only_for_carousel
+          digital_object_collection: ''
+          page: ''
+          webform: ''
+        strawberryfield_flavor_datasource:
+          digital_object: ''
+          digital_object_collection: ''
   sequence_id:
     label: 'Sequence ID'
     datasource_id: strawberryfield_flavor_datasource
@@ -248,6 +306,22 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: 'solr_text_custom:ngram'
+    dependencies:
+      module:
+        - node
+  title_string:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: string
+    dependencies:
+      module:
+        - node
+  title_unstemmed:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: solr_text_unstemmed
     dependencies:
       module:
         - node
@@ -318,12 +392,47 @@ processor_settings:
     weights:
       preprocess_index: -6
       preprocess_query: -4
+  double_quote_workaround:
+    all_fields: false
+    fields:
+      - agents
+      - as_image_exif_focallength
+      - as_image_exif_mimetype
+      - author
+      - author_1
+      - city
+      - digital_object_type
+      - fulltext
+      - hocr
+      - ismemberof
+      - label_1
+      - label_2
+      - license
+      - name_1
+      - parent_id
+      - rendered_item
+      - rendered_item_iiif_img
+      - sequence_id
+      - str_flatten_keys
+      - subject_labels
+      - title
+      - title_autocomplete
+      - title_string
+      - title_unstemmed
+      - type
+      - type_1
+      - uuid
+    replacement: '|9999999998|'
+    weights:
+      postprocess_query: 0
+      preprocess_index: -15
+      preprocess_query: -15
   entity_status:
     weights:
       preprocess_index: -10
   highlight:
     highlight: always
-    highlight_partial: false
+    highlight_partial: true
     excerpt: true
     excerpt_length: 256
     exclude_fields: {  }
@@ -332,8 +441,35 @@ processor_settings:
     weights:
       postprocess_query: 0
   html_filter:
-    all_fields: false
-    fields: {  }
+    all_fields: true
+    fields:
+      - agents
+      - as_image_exif_focallength
+      - as_image_exif_mimetype
+      - author
+      - author_1
+      - city
+      - digital_object_type
+      - fulltext
+      - hocr
+      - ismemberof
+      - label_1
+      - label_2
+      - license
+      - name_1
+      - parent_id
+      - rendered_item
+      - rendered_item_iiif_img
+      - sequence_id
+      - str_flatten_keys
+      - subject_labels
+      - title
+      - title_autocomplete
+      - title_string
+      - title_unstemmed
+      - type
+      - type_1
+      - uuid
     title: true
     alt: true
     tags:
@@ -359,14 +495,13 @@ processor_settings:
     fields:
       - label_1
       - name_1
+      - rendered_item
       - title
       - title_autocomplete
+      - title_unstemmed
     spaces: ''
     overlap_cjk: 1
     minimum_word_size: '3'
-    weights:
-      preprocess_index: -6
-      preprocess_query: -6
 tracker_settings:
   default:
     indexing_order: fifo

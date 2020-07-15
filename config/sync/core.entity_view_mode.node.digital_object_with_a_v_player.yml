@@ -5,6 +5,6 @@ dependencies:
   module:
     - node
 id: node.digital_object_with_a_v_player
-label: 'Digital Object with A/V Player'
+label: 'Digital Object with Audio Player'
 targetEntityType: node
 cache: true

@@ -2,10 +2,16 @@ module:
   action: 0
   aggregator: 0
   automated_cron: 0
+  bamboo_twig: 0
+  bamboo_twig_config: 0
+  bamboo_twig_file: 0
+  bamboo_twig_loader: 0
+  bamboo_twig_path: 0
+  bamboo_twig_security: 0
+  bamboo_twig_token: 0
   basic_auth: 0
   block: 0
   block_content: 0
-  bamboo_twig: 0 
   breakpoint: 0
   ckeditor: 0
   codemirror_editor: 0
@@ -21,6 +27,7 @@ module:
   context_ui: 0
   contextual: 0
   ctools: 0
+  ctools_views: 0
   datetime: 0
   datetime_range: 0
   dblog: 0
@@ -63,8 +70,8 @@ module:
   menu_ui: 0
   migrate: 0
   migrate_drupal: 0
-  module_missing_message_fixer: 0
   moderated_content_bulk_publish: 0
+  module_missing_message_fixer: 0
   node: 0
   options: 0
   page_cache: 0
@@ -86,6 +93,7 @@ module:
   settings_tray: 0
   shortcut: 0
   simpletest: 0
+  sophron: 0
   strawberryfield: 0
   system: 0
   taxonomy: 0
@@ -100,6 +108,7 @@ module:
   twig_tweak: 0
   update: 0
   user: 0
+  views_bootstrap: 0
   views_ui: 0
   webform: 0
   webform_examples_accessibility: 0

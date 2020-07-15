@@ -1,0 +1,23 @@
+uuid: f06d695a-3139-4823-9c35-4096cd728d93
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.descriptive_metadata_agent_labels
+  module:
+    - facets
+  theme:
+    - archipelago_subtheme
+id: facet_agents
+theme: archipelago_subtheme
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'facet_block:descriptive_metadata_agent_labels'
+settings:
+  id: 'facet_block:descriptive_metadata_agent_labels'
+  label: Agents
+  provider: facets
+  label_display: visible
+  block_id: facet_agents
+visibility: {  }

@@ -1,0 +1,11 @@
+uuid: 58c1aa9b-db19-426c-a6e8-cd0363023f37
+langcode: en
+status: true
+dependencies: {  }
+id: image_uuid
+label: 'Image UUID'
+pluginid: jmespath
+pluginconfig:
+  source_key: '"as:image".*."dr:uuid"'
+  exposed_key: as_image_dr_uuid_
+active: true

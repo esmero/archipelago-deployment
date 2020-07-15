@@ -1,0 +1,23 @@
+uuid: c7484605-db6e-49d1-8d2b-1a405310cefc
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.descriptive_metadata_subjects
+  module:
+    - facets
+  theme:
+    - archipelago_subtheme
+id: facet_subjects
+theme: archipelago_subtheme
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'facet_block:descriptive_metadata_subjects'
+settings:
+  id: 'facet_block:descriptive_metadata_subjects'
+  label: Subject
+  provider: facets
+  label_display: visible
+  block_id: facet_subjects
+visibility: {  }

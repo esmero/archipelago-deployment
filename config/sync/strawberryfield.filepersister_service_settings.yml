@@ -1,0 +1,3 @@
+extractmetadata: true
+exif_exec_path: /usr/bin/exiftool
+fido_exec_path: /usr/bin/fido

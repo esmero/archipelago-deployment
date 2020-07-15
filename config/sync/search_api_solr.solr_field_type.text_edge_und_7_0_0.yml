@@ -1,9 +1,7 @@
 uuid: 91ed0892-d73e-42a2-8c88-84a5c475e217
 langcode: en
 status: true
-dependencies:
-  config:
-    - search_api_solr.solr_field_type.text_und_7_0_0
+dependencies: {  }
 _core:
   default_config_hash: edn4g9huIbBonsmj_ZVT_ASjxhb-m9P7qL4zSNgQ_t8
 id: text_edge_und_7_0_0

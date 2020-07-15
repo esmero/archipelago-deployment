@@ -24,16 +24,16 @@ definitions:
     expanded: false
     enabled: true
   node__add_page:
+    parent: 'menu_link_content:a580dad6-5932-4f9d-bdaa-06b5563c386c'
+    menu_name: tools
+    enabled: true
+    expanded: false
     weight: -50
-    parent: 'menu_link_content:79510730-8557-43b0-b522-40de2307e44b'
-    menu_name: tools
-    enabled: true
-    expanded: false
   tracker__page:
-    weight: -49
-    parent: 'menu_link_content:79510730-8557-43b0-b522-40de2307e44b'
+    enabled: false
     menu_name: tools
+    parent: ''
     expanded: false
-    enabled: true
+    weight: -49
 _core:
   default_config_hash: jdY7AU0tU-QsjmiOw3W8vwpYMb-By--_MSFgbqKUTYM

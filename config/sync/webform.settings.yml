@@ -1,6 +1,7 @@
 settings:
   default_status: open
   default_page_base_path: form
+  default_ajax: false
   default_ajax_effect: fade
   default_ajax_speed: 500
   default_ajax_progress_type: throbber
@@ -27,6 +28,8 @@ settings:
   default_wizard_next_button_label: 'Next Page >'
   default_wizard_start_label: Start
   default_wizard_confirmation_label: Complete
+  default_wizard_toggle_show_label: 'Show all'
+  default_wizard_toggle_hide_label: 'Hide all'
   default_preview_next_button_label: Preview
   default_preview_prev_button_label: '< Previous'
   default_preview_label: Preview
@@ -57,6 +60,7 @@ settings:
       - entity.node.webform.results_submissions
       - entity.node.webform.user.drafts
       - entity.node.webform.user.submissions
+  default_results_customize: false
   default_previous_submission_message: 'You have already submitted this webform. <a href="#">View your previous submission</a>.'
   default_previous_submissions_message: 'You have already submitted this webform. <a href="#">View your previous submissions</a>.'
   default_autofill_message: 'This submission has been autofilled with your previous submission.'
@@ -65,6 +69,9 @@ settings:
   confirmation_back_classes: "button\n"
   default_limit_total_message: 'No more submissions are permitted.'
   default_limit_user_message: 'No more submissions are permitted.'
+  default_share: false
+  default_share_node: false
+  default_share_theme_name: ''
   dialog: false
   dialog_options:
     narrow:
@@ -76,12 +83,13 @@ settings:
     wide:
       title: Wide
       width: 1000
-  default_submission_login_message: 'Please login to access this submission.'
 assets:
   css: ''
   javascript: ''
 handler:
   excluded_handlers: {  }
+variant:
+  excluded_variants: {  }
 export:
   temp_directory: ''
   exporter: delimited
@@ -102,6 +110,7 @@ export:
   signature_format: status
   delimiter: ','
   excel: false
+  archive_type: tar
   excluded_exporters: {  }
 batch:
   default_batch_export_size: 500
@@ -111,7 +120,11 @@ batch:
   default_batch_email_size: 500
 purge:
   cron_size: 100
+form:
+  filter_category: ''
+  filter_state: ''
 element:
+  machine_name_pattern: a-z0-9_
   empty_message: '{Empty}'
   allowed_tags: admin
   wrapper_classes: "container-inline clearfix\nform--inline clearfix\nmessages messages--error\nmessages messages--warning\nmessages messages--status\n"
@@ -123,8 +136,6 @@ element:
   default_empty_option: true
   default_empty_option_required: ''
   default_empty_option_optional: ''
-  default_icheck: ''
-  default_google_maps_api_key: ''
   default_algolia_places_app_id: ''
   default_algolia_places_api_key: ''
   excluded_elements:
@@ -182,5 +193,3 @@ requirements:
   spam: true
 langcode: en
 third_party_settings: {  }
-_core:
-  default_config_hash: ew9lJG2u4zCjwo4lmIX639Sd_6X-KBeGgB-ZqDBy_n4

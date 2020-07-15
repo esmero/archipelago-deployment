@@ -8,16 +8,13 @@ weight: 4
 is_admin: null
 permissions:
   - 'access content overview'
-  - 'access contextual links'
   - 'access files overview'
   - 'access taxonomy overview'
   - 'access user contact forms'
   - 'access user profiles'
   - 'add metadatadisplay entity'
-  - 'administer codemirror editor'
   - 'administer contact forms'
   - 'administer content translation'
-  - 'administer contexts'
   - 'administer facets'
   - 'administer filters'
   - 'administer metadatadisplay entity'

@@ -1,9 +1,7 @@
 uuid: 7e8304c6-6b61-48fb-8009-c10d5af13680
 langcode: en
 status: true
-dependencies:
-  config:
-    - search_api_solr.solr_field_type.text_und_6_0_0
+dependencies: {  }
 _core:
   default_config_hash: R-qv3m6WSi8tTmAcAyQK2adAXRPW4xLrmkIFbqIVmvc
 id: text_ngram_und_6_0_0

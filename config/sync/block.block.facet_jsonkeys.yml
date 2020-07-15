@@ -1,0 +1,31 @@
+uuid: 87f43183-b911-4049-aad8-f503bee6f0e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.descriptive_metadata_source_json_keys
+  module:
+    - facets
+    - user
+  theme:
+    - archipelago_subtheme
+id: facet_jsonkeys
+theme: archipelago_subtheme
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'facet_block:descriptive_metadata_source_json_keys'
+settings:
+  id: 'facet_block:descriptive_metadata_source_json_keys'
+  label: 'JSON keys in your metadata'
+  provider: facets
+  label_display: visible
+  block_id: facet_jsonkeys
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      metadata_pro: metadata_pro
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

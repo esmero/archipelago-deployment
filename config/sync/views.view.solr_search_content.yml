@@ -83,7 +83,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: or
+          operator: and
           value: ''
           group: 1
           exposed: true
@@ -93,6 +93,8 @@ display:
             description: ''
             use_operator: false
             operator: search_api_fulltext_op
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: search_api_fulltext
             required: false
             remember: false
@@ -101,9 +103,8 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+              metadata_pro: '0'
             placeholder: ''
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -188,11 +189,22 @@ display:
           content: 'Displaying results @start - @end of @total'
           plugin_id: result
       footer: {  }
-      empty: {  }
+      empty:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          content: 'Oops! Sorry your search term did not match any indexed Digital Objects. Please try again.'
+          plugin_id: result
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
-      css_class: ''
+      css_class: search_box
+      use_ajax: false
     cache_metadata:
       contexts:
         - 'languages:language_interface'
@@ -205,9 +217,9 @@ display:
       max-age: -1
       tags:
         - 'config:search_api.index.default_solr_index'
-  block_1:
+  block:
     display_plugin: block
-    id: block_1
+    id: block
     display_title: Block
     position: 2
     display_options:

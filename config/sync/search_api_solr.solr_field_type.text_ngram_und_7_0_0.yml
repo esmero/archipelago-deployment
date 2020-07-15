@@ -1,9 +1,7 @@
 uuid: 2badba34-8485-4098-8efe-66058d611262
 langcode: en
 status: true
-dependencies:
-  config:
-    - search_api_solr.solr_field_type.text_und_7_0_0
+dependencies: {  }
 _core:
   default_config_hash: 6uqsWgLopdBAXIzy2SwBKR3p6a2GgNIsdteOAG9K-08
 id: text_ngram_und_7_0_0
