@@ -1,0 +1,10 @@
+uuid: efa5201b-08bb-44ac-bda9-d636c8aa046a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_image_only_for_carousel
+label: 'Digital Object Image Only for Carousel'
+targetEntityType: node
+cache: true

@@ -5,18 +5,18 @@ dependencies:
   module:
     - codemirror_editor
     - format_strawberryfield
+    - options
 id: metadatadisplay_entity.metadatadisplay_entity.default
 targetEntityType: metadatadisplay_entity
 bundle: metadatadisplay_entity
 mode: default
 content:
   mimetype:
-    type: string
+    type: list_key
     weight: 3
     region: content
     label: above
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
   name:
     label: above
@@ -33,6 +33,7 @@ content:
     region: content
     settings:
       mode: text/x-twig
+      lineWrapping: true
       lineNumbers: true
       foldGutter: true
     third_party_settings: {  }

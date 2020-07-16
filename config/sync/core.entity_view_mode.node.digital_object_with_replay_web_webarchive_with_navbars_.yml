@@ -1,0 +1,10 @@
+uuid: 78c17f24-b40a-4cff-8490-a6f08cf97d2d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_with_replay_web_webarchive_with_navbars_
+label: 'Digital Object with WARC Replay.web Widget'
+targetEntityType: node
+cache: true

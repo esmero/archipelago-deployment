@@ -1,71 +1,81 @@
 type_to_viewmode:
   -
-    jsontype: Video
-    view_mode: digital_object_with_video_player
-    active: true
-    weight: -3
-  -
     jsontype: 3DModel
     view_mode: digital_object_with_3d_viewer
     active: true
-    weight: 2
+    weight: -10
   -
     jsontype: Photograph
     view_mode: digital_object_viewmode_fullitem
     active: true
-    weight: 3
+    weight: -9
   -
     jsontype: Thesis
     view_mode: digital_object_with_pdf
     active: true
-    weight: 4
+    weight: -8
   -
     jsontype: Panorama
     view_mode: digital_object_with_pannellum_panorama
     active: true
-    weight: 7
+    weight: -7
   -
     jsontype: Book
     view_mode: digital_object_with_book_reader
     active: true
-    weight: 7
-  -
-    jsontype: Podcast
-    view_mode: digital_object_with_a_v_player
-    active: true
-    weight: 8
-  -
-    jsontype: Collection
-    view_mode: collection_listing
-    active: true
-    weight: 9
+    weight: -6
   -
     jsontype: Article
     view_mode: digital_object_with_pdf
     active: true
-    weight: 10
+    weight: -3
   -
     jsontype: Map
     view_mode: digital_object_with_mirador_viewer
     active: true
-    weight: 11
+    weight: -2
   -
     jsontype: MusicRecording
     view_mode: digital_object_with_a_v_player
     active: true
-    weight: 12
+    weight: -1
+  -
+    jsontype: Video
+    view_mode: digital_object_with_video_player
+    active: true
+    weight: 0
   -
     jsontype: Sculpture
     view_mode: digital_object_with_3d_viewer
     active: true
-    weight: 13
+    weight: 1
   -
     jsontype: VisualArtwork
     view_mode: digital_object_with_video_player
     active: true
-    weight: 14
+    weight: 2
   -
     jsontype: Painting
     view_mode: digital_object_with_mirador_viewer
     active: true
+    weight: 3
+  -
+    jsontype: Podcast
+    view_mode: digital_object_oral_history_with_multiple_media
+    active: true
+    weight: 4
+  -
+    jsontype: Collection
+    view_mode: collection_listing
+    active: true
+    weight: 14
+  -
+    jsontype: WebPage
+    view_mode: digital_object_with_replay_web_webarchive_with_navbars_
+    active: true
     weight: 15
+  -
+    jsontype: AudioObject
+    view_mode: digital_object_with_a_v_player
+    active: true
+    weight: 16

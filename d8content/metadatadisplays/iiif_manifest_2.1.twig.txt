@@ -21,10 +21,12 @@ Without Double quotes.
     {% else %}
         {% set nodeurl = '<current>' ~ '/iiif/manifest' %}
     {% endif%}
+{% apply spaceless %}    
+{% spaceless %}
 {
 "@context": [
-"http://www.w3.org/ns/anno.jsonld",
-"http://iiif.io/api/presentation/2/context.json"
+  "http://www.w3.org/ns/anno.jsonld",
+  "http://iiif.io/api/presentation/2/context.json"
 ],
 "@type": "sc:Manifest",
 "@id": "{{ nodeurl }} ",
@@ -65,36 +67,79 @@ Without Double quotes.
     {% set currentnode = '<current>' %}
 {% endif %}
 "sequences": [
-{
-"@id": "{{ nodeurl }}/sequence/normal",
-"@type": "sc:Sequence",
-"label": "Current Page Order",
-"viewingDirection": "left-to-right",
-"viewingHint": "paged",
-"canvases": [
-{% for page in attribute(data, 'as:image') %}
+  {
+    "@id": "{{ nodeurl }}/sequence/normal",
+    "@type": "sc:Sequence",
+    "label": "Current Page Order",
+    "viewingDirection": "left-to-right",
+    "viewingHint": "paged",
+    "canvases": [
+{% if attribute(data, 'as:document')|length > 0 %}    
+  {% for document in attribute(data, 'as:document') if document['flv:exif'].PageCount %}
+  {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %}
+{# Only Fetch the first Document #}
+  {% if loop.index == 1 %} 
+    {% set pageCount =  document['flv:exif'].PageCount %}
+    {% for pagenumber in 1..pageCount %}
     {
-    "@id": "{{ nodeurl }}/canvas/p{{ loop.index }}",
+    "@id": "{{ nodeurl }}/iiif/{{ document['dr:uuid'] }}/canvas/p{{ loop.index }}",
     "@type": "sc:Canvas",
     "label": "p. {{ loop.index }}",
+    "width": 3,
+    "height": 4,
     "images": [{
     "@type": "oa:Annotation",
     "motivation": "sc:painting",
     "resource":{
-    "@id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}/full/1200,/0/default.jpg",
-    "@type": "dctypes:Image",
-    "format": "image/jpeg",
-    "service": {
-    "@context": "http://iiif.io/api/image/2/context.json",
-    "@id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}",
-    "profile": "http://iiif.io/api/image/2/level2.json"
+      "@id": "{{ cantaloupeid }}/full/full/0/default.jpg?page={{ pagenumber }}",
+      "@type": "dctypes:Image",
+      "format": "image/jpeg",
+      "width": 800
     },
-    "width": 1200
-    },
-    "on": "{{ nodeurl }}/canvas/p{{ loop.index }}"
+    "on": "{{ nodeurl }}/iiif/{{ document['dr:uuid'] }}/canvas/p{{ loop.index }}"
     }]
     }{{ not loop.last ? ',' : '' }}
-{% endfor %}
+    {% endfor %}
+  {% endif %}
+  {% endfor %}    
+{% else %}    
+  {% for page in attribute(data, 'as:image') %}
+  {% if page["flv:exif"] %}
+  {% set width = page["flv:exif"].ImageWidth %}
+  {% else  %}
+  {% set width = 1200 %}
+  {% endif %}
+  {% if page["flv:exif"] %}
+  {% set height = page["flv:exif"].ImageHeight %}
+  {% else  %}
+  {% set height = 1600 %}
+  {% endif %}
+      {
+        "@id": "{{ nodeurl }}/canvas/p{{ loop.index }}",
+        "@type": "sc:Canvas",
+        "label": "p. {{ loop.index }}",
+        "width": {{ width }},
+        "height": {{ height }},
+        "images": [{
+        "@type": "oa:Annotation",
+        "motivation": "sc:painting",
+        "resource":{
+        "@id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}/full/1200,/0/default.jpg",
+        "@type": "dctypes:Image",
+        "format": "image/jpeg",
+        "service": {
+            "@context": "http://iiif.io/api/image/2/context.json",
+            "@id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}",
+            "profile": "http://iiif.io/api/image/2/level2.json"
+        },
+        "width": {{ width }}
+        },
+        "on": "{{ nodeurl }}/canvas/p{{ loop.index }}"
+       }
+    ]
+  }{{ not loop.last ? ',' : '' }}
+  {% endfor %}
+{% endif %}  
 ]
 }],
 "structures": [{
@@ -102,9 +147,22 @@ Without Double quotes.
 "@type": "sc:Range",
 "label": "Introduction",
 "canvases": [
-{% for range in attribute(data, 'as:image') %}
+{% if attribute(data, 'as:document')|length > 0 %}    
+  {% for document in attribute(data, 'as:document') if document['flv:exif'].PageCount %}
+    {% if loop.index == 1 %} 
+      {% set pageCount =  document['flv:exif'].PageCount %}
+      {% for pagenumber in 1..pageCount %}
+    "{{ nodeurl }}/iiif/{{ document['dr:uuid'] }}/canvas/p{{ loop.index }}"{{ not loop.last ? ',' : '' }}
+      {% endfor %}
+    {% endif %}
+ {% endfor %}
+{% else %}
+  {% for range in attribute(data, 'as:image') %}
     "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}"{{ not loop.last ? ',' : '' }}
-{% endfor %}
+  {% endfor %}
+{% endif %}  
 ]
 }]
 }
+{% endspaceless %}
+{% endapply %}

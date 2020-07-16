@@ -1,0 +1,125 @@
+uuid: 53543c18-15a3-476b-96df-a05680cf7777
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.digital_object_oral_history_with_multiple_media
+    - field.field.node.digital_object.body
+    - field.field.node.digital_object.field_descriptive_metadata
+    - node.type.digital_object
+  module:
+    - ds
+    - field_layout
+    - format_strawberryfield
+    - text
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+  ds:
+    layout:
+      id: ds_2col_stacked
+      library: ds/ds_2col_stacked
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+        wrappers:
+          header: div
+          left: div
+          right: div
+          footer: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      left:
+        - links
+        - body
+        - 'display_field_copy:node-field_descriptive_metadata_image'
+        - 'display_field_copy:node-formatted_metadata'
+      right:
+        - 'display_field_copy:node-static_media'
+      footer:
+        - field_descriptive_metadata
+    fields:
+      'display_field_copy:node-field_descriptive_metadata_image':
+        plugin_id: 'display_field_copy:node-field_descriptive_metadata_image'
+        weight: 2
+        label: hidden
+        formatter: strawberry_audio_formatter
+        settings:
+          formatter:
+            json_key_source: 'as:audio'
+            number_media: 1
+            max_width: '0'
+            max_height: '60'
+      'display_field_copy:node-formatted_metadata':
+        plugin_id: 'display_field_copy:node-formatted_metadata'
+        weight: 3
+        label: hidden
+        formatter: strawberry_paged_formatter
+        settings:
+          formatter:
+            mediasource: metadatadisplayentity
+            manifesturl_source: iiifmanifest
+            metadatadisplayentity_source: '5'
+            max_width: '0'
+            max_height: '520'
+            use_iiif_globals: '1'
+            iiif_base_url: 'http://localhost:8183/iiif/2'
+            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+      'display_field_copy:node-static_media':
+        plugin_id: 'display_field_copy:node-static_media'
+        weight: 4
+        label: hidden
+        formatter: strawberry_media_formatter
+        settings:
+          formatter:
+            iiif_group: true
+            thumbnails: true
+            json_key_source: 'as:image'
+            max_width: '720'
+            max_height: '480'
+            use_iiif_globals: '1'
+            iiif_base_url: 'http://localhost:8183/iiif/2'
+            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+id: node.digital_object.digital_object_oral_history_with_multiple_media
+targetEntityType: node
+bundle: digital_object
+mode: digital_object_oral_history_with_multiple_media
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: left
+  field_descriptive_metadata:
+    weight: 5
+    label: hidden
+    settings:
+      metadatadisplayentity_id: '1'
+      specs: 'http://schema.org'
+      label: 'Descriptive Metadata'
+      metadatadisplayentity_uselabel: '0'
+      iiif_base_url: 'http://localhost:8183/iiif/2'
+      iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+      use_iiif_globals: '1'
+    third_party_settings: {  }
+    type: strawberry_metadata_formatter
+    region: footer
+  links:
+    weight: 0
+    region: left
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  content_moderation_control: true
+  langcode: true
+  search_api_excerpt: true

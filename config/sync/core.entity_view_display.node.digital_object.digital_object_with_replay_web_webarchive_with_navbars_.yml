@@ -1,0 +1,91 @@
+uuid: c26d4109-9265-433b-aa4c-a2ec9df42981
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.digital_object_with_replay_web_webarchive_with_navbars_
+    - field.field.node.digital_object.body
+    - field.field.node.digital_object.field_descriptive_metadata
+    - node.type.digital_object
+  module:
+    - ds
+    - field_layout
+    - strawberryfield
+    - text
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      content:
+        - links
+        - body
+        - 'display_field_copy:node-field_descriptive_metadata_image'
+        - 'display_field_copy:node-formatted_metadata'
+        - field_descriptive_metadata
+    fields:
+      'display_field_copy:node-field_descriptive_metadata_image':
+        plugin_id: 'display_field_copy:node-field_descriptive_metadata_image'
+        weight: 2
+        label: hidden
+        formatter: strawberry_warc_formatter
+        settings:
+          formatter:
+            json_key_source: 'as:document'
+            json_key_starting_url: website_url
+            max_width: '0'
+            max_height: '960'
+            navbar: true
+            warcurl_json_key_source: ''
+            use_iiif_globals: '1'
+            iiif_base_url: 'http://localhost:8183/iiif/2'
+            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+      'display_field_copy:node-formatted_metadata':
+        plugin_id: 'display_field_copy:node-formatted_metadata'
+        weight: 3
+        label: hidden
+        formatter: strawberry_metadata_formatter
+        settings:
+          formatter:
+            metadatadisplayentity_id: '1'
+            specs: 'http://schema.org'
+            label: 'Descriptive Metadata'
+            metadatadisplayentity_uselabel: '0'
+id: node.digital_object.digital_object_with_replay_web_webarchive_with_navbars_
+targetEntityType: node
+bundle: digital_object
+mode: digital_object_with_replay_web_webarchive_with_navbars_
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_descriptive_metadata:
+    weight: 4
+    label: hidden
+    settings:
+      limit_access: edit
+    third_party_settings: {  }
+    type: strawberry_default_formatter
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  content_moderation_control: true
+  langcode: true
+  search_api_excerpt: true

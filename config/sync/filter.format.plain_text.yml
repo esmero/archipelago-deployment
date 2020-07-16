@@ -35,5 +35,6 @@ filters:
     status: true
     weight: 0
     settings:
+      lineWrapping: false
       lineNumbers: true
       foldGutter: false

@@ -1,0 +1,31 @@
+{
+  "data": {
+    "type": "menu_link_content--menu_link_content",
+    "id": "9085dade-61be-4581-ba00-239f16787d7f",
+    "links": {
+      "self": {
+        "href": "https://play.archipelago.nyc/jsonapi/menu_link_content/menu_link_content/9085dade-61be-4581-ba00-239f16787d7f"
+      }
+    },
+    "attributes": {
+      "bundle": "menu_link_content",
+      "enabled": true,
+      "title": "Support",
+      "description": "Help",
+      "menu_name": "main",
+      "link": {
+        "uri": "https://github.com/esmero/archipelago-documentation",
+        "title": null,
+        "options": [
+
+        ]
+      },
+      "external": true,
+      "rediscover": false,
+      "weight": 0,
+      "expanded": false,
+      "parent": null,
+      "default_langcode": true
+    }
+  }
+}

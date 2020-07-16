@@ -14,23 +14,36 @@ dependencies:
 third_party_settings:
   ds:
     layout:
-      id: layout_onecol
-      library: layout_discovery/onecol
+      id: layout_twocol
+      library: layout_discovery/twocol
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: null
+        label: ''
     regions:
-      content:
+      top:
         - node_title
-        - langcode
-        - node_changed_date
-        - links
         - field_descriptive_metadata
+      first:
+        - links
+      second:
+        - node_changed_date
+        - 'display_field_copy:node-raw_metadata'
     fields:
+      'display_field_copy:node-raw_metadata':
+        plugin_id: 'display_field_copy:node-raw_metadata'
+        weight: 4
+        label: hidden
+        formatter: strawberry_metadata_formatter
+        settings:
+          formatter:
+            metadatadisplayentity_id: '8'
+            specs: 'http://schema.org'
+            label: 'Descriptive Metadata'
+            metadatadisplayentity_uselabel: '0'
       node_changed_date:
         plugin_id: node_changed_date
-        weight: 2
+        weight: 3
         label: hidden
         formatter: ds_post_date_long
       node_title:
@@ -48,7 +61,7 @@ bundle: digital_object_collection
 mode: strawberryfield_processed_metadata
 content:
   field_descriptive_metadata:
-    weight: 4
+    weight: 1
     label: hidden
     settings:
       json_key_source: 'as:image'
@@ -64,22 +77,14 @@ content:
       rotation: '0'
     third_party_settings: {  }
     type: strawberry_image_formatter
-    region: content
-  langcode:
-    type: language
-    weight: 1
-    region: content
-    label: hidden
-    settings:
-      link_to_entity: false
-      native_language: false
-    third_party_settings: {  }
+    region: top
   links:
-    weight: 3
-    region: content
+    weight: 2
+    region: first
     settings: {  }
     third_party_settings: {  }
 hidden:
   body: true
   content_moderation_control: true
+  langcode: true
   search_api_excerpt: true

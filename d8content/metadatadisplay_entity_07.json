@@ -1,0 +1,12 @@
+{
+  "data": {
+    "type": "metadatadisplay_entity--metadatadisplay_entity",
+    "id": "df5a93ae-20e0-490f-a212-1b9e8ed3670f",
+    "attributes": {
+      "name": "Carousel Image",
+      "twig": "{# This Template generates an Item inside a Bootstrap Carousel\r\n\r\nStructures passed from Archipelago are\r\n- node\r\n  The full Node entity\r\n- data\r\n  The Full JSON Structure converted in an Array\r\n- iiif_server\r\n  The publicly available IIIF Server (Global Setting)\r\n  \r\n#}\r\n{% set Webserverurl =  url('<front>')|render|replace({':8001\/':''}) ~ ':8183\/iiif\/2\/' %}\r\n{% set IIIFserverurl = iiif_server ? iiif_server ~ '\/': Webserverurl %}\r\n{% set currenturl = '<current>' %}\r\n{% if node.id %}\r\n{% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}\r\n{% else %}\r\n{% set nodeurl = currenturl %}\r\n{% endif %}\r\n{% set len = language.getId() ? language.getId() : \"en\" %}\r\n{% for image in attribute(data, 'as:image')|slice(0,1) %}\r\n {% if image[\"flv:exif\"] %}\r\n   {% set height = image[\"flv:exif\"].ImageHeight%}\r\n {% else  %}\r\n   {% set width = 1200 %}\r\n {% endif %}\r\n   {% set imageurl =  IIIFserverurl ~ image['url']|replace({'s3:\/\/':''})|replace({'private:\/\/':''})|url_encode %}\r\n       <img src=\"{{ imageurl }}\/100,100,900,200\/,400\/0\/default.jpg\" class=\"d-block w-100\" alt=\"{{ image.name }}\" height=\"400px\">\r\n{% endfor %}",
+      "langcode": "und",
+      "mimetype": "text/html"
+    }
+  }
+}

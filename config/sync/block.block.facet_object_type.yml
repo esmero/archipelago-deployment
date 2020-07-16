@@ -1,0 +1,23 @@
+uuid: 869e908d-fda3-447c-bac2-d963ff222431
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.descriptive_metadata_object_types
+  module:
+    - facets
+  theme:
+    - archipelago_subtheme
+id: facet_object_type
+theme: archipelago_subtheme
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'facet_block:descriptive_metadata_object_types'
+settings:
+  id: 'facet_block:descriptive_metadata_object_types'
+  label: 'Object Type'
+  provider: facets
+  label_display: visible
+  block_id: facet_object_type
+visibility: {  }

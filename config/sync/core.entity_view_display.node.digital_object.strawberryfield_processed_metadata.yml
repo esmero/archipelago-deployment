@@ -73,7 +73,7 @@ content:
     region: second
     label: hidden
     settings:
-      metadatadisplayentity_id: '1'
+      metadatadisplayentity_id: '8'
       specs: 'http://schema.org'
       label: 'Descriptive Metadata'
       metadatadisplayentity_uselabel: '0'

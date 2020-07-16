@@ -1,0 +1,30 @@
+uuid: 946f76b0-f6c9-4fbf-aae5-1fc3a7b7207d
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.ado_slideshow
+  module:
+    - system
+    - views
+  theme:
+    - archipelago_subtheme
+id: views_block__ado_slideshow_block_1
+theme: archipelago_subtheme
+region: content
+weight: -9
+provider: null
+plugin: 'views_block:ado_slideshow-block_1'
+settings:
+  id: 'views_block:ado_slideshow-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: '4'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }
