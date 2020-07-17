@@ -11095,12 +11095,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "5ea184548a71f200dfe6ad9fa61e04d8d959f062"
+                "reference": "207774e265653978a55bc216526f0b6f10451270"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/5ea184548a71f200dfe6ad9fa61e04d8d959f062",
-                "reference": "5ea184548a71f200dfe6ad9fa61e04d8d959f062",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/207774e265653978a55bc216526f0b6f10451270",
+                "reference": "207774e265653978a55bc216526f0b6f10451270",
                 "shasum": ""
             },
             "require": {
@@ -11133,7 +11133,7 @@
             ],
             "description": "A strawberry field for Drupal 8",
             "homepage": "https://github.com/esmero/strawberryfield",
-            "time": "2020-07-14T13:15:14+00:00"
+            "time": "2020-07-17T13:11:01+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",
@@ -11141,12 +11141,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/webform_strawberryfield.git",
-                "reference": "0c1926b8da77982e94dfc7c37d11744a48b686a3"
+                "reference": "4bcb2ce201f878d2e5b60aa7073be586d6378ab6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/0c1926b8da77982e94dfc7c37d11744a48b686a3",
-                "reference": "0c1926b8da77982e94dfc7c37d11744a48b686a3",
+                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/4bcb2ce201f878d2e5b60aa7073be586d6378ab6",
+                "reference": "4bcb2ce201f878d2e5b60aa7073be586d6378ab6",
                 "shasum": ""
             },
             "require": {
@@ -11172,7 +11172,7 @@
             ],
             "description": "A Webform/strawberryfield integration module for Drupal 8",
             "homepage": "https://github.com/esmero/webform_strawberryfield",
-            "time": "2020-07-14T20:08:33+00:00"
+            "time": "2020-07-17T13:07:31+00:00"
         },
         {
             "name": "swaggest/json-diff",
