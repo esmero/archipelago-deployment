@@ -107,7 +107,7 @@ Note: About Steps 2-3, you don't need to/nor should do this more than once. You 
 ## Step 4: Create a "demo "and a "jsonapi" user using drush 
 ```Shell
 docker exec -ti esmero-php bash -c 'drush ucrt demo --password="demo"; drush urol metadata_pro "demo"'
-docker exec -ti esmero-php bash -c 'drush ucrt jsonapi --password="jsonapi"; drush urol metadata_pro "jsonapi"'
+docker exec -ti esmero-php bash -c 'drush ucrt jsonapi --password="jsonapi"; drush urol metadata_api "jsonapi"'
 ```
 
 ## Step 5: Ingest some Metadata Displays to make playing much more interactive
