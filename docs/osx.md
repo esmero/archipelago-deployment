@@ -11,7 +11,7 @@ and paste **a single line at a time** and press the `Enter` key afterwards. We s
 
 If something fails (and we hope it does not) troubleshooting will be much easier if you can share that output when asking for help.
 
-Happy deploying!!
+Happy deploying!
 
 ## Prerequisites
 
