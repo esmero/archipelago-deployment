@@ -7,7 +7,7 @@ You can learn and test. Then delete and move over.
 ## Prerequisites
 
 ### A running Archipelago 1.0-Beta3 or higher.
-- You installed it either via the Step by Step [deployment on OSX](docs/osx.md), the one for [Ubuntu](docs/ubuntu.md) or using your secret powers directly on a VM/Metal/Cloud/EC2 or even a raspberryPI.
+- You installed it either via the Step by Step [deployment on OSX](osx.md), the one for [Ubuntu](ubuntu.md) or using your secret powers directly on a VM/Metal/Cloud/EC2 or even a raspberryPI.
 - You followed the guides without being too creative which means you have a `jsonapi` drupal user and you can login and out of your server.
 
 ## Step 1: Get the content
