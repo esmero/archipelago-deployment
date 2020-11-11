@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": ">=7.3",
-        ""vlucas/phpdotenv": "^5.1",
+        "vlucas/phpdotenv": "^5.1",
         "archipelago/archipelago_subtheme": "dev-8.x-1.0-beta3",
         "aws/aws-php-sns-message-validator": "^1.5",
         "aws/aws-sdk-php": "^3.63",
@@ -115,7 +115,7 @@
     "autoload": {
         "classmap": [
             "scripts/composer/ScriptHandler.php"
-        ]
+        ],
         "files": ["load.environment.php"]
     },
     "scripts": {
