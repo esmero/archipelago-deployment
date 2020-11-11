@@ -1,0 +1,112 @@
+diff --git a/src/Event/MappingForeignRelationshipsEvent.php b/src/Event/MappingForeignRelationshipsEvent.php
+index d700ac6c..17216973 100644
+--- a/src/Event/MappingForeignRelationshipsEvent.php
++++ b/src/Event/MappingForeignRelationshipsEvent.php
+@@ -67,6 +67,8 @@ final class MappingForeignRelationshipsEvent extends Event {
+    *   A (numerically keyed) array of foreign relationship mappings. Each
+    *   sub-array here represents a single known relationship. Such sub-arrays
+    *   will have the following structure:
++   *   - datasource: (string) The ID of the datasource which contains this
++   *     relationship.
+    *   - entity_type: (string) Entity type that is referred to from the index.
+    *   - bundles: (array) Optional array of particular entity bundles that are
+    *     referred to from the index. Empty array here means index refers to
+diff --git a/src/Plugin/search_api/datasource/ContentEntity.php b/src/Plugin/search_api/datasource/ContentEntity.php
+index 06cceafc..4a8ae89a 100644
+--- a/src/Plugin/search_api/datasource/ContentEntity.php
++++ b/src/Plugin/search_api/datasource/ContentEntity.php
+@@ -1039,6 +1039,11 @@ class ContentEntity extends DatasourcePluginBase implements PluginFormInterface
+     $ids_to_reindex = [];
+     $path_separator = IndexInterface::PROPERTY_PATH_SEPARATOR;
+     foreach ($foreign_entity_relationship_map as $relation_info) {
++      // Ignore relationships belonging to other datasources.
++      if (!empty($relation_info['datasource'])
++          && $relation_info['datasource'] !== $this->getPluginId()) {
++        continue;
++      }
+       // Check whether entity type and (if specified) bundles match the entity.
+       if ($relation_info['entity_type'] !== $entity->getEntityTypeId()) {
+         continue;
+diff --git a/src/Plugin/search_api/datasource/ContentEntityTrackingManager.php b/src/Plugin/search_api/datasource/ContentEntityTrackingManager.php
+index d918a8ab..ca9d92ea 100644
+--- a/src/Plugin/search_api/datasource/ContentEntityTrackingManager.php
++++ b/src/Plugin/search_api/datasource/ContentEntityTrackingManager.php
+@@ -8,7 +8,7 @@ use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
+ use Drupal\Component\Plugin\Exception\PluginNotFoundException;
+ use Drupal\Core\Entity\ContentEntityInterface;
+ use Drupal\Core\Entity\EntityInterface;
+-use Drupal\Core\Entity\EntityTypeManager;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
+ use Drupal\Core\Language\LanguageInterface;
+ use Drupal\Core\Language\LanguageManagerInterface;
+ use Drupal\search_api\IndexInterface;
+@@ -26,7 +26,7 @@ class ContentEntityTrackingManager {
+   /**
+    * The entity type manager.
+    *
+-   * @var \Drupal\Core\Entity\EntityTypeManager
++   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+    */
+   protected $entityTypeManager;
+ 
+@@ -47,14 +47,14 @@ class ContentEntityTrackingManager {
+   /**
+    * Constructs a new class instance.
+    *
+-   * @param \Drupal\Core\Entity\EntityTypeManager $entityTypeManager
++   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+    *   The entity type manager.
+    * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
+    *   The language manager.
+    * @param \Drupal\search_api\Task\TaskManagerInterface $taskManager
+    *   The task manager.
+    */
+-  public function __construct(EntityTypeManager $entityTypeManager, LanguageManagerInterface $languageManager, TaskManagerInterface $taskManager) {
++  public function __construct(EntityTypeManagerInterface $entityTypeManager, LanguageManagerInterface $languageManager, TaskManagerInterface $taskManager) {
+     $this->entityTypeManager = $entityTypeManager;
+     $this->languageManager = $languageManager;
+     $this->taskManager = $taskManager;
+diff --git a/src/Utility/TrackingHelper.php b/src/Utility/TrackingHelper.php
+index 9d9ac87c..088211ac 100644
+--- a/src/Utility/TrackingHelper.php
++++ b/src/Utility/TrackingHelper.php
+@@ -102,10 +102,11 @@ class TrackingHelper implements TrackingHelperInterface {
+       // Can't really happen, but play it safe to appease static code analysis.
+     }
+ 
+-    // Map of foreign entity relations. Will get lazily populated as soon as we
+-    // actually need it.
+-    $original = $deleted ? NULL : $entity->original ?? NULL;
++    // Original entity, if available.
++    $original = $deleted ? NULL : ($entity->original ?? NULL);
+     foreach ($indexes as $index) {
++      // Map of foreign entity relations. Will get lazily populated as soon as
++      // we actually need it.
+       $map = NULL;
+       foreach ($index->getDatasources() as $datasource_id => $datasource) {
+         if (!$datasource->canContainEntityReferences()) {
+@@ -142,6 +143,8 @@ class TrackingHelper implements TrackingHelperInterface {
+    *   A (numerically keyed) array of foreign relationship mappings. Each
+    *   sub-array represents a single known relationship. Such sub-arrays will
+    *   have the following structure:
++   *   - datasource: (string) The ID of the datasource which contains this
++   *     relationship.
+    *   - entity_type: (string) The entity type that is referenced from the
+    *     index.
+    *   - bundles: (string[]) An optional array of particular entity bundles that
+@@ -175,6 +178,7 @@ class TrackingHelper implements TrackingHelperInterface {
+       }
+ 
+       $relation_info = [
++        'datasource' => $datasource->getPluginId(),
+         'entity_type' => NULL,
+         'bundles' => NULL,
+         'property_path_to_foreign_entity' => NULL,
+@@ -216,6 +220,7 @@ class TrackingHelper implements TrackingHelperInterface {
+             && $relation_info['entity_type'] !== $entity_reference['entity_type']) {
+           $relation_info = $entity_reference;
+           $relation_info['property_path_to_foreign_entity'] = implode(IndexInterface::PROPERTY_PATH_SEPARATOR, $seen_path_chunks);
++          $relation_info['datasource'] = $datasource->getPluginId();
+         }
+ 
+         if ($property_definition instanceof ComplexDataDefinitionInterface) {
