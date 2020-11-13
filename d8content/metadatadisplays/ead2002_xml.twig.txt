@@ -1,0 +1,381 @@
+{# "ap:importeddata": {
+        "dsc_csv": {
+            "format": "csv",
+            "content": {
+                "2": {
+                    "id": "c_c0bc26977add8087243fe0f489c1d681",
+                    "did": "",
+                    "level": "file",
+                    "@parent": "",
+                    "did_unittitle": "\"Selective Giving: An Account of the Ittleson Family Foundation\"\n                            by Henry Anthony Ittleson and Pamela Lee Ittleson",
+                    "unitdate_type": "inclusive",
+                    "container_type": "box",
+                    "unitdate_normal": "",
+                    "unitdate_content": "1971",
+                    "container_content": "1",
+                    "unitdate_certainty": ""
+                },
+                // If empty tag is gone
+                // If all tags inside a wrapper are empty, the wrapper is gone.
+#}
+{% macro recursiveTree(objects, parent, level) %}
+{% import _self as self %}
+{% for c in objects %}
+    {% set current_parent = parent %}
+    {% if attribute(c, '@parent') == parent and level < 5 %}
+	<c id="{{ c.id }}" level="{{ c.level }}">
+        <did>
+          <unittitle>{{ c.did_unittitle }}</unittitle>
+          <unitdate type="{{ c.unitdate_type }}" normal="{{ c.unitdate_normal }}">{{ c.unitdate_content }}</unitdate>
+        </did>
+    {{ self.recursiveTree(objects, (loop.index+1), (level+1)) }}
+    {% endif %}
+    {% if attribute(c, '@parent') == parent %}
+    </c>
+    {% endif %}
+{% endfor %}
+{% endmacro %}
+{% set language_of_material_code = 'eng' %}
+<?xml version="1.0"?>
+<ead xsi:schemaLocation="urn:isbn:1-931666-22-9 http://www.loc.gov/ead/ead.xsd" xmlns:ns2="http://www.w3.org/1999/xlink" xmlns="urn:isbn:1-931666-22-9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <eadheader audience="internal" countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511">
+        <eadid countrycode="us" mainagencycode="{{ data.mainagencycode }}">
+        {{ data.finding_aid_title }}
+        </eadid>
+    <filedesc>
+        <titlestmt>
+            <titleproper>{{ data.finding_aid_title }}</titleproper>
+            <author>{{ data.finding_aid_author }}</author>
+        </titlestmt>
+        <publicationstmt>
+            <date>{{ data.date_encoded }}</date>
+            <publisher>{{ data.publisher }}</publisher>
+            {% if data.data.publisher_address|length > 0 %}
+        	<address>
+                {% if data.data.publisher_address.address %}
+            	<addressline>{{ data.publisher_address.address }}</addressline>
+                {% endif %}
+                {% if data.data.publisher_address.address_2 %}
+           		<addressline>{{ data.publisher_address.address_2 }}</addressline>
+                {% endif %}
+                {% if data.data.publisher_address.city %}
+            	<addressline>{{ data.publisher_address.city }}</addressline>
+                {% endif %}
+                {% if data.data.publisher_address.state_province %}
+            	<addressline>{{ data.publisher_address.state_province }}</addressline>
+                {% endif %}
+                {% if data.data.publisher_address.postal_code %}
+            	<addressline>{{ data.publisher_address.postal_code }}</addressline>
+                {% endif %}
+                {% if data.data.publisher_address.country %}
+            	<addressline>{{ data.publisher_address.country }}</addressline>
+                {% endif %}
+           </address>
+           {% endif %}
+        </publicationstmt>
+    </filedesc>
+    <profiledesc>
+        <creation>{{ data.encoded_by }}</creation>
+        <langusage>{{ data.language_of_finding_aid }}</langusage>
+        <descrules>{{ data.description_rules}}</descrules>
+    </profiledesc>
+</eadheader>
+<archdesc level="{{ data.level_of_description }}">
+    <did>
+        <unittitle label="Title">{{ data.label }}</unittitle>
+        <unitid>{{ data.collection_id }}</unitid>
+        {% if data.size_of_collection %}
+        <physdesc>
+            <extent>{{ data.size_of_collection }}</extent>
+        </physdesc>
+        {% endif %}
+        {% if data.language_of_material|length >0 %}
+        <langmaterial>
+            {% for langcode in datafixed %}
+			   {% if attribute(langcode, "English") in data.language_of_material  %}
+        	<language langcode="{{ attribute(langcode,"alpha3-b") }}"> 
+            {{ attribute(langcode, "English") }}
+            </language>
+              {% endif %}
+            {% endfor %}    
+        </langmaterial>
+        {% endif %}
+        {% if data.abstract %}
+        <abstract>
+        {{ data.abstract }} 
+        </abstract>
+        {% endif %}
+ 		{# Q1: can there be many inclussive dates? #}
+        {# Q2: can the user select point date? #}
+        {% if data.inclusive_dates %}
+            {% if data.inclusive_dates.date_type == "date_range" %}
+        <unitdate type="inclusive" normal="{{ data.inclusive_dates.date_from ~ '/' ~ data.inclusive_dates.date_to }}">
+            {{ (data.inclusive_dates.date_free) ? data.inclusive_dates.date_free : data.inclusive_dates.date_from ~ '-' ~ data.inclusive_dates.date_to }}
+        </unitdate>    
+            {% elseif data.inclusive_dates.date_type == 'date_point' %}
+         <unitdate type="inclusive" normal="{{ data.inclusive_dates.date_from }}">
+            {{ (data.inclusive_dates.date_free) ? data.inclusive_dates.date_free : data.inclusive_dates.date_from }}
+         </unitdate>
+            {% elseif data.inclusive_dates.date_type == 'date_free' %}
+         <unitdate type="inclusive">
+            {{ data.inclusive_dates.date_free }}
+         </unitdate>
+            {% endif %}
+        {% endif %}
+        {# Q3: Should Bulk be many? #}
+         {% if data.bulk_dates %}
+            {% if data.bulk_dates.date_type == "date_range" %}
+        <unitdate type="bulk" normal="{{ data.bulk_dates.date_from ~ '/' ~ data.bulk_dates.date_to }}">
+            {{ (data.bulk_dates.date_free) ? data.bulk_dates.date_free : data.bulk_dates.date_from ~ '-' ~ data.bulk_dates.date_to }}
+        </unitdate>
+            {% elseif data.inclusive_dates.date_type  == 'date_point' %}
+         <unitdate type="bulk" normal="{{ data.data.bulk_dates.date_from }}">
+            {{ (data.inclusive_dates.date_free) ? data.inclusive_dates.date_free : data.inclusive_dates.date_from  }}
+         </unitdate>
+            {% elseif data.inclusive_dates.date_type == 'date_free' %}
+         <unitdate type="bulk">
+            {{ data.inclusive_dates.date_free }}
+         </unitdate>
+            {% endif %}  
+        {% endif %}   
+        <repository>
+            {% if data.repository %}
+            <corpname>{{ data.repository }}</corpname>
+            {% endif %}
+            {% if data.repository_address|length > 0 %}
+            <address>
+               {% if data.repository_address.address %} 
+               <addressline>{{ data.repository_address.address }}</addressline>
+               {% endif %}
+               {% if data.repository_address.address_2 %} 
+               <addressline>{{ data.repository_address.address_2 }}</addressline>
+               {% endif %}
+               {% if data.repository_address.city %} 
+               <addressline>{{ data.repository_address.city }}</addressline>
+               {% endif %}
+               {% if data.repository_address.state_province %} 
+               <addressline>{{ data.repository_address.state_province }}</addressline>
+               {% endif %}
+               {% if data.repository_address.postal_code %} 
+               <addressline>{{ data.repository_address.postal_code }}</addressline>
+               {% endif %}
+               {% if data.repository_address.country %} 
+               <addressline>{{ data.repository_address.country }}</addressline> 
+               {% endif %}
+            </address>
+            {% endif %}
+         {% if data.repository_url %}
+            <extptr xlink:type="simple" xlink:href="{{ data.repository_url }}" />
+         {% endif %}
+       </repository>
+     </did>
+     {% if data.access_restrictions_note|length > 0 %}
+     <accessrestrict>
+         {% for access_restrictions_note in data.access_restrictions_note %}
+         <p>{{ access_restrictions_note }}</p>
+         {% endfor %}
+     </accessrestrict>
+     {% endif %}
+     {% if data.use_restrictions_note|length > 0 %}
+     <userestrict>
+         {% for use_restrictions_note in data.use_restrictions_note %}       
+         <p>{{ use_restrictions_note }}</p>
+         {% endfor %}
+    </userestrict>
+    {% endif %}
+    {% if data.admin_bio_note|length > 0 %}
+    <bioghist>
+           {% for admin_bio_note in data.admin_bio_note %}      
+ 		   <p>{{ admin_bio_note }}</p>
+           {% endfor %}
+    </bioghist>
+    {% endif %}
+    {% if data.scope_and_content_note|length > 0 %}
+    <scopecontent>
+        {% for scope_and_content_note in data.scope_and_content_note %}     
+        <p>{{ scope_and_content_note }}</p>
+         {% endfor %}
+    </scopecontent>
+    {% endif %}
+    {% if data.lcnaf_personal_names|length > 0 or
+    data.viaf_personal_names|length > 0 or
+    data.local_personal_names|length > 0 or
+    data.lcnaf_corporate_names|length > 0 or
+    data.viaf_corporate_names|length > 0 or
+    data.local_corporate_names|length > 0 or
+    data.local_family_names|length > 0 or
+    data.lcsh_subjects|length > 0 or
+    data.local_subjects|length > 0 or
+    data.lcnaf_geographic_names|length > 0 or
+    data.local_geographic_names|length > 0 or
+    data.aat_terms|length > 0 or
+    data.lcgft_terms|length > 0
+    %}
+    <controlaccess xmlns:xlink="http://www.w3.org/1999/xlink">
+         {# -- start names -- #}
+         {% for lcnaf in data.lcnaf_personal_names %}
+            <persname source="lcnaf" authfilenumber="{{ lcnaf.uri|split("/")|last }}" xlink:type="locator" xlink:href="{{ lcnaf.uri }}">{{ lcnaf.label }}</persname>
+         {% endfor %}
+         {% for viaf in data.viaf_personal_names %}
+            <persname source="viaf" authfilenumber="{{ viaf.uri|split("/")|last }}" xlink:type="locator" xlink:href="{{ viaf.uri }}">{{ viaf.label }}</persname>
+         {% endfor %}
+         {% for plc in data.local_personal_names %}
+            <persname source="local">{{ plc }}</persname>
+         {% endfor %}
+         {% for lcnafc in data.lcnaf_corporate_names %}
+            <corpname source="lcnaf" authfilenumber="{{ lcnafc.uri|split("/")|last }}" xlink:type="locator" xlink:href="{{ lcnafc.uri }}">{{ lcnafc.label }}</corpname>
+         {% endfor %}
+         {% for viafc in data.viaf_corporate_names %}
+            <corpname source="viaf" authfilenumber="{{ viafc.uri|split("/")|last }}" xlink:type="locator" xlink:href="{{ viafc.uri }}">{{ viafc.label }}</corpname>
+         {% endfor %}
+         {% for plcc in data.local_corporate_names %}
+            <corpname source="local">{{ plcc }}</corpname>
+         {% endfor %}
+         {% for lfm in data.local_family_names %}
+           <famname source="local">{{ lfm }}
+         {% endfor %}
+         {# -- end names -- #}
+         {# -- start subjects -- #}
+         {% for lcsh in data.lcsh_subjects %}
+            <subject authfilenumber="{{ lcsh.uri|split("/")|last }}" source="lcsh" xlink:type="locator" xlink:href="{{ lcsh.uri }}">{{ lcsh.label }}</subject>
+         {% endfor %}
+         {% for slc in data.local_subjects %}
+            <subject source="local">{{ slc }}</subject>
+         {% endfor %} 
+         {# -- end subjects -- #}
+         {# -- start geographic -- #}
+         {% for lcsg in data.lcnaf_geographic_names %}
+         <geogname source="lcnaf" authfilenumber="{{ lcsg.uri|split("/")|last }}" xlink:type="locator" xlink:href="{{ lcsg.uri }}">{{ lcsg.label }}</geogname>
+         {% endfor %} 
+         {# Q5: this is really named local_corporate_names2 should we change it #}
+         {% for lg in data.local_geographic_names %}
+         <geogname source="local">{{ lg }}</geogname>
+         {% endfor %} 
+	     {# -- end geographic -- #}
+         {# -- start genre -- #}
+         {% for aat in data.aat_terms %}
+         <genreform source="aat" authfilenumber="{{ aat.uri|split("/")|last }}" xlink:type="locator" xlink:href="{{ aat.uri }}">{{ aat.label }}</genreform>
+         {% endfor %} 
+         {% for lcgft in data.lcgft_terms %}
+         <genreform source="lcnaf" authfilenumber="{{ lcgft.uri|split("/")|last }}" xlink:type="locator" xlink:href="{{ lcgft.uri }}">{{ lcgft.label }}</genreform>
+         {% endfor %}
+         {# -- end genre -- #}
+         {# Q5: missing Wikidata? #}
+    </controlaccess>
+    {% endif %}
+    {% if data.url_to_online_items %}
+    <dao linktype="simple" href="{{ data.url_to_online_items }}"/>
+    {% endif %}
+    {% if data.preferred_citation %}    
+    <prefercite><p>{{ data.preferred_citation }}</p></prefercite>
+    {% endif %}
+    {% if data.processing_note|length > 0 %}    
+    <processinfo>
+        {% for processing_note in data.processing_note %}
+        <p>{{ processing_note }} </p>
+        {% endfor %} 
+    </processinfo>  
+    {% endif %}
+    {% if data.arrangement_note|length > 0 %}    
+    <arrangement>
+        {% for arrangement_note in data.arrangement_note %}
+        <p>{{ arrangement_note }} </p>
+        {% endfor %} 
+    </arrangement>   
+    {% endif %}
+    {% if data.acquisition_note|length > 0 %}    
+    <acqinfo>
+        {% for acquisition_note in data.acquisition_note %}
+        <p>{{ acquisition_note }} </p>
+        {% endfor %} 
+    </acqinfo>   
+    {% endif %}
+    {% if data.custodial_history_note|length > 0 %}    
+    <custodhist>
+        {% for custodial_history_note in data.custodial_history_note %}
+        <p>{{ custodial_history_note }} </p>
+        {% endfor %} 
+    </custodhist>   
+    {% endif %}
+    {% if data.accruals_note|length > 0 %}    
+    <accruals>
+        {% for accruals_note in data.accruals_note %}
+        <p>{{ accruals_note }} </p>
+        {% endfor %} 
+    </accruals>   
+    {% endif %}
+    {% if data.location_of_originals|length > 0 %}    
+    <originalsloc>
+        {% for location_of_originals in data.location_of_originals %}
+        <p>{{ location_of_originals }} </p>
+        {% endfor %} 
+    </originalsloc>   
+    {% endif %}
+    {% if data.location_of_copies|length > 0 %}    
+    <altformavail>
+        {% for location_of_copies in data.location_of_copies %}
+        <p>{{ location_of_copies }} </p>
+        {% endfor %} 
+    </altformavail>   
+    {% endif %}
+    {% if data.related_materials_note|length > 0 %}    
+    <relatedmaterial>
+        {% for related_materials_note in data.related_materials_note %}
+        <p>{{ related_materials_note }} </p>
+        {% endfor %} 
+    </relatedmaterial>   
+    {% endif %}
+    {% if data.separated_materials_note|length > 0 %}    
+    <separatedmaterial>
+        {% for separated_materials_note in data.separated_materials_note %}
+        <p>{{ separated_materials_note }} </p>
+        {% endfor %} 
+    </separatedmaterial>   
+    {% endif %}
+    {% if data.publication_note|length > 0 %}    
+    <bibliography>
+        {% for publication_note in data.publication_note %}
+        <p>{{ publication_note }} </p>
+        {% endfor %} 
+    </bibliography>   
+    {% endif %}
+    {% if data.appraisal_destruction_and_scheduling_note|length > 0 %}    
+    <appraisal>
+        {% for appraisal_destruction_and_scheduling_note in data.appraisal_destruction_and_scheduling_note %}
+        <p>{{ appraisal_destruction_and_scheduling_note }} </p>
+        {% endfor %} 
+    </appraisal>   
+    {% endif %}
+    {% if data.physical_access_note|length > 0 %}    
+    <phystech type="phys">
+        {% for physical_access_note in data.physical_access_note %}
+        <p>{{ physical_access_note }} </p>
+        {% endfor %} 
+    </phystech>   
+    {% endif %}
+    {% if data.technical_access_note|length > 0 %}    
+    <phystech type="tech">
+        {% for technical_access_note in data.technical_access_note %}
+        <p>{{ technical_access_note }} </p>
+        {% endfor %} 
+    </phystech>   
+    {% endif %}
+    {% if data.other_finding_aids|length > 0 %}    
+    <otherfindaid>
+        {% for other_finding_aids in data.other_finding_aids %}
+        <p>{{ technical_access_note }} </p>
+        {% endfor %} 
+    </otherfindaid>   
+    {% endif %}
+  {% if data["ap:importeddata"].dsc_csv.content|length > 0 %}  
+    <dsc> 
+   {% set dsc = data["ap:importeddata"].dsc_csv.content ?? [] %}
+   {% set current_row = 0 %}
+   {% set current_parent = 0 %}
+   {% set last_parent = null %}
+   {% import _self as thistwig %}
+   {{ thistwig.recursiveTree(dsc, "", 1) }}
+    </dsc> 
+  {% endif %}
+  </archdesc>
+</ead>
