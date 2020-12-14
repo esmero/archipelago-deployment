@@ -6,13 +6,15 @@ dependencies:
     - search_api_solr
     - node
     - user
-    - search_api
     - strawberryfield
+    - search_api
+    - file
   config:
-    - field.storage.node.field_descriptive_metadata
     - field.storage.node.field_tags
+    - field.storage.node.field_descriptive_metadata
     - search_api.server.esmero_solr_7_5
     - core.entity_view_mode.node.digital_object_image_only_for_carousel
+    - core.entity_view_mode.node.search_index
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -66,6 +68,13 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_descriptive_metadata
+  aggregated_field:
+    label: 'Aggregated field'
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: union
+      fields: {  }
   as_image_exif_focallength:
     label: '🍓 Strawberry (Descriptive Metadata source) » as_image_exif_focallength'
     datasource_id: 'entity:node'
@@ -107,6 +116,11 @@ field_settings:
     dependencies:
       module:
         - node
+  checksum:
+    label: 'Checksum that can be used to check if the source needs reprocessing'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: checksum
+    type: string
   city:
     label: '🍓 Strawberry (Descriptive Metadata source) » city'
     datasource_id: 'entity:node'
@@ -139,11 +153,21 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_tags
+  file_uuid:
+    label: 'Source File UUID (first one passed in a Post Processor chain)'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: file_uuid
+    type: string
   fulltext:
-    label: 'FullText test'
+    label: 'Unmodified data body'
     datasource_id: strawberryfield_flavor_datasource
     property_path: fulltext
-    type: string
+    type: text
+  fulltext_with_original_ocr:
+    label: 'Unmodified data body'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: fulltext
+    type: 'solr_text_custom:ocr_highlight'
   hocr:
     label: '🍓 Strawberry (Descriptive Metadata source) » hocr'
     datasource_id: 'entity:node'
@@ -200,6 +224,16 @@ field_settings:
     dependencies:
       module:
         - node
+  nid_ref:
+    label: '🍓 Strawberry (Descriptive Metadata source) » entity_sbf_entity_reference_ismemberof » ID'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:sbf_entity_reference_ismemberof:nid'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+      module:
+        - node
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -207,10 +241,31 @@ field_settings:
     indexed_locked: true
     type_locked: true
     hidden: true
+  ocr_text:
+    label: 'FullText test'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: fulltext
+    type: 'solr_text_custom:ocr_highlight'
+    boost: !!float 0
+  parent_digital_object_type:
+    label: '🍓 Strawberry Parent Digital Object Type'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:sbf_entity_reference_ismemberof:field_descriptive_metadata:digital_object_type'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+      module:
+        - node
   parent_id:
     label: 'Parent ID'
     datasource_id: strawberryfield_flavor_datasource
     property_path: parent_id
+    type: string
+  processor_id:
+    label: 'Processor Plugin id that populated this data'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: processor_id
     type: string
   rendered_item:
     label: 'Rendered HTML output'
@@ -220,6 +275,8 @@ field_settings:
       roles:
         anonymous: anonymous
       view_mode:
+        'entity:file':
+          file: ''
         'entity:node':
           article: ''
           digital_object: default
@@ -237,6 +294,8 @@ field_settings:
       roles:
         anonymous: anonymous
       view_mode:
+        'entity:file':
+          file: ''
         'entity:node':
           article: ''
           digital_object: digital_object_image_only_for_carousel
@@ -244,8 +303,18 @@ field_settings:
           page: ''
           webform: ''
         strawberryfield_flavor_datasource:
-          digital_object: ''
-          digital_object_collection: ''
+          digital_object: search_index
+          digital_object_collection: search_index
+  sbf_entity_reference_title:
+    label: '🍓 Strawberry (Descriptive Metadata source) » entity_sbf_entity_reference_ismemberof » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:sbf_entity_reference_ismemberof:title'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+      module:
+        - node
   sequence_id:
     label: 'Sequence ID'
     datasource_id: strawberryfield_flavor_datasource
@@ -261,7 +330,7 @@ field_settings:
     dependencies:
       module:
         - node
-  status_1:
+  status_2:
     label: Status
     datasource_id: strawberryfield_flavor_datasource
     property_path: status
@@ -301,6 +370,20 @@ field_settings:
     dependencies:
       module:
         - node
+  title_1:
+    label: 'Related ADOs » Content » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_sbf_nodetonode:entity:title'
+    type: string
+    dependencies:
+      module:
+        - node
+        - strawberryfield
+  title_2:
+    label: 'Parent Node » Title'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: 'target_id:title'
+    type: string
   title_autocomplete:
     label: 'Title for autocomplete'
     datasource_id: 'entity:node'
@@ -351,7 +434,7 @@ field_settings:
     dependencies:
       module:
         - node
-  uid_1:
+  uid_2:
     label: UID
     datasource_id: strawberryfield_flavor_datasource
     property_path: uid
@@ -364,6 +447,7 @@ field_settings:
     property_path: 'target_id:uuid'
     type: string
 datasource_settings:
+  'entity:file': {  }
   'entity:node':
     bundles:
       default: true
@@ -392,84 +476,51 @@ processor_settings:
     weights:
       preprocess_index: -6
       preprocess_query: -4
-  double_quote_workaround:
-    all_fields: false
-    fields:
-      - agents
-      - as_image_exif_focallength
-      - as_image_exif_mimetype
-      - author
-      - author_1
-      - city
-      - digital_object_type
-      - fulltext
-      - hocr
-      - ismemberof
-      - label_1
-      - label_2
-      - license
-      - name_1
-      - parent_id
-      - rendered_item
-      - rendered_item_iiif_img
-      - sequence_id
-      - str_flatten_keys
-      - subject_labels
-      - title
-      - title_autocomplete
-      - title_string
-      - title_unstemmed
-      - type
-      - type_1
-      - uuid
-    replacement: '|9999999998|'
-    weights:
-      postprocess_query: 0
-      preprocess_index: -15
-      preprocess_query: -15
   entity_status:
     weights:
       preprocess_index: -10
   highlight:
-    highlight: always
-    highlight_partial: true
+    highlight: server
+    highlight_partial: false
     excerpt: true
-    excerpt_length: 256
-    exclude_fields: {  }
+    excerpt_length: 128
+    exclude_fields:
+      - fulltext_with_original_ocr
+      - ocr_text
     prefix: '<strong>'
     suffix: '</strong>'
     weights:
       postprocess_query: 0
   html_filter:
-    all_fields: true
+    all_fields: false
     fields:
       - agents
+      - aggregated_field
       - as_image_exif_focallength
       - as_image_exif_mimetype
       - author
       - author_1
       - city
       - digital_object_type
-      - fulltext
       - hocr
       - ismemberof
       - label_1
       - label_2
       - license
       - name_1
-      - parent_id
+      - parent_digital_object_type
       - rendered_item
       - rendered_item_iiif_img
-      - sequence_id
+      - sbf_entity_reference_title
       - str_flatten_keys
       - subject_labels
       - title
+      - title_1
       - title_autocomplete
       - title_string
       - title_unstemmed
       - type
       - type_1
-      - uuid
     title: true
     alt: true
     tags:
@@ -490,18 +541,6 @@ processor_settings:
   solr_date_range:
     weights:
       preprocess_index: 0
-  tokenizer:
-    all_fields: true
-    fields:
-      - label_1
-      - name_1
-      - rendered_item
-      - title
-      - title_autocomplete
-      - title_unstemmed
-    spaces: ''
-    overlap_cjk: 1
-    minimum_word_size: '3'
 tracker_settings:
   default:
     indexing_order: fifo
