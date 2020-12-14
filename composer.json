@@ -42,7 +42,7 @@
         "drupal/file_mdm_exif": "^2",
         "drupal/flag": "^4.0",
         "drupal/form_mode_manager": "2.x-dev",
-        "drupal/google_api_client": "^3.0@RC'",
+        "drupal/google_api_client": "3.0.0-rc4",
         "drupal/imagemagick": "^3.1",
         "drupal/imce": "^1.7",
         "drupal/inline_entity_form": "1.x-dev",
@@ -109,7 +109,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "discard-changes": true, 
+        "discard-changes": true,
         "sort-packages": true
     },
     "autoload": {
