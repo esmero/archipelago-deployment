@@ -199,7 +199,7 @@ access:
     permissions: {  }
 handlers:
   a_strawberryfield_harvester:
-    id: ' strawberryField_webform_handler'
+    id: 'strawberryField_webform_handler'
     label: 'A strawberryField harvester'
     handler_id: a_strawberryfield_harvester
     status: true
