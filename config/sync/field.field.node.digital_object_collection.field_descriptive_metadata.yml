@@ -1,4 +1,4 @@
-uuid: 4323fb85-a2dd-40be-8aea-5ec09b544fa2
+kuuid: 4323fb85-a2dd-40be-8aea-5ec09b544fa2
 langcode: en
 status: true
 dependencies:
@@ -15,9 +15,8 @@ label: '🍓 Strawberry (Descriptive metadata source)'
 description: ''
 required: false
 translatable: true
-default_value:
-  -
-    value: ''
+default_value: {  }
 default_value_callback: ''
 settings: {  }
 field_type: strawberryfield_field
+

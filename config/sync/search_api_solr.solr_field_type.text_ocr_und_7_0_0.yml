@@ -52,4 +52,3 @@ solr_configs:
     -
       name: ocrHighlight
       class: de.digitalcollections.solrocr.solr.OcrHighlightComponent
-text_files: null
