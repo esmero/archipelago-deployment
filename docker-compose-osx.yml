@@ -25,7 +25,7 @@ services:
   php:
     container_name: esmero-php
     restart: always
-    image: "esmero/php-7.3-fpm:1.0.0-RC1"
+    image: "esmero/php-7.4-fpm:1.0.0-RC1"
     tty: true
     networks:
       - host-net
@@ -52,8 +52,8 @@ services:
       - /drupalconfig
   # see https://hub.docker.com/_/mysql/
   db:
-    image: mysql:8.0.22
-    command: mysqld --default-authentication-plugin=mysql_native_password  --max_allowed_packet=256M --innodb-flush-method=fsync --skip-innodb-file-per-table --server-id=1 --innodb-use-native-aio=0 --lower_case_table_names=1
+    image: mysql:5.7
+    command: --max_allowed_packet=256M
     container_name: esmero-db
     restart: always
     environment:
@@ -63,6 +63,15 @@ services:
       - esmero-net
     volumes:
       - ${PWD}/persistent/db:/var/lib/mysql:cached
+  nlp:
+    container_name: esmero-nlp
+    restart: always
+    image: "esmero/esmero-nlp:1.0"
+    ports:
+      - "6400:6400"
+    networks:
+      - host-net
+      - esmero-net
   iiif:
     container_name: esmero-cantaloupe
     image: "esmero/cantaloupe-s3:4.1.7"
@@ -78,6 +87,7 @@ services:
     volumes:
       - ${PWD}/persistent/iiifconfig:/etc/cantaloupe
       - ${PWD}/persistent/iiifcache:/var/cache/cantaloupe
+
   minio:
     container_name: esmero-minio
     restart: always
