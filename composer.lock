@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "654340db0cd8a8afbb3db6a4546f1fb9",
+    "content-hash": "88834544701cdcf117bb388d2693ef92",
     "packages": [
         {
             "name": "archipelago/archipelago_subtheme",
@@ -4232,11 +4232,17 @@
         },
         {
             "name": "drupal/ds",
-            "version": "dev-3.x",
+            "version": "3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ds.git",
-                "reference": "530eee1c923e9d65c5f1525fedf8b8978324326f"
+                "reference": "8.x-3.9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/ds-8.x-3.9.zip",
+                "reference": "8.x-3.9",
+                "shasum": "7b419763cd87c2b3f06313489500746705a46334"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9"
@@ -4247,15 +4253,12 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-3.x": "3.x-dev"
-                },
                 "drupal": {
-                    "version": "8.x-3.x-dev",
-                    "datestamp": "1597821595",
+                    "version": "8.x-3.9",
+                    "datestamp": "1598898821",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -16693,7 +16696,6 @@
         "drupal/context": 10,
         "drupal/devel": 20,
         "drupal/display_field_copy": 20,
-        "drupal/ds": 20,
         "drupal/facets": 20,
         "drupal/field_permissions": 5,
         "drupal/form_mode_manager": 20,
