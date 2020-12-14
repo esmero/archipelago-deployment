@@ -26,7 +26,7 @@ services:
   php:
     container_name: esmero-php
     restart: always
-    image: "esmero/php-7.3-fpm:8.x-1.0-beta2"
+    image: "esmero/php-7.3-fpm:1.0.0-RC1"
     tty: true
     networks:
       - host-net
@@ -46,6 +46,7 @@ services:
     volumes:
       - ${PWD}/persistent/solrcore:/opt/solr/server/solr/mycores:cached
       - ${PWD}/persistent/solrconfig:/drupalconfig:cached
+      - ${PWD}/persistent/solrlib:/opt/solr/contrib/archipelago/lib:cached
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
@@ -66,7 +67,7 @@ services:
       - ${PWD}/persistent/db:/var/lib/mysql:cached
   iiif:
     container_name: esmero-cantaloupe
-    image: "esmero/cantaloupe-s3:4.1.6"
+    image: "esmero/cantaloupe-s3:4.1.7"
     restart: always
     ports:
       - "8183:8182"
