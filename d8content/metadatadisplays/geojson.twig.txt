@@ -18,7 +18,7 @@ Without Double quotes.
   "type": "FeatureCollection",
   "features": [
     {
-{% if data.geographic_location %}
+{% if data.geographic_location and data.geographic_location.lng and data.geographic_location.lat %}
     "type": "Feature",
     "geometry": {
       "type": "Point",

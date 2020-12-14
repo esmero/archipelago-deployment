@@ -16,30 +16,23 @@ Without Double quotes.
 #}
 {% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %}
   {% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %}
-    {% set currenturl = '<current>' %}
+    {% set currenturl = url('<current>')|render %}
       {% if node.id %}
           {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
       {% else %}
           {% set nodeurl = currenturl %}
       {% endif%}
             {% set len = language.getId() ? language.getId() : "en" %}
-{% apply spaceless %}    
-{% spaceless %}
 {
 "@context": [
   "http://www.w3.org/ns/anno.jsonld",
   "http://iiif.io/api/presentation/3/context.json"
 ],
 "type": "Manifest",
-"id": "{{ nodeurl }}",
+"id": "{{ currenturl }}",
 "label": {
 "{{ len }}": [
 {{ node.label|json_encode|raw }}
-]
-},
-"description":  {
-"{{ len }}": [
-{{ data.description|json_encode|raw  }}
 ]
 },
 "requiredStatement": {
@@ -106,8 +99,7 @@ Without Double quotes.
 {% endif %}
 "items": [
 {% for page in attribute(data, 'as:image') %}
-  {
-  {% if page["flv:exif"] %}
+{% if page["flv:exif"] %}
   {% set width = page["flv:exif"].ImageWidth %}
   {% else  %}
   {% set width = 1200 %}
@@ -117,31 +109,46 @@ Without Double quotes.
   {% else  %}
   {% set height = 1600 %}
   {% endif %}
-    "id": "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}",
-    "type": "Canvas",
-    "label": "p. {{ loop.index }}",
-    "width": {{ width }},
-    "height": {{ height }},
-    "items": [{
-    "type": "AnnotationPage",
-    "items": [{
-    "id": "{{ nodeurl }}/iiif/annotation/p{{ loop.index }}",
-    "type": "Annotation",
-    "motivation": "painting",
-    "target": "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}",
-    "body": {
-    "id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}/full/1200,/0/default.jpg",
-    "type": "Image",
-    "format": "image/jpeg",
-    "width": {{ width }},
-    "service": {
-    "type": "ImageService2",
-    "profile": "level2",
-    "id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}"
-    }
-    }
-    }]
-    }]
+    {
+      "id": "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}",
+      "type": "Canvas",
+      "label": { "none": [ "p. {{ loop.index }}" ] },
+      "height": {{ width }},
+      "width": {{ height }},
+      "items": [
+        {
+          "id": "{{ nodeurl }}/iiif/page/p{{ loop.index }}/1",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "{{ nodeurl }}/iiif/annotation/p{{ loop.index }}",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}/full/full,/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "height": {{ width }},
+                "width": {{ height }}
+              },
+              "target": "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}"
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "{{ nodeurl }}/iiif/comments/p{{ loop.index }}/1",
+          "type": "AnnotationPage"
+        }
+      ]
     }{{ not loop.last ? ',' : '' }}
 {% endfor %}
 ],
@@ -155,11 +162,11 @@ Without Double quotes.
 },
 "items": [
 {% for range in attribute(data, 'as:image') %}
-    "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}"{{ not loop.last ? ',' : '' }}
+    {
+       "id":  "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}",
+       "type": "Canvas"
+    }{{ not loop.last ? ',' : '' }}
 {% endfor %}
 ]
 }]
 }
-
-{% endspaceless %}
-{% endapply %}
