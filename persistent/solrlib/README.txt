@@ -9,4 +9,4 @@ This file is distributed under a [MIT License](https://github.com/dbmdz/solr-ocr
 
 ## Appreciation
 Please stop [by at the solr-ocrhighlighting github repo](https://github.com/dbmdz/solr-ocrhighlighting) and in particular thank [Johannes Baiter](https://github.com/jbaiter) 
-for this software, devotion to making this library better and faster, wizardly Java coding skills and generosity helping us getting this to wok in Archipelago.
+for this software, devotion to making this library better and faster, wizardly Java coding skills and generosity helping us getting this to work in Archipelago.
