@@ -115,8 +115,7 @@
     <str name="timeAllowed">${solr.selectSearchHandler.timeAllowed:-1}</str>
     <str name="spellcheck">false</str>
   </lst>
-  <arr name="components">
-    <str>query</str>
+  <arr name="last-components">
     <str>ocrHighlight</str>
     <str>highlight</str>
     <str>spellcheck</str>
