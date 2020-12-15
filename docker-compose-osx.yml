@@ -43,7 +43,7 @@ services:
       - host-net
       - esmero-net
     volumes:
-      - ${PWD}/persistent/solrcore:/opt/solr/server/solr/mycores:cached
+      - ${PWD}/persistent/solrcore:/var/solr/data:cached
       - ${PWD}/persistent/solrconfig:/drupalconfig:cached
       - ${PWD}/persistent/solrlib:/opt/solr/contrib/archipelago/lib:cached
     entrypoint:
