@@ -12749,17 +12749,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "8d40d5d55c02ac637c7efa3d4a7e00868f8e9126"
+                "reference": "0c5553f7eb4248b8093a514d54499fc6339667f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/8d40d5d55c02ac637c7efa3d4a7e00868f8e9126",
-                "reference": "8d40d5d55c02ac637c7efa3d4a7e00868f8e9126",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/0c5553f7eb4248b8093a514d54499fc6339667f7",
+                "reference": "0c5553f7eb4248b8093a514d54499fc6339667f7",
                 "shasum": ""
             },
             "require": {
                 "drupal/webform": "^5.19 || ^6.0",
-                "drupal/webform_views": "^5.0",
                 "ext-json": "*",
                 "ml/json-ld": "^1.2",
                 "mtdowling/jmespath.php": "^2.5",
@@ -12784,7 +12783,7 @@
                 "issues": "https://github.com/esmero/format_strawberryfield/issues",
                 "source": "https://github.com/esmero/format_strawberryfield/tree/1.0.0-RC1"
             },
-            "time": "2020-12-03T14:25:48+00:00"
+            "time": "2020-12-15T05:27:57+00:00"
         },
         {
             "name": "strawberryfield/strawberryfield",
@@ -12844,17 +12843,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/webform_strawberryfield.git",
-                "reference": "ac0402a9121df382e24a8c811777cff03301c72f"
+                "reference": "c05d1211fe9fbcd5d327002d3272b492b3c077cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/ac0402a9121df382e24a8c811777cff03301c72f",
-                "reference": "ac0402a9121df382e24a8c811777cff03301c72f",
+                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/c05d1211fe9fbcd5d327002d3272b492b3c077cd",
+                "reference": "c05d1211fe9fbcd5d327002d3272b492b3c077cd",
                 "shasum": ""
             },
             "require": {
                 "drupal/webform": "^5.19 || ^6.0",
-                "drupal/webform_views": "^5.0",
                 "ml/json-ld": "^1.2",
                 "mtdowling/jmespath.php": "^2.5",
                 "ramsey/uuid": "^4",
@@ -12880,7 +12878,7 @@
                 "issues": "https://github.com/esmero/webform_strawberryfield/issues",
                 "source": "https://github.com/esmero/webform_strawberryfield/tree/1.0.0-RC1"
             },
-            "time": "2020-12-14T23:22:17+00:00"
+            "time": "2020-12-15T07:00:12+00:00"
         },
         {
             "name": "swaggest/json-diff",
