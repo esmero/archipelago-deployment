@@ -21,6 +21,10 @@ Happy deploying!
 - At least 10 Gbytes of free space (to get started)
 - Open a terminal
 
+Note: Recent OSX and newer Macs ship with 2 annoying things. Apple Cloud Syncing User Folders and (wait for it), Case insensitive FileSystems. If you happy with your
+shiny new Mac (like i was) we aware that its better to deploy anything mounted outside of the /User folder, or even better, in an external drive formatted using a Case Sensitive Unix Filesystem (Mac OS Extended (Case-sensitive, Journaled)).
+Also please: NEVER ever enable the Docker experimental feature "Use gRPC FUSE for file sharing". Specially after having installed this. Please. Love yourself. Trust us. Its evil.
+
 ### Wait! Question: Do you have a previous version of Archipelago running? 
 
 If so, let's give that hard working repository a break first. If not, skip to [Step 1](#step-1-docker-deployment):
@@ -41,6 +45,8 @@ docker stop esmero-web
 docker stop esmero-solr
 docker stop esmero-db
 docker stop esmero-cantaloupe 
+docker stop esmero-php
+docker stop esmero-minio
 ```
 
 Now we need to remove them, run:
@@ -50,6 +56,8 @@ docker rm esmero-web
 docker rm esmero-solr
 docker rm esmero-db
 docker rm esmero-cantaloupe
+docker rm esmero-php
+docker rm esmero-minio
 ```
 
 Ok, now we are ready to start.
@@ -59,11 +67,12 @@ Ok, now we are ready to start.
 ```Shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 8.x-1.0-beta3
-cp docker-compose-nginx.yml docker-compose.yml
+git checkout 1.0.0-RC1
+cp docker-compose-osx.yml docker-compose.yml
 docker-compose up -d
 ```
-Note: `docker-compose.yml` is git ignored in case you make local adjustments or changes to it. 
+Note: If you are running from an external Drive or a partition/filesystem that is `Case Sensitive` and is not syncing automatically to `Apple Cloud` you can also use docker-compose-linux.yml
+Note2: `docker-compose.yml` is git ignored in case you make local adjustments or changes to it. 
 
 ## Step 2: Set up your Minio S3 bucket
 
@@ -77,7 +86,7 @@ pass:minio123
 
 and create a bucket named "archipelago". To do so press the red/coral `+` button on the bottom-right side and press the `Bucket` icon , it has a tooltip that says "create bucket". Write `archipelago` and submit, done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
-## Step 3: Deploy Drupal 8.9.2 and the awesome Archipelago Modules
+## Step 3: Deploy Drupal 8.9.11 and the awesome Archipelago Modules
 
 The following will run composer inside the esmero-php container to download all dependencies and Drupal Core too.
 
@@ -105,6 +114,7 @@ This will give you an `admin` Drupal user with `archipelago` as password (!chang
 Note: About Steps 2-3, you don't need to/nor should do this more than once. You can destroy/stop/update and recreated your Docker containers and start again, `git pull` and your Drupal and Data will persist once you passed `Installation complete` message. I repeat, all other container's data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable and stable inside your `web/` folder.
 
 ## Step 4: Create a "demo "and a "jsonapi" user using drush 
+
 ```Shell
 docker exec -ti esmero-php bash -c 'drush ucrt demo --password="demo"; drush urol metadata_pro "demo"'
 docker exec -ti esmero-php bash -c 'drush ucrt jsonapi --password="jsonapi"; drush urol metadata_api "jsonapi"'
@@ -123,15 +133,17 @@ Note: It can take some time to start the first time (Drupal needs some warming u
 
 Also, to make this docker-compose easier to use we are doing something named `bind mounting` (or similar...) your folders. Good thing is you can edit files in your machine and they get updated instantly to docker. bad thing, OSX driver runs slower than on Linux. Speed is a huge factor here, but you get the flexibility of changing, backing up and persisting files without needing a Docker University Degree.
 
-### Need help? Blue Screen? Missed a step? Need a hug?
+### Need help? Blue Screen? Missed a step? Need a hug and such?
+
 If you see any issues or errors or need help with a step, please let us know (ASAP!). You can either open an `issue` in this repository or use the [Google Group](https://groups.google.com/forum/#!forum/archipelago-commons). We are here to help.
 
-This is our second beta release and still lots `@TODOS` ahead before we are ready for a full `9.x-1.0`, we are pretty excited about how far we have gotten in the last 14 months, since we made the first pieces of code public. If you like this, let us know!
+If you like this, let us know!
 
-## Caring & Coding + Fixing
+## Caring & Coding + Fixing + Testing
 
 * [Diego Pino](https://github.com/DiegoPino)
 * [Giancarlo Birello](https://github.com/giancarlobi)
+* [Allison Lund](https://github.com/alliomeria)
 
 ## License
 

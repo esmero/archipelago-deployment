@@ -1,0 +1,59 @@
+{% apply spaceless %}
+{% if node.id %}
+	{% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+{% else %}
+	{% set nodeurl = currenturl %}
+{% endif%}
+{% set len = language.getId() ? language.getId() : "en" %}
+{% set keywords = [] %}  
+{% for subjects in attribute(data, 'subject_loc') %}
+	{% set keywords = keywords|merge([subjects.label|json_encode|raw]) %}  
+{% endfor %}
+{% for subjects in attribute(data, 'subject_wikidata') %}
+	{% set keywords = keywords|merge([subjects.label|json_encode|raw]) %}  
+{% endfor %}
+{
+  "@context": "http://schema.org",
+  "@type": "{{ data.type }}",
+  "@id": "{{ nodeurl }}",
+  "identifier": [
+{% if data.local_identifier %}
+    {
+      "@type": "PropertyValue",
+      "propertyID": "Local",
+      "value": "{{ data.local_identifier }}"
+    },
+{% endif%}
+    {
+      "@type": "PropertyValue",
+      "propertyID": "URL",
+      "value": "{{ nodeurl }}"
+    }
+  ],
+  "url": "{{ nodeurl }}",
+  "additionalType": {{ data.subject_wikidata[0].label|trim|json_encode|raw }},
+  "name": {{ data.label|json_encode|raw }},
+{%- for agent in attribute(data, 'edm_agent') -%}
+  {%- if agent.role_label|trim|lower in ['creator','author','photographer','maker','artist'] -%}  
+  "author": {
+    "name": {{ agent.name_label|json_encode|raw }},
+    "identifier": [{
+      "@type": "PropertyValue",
+      "propertyID": "URL",
+      "value": "{{ agent.name_uri }}"
+      }],
+    "@type": "Person"
+  },
+  {% endif %}
+{% endfor %}
+  "description": {{ data.description|json_encode|raw }},
+  "keywords": "{{ keywords|join(', ') }}",
+  "inLanguage": "{{ len }}",
+  "datePublished": "{{ node.getChangedTime|date("F jS \\a\\t g:ia") }}",
+  "schemaVersion": "http://schema.org/version/6.0/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Archipelago Playground Instance"
+  }
+}
+{% endapply %}

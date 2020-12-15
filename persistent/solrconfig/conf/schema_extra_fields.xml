@@ -64,6 +64,18 @@
 <dynamicField name="spellcheck_*" type="text_spell_und" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="true" />
 <dynamicField name="sort_X3b_und_*" type="collated_und" stored="false" indexed="false" docValues="true" />
 <dynamicField name="sort_*" type="collated_und" stored="false" indexed="false" docValues="true" />
+<dynamicField name="tcocr_highlights_X3b_und_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
+<dynamicField name="tcocr_highlights_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
+<dynamicField name="tcocr_highlightm_X3b_und_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />
+<dynamicField name="tcocr_highlightm_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />
+<dynamicField name="tococr_highlights_X3b_und_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="true" />
+<dynamicField name="tococr_highlights_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="true" />
+<dynamicField name="tococr_highlightm_X3b_und_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="true" />
+<dynamicField name="tococr_highlightm_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="true" />
+<dynamicField name="tucocr_highlights_X3b_und_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
+<dynamicField name="tucocr_highlights_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
+<dynamicField name="tucocr_highlightm_X3b_und_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />
+<dynamicField name="tucocr_highlightm_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />
 <dynamicField name="tcngramstrings_X3b_und_*" type="text_ngramstring" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
 <dynamicField name="tcngramstrings_*" type="text_ngramstring" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
 <dynamicField name="tcngramstringm_X3b_und_*" type="text_ngramstring" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />

@@ -1,0 +1,58 @@
+uuid: b65f27a9-79bf-42e0-b3b0-7fedc8857d3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.default_solr_index
+    - views.view.solr_search_content
+  module:
+    - search_api
+id: is_member_of_content_title
+name: 'Is Member Of » Content » Title'
+url_alias: is_member_of_content_title
+weight: 0
+min_count: 0
+show_only_one_result: false
+field_identifier: title_1
+facet_source_id: 'search_api:views_page__solr_search_content__page_1'
+widget:
+  type: array
+  config:
+    show_numbers: false
+query_operator: or
+use_hierarchy: false
+expand_hierarchy: false
+enable_parent_when_child_gets_disabled: true
+hard_limit: 0
+exclude: false
+only_visible_when_facet_source_is_visible: false
+processor_configs:
+  active_widget_order:
+    processor_id: active_widget_order
+    weights:
+      sort: 20
+    settings:
+      sort: DESC
+  count_widget_order:
+    processor_id: count_widget_order
+    weights:
+      sort: 30
+    settings:
+      sort: DESC
+  display_value_widget_order:
+    processor_id: display_value_widget_order
+    weights:
+      sort: 40
+    settings:
+      sort: ASC
+  url_processor_handler:
+    processor_id: url_processor_handler
+    weights:
+      pre_query: 50
+      build: 15
+    settings: {  }
+empty_behavior:
+  behavior: text
+  text_format: plain_text
+  text: empty!
+show_title: false

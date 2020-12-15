@@ -26,7 +26,7 @@ services:
   php:
     container_name: esmero-php
     restart: always
-    image: "esmero/php-7.3-fpm:8.x-1.0-beta2"
+    image: "esmero/php-7.4-fpm:1.0.0-RC1"
     tty: true
     networks:
       - host-net
@@ -36,7 +36,7 @@ services:
   solr:
     container_name: esmero-solr
     restart: always
-    image: "solr:7.5.0"
+    image: "solr:8.7.0"
     tty: true
     ports:
       - "8983:8983"
@@ -46,6 +46,7 @@ services:
     volumes:
       - ${PWD}/persistent/solrcore:/opt/solr/server/solr/mycores:cached
       - ${PWD}/persistent/solrconfig:/drupalconfig:cached
+      - ${PWD}/persistent/solrlib:/opt/solr/contrib/archipelago/lib:cached
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
@@ -53,8 +54,8 @@ services:
       - /drupalconfig
   # see https://hub.docker.com/_/mysql/
   db:
-    image: mysql:5.7
-    command: --max_allowed_packet=256M
+    image: mysql:8.0.22
+    command: mysqld --default-authentication-plugin=mysql_native_password  --max_allowed_packet=256M
     container_name: esmero-db
     restart: always
     environment:
@@ -64,9 +65,18 @@ services:
       - esmero-net
     volumes:
       - ${PWD}/persistent/db:/var/lib/mysql:cached
+  nlp:
+    container_name: esmero-nlp
+    restart: always
+    image: "esmero/esmero-nlp:1.0"
+    ports:
+      - "6400:6400"
+    networks:
+      - host-net
+      - esmero-net
   iiif:
     container_name: esmero-cantaloupe
-    image: "esmero/cantaloupe-s3:4.1.6"
+    image: "esmero/cantaloupe-s3:4.1.7"
     restart: always
     ports:
       - "8183:8182"

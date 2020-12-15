@@ -37,3 +37,7 @@ web/sites/default/services.yml
 
 # Ignore Demo Objects and assets
 /d8content/archipelago-recyclables/
+/.editorconfig
+/.gitattributes
+persistent/.DS_Store
+.DS_Store

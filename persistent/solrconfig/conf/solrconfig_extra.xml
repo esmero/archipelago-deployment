@@ -1,3 +1,5 @@
+<lib dir="${solr.install.dir:../../../..}/contrib/archipelago/lib" regex=".*\.jar" />
+
 <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
     <lst name="spellchecker">
       <str name="name">en</str>
@@ -12,7 +14,7 @@
       <str name="maxQueryFrequency">0.01</str>
       <str name="thresholdTokenFrequency">.01</str>
     </lst>
-  
+
     <lst name="spellchecker">
       <str name="name">und</str>
       <str name="field">spellcheck_und</str>
@@ -39,7 +41,7 @@
       <str name="buildOnCommit">true</str>
       <str name="buildOnStartup">false</str>
     </lst>
-  
+
     <lst name="suggester">
       <str name="name">und</str>
       <str name="lookupImpl">AnalyzingInfixLookupFactory</str>
@@ -113,7 +115,10 @@
     <str name="timeAllowed">${solr.selectSearchHandler.timeAllowed:-1}</str>
     <str name="spellcheck">false</str>
   </lst>
-  <arr name="last-components">
+  <arr name="components">
+    <str>query</str>
+    <str>ocrHighlight</str>
+    <str>highlight</str>
     <str>spellcheck</str>
     <str>elevator</str>
   </arr>
@@ -185,3 +190,6 @@
   7.0.0
 -->
   <searchComponent name="tvComponent" class="solr.TermVectorComponent"/>
+<!-- Archipelago 1.0.0-RC1 -->
+  <searchComponent name="ocrHighlight" class="de.digitalcollections.solrocr.solr.OcrHighlightComponent" />
+

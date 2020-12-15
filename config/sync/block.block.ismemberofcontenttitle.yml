@@ -1,0 +1,23 @@
+uuid: 45f1971a-51ff-4635-801c-ffce40491372
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.is_member_of_content_title
+  module:
+    - facets
+  theme:
+    - archipelago_subtheme
+id: ismemberofcontenttitle
+theme: archipelago_subtheme
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'facet_block:is_member_of_content_title'
+settings:
+  id: 'facet_block:is_member_of_content_title'
+  label: 'Part of Collection'
+  provider: facets
+  label_display: visible
+  block_id: ismemberofcontenttitle
+visibility: {  }

@@ -1,4 +1,4 @@
-# Installing Archipelago on Ubuntu 18.04
+# Installing Archipelago on Ubuntu 18.04 or 20.04
 
 ## About running terminal commands
 
@@ -7,7 +7,7 @@ This guide assumes you are comfortable enough running terminal (bash) commands o
 We made sure that you can `copy` and `paste` each of these commands from this guide directly into your terminal.
 
 You will notice sometimes commands **span more than a single line** of text. If that is the case, always make sure you copy
-and paste **a single line at a time** and press the `Enter` key afterwards. We suggest also you look at the output. 
+and paste **a single line at a time** and press the `Enter` key afterwards. We suggest also you look at the output.
 
 If something fails (and we hope it does not) troubleshooting will be much easier if
 you can share that output when asking for help.
@@ -17,12 +17,12 @@ Happy deploying!
 ## Prerequisites
 - At least 10 Gbytes of free space (to get started)
 - Some basic Unix/Terminal Skills
-- 2-4 Gbytes of RAM
+- 2-4 Gbytes of RAM (4 Recommended)
 - Install Docker if you don't have it already by running:
 
 ```Shell
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - 
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 sudo apt update
 sudo apt-cache policy docker-ce
@@ -37,9 +37,9 @@ Log out, log in again!
 ```Shell
 sudo apt install docker-compose
 ```
-Git tools are included by default in Ubuntu 18.04
+Git tools are included by default in Ubuntu
 
-### Wait! Question: Do you have a previous version of Archipelago running? 
+### Wait! Question: Do you have a previous version of Archipelago running?
 
 If so, let's give that hard working repository a break first. If not, [Step 1](#step-1-docker-deployment):
 
@@ -52,13 +52,15 @@ docker-compose rm
 
 - Can't remember where you downloaded it? Ok. We can deal with that!
 
-Let's stop the containers gracefully first, run: 
+Let's stop the containers gracefully first, run:
 
 ```Shell
 docker stop esmero-web
 docker stop esmero-solr
 docker stop esmero-db
 docker stop esmero-cantaloupe
+docker stop esmero-php
+docker stop esmero-minio
 ```
 
 Now we need to remove them, run:
@@ -68,35 +70,54 @@ docker rm esmero-web
 docker rm esmero-solr
 docker rm esmero-db
 docker rm esmero-cantaloupe
+docker rm esmero-php
+docker rm esmero-minio
 ```
 
 Ok, now we are ready to start.
 
 ## Step 1: Deployment
 
-##### Prefer to watch a video of how to install? Go to our [`user contributed documentation`](https://github.com/esmero/archipelago-deployment/blob/8.x-1.0-beta2/docs/ubuntu.md#user-contributed-documentation)!
+##### Prefer to watch a video of how to install? Go to our [`user contributed documentation`](https://github.com/esmero/archipelago-deployment/blob/1.0.0-RC1/docs/ubuntu.md#user-contributed-documentation)!
 
 #### IMPORTANT
 
-If you run `docker-compose` as root user (using `sudo`) some enviromental variables, like the current folder used inside the `docker-compose.yml` to mount the Volumens will not work and you will see a bunch of errors. 
+If you run `docker-compose` as root user (using `sudo`) some enviromental variables, like the current folder used inside the `docker-compose.yml` to mount the Volumens will not work and you will see a bunch of errors.
 
-There are two possible solutions. 
-- The best is to add your [user to the docker group](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) (so no `sudo` needed). 
-- Second option is to replace every `{$PWD}` inside your `docker-compose.yml` with either the full path to your current folder, or with a `.` and wrap that whole line in double quotes, basically making the paths for volumens relatives. 
+There are two possible solutions.
+- The best is to add your [user to the docker group](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) (so no `sudo` needed).
+- Second option is to replace every `{$PWD}` inside your `docker-compose.yml` with either the full path to your current folder, or with a `.` and wrap that whole line in double quotes, basically making the paths for volumens relatives.
 
-Instead of: `- ${PWD}:/var/www/html:cached` 
-use: `- ".:/var/www/html:cached"` 
+Instead of: `- ${PWD}:/var/www/html:cached`
+use: `- ".:/var/www/html:cached"`
 
 Now that you got it, lets deploy:
 
 ```Shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 8.x-1.0-beta3
-cp docker-compose-nginx.yml docker-compose.yml
+git checkout 1.0.0-RC1
+```
+
+And now a hard choice. Which docker-compose/ensemble? Edge? Stable? Legacy? So many choices.
+For latest/modern stack PHP7.4/Solr8.7/MySQL8 we recommend:
+
+```Shell
+cp docker-compose-linux.yml docker-compose.yml
 docker-compose up -d
 ```
-Note: `docker-compose.yml` is git ignored in case you make local adjustments or changes to it. 
+
+You have something running and do not want to update Databases/Solr indexes: Go legact. In doubt? Ask us please. We can help.
+
+
+If you want to stay more traditional and stick with older versions PHP7.3/Solr7.5/MySQL57 we recommend
+```Shell
+cp docker-compose-legacy.yml docker-compose.yml
+docker-compose up -d
+```
+
+
+Note: `docker-compose.yml` is git ignored in case you make local adjustments or changes to it.
 
 You need to make sure Docker can read/write to your local Drive a.k.a mounted volumens (specially if you decided not to run it as `root`, because we told you so!)
 
@@ -125,7 +146,7 @@ pass:minio123
 and create a bucket named "archipelago". To do so press the red/coral `+` button on the bottom-right side and press the `Bucket` icon , it has a tooltip that says "create bucket". Write `archipelago` and submit, done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
 
-## Step 3: Deploy Drupal 8.9.2 and the awesome Archipelago Modules
+## Step 3: Deploy Drupal 8.9.11 and the awesome Archipelago Modules
 
 The following will run composer inside the esmero-php container to download all dependencies and Drupal Core too.
 
@@ -152,7 +173,7 @@ This will give you an `admin` Drupal user with `archipelago` as password (!chang
 
 Note: About Steps 2-3, you don't need to/nor should do this more than once. You can destroy/stop/update and recreated your Docker containers and start again, `git pull` and your Drupal and Data will persist once you passed `Installation complete` message. I repeat, all other container's data is persistet inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable and stable inside your `web/` folder.
 
-## Step 4: Create a "demo "and a "jsonapi" user using drush 
+## Step 4: Create a "demo "and a "jsonapi" user using drush
 
 ```Shell
 docker exec -ti esmero-php bash -c 'drush ucrt demo --password="demo"; drush urol metadata_pro "demo"'
@@ -174,15 +195,17 @@ Note: It can take some time to start the first time (Drupal needs some warming u
 
 If you see any issues or errors or need help with a step, please let us know (ASAP!). You can either open an `issue` in this repository or use the [Google Group](https://groups.google.com/forum/#!forum/archipelago-commons). We are here to help.
 
-This is our second beta release and still lots `@TODOS` ahead before we are ready for a full `9.x-1.0`, we are pretty excited about how far we have gotten in the last 14 months, since we made the first pieces of code public. If you like this, let us know!
+If you like this, let us know!
 
 ### User contributed documentation (A Video!):
+
 _Installing Archipelago on AWS Ubuntu_ by [Zach Spalding](https://github.com/senyzspalding): https://youtu.be/RBy7UMxSmyQ
 
-## Caring & Coding + Fixing
+## Caring & Coding + Fixing + Testing
 
 * [Diego Pino](https://github.com/DiegoPino)
 * [Giancarlo Birello](https://github.com/giancarlobi)
+* [Allison Lund](https://github.com/alliomeria)
 
 ## License
 

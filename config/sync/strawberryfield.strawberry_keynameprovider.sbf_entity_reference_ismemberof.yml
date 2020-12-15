@@ -1,0 +1,11 @@
+uuid: ee34829b-4f09-43a1-b286-007dc1fc9490
+langcode: en
+status: true
+dependencies: {  }
+id: sbf_entity_reference_ismemberof
+label: ismemberof
+pluginid: entityjmespath
+pluginconfig:
+  source_key: ismemberof
+  exposed_key: sbf_entity_reference_ismemberof
+active: true

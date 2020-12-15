@@ -1,0 +1,55 @@
+uuid: 80f74499-df92-46fb-8146-cf894502da97
+langcode: en
+status: true
+dependencies:
+  module:
+    - strawberryfield
+    - search_api_solr
+id: text_ocr_und_7_0_0
+label: 'Language Undefined Text OCR Field with Coordinate highlight'
+minimum_solr_version: 7.0.0
+custom_code: ocr_highlight
+field_type_language_code: und
+domains: {  }
+field_type:
+  name: text_ocr_stored
+  class: solr.TextField
+  storeOffsetsWithPositions: true
+  termVectors: true
+  analyzers:
+    -
+      type: index
+      charFilters:
+        -
+          class: de.digitalcollections.solrocr.lucene.filters.OcrCharFilterFactory
+      tokenizer:
+        class: solr.WhitespaceTokenizerFactory
+      filters:
+        -
+          class: solr.LowerCaseFilterFactory
+        -
+          class: solr.StopFilterFactory
+          ignoreCase: true
+          words: stopwords_und.txt
+        -
+          class: solr.PorterStemFilterFactory
+    -
+      type: query
+      tokenizer:
+        class: solr.WhitespaceTokenizerFactory
+      filters:
+        -
+          class: solr.LowerCaseFilterFactory
+        -
+          class: solr.StopFilterFactory
+        -
+          class: solr.PorterStemFilterFactory
+unstemmed_field_type: null
+spellcheck_field_type: null
+collated_field_type: null
+solr_configs:
+  searchComponents:
+    -
+      name: ocrHighlight
+      class: de.digitalcollections.solrocr.solr.OcrHighlightComponent
+text_files: {  }
