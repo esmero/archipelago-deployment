@@ -1,3 +1,4 @@
+uuid: c76f9c44-ef17-474f-8793-6ba30838056c
 langcode: en
 status: open
 dependencies:
@@ -34,7 +35,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -96,6 +97,8 @@ settings:
   wizard_progress_link: false
   wizard_progress_states: false
   wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
@@ -151,6 +154,8 @@ settings:
   results_customize: false
   token_view: false
   token_update: false
+  token_delete: false
+  serial_disabled: false
 access:
   create:
     roles:
@@ -199,8 +204,9 @@ access:
     permissions: {  }
 handlers:
   a_strawberryfield_harvester:
-    id: 'strawberryField_webform_handler'
+    id: strawberryField_webform_handler
     label: 'A strawberryField harvester'
+    notes: ''
     handler_id: a_strawberryfield_harvester
     status: true
     conditions: {  }
@@ -208,5 +214,9 @@ handlers:
     settings:
       submission_url: 'https://api.example.org/SOME/ENDPOINT2'
       upload_scheme: s3
+      operation: null
+      ado_settings: {  }
+      ado_crud_enabled: false
+      states: null
+      ado_prepopulate_enabled: false
 variants: {  }
-uuid: c76f9c44-ef17-474f-8793-6ba30838056c

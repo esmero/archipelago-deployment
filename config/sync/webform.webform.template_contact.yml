@@ -1,3 +1,4 @@
+uuid: 55e537f0-d4b9-456d-82d1-3c389603f399
 langcode: en
 status: closed
 dependencies:
@@ -35,7 +36,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -87,6 +88,8 @@ settings:
   wizard_progress_link: false
   wizard_progress_states: false
   wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
@@ -142,6 +145,8 @@ settings:
   results_customize: false
   token_view: false
   token_update: false
+  token_delete: false
+  serial_disabled: false
 access:
   create:
     roles:
@@ -193,6 +198,7 @@ handlers:
   email_confirmation:
     id: email
     label: 'Email confirmation'
+    notes: ''
     handler_id: email_confirmation
     status: true
     conditions: {  }
@@ -229,6 +235,7 @@ handlers:
   email_notification:
     id: email
     label: 'Email notification'
+    notes: ''
     handler_id: email_notification
     status: true
     conditions: {  }
@@ -263,6 +270,5 @@ handlers:
       theme_name: ''
       parameters: {  }
 variants: {  }
-uuid: 55e537f0-d4b9-456d-82d1-3c389603f399
 _core:
   default_config_hash: PDauh41JYB1eJgaVKh3ZsVsjfg14P6DNc_Y_Q3NqlLE

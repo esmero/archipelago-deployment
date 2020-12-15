@@ -1,4 +1,4 @@
-kuuid: 4323fb85-a2dd-40be-8aea-5ec09b544fa2
+uuid: a20c0cfe-d3ca-4520-9344-c8a59e8c7833
 langcode: en
 status: true
 dependencies:
@@ -19,4 +19,3 @@ default_value: {  }
 default_value_callback: ''
 settings: {  }
 field_type: strawberryfield_field
-

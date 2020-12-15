@@ -21,18 +21,19 @@
         "aws/aws-php-sns-message-validator": "^1.5",
         "aws/aws-sdk-php": "^3.63",
         "composer/installers": "^1.9",
+        "composer/semver": "^3.2",
         "cweagans/composer-patches": "^1.6",
         "drupal/bamboo_twig": "5.x-dev",
         "drupal/bootstrap_barrio": "^4.32",
         "drupal/config_inspector": "dev-1.x",
-        "drupal/config_installer": "^1.7",
         "drupal/config_update": "^1.6",
         "drupal/config_update_ui": "^1.6",
         "drupal/context": "^4.0@beta",
-        "drupal/core": "8.9.11",
-        "drupal/core-composer-scaffold": "^8.9",
-        "drupal/core-dev": "^8.9",
-        "drupal/devel": "3.x-dev",
+        "drupal/core": "9.1 as 8.9.0",
+        "drupal/core-composer-scaffold": "^9.1",
+        "drupal/core-project-message": "^9.1",
+        "drupal/core-recommended": "^9.1",
+        "drupal/devel": "4.x-dev@dev",
         "drupal/display_field_copy": "1.x-dev",
         "drupal/ds": "^3.9",
         "drupal/facets": "1.x-dev",
@@ -46,9 +47,7 @@
         "drupal/imagemagick": "^3.1",
         "drupal/imce": "^1.7",
         "drupal/inline_entity_form": "1.x-dev",
-        "drupal/jsonapi_earlyrendering_workaround": "^1.0@alpha",
         "drupal/key_value": "1.x-dev",
-        "drupal/markdown": "2.x-dev",
         "drupal/moderated_content_bulk_publish": "^1.0",
         "drupal/module_missing_message_fixer": "1.x-dev",
         "drupal/pathauto": "^1.6",
@@ -66,12 +65,11 @@
         "drupal/twig_field": "^1.0",
         "drupal/twig_tweak": "^2.6",
         "drupal/views_bootstrap": "^4.3",
-        "drupal/webform": "^5.22",
+        "drupal/webform": "^6",
         "drupal/webform_entity_handler": "1.x-dev",
-        "drupal/webform_views": "^5.0",
         "drupal/webformnavigation": "^1.0@alpha",
         "drupal/workflow": "^1.1",
-        "drush/drush": "10.3",
+        "drush/drush": "10.3.6",
         "egulias/email-validator": "^2.0",
         "fileeye/mimemap": "^1.1.1",
         "frictionlessdata/datapackage": "dev-master",
@@ -89,9 +87,9 @@
         "strawberryfield/strawberryfield": "dev-1.0.0-RC1",
         "strawberryfield/webform_strawberryfield": "dev-1.0.0-RC1",
         "swaggest/json-schema": "^0.12.10",
-        "symfony/event-dispatcher": "4.3.4 as 3.4.99",
-        "symfony/yaml": "v3.4.39",
-        "typo3/phar-stream-wrapper": "3.1.3",
+        "symfony/event-dispatcher": "4.4.16",
+        "symfony/yaml": "^4.4",
+        "typo3/phar-stream-wrapper": "3.1.6",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
@@ -101,6 +99,7 @@
     "require-dev": {
         "behat/mink": "1.8.x-dev",
         "behat/mink-selenium2-driver": "1.4.x-dev",
+        "drupal/core-dev": "^9.1",
         "mglaman/drupal-check": "^1.1"
     },
     "conflict": {
@@ -116,7 +115,9 @@
         "classmap": [
             "scripts/composer/ScriptHandler.php"
         ],
-        "files": ["load.environment.php"]
+        "files": [
+            "load.environment.php"
+        ]
     },
     "scripts": {
         "pre-install-cmd": [
@@ -134,29 +135,45 @@
     },
     "extra": {
         "drupal-scaffold": {
-           "locations": {
-              "web-root": "web/"
-           }
+            "locations": {
+                "web-root": "web/"
+            }
         },
         "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
-
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ]
         },
         "enable-patching": true,
         "patches": {
+            "drupal/devel": {
+                "Fix 9.1": "patches/devel-344-event-dispatcher.patch"
+            },
             "drupal/form_mode_manager": {
-            "Fix Form Mode title": "https://www.drupal.org/files/issues/2019-12-10/form_mode_manager-bundle-label-in-title-3100112-2-D8.patch"
+                "Fix Form Mode title": "https://www.drupal.org/files/issues/2019-12-10/form_mode_manager-bundle-label-in-title-3100112-2-D8.patch",
+                "D9 readyness": "https://www.drupal.org/files/issues/2020-10-30/form_mode_manager-drupal-9-compatibility-3164478-6.patch"
             },
             "drupal/display_field_copy": {
-            "Fix missing schema 1.x": "patches/1.x-display_field_copy-missing-schema-3107615-2-D8.patch"
+                "Fix missing schema 1.x": "patches/1.x-display_field_copy-missing-schema-3107615-2-D8.patch",
+                "D9 readyness": "https://www.drupal.org/files/issues/2020-10-01/drupal9-readiness_3135922-7.patch"
             },
             "drupal/search_api": {
-            "Fix Content Entity Tracker in 1.18": "patches/1.18-3178941-metrocustom-referenced_entities_reindexing_fatal_error-D8.patch"
+                "Fix Content Entity Tracker in 1.18": "patches/1.18-3178941-metrocustom-referenced_entities_reindexing_fatal_error-D8.patch"
             }
         }
     }

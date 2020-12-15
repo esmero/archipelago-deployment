@@ -1,0 +1,19 @@
+diff --git a/webprofiler/src/EventDispatcher/TraceableEventDispatcher.php b/webprofiler/src/EventDispatcher/TraceableEventDispatcher.php
+index 3956ba0..09ecc6d 100644
+--- a/webprofiler/src/EventDispatcher/TraceableEventDispatcher.php
++++ b/webprofiler/src/EventDispatcher/TraceableEventDispatcher.php
+@@ -48,9 +48,11 @@ class TraceableEventDispatcher extends ContainerAwareEventDispatcher implements
+   /**
+    * {@inheritdoc}
+    */
+-  public function dispatch($event_name, Event $event = NULL) {
+-    if ($event === NULL) {
+-      $event = new Event();
++  public function dispatch($event, $event_name = NULL) {
++    if (is_string($event)) {
++      $event_obj = $event_name ?? new Event();
++      $event_name = $event;
++      $event = $event_obj;
+     }
+ 
+     $this->preDispatch($event_name, $event);
