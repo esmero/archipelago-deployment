@@ -1,4 +1,4 @@
-# Installing Archipelago on Ubuntu 18.04
+# Installing Archipelago on Ubuntu 18.04 or 20.04
 
 ## About running terminal commands
 
@@ -17,7 +17,7 @@ Happy deploying!
 ## Prerequisites
 - At least 10 Gbytes of free space (to get started)
 - Some basic Unix/Terminal Skills
-- 2-4 Gbytes of RAM
+- 2-4 Gbytes of RAM (4 Recommended)
 - Install Docker if you don't have it already by running:
 
 ```Shell
@@ -37,7 +37,7 @@ Log out, log in again!
 ```Shell
 sudo apt install docker-compose
 ```
-Git tools are included by default in Ubuntu 18.04
+Git tools are included by default in Ubuntu
 
 ### Wait! Question: Do you have a previous version of Archipelago running? 
 
@@ -59,6 +59,8 @@ docker stop esmero-web
 docker stop esmero-solr
 docker stop esmero-db
 docker stop esmero-cantaloupe
+docker stop esmero-php
+docker stop esmero-minio
 ```
 
 Now we need to remove them, run:
@@ -68,13 +70,15 @@ docker rm esmero-web
 docker rm esmero-solr
 docker rm esmero-db
 docker rm esmero-cantaloupe
+docker rm esmero-php
+docker rm esmero-minio
 ```
 
 Ok, now we are ready to start.
 
 ## Step 1: Deployment
 
-##### Prefer to watch a video of how to install? Go to our [`user contributed documentation`](https://github.com/esmero/archipelago-deployment/blob/8.x-1.0-beta2/docs/ubuntu.md#user-contributed-documentation)!
+##### Prefer to watch a video of how to install? Go to our [`user contributed documentation`](https://github.com/esmero/archipelago-deployment/blob/1.0.0-RC1/docs/ubuntu.md#user-contributed-documentation)!
 
 #### IMPORTANT
 
@@ -92,10 +96,27 @@ Now that you got it, lets deploy:
 ```Shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 8.x-1.0-beta3
-cp docker-compose-nginx.yml docker-compose.yml
+git checkout 1.0.0-RC1
+```
+
+And now a hard choice. Which docker-compose/ensemble? Edge? Stable? Legacy? So many choices.
+For latest/modern stack PHP7.4/Solr8.4/MySQL8 we recommend:
+
+```Shell
+cp docker-compose-linux.yml docker-compose.yml
 docker-compose up -d
 ```
+
+You have something running and do not want to update Databases/Solr indexes: Go legact. In doubt? Ask us please. We can help.
+
+
+If you want to stay more traditional and stick with older versions PHP7.3/Solr7.5/MySQL57 we recommend
+```Shell
+cp docker-compose-legacy.yml docker-compose.yml
+docker-compose up -d
+```
+
+
 Note: `docker-compose.yml` is git ignored in case you make local adjustments or changes to it. 
 
 You need to make sure Docker can read/write to your local Drive a.k.a mounted volumens (specially if you decided not to run it as `root`, because we told you so!)
@@ -125,7 +146,7 @@ pass:minio123
 and create a bucket named "archipelago". To do so press the red/coral `+` button on the bottom-right side and press the `Bucket` icon , it has a tooltip that says "create bucket". Write `archipelago` and submit, done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
 
-## Step 3: Deploy Drupal 8.9.2 and the awesome Archipelago Modules
+## Step 3: Deploy Drupal 8.9.11 and the awesome Archipelago Modules
 
 The following will run composer inside the esmero-php container to download all dependencies and Drupal Core too.
 
@@ -174,15 +195,16 @@ Note: It can take some time to start the first time (Drupal needs some warming u
 
 If you see any issues or errors or need help with a step, please let us know (ASAP!). You can either open an `issue` in this repository or use the [Google Group](https://groups.google.com/forum/#!forum/archipelago-commons). We are here to help.
 
-This is our second beta release and still lots `@TODOS` ahead before we are ready for a full `9.x-1.0`, we are pretty excited about how far we have gotten in the last 14 months, since we made the first pieces of code public. If you like this, let us know!
+If you like this, let us know!
 
 ### User contributed documentation (A Video!):
 _Installing Archipelago on AWS Ubuntu_ by [Zach Spalding](https://github.com/senyzspalding): https://youtu.be/RBy7UMxSmyQ
 
-## Caring & Coding + Fixing
+## Caring & Coding + Fixing + Testing
 
 * [Diego Pino](https://github.com/DiegoPino)
 * [Giancarlo Birello](https://github.com/giancarlobi)
+* [Allison Lund](https://github.com/alliomeria)
 
 ## License
 
