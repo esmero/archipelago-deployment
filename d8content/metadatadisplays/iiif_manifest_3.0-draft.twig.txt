@@ -99,6 +99,7 @@ Without Double quotes.
 {% endif %}
 "items": [
 {% for page in attribute(data, 'as:image') %}
+{% set cantaloupeid  = IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %}
 {% if page["flv:exif"] %}
   {% set width = page["flv:exif"].ImageWidth %}
   {% else  %}
@@ -125,12 +126,12 @@ Without Double quotes.
               "type": "Annotation",
               "motivation": "painting",
               "body": {
-                "id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}/full/full,/0/default.jpg",
+                "id": "{{ cantaloupeid }}/full/full,/0/default.jpg",
                 "type": "Image",
                 "format": "image/jpeg",
                 "service": [
                   {
-                    "id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}",
+                    "id": "{{ cantaloupeid }}",
                     "type": "ImageService2",
                     "profile": "level2"
                   }
@@ -142,13 +143,16 @@ Without Double quotes.
             }
           ]
         }
-      ],
+      ]
+      {# Leaving W3C annotations out until we have a way of referencing each one via our own Metadata Endpoint which will require and extra argument for the page
+      {{ nodeurl }}/iiif/comments/p{{ cantaloupeid }}/1
+      ,
       "annotations": [
         {
           "id": "{{ nodeurl }}/iiif/comments/p{{ loop.index }}/1",
           "type": "AnnotationPage"
         }
-      ]
+      ]#}
     }{{ not loop.last ? ',' : '' }}
 {% endfor %}
 ],
