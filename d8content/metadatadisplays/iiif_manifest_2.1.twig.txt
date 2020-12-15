@@ -76,6 +76,7 @@ Updated Dec 14th 2020
 "viewingDirection": "left-to-right",
 "viewingHint": "paged",
 "canvases": [
+{# This processes docs like PDF #}
 {% if attribute(data, 'as:document')|length > 0 %}    
   {% for document in attribute(data, 'as:document') if document['flv:exif'].PageCount %}
   {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %}
@@ -84,11 +85,11 @@ Updated Dec 14th 2020
   {% set pageCount =  document['flv:exif'].PageCount %}
   {% for pagenumber in 1..pageCount %}
    {% if attribute(document["flv:identify"], pagenumber) %}
-     {% set width =  attribute(document["flv:identify"], pagenumber).width ? attribute(document["flv:identify"], pagenumber).width : 1200 %}
-      {% set height =  attribute(document["flv:identify"], pagenumber).height ? attribute(document["flv:identify"], pagenumber).height : 900 %}
+     {% set width = attribute(document["flv:identify"], pagenumber).width ? (attribute(document["flv:identify"], pagenumber).width * 1.333)|round : 600 %}
+     {% set height = attribute(document["flv:identify"], pagenumber).height ? (attribute(document["flv:identify"], pagenumber).height * 1.333)|round : 450 %} 
     {% else  %}
-     {% set width = 1200 %}
-     {% set height = 900 %}
+     {% set width = 600 %}
+     {% set height = 450 %}
    {% endif %}
     {
     "@id": "{{ nodeurl }}/iiif/{{ document['dr:uuid'] }}/canvas/p{{ loop.index }}",
@@ -114,16 +115,18 @@ Updated Dec 14th 2020
   {% endif %}
   {% endfor %}    
 {% else %}    
+{# This processes images #}
 {% for page in attribute(data, 'as:image') %}
+  {% set cantaloupeid  = IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %}
   {% if page["flv:exif"] %}
   {% set width = page["flv:exif"].ImageWidth %}
   {% else  %}
-  {% set width = 1200 %}
+  {% set width = 600 %}
   {% endif %}
   {% if page["flv:exif"] %}
   {% set height = page["flv:exif"].ImageHeight %}
   {% else  %}
-  {% set height = 1600 %}
+  {% set height = 800 %}
   {% endif %}
     {
     "@id": "{{ nodeurl }}/canvas/p{{ loop.index }}",
@@ -136,16 +139,16 @@ Updated Dec 14th 2020
       "@id": "{{ nodeurl }}/annotation/p{{ loop.index }}",
       "motivation": "sc:painting",
       "resource":{
-        "@id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}/full/{{ width }},/0/default.jpg",
+        "@id": "{{ cantaloupeid }}/full/{{ width }},/0/default.jpg",
         "@type": "dctypes:Image",
         "format": "image/jpeg",
         "service": {
            "@context": "http://iiif.io/api/image/2/context.json",
-           "@id": "{{ IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode }}",
+           "@id": "{{ cantaloupeid }}",
            "profile": "http://iiif.io/api/image/2/level2.json"
         },
-        "width": {{ (width *  1.3333)|round  }},
-        "height": {{ (height  * 1.3333)|round }}
+        "width": {{ width }},
+        "height": {{ height }}
       },
     "on": "{{ nodeurl }}/canvas/p{{ loop.index }}"
     }]

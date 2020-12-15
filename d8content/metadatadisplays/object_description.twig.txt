@@ -40,11 +40,11 @@
   <h2>Local Identifier</h2>
   <p>{{ data.local_identifier }}</p>
 {% endif %}
-{% if attribute(data, 'as:image')|length > 0 or attribute(data, 'as:document')|length > 0  %}
-<h2>Direct Link to Digital Object's IIIF presentation manifest (version 3)<img src="https://iiif.io/img/logo-iiif-34x30.png"></h2>
-{% set iiifmanifest =  "/metadata/iiifmanifest/default.jsonld" %}
+{% if attribute(data, 'as:image')|length > 0  or attribute(data, 'as:document')|length > 0  %}
+<h2><span class="align-middle">Direct Link to Digital Object's IIIF Presentation Manifest V3 </span><img src="https://iiif.io/img/logo-iiif-34x30.png"></h2>
+{% set iiifmanifest =   nodeurl|render ~ "/metadata/iiifmanifest/default.jsonld" %}
 <ul><li>
-<input type="text" value="{{ nodeurl }}{{ iiifmanifest }}" id="iiifmanifest_copy" size="40" class="col-xs-3">
+<input type="text" value="{{ iiifmanifest }}" id="iiifmanifest_copy" size="{{ iiifmanifest|length }}" class="col-xs-3">
 </li></ul>
 {% endif %}
 
@@ -66,3 +66,4 @@
 {% endif %}
 <h2>Rights Statements</h2>
 <a href="http://rightsstatements.org/vocab/InC-EDU/1.0/">In Copyright - Educational Use Permitted</a>
+
