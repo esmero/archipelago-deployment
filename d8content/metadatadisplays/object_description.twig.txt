@@ -40,7 +40,7 @@
   <h2>Local Identifier</h2>
   <p>{{ data.local_identifier }}</p>
 {% endif %}
-{% if attribute(data, 'as:image')|length > 0  or {% if attribute(data, 'as:document')|length > 0  %}
+{% if attribute(data, 'as:image')|length > 0 or attribute(data, 'as:document')|length > 0  %}
 <h2>Direct Link to Digital Object's IIIF presentation manifest (version 3)<img src="https://iiif.io/img/logo-iiif-34x30.png"></h2>
 {% set iiifmanifest =  "/metadata/iiifmanifest/default.jsonld" %}
 <ul><li>
