@@ -1,13 +1,8 @@
-/* 
-
-Usage
-
-This file allows you to convert a string/or file content into valid encoded JSON string to be used e.g as a value in a JSON:API request
-
-e.g
-
-cat metadatadisplays/iiif_manifest_2.1.twig.txt | ./json_encode_string
-
-The output will contain an extra % at the end which is a delimiter which should not be copied.
-*/
+#!/bin/bash
+#Usage
+#This file allows you to convert a string/or file content into valid encoded JSON string to be used e.g as a value in a JSON:API request
+#e.g
+#cat metadatadisplays/iiif_manifest_2.1.twig.txt | ./json_encode_string
+#The output will contain an extra % at the end which is a delimiter which should not be copied.
+#
 php -r 'echo json_encode(file_get_contents("php://stdin"));'
