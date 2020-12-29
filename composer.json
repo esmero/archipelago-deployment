@@ -17,6 +17,7 @@
     ],
     "require": {
         "php": ">=7.3",
+        "archipelago/ami": "dev-main",
         "archipelago/archipelago_subtheme": "dev-8.x-1.0-beta3",
         "aws/aws-php-sns-message-validator": "^1.5",
         "aws/aws-sdk-php": "^3.63",
@@ -86,6 +87,7 @@
         "react/promise": "^2.7",
         "solarium/solarium": "^6.0",
         "strawberryfield/format_strawberryfield": "dev-1.0.0-RC1",
+        "strawberryfield/strawberry_runners": "dev-master",
         "strawberryfield/strawberryfield": "dev-1.0.0-RC1",
         "strawberryfield/webform_strawberryfield": "dev-1.0.0-RC1",
         "swaggest/json-schema": "^0.12.10",
