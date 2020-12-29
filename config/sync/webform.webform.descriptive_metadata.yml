@@ -9,7 +9,7 @@ weight: 0
 uid: 1
 template: false
 archive: false
-id: default_descriptive_metadata
+id: descriptive_metadata
 title: 'Default Descriptive Metadata'
 description: 'Default Descriptive Metadata Webform: 1.0.0-RC1.'
 category: Archipel
