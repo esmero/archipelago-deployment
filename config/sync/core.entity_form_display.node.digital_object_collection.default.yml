@@ -31,7 +31,7 @@ content:
   field_descriptive_metadata:
     weight: 0
     settings:
-      webform_id: default_digital_object_collection
+      webform_id: digital_object_collection
       placeholder: 'Collection Metadata'
     third_party_settings: {  }
     type: strawberryfield_webform_widget
