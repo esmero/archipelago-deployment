@@ -44,7 +44,7 @@ Updated Dec 14th 2020
 {
 "label": "description",
 "value": {{ data.description|json_encode|raw }}
-},
+},pgrade from 19
 {
 "label": "type",
 "value": {{ data.type|json_encode|raw }}
@@ -84,12 +84,17 @@ Updated Dec 14th 2020
  {% if loop.index == 1 %} 
   {% set pageCount =  document['flv:exif'].PageCount %}
   {% for pagenumber in 1..pageCount %}
-   {% if attribute(document["flv:identify"], pagenumber) %}
-     {% set width = attribute(document["flv:identify"], pagenumber).width ? (attribute(document["flv:identify"], pagenumber).width * 1.333)|round : 600 %}
-     {% set height = attribute(document["flv:identify"], pagenumber).height ? (attribute(document["flv:identify"], pagenumber).height * 1.333)|round : 450 %} 
+   {% if attribute(document["flv:pdfinfo"], pagenumber) %}
+     {% set width = attribute(document["flv:pdfinfo"], pagenumber).width ? (attribute(document["flv:pdfinfo"], pagenumber).width * 1.333)|round : 600 %}
+     {% set height = attribute(document["flv:pdfinfo"], pagenumber).height ? (attribute(document["flv:pdfinfo"], pagenumber).height * 1.333)|round : 450 %} 
     {% else  %}
-     {% set width = 600 %}
-     {% set height = 450 %}
+       {% if attribute(document["flv:identify"], pagenumber) %}
+         {% set width = attribute(document["flv:identify"], pagenumber).width ? (attribute(document["flv:identify"], pagenumber).width * 1.333)|round : 600 %}
+         {% set height = attribute(document["flv:identify"], pagenumber).height ? (attribute(document["flv:identify"], pagenumber).height * 1.333)|round : 450 %} 
+       {% else  %}
+         {% set width = 600 %}
+         {% set height = 450 %}
+       {% endif %}
    {% endif %}
     {
     "@id": "{{ nodeurl }}/iiif/{{ document['dr:uuid'] }}/canvas/p{{ loop.index }}",
