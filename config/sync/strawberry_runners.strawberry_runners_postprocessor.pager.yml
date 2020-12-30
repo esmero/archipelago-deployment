@@ -1,0 +1,26 @@
+uuid: 61b4c55b-97f7-4db0-b6ed-3cd0b8b54213
+langcode: en
+status: true
+dependencies: {  }
+id: pager
+label: pager
+weight: '-10'
+pluginconfig:
+  source_type: asstructure
+  ado_type: Book
+  jsonkey:
+    'as:document': 'as:document'
+    'as:image': 0
+    'as:audio': 0
+    'as:video': 0
+    'as:text': 0
+    'as:application': 0
+  output_destination:
+    plugin: plugin
+  mime_type: application/pdf
+  timeout: '10'
+  weight: '0'
+pluginid: filesequence
+active: true
+parent: ''
+depth: 0

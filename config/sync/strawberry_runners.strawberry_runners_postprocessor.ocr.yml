@@ -1,0 +1,34 @@
+uuid: 29ffee83-9337-4fd6-af78-555a9c967901
+langcode: en
+status: true
+dependencies: {  }
+id: ocr
+label: ocr
+weight: '-10'
+pluginconfig:
+  source_type: asstructure
+  ado_type: Document
+  jsonkey:
+    'as:document': 'as:document'
+    'as:image': 0
+    'as:audio': 0
+    'as:video': 0
+    'as:text': 0
+    'as:application': 0
+  mime_type: application/pdf
+  path: /usr/bin/gs
+  arguments: '%file'
+  path_tesseract: /usr/bin/tesseract
+  arguments_tesseract: '%file stdout -l eng hocr'
+  output_type: json
+  output_destination:
+    searchapi: searchapi
+    subkey: 0
+    ownkey: 0
+    plugin: 0
+  timeout: '99'
+  weight: '0'
+pluginid: ocr
+active: true
+parent: pager
+depth: 1
