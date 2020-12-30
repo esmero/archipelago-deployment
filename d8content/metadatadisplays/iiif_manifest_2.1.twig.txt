@@ -44,7 +44,7 @@ Updated Dec 14th 2020
 {
 "label": "description",
 "value": {{ data.description|json_encode|raw }}
-},pgrade from 19
+},
 {
 "label": "type",
 "value": {{ data.type|json_encode|raw }}
