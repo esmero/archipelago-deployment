@@ -34,7 +34,7 @@ content:
       webform_id: digital_object_collection
       placeholder: 'Collection Metadata'
     third_party_settings: {  }
-    type: strawberryfield_webform_widget
+    type: strawberryfield_webform_inline_widget
     region: content
   moderation_state:
     type: moderation_state_default
