@@ -1,0 +1,33 @@
+{
+    "type": {{ data.type|json_encode|raw }},
+    "label": {{ data.label|json_encode|raw }},
+    "owner": "",
+    "audios": [],
+    "images": [],
+    "models": [],
+    "videos": [],
+    "creator": "",
+    "documents": [],
+    "edm_agent": [],
+    "ismemberof": [],
+    "description": {{ data.description|json_encode|raw }},
+    "subject_loc": {{ data.subject_loc|json_encode|raw }},
+    "website_url": "",
+    "as:generator": {
+        "type": "Create",
+        "actor": {
+            "url": {{ setURL|json_encode|raw }},
+            "name": "ami",
+            "type": "Service"
+        },
+        "endTime": "{{"now"|date("c")}}",
+        "summary": "Generator",
+        "@context": "https:\/\/www.w3.org\/ns\/activitystreams"
+    },
+    "date_published": "",
+    "term_aat_getty": null,
+    "local_identifier": "",
+    "subject_wikidata": null,
+    "geographic_location": null,
+    "upload_associated_warcs": []
+}

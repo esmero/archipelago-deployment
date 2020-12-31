@@ -41,7 +41,9 @@ echo -e "Multiple Thumbnails via IIIF and FontAwesome\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @d8content/metadatadisplay_entity_10.json;
 
+echo -e "AMI Ingest JSON Template\n"
 
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @d8content/metadatadisplay_entity_11.json;
 
 echo -e "Deploying Menu Items\n"
 
