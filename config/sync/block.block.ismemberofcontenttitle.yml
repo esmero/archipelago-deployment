@@ -5,7 +5,9 @@ dependencies:
   config:
     - facets.facet.is_member_of_content_title
   module:
+    - context
     - facets
+    - system
   theme:
     - archipelago_subtheme
 id: ismemberofcontenttitle
@@ -20,4 +22,19 @@ settings:
   provider: facets
   label_display: visible
   block_id: ismemberofcontenttitle
-visibility: {  }
+visibility:
+  request_path_exclusion:
+    id: request_path_exclusion
+    pages: ''
+    negate: null
+    context_mapping: {  }
+  view_inclusion:
+    id: view_inclusion
+    negate: null
+    view_inclusion: {  }
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '/search*'
+    negate: false
+    context_mapping: {  }

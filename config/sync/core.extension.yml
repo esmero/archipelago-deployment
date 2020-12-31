@@ -79,6 +79,7 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
+  queue_ui: 0
   quick_node_clone: 0
   quickedit: 0
   rdf: 0
@@ -96,6 +97,7 @@ module:
   shortcut: 0
   simpletest: 0
   sophron: 0
+  strawberry_runners: 0
   strawberryfield: 0
   system: 0
   taxonomy: 0
