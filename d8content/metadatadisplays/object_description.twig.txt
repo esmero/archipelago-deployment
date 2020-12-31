@@ -20,50 +20,87 @@
 </blockquote>
   <h2>Title</h2>
   <p>{{ data.label }}</p>
+  {% if data.creator|length > 0 %}
+  <h2>Creator(s)</h2>
+    <p>
+     {% if data.creator %}
+     {% if data.creator is iterable %}
+     {% for creator in data.creator %}
+       {{ creator }} <br>
+     {% endfor %}
+     {% else %}
+     {{ data.creator }} <br>
+     {% endif %} 
+   {% endif %}
+ {% endif %}  
   <h2>Description</h2>
-  <p>{{ data.description }}</p>
-  <h2>Type of Resource</h2>
-  <p>{{ data.type }}</p>
-  <h2>Author(s)</h2>
   <p>
-    <name type="personal">
-  	{% for people in attribute(data, 'agent_author') %}
-  		<namePart>{{ people.name_label|escape('html_attr') }}</namePart><br>
-  	{% endfor %} 
-  </name>
+     {% if data.description %}
+     {% if data.description is iterable %}
+     {% for description in data.description %}
+       {{ description }} <br>
+     {% endfor %}
+     {% else %}
+     {{ data.description }} <br>
+     {% endif %} 
+   {% endif %}
   </p>
-  <h2>Description</h2>
-  <p>{{ data.description }}</p>
-  <h2>Date Published</h2>
-  <p>{{ data.date_published }}</p> 
+  {% if data.date_original|length > 0 %}
+  <h2>Date (of Original)</h2>
+  <p>{{ data.date_original }}</p>
+  {% endif %}
+ {% if data.publisher|length > 0 %}
+ <h2>Publisher</h2>
+  <p>{{ data.publisher }}</p>
+ {% endif %}  
+ <h2>Rights</h2>
+  <p>{{ data.rights }}</p>
+  <p>
+  <a href="http://rightsstatements.org/vocab/InC-EDU/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-EDU.white.svg" title="In Copyright - Educational Use Permitted" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
+  </p>
 {% if logged_in %}
-  <h2>Local Identifier</h2>
+ <h2>Type of Resource</h2>
+  <p>{{ data.type }}</p>
+ <h2>Language</h2>
+  <p>
+   {% if data.language %}
+     {% if data.language is iterable %}
+     {% for language in data.language %}
+       {{ language }} <br>
+     {% endfor %}
+     {% else %}
+     {{ data.language }} <br>
+     {% endif %} 
+   {% endif %}
+  </p> 
+ <h2>Date (of Digital)</h2>
+  <p>{{ data.date_digital }}</p>  
+ <h2>Institutional Owner</h2>
+  <p>{{ data.owner }}</p>
+ <h2>Identifier</h2>
   <p>{{ data.local_identifier }}</p>
 {% endif %}
+
+<p>
+{% if attribute(data, 'as:document') %}
+<h2>Files referenced in this Digital Object</h2>
+<ul>
+{% for document in attribute(data, 'as:document') %}
+<li><a download href="/do/{{ node.id }}/iiif/{{ document['dr:uuid'] }}/full/full/0/{{  document.name }}" target="_blank">Download {{ document.name }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+{% if attribute(data, 'as:image') %}
+<h2>Images in this Digital Object</h2>
+<ul>
+{% for singleimage in attribute(data, 'as:image') %}
+<li><a href="/do/{{ node.id }}/iiif/{{ singleimage['dr:uuid'] }}/full/full/0/{{  singleimage.name }}" target="_blank">Download Image {{ singleimage.name }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+<p>
 {% if attribute(data, 'as:image')|length > 0  or attribute(data, 'as:document')|length > 0  %}
 <h2><span class="align-middle">Direct Link to Digital Object's IIIF Presentation Manifest V3 </span><img src="https://iiif.io/img/logo-iiif-34x30.png"></h2>
 {% set iiifmanifest =   nodeurl|render ~ "/metadata/iiifmanifest/default.jsonld" %}
-<ul><li>
 <input type="text" value="{{ iiifmanifest }}" id="iiifmanifest_copy" size="{{ iiifmanifest|length }}" class="col-xs-3">
-</li></ul>
 {% endif %}
-
-{% if attribute(data, 'as:document') %}
-<h2>Files</h2>
-<ul>
-{% for document in attribute(data, 'as:document') %}
-  <li><a download href="/do/{{ node.id }}/iiif/{{ document['dr:uuid'] }}/full/full/0/{{  document.name }}" target="_blank">Download {{ document.name }}</a></li>
-{% endfor %}
-</ul>
-{% endif %}
-{% if attribute(data, 'as:images') %}
-<h2>Images</h2>
-<ul>
-{% for document in attribute(data, 'as:images') %}
-  <li><a download href="/do/{{ node.id }}/iiif/{{ document['dr:uuid'] }}/full/full/0/{{  document.name }}" target="_blank">Download {{ document.name }}</a></li>
-{% endfor %}
-</ul>
-{% endif %}
-<h2>Rights Statements</h2>
-<a href="http://rightsstatements.org/vocab/InC-EDU/1.0/">In Copyright - Educational Use Permitted</a>
-
