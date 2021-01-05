@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "95445f95e2e34b487e19c3e0f36842c2",
+    "content-hash": "49d51cc4359e167c91a967a3e7b94a45",
     "packages": [
         {
             "name": "archipelago/ami",
@@ -63,20 +63,20 @@
         },
         {
             "name": "archipelago/archipelago_subtheme",
-            "version": "dev-8.x-1.0-beta3",
+            "version": "dev-1.0.0-RC1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme.git",
-                "reference": "b30b022ea00eb99d8608697eb97ac179b6e8ac00"
+                "reference": "3dc512891eee53048870bfd2f95382e0d64116ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/b30b022ea00eb99d8608697eb97ac179b6e8ac00",
-                "reference": "b30b022ea00eb99d8608697eb97ac179b6e8ac00",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/3dc512891eee53048870bfd2f95382e0d64116ef",
+                "reference": "3dc512891eee53048870bfd2f95382e0d64116ef",
                 "shasum": ""
             },
             "require": {
-                "drupal/bootstrap_barrio": "^4.2"
+                "drupal/bootstrap_barrio": "^5.1"
             },
             "type": "drupal-theme",
             "notification-url": "https://packagist.org/downloads/",
@@ -95,9 +95,9 @@
             "homepage": "https://github.com/esmero/archipelago_subtheme",
             "support": {
                 "issues": "https://github.com/esmero/archipelago_subtheme/issues",
-                "source": "https://github.com/esmero/archipelago_subtheme/tree/8.x-1.0-beta3"
+                "source": "https://github.com/esmero/archipelago_subtheme/tree/1.0.0-RC1"
             },
-            "time": "2020-07-16T20:12:50+00:00"
+            "time": "2021-01-05T01:23:29+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -3238,17 +3238,17 @@
         },
         {
             "name": "drupal/bootstrap_barrio",
-            "version": "4.33.0",
+            "version": "5.1.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/bootstrap_barrio.git",
-                "reference": "8.x-4.33"
+                "reference": "5.1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap_barrio-8.x-4.33.zip",
-                "reference": "8.x-4.33",
-                "shasum": "a8002d713fc1f14e7b98846c65fc5c56239c094c"
+                "url": "https://ftp.drupal.org/files/projects/bootstrap_barrio-5.1.4.zip",
+                "reference": "5.1.4",
+                "shasum": "957a76d18eecfb1062088f22d3ba9ae9b79af240"
             },
             "require": {
                 "drupal/core": "^8 || ^9",
@@ -3257,8 +3257,8 @@
             "type": "drupal-theme",
             "extra": {
                 "drupal": {
-                    "version": "8.x-4.33",
-                    "datestamp": "1603660944",
+                    "version": "5.1.4",
+                    "datestamp": "1603660710",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5322,6 +5322,56 @@
             }
         },
         {
+            "name": "drupal/olivero",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/olivero.git",
+                "reference": "9f6847041ff8ec3010f680d0d99bb81fd8e1083a"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-theme",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-beta2+99-dev",
+                    "datestamp": "1602707929",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "mherchel",
+                    "homepage": "https://www.drupal.org/user/118428"
+                },
+                {
+                    "name": "mtift",
+                    "homepage": "https://www.drupal.org/user/751908"
+                },
+                {
+                    "name": "proeung",
+                    "homepage": "https://www.drupal.org/user/1785940"
+                }
+            ],
+            "description": "A clean, modern, and accessible Drupal default theme.",
+            "homepage": "https://www.drupal.org/project/olivero",
+            "support": {
+                "source": "https://git.drupalcode.org/project/olivero",
+                "issues": "https://www.drupal.org/project/issues/olivero"
+            }
+        },
+        {
             "name": "drupal/pathauto",
             "version": "1.8.0",
             "source": {
@@ -6417,17 +6467,17 @@
         },
         {
             "name": "drupal/webform",
-            "version": "5.22.0",
+            "version": "5.23.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/webform.git",
-                "reference": "8.x-5.22"
+                "reference": "8.x-5.23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.22.zip",
-                "reference": "8.x-5.22",
-                "shasum": "807308bb8c57c3c66c7a839effc558ab2a76c1f5"
+                "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.23.zip",
+                "reference": "8.x-5.23",
+                "shasum": "5d93f2479ac0b69b0eb5b3921d8173a7b3a3a7e5"
             },
             "require": {
                 "drupal/core": "^8.8"
@@ -6468,8 +6518,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-5.22",
-                    "datestamp": "1601919522",
+                    "version": "8.x-5.23",
+                    "datestamp": "1608855643",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -13119,12 +13169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberry_runners.git",
-                "reference": "25ee9fefbfc6d43942d6640fc930e2ef904f9676"
+                "reference": "01518972e750f391ea339f4152eb7249e299d98b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberry_runners/zipball/25ee9fefbfc6d43942d6640fc930e2ef904f9676",
-                "reference": "25ee9fefbfc6d43942d6640fc930e2ef904f9676",
+                "url": "https://api.github.com/repos/esmero/strawberry_runners/zipball/01518972e750f391ea339f4152eb7249e299d98b",
+                "reference": "01518972e750f391ea339f4152eb7249e299d98b",
                 "shasum": ""
             },
             "require": {
@@ -13165,7 +13215,7 @@
                 "issues": "https://github.com/esmero/strawberry_runners/issues",
                 "source": "https://github.com/esmero/strawberry_runners/tree/master"
             },
-            "time": "2020-12-31T21:48:06+00:00"
+            "time": "2021-01-04T22:04:41+00:00"
         },
         {
             "name": "strawberryfield/strawberryfield",
@@ -17229,6 +17279,7 @@
         "drupal/key_value": 20,
         "drupal/markdown": 20,
         "drupal/module_missing_message_fixer": 20,
+        "drupal/olivero": 20,
         "drupal/role_theme_switcher": 20,
         "drupal/s3fs": 20,
         "drupal/search_api_attachments": 10,

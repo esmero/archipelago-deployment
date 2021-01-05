@@ -18,13 +18,13 @@
     "require": {
         "php": ">=7.3",
         "archipelago/ami": "dev-main",
-        "archipelago/archipelago_subtheme": "dev-8.x-1.0-beta3",
+        "archipelago/archipelago_subtheme": "dev-1.0.0-RC1",
         "aws/aws-php-sns-message-validator": "^1.5",
         "aws/aws-sdk-php": "^3.63",
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.6",
         "drupal/bamboo_twig": "5.x-dev",
-        "drupal/bootstrap_barrio": "^4.32",
+        "drupal/bootstrap_barrio": "^5.1",
         "drupal/config_inspector": "dev-1.x",
         "drupal/config_installer": "^1.7",
         "drupal/config_update": "^1.6",
@@ -52,6 +52,7 @@
         "drupal/markdown": "2.x-dev",
         "drupal/moderated_content_bulk_publish": "^1.0",
         "drupal/module_missing_message_fixer": "1.x-dev",
+        "drupal/olivero": "1.x-dev@dev",
         "drupal/pathauto": "^1.6",
         "drupal/queue_ui": "^2.0",
         "drupal/quick_node_clone": "^1.12",
@@ -118,7 +119,9 @@
         "classmap": [
             "scripts/composer/ScriptHandler.php"
         ],
-        "files": ["load.environment.php"]
+        "files": [
+            "load.environment.php"
+        ]
     },
     "scripts": {
         "pre-install-cmd": [
@@ -136,29 +139,40 @@
     },
     "extra": {
         "drupal-scaffold": {
-           "locations": {
-              "web-root": "web/"
-           }
+            "locations": {
+                "web-root": "web/"
+            }
         },
         "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
-
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ]
         },
         "enable-patching": true,
         "patches": {
             "drupal/form_mode_manager": {
-            "Fix Form Mode title": "https://www.drupal.org/files/issues/2019-12-10/form_mode_manager-bundle-label-in-title-3100112-2-D8.patch"
+                "Fix Form Mode title": "https://www.drupal.org/files/issues/2019-12-10/form_mode_manager-bundle-label-in-title-3100112-2-D8.patch"
             },
             "drupal/display_field_copy": {
-            "Fix missing schema 1.x": "patches/1.x-display_field_copy-missing-schema-3107615-2-D8.patch"
+                "Fix missing schema 1.x": "patches/1.x-display_field_copy-missing-schema-3107615-2-D8.patch"
             },
             "drupal/search_api": {
-            "Fix Content Entity Tracker in 1.18": "patches/1.18-3178941-metrocustom-referenced_entities_reindexing_fatal_error-D8.patch"
+                "Fix Content Entity Tracker in 1.18": "patches/1.18-3178941-metrocustom-referenced_entities_reindexing_fatal_error-D8.patch"
             }
         }
     }
