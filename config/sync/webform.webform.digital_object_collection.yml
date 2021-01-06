@@ -10,7 +10,7 @@ weight: 0
 uid: 1
 template: false
 archive: false
-id: digital_object_collectio
+id: digital_object_collection
 title: 'Default Digital Object Collection'
 description: 'Default Digital Object Collection Webform: 1.0.0-RC1.'
 category: Archipel
