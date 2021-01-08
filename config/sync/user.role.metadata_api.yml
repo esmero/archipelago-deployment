@@ -11,6 +11,7 @@ permissions:
   - 'access contextual links'
   - 'access files overview'
   - 'access taxonomy overview'
+  - 'access twig fields'
   - 'access user contact forms'
   - 'access user profiles'
   - 'add metadatadisplay entity'
