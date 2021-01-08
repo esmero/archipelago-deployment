@@ -45,19 +45,15 @@ content:
     weight: 0
     label: hidden
     settings:
-      json_key_source: 'as:image'
-      number_images: '1'
-      image_link: true
-      max_width: '240'
-      max_height: '0'
-      use_iiif_globals: '1'
+      metadatadisplayentity_id: '10'
+      specs: 'http://schema.org'
+      label: Thumbnail
+      metadatadisplayentity_uselabel: '0'
       iiif_base_url: 'http://localhost:8183/iiif/2'
       iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
-      image_type: jpg
-      quality: default
-      rotation: '0'
+      use_iiif_globals: '1'
     third_party_settings: {  }
-    type: strawberry_image_formatter
+    type: strawberry_metadata_formatter
     region: content
 hidden:
   body: true
