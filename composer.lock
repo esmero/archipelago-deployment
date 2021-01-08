@@ -67,12 +67,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme.git",
-                "reference": "6f6cf7b3e6d5127f64e86c2a8b7465d4dee82c39"
+                "reference": "5e2dd5adf9bd20663d94a3d08a43ddc511d33eb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/6f6cf7b3e6d5127f64e86c2a8b7465d4dee82c39",
-                "reference": "6f6cf7b3e6d5127f64e86c2a8b7465d4dee82c39",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/5e2dd5adf9bd20663d94a3d08a43ddc511d33eb9",
+                "reference": "5e2dd5adf9bd20663d94a3d08a43ddc511d33eb9",
                 "shasum": ""
             },
             "require": {
@@ -97,7 +97,7 @@
                 "issues": "https://github.com/esmero/archipelago_subtheme/issues",
                 "source": "https://github.com/esmero/archipelago_subtheme/tree/1.0.0-RC1"
             },
-            "time": "2021-01-07T21:42:44+00:00"
+            "time": "2021-01-08T15:08:44+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -13127,12 +13127,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "8bfcf42b956f8e09aededd1bc70a49208a1c8d10"
+                "reference": "a6651036e96ef4d7cf9f6891cac807fa5e6053bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/8bfcf42b956f8e09aededd1bc70a49208a1c8d10",
-                "reference": "8bfcf42b956f8e09aededd1bc70a49208a1c8d10",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/a6651036e96ef4d7cf9f6891cac807fa5e6053bd",
+                "reference": "a6651036e96ef4d7cf9f6891cac807fa5e6053bd",
                 "shasum": ""
             },
             "require": {
@@ -13161,7 +13161,7 @@
                 "issues": "https://github.com/esmero/format_strawberryfield/issues",
                 "source": "https://github.com/esmero/format_strawberryfield/tree/1.0.0-RC1"
             },
-            "time": "2020-12-21T23:43:55+00:00"
+            "time": "2021-01-08T19:23:39+00:00"
         },
         {
             "name": "strawberryfield/strawberry_runners",
