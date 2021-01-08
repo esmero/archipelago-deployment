@@ -1,0 +1,249 @@
+google_api_client_google_api_services:
+  aiplatformnotebooks: AIPlatformNotebooks
+  abusiveexperiencereport: 'Abusive Experience Report API'
+  acceleratedmobilepageurl: 'Accelerated Mobile Pages (AMP) URL API'
+  accessapproval: 'Access Approval API'
+  accesscontextmanager: 'Access Context Manager API'
+  adexchangebuyer: 'Ad Exchange Buyer API'
+  adexchangebuyerii: AdExchangeBuyerII
+  adexchangeseller: AdExchangeSeller
+  adexperiencereport: 'Ad Experience Report API'
+  admob: AdMob
+  adsense: 'AdSense Management API'
+  adsensehost: 'AdSense Host API'
+  alertcenter: 'G Suite Alert Center API'
+  analytics: 'Google Analytics API'
+  analyticsdata: AnalyticsData
+  analyticsreporting: 'Analytics Reporting API'
+  androidenterprise: 'Google Play EMM API'
+  androidmanagement: 'Android Management API'
+  androidprovisioningpartner: AndroidProvisioningPartner
+  androidpublisher: 'Google Play Developer API'
+  apigateway: Apigateway
+  apigee: Apigee
+  appstate: AppState
+  appengine: 'App Engine Admin API'
+  appsactivity: 'Drive Activity API'
+  area120tables: Area120Tables
+  artifactregistry: ArtifactRegistry
+  assuredworkloads: Assuredworkloads
+  autoscaler: Autoscaler
+  bigqueryconnectionservice: BigQueryConnectionService
+  bigquerydatatransfer: 'BigQuery Data Transfer API'
+  bigqueryreservation: 'BigQuery Reservation API'
+  bigquery: 'BigQuery API'
+  bigtableadmin: 'Cloud Bigtable Admin API'
+  binaryauthorization: 'Binary Authorization API'
+  blogger: 'Blogger API'
+  books: 'Books API'
+  calendar: 'Calendar API'
+  certificateauthorityservice: CertificateAuthorityService
+  chromeuxreport: ChromeUXReport
+  chromewebstore: Chromewebstore
+  cih: Cih
+  civicinfo: 'Google Civic Information API'
+  classroom: 'Google Classroom API'
+  cloudasset: 'Cloud Asset API'
+  cloudbillingbudget: CloudBillingBudget
+  cloudbuild: 'Cloud Build API'
+  cloudcomposer: CloudComposer
+  clouddatabasemigrationservice: CloudDatabaseMigrationService
+  clouddebugger: 'Stackdriver Debugger API'
+  clouddomains: CloudDomains
+  cloudfilestore: CloudFilestore
+  cloudfunctions: 'Cloud Functions API'
+  cloudhealthcare: CloudHealthcare
+  cloudiap: CloudIAP
+  cloudidentity: 'Cloud Identity API'
+  cloudiot: 'Cloud IoT API'
+  cloudkms: 'Cloud Key Management Service (KMS) API'
+  cloudlifesciences: CloudLifeSciences
+  cloudmachinelearning: CloudMachineLearning
+  cloudmachinelearningengine: CloudMachineLearningEngine
+  cloudmemorystoreformemcached: CloudMemorystoreforMemcached
+  cloudmonitoring: CloudMonitoring
+  cloudnaturallanguage: CloudNaturalLanguage
+  cloudnaturallanguageapi: CloudNaturalLanguageAPI
+  cloudoslogin: CloudOSLogin
+  cloudprivatecatalog: 'Cloud Private Catalog API'
+  cloudprivatecatalogproducer: 'Cloud Private Catalog Producer API'
+  cloudprofiler: 'Stackdriver Profiler API'
+  cloudredis: CloudRedis
+  cloudresourcemanager: 'Cloud Resource Manager API'
+  cloudrun: CloudRun
+  cloudruntimeconfig: CloudRuntimeConfig
+  cloudscheduler: 'Cloud Scheduler API'
+  cloudsearch: 'Cloud Search API'
+  cloudsecuritytoken: CloudSecurityToken
+  cloudshell: 'Cloud Shell API'
+  cloudsourcerepositories: CloudSourceRepositories
+  cloudspeechapi: CloudSpeechAPI
+  cloudtalentsolution: CloudTalentSolution
+  cloudtasks: 'Cloud Tasks API'
+  cloudtrace: 'Stackdriver Trace API'
+  clouduseraccounts: CloudUserAccounts
+  cloudvideointelligence: CloudVideoIntelligence
+  cloudbilling: 'Cloud Billing API'
+  clouderrorreporting: 'Stackdriver Error Reporting API'
+  cloudlatencytest: Cloudlatencytest
+  commentanalyzer: 'Perspective Comment Analyzer API'
+  compute: 'Compute Engine API'
+  consumersurveys: ConsumerSurveys
+  container: 'Kubernetes Engine API'
+  containeranalysis: 'Container Analysis API'
+  coordinate: Coordinate
+  customsearchapi: CustomSearchAPI
+  customsearch: 'CustomSearch API'
+  dlp: 'Cloud Data Loss Prevention (DLP) API'
+  datacatalog: DataCatalog
+  datafusion: 'Cloud Data Fusion API'
+  datalabeling: DataLabeling
+  datatransfer: DataTransfer
+  dataflow: 'Dataflow API'
+  dataproc: 'Cloud Dataproc API'
+  datastore: 'Cloud Datastore API'
+  deploymentmanager: 'Google Cloud Deployment Manager API'
+  devprojects: Devprojects
+  dfareporting: 'DCM/DFA Reporting And Trafficking API'
+  dialogflow: 'Dialogflow API'
+  digitalassetlinks: 'Digital Asset Links API'
+  directory: Directory
+  displayvideo: DisplayVideo
+  dns: 'Google Cloud DNS API'
+  docs: 'Google Docs API'
+  document: Document
+  domainsrdap: 'Domains RDAP API'
+  doubleclickbidmanager: 'DoubleClick Bid Manager API'
+  doubleclicksearch: 'Search Ads 360 API'
+  drive: 'Drive API'
+  driveactivity: 'Drive Activity API'
+  eventarc: Eventarc
+  factchecktools: 'Fact Check Tools API'
+  firebasecloudmessaging: FirebaseCloudMessaging
+  firebasedynamiclinks: 'Firebase Dynamic Links API'
+  firebasedynamiclinksapi: FirebaseDynamicLinksAPI
+  firebasehosting: 'Firebase Hosting API'
+  firebaseml: FirebaseML
+  firebasemanagement: FirebaseManagement
+  firebaserealtimedatabase: FirebaseRealtimeDatabase
+  firebaseremoteconfig: FirebaseRemoteConfig
+  firebaserules: 'Firebase Rules API'
+  firebaserulesapi: FirebaseRulesAPI
+  firestore: 'Cloud Firestore API'
+  fitness: Fitness
+  flightavailability: FlightAvailability
+  freebase: Freebase
+  fusiontables: 'Fusion Tables API'
+  gameservices: GameServices
+  games: 'Google Play Game Services API'
+  gamesconfiguration: GamesConfiguration
+  gamesmanagement: GamesManagement
+  genomics: 'Genomics API'
+  gmail: 'Gmail API'
+  googleanalyticsadmin: GoogleAnalyticsAdmin
+  groupsmigration: 'Groups Migration API'
+  groupssettings: 'Groups Settings API'
+  hangoutschat: HangoutsChat
+  homegraphservice: HomeGraphService
+  iamcredentials: 'IAM Service Account Credentials API'
+  iam: 'Identity and Access Management (IAM) API'
+  identitytoolkit: 'Google Identity Toolkit API'
+  indexing: 'Indexing API'
+  jobservice: JobService
+  kgsearch: 'Knowledge Graph Search API'
+  libraryagent: 'Library Agent API'
+  licensing: 'Enterprise License Manager API'
+  localservices: Localservices
+  logging: 'Stackdriver Logging API'
+  managedserviceformicrosoftactivedirectoryconsumerapi: ManagedServiceforMicrosoftActiveDirectoryConsumerAPI
+  manager: Manager
+  manufacturercenter: ManufacturerCenter
+  mirror: 'Google Mirror API'
+  monitoring: 'Stackdriver Monitoring API'
+  networkmanagement: NetworkManagement
+  osconfig: 'Cloud OS Config API'
+  oauth2: 'Google OAuth2 API'
+  pagespeedinsights: PagespeedInsights
+  pagespeedonline: 'PageSpeed Insights API'
+  partners: Partners
+  people: 'People API'
+  peopleservice: PeopleService
+  photoslibrary: PhotosLibrary
+  playmovies: PlayMovies
+  playablelocations: PlayableLocations
+  playcustomapp: 'Google Play Custom App Publishing API'
+  playmoviespartner: Playmoviespartner
+  plus: 'Google+ API'
+  plusdomains: PlusDomains
+  policytroubleshooter: PolicyTroubleshooter
+  polyservice: PolyService
+  postmastertools: PostmasterTools
+  prediction: Prediction
+  proximitybeacon: 'Proximity Beacon API'
+  pubsub: 'Cloud Pub/Sub API'
+  pubsublite: PubsubLite
+  qpxexpress: QPXExpress
+  realtimebidding: RealTimeBidding
+  recommendationsai: RecommendationsAI
+  recommender: Recommender
+  remotebuildexecution: 'Remote Build Execution API'
+  replicapool: 'Replica Pool API'
+  replicapoolupdater: Replicapoolupdater
+  reportcard: Reportcard
+  reports: Reports
+  reseller: 'Enterprise Apps Reseller API'
+  resourceviews: Resourceviews
+  sasportaltesting: SASPortalTesting
+  sqladmin: 'Cloud SQL Admin API'
+  safebrowsing: 'Safe Browsing API'
+  sasportal: Sasportal
+  script: 'Apps Script API'
+  searchconsole: 'Google Search Console URL Testing Tools API'
+  secretmanager: SecretManager
+  securitycommandcenter: SecurityCommandCenter
+  semantictile: SemanticTile
+  servicebroker: 'Service Broker API'
+  serviceconsumermanagement: 'Service Consumer Management API'
+  servicecontrol: 'Service Control API'
+  servicedirectory: ServiceDirectory
+  servicemanagement: 'Service Management API'
+  servicenetworking: 'Service Networking API'
+  serviceregistry: ServiceRegistry
+  serviceusage: 'Service Usage API'
+  serviceuser: ServiceUser
+  sheets: 'Google Sheets API'
+  shoppingcontent: ShoppingContent
+  siteverification: SiteVerification
+  slides: 'Google Slides API'
+  smartdevicemanagement: SmartDeviceManagement
+  spanner: 'Cloud Spanner API'
+  spectrum: Spectrum
+  speech: 'Cloud Speech-to-Text API'
+  storage: 'Cloud Storage JSON API'
+  storagetransfer: 'Storage Transfer API'
+  streetviewpublish: 'Street View Publish API'
+  surveys: 'Surveys API'
+  systemsmanagement: SystemsManagement
+  tpu: 'Cloud TPU API'
+  tagmanager: 'Tag Manager API'
+  taskqueue: Taskqueue
+  tasks: 'Tasks API'
+  testing: 'Cloud Testing API'
+  texttospeech: 'Cloud Text-to-Speech API'
+  toolresults: 'Cloud Tool Results API'
+  tracing: Tracing
+  trafficdirectorservice: TrafficDirectorService
+  transcoder: Transcoder
+  translate: 'Cloud Translation API'
+  urlshortener: 'URL Shortener API'
+  vault: 'G Suite Vault API'
+  verifiedaccess: 'Chrome Verified Access API'
+  vision: 'Cloud Vision API'
+  websecurityscanner: 'Web Security Scanner API'
+  webfonts: 'Google Fonts Developer API'
+  webmasters: 'Search Console API'
+  workflowexecutions: WorkflowExecutions
+  workflows: Workflows
+  youtube: 'YouTube Data API'
+  youtubeanalytics: YouTubeAnalytics
+  youtubereporting: 'YouTube Reporting API�'

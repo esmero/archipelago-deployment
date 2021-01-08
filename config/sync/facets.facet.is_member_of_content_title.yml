@@ -10,7 +10,7 @@ dependencies:
 id: is_member_of_content_title
 name: 'Is Member Of » Content » Title'
 url_alias: is_member_of_content_title
-weight: 0
+weight: 1
 min_count: 0
 show_only_one_result: false
 field_identifier: title_1

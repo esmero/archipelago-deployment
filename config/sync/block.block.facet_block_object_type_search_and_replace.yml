@@ -1,0 +1,34 @@
+uuid: f8bfabb4-f605-4ab5-9f07-7d162ac5e770
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.strawberry_descriptive_metadata_ado_replace
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme
+id: facet_block_object_type_search_and_replace
+theme: archipelago_subtheme
+region: sidebar_second
+weight: -9
+provider: null
+plugin: 'facet_block:strawberry_descriptive_metadata_ado_replace'
+settings:
+  id: 'facet_block:strawberry_descriptive_metadata_ado_replace'
+  label: 'Object Type'
+  provider: facets
+  label_display: visible
+  block_id: facet_block_object_type_search_and_replace
+visibility:
+  request_path_exclusion:
+    id: request_path_exclusion
+    pages: ''
+    negate: null
+    context_mapping: {  }
+  view_inclusion:
+    id: view_inclusion
+    negate: null
+    view_inclusion: {  }
+    context_mapping: {  }
