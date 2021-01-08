@@ -1,6 +1,6 @@
-uuid: c6ee715c-e692-4eaa-a7bf-8c551427c542
+uuid: a81b4625-99dd-4dff-83ff-db74b42a5e3f
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - system.menu.devel
@@ -8,11 +8,11 @@ dependencies:
     - system
     - user
   theme:
-    - archipelago_subtheme
-id: archipelago_subtheme_development
-theme: archipelago_subtheme
+    - bootstrap_barrio_subtheme
+id: bootstrap_barrio_subtheme_development
+theme: bootstrap_barrio_subtheme
 region: content
-weight: -9
+weight: -1
 provider: null
 plugin: 'system_menu_block:devel'
 settings:

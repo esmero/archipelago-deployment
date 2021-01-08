@@ -23,8 +23,8 @@ third_party_settings:
     regions:
       top:
         - node_title
-        - field_descriptive_metadata
       first:
+        - field_descriptive_metadata
         - links
       second:
         - node_changed_date
@@ -75,9 +75,10 @@ content:
       image_type: jpg
       quality: default
       rotation: '0'
+      webannotations: false
     third_party_settings: {  }
     type: strawberry_image_formatter
-    region: top
+    region: first
   links:
     weight: 2
     region: first

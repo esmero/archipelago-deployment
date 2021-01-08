@@ -54,10 +54,10 @@ display:
         options:
           grouping: {  }
           interval: '5000'
-          keyboard: 1
+          keyboard: 0
           ride: 1
           navigation: 1
-          indicators: 1
+          indicators: 0
           pause: 1
           use_caption: 1
           wrap: 1

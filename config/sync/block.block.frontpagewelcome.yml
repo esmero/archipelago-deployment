@@ -1,0 +1,42 @@
+uuid: 6f33b922-d02d-43aa-9b9f-c3be43106a21
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:block_with_twig_templating_:1cdf7155-eb60-4f27-9e5e-64fffe93127a'
+  module:
+    - block_content
+    - context
+    - system
+  theme:
+    - archipelago_subtheme
+id: frontpagewelcome
+theme: archipelago_subtheme
+region: content
+weight: -11
+provider: null
+plugin: 'block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a'
+settings:
+  id: 'block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a'
+  label: 'Front page welcome'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path_exclusion:
+    id: request_path_exclusion
+    pages: ''
+    negate: null
+    context_mapping: {  }
+  view_inclusion:
+    id: view_inclusion
+    negate: null
+    view_inclusion: {  }
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

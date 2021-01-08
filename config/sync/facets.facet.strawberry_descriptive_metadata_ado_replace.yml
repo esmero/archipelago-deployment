@@ -1,31 +1,38 @@
-uuid: b65f27a9-79bf-42e0-b3b0-7fedc8857d3b
+uuid: 6fd98ccb-482b-402d-9e29-1510a0eec061
 langcode: en
 status: true
 dependencies:
   config:
     - search_api.index.default_solr_index
-    - views.view.solr_search_content
+    - views.view.solr_search_content_with_find_and_replace
   module:
     - search_api
-id: is_member_of_content_title
-name: 'Is Member Of » Content » Title'
-url_alias: is_member_of_content_title
-weight: 1
-min_count: 0
+id: strawberry_descriptive_metadata_ado_replace
+name: '🍓 Strawberry (Descriptive Metadata source) » digital_object_type for Search and Replace'
+url_alias: descriptive_metadata_object_types
+weight: -3
+min_count: 1
 show_only_one_result: false
-field_identifier: title_1
-facet_source_id: 'search_api:views_page__solr_search_content__page_1'
+field_identifier: digital_object_type
+facet_source_id: 'search_api:views_page__solr_search_content_with_find_and_replace__page_1'
 widget:
-  type: array
+  type: links
   config:
     show_numbers: false
-query_operator: or
+    soft_limit: 0
+    soft_limit_settings:
+      show_less_label: 'Show less'
+      show_more_label: 'Show more'
+    show_reset_link: false
+    reset_text: 'Show all'
+    hide_reset_when_no_selection: false
+query_operator: and
 use_hierarchy: false
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: true
 hard_limit: 0
 exclude: false
-only_visible_when_facet_source_is_visible: false
+only_visible_when_facet_source_is_visible: true
 processor_configs:
   active_widget_order:
     processor_id: active_widget_order
@@ -52,7 +59,5 @@ processor_configs:
       build: 15
     settings: {  }
 empty_behavior:
-  behavior: text
-  text_format: plain_text
-  text: empty!
+  behavior: none
 show_title: false

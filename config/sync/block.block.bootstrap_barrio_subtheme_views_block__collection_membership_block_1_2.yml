@@ -1,20 +1,19 @@
-uuid: 05758649-2ce1-4cc0-9de0-1e11c9879734
+uuid: 493ec102-f763-4dc3-8166-8562104e4ffa
 langcode: en
 status: true
 dependencies:
   config:
     - views.view.collection_membership
   module:
-    - ctools
     - node
     - system
     - views
   theme:
-    - archipelago_subtheme
-id: views_block__collection_membership_block_1
-theme: archipelago_subtheme
+    - bootstrap_barrio_subtheme
+id: bootstrap_barrio_subtheme_views_block__collection_membership_block_1_2
+theme: bootstrap_barrio_subtheme
 region: content
-weight: -10
+weight: -3
 provider: null
 plugin: 'views_block:collection_membership-block_1'
 settings:
@@ -25,13 +24,6 @@ settings:
   views_label: ''
   items_per_page: none
 visibility:
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    bundles:
-      digital_object_collection: digital_object_collection
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
   node_type:
     id: node_type
     bundles:
@@ -41,6 +33,6 @@ visibility:
       node: '@node.node_route_context:node'
   request_path:
     id: request_path
-    pages: "/node/*/edit\r\n*/add/*\r\n/search"
-    negate: true
+    pages: '/node/*'
+    negate: false
     context_mapping: {  }
