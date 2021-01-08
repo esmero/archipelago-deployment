@@ -555,7 +555,7 @@ elements: |
     images:
       '#type': webform_image_file
       '#title': 'Upload Image Files'
-      '#multiple': 10
+      '#multiple': 50
       '#format': custom
       '#format_html': '<img src="{{  item.link }}">'
       '#format_items': ol
@@ -571,7 +571,7 @@ elements: |
     documents:
       '#type': webform_document_file
       '#title': 'Upload Document Files'
-      '#multiple': 1000
+      '#multiple': 50
       '#states':
         visible:
           - ':input[name="type"]':
