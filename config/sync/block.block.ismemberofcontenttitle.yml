@@ -13,7 +13,7 @@ dependencies:
 id: ismemberofcontenttitle
 theme: archipelago_subtheme
 region: sidebar_second
-weight: 0
+weight: -4
 provider: null
 plugin: 'facet_block:is_member_of_content_title'
 settings:

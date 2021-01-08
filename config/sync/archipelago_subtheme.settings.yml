@@ -96,7 +96,7 @@ bootstrap_barrio_region_class_editor_toolbar: row
 bootstrap_barrio_navbar_top_class: ''
 bootstrap_barrio_navbar_class: ''
 bootstrap_barrio_bootstrap_icons: 0
-bootstrap_barrio_source: bootstrap_barrio/bootswatch_litera
+bootstrap_barrio_source: bootstrap_barrio/bootswatch_minty
 bootstrap_barrio_image_fluid: 0
 bootstrap_barrio_navbar_flyout: 0
 bootstrap_barrio_navbar_slide: 0
