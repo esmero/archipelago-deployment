@@ -10,7 +10,7 @@ dependencies:
 id: descriptive_metadata_object_types
 name: '🍓 Strawberry (Descriptive Metadata source) » digital_object_type'
 url_alias: descriptive_metadata_object_types
-weight: 0
+weight: -3
 min_count: 1
 show_only_one_result: false
 field_identifier: digital_object_type

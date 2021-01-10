@@ -11,7 +11,7 @@ dependencies:
 id: facet_agents
 theme: archipelago_subtheme
 region: sidebar_second
-weight: 0
+weight: -7
 provider: null
 plugin: 'facet_block:descriptive_metadata_agent_labels'
 settings:

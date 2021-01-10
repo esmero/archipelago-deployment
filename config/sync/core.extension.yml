@@ -141,6 +141,8 @@ theme:
   classy: 0
   bootstrap_barrio: 0
   archipelago_subtheme: 0
+  olivero: 0
+  bootstrap_barrio_subtheme: 0
 profile: standard
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc

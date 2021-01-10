@@ -8,3 +8,5 @@ debug_mail_directory: 'temporary://devel-mails'
 devel_dumper: var_dumper
 _core:
   default_config_hash: 8SYa5OOpQGdg4wnttb0LFNuG6GmivsS2qNv9sTH9gDI
+debug_logfile: 'temporary://drupal_debug.txt'
+debug_pre: false

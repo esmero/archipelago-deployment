@@ -10,7 +10,7 @@ dependencies:
 id: authored_on
 name: 'Authored on'
 url_alias: authored_on
-weight: 0
+weight: 2
 min_count: 1
 show_only_one_result: true
 field_identifier: created

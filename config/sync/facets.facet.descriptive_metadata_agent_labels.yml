@@ -10,7 +10,7 @@ dependencies:
 id: descriptive_metadata_agent_labels
 name: '🍓 Strawberry (Descriptive Metadata source) » agents'
 url_alias: descriptive_metadata_agent_labels
-weight: 0
+weight: -2
 min_count: 1
 show_only_one_result: false
 field_identifier: agents

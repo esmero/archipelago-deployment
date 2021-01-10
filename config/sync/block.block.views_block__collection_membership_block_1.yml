@@ -14,7 +14,7 @@ dependencies:
 id: views_block__collection_membership_block_1
 theme: archipelago_subtheme
 region: content
-weight: -7
+weight: -10
 provider: null
 plugin: 'views_block:collection_membership-block_1'
 settings:
