@@ -1,4 +1,4 @@
-{% if data.subject_wikidata|length > 1 %}
+{% if data.subject_wikidata|length > 0 %}
 <dl class="row">
 <dt class="col-sm-12" text-truncate">Wikidata terms</dt>
 </dl>
@@ -17,7 +17,7 @@
 </dd>
 </dl>
 {% endif %} 
-{% if data.term_aat_getty|length > 1 %}
+{% if data.term_aat_getty|length > 0 %}
 <dl class="row">
 <dt class="col-sm-12" text-truncate">Getty terms</dt>
 </dl>
@@ -37,7 +37,7 @@
 </dd>
 </dl>
 {% endif %}
-{% if data.subject_loc|length > 1 %}
+{% if data.subject_loc|length > 0 %}
 <dl class="row">
 <dt class="col-sm-12" text-truncate">Library Of Congress subjects</dt>
 </dl>
@@ -51,7 +51,7 @@
 </dd>
 </dl>
 {% endif %}
-{% if data.edm_agent|length > 1 %}
+{% if data.edm_agent|length > 0 %}
 <dl class="row">
 <dt class="col-sm-12" text-truncate">Wikidata Agents</dt>
 </dl>
