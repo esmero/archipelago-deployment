@@ -30,7 +30,7 @@
         "drupal/config_update": "^1.6",
         "drupal/config_update_ui": "^1.6",
         "drupal/context": "^4.0@beta",
-        "drupal/core": "8.9.11",
+        "drupal/core": "8.9.12",
         "drupal/core-composer-scaffold": "^8.9",
         "drupal/core-dev": "^8.9",
         "drupal/devel": "3.x-dev",
