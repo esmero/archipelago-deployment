@@ -15,7 +15,9 @@ label: '🍓 Strawberry (Descriptive Metadata source)'
 description: ''
 required: true
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: '{}'
 default_value_callback: ''
 settings: {  }
 field_type: strawberryfield_field
