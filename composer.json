@@ -162,9 +162,6 @@
         },
         "enable-patching": true,
         "patches": {
-            "drupal/devel": {
-                "Fix 9.1": "patches/devel-344-event-dispatcher.patch"
-            },
             "drupal/form_mode_manager": {
                 "Fix Form Mode title": "https://www.drupal.org/files/issues/2019-12-10/form_mode_manager-bundle-label-in-title-3100112-2-D8.patch",
                 "D9 readyness": "https://www.drupal.org/files/issues/2020-10-30/form_mode_manager-drupal-9-compatibility-3164478-6.patch"
@@ -175,6 +172,9 @@
             },
             "drupal/search_api": {
                 "Fix Content Entity Tracker in 1.18": "patches/1.18-3178941-metrocustom-referenced_entities_reindexing_fatal_error-D8.patch"
+            },
+            "drupal/role_theme_switcher": {
+                "D9 readyness": "https://www.drupal.org/files/issues/2020-06-06/role_theme_switcher.1.x-dev.rector.patch"
             }
         }
     }
