@@ -1,8 +1,8 @@
-# Archipelago Docker Deployment
+# Archipelago Docker Deployment for Drupal 9
 
-**Updated:** December 14th 2020 (12th year of the dark century known as 2020)
+**Updated:** February 3rd 2021
 
-This repository serves as bootstrap for a Archipelago 1.0.0-RC1 deployment via Docker using and provides this time many more options:
+This repository serves as bootstrap for a Archipelago 1.0.0-RC1 Running on Drupal 9.1.4 deployment via Docker using and provides this time many more options:
 
 - minio.io (latest) S3/Azure/Local/Remote alternative
 - Apache Solr 8.7 (or 7.5 if you go legacy) with the wizardly Solr OCR Highlight library [v0.5](https://github.com/dbmdz/solr-ocrhighlighting/releases/tag/0.5.0) build by the Developement Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter!
@@ -11,8 +11,8 @@ This repository serves as bootstrap for a Archipelago 1.0.0-RC1 deployment via D
 - Custom PHP FPM 7.4 zuper-tunned for Drupal 8/9 (or 7.3 FPM if you go legacy) with WARC to WACZ processing and Composer 2.0!
 - Natural Language Processing via NPLWEB64
 - Cantaloupe 4.1.7 as IIIF Server with Video Frame extraction and PDF support
-- A Skeleton Project setup to run latest Version of Drupal (8.9.11) and strawberryfield modules & friends on 1.0.0-RC1
-- Official *Drupal 9 ready* release again. D9.1 this time. It has its own branch to avoid cluttering this one too much. Look for 1.0.0-RC1D9
+- A Skeleton Project setup to run latest Version of Drupal 9 (9.1.4) and strawberryfield modules & friends on 1.0.0-RC1
+- Official *Drupal 9 ready* release again. D9.1.4 this time. D8 has its own Branch named 1.0.0-RC1
 
 The skeleton project contains all the pieces needed to run a local deployment of a vanilla Archipelago including (*YES*!) content provided as optional feature from [archipelago-recyclables](https://github.com/esmero/archipelago-recyclables)
 
