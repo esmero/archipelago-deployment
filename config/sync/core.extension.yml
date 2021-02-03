@@ -1,6 +1,7 @@
 module:
   action: 0
   aggregator: 0
+  ami: 0
   automated_cron: 0
   bamboo_twig: 0
   bamboo_twig_config: 0
@@ -49,8 +50,8 @@ module:
   file_mdm_exif: 0
   filter: 0
   form_mode_manager: 0
-  form_mode_manager_theme_switcher: 0
   format_strawberryfield: 0
+  google_api_client: 0
   hal: 0
   help: 0
   history: 0
@@ -68,7 +69,6 @@ module:
   migrate: 0
   migrate_drupal: 0
   moderated_content_bulk_publish: 0
-  module_missing_message_fixer: 0
   node: 0
   options: 0
   page_cache: 0
@@ -90,6 +90,7 @@ module:
   settings_tray: 0
   shortcut: 0
   sophron: 0
+  strawberry_runners: 0
   strawberryfield: 0
   system: 0
   taxonomy: 0
@@ -105,6 +106,7 @@ module:
   update: 0
   user: 0
   views_bootstrap: 0
+  views_bulk_operations: 0
   views_ui: 0
   webform: 0
   webform_examples_accessibility: 0
@@ -124,12 +126,11 @@ module:
   ds_extras: 2
   content_translation: 10
   views: 10
-  standard: 1000
 theme:
   seven: 0
   bootstrap_barrio: 0
   archipelago_subtheme: 0
   claro: 0
-profile: standard
+profile: minimal
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc

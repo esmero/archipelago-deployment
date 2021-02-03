@@ -50,7 +50,6 @@
         "drupal/inline_entity_form": "1.x-dev",
         "drupal/key_value": "1.x-dev",
         "drupal/moderated_content_bulk_publish": "^1.0",
-        "drupal/module_missing_message_fixer": "1.x-dev",
         "drupal/pathauto": "^1.6",
         "drupal/queue_ui": "^2.0",
         "drupal/quick_node_clone": "^1.12",

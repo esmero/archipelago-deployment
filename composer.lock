@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1a892b936fceafec8188dee62906a694",
+    "content-hash": "96b1a4506892649f5eb7cff1f3a77e5f",
     "packages": [
         {
             "name": "archipelago/ami",
@@ -4301,57 +4301,6 @@
             "homepage": "https://www.drupal.org/project/moderated_content_bulk_publish",
             "support": {
                 "source": "https://git.drupalcode.org/project/moderated_content_bulk_publish"
-            }
-        },
-        {
-            "name": "drupal/module_missing_message_fixer",
-            "version": "dev-1.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/module_missing_message_fixer.git",
-                "reference": "cb312dffd0159fee26ffe40a1afde9756ef3d632"
-            },
-            "require": {
-                "drupal/core": "~8"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.2+0-dev",
-                    "datestamp": "1585919506",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
-                    }
-                },
-                "drush": {
-                    "services": {
-                        "drush.services.yml": "^9"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "John Ouellet",
-                    "homepage": "https://www.drupal.org/u/labboy0276",
-                    "role": "Developer"
-                }
-            ],
-            "description": "This module displays a list of missing modules that appear on your site and lets you fix the entries",
-            "homepage": "https://www.drupal.org/project/module_missing_message_fixer",
-            "keywords": [
-                "Drupal"
-            ],
-            "support": {
-                "source": "http://cgit.drupalcode.org/module_missing_message_fixer",
-                "issues": "https://www.drupal.org/project/issues/module_missing_message_fixer"
             }
         },
         {
@@ -17547,7 +17496,6 @@
         "drupal/form_mode_manager": 20,
         "drupal/inline_entity_form": 20,
         "drupal/key_value": 20,
-        "drupal/module_missing_message_fixer": 20,
         "drupal/role_theme_switcher": 20,
         "drupal/s3fs": 20,
         "drupal/search_api_attachments": 10,
