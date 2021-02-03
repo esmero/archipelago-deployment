@@ -4,24 +4,79 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "44765b3719696f83d22c5c6de8a65e98",
+    "content-hash": "1a892b936fceafec8188dee62906a694",
     "packages": [
         {
-            "name": "archipelago/archipelago_subtheme",
-            "version": "dev-8.x-1.0-beta3",
+            "name": "archipelago/ami",
+            "version": "dev-main",
             "source": {
                 "type": "git",
-                "url": "https://github.com/esmero/archipelago_subtheme.git",
-                "reference": "b30b022ea00eb99d8608697eb97ac179b6e8ac00"
+                "url": "https://github.com/esmero/ami.git",
+                "reference": "4b272f6c188458026450c3c93b3f97d997dac1b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/b30b022ea00eb99d8608697eb97ac179b6e8ac00",
-                "reference": "b30b022ea00eb99d8608697eb97ac179b6e8ac00",
+                "url": "https://api.github.com/repos/esmero/ami/zipball/4b272f6c188458026450c3c93b3f97d997dac1b5",
+                "reference": "4b272f6c188458026450c3c93b3f97d997dac1b5",
                 "shasum": ""
             },
             "require": {
-                "drupal/bootstrap_barrio": "^4.2"
+                "drupal/core": "^8.9 || ^9",
+                "drupal/google_api_client": "3.0.0-rc4",
+                "drupal/views_bulk_operations": "^3.9",
+                "maennchen/zipstream-php": "^1.2 || ^2.1",
+                "phpoffice/phpspreadsheet": "^1.15.0",
+                "ramsey/uuid": "^4.1",
+                "strawberryfield/strawberryfield": "dev-1.0.0-RC1",
+                "strawberryfield/webform_strawberryfield": "dev-1.0.0-RC1",
+                "swaggest/json-diff": "^3.7.5",
+                "swaggest/json-schema": "^0.12.29"
+            },
+            "default-branch": true,
+            "type": "drupal-module",
+            "extra": {
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^10"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Diego Pino Navarro",
+                    "email": "dpino@metro.org",
+                    "homepage": "https://github.com/DiegoPino",
+                    "role": "Owner"
+                }
+            ],
+            "description": "Archipelago Multi Importer for Drupal 8/9. A module of mass ingest/edits made for the masses",
+            "homepage": "https://github.com/esmero/ami",
+            "support": {
+                "issues": "https://github.com/esmero/ami/issues",
+                "source": "https://github.com/esmero/ami/tree/main"
+            },
+            "time": "2021-01-06T13:19:31+00:00"
+        },
+        {
+            "name": "archipelago/archipelago_subtheme",
+            "version": "dev-1.0.0-RC1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/esmero/archipelago_subtheme.git",
+                "reference": "5e2dd5adf9bd20663d94a3d08a43ddc511d33eb9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/5e2dd5adf9bd20663d94a3d08a43ddc511d33eb9",
+                "reference": "5e2dd5adf9bd20663d94a3d08a43ddc511d33eb9",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/bootstrap_barrio": "^5.1"
             },
             "type": "drupal-theme",
             "notification-url": "https://packagist.org/downloads/",
@@ -40,9 +95,9 @@
             "homepage": "https://github.com/esmero/archipelago_subtheme",
             "support": {
                 "issues": "https://github.com/esmero/archipelago_subtheme/issues",
-                "source": "https://github.com/esmero/archipelago_subtheme/tree/8.x-1.0-beta3"
+                "source": "https://github.com/esmero/archipelago_subtheme/tree/1.0.0-RC1"
             },
-            "time": "2020-07-16T20:12:50+00:00"
+            "time": "2021-01-08T15:08:44+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -2378,17 +2433,17 @@
         },
         {
             "name": "drupal/bootstrap_barrio",
-            "version": "4.33.0",
+            "version": "5.1.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/bootstrap_barrio.git",
-                "reference": "8.x-4.33"
+                "reference": "5.1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap_barrio-8.x-4.33.zip",
-                "reference": "8.x-4.33",
-                "shasum": "a8002d713fc1f14e7b98846c65fc5c56239c094c"
+                "url": "https://ftp.drupal.org/files/projects/bootstrap_barrio-5.1.4.zip",
+                "reference": "5.1.4",
+                "shasum": "957a76d18eecfb1062088f22d3ba9ae9b79af240"
             },
             "require": {
                 "drupal/core": "^8 || ^9",
@@ -2397,8 +2452,8 @@
             "type": "drupal-theme",
             "extra": {
                 "drupal": {
-                    "version": "8.x-4.33",
-                    "datestamp": "1603660944",
+                    "version": "5.1.4",
+                    "datestamp": "1603660710",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6012,6 +6067,60 @@
             "time": "2017-07-23T21:35:13+00:00"
         },
         {
+            "name": "ezyang/htmlpurifier",
+            "version": "v4.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezyang/htmlpurifier.git",
+                "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
+                "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "simpletest/simpletest": "dev-master#72de02a7b80c6bb8864ef9bf66d41d2f58f826bd"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTMLPurifier": "library/"
+                },
+                "files": [
+                    "library/HTMLPurifier.composer.php"
+                ],
+                "exclude-from-classmap": [
+                    "/library/HTMLPurifier/Language/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Edward Z. Yang",
+                    "email": "admin@htmlpurifier.org",
+                    "homepage": "http://ezyang.com"
+                }
+            ],
+            "description": "Standards compliant HTML filter written in PHP",
+            "homepage": "http://htmlpurifier.org/",
+            "keywords": [
+                "html"
+            ],
+            "support": {
+                "issues": "https://github.com/ezyang/htmlpurifier/issues",
+                "source": "https://github.com/ezyang/htmlpurifier/tree/master"
+            },
+            "time": "2020-06-29T00:56:53+00:00"
+        },
+        {
             "name": "fileeye/mimemap",
             "version": "1.1.4",
             "source": {
@@ -7672,6 +7781,179 @@
             "time": "2020-05-30T13:11:16+00:00"
         },
         {
+            "name": "markbaker/complex",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MarkBaker/PHPComplex.git",
+                "reference": "9999f1432fae467bc93c53f357105b4c31bb994c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MarkBaker/PHPComplex/zipball/9999f1432fae467bc93c53f357105b4c31bb994c",
+                "reference": "9999f1432fae467bc93c53f357105b4c31bb994c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "phpcompatibility/php-compatibility": "^9.0",
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phploc/phploc": "^4.0",
+                "phpmd/phpmd": "2.*",
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.3",
+                "sebastian/phpcpd": "^4.0",
+                "squizlabs/php_codesniffer": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Complex\\": "classes/src/"
+                },
+                "files": [
+                    "classes/src/functions/abs.php",
+                    "classes/src/functions/acos.php",
+                    "classes/src/functions/acosh.php",
+                    "classes/src/functions/acot.php",
+                    "classes/src/functions/acoth.php",
+                    "classes/src/functions/acsc.php",
+                    "classes/src/functions/acsch.php",
+                    "classes/src/functions/argument.php",
+                    "classes/src/functions/asec.php",
+                    "classes/src/functions/asech.php",
+                    "classes/src/functions/asin.php",
+                    "classes/src/functions/asinh.php",
+                    "classes/src/functions/atan.php",
+                    "classes/src/functions/atanh.php",
+                    "classes/src/functions/conjugate.php",
+                    "classes/src/functions/cos.php",
+                    "classes/src/functions/cosh.php",
+                    "classes/src/functions/cot.php",
+                    "classes/src/functions/coth.php",
+                    "classes/src/functions/csc.php",
+                    "classes/src/functions/csch.php",
+                    "classes/src/functions/exp.php",
+                    "classes/src/functions/inverse.php",
+                    "classes/src/functions/ln.php",
+                    "classes/src/functions/log2.php",
+                    "classes/src/functions/log10.php",
+                    "classes/src/functions/negative.php",
+                    "classes/src/functions/pow.php",
+                    "classes/src/functions/rho.php",
+                    "classes/src/functions/sec.php",
+                    "classes/src/functions/sech.php",
+                    "classes/src/functions/sin.php",
+                    "classes/src/functions/sinh.php",
+                    "classes/src/functions/sqrt.php",
+                    "classes/src/functions/tan.php",
+                    "classes/src/functions/tanh.php",
+                    "classes/src/functions/theta.php",
+                    "classes/src/operations/add.php",
+                    "classes/src/operations/subtract.php",
+                    "classes/src/operations/multiply.php",
+                    "classes/src/operations/divideby.php",
+                    "classes/src/operations/divideinto.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Baker",
+                    "email": "mark@lange.demon.co.uk"
+                }
+            ],
+            "description": "PHP Class for working with complex numbers",
+            "homepage": "https://github.com/MarkBaker/PHPComplex",
+            "keywords": [
+                "complex",
+                "mathematics"
+            ],
+            "support": {
+                "issues": "https://github.com/MarkBaker/PHPComplex/issues",
+                "source": "https://github.com/MarkBaker/PHPComplex/tree/PHP8"
+            },
+            "time": "2020-08-26T10:42:07+00:00"
+        },
+        {
+            "name": "markbaker/matrix",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MarkBaker/PHPMatrix.git",
+                "reference": "361c0f545c3172ee26c3d596a0aa03f0cef65e6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MarkBaker/PHPMatrix/zipball/361c0f545c3172ee26c3d596a0aa03f0cef65e6a",
+                "reference": "361c0f545c3172ee26c3d596a0aa03f0cef65e6a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "phpcompatibility/php-compatibility": "^9.0",
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phploc/phploc": "^4.0",
+                "phpmd/phpmd": "2.*",
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.3",
+                "sebastian/phpcpd": "^4.0",
+                "squizlabs/php_codesniffer": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Matrix\\": "classes/src/"
+                },
+                "files": [
+                    "classes/src/Functions/adjoint.php",
+                    "classes/src/Functions/antidiagonal.php",
+                    "classes/src/Functions/cofactors.php",
+                    "classes/src/Functions/determinant.php",
+                    "classes/src/Functions/diagonal.php",
+                    "classes/src/Functions/identity.php",
+                    "classes/src/Functions/inverse.php",
+                    "classes/src/Functions/minors.php",
+                    "classes/src/Functions/trace.php",
+                    "classes/src/Functions/transpose.php",
+                    "classes/src/Operations/add.php",
+                    "classes/src/Operations/directsum.php",
+                    "classes/src/Operations/subtract.php",
+                    "classes/src/Operations/multiply.php",
+                    "classes/src/Operations/divideby.php",
+                    "classes/src/Operations/divideinto.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Baker",
+                    "email": "mark@demon-angel.eu"
+                }
+            ],
+            "description": "PHP Class for working with matrices",
+            "homepage": "https://github.com/MarkBaker/PHPMatrix",
+            "keywords": [
+                "mathematics",
+                "matrix",
+                "vector"
+            ],
+            "support": {
+                "issues": "https://github.com/MarkBaker/PHPMatrix/issues",
+                "source": "https://github.com/MarkBaker/PHPMatrix/tree/2.1.2"
+            },
+            "time": "2021-01-23T16:37:31+00:00"
+        },
+        {
             "name": "masterminds/html5",
             "version": "2.7.4",
             "source": {
@@ -8535,6 +8817,107 @@
                 "source": "https://github.com/phplang/scope-exit/tree/master"
             },
             "time": "2016-09-17T00:15:18+00:00"
+        },
+        {
+            "name": "phpoffice/phpspreadsheet",
+            "version": "1.16.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
+                "reference": "76d4323b85129d0c368149c831a07a3e258b2b50"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/76d4323b85129d0c368149c831a07a3e258b2b50",
+                "reference": "76d4323b85129d0c368149c831a07a3e258b2b50",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-dom": "*",
+                "ext-fileinfo": "*",
+                "ext-gd": "*",
+                "ext-iconv": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "ext-xml": "*",
+                "ext-xmlreader": "*",
+                "ext-xmlwriter": "*",
+                "ext-zip": "*",
+                "ext-zlib": "*",
+                "ezyang/htmlpurifier": "^4.13",
+                "maennchen/zipstream-php": "^2.1",
+                "markbaker/complex": "^1.5||^2.0",
+                "markbaker/matrix": "^1.2||^2.0",
+                "php": "^7.2||^8.0",
+                "psr/http-client": "^1.0",
+                "psr/http-factory": "^1.0",
+                "psr/simple-cache": "^1.0"
+            },
+            "require-dev": {
+                "dompdf/dompdf": "^0.8.5",
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "jpgraph/jpgraph": "^4.0",
+                "mpdf/mpdf": "^8.0",
+                "phpcompatibility/php-compatibility": "^9.3",
+                "phpunit/phpunit": "^8.5||^9.3",
+                "squizlabs/php_codesniffer": "^3.5",
+                "tecnickcom/tcpdf": "^6.3"
+            },
+            "suggest": {
+                "dompdf/dompdf": "Option for rendering PDF with PDF Writer (doesn't yet support PHP8)",
+                "jpgraph/jpgraph": "Option for rendering charts, or including charts with PDF or HTML Writers",
+                "mpdf/mpdf": "Option for rendering PDF with PDF Writer",
+                "tecnickcom/tcpdf": "Option for rendering PDF with PDF Writer (doesn't yet support PHP8)"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpOffice\\PhpSpreadsheet\\": "src/PhpSpreadsheet"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "https://blog.maartenballiauw.be"
+                },
+                {
+                    "name": "Mark Baker",
+                    "homepage": "https://markbakeruk.net"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "https://rootslabs.net"
+                },
+                {
+                    "name": "Erik Tilt"
+                },
+                {
+                    "name": "Adrien Crivelli"
+                }
+            ],
+            "description": "PHPSpreadsheet - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+            "homepage": "https://github.com/PHPOffice/PhpSpreadsheet",
+            "keywords": [
+                "OpenXML",
+                "excel",
+                "gnumeric",
+                "ods",
+                "php",
+                "spreadsheet",
+                "xls",
+                "xlsx"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
+                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.16.0"
+            },
+            "time": "2020-12-31T18:03:49+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -9728,12 +10111,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "0c5553f7eb4248b8093a514d54499fc6339667f7"
+                "reference": "a6651036e96ef4d7cf9f6891cac807fa5e6053bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/0c5553f7eb4248b8093a514d54499fc6339667f7",
-                "reference": "0c5553f7eb4248b8093a514d54499fc6339667f7",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/a6651036e96ef4d7cf9f6891cac807fa5e6053bd",
+                "reference": "a6651036e96ef4d7cf9f6891cac807fa5e6053bd",
                 "shasum": ""
             },
             "require": {
@@ -9762,7 +10145,60 @@
                 "issues": "https://github.com/esmero/format_strawberryfield/issues",
                 "source": "https://github.com/esmero/format_strawberryfield/tree/1.0.0-RC1"
             },
-            "time": "2020-12-15T05:27:57+00:00"
+            "time": "2021-01-08T19:23:39+00:00"
+        },
+        {
+            "name": "strawberryfield/strawberry_runners",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/esmero/strawberry_runners.git",
+                "reference": "c5336a883203b7d9ccd33ce64955a6a4fa79d2d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/esmero/strawberry_runners/zipball/c5336a883203b7d9ccd33ce64955a6a4fa79d2d0",
+                "reference": "c5336a883203b7d9ccd33ce64955a6a4fa79d2d0",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "^8.9 || ^9",
+                "drupal/search_api_solr": "~4.1",
+                "mixnode/mixnode-warcreader-php": ">=0.0",
+                "ml/json-ld": "^1.0",
+                "mtdowling/jmespath.php": "^2.4",
+                "react/child-process": "^0.6",
+                "react/event-loop": "^1.1",
+                "react/stream": "^1.1",
+                "strawberryfield/strawberryfield": "dev-1.0.0-RC1",
+                "web64/php-nlp-client": ">=0.4"
+            },
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Giancarlo Birello",
+                    "email": "giancarlo.birello@gmail.com",
+                    "homepage": "https://github.com/giancarlobi",
+                    "role": "Owner"
+                },
+                {
+                    "name": "Diego Pino Navarro",
+                    "email": "dpino@metro.org",
+                    "homepage": "https://github.com/DiegoPino",
+                    "role": "Owner"
+                }
+            ],
+            "description": "Strawberryfield post processing module for Drupal 8/9 using PHP React",
+            "homepage": "https://github.com/esmero/strawberry_runners",
+            "support": {
+                "issues": "https://github.com/esmero/strawberry_runners/issues",
+                "source": "https://github.com/esmero/strawberry_runners/tree/main"
+            },
+            "time": "2021-01-07T00:00:18+00:00"
         },
         {
             "name": "strawberryfield/strawberryfield",
@@ -9770,12 +10206,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "cb4164792244c9a25a97fec55b22c0c78c87ee4a"
+                "reference": "9d3a7d7530df32c3e880cbad3369fc7695470d00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/cb4164792244c9a25a97fec55b22c0c78c87ee4a",
-                "reference": "cb4164792244c9a25a97fec55b22c0c78c87ee4a",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/9d3a7d7530df32c3e880cbad3369fc7695470d00",
+                "reference": "9d3a7d7530df32c3e880cbad3369fc7695470d00",
                 "shasum": ""
             },
             "require": {
@@ -9814,7 +10250,7 @@
                 "issues": "https://github.com/esmero/strawberryfield/issues",
                 "source": "https://github.com/esmero/strawberryfield/tree/1.0.0-RC1"
             },
-            "time": "2020-12-15T02:21:09+00:00"
+            "time": "2021-01-12T20:55:37+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",
@@ -9822,12 +10258,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/webform_strawberryfield.git",
-                "reference": "c05d1211fe9fbcd5d327002d3272b492b3c077cd"
+                "reference": "0f56751db9c429968f5433466431bfee1c45cd3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/c05d1211fe9fbcd5d327002d3272b492b3c077cd",
-                "reference": "c05d1211fe9fbcd5d327002d3272b492b3c077cd",
+                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/0f56751db9c429968f5433466431bfee1c45cd3b",
+                "reference": "0f56751db9c429968f5433466431bfee1c45cd3b",
                 "shasum": ""
             },
             "require": {
@@ -9857,7 +10293,7 @@
                 "issues": "https://github.com/esmero/webform_strawberryfield/issues",
                 "source": "https://github.com/esmero/webform_strawberryfield/tree/1.0.0-RC1"
             },
-            "time": "2020-12-15T07:00:12+00:00"
+            "time": "2021-01-20T20:57:01+00:00"
         },
         {
             "name": "swaggest/json-diff",
@@ -11348,16 +11784,16 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.20.0",
+            "version": "v1.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "cede45fcdfabdd6043b3592e83678e42ec69e930"
+                "reference": "cc6e6f9b39fe8075b3dabfbaf5b5f645ae1340c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/cede45fcdfabdd6043b3592e83678e42ec69e930",
-                "reference": "cede45fcdfabdd6043b3592e83678e42ec69e930",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/cc6e6f9b39fe8075b3dabfbaf5b5f645ae1340c9",
+                "reference": "cc6e6f9b39fe8075b3dabfbaf5b5f645ae1340c9",
                 "shasum": ""
             },
             "require": {
@@ -11366,7 +11802,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.20-dev"
+                    "dev-main": "1.22-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -11404,7 +11840,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php72/tree/v1.20.0"
+                "source": "https://github.com/symfony/polyfill-php72/tree/v1.22.0"
             },
             "funding": [
                 {
@@ -11420,20 +11856,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-23T14:02:19+00:00"
+            "time": "2021-01-07T16:49:33+00:00"
         },
         {
             "name": "symfony/polyfill-php73",
-            "version": "v1.20.0",
+            "version": "v1.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php73.git",
-                "reference": "8ff431c517be11c78c48a39a66d37431e26a6bed"
+                "reference": "a678b42e92f86eca04b7fa4c0f6f19d097fb69e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php73/zipball/8ff431c517be11c78c48a39a66d37431e26a6bed",
-                "reference": "8ff431c517be11c78c48a39a66d37431e26a6bed",
+                "url": "https://api.github.com/repos/symfony/polyfill-php73/zipball/a678b42e92f86eca04b7fa4c0f6f19d097fb69e2",
+                "reference": "a678b42e92f86eca04b7fa4c0f6f19d097fb69e2",
                 "shasum": ""
             },
             "require": {
@@ -11442,7 +11878,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.20-dev"
+                    "dev-main": "1.22-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -11483,7 +11919,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php73/tree/v1.20.0"
+                "source": "https://github.com/symfony/polyfill-php73/tree/v1.22.0"
             },
             "funding": [
                 {
@@ -11499,7 +11935,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-23T14:02:19+00:00"
+            "time": "2021-01-07T16:49:33+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
@@ -12420,16 +12856,16 @@
         },
         {
             "name": "twbs/bootstrap",
-            "version": "v4.5.3",
+            "version": "v4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "a716fb03f965dc0846df479e14388b1b4b93d7ce"
+                "reference": "6ffb0b48e455430f8a5359ed689ad64c1143fac2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/a716fb03f965dc0846df479e14388b1b4b93d7ce",
-                "reference": "a716fb03f965dc0846df479e14388b1b4b93d7ce",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/6ffb0b48e455430f8a5359ed689ad64c1143fac2",
+                "reference": "6ffb0b48e455430f8a5359ed689ad64c1143fac2",
                 "shasum": ""
             },
             "replace": {
@@ -12469,7 +12905,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twbs/bootstrap/issues",
-                "source": "https://github.com/twbs/bootstrap/tree/v4.5.3"
+                "source": "https://github.com/twbs/bootstrap/tree/v4.6.0"
             },
             "funding": [
                 {
@@ -12477,7 +12913,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-10-13T15:38:30+00:00"
+            "time": "2021-01-19T16:16:38+00:00"
         },
         {
             "name": "twig/twig",
@@ -12694,6 +13130,56 @@
             "time": "2020-09-14T15:57:31+00:00"
         },
         {
+            "name": "web64/php-nlp-client",
+            "version": "v0.40.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web64/php-nlp-client.git",
+                "reference": "b34658717a3b09dd5dcbae842e3227086a3970ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web64/php-nlp-client/zipball/b34658717a3b09dd5dcbae842e3227086a3970ba",
+                "reference": "b34658717a3b09dd5dcbae842e3227086a3970ba",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Web64\\Nlp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Olav Hjertaker",
+                    "email": "olav.hjertaker@gmail.com"
+                }
+            ],
+            "description": "Library for accessing NLP apis",
+            "keywords": [
+                "article extraction",
+                "entity extraction",
+                "language detection",
+                "natural language",
+                "nlp"
+            ],
+            "support": {
+                "issues": "https://github.com/web64/php-nlp-client/issues",
+                "source": "https://github.com/web64/php-nlp-client/tree/master"
+            },
+            "time": "2020-08-20T09:58:50+00:00"
+        },
+        {
             "name": "webflo/drupal-finder",
             "version": "1.2.2",
             "source": {
@@ -12742,12 +13228,12 @@
             "version": "1.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
@@ -12785,8 +13271,8 @@
                 "validate"
             ],
             "support": {
-                "issues": "https://github.com/webmozart/assert/issues",
-                "source": "https://github.com/webmozart/assert/tree/master"
+                "issues": "https://github.com/webmozarts/assert/issues",
+                "source": "https://github.com/webmozarts/assert/tree/1.9.1"
             },
             "time": "2020-07-08T17:02:28+00:00"
         },
@@ -17049,6 +17535,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "archipelago/ami": 20,
         "archipelago/archipelago_subtheme": 20,
         "drupal/bamboo_twig": 20,
         "drupal/config_inspector": 20,
@@ -17068,6 +17555,7 @@
         "drupal/webformnavigation": 15,
         "frictionlessdata/datapackage": 20,
         "strawberryfield/format_strawberryfield": 20,
+        "strawberryfield/strawberry_runners": 20,
         "strawberryfield/strawberryfield": 20,
         "strawberryfield/webform_strawberryfield": 20,
         "behat/mink": 20,

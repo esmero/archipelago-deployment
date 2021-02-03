@@ -53,8 +53,8 @@ services:
       - /drupalconfig
   # see https://hub.docker.com/_/mysql/
   db:
-    image: mysql:5.7
-    command: --max_allowed_packet=256M
+    image: mysql:8.0.22
+    command: mysqld --default-authentication-plugin=mysql_native_password  --lower_case_table_names=1 --max_allowed_packet=256M
     container_name: esmero-db
     restart: always
     environment:

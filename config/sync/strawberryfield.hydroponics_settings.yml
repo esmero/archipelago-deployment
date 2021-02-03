@@ -1,0 +1,7 @@
+active: true
+queues:
+  - ami_ingest_ado
+  - strawberryrunners_process_index
+  - strawberryrunners_process_background
+drush_path: /var/www/html/vendor/drush/drush/drush
+home_path: ''

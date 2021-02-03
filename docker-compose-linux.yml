@@ -83,6 +83,9 @@ services:
     networks:
       - host-net
       - esmero-net
+    environment:
+      XMX: 2g
+      XMS: 256m
     volumes:
       - ${PWD}/persistent/iiifconfig:/etc/cantaloupe
       - ${PWD}/persistent/iiifcache:/var/cache/cantaloupe
