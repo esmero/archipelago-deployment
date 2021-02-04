@@ -173,11 +173,12 @@ This will give you an `admin` Drupal user with `archipelago` as password (!chang
 
 Note: About Steps 2-3, you don't need to/nor should do this more than once. You can destroy/stop/update and recreated your Docker containers and start again, `git pull` and your Drupal and Data will persist once you passed `Installation complete` message. I repeat, all other container's data is persistet inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable and stable inside your `web/` folder.
 
-## Step 4: Create a "demo "and a "jsonapi" user using drush
+## Step 4: Create a "demo "and a "jsonapi" user using drush and assign your "admin" user the Administrator Role (new for Drupal 9).
 
 ```Shell
 docker exec -ti esmero-php bash -c 'drush ucrt demo --password="demo"; drush urol metadata_pro "demo"'
 docker exec -ti esmero-php bash -c 'drush ucrt jsonapi --password="jsonapi"; drush urol metadata_api "jsonapi"'
+docker exec -ti esmero-php bash -c 'drush urol administrator "admin"'
 ```
 
 ## Step 5: Ingest some Metadata Displays to make playing much more interactive
@@ -187,6 +188,7 @@ Archipelago is more fun without having to start writing Metadata Displays (in Tw
 ```Shell
 docker exec -ti esmero-php bash -c 'scripts/archipelago/deploy.sh'
 ```
+
 You are done! Open your most loved Web Browser and point it to http://localhost:8001
 
 Note: It can take some time to start the first time (Drupal needs some warming up). The Ubuntu deployment is WAY faster than the OSX deployment because of the way the bind mount volumens are handled by the driver. Our experience is that Archipelago basically reacts instantly!
