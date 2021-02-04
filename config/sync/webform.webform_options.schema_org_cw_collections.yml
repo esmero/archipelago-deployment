@@ -1,0 +1,9 @@
+uuid: 546d9dd2-441a-4dea-9fbb-4f901d5a209d
+langcode: en
+status: true
+dependencies: {  }
+id: schema_org_cw_collections
+label: 'Schema.org Creative Works for Collections'
+category: archipelago
+likert: false
+options: "Collection: Collection\nCreativeWorkSeries: 'Creative Work Series'\nNewspaper: Newspaper\nPeriodical: Periodical"

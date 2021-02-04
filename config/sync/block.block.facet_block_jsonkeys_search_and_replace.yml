@@ -1,27 +1,26 @@
-uuid: 45f1971a-51ff-4635-801c-ffce40491372
+uuid: 8e7124a8-b08a-4c13-9176-cf47f1514cc1
 langcode: en
 status: true
 dependencies:
   config:
-    - facets.facet.is_member_of_content_title
+    - facets.facet.strawberry_descriptive_metadata_ado_jsonkeys
   module:
     - context
     - facets
-    - system
   theme:
     - archipelago_subtheme
-id: ismemberofcontenttitle
+id: facet_block_jsonkeys_search_and_replace
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -4
+weight: -5
 provider: null
-plugin: 'facet_block:is_member_of_content_title'
+plugin: 'facet_block:strawberry_descriptive_metadata_ado_jsonkeys'
 settings:
-  id: 'facet_block:is_member_of_content_title'
-  label: 'Part of Collection'
+  id: 'facet_block:strawberry_descriptive_metadata_ado_jsonkeys'
+  label: ' JSON keys in your metadata'
   provider: facets
   label_display: visible
-  block_id: ismemberofcontenttitle
+  block_id: facet_block_jsonkeys_search_and_replace
 visibility:
   request_path_exclusion:
     id: request_path_exclusion
@@ -32,9 +31,4 @@ visibility:
     id: view_inclusion
     negate: null
     view_inclusion: {  }
-    context_mapping: {  }
-  request_path:
-    id: request_path
-    pages: '/search*'
-    negate: false
     context_mapping: {  }

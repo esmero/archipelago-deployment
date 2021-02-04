@@ -1,20 +1,20 @@
-uuid: 758edcf5-348f-483e-badd-519866ec8171
+uuid: 6fd98ccb-482b-402d-9e29-1510a0eec061
 langcode: en
 status: true
 dependencies:
   config:
     - search_api.index.default_solr_index
-    - views.view.solr_search_content
+    - views.view.solr_search_content_with_find_and_replace
   module:
     - search_api
-id: descriptive_metadata_object_types
-name: '🍓 Strawberry (Descriptive Metadata source) » digital_object_type'
+id: strawberry_descriptive_metadata_ado_replace
+name: '🍓 Strawberry (Descriptive Metadata source) » digital_object_type for Search and Replace'
 url_alias: descriptive_metadata_object_types
 weight: -3
 min_count: 1
 show_only_one_result: false
 field_identifier: digital_object_type
-facet_source_id: 'search_api:views_page__solr_search_content__page_1'
+facet_source_id: 'search_api:views_page__solr_search_content_with_find_and_replace__page_1'
 widget:
   type: links
   config:

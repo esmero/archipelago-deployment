@@ -10,7 +10,7 @@ dependencies:
 id: descriptive_metadata_source_json_keys
 name: '🍓 Strawberry (Descriptive Metadata source) » JSON keys defined in this field'
 url_alias: descriptive_metadata_source_json_keys
-weight: 0
+weight: -1
 min_count: 1
 show_only_one_result: false
 field_identifier: str_flatten_keys
