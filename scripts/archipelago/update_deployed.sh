@@ -41,6 +41,13 @@ echo -e "Multiple Thumbnails via IIIF and FontAwesome\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/7ca9ef30-1535-4616-b3b2-201dcc7d6a69 --data-binary @d8content/metadatadisplay_entity_10.json;
 
+echo -e "AMI Ingest JSON Template\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/8595827e-b17d-42bc-bc46-a746bdd05417 --data-binary @d8content/metadatadisplay_entity_11.json;
+
+echo -e "A welcome message\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/block_content/block_with_twig_templating_/1cdf7155-eb60-4f27-9e5e-64fffe93127a --data-binary @d8content/block_content_01.json;
 
 echo -e "Last pass, setting web owner to tmp files folder\n"
 

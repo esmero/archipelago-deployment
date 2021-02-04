@@ -1,0 +1,11 @@
+{
+  "data": {
+    "type": "metadatadisplay_entity--metadatadisplay_entity",
+    "id": "8595827e-b17d-42bc-bc46-a746bdd05417",
+    "attributes": {
+      "name": "AMI Ingest JSON Template",
+      "twig":"{\n    \"type\": {{ data.type|json_encode|raw }},\n    \"label\": {{ data.label|json_encode|raw }},\n    \"owner\": \"\",\n    \"audios\": [],\n    \"images\": [],\n    \"models\": [],\n    \"videos\": [],\n    \"creator\": \"\",\n    \"documents\": [],\n    \"edm_agent\": [],\n    \"ismemberof\": [],\n    \"description\": {{ data.description|json_encode|raw }},\n    \"subject_loc\": {{ data.subject_loc|json_encode|raw }},\n    \"website_url\": \"\",\n    \"as:generator\": {\n        \"type\": \"Create\",\n        \"actor\": {\n            \"url\": {{ setURL|json_encode|raw }},\n            \"name\": \"ami\",\n            \"type\": \"Service\"\n        },\n        \"endTime\": \"{{\"now\"|date(\"c\")}}\",\n        \"summary\": \"Generator\",\n        \"@context\": \"https:\\\/\\\/www.w3.org\\\/ns\\\/activitystreams\"\n    },\n    \"date_published\": \"\",\n    \"term_aat_getty\": null,\n    \"local_identifier\": \"\",\n    \"subject_wikidata\": null,\n    \"geographic_location\": null,\n    \"upload_associated_warcs\": []\n}",
+      "mimetype": "application/json"
+    }
+  }
+}
