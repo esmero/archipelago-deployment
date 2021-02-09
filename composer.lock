@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "69d56afc34a7bd94fd9a8140a59479b5",
+    "content-hash": "201166f201d8594be0329252ccdd49fd",
     "packages": [
         {
             "name": "archipelago/ami",
@@ -4245,27 +4245,30 @@
         },
         {
             "name": "drupal/display_field_copy",
-            "version": "dev-1.x",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/display_field_copy.git",
-                "reference": "20f0cf9899719e9be22bd25767927aa0a4419e60"
+                "reference": "2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/display_field_copy-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "0c22e22e413a5a374bc889d09f07063e3f8d5dcb"
             },
             "require": {
-                "drupal/core": "~8.0",
+                "drupal/core": "^8 || ^9",
                 "drupal/ds": "*"
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
-                    "version": "8.x-1.2+0-dev",
-                    "datestamp": "1563664081",
+                    "version": "2.0.0",
+                    "datestamp": "1602437551",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -17285,7 +17288,6 @@
         "drupal/config_inspector": 20,
         "drupal/context": 10,
         "drupal/devel": 20,
-        "drupal/display_field_copy": 20,
         "drupal/facets": 20,
         "drupal/field_permissions": 5,
         "drupal/form_mode_manager": 20,

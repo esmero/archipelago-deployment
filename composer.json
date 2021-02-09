@@ -34,7 +34,7 @@
         "drupal/core-composer-scaffold": "^8.9",
         "drupal/core-dev": "^8.9",
         "drupal/devel": "3.x-dev",
-        "drupal/display_field_copy": "1.x-dev",
+        "drupal/display_field_copy": "^2.0",
         "drupal/ds": "^3.9",
         "drupal/facets": "1.x-dev",
         "drupal/fancy_file_delete": "^2.0",
