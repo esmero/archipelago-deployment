@@ -1,0 +1,15 @@
+version: '3.6'
+services:
+  web:
+    volumes:
+      - ../d8content:/var/www/html/d8content:cached
+#networks:
+#  esmero-net:
+#    driver: bridge
+#    internal: true
+#  iiif:
+#    links:
+#      - minio:esmero-minio
+#  minio:
+#    links:
+#      - iiif:esmero-cantaloupe

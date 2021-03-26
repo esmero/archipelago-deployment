@@ -1,0 +1,7 @@
+disable_settings_management: true
+hooks:
+  pre-start:
+    # Make sure we are using our development settings.
+    - exec-host: cp -f .ddev/drupal-settings/settings.local.php $DDEV_DOCROOT/sites/default/settings.local.php
+    - exec-host: cp -f .ddev/drupal-settings/settings.ddev.php $DDEV_DOCROOT/sites/default/settings.ddev.php
+    - exec-host: cp -f .ddev/drupal-settings/local.development.services.yml $DDEV_DOCROOT/sites/local.development.services.yml
