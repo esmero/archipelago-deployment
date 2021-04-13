@@ -1,0 +1,37 @@
+version: '3.6'
+
+services:
+  minio:
+    # Name of container using standard ddev convention
+    container_name: ddev-${DDEV_SITENAME}-minio
+    restart: "no"
+    image: minio/minio:latest
+    # These labels ensure this service is discoverable by ddev.
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    ports:
+      - 9000
+    environment:
+      # This defines the host name the service should be accessible from. This
+      # will be sitename.ddev.site.
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      # This defines the port the service should be accessible from at
+      # sitename.ddev.site.
+      - HTTP_EXPOSE=9001
+      - MINIO_ACCESS_KEY=minio
+      - MINIO_SECRET_KEY=minio123
+    volumes:
+      #
+      - miniodata:/data:cached
+    command: server /data
+#    networks:
+#      - esmero-net
+#      - default
+#    external_links:
+#      - "ddev-router:${DDEV_SITENAME}.ddev.site"
+  web:
+    links:
+      - minio:esmero-minio
+volumes:
+  miniodata:

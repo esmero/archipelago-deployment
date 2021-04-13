@@ -1,0 +1,42 @@
+version: '3.6'
+
+services:
+  iiif:
+    # Name of container using standard ddev convention
+    container_name: ddev-${DDEV_SITENAME}-iiif
+    restart: "no"
+    image: "esmero/cantaloupe-s3:4.1.7"
+    # These labels ensure this service is discoverable by ddev.
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    environment:
+      # This defines the host name the service should be accessible from. This
+      # will be sitename.ddev.site.
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      # This defines the port the service should be accessible from at
+      # sitename.ddev.site.
+      - HTTP_EXPOSE=8183
+      - XMX=2g
+      - XMS=256m
+    volumes:
+      #
+      - ./iiif/iiifconfig:/etc/cantaloupe
+      - iiif-cache:/var/cache/cantaloupe
+    ports:
+      - 8182
+    links:
+      - minio:esmero-minio
+#    networks:
+#      - esmero-net
+#      - default
+#    external_links:
+#      - "ddev-router:${DDEV_SITENAME}.ddev.site"
+  # This links the iiif service to the web service defined in the main
+  # docker-compose.yml, allowing applications running inside the web container to
+  # access the iiif service at http://iiif:8183
+  web:
+    links:
+      - iiif:esmero-cantaloupe
+volumes:
+  iiif-cache:

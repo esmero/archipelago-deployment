@@ -1,0 +1,29 @@
+version: '3.6'
+
+services:
+  nlp:
+    # Name of container using standard ddev convention
+    container_name: ddev-${DDEV_SITENAME}-nlp
+    restart: always
+    image: "esmero/esmero-nlp:1.0"
+    # These labels ensure this service is discoverable by ddev.
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    environment:
+      # This defines the host name the service should be accessible from. This
+      # will be sitename.ddev.site.
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      # This defines the port the service should be accessible from at
+      # sitename.ddev.site.
+      - HTTP_EXPOSE=6400
+    ports:
+      - 6400
+    external_links:
+      - "ddev-router:${DDEV_SITENAME}.ddev.site"
+  # This links the nlp service to the web service defined in the main
+  # docker-compose.yml, allowing applications running inside the web container to
+  # access the nlp service at http://nlp:8983
+  web:
+    links:
+      - nlp:nlp

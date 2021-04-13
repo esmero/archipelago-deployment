@@ -1,0 +1,66 @@
+#!/bin/bash
+
+drush -y si --verbose config_installer  config_installer_sync_configure_form.sync_directory=../config/sync/ --account-name=admin --account-pass=archipelago --sites-subdir=default --notify=false
+
+drush ucrt demo --password="demo"
+drush urol metadata_pro "demo"
+drush ucrt jsonapi --password="jsonapi"
+drush urol metadata_api "jsonapi"
+
+echo -e "Deploying Metadata Display entities or better known as Twig Templates:\n"
+
+echo -e "General HTML Description block\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @../d8content/metadatadisplay_entity_01.json;
+
+echo -e  "Linked Data Block HTML\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @../d8content/metadatadisplay_entity_02.json;
+
+echo -e "IIIF 3.0 Manifest for Images and Mirador\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @../d8content/metadatadisplay_entity_03.json;
+
+echo -e "Basic MODS 3.6 Caster\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @../d8content/metadatadisplay_entity_04.json;
+
+echo -e "IIIF 2.1 Manifest for Images and Books\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @../d8content/metadatadisplay_entity_05.json;
+
+echo -e "GeoJSON for Maps\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @../d8content/metadatadisplay_entity_06.json;
+
+echo -e "A Bootstrap Carousel template from IIIF images and Views \n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @../d8content/metadatadisplay_entity_07.json;
+
+echo -e "General HTML Description block for Search Results\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @../d8content/metadatadisplay_entity_08.json;
+
+echo -e "Basic Schema.org\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @../d8content/metadatadisplay_entity_09.json;
+
+echo -e "Multiple Thumbnails via IIIF and FontAwesome\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @../d8content/metadatadisplay_entity_10.json;
+
+echo -e "AMI Ingest JSON Template\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @../d8content/metadatadisplay_entity_11.json;
+
+echo -e "Deploying Menu Items\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/menu_link_content/menu_link_content --data-binary @../d8content/menu_link_content_01.json;
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/menu_link_content/menu_link_content --data-binary @../d8content/menu_link_content_02.json;
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/menu_link_content/menu_link_content --data-binary @../d8content/menu_link_content_03.json;
+
+echo -e "A welcome message\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST $DDEV_PRIMARY_URL/jsonapi/block_content/block_with_twig_templating_ --data-binary @../d8content/block_content_01.json;
+
+echo -e  "Ready!"
