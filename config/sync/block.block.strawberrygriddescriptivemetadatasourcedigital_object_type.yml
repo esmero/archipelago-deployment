@@ -1,26 +1,26 @@
-uuid: f8bfabb4-f605-4ab5-9f07-7d162ac5e770
+uuid: 8849cadb-bac9-432d-81dc-c601cdad19b8
 langcode: en
 status: true
 dependencies:
   config:
-    - facets.facet.strawberry_descriptive_metadata_ado_replace
+    - facets.facet.digital_object_type_grid
   module:
     - context
     - facets
   theme:
     - archipelago_subtheme
-id: facet_block_object_type_search_and_replace
+id: strawberrygriddescriptivemetadatasourcedigital_object_type
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -12
+weight: -11
 provider: null
-plugin: 'facet_block:strawberry_descriptive_metadata_ado_replace'
+plugin: 'facet_block:digital_object_type_grid'
 settings:
-  id: 'facet_block:strawberry_descriptive_metadata_ado_replace'
+  id: 'facet_block:digital_object_type_grid'
   label: 'Object Type'
   provider: facets
   label_display: visible
-  block_id: facet_block_object_type_search_and_replace
+  block_id: strawberrygriddescriptivemetadatasourcedigital_object_type
 visibility:
   request_path_exclusion:
     id: request_path_exclusion

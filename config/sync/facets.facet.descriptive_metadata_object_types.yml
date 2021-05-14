@@ -18,7 +18,7 @@ facet_source_id: 'search_api:views_page__solr_search_content__page_1'
 widget:
   type: links
   config:
-    show_numbers: false
+    show_numbers: true
     soft_limit: 0
     soft_limit_settings:
       show_less_label: 'Show less'

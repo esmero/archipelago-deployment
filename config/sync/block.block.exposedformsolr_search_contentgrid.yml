@@ -1,4 +1,4 @@
-uuid: 3fa27aa2-5d31-4bb8-9962-0d72472c172a
+uuid: c3a9de19-73c5-484d-84ef-8b04bde894d2
 langcode: en
 status: true
 dependencies:
@@ -10,24 +10,19 @@ dependencies:
     - views
   theme:
     - archipelago_subtheme
-id: archipelago_subtheme_exposedformsolr_search_contentpage_1
+id: exposedformsolr_search_contentgrid
 theme: archipelago_subtheme
 region: top_header_form
-weight: -11
+weight: 0
 provider: null
-plugin: 'views_exposed_filter_block:solr_search_content-page_1'
+plugin: 'views_exposed_filter_block:solr_search_content-grid'
 settings:
-  id: 'views_exposed_filter_block:solr_search_content-page_1'
+  id: 'views_exposed_filter_block:solr_search_content-grid'
   label: ''
   provider: views
   label_display: '0'
-  views_label: Discover
+  views_label: ''
 visibility:
-  request_path:
-    id: request_path
-    pages: '/search_grid*'
-    negate: true
-    context_mapping: {  }
   request_path_exclusion:
     id: request_path_exclusion
     pages: ''
@@ -37,4 +32,9 @@ visibility:
     id: view_inclusion
     negate: null
     view_inclusion: {  }
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '/search_grid*'
+    negate: false
     context_mapping: {  }

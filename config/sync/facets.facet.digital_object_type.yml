@@ -1,20 +1,20 @@
-uuid: dda635c8-0990-4e45-adb0-02b3b9332eb8
+uuid: 254c1233-a325-4b9f-adee-b273c4061262
 langcode: en
 status: true
 dependencies:
   config:
     - search_api.index.default_solr_index
-    - views.view.solr_search_content
+    - views.view.solr_search_content_with_find_and_replace
   module:
     - search_api
-id: authored_on
-name: 'Authored on'
-url_alias: authored_on
-weight: 2
+id: digital_object_type
+name: 'Digital Object Type'
+url_alias: digital_object_type
+weight: 0
 min_count: 1
 show_only_one_result: false
-field_identifier: created
-facet_source_id: 'search_api:views_page__solr_search_content__page_1'
+field_identifier: digital_object_type
+facet_source_id: 'search_api:views_page__solr_search_content_with_find_and_replace__page_1'
 widget:
   type: links
   config:
@@ -32,7 +32,7 @@ expand_hierarchy: false
 enable_parent_when_child_gets_disabled: true
 hard_limit: 0
 exclude: false
-only_visible_when_facet_source_is_visible: true
+only_visible_when_facet_source_is_visible: false
 processor_configs:
   active_widget_order:
     processor_id: active_widget_order
@@ -46,14 +46,6 @@ processor_configs:
       sort: 30
     settings:
       sort: DESC
-  date_item:
-    processor_id: date_item
-    weights:
-      build: 35
-    settings:
-      date_display: actual_date
-      granularity: 6
-      date_format: ''
   display_value_widget_order:
     processor_id: display_value_widget_order
     weights:

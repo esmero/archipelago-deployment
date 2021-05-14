@@ -6,6 +6,7 @@ dependencies:
     - search_api.index.default_solr_index
   module:
     - search_api
+    - views_bootstrap
 _core:
   default_config_hash: iVQLTta_FfMvw_Voy7HFOHZlM1sV04-PT8kM0rTI9YI
 id: solr_search_content
@@ -186,8 +187,19 @@ display:
           group_type: group
           admin_label: ''
           empty: false
-          content: 'Displaying results @start - @end of @total'
+          content: '<div> Displaying results @start - @end of @total </div>'
           plugin_id: result
+        display_link:
+          id: display_link
+          table: views
+          field: display_link
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          display_id: grid
+          label: 'Grid Display'
+          plugin_id: display_link
       footer: {  }
       empty:
         result:
@@ -204,7 +216,7 @@ display:
       arguments: {  }
       display_extenders: {  }
       css_class: search_box
-      use_ajax: false
+      use_ajax: true
     cache_metadata:
       contexts:
         - 'languages:language_interface'
@@ -300,6 +312,80 @@ display:
         - url.query_args
         - 'url.query_args:sort_by'
         - 'user.node_grants:view'
+      tags:
+        - 'config:search_api.index.default_solr_index'
+  grid:
+    display_plugin: page
+    id: grid
+    display_title: Grid
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: search_grid
+      exposed_block: true
+      cache:
+        type: search_api_tag
+        options: {  }
+      defaults:
+        cache: false
+        style: false
+        row: false
+        header: false
+      display_description: 'Grid Display'
+      style:
+        type: views_bootstrap_grid
+        options:
+          row_class: 'd-flex flex-column'
+          default_row_class: false
+          uses_fields: false
+          col_xs: col-12
+          col_sm: col-sm-6
+          col_md: col-md-4
+          col_lg: col-lg-3
+          col_xl: col-xl-3
+      row:
+        type: search_api
+        options:
+          view_modes:
+            'entity:file':
+              file: default
+            'entity:node':
+              article: search_result
+              digital_object: digital_object_with_thumbnail_for_grid
+              digital_object_collection: digital_object_with_thumbnail_for_grid
+              page: search_result
+              webform: default
+            strawberryfield_flavor_datasource: ''
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          content: '<div> Displaying results @start - @end of @total </div>'
+          plugin_id: result
+        display_link:
+          id: display_link
+          table: views
+          field: display_link
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          display_id: page_1
+          label: 'List Display'
+          plugin_id: display_link
+    cache_metadata:
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+      cacheable: false
+      max-age: -1
       tags:
         - 'config:search_api.index.default_solr_index'
   page_1:

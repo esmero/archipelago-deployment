@@ -1,4 +1,4 @@
-uuid: dda635c8-0990-4e45-adb0-02b3b9332eb8
+uuid: f0da905b-21ec-4585-ad93-e01cd1eaba80
 langcode: en
 status: true
 dependencies:
@@ -7,13 +7,13 @@ dependencies:
     - views.view.solr_search_content
   module:
     - search_api
-id: authored_on
-name: 'Authored on'
-url_alias: authored_on
-weight: 2
+id: mime_type
+name: 'MIME Type'
+url_alias: mime_type
+weight: 0
 min_count: 1
 show_only_one_result: false
-field_identifier: created
+field_identifier: as_image_exif_mimetype
 facet_source_id: 'search_api:views_page__solr_search_content__page_1'
 widget:
   type: links
@@ -46,14 +46,6 @@ processor_configs:
       sort: 30
     settings:
       sort: DESC
-  date_item:
-    processor_id: date_item
-    weights:
-      build: 35
-    settings:
-      date_display: actual_date
-      granularity: 6
-      date_format: ''
   display_value_widget_order:
     processor_id: display_value_widget_order
     weights:
@@ -68,4 +60,4 @@ processor_configs:
     settings: {  }
 empty_behavior:
   behavior: none
-show_title: false
+show_title: true

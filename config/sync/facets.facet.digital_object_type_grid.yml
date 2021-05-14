@@ -1,4 +1,4 @@
-uuid: dda635c8-0990-4e45-adb0-02b3b9332eb8
+uuid: 99f04ead-5212-4cd5-a0d8-8d4b2550c425
 langcode: en
 status: true
 dependencies:
@@ -7,18 +7,18 @@ dependencies:
     - views.view.solr_search_content
   module:
     - search_api
-id: authored_on
-name: 'Authored on'
-url_alias: authored_on
-weight: 2
+id: digital_object_type_grid
+name: '🍓 Strawberry GRID (Descriptive Metadata source) » digital_object_type'
+url_alias: descriptive_metadata_object_types
+weight: -3
 min_count: 1
 show_only_one_result: false
-field_identifier: created
-facet_source_id: 'search_api:views_page__solr_search_content__page_1'
+field_identifier: digital_object_type
+facet_source_id: 'search_api:views_page__solr_search_content__grid'
 widget:
   type: links
   config:
-    show_numbers: true
+    show_numbers: false
     soft_limit: 0
     soft_limit_settings:
       show_less_label: 'Show less'
@@ -46,14 +46,6 @@ processor_configs:
       sort: 30
     settings:
       sort: DESC
-  date_item:
-    processor_id: date_item
-    weights:
-      build: 35
-    settings:
-      date_display: actual_date
-      granularity: 6
-      date_format: ''
   display_value_widget_order:
     processor_id: display_value_widget_order
     weights:
