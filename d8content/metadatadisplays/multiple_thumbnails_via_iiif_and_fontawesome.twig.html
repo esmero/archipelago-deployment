@@ -120,12 +120,14 @@ ShortStory: 'Short Story'
 <i class="fas fa-vr-cardboard fa-9x"></i>
 {% elseif data.type in ['Dataset'] %}
 <i class="fas fa-table fa-9x"></i>
+{% elseif data.type in ['CreativeWorkSeries'] %}
+<i class="fab fa-buffer fa-9x"></i>
 {% elseif data.type in ['Collection'] %}
-<i class="fas fa-archive"></i>
+<i class="fas fa-archive fa-9x"></i>
 {% elseif data.type in ['Map'] %}
 <i class="fas fa-map-marked-alt fa-9x"></i>
 {% else %} 
-<i class="fas file-contract fa-9x"></i>
+<i class="fas fa-file-contract fa-9x"></i>
 {% endif %}
 {# -- ENDIF fontawesome -- #}
 {% endif %}

@@ -66,6 +66,7 @@ echo -e "Updating Menu Items\n"
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/menu_link_content/menu_link_content/a580dad6-5932-4f9d-bdaa-06b5563c386c --data-binary @d8content/menu_link_content_01.json;
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/menu_link_content/menu_link_content/2c576406-2a37-4fb8-b988-cd6db1105084 --data-binary @d8content/menu_link_content_02.json;
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/menu_link_content/menu_link_content/9085dade-61be-4581-ba00-239f16787d7f --data-binary @d8content/menu_link_content_03.json;
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/menu_link_content/menu_link_content/b858da4a-e1fc-4bf3-a7b8-2e16fd21ccd9 --data-binary @d8content/menu_link_content_04.json;
 
 
 

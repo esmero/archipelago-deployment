@@ -18,6 +18,19 @@
 			<footer class="blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
 {% endif %}
 {% endif %}
+{% if attribute(data, 'ispartof') %}
+{% if attribute(data, 'ispartof') is iterable %}
+	{% for child in attribute(data, 'ispartof')%}
+		{% set parentnode = bamboo_load_entity('node', child) %}
+		{% set parentnodeurl = url('entity.node.canonical', {'node': child}, {'absolute': true}) %}
+			<footer class="blockquote-footer">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
+	{% endfor %}
+	{% else %}
+		{% set parentnode = bamboo_load_entity('node', attribute(data, 'ispartof')) %}
+		{% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ispartof')}, {'absolute': true}) %}
+			<footer class="blockquote-footer">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
+{% endif %}
+{% endif %}
 </blockquote>
 <h2>Title</h2>
 <p>{{ data.label }}</p>

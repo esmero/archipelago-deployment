@@ -1,0 +1,34 @@
+<blockquote class="blockquote">
+ {% if attribute(data, 'ismemberof') %}
+ {% if attribute(data, 'ismemberof') is iterable %}
+ {% for collection in attribute(data, 'ismemberof')%}
+   {% set parentnode = bamboo_load_entity('node', collection) %}
+   {% set parentnodeurl = url('entity.node.canonical', {'node': collection}, {'absolute': true}) %}
+ <footer class="blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
+{% endfor %}
+{% else %}
+  {% set parentnode = bamboo_load_entity('node', attribute(data, 'ismemberof')) %}
+  {% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ismemberof')}, {'absolute': true}) %}
+<footer class="blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
+{% endif %}
+{% endif %}
+{% if attribute(data, 'ispartof') %}
+{% if attribute(data, 'ispartof') is iterable %}
+	{% for child in attribute(data, 'ispartof')%}
+		{% set parentnode = bamboo_load_entity('node', child) %}
+		{% set parentnodeurl = url('entity.node.canonical', {'node': child}, {'absolute': true}) %}
+			<footer class="blockquote-footer">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
+	{% endfor %}
+	{% else %}
+		{% set parentnode = bamboo_load_entity('node', attribute(data, 'ispartof')) %}
+		{% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ispartof')}, {'absolute': true}) %}
+			<footer class="blockquote-footer">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
+{% endif %}
+{% endif %}
+</blockquote>
+  <h3>Description</h3>
+  <p>{{ data.description }}</p>
+  <h4>Type of Resource</h4>
+  <p>{{ data.type }}</p>
+  <h4>Rights Statements</h4>
+  <a href="http://rightsstatements.org/vocab/InC-EDU/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-EDU.white.svg" title="In Copyright - Educational Use Permitted" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a>

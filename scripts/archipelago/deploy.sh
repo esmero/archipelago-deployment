@@ -66,6 +66,7 @@ echo -e "Deploying Menu Items\n"
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/menu_link_content/menu_link_content --data-binary @d8content/menu_link_content_01.json;
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/menu_link_content/menu_link_content --data-binary @d8content/menu_link_content_02.json;
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/menu_link_content/menu_link_content --data-binary @d8content/menu_link_content_03.json;
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/menu_link_content/menu_link_content --data-binary @d8content/menu_link_content_04.json;
 
 echo -e "A welcome message\n"
 
