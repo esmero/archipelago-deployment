@@ -3,6 +3,7 @@ echo "Adding Drupal 8 basic Configs"
 cat <<EOT >> /var/www/html/web/sites/default/settings.php
 \$settings['s3fs.access_key'] = 'minio';
 \$settings['s3fs.secret_key'] = 'minio123';
+\$settings['s3fs.upload_as_private'] = TRUE;
 \$settings['file_private_path'] = '/var/www/html/private';
 ini_set('memory_limit', '512M');
 \$settings['install_profile'] = 'standard';
