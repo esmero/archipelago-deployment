@@ -43,7 +43,7 @@
         "drupal/file_mdm_exif": "^2",
         "drupal/flag": "^4.0",
         "drupal/form_mode_manager": "2.x-dev",
-        "drupal/google_api_client": "^3.0",
+        "drupal/google_api_client": "3.0.0",
         "drupal/imagemagick": "^3.1",
         "drupal/imce": "^1.7",
         "drupal/inline_entity_form": "1.x-dev",
@@ -76,7 +76,7 @@
         "drupal/webform_views": "^5.0",
         "drupal/webformnavigation": "^1.0@alpha",
         "drupal/workflow": "^1.1",
-        "drush/drush": "10.3",
+        "drush/drush": "^10.5",
         "egulias/email-validator": "^2.0",
         "fileeye/mimemap": "^1.1.1",
         "frictionlessdata/datapackage": "dev-master",
@@ -91,17 +91,17 @@
         "react/promise": "^2.7",
         "solarium/solarium": "^6.0",
         "strawberryfield/format_strawberryfield": "dev-1.0.0-RC2",
-        "strawberryfield/strawberry_runners": "0.1.0-dev",
+        "strawberryfield/strawberry_runners": "0.1.0.x-dev",
         "strawberryfield/strawberryfield": "dev-1.0.0-RC2",
         "strawberryfield/webform_strawberryfield": "dev-1.0.0-RC2",
         "swaggest/json-schema": "^0.12.10",
         "symfony/event-dispatcher": "4.3.4 as 3.4.99",
         "symfony/yaml": "v3.4.39",
-        "typo3/phar-stream-wrapper": "3.1.3",
+        "typo3/phar-stream-wrapper": "3.1.6",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
-        "wikibase/data-model": "9.5",
+        "wikibase/data-model": "9.6.1",
         "zaporylie/composer-drupal-optimizations": "^1.1.1"
     },
     "require-dev": {
@@ -173,9 +173,6 @@
             },
             "drupal/display_field_copy": {
                 "Fix missing schema 1.x": "patches/1.x-display_field_copy-missing-schema-3107615-2-D8.patch"
-            },
-            "drupal/search_api": {
-                "Fix Content Entity Tracker in 1.18": "patches/1.18-3178941-metrocustom-referenced_entities_reindexing_fatal_error-D8.patch"
             }
         }
     }
