@@ -1,0 +1,30 @@
+uuid: bba1d69c-2c59-4fae-a271-f1724250e079
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.strawberry_descriptive_metadata_source_agents_grid
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme
+id: strawberrydescriptivemetadatasourceagentsgrid
+theme: archipelago_subtheme
+region: sidebar_second
+weight: -6
+provider: null
+plugin: 'facet_block:strawberry_descriptive_metadata_source_agents_grid'
+settings:
+  id: 'facet_block:strawberry_descriptive_metadata_source_agents_grid'
+  label: Agents
+  provider: facets
+  label_display: visible
+  block_id: strawberrydescriptivemetadatasourceagentsgrid
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    view_inclusion:
+      view-solr_search_content-grid: view-solr_search_content-grid
+    negate: false
+    context_mapping: {  }

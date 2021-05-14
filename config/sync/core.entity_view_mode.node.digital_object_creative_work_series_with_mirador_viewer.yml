@@ -1,0 +1,10 @@
+uuid: 948f0be1-65fd-43ac-8685-9bcdf6e8ffc2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_creative_work_series_with_mirador_viewer
+label: 'Digital Object Creative Work Series with Mirador Viewer'
+targetEntityType: node
+cache: true

@@ -29,6 +29,7 @@ third_party_settings:
         - node_title
       first:
         - 'display_field_copy:node-static_media'
+        - search_api_excerpt
       second:
         - node_changed_date
         - field_descriptive_metadata
@@ -46,7 +47,7 @@ third_party_settings:
             metadatadisplayentity_uselabel: '0'
       node_changed_date:
         plugin_id: node_changed_date
-        weight: 2
+        weight: 3
         label: inline
         formatter: ds_post_date_long
       node_title:
@@ -65,7 +66,7 @@ mode: strawberryfield_processed_metadata
 content:
   field_descriptive_metadata:
     type: strawberry_metadata_formatter
-    weight: 3
+    weight: 4
     region: second
     label: hidden
     settings:
@@ -77,9 +78,13 @@ content:
       iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
       use_iiif_globals: '1'
     third_party_settings: {  }
+  search_api_excerpt:
+    weight: 2
+    region: first
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   body: true
   content_moderation_control: true
   langcode: true
   links: true
-  search_api_excerpt: true

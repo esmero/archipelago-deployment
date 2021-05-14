@@ -12,7 +12,7 @@ dependencies:
 id: strawberrygriddescriptivemetadatasource_subjects
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -8
+weight: -9
 provider: null
 plugin: 'facet_block:grid_subject_labels'
 settings:

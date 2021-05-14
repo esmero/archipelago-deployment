@@ -1,8 +1,9 @@
-uuid: 59da7a12-af7d-439b-b7bc-3d9e4d2bf8c5
+uuid: fad2ccde-9cfb-44ea-a4d4-8905a743cc9d
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.digital_object_creative_work_series_with_mirador_viewer
     - field.field.node.digital_object_collection.body
     - field.field.node.digital_object_collection.field_descriptive_metadata
     - node.type.digital_object_collection
@@ -35,27 +36,30 @@ third_party_settings:
             specs: 'http://schema.org'
             label: 'Descriptive Metadata'
             metadatadisplayentity_uselabel: '0'
-id: node.digital_object_collection.default
+id: node.digital_object_collection.digital_object_creative_work_series_with_mirador_viewer
 targetEntityType: node
 bundle: digital_object_collection
-mode: default
+mode: digital_object_creative_work_series_with_mirador_viewer
 content:
   field_descriptive_metadata:
     weight: 0
     label: hidden
     settings:
-      iiif_group: true
-      thumbnails: true
-      json_key_source: 'as:image'
+      mediasource:
+        metadataexposeentity: metadataexposeentity
+        manifesturl: '0'
+        manifestnodelist: '0'
+      main_mediasource: metadataexposeentity
+      metadataexposeentity_source: iiifmanifest3cws
+      manifesturl_json_key_source: iiifmanifest
+      manifestnodelist_json_key_source: isrelatedto
       max_width: '0'
       max_height: '512'
       use_iiif_globals: '1'
       iiif_base_url: 'http://localhost:8183/iiif/2'
       iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
-      webannotations: false
-      webannotations_tool: polygon
     third_party_settings: {  }
-    type: strawberry_media_formatter
+    type: strawberry_mirador_formatter
     region: content
 hidden:
   body: true

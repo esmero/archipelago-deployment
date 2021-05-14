@@ -1,22 +1,19 @@
-uuid: acbc9c08-cbd9-43a8-95da-70eaa5deb825
+uuid: d2f13b44-f9b4-4a84-9979-51c9806fc274
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_descriptive_metadata
-    - node.type.digital_object
-    - node.type.digital_object_collection
+    - search_api.index.default_solr_index
   module:
-    - format_strawberryfield
-    - node
-    - user
-id: map_display_for_digital_objects_sql
-label: 'Map Display for Digital Objects SQL'
+    - search_api
+    - views_bootstrap
+id: creative_work_series_children
+label: 'Creative Work Series Children'
 module: views
-description: ''
+description: 'Lists Member objects of a Collection driven by Solr'
 tag: ''
-base_table: node_field_data
-base_field: nid
+base_table: search_api_index_default_solr_index
+base_field: search_api_id
 display:
   default:
     display_plugin: default
@@ -25,44 +22,79 @@ display:
     position: 0
     display_options:
       access:
-        type: perm
-        options:
-          perm: 'access content'
+        type: none
+        options: {  }
       cache:
-        type: tag
+        type: search_api_tag
         options: {  }
       query:
         type: views_query
         options:
-          disable_sql_rewrite: false
-          distinct: false
-          replica: false
-          query_comment: ''
-          query_tags: {  }
+          bypass_access: false
+          skip_access: false
       exposed_form:
         type: basic
         options:
           submit_button: Apply
-          reset_button: false
+          reset_button: true
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
-        type: some
+        type: full
         options:
-          items_per_page: 5
+          items_per_page: 50
           offset: 0
+          id: 0
+          total_pages: null
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
+          quantity: 9
       style:
-        type: default
+        type: views_bootstrap_grid
+        options:
+          row_class: col
+          default_row_class: false
+          uses_fields: false
+          col_xs: col-6
+          col_sm: col-sm-6
+          col_md: col-md-4
+          col_lg: col-lg-3
+          col_xl: col-xl-3
       row:
-        type: fields
+        type: search_api
+        options:
+          view_modes:
+            'entity:file':
+              file: default
+            'entity:node':
+              article: default
+              digital_object: digital_object_with_thumbnail_for_grid
+              digital_object_collection: digital_object_with_thumbnail_for_grid
+              page: default
+              webform: default
+            strawberryfield_flavor_datasource: ''
       fields:
-        field_descriptive_metadata:
-          id: field_descriptive_metadata
-          table: node__field_descriptive_metadata
-          field: field_descriptive_metadata
+        author:
+          table: search_api_index_default_solr_index
+          field: author
+          id: author
+          entity_type: null
+          entity_field: null
+          plugin_id: search_api_field
           relationship: none
           group_type: group
           admin_label: ''
@@ -99,7 +131,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -108,27 +140,8 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: strawberry_map_formatter
-          settings:
-            json_key_source: geographic_location
-            tilemap_url: 'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png'
-            tilemap_attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-            mediasource:
-              metadataexposeentity: metadataexposeentity
-              geojsonurl: '0'
-              geojsonnodelist: '0'
-            main_mediasource: metadataexposeentity
-            metadataexposeentity_source: geojson
-            geojsonurl_json_key_source: geojson
-            geojsonnodelist_json_key_source: locatedat
-            max_width: '0'
-            max_height: '480'
-            initial_zoom: 5
-            min_zoom: 2
-            max_zoom: 12
-            use_iiif_globals: '1'
-            iiif_base_url: 'http://localhost:8183/iiif/2'
-            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+          type: string
+          settings: {  }
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -139,16 +152,22 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
+          field_rendering: true
+          fallback_handler: search_api
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
       filters:
         type:
           id: type
-          table: node_field_data
+          table: search_api_index_default_solr_index
           field: type
           relationship: none
           group_type: group
           admin_label: ''
-          operator: in
+          operator: or
           value:
             digital_object: digital_object
             digital_object_collection: digital_object_collection
@@ -160,6 +179,8 @@ display:
             description: ''
             use_operator: false
             operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: ''
             required: false
             remember: false
@@ -167,8 +188,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -181,26 +200,34 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
+          reduce_duplicates: false
+          plugin_id: search_api_options
       sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
+        changed:
+          id: changed
+          table: search_api_index_default_solr_index
+          field: changed
           relationship: none
           group_type: group
           admin_label: ''
-          exposed: false
+          order: ASC
+          exposed: true
           expose:
-            label: ''
-          granularity: second
-      title: 'Geolocated data for this Object'
+            label: Changed
+          plugin_id: search_api
+        title_string:
+          id: title_string
+          table: search_api_index_default_solr_index
+          field: title_string
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: true
+          expose:
+            label: Title
+          plugin_id: search_api
+      title: 'Objects in this Series'
       header:
         area:
           id: area
@@ -210,19 +237,28 @@ display:
           group_type: group
           admin_label: ''
           empty: false
-          tokenize: false
+          tokenize: true
           content:
-            value: '<h2>Geolocated data for this Object</h2>'
-            format: basic_html
+            value: '<h1 class="title">Objects in this Series<h1>'
+            format: full_html
           plugin_id: text
       footer: {  }
-      empty: {  }
+      empty:
+        messages:
+          id: messages
+          table: views
+          field: messages
+          relationship: none
+          group_type: group
+          admin_label: 'This Digital Collection has no members yet.'
+          empty: true
+          plugin_id: messages
       relationships: {  }
       arguments:
-        nid:
-          id: nid
-          table: node_field_data
-          field: nid
+        nid_ref_partof:
+          id: nid_ref_partof
+          table: search_api_index_default_solr_index
+          field: nid_ref_partof
           relationship: none
           group_type: group
           admin_label: ''
@@ -236,11 +272,7 @@ display:
           default_argument_type: node
           default_argument_options: {  }
           default_argument_skip_url: false
-          summary_options:
-            base_path: ''
-            count: true
-            items_per_page: 25
-            override: false
+          summary_options: {  }
           summary:
             sort_order: asc
             number_of_records: 0
@@ -252,24 +284,21 @@ display:
           validate_options: {  }
           break_phrase: false
           not: false
-          entity_type: node
-          entity_field: nid
-          plugin_id: node_nid
+          plugin_id: search_api
       display_extenders: {  }
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
+      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
-        - user.permissions
       tags:
-        - 'config:field.storage.node.field_descriptive_metadata'
+        - 'config:search_api.index.default_solr_index'
   block_1:
     display_plugin: block
     id: block_1
@@ -277,6 +306,14 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
+      allow:
+        items_per_page: true
+        offset: '0'
+        pager: '0'
+        hide_fields: '0'
+        sort_fields: '0'
+        disable_filters: '0'
+        configure_sorts: '0'
       block_hide_empty: true
     cache_metadata:
       max-age: -1
@@ -284,7 +321,9 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
-        - user.permissions
       tags:
-        - 'config:field.storage.node.field_descriptive_metadata'
+        - 'config:search_api.index.default_solr_index'

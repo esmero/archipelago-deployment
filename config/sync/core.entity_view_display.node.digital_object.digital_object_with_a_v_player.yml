@@ -29,21 +29,21 @@ third_party_settings:
       content:
         - links
         - body
-        - 'display_field_copy:node-static_media'
         - 'display_field_copy:node-field_descriptive_metadata_image'
+        - 'display_field_copy:node-static_media'
         - 'display_field_copy:node-formatted_metadata'
         - field_descriptive_metadata
     fields:
       'display_field_copy:node-field_descriptive_metadata_image':
         plugin_id: 'display_field_copy:node-field_descriptive_metadata_image'
-        weight: 3
+        weight: 2
         label: hidden
         formatter: strawberry_audio_formatter
         settings:
           formatter:
             json_key_source: 'as:audio'
             number_media: 1
-            max_width: '720'
+            max_width: '0'
             max_height: '50'
       'display_field_copy:node-formatted_metadata':
         plugin_id: 'display_field_copy:node-formatted_metadata'
@@ -58,24 +58,21 @@ third_party_settings:
             metadatadisplayentity_uselabel: '0'
       'display_field_copy:node-static_media':
         plugin_id: 'display_field_copy:node-static_media'
-        weight: 2
+        weight: 3
         label: hidden
-        formatter: strawberry_mirador_formatter
+        formatter: strawberry_media_formatter
         settings:
           formatter:
-            mediasource:
-              metadataexposeentity: metadataexposeentity
-              manifesturl: '0'
-              manifestnodelist: '0'
-            main_mediasource: metadataexposeentity
-            metadataexposeentity_source: iiifmanifest
-            manifesturl_json_key_source: iiifmanifest
-            manifestnodelist_json_key_source: isrelatedto
-            max_width: '720'
-            max_height: '480'
+            iiif_group: true
+            thumbnails: true
+            webannotations_tool: polygon
+            json_key_source: 'as:image'
+            max_width: '0'
+            max_height: '960'
             use_iiif_globals: '1'
             iiif_base_url: 'http://localhost:8183/iiif/2'
             iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+            webannotations: false
 id: node.digital_object.digital_object_with_a_v_player
 targetEntityType: node
 bundle: digital_object

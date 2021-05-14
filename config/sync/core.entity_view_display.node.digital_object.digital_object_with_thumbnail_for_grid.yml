@@ -1,17 +1,21 @@
-uuid: 55db849d-dc24-48c1-bd3a-7dc841f2683e
+uuid: 06ab9595-a3ea-4ed5-9555-1441e5ace7a2
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.digital_object_with_thumbnail_for_grid
-    - field.field.node.digital_object_collection.body
-    - field.field.node.digital_object_collection.field_descriptive_metadata
-    - node.type.digital_object_collection
+    - field.field.node.digital_object.body
+    - field.field.node.digital_object.field_descriptive_metadata
+    - node.type.digital_object
   module:
     - ds
+    - field_layout
     - format_strawberryfield
     - user
 third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
   ds:
     layout:
       id: layout_onecol
@@ -34,20 +38,20 @@ third_party_settings:
         formatter: ds_post_date_long
       node_title:
         plugin_id: node_title
-        weight: 1
+        weight: 0
         label: hidden
         formatter: default
         settings:
           link: true
           wrapper: h2
           class: ''
-id: node.digital_object_collection.digital_object_with_thumbnail_for_grid
+id: node.digital_object.digital_object_with_thumbnail_for_grid
 targetEntityType: node
-bundle: digital_object_collection
+bundle: digital_object
 mode: digital_object_with_thumbnail_for_grid
 content:
   field_descriptive_metadata:
-    weight: 2
+    weight: 1
     label: hidden
     settings:
       metadatadisplayentity_id: '10'
@@ -61,12 +65,13 @@ content:
     type: strawberry_metadata_formatter
     region: content
   search_api_excerpt:
-    weight: 3
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   body: true
   content_moderation_control: true
+  field_date_1: true
   langcode: true
   links: true

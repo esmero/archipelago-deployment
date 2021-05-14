@@ -20,50 +20,45 @@ type_to_viewmode:
     active: true
     weight: -7
   -
-    jsontype: Conversation
-    view_mode: digital_object_oral_history_with_multiple_media
-    active: true
-    weight: -6
-  -
     jsontype: Dataset
     view_mode: Default
     active: true
-    weight: -5
+    weight: -6
   -
     jsontype: DigitalDocument
     view_mode: digital_object_with_pdf
     active: true
-    weight: -4
+    weight: -5
   -
     jsontype: NewspaperIssue
     view_mode: digital_object_with_book_reader
     active: true
-    weight: -3
+    weight: -4
   -
     jsontype: Map
     view_mode: digital_object_with_mirador_viewer
     active: true
-    weight: -2
+    weight: -3
   -
     jsontype: Movie
     view_mode: digital_object_with_video_player
     active: true
-    weight: -1
+    weight: -2
   -
     jsontype: MusicRecording
     view_mode: digital_object_with_a_v_player
     active: true
-    weight: 0
+    weight: -1
   -
     jsontype: Painting
     view_mode: digital_object_with_mirador_viewer
     active: true
-    weight: 1
+    weight: 0
   -
     jsontype: Panorama
     view_mode: digital_object_with_pannellum_panorama
     active: true
-    weight: 2
+    weight: 1
   -
     jsontype: Photograph
     view_mode: digital_object_viewmode_fullitem
@@ -103,7 +98,7 @@ type_to_viewmode:
     jsontype: Collection
     view_mode: collection_listing
     active: true
-    weight: 9
+    weight: 10
   -
     jsontype: WebPage
     view_mode: digital_object_with_replay_web_webarchive_with_navbars_
@@ -124,3 +119,13 @@ type_to_viewmode:
     view_mode: collection_listing
     active: true
     weight: 10
+  -
+    jsontype: CreativeWorkSeries
+    view_mode: digital_object_creative_work_series_with_mirador_viewer
+    active: true
+    weight: 26
+  -
+    jsontype: Conversation
+    view_mode: digital_object_oral_history_with_multiple_media
+    active: true
+    weight: 26

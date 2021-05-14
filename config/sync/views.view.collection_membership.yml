@@ -25,7 +25,7 @@ display:
         type: none
         options: {  }
       cache:
-        type: none
+        type: search_api_tag
         options: {  }
       query:
         type: views_query
@@ -228,7 +228,20 @@ display:
             label: Title
           plugin_id: search_api
       title: 'Objects in this Collection'
-      header: {  }
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: true
+          content:
+            value: '<h1 class="title">Objects in this Collection<h1>'
+            format: full_html
+          plugin_id: text
       footer: {  }
       empty:
         messages:
@@ -301,6 +314,7 @@ display:
         sort_fields: '0'
         disable_filters: '0'
         configure_sorts: '0'
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:

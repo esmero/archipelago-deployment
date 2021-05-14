@@ -1,4 +1,4 @@
-uuid: f0da905b-21ec-4585-ad93-e01cd1eaba80
+uuid: bd11a9fa-fb8f-4f17-a381-d66935b5b4c3
 langcode: en
 status: true
 dependencies:
@@ -7,14 +7,14 @@ dependencies:
     - views.view.solr_search_content
   module:
     - search_api
-id: mime_type
-name: 'MIME Type'
+id: mime_type_grid
+name: 'MIME Type (Grid)'
 url_alias: mime_type
 weight: 0
 min_count: 1
 show_only_one_result: false
 field_identifier: as_image_exif_mimetype
-facet_source_id: 'search_api:views_page__solr_search_content__page_1'
+facet_source_id: 'search_api:views_page__solr_search_content__grid'
 widget:
   type: links
   config:
