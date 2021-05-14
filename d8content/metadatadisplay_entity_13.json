@@ -1,0 +1,12 @@
+{
+  "data": {
+    "type": "metadatadisplay_entity--metadatadisplay_entity",
+    "id": "d37a75ec-5da9-4374-b190-71385e630ded",
+    "attributes": {
+      "name": "IIIF Presentation API 3 Creative Works Series Child Canvases",
+      "twig": "{# Replace with Canvas #}",
+      "langcode": "und",
+      "mimetype": "application/json"
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{# Updated Spring 2021 to include all of the available LoD elements included with Archipelago.
+Wikidata Subjects includes example of internal and external referencing. #}
+{% if data.subject_loc|length > 0 %}
+<dl class="row">
+<dt class="col-sm-12" text-truncate">Library Of Congress subjects</dt>
+</dl>
+<dl class="row">
+<dd class="col-sm-12" text-truncate">
+<div class="list-group">
+{% for subjects in attribute(data, 'subject_loc') %}
+<a href="{{ subjects.uri }}" target="_blank" >{{ subjects.label }}</a>
+{% endfor %}
+</div>
+</dd>
+</dl>
+{% endif %}
+{% if data.subject_lcnaf_personal_names|length > 0 %}
+<dl class="row">
+<dt class="col-sm-12" text-truncate">LCNAF Personal Names</dt>
+</dl>
+<dl class="row">
+<dd class="col-sm-12" text-truncate">
+<div class="list-group">
+{% for subjects in attribute(data, 'subject_lcnaf_personal_names') %}
+<a href="{{ subjects.uri }}" target="_blank" >{{ subjects.label }}</a>
+{% endfor %}
+</div>
+</dd>
+</dl>
+{% endif %}
+{% if data.subject_lcnaf_corporate_names|length > 0 %}
+<dl class="row">
+<dt class="col-sm-12" text-truncate">LCNAF Corporate Names</dt>
+</dl>
+<dl class="row">
+<dd class="col-sm-12" text-truncate">
+<div class="list-group">
+{% for subjects in attribute(data, 'subject_lcnaf_corporate_names') %}
+<a href="{{ subjects.uri }}" target="_blank" >{{ subjects.label }}</a>
+{% endfor %}
+</div>
+</dd>
+</dl>
+{% endif %}
+{% if data.subject_lcnaf_geographic_names|length > 0 %}
+<dl class="row">
+<dt class="col-sm-12" text-truncate">LCNAF Geographic Names</dt>
+</dl>
+<dl class="row">
+<dd class="col-sm-12" text-truncate">
+<div class="list-group">
+{% for subjects in attribute(data, 'subject_lcnaf_geographic_names') %}
+<a href="{{ subjects.uri }}" target="_blank" >{{ subjects.label }}</a>
+{% endfor %}
+</div>
+</dd>
+</dl>
+{% endif %}
+{% if data.subject_lcgft_terms|length > 0 %}
+<dl class="row">
+<dt class="col-sm-12" text-truncate">Library Of Congress Genre Format Terms</dt>
+</dl>
+<dl class="row">
+<dd class="col-sm-12" text-truncate">
+<div class="list-group">
+{% for subjects in attribute(data, 'subject_lcgft_terms') %}
+<a href="{{ subjects.uri }}" target="_blank" >{{ subjects.label }}</a>
+{% endfor %}
+</div>
+</dd>
+</dl>
+{% endif %}
+{% if data.term_aat_getty|length > 0 %}
+<dl class="row">
+<dt class="col-sm-12" text-truncate">Getty terms</dt>
+</dl>
+<dl class="row">
+<dd class="col-sm-12" text-truncate">
+<div class="list-group">
+    {% if data.term_aat_getty.uri is defined %}
+<a href="{{ data.term_aat_getty.uri }}" target="_blank" >{{ data.term_aat_getty.label }}</a>
+    {% else %}
+      {% if data.term_aat_getty is iterable %}
+        {% for getty_subjects in attribute(data, 'term_aat_getty') %}
+<a href="{{ getty_subjects.uri }}" target="_blank" >{{ getty_subjects.label }}</a>
+        {% endfor %}
+      {% endif %}
+   {% endif %}
+</div>
+</dd>
+</dl>
+{% endif %}
+{% if data.subject_wikidata|length > 0 %}
+<dl class="row">
+<dt class="col-sm-12" text-truncate">Wikidata Subjects</dt>
+</dl>
+<dl class="row">
+<dd class="col-sm-12" text-truncate">
+{% for subjects in attribute(data, 'subject_wikidata') %}
+<ul class="nav nav-pills" style="padding-top:3px">
+  <li class="nav-item" style="padding:3px;margin-top:4px;">
+   <a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_subjects%3A{{ subjects.label }}" target="_blank" >{{ subjects.label }}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="{{ subjects.uri }}" target="_blank" >Wikidata</a>
+  </li>
+  </ul>
+{% endfor %}
+</dd>
+</dl>
+{% endif %} 
+{% if data.edm_agent|length > 0 %}
+<dl class="row">
+<dt class="col-sm-12" text-truncate">Wikidata Agents</dt>
+</dl>
+<dl class="row">
+<dd class="col-sm-12" text-truncate">
+<div class="list-group">
+{% for agent in attribute(data, 'edm_agent') %}
+<dl class="row">
+<dd class="col-sm-8" text-truncate">
+{% if agent.name_uri|default is not empty  %}
+<a href="{{ agent.name_uri }}" target="_blank" >{{ agent.name_label }}</a>
+{% else %}
+{{ agent.name_label }}
+{% endif %}
+:
+{% if agent.role_uri|default is not empty  %}
+<a href="{{  agent.role_uri }}" target="_blank" >{{ agent.role_label }}</a>
+{% else %}
+{{ agent.role_label }}
+{% endif %}
+</dd>
+</dl>
+{% endfor %}
+</div>
+</dd>
+</dl>
+{% endif %}
+{% if data.viaf|length > 0 %}
+<dl class="row">
+<dt class="col-sm-12" text-truncate">VIAF</dt>
+</dl>
+<dl class="row">
+<dd class="col-sm-12" text-truncate">
+<div class="list-group">
+{% for viaf in attribute(data, 'viaf') %}
+<a href="{{ viaf.uri }}" target="_blank" >{{ viaf.label }}</a>
+{% endfor %}
+</div>
+</dd>
+</dl>
+{% endif %}
+{% if data.viaf|length > 0 %}
+<dl class="row">
+<dt class="col-sm-12" text-truncate">VIAF</dt>
+</dl>
+<dl class="row">
+<dd class="col-sm-12" text-truncate">
+<div class="list-group">
+{% for viaf in attribute(data, 'viaf') %}
+<a href="{{ viaf.uri }}" target="_blank" >{{ viaf.label }}</a>
+{% endfor %}
+</div>
+</dd>
+</dl>
+{% endif %}

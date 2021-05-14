@@ -1,0 +1,12 @@
+{
+  "data": {
+    "type": "metadatadisplay_entity--metadatadisplay_entity",
+    "id": "6c405928-9ae8-4557-b062-91fcf2b0af0a",
+    "attributes": {
+      "name": "IIIF Presentation API 3 Creative Works Series Manifest",
+      "twig": "{# Replace with Canvas #}",
+      "langcode": "und",
+      "mimetype": "application/ld+json"
+    }
+  }
+}

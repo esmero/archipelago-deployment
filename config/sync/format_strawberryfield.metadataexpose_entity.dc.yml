@@ -1,0 +1,18 @@
+uuid: 23d76c3c-9834-4c45-8eb4-a0c97b71191b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: dc
+label: DC
+target_entity_types:
+  digital_object: digital_object
+  digital_object_collection: digital_object_collection
+  article: 0
+  page: 0
+  webform: 0
+source_entityfield_name: null
+processor_entity_id: '13'
+cache: true
+active: true

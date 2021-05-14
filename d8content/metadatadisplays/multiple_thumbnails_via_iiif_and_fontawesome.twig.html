@@ -39,6 +39,10 @@ Without Double quotes.
 {% spaceless %}
 {% if attribute(data, 'as:image')|length > 0 %}  
   {% set document  = data['as:image']|first %} 
+  {# if the default size is smaller than the source use the source one #}
+  {% if document['flv:exif'].ImageWidth is defined and document['flv:exif'].ImageWidth < width %}
+     {% set width = document['flv:exif'].ImageWidth %} 
+  {% endif %}
   {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %}
   {% set source = cantaloupeid ~ "/full/" ~ width  ~ ",/0/default.jpg" %}
 {% elseif attribute(data, 'as:document')|length > 0 %}  
@@ -116,6 +120,8 @@ ShortStory: 'Short Story'
 <i class="fas fa-vr-cardboard fa-9x"></i>
 {% elseif data.type in ['Dataset'] %}
 <i class="fas fa-table fa-9x"></i>
+{% elseif data.type in ['Collection'] %}
+<i class="fas fa-archive"></i>
 {% elseif data.type in ['Map'] %}
 <i class="fas fa-map-marked-alt fa-9x"></i>
 {% else %} 

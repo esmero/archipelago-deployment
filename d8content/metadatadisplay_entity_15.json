@@ -1,0 +1,12 @@
+{
+  "data": {
+    "type": "metadatadisplay_entity--metadatadisplay_entity",
+    "id": "9be8473c-3fb3-42ee-aef2-431b2d4f93bb",
+    "attributes": {
+      "name": "IIIF Presentation API 3 Collection Manifest",
+      "twig": "{# Replace with Collection #}",
+      "langcode": "und",
+      "mimetype": "application/ld+json"
+    }
+  }
+}

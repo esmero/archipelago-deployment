@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+{# Date: May 2021. This template produces MODS records incorporating many of the most common MODS elements. This template can be expanded to incorproate additonal MODS elements as needed, if present in your Archipelago Digital Objects and Collections source data. #}
+<mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-7.xsd" version="3.7">
+<titleInfo>
+	<title>{{ data.label|escape('html_attr') }}</title>
+</titleInfo>
+{# Unmapped/Free-Text Creator #}
+{% if data.creator|length > 0  %}
+<name>
+	{% if data.creator is iterable %}
+		{% for creator in data.creator %}
+			<namePart>{{ creator }}</namePart>
+		{% endfor %}
+     {% else %}
+     	<namePart>{{ data.creator }}</namePart>
+	{% endif %} 
+</name>	
+{% endif %}
+{# LoD Creator #}
+{% if data.creator_lod|length > 0 %}
+	{% for creator_lod in data.creator_lod %}
+		<name authority="naf" type="{{ creator_lod.agent_type }}" valueURI="{{ creator_lod.name_uri }}">
+			<namePart>{{ creator_lod.name_label|escape('html_attr') }}</namePart>
+			<role>
+				<roleTerm authority="marcrelator" valueURI="{{ creator_lod.role_uri }}" type="text">{{ creator_lod.role_label }}</roleTerm>
+			</role>
+		</name>		
+	{% endfor %}
+{% endif %}
+<typeOfResource>{{ data.type|escape('html_attr') }}</typeOfResource>
+{% if data.subject_lcgft_terms|length > 0 %}
+	{% for subjects in attribute(data, 'subject_lcgft_terms') %}
+		<genre authority="lcgft" valueURI="{{ subjects.uri }}">{{ subjects.label }}</genre>
+	{% endfor %}
+{% endif %}
+<originInfo>
+	{% if data.publisher|length > 0 %}
+		<publisher>{{ data.publisher }}</publisher>
+	{% endif %}
+	{% if data.date_created|length > 0 %}
+		<dateCreated>{{ data.date_created|date("Y-m-d") }}</dateCreated>
+	{% endif %}
+	{% if data.date_published|length > 0 %}	
+		<dateIssued>{{ data.date_published|date("Y-m-d") }}</dateIssued>
+	{% endif %}	
+</originInfo>
+{% if data.language|length > 0 %}
+	{% if data.language is iterable %}
+		{% for language in data.language %}
+			<language>
+				<languageTerm type="text" authority="iso639-2b">{{ language }}</languageTerm>
+			</language>
+		{% endfor %}
+     {% else %}
+		<language>
+			<languageTerm type="text" authority="iso639-2b">{{ data.language }}</languageTerm>
+		</language>
+	{% endif %}
+{% endif %}	
+<abstract type="Summary">
+	{{ data.description|escape('html_attr') }}
+</abstract>
+{# Begin Subjects & Names #}
+{# Local Subjects & Names #}
+{% if data.subjects_local|length > 0 %}
+    {% if data.subjects_local is iterable %}
+    	{% for subjects_local in data.subjects_local %}
+       	 	<subject><topic>{{ subjects_local }}</topic></subject>
+     	{% endfor %}
+     {% else %}
+     	<subject><topic>{{ subjects_local }}</topic></subject>
+     {% endif %} 
+{% endif %}
+{% if data.subjects_local_personal_names|length > 0 %}
+    {% if data.subjects_local_personal_names is iterable %}
+    	{% for subjects_local_personal_names in data.subjects_local_personal_names %}
+       	 	<subject><name>{{ subjects_local_personal_names }}</name></subject>
+     	{% endfor %}
+     {% else %}
+     	<subject><name>{{ subjects_local_personal_names }}</name></subject>
+     {% endif %} 
+{% endif %}
+{# LoC Subjects & Names #}
+{% if data.subject_loc|length > 0 %}
+	{% for subjects in attribute(data, 'subject_loc') %}
+		<subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects">
+			<topic valueURI="{{ subjects.uri }}">{{ subjects.label }}</topic>
+		</subject>	
+	{% endfor %}
+{% endif %}
+{% if data.subject_lcnaf_personal_names|length > 0 %}
+	{% for subjects in attribute(data, 'subject_lcnaf_personal_names') %}
+		<subject authority="lcnaf" authorityURI="https://id.loc.gov/authorities/names">
+			<name valueURI="{{ subjects.uri }}">{{ subjects.label }}</name>
+		</subject>	
+	{% endfor %}
+{% endif %}
+{% if data.subject_lcnaf_corporate_names|length > 0 %}
+	{% for subjects in attribute(data, 'subject_lcnaf_corporate_names') %}
+		<subject authority="lcnaf" authorityURI="https://id.loc.gov/authorities/names">
+			<name valueURI="{{ subjects.uri }}">{{ subjects.label }}</name>
+		</subject>	
+	{% endfor %}
+{% endif %}
+{% if data.subject_lcnaf_geographic_names|length > 0 %}
+	{% for subjects in attribute(data, 'subject_lcnaf_geographic_names') %}
+		<subject authority="lcnaf" authorityURI="https://id.loc.gov/authorities/names">
+			<geographic valueURI="{{ subjects.uri }}">{{ subjects.label }}</geographic>
+		</subject>	
+	{% endfor %}
+{% endif %}
+{# Getty Subjects #}
+{% if data.term_aat_getty|length > 0 %}
+	{% for getty_subjects in attribute(data, 'term_aat_getty') %}
+		<subject authority="aat" authorityURI="http://www.getty.edu/research/tools/vocabularies/aat/">
+				<topic valueURI="{{ getty_subjects.uri }}">{{ getty_subjects.label }}</topic>
+		</subject>	
+	{% endfor %}
+{% endif %}
+{# Wikidata Subjects & Names #}
+{% if data.subject_wikidata|length > 0 %}
+	{% for subject in attribute(data, 'subject_wikidata') %}
+		<subject authority="wikidata">
+			<topic valueURI="{{ subject.uri }}">{{ subject.label }}</topic>
+		</subject>	
+	{% endfor %}
+{% endif %}
+{% if data.edm_agent|length > 0 %}
+	{% for agent in attribute(data, 'edm_agent') %}
+		<subject authority="wikidata">
+			<name valueURI="{{ agent.name_uri }}">{{ agent.name_label }}</name>
+		</subject>	
+	{% endfor %}
+{% endif %}
+{# VIAF #}
+{% if data.viaf|length > 0 %}
+	{% for viaf in attribute(data, 'viaf') %}
+		<subject authority="viaf">
+			<name valueURI="{{ viaf.uri }}">{{ viaf.label }}</name>
+		</subject>	
+	{% endfor %}
+{% endif %}		
+<physicalDescription>
+<form authority="marcform">electronic</form>
+<form authority="gmd">electronic resource</form>
+</physicalDescription>
+<location>
+    {% if node.id %}
+    	{% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+            <url displayLabel="electronic resource" usage="primary display">{{ nodeurl }}</url>
+    {% else %}    
+        {% set nodeurl =  url('<current>') %}
+        	<url displayLabel="electronic resource" usage="primary display">{{ current }}</url>
+	{% endif%}
+</location>
+{% if data.local_identifier|length > 0 %}
+	<identifier type="local">{{ data.local_identifier }}</identifier>
+{% endif %}
+{# Rights Statements #}
+{% if data.rights|length > 0 %} 	
+	<accessCondition type="use and reproduction" displayLabel="Rights Statement">{{ data.rights }}</accessCondition>
+{% endif %}
+{% if data.rights_statements|length > 0 %}
+	{% if data.rights_statements in ['In Copyright'] %} 
+		<accessCondition type="use and reproduction" displayLabel="Rights Statement">http://rightsstatements.org/vocab/InC/1.0/</accessCondition>
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - EU Orphan Work'] %} 
+		<accessCondition type="use and reproduction" displayLabel="Rights Statement">http://rightsstatements.org/vocab/InC-OW-EU/1.0/</accessCondition>
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Educational Use Permitted'] %} 
+		<accessCondition type="use and reproduction" displayLabel="Rights Statement">http://rightsstatements.org/vocab/InC-EDU/1.0/</accessCondition>
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Non-Commercial Use Permitted'] %} 
+		<accessCondition type="use and reproduction" displayLabel="Rights Statement">http://rightsstatements.org/vocab/InC-NC/1.0/</accessCondition>
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Rights-holder(s) Unlocatable or Unidentifiable'] %} 
+		<accessCondition type="use and reproduction" displayLabel="Rights Statement">http://rightsstatements.org/vocab/InC-RUU/1.0/</accessCondition>
+    {% endif %}   
+	{% if data.rights_statements in ['No Copyright - Contractual Restrictions'] %} 
+		<accessCondition type="use and reproduction" displayLabel="Rights Statement">http://rightsstatements.org/vocab/NoC-CR/1.0/</accessCondition>
+	{% endif %} 
+	{% if data.rights_statements in ['No Copyright - Non-Commercial Use Only'] %} 
+		<accessCondition type="use and reproduction" displayLabel="Rights Statement">http://rightsstatements.org/vocab/NoC-NC/1.0/</accessCondition>
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Other Known Legal Restrictions'] %} 
+		<accessCondition type="use and reproduction" displayLabel="Rights Statement">http://rightsstatements.org/vocab/NoC-OKLR/1.0/</accessCondition>
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - United States'] %} 
+		<accessCondition type="use and reproduction" displayLabel="Rights Statement">http://rightsstatements.org/vocab/NoC-US/1.0/</accessCondition>
+	{% endif %} 
+	{% if data.rights_statements in ['Copyright Not Evaluated'] %} 
+		<accessCondition type="use and reproduction" displayLabel="Rights Statement">http://rightsstatements.org/vocab/CNE/1.0/</accessCondition>
+	{% endif %}
+	{% if data.rights_statements in ['Copyright Undetermined'] %} 
+		<accessCondition type="use and reproduction" displayLabel="Rights Statement">http://rightsstatements.org/vocab/UND/1.0/</accessCondition>
+	{% endif %}
+	{% if data.rights_statements in ['No Known Copyright'] %}
+		<accessCondition type="use and reproduction" displayLabel="Rights Statement">http://rightsstatements.org/vocab/NKC/1.0/</accessCondition>
+  	{% endif %}
+{% endif %}
+{% if data.owner|length > 0 %}
+	<note type="ownership">{{ data.owner }}</note>
+{% endif %}
+{% if attribute(data, 'ismemberof') %}
+	{% if attribute(data, 'ismemberof') is iterable %}
+		{% for collection in attribute(data, 'ismemberof')%}
+			{% set parentnode = bamboo_load_entity('node', collection) %}
+			{% set parentnodeurl = url('entity.node.canonical', {'node': collection}, {'absolute': true}) %}
+				<relatedItem type="host" displayLabel="Collection">
+					<titleInfo>
+						<title>{{ parentnode.title.value }}</title>
+					</titleInfo>
+				</relatedItem>
+		{% endfor %}
+		{% else %}
+			{% set parentnode = bamboo_load_entity('node', attribute(data, 'ismemberof')) %}
+			{% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ismemberof')}, {'absolute': true}) %}
+				<relatedItem type="host" displayLabel="Collection">
+					<titleInfo>
+						<title>{{ parentnode.title.value }}</title>
+					</titleInfo>
+				</relatedItem>
+	{% endif %}
+{% endif %}
+<recordInfo>
+	<languageOfCataloging>
+		<languageTerm authority="iso639-2b" type="code">eng</languageTerm>
+    </languageOfCataloging>
+	<note type="statement of responsibility" altRepGroup="00">This MODS record was sourced from an Archipelago Commons repository. Not all data elements in this repository were mapped to MODS elements.</note>
+</recordInfo>
+</mods>
