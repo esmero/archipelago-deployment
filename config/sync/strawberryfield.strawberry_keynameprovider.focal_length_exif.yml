@@ -7,5 +7,6 @@ label: focal_length_exif
 pluginid: jmespath
 pluginconfig:
   source_key: '"as:image".*."flv:exif"[].FocalLength'
+  is_date: false
   exposed_key: as_image_exif_focallength
 active: true

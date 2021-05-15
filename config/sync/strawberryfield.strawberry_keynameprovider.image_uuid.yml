@@ -7,5 +7,6 @@ label: 'Image UUID'
 pluginid: jmespath
 pluginconfig:
   source_key: '"as:image".*."dr:uuid"'
+  is_date: false
   exposed_key: as_image_dr_uuid_
 active: true

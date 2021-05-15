@@ -7,5 +7,6 @@ label: 'Digital Object Type'
 pluginid: jmespath
 pluginconfig:
   source_key: type
+  is_date: false
   exposed_key: digital_object_type
 active: true
