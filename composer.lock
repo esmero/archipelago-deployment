@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/ami.git",
-                "reference": "5583c5832c001b3d5880876dc2531e953f4fa4af"
+                "reference": "96f38a1e91686ad09beaa161b309a2a73ec74be2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/ami/zipball/5583c5832c001b3d5880876dc2531e953f4fa4af",
-                "reference": "5583c5832c001b3d5880876dc2531e953f4fa4af",
+                "url": "https://api.github.com/repos/esmero/ami/zipball/96f38a1e91686ad09beaa161b309a2a73ec74be2",
+                "reference": "96f38a1e91686ad09beaa161b309a2a73ec74be2",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "issues": "https://github.com/esmero/ami/issues",
                 "source": "https://github.com/esmero/ami/tree/0.1.0"
             },
-            "time": "2021-05-15T04:56:57+00:00"
+            "time": "2021-05-16T22:46:03+00:00"
         },
         {
             "name": "archipelago/archipelago_subtheme",
