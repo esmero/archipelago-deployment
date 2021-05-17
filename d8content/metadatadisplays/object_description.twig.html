@@ -1,0 +1,259 @@
+{# Updated May 2021: correct indentations for easier human readability ; Previously updated April 2021 #}
+<blockquote class="blockquote">
+{% if node.id %}
+	{% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+{% else %}
+    {% set nodeurl = '<current>' ~ '/iiif/manifest' %}
+{% endif%}
+{% if attribute(data, 'ismemberof') %}
+{% if attribute(data, 'ismemberof') is iterable %}
+	{% for collection in attribute(data, 'ismemberof')%}
+		{% set parentnode = bamboo_load_entity('node', collection) %}
+		{% set parentnodeurl = url('entity.node.canonical', {'node': collection}, {'absolute': true}) %}
+			<footer class="blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
+	{% endfor %}
+	{% else %}
+		{% set parentnode = bamboo_load_entity('node', attribute(data, 'ismemberof')) %}
+		{% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ismemberof')}, {'absolute': true}) %}
+			<footer class="blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
+{% endif %}
+{% endif %}
+{% if attribute(data, 'ispartof') %}
+{% if attribute(data, 'ispartof') is iterable %}
+	{% for child in attribute(data, 'ispartof')%}
+		{% set parentnode = bamboo_load_entity('node', child) %}
+		{% set parentnodeurl = url('entity.node.canonical', {'node': child}, {'absolute': true}) %}
+			<footer class="blockquote-footer">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
+	{% endfor %}
+	{% else %}
+		{% set parentnode = bamboo_load_entity('node', attribute(data, 'ispartof')) %}
+		{% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ispartof')}, {'absolute': true}) %}
+			<footer class="blockquote-footer">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
+{% endif %}
+{% endif %}
+</blockquote>
+<h2>Title</h2>
+<p>{{ data.label }}</p>
+{% if data.issue_info|length > 0 %}
+	<h2>Issue Information</h2>
+	<ul>
+		{% for issue_info in data.issue_info %}
+        {% if issue_info.volume|length > 0 %}
+        <li>Volume: {{ issue_info.volume }}</li> 
+        {% endif %}
+        {% if issue_info.issue|length > 0 %}
+        <li>Issue: {{ issue_info.issue }}</li>
+        {% endif %}
+        {% if issue_info.general_issue|length > 0 %}
+        <li>General Issue: {{ issue_info.general_issue }}</li>
+        {% endif %}
+        {% endfor %}
+     </ul>   
+{% endif %}
+{% if data.creator|length > 0 or data.creator_lod|length > 0 %}
+<h2>Creator(s)/Contributor(s)</h2>
+<p>
+	{% if data.creator %}
+	{% if data.creator is iterable %}
+		{% for creator in data.creator %}
+			{{ creator }} <br>
+		{% endfor %}
+	{% else %}
+		{{ data.creator }} <br>
+    {% endif %} 
+	{% endif %}
+{% endif %} 
+{% if data.creator_lod|length > 0 %}
+	<ul>
+		{% for creator_lod in data.creator_lod %}
+        <li>{{ creator_lod.role_label }}: <a href="{{ creator_lod.name_uri }}">{{ creator_lod.name_label }}</a></li>
+        {% endfor %}
+	</ul>
+{% endif %}
+{% if data.interviewee|length > 0 %}
+<h2>Interviewee(s)</h2>
+	<p>
+	{% if data.interviewee %}
+	{% if data.interviewee is iterable %}
+		{% for interviewee in data.interviewee %}
+			{{ interviewee }} <br>
+		{% endfor %}
+	{% else %}
+		{{ data.interviewee }} <br>
+	{% endif %} 
+	{% endif %}
+{% endif %}
+{% if data.interviewer|length > 0 %}
+<h2>Interviewer(s)</h2>
+	<p>
+	{% if data.interviewer %}
+	{% if data.interviewer is iterable %}
+		{% for interviewer in data.interviewer %}
+			{{ interviewer }} <br>
+		{% endfor %}
+	{% else %}
+		{{ data.interviewer }} <br>
+	{% endif %} 
+	{% endif %}
+{% endif %} 
+{% if data.duration|length > 0 %}
+<h2>Duration</h2>
+	<p>{{ data.duration }}</p>
+{% endif %} 
+{% if data.website_url|length > 0 %}
+<h2>URL of Original Website</h2>
+	<p>{{ data.website_url }}</p>
+{% endif %}  
+<h2>Description</h2>
+	<p>
+	{% if data.description %}
+	{% if data.description is iterable %}
+		{% for description in data.description %}
+			{{ description }} <br>
+		{% endfor %}
+	{% else %}
+		{{ data.description }} <br>
+	{% endif %} 
+	{% endif %}
+	</p>
+{% if data.date_created|length > 0 %}
+<h2>Date of Original</h2>
+	<p>{{ data.date_created }}</p>
+{% endif %}
+{% if data.publisher|length > 0 %}
+<h2>Publisher</h2>
+	<p>{{ data.publisher }}</p>
+{% endif %}
+{% if data.subjects_local|length > 0 %}
+<h2>Local Subjects</h2>
+	<p>
+	{% if data.subjects_local %}
+	{% if data.subjects_local is iterable %}
+		{% for subjects_local in data.subjects_local %}
+			{{ subjects_local }} <br>
+		{% endfor %}
+	{% else %}
+		{{ data.subjects_local }} <br>
+	{% endif %} 
+	{% endif %}
+	</p>
+{% endif %}
+{% if data.owner|length > 0 %}
+<h2>Institutional Owner</h2>
+	<p>{{ data.owner }}</p>
+{% endif %}
+{% if data.rights|length > 0 or data.rights_statements|length > 0 %}
+<h2>Rights</h2>
+{% if data.rights|length > 0 %} 
+	<p>{{ data.rights }}</p>
+{% endif %}
+{% if data.rights_statements|length > 0 %}
+	{% if data.rights_statements in ['In Copyright'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/InC/1.0/"><img src="https://rightsstatements.org/files/buttons/InC.white.svg" title="In Copyright" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - EU Orphan Work'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/InC-OW-EU/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-OW-EU.white.svg" title="In Copyright - EU Orphan Work" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Educational Use Permitted'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/InC-EDU/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-EDU.white.svg" title="In Copyright - Educational Use Permitted" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Non-Commercial Use Permitted'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/InC-NC/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-NC.white.svg" title="In Copyright - Non-Commercial Use Permitted" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Rights-holder(s) Unlocatable or Unidentifiable'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/InC-RUU/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-RUU.white.svg" title="In Copyright - Rights-holder(s) Unlocatable or Unidentifiable" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Contractual Restrictions'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/NoC-CR/1.0/"><img src="https://rightsstatements.org/files/buttons/NoC-CR.white.svg" title="No Copyright - Contractual Restrictions" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %} 
+	{% if data.rights_statements in ['No Copyright - Non-Commercial Use Only'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/NoC-NC/1.0/"><img src="https://rightsstatements.org/files/buttons/NoC-NC.white.svg" title="No Copyright - Non-Commercial Use Only" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Other Known Legal Restrictions'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/NoC-OKLR/1.0/"><img src="https://rightsstatements.org/files/buttons/NoC-OKLR.white.svg" title="No Copyright - Other Known Legal Restrictions" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - United States'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/NoC-US/1.0/"><img src="https://rightsstatements.org/files/buttons/NoC-US.white.svg" title="No Copyright - United States" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %} 
+	{% if data.rights_statements in ['Copyright Not Evaluated'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/CNE/1.0/"><img src="https://rightsstatements.org/files/buttons/CNE.white.svg" title="Copyright Not Evaluated" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['Copyright Undetermined'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/UND/1.0/"><img src="https://rightsstatements.org/files/buttons/UND.white.svg" title="Copyright Undetermined" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['No Known Copyright'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/NKC/1.0/"><img src="https://rightsstatements.org/files/buttons/NKC.white.svg" title="No Known Copyright" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+{% endif %}
+{% endif %}
+<h2>Type of Resource</h2>
+	<p>{{ data.type }}</p>
+{% if data.language|length > 0 %}
+<h2>Language</h2>
+<p>
+	{% if data.language is iterable %}
+		{% for language in data.language %}
+			{{ language }} <br>
+		{% endfor %}
+	{% else %}
+		{{ data.language }} <br>
+	{% endif %} 
+</p>
+{% endif %}   
+{% if logged_in %}  
+{% if data.date_published|length > 0 %}
+<h2>Date of Digital</h2>
+	<p>{{ data.date_published }}</p>
+{% endif %}
+{% if data.local_identifier|length > 0 %}
+<h2>Identifier</h2>
+	<p>{{ data.local_identifier }}</p>
+{% endif %}
+<p>
+{% if attribute(data, 'as:document') %}
+<h2>Files referenced in this Digital Object</h2>
+<ul>
+	{% for document in attribute(data, 'as:document') %}
+		<li><a download href="/do/{{ node.id }}/iiif/{{ document['dr:uuid'] }}/full/full/0/{{  document.name }}" target="_blank">Download {{ document.name }}</a></li>
+	{% endfor %}
+</ul>
+{% endif %}
+{% if attribute(data, 'as:image') %}
+<h2>Images in this Digital Object</h2>
+<ul>
+	{% for singleimage in attribute(data, 'as:image') %}
+		<li><a href="/do/{{ node.id }}/iiif/{{ singleimage['dr:uuid'] }}/full/full/0/{{  singleimage.name }}" target="_blank">Download Image {{ singleimage.name }}</a></li>
+	{% endfor %}
+</ul>
+{% endif %}
+<p>
+{% if attribute(data, 'as:image')|length > 0  or attribute(data, 'as:document')|length > 0  %}
+	<h2><span class="align-middle">Direct Link to Digital Object's IIIF Presentation Manifest V3 </span><img src="https://iiif.io/img/logo-iiif-34x30.png"></h2>
+	{% set iiifmanifest =   nodeurl|render ~ "/metadata/iiifmanifest/default.jsonld" %}
+		<input type="text" value="{{ iiifmanifest }}" id="iiifmanifest_copy" size="{{ iiifmanifest|length }}" class="col-xs-3">
+	{% endif %}
+{% endif %}

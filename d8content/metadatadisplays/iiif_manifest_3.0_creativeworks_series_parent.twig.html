@@ -1,0 +1,136 @@
+{# 
+This Template generates IIIF 3.0 API Manifest for reative Works Series using a Drupal Views
+JSON to be used by a Drupal Views (REST) to generate a simpler to parse/join listing of Canvases
+For a Creative Works Series Manifest
+
+Structures passed from Archipelago are
+- node
+  The full Node entity
+- data
+  The Full JSON Structure converted in an Array
+- iiif_server
+  The publicly available IIIF Server (Global Setting)
+
+Since JSON was decoded into the 'data' values are valid PHP but could not
+be valid JSON when outputting. So We use data.description|json_encode|raw
+Without Double quotes.
+#}
+{% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %}
+  {% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %}
+    {% set currenturl = url('<current>')|render %}
+      {% if node.id %}
+          {# this is needed to the View Argument can conform to the format even when no node exists when saving the template #}
+          {% set nodeid = node.id %}
+          {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+      {% else %}
+          {% set nodeid = 1 %} 
+          {% set nodeurl = currenturl %}
+      {% endif%}
+            {% set len = language.getId() ? language.getId() : "en" %}
+{
+{# Top Object Metadata #}
+"@context": [
+  "http://www.w3.org/ns/anno.jsonld",
+  "http://iiif.io/api/presentation/3/context.json"
+],
+"type": "Manifest",
+"id": "{{ currenturl }}",
+"label": {
+"{{ len }}": [
+{{ node.label|json_encode|raw }}
+]
+},
+"requiredStatement": {
+"label": { "en": [ "Attribution" ] },
+"value": { "en": [ "Provided by Archipelago Deployment" ] }
+},
+"metadata": [
+{% for agent in attribute(data, 'edm_agent') %}
+    {
+    "label": {
+    "{{ len }}": [
+    {{ agent.role_label|json_encode|raw }}
+    ]
+    },
+    "value": {
+    "{{ len }}": [
+    {{ agent.name_label|json_encode|raw }}
+    ]
+    }
+    },
+{% endfor %}
+{
+"label": {
+"{{ len }}": [
+"description"
+]
+},
+"value": {
+"{{ len }}": [
+{{ data.description|json_encode|raw }}
+]
+}
+},
+{
+"label": {
+"{{ len }}": [
+"navDate"
+]
+},
+"value":  {
+"{{ len }}": [
+"{{ node.getChangedTime|date("F jS \\a\\t g:ia") }}"
+]
+}
+},
+{
+"label": {
+"{{ len }}": [
+"license"
+]
+},
+"value": {
+"{{ len }}": [
+"http://rightsstatements.org/vocab/InC-EDU/1.0/"
+]
+}
+}
+],
+{% if attribute(data, 'memberof') %}
+    {% set currentnode = 'node/' ~ data.memberof %}
+    "within": "{{ url(currentnode) }}",
+{% else %}
+    {% set currentnode = '<current>' %}
+{% endif %}
+{# fetch all children using a View and attach them as Items #}
+"items": [
+{% set canvases_view = drupal_view('data_creativeworks_series','children_ispartof_canvas_rest', nodeid)|render %}
+{% set canvases_items = canvases_view|sbf_json_decode %}
+{% set ranges = {} %}
+{% for canvas in canvases_items %}
+{# canvas|json_encode #}
+  {% set items = canvas['canvas']|sbf_json_decode %}
+  {% for item in items['items'] %}
+    {% set ranges = ranges|merge({ (loop.index0 + loop.parent.loop.index0): item['id']}) %}
+    {{ item|json_encode(constant('JSON_PRETTY_PRINT'))|raw }}{{ not loop.parent.loop.last or not loop.last ? ',' : '' }}
+  {% endfor %}
+{% endfor %}
+],
+"structures": [{
+  "id": "{{ nodeurl }}/iiif/range/r1",
+  "type": "Range",
+  "label": {
+    "{{ len }}": [
+      {{ node.label|json_encode|raw  }}
+   ]
+  },
+  "items": [
+{% for range in ranges %}
+    {
+    "id": {{ range|json_encode|raw }},
+    "type": "Canvas"
+    }{{ not loop.last ? ',' : '' }}
+{% endfor %}
+  ]
+}]
+}

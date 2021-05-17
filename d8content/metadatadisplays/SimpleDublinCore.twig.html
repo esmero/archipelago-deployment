@@ -1,0 +1,103 @@
+{# From May 2021: Simple Dublin Core XML --Contributor, Coverage, and Format elements unmapped #}
+<?xml version="1.0" encoding="UTF-8"?>
+<oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+<dc:title>{{ data.label|escape('html_attr') }}</dc:title>
+{# Creator #}
+{% if data.creator|length > 0  %}
+	{% if data.creator is iterable %}
+		{% for creator in data.creator %}
+			<dc:creator>{{ creator }}</dc:creator><br>
+		{% endfor %}
+     {% else %}
+     	<dc:creator>{{ data.creator }}</dc:creator>
+	{% endif %} 
+{% endif %}
+{% if data.creator_lod|length > 0 %}
+	{% for creator_lod in data.creator_lod %}
+     	<dc:creator>{{ creator_lod.name_label }}</dc:creator>
+	{% endfor %}
+{% endif %}
+{# Contributor
+<dc:contributor></dc:contributor>
+#}
+{# Coverage 
+<dc:coverage></dc:coverage>
+#}
+{# Date #}
+{% if data.date_created|length > 0 %}
+	<dc:date>{{ data.date_created }}</dc:date>
+{% endif %}
+{# Description #}
+{% if data.description|length > 0 %}
+	{% if data.description is iterable %}
+		{% for description in data.description %}
+			<dc:description>{{ description }}</dc:description>
+		{% endfor %}
+     {% else %}
+	<dc:description>{{ data.description }}</dc:description>
+	{% endif %} 
+{% endif %}
+{# Subject #}
+{% if data.subject_loc|length > 0 %}
+	{% for subject_loc in data.subject_loc %}
+     	<dc:subject>{{ subject_loc.label }}</dc:subject>
+	{% endfor %}
+{% endif %}
+{% if data.subject_lcgft_terms|length > 0 %}
+	{% for subject_lcgft_terms in data.subject_lcgft_terms %}
+     	<dc:subject>{{ subject_lcgft_terms.label }}</dc:subject>
+	{% endfor %}
+{% endif %}
+{# Publisher #}
+{% if data.publisher|length > 0 %}
+	<dc:publisher>{{ data.publisher }}</dc:publisher>
+{% endif %}  
+{# Language #}
+{% if data.language|length > 0 %}
+     {% if data.language is iterable %}
+     	{% for language in data.language %}
+       		<dc:language>{{ language }}</dc:language>
+     	{% endfor %}
+     {% else %}
+     		<dc:language>{{ data.language }}</dc:language>
+     {% endif %} 
+{% endif %}
+{# Type #}
+{% if data.type|length > 0 %}
+	<dc:type>{{ data.type }}</dc:type>
+{% endif %}    
+{# Format 
+<dc:format></dc:format>
+#}
+{# Identifier #}
+{% if data.local_identifier|length > 0 %}
+  <dc:identifier>{{ data.local_identifier }}</dc:identifier>
+{% endif %}
+{# Source #}
+{% if data.owner|length > 0 %}
+	<dc:source>{{ data.owner }}</dc:source>
+{% endif %}
+{# Relation #}
+{% if node.id %}
+    {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+{% else %}
+    {% set nodeurl = '<current>' ~ '/iiif/manifest' %}
+{% endif%}
+ {% if attribute(data, 'ismemberof') %}
+ {% if attribute(data, 'ismemberof') is iterable %}
+ {% for collection in attribute(data, 'ismemberof')%}
+   {% set parentnode = bamboo_load_entity('node', collection) %}
+   {% set parentnodeurl = url('entity.node.canonical', {'node': collection}, {'absolute': true}) %}
+<dc:relation>{{ parentnode.title.value }}</dc:relation>
+{% endfor %}
+{% else %}
+  {% set parentnode = bamboo_load_entity('node', attribute(data, 'ismemberof')) %}
+  {% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ismemberof')}, {'absolute': true}) %}
+  <dc:relation>{{ parentnode.title.value }}</dc:relation>
+  {% endif %}
+{% endif %}
+{# Rights #}
+{% if data.rights|length > 0 %} 
+  <dc:rights>{{ data.rights }}</dc:rights>
+{% endif %}
+</oai_dc:dc>
