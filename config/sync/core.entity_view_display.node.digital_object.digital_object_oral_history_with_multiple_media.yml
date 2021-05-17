@@ -70,18 +70,6 @@ third_party_settings:
         weight: 5
         label: hidden
         formatter: strawberry_default_formatter
-        settings:
-          formatter:
-            iiif_group: true
-            thumbnails: true
-            webannotations_tool: polygon
-            json_key_source: 'as:image'
-            max_width: '320'
-            max_height: '480'
-            use_iiif_globals: '1'
-            iiif_base_url: 'http://localhost:8183/iiif/2'
-            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
-            webannotations: false
 id: node.digital_object.digital_object_oral_history_with_multiple_media
 targetEntityType: node
 bundle: digital_object
