@@ -80,8 +80,10 @@ echo -e "A welcome message\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/block_content/block_with_twig_templating_ --data-binary @d8content/block_content_01.json;
 
-echo -e "Last pass, setting web owner to tmp files folder\n"
+echo -e "Last pass, setting web owner to tmp files folder and clearing Drupal Caches\n"
 
 chown -R www-data:www-data /var/www/html/web/sites/default/files
+
+drush cr
 
 echo -e  "Ready! Thanks for waiting."
