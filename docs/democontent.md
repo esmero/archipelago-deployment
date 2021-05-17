@@ -6,7 +6,20 @@ You can learn and test. Then delete and move over.
 
 ## Prerequisites
 
-### A running Archipelago 1.0-Beta3 or higher.
+### The new way Archipelago 1.0.0-RC2 or higher.
+- You installed it either via the Step by Step [deployment on OSX](osx.md), the one for [Ubuntu](ubuntu.md) or using your secret powers directly on a VM/Metal/Cloud/EC2 or even a raspberryPI.
+- You followed the guides without being too creative which means you have an `jsonapi` drupal user and an `admin` one and you can login and out of your server.
+- You remember your `admin`user
+
+## Step 1: (only step)
+
+- Log into your Archipelago using the `admin` user. 
+- Navigate to `Content` -> `Ami Sets`. You will see a single `AMI Set` already in place. 
+- On the Drop Down Menu to the right (The `edit` Button), press on the little `down arrow` and choose `Process`. 
+- A new Form will appear. Under `DESIRED ADOS STATUSES AFTER PROCESS`, change all from Draft to Published, leave `Enqueue but do not process Batch in realtime` unchecked and press "Confirm". The Ingest will start and a progress bar will advance. Once ready a list of Ingest Objects should appear.
+- You are done!
+
+### Old way, A running Archipelago 1.0-Beta3 or higher.
 - You installed it either via the Step by Step [deployment on OSX](osx.md), the one for [Ubuntu](ubuntu.md) or using your secret powers directly on a VM/Metal/Cloud/EC2 or even a raspberryPI.
 - You followed the guides without being too creative which means you have a `jsonapi` drupal user and you can login and out of your server.
 
