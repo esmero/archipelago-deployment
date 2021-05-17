@@ -6,6 +6,7 @@ dependencies:
     - search_api.index.default_solr_index
   module:
     - search_api
+    - views_bootstrap
 id: collection_membership
 label: 'Collection Membership'
 module: views
@@ -24,7 +25,7 @@ display:
         type: none
         options: {  }
       cache:
-        type: tag
+        type: search_api_tag
         options: {  }
       query:
         type: views_query
@@ -35,7 +36,7 @@ display:
         type: basic
         options:
           submit_button: Apply
-          reset_button: false
+          reset_button: true
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
@@ -63,19 +64,26 @@ display:
             last: 'Last »'
           quantity: 9
       style:
-        type: default
+        type: views_bootstrap_grid
         options:
           row_class: col
           default_row_class: false
           uses_fields: false
+          col_xs: col-6
+          col_sm: col-sm-6
+          col_md: col-md-4
+          col_lg: col-lg-3
+          col_xl: col-xl-3
       row:
         type: search_api
         options:
           view_modes:
+            'entity:file':
+              file: default
             'entity:node':
               article: default
-              digital_object: collection_listing
-              digital_object_collection: collection_listing
+              digital_object: digital_object_with_thumbnail_for_grid
+              digital_object_collection: digital_object_with_thumbnail_for_grid
               page: default
               webform: default
             strawberryfield_flavor_datasource: ''
@@ -203,12 +211,37 @@ display:
           group_type: group
           admin_label: ''
           order: ASC
-          exposed: false
+          exposed: true
           expose:
-            label: ''
+            label: Changed
+          plugin_id: search_api
+        title_string:
+          id: title_string
+          table: search_api_index_default_solr_index
+          field: title_string
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: true
+          expose:
+            label: Title
           plugin_id: search_api
       title: 'Objects in this Collection'
-      header: {  }
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: true
+          content:
+            value: '<h1 class="title">Objects in this Collection<h1>'
+            format: full_html
+          plugin_id: text
       footer: {  }
       empty:
         messages:
@@ -253,6 +286,7 @@ display:
           not: false
           plugin_id: search_api
       display_extenders: {  }
+      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -260,6 +294,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'
@@ -270,6 +306,15 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
+      allow:
+        items_per_page: true
+        offset: '0'
+        pager: '0'
+        hide_fields: '0'
+        sort_fields: '0'
+        disable_filters: '0'
+        configure_sorts: '0'
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -277,6 +322,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'

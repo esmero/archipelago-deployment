@@ -4,9 +4,9 @@ use_instance_profile: false
 credentials_file: ''
 bucket: archipelago
 region: us-east-1
-use_cname: true
+use_cname: false
 use_customhost: true
-hostname: 'esmero-minio:9000'
+hostname: 'http://esmero-minio:9000'
 domain: 'localhost:9000/minio/archipelago/'
 cache_control_header: ''
 encryption: ''
@@ -23,3 +23,9 @@ torrents: ''
 _core:
   default_config_hash: XB-f-XhPo-I1_3q7Xf3WpnuGRr2ioacLa0iKWYAPwJg
 use_path_style_endpoint: true
+use_credentials_cache: false
+credentials_cache_dir: ''
+disable_version_sync: true
+read_only: false
+use_cssjs_host: false
+cssjs_host: ''

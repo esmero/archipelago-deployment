@@ -13,14 +13,14 @@ dependencies:
 id: views_block__collection_membership_block_1_2
 theme: seven
 region: content
-weight: -3
+weight: -4
 provider: null
 plugin: 'views_block:collection_membership-block_1'
 settings:
   id: 'views_block:collection_membership-block_1'
   label: ''
   provider: views
-  label_display: visible
+  label_display: '0'
   views_label: ''
   items_per_page: none
 visibility:

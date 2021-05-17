@@ -13,7 +13,7 @@ dependencies:
 id: frontpagewelcome
 theme: archipelago_subtheme
 region: content
-weight: -11
+weight: -16
 provider: null
 plugin: 'block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a'
 settings:

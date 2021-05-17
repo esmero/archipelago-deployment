@@ -9,7 +9,7 @@ _core:
 id: archipelago_subtheme_local_actions
 theme: archipelago_subtheme
 region: content
-weight: -14
+weight: -19
 provider: null
 plugin: local_actions_block
 settings:

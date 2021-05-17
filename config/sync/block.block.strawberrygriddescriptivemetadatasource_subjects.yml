@@ -1,0 +1,34 @@
+uuid: 70275636-9f34-450c-8e33-96a08a1ded22
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.grid_subject_labels
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme
+id: strawberrygriddescriptivemetadatasource_subjects
+theme: archipelago_subtheme
+region: sidebar_second
+weight: -9
+provider: null
+plugin: 'facet_block:grid_subject_labels'
+settings:
+  id: 'facet_block:grid_subject_labels'
+  label: Subject
+  provider: facets
+  label_display: visible
+  block_id: strawberrygriddescriptivemetadatasource_subjects
+visibility:
+  request_path_exclusion:
+    id: request_path_exclusion
+    pages: ''
+    negate: null
+    context_mapping: {  }
+  view_inclusion:
+    id: view_inclusion
+    negate: null
+    view_inclusion: {  }
+    context_mapping: {  }

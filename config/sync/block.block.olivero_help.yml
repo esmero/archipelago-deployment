@@ -1,16 +1,16 @@
-uuid: df01b547-a4a1-4002-8654-4be0423ac07a
+uuid: 8c405e95-cbeb-490a-af1b-25dc70ad3d5b
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - help
   theme:
-    - claro
+    - olivero
 _core:
-  default_config_hash: bMLNWPKf3uHuqgmVszMb5zhM205c4Y-r7j5Tw6NDo-o
-id: claro_help
-theme: claro
-region: help
+  default_config_hash: kZCp4h7S-QCo6ENXEyv5I6jbxtIFGrDT8hDDFUfuNjY
+id: olivero_help
+theme: olivero
+region: header
 weight: 0
 provider: null
 plugin: help_block

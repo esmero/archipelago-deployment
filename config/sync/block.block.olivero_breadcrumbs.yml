@@ -1,15 +1,15 @@
-uuid: 6236bac2-ba31-42e7-ab04-a32184f18c6e
+uuid: c5237601-5733-4852-b4c3-0b49d7e48926
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - claro
+    - olivero
 _core:
-  default_config_hash: b6mUaCq5YPapRUABXRHfNTT6fxWIj5lgf0Mg4HaRJ_I
-id: claro_breadcrumbs
-theme: claro
+  default_config_hash: XMsRP1YhWAcorbrFWZglMYJ_SgWHyF3fyCh5vDXaUN4
+id: olivero_breadcrumbs
+theme: olivero
 region: breadcrumb
 weight: 0
 provider: null

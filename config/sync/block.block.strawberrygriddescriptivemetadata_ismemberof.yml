@@ -1,0 +1,40 @@
+uuid: 0561b1a7-44fb-4ab9-affa-4bb289183738
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.is_memberof_grid
+  module:
+    - context
+    - facets
+    - system
+  theme:
+    - archipelago_subtheme
+id: strawberrygriddescriptivemetadata_ismemberof
+theme: archipelago_subtheme
+region: sidebar_second
+weight: -10
+provider: null
+plugin: 'facet_block:is_memberof_grid'
+settings:
+  id: 'facet_block:is_memberof_grid'
+  label: 'Part of Collection'
+  provider: facets
+  label_display: visible
+  block_id: strawberrygriddescriptivemetadata_ismemberof
+visibility:
+  request_path_exclusion:
+    id: request_path_exclusion
+    pages: ''
+    negate: null
+    context_mapping: {  }
+  view_inclusion:
+    id: view_inclusion
+    negate: null
+    view_inclusion: {  }
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '/search_grid*'
+    negate: false
+    context_mapping: {  }

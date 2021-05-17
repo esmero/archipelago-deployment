@@ -13,7 +13,7 @@ dependencies:
 id: ismemberofcontenttitle
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -4
+weight: -11
 provider: null
 plugin: 'facet_block:is_member_of_content_title'
 settings:
@@ -26,15 +26,16 @@ visibility:
   request_path_exclusion:
     id: request_path_exclusion
     pages: ''
-    negate: null
+    negate: true
     context_mapping: {  }
   view_inclusion:
     id: view_inclusion
-    negate: null
-    view_inclusion: {  }
+    negate: false
+    view_inclusion:
+      view-solr_search_content-page_1: view-solr_search_content-page_1
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: '/search*'
-    negate: false
+    pages: '/search_grid*'
+    negate: true
     context_mapping: {  }

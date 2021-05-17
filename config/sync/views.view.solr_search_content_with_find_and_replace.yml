@@ -272,14 +272,21 @@ display:
               action_id: 'entity:ami_jsontext_action:node'
             5:
               action_id: 'entity:ami_jsonpatch_action:node'
-            18:
-              action_id: node_unpublish_action
+            8:
+              action_id: publish_latest_revision_action
+              preconfiguration:
+                label_override: 'Publish Digital Object'
+            10:
+              action_id: unpublish_current_revision_action
+              preconfiguration:
+                label_override: 'Unpublished Digital Object'
+            11:
+              action_id: node_assign_owner_action
+              preconfiguration:
+                add_confirmation: 0
             22:
               action_id: views_bulk_operations_delete_entity
-            25:
-              action_id: 'entity:publish_action:node'
-            28:
-              action_id: 'entity:unpublish_action:node'
+          force_selection_info: false
           plugin_id: views_bulk_operations_bulk_form
         title:
           id: title

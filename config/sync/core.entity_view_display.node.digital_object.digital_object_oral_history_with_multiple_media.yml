@@ -19,37 +19,24 @@ third_party_settings:
     settings: {  }
   ds:
     layout:
-      id: ds_2col_stacked
-      library: ds/ds_2col_stacked
+      id: layout_onecol
+      library: layout_discovery/onecol
       disable_css: false
       entity_classes: all_classes
       settings:
         label: ''
-        wrappers:
-          header: div
-          left: div
-          right: div
-          footer: div
-        outer_wrapper: div
-        attributes: ''
-        link_attribute: ''
-        link_custom: ''
-        classes:
-          layout_class: {  }
     regions:
-      left:
+      content:
+        - 'display_field_copy:node-field_descriptive_metadata_image'
         - links
         - body
-        - 'display_field_copy:node-field_descriptive_metadata_image'
         - 'display_field_copy:node-formatted_metadata'
-      right:
-        - 'display_field_copy:node-static_media'
-      footer:
         - field_descriptive_metadata
+        - 'display_field_copy:node-static_media'
     fields:
       'display_field_copy:node-field_descriptive_metadata_image':
         plugin_id: 'display_field_copy:node-field_descriptive_metadata_image'
-        weight: 2
+        weight: 0
         label: hidden
         formatter: strawberry_audio_formatter
         settings:
@@ -62,32 +49,27 @@ third_party_settings:
         plugin_id: 'display_field_copy:node-formatted_metadata'
         weight: 3
         label: hidden
-        formatter: strawberry_paged_formatter
+        formatter: strawberry_mirador_formatter
         settings:
           formatter:
-            mediasource: metadatadisplayentity
-            manifesturl_source: iiifmanifest
-            metadatadisplayentity_source: '5'
+            mediasource:
+              metadataexposeentity: metadataexposeentity
+              manifesturl: '0'
+              manifestnodelist: '0'
+            main_mediasource: metadataexposeentity
+            metadataexposeentity_source: iiifmanifestv2
+            manifesturl_json_key_source: iiifmanifest
+            manifestnodelist_json_key_source: isrelatedto
             max_width: '0'
-            max_height: '520'
+            max_height: '960'
             use_iiif_globals: '1'
             iiif_base_url: 'http://localhost:8183/iiif/2'
             iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
       'display_field_copy:node-static_media':
         plugin_id: 'display_field_copy:node-static_media'
-        weight: 4
+        weight: 5
         label: hidden
-        formatter: strawberry_media_formatter
-        settings:
-          formatter:
-            iiif_group: true
-            thumbnails: true
-            json_key_source: 'as:image'
-            max_width: '720'
-            max_height: '480'
-            use_iiif_globals: '1'
-            iiif_base_url: 'http://localhost:8183/iiif/2'
-            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+        formatter: strawberry_default_formatter
 id: node.digital_object.digital_object_oral_history_with_multiple_media
 targetEntityType: node
 bundle: digital_object
@@ -96,12 +78,12 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 1
+    weight: 2
     settings: {  }
     third_party_settings: {  }
-    region: left
+    region: content
   field_descriptive_metadata:
-    weight: 5
+    weight: 4
     label: hidden
     settings:
       metadatadisplayentity_id: '1'
@@ -113,10 +95,10 @@ content:
       use_iiif_globals: '1'
     third_party_settings: {  }
     type: strawberry_metadata_formatter
-    region: footer
+    region: content
   links:
-    weight: 0
-    region: left
+    weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
 hidden:

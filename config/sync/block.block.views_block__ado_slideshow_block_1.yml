@@ -12,7 +12,7 @@ dependencies:
 id: views_block__ado_slideshow_block_1
 theme: archipelago_subtheme
 region: content
-weight: -12
+weight: -17
 provider: null
 plugin: 'views_block:ado_slideshow-block_1'
 settings:

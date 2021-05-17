@@ -1,4 +1,4 @@
-uuid: a20c0cfe-d3ca-4520-9344-c8a59e8c7833
+uuid: 44789a29-80a4-429a-b559-2bcb35b33402
 langcode: en
 status: true
 dependencies:
@@ -13,9 +13,11 @@ entity_type: node
 bundle: digital_object_collection
 label: '🍓 Strawberry (Descriptive metadata source)'
 description: ''
-required: false
+required: true
 translatable: true
-default_value: {  }
+default_value:
+  -
+    value: '{}'
 default_value_callback: ''
 settings: {  }
 field_type: strawberryfield_field
