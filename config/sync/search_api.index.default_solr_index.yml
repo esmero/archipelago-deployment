@@ -10,8 +10,8 @@ dependencies:
     - search_api
     - file
   config:
-    - field.storage.node.field_tags
     - field.storage.node.field_descriptive_metadata
+    - field.storage.node.field_tags
     - search_api.server.esmero_solr_7_5
     - core.entity_view_mode.node.digital_object_image_only_for_carousel
     - core.entity_view_mode.node.search_index
@@ -49,6 +49,9 @@ third_party_settings:
       maxntp: 2000
       boost: false
       interestingTerms: none
+    term_modifiers:
+      slop: 3
+      fuzzy: 1
     advanced:
       index_prefix: ''
       collection: ''
@@ -56,7 +59,7 @@ third_party_settings:
 _core:
   default_config_hash: 5gcfQOCjXVt6We4_q02H8VjnECSON5NgKOchFAsncxU
 id: default_solr_index
-name: 'Drupal Content to Solr 7'
+name: 'Drupal Content to Solr 8'
 description: 'Basic Content'
 read_only: false
 field_settings:
@@ -137,6 +140,14 @@ field_settings:
     dependencies:
       module:
         - node
+  date_created_original:
+    label: '🍓 Strawberry (Descriptive Metadata source) » Date created original'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:date_created_original'
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   digital_object_type:
     label: '🍓 Strawberry (Descriptive Metadata source) » digital_object_type'
     datasource_id: 'entity:node'
@@ -234,6 +245,16 @@ field_settings:
         - field.storage.node.field_descriptive_metadata
       module:
         - node
+  nid_ref_partof:
+    label: '🍓 Strawberry (Descriptive Metadata source) » entity_sbf_entity_reference_ispartof » ID'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:sbf_entity_reference_ispartof:nid'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+      module:
+        - node
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -305,6 +326,26 @@ field_settings:
         strawberryfield_flavor_datasource:
           digital_object: search_index
           digital_object_collection: search_index
+  sbf_entity_reference_partof_memberof_title:
+    label: '🍓 Strawberry (Descriptive Metadata source) » ispartof » ismemberof » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:sbf_entity_reference_ispartof:field_descriptive_metadata:sbf_entity_reference_ismemberof:title'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+      module:
+        - node
+  sbf_entity_reference_partof_title:
+    label: '🍓 Strawberry (Descriptive Metadata source) » entity_sbf_entity_reference_ispartof » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:sbf_entity_reference_ispartof:title'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+      module:
+        - node
   sbf_entity_reference_title:
     label: '🍓 Strawberry (Descriptive Metadata source) » entity_sbf_entity_reference_ismemberof » Title'
     datasource_id: 'entity:node'
@@ -465,6 +506,7 @@ datasource_settings:
       default: true
       selected:
         - '0'
+    metadatadisplayentity_source: null
 processor_settings:
   add_url:
     weights:
@@ -476,9 +518,6 @@ processor_settings:
     weights:
       preprocess_index: -6
       preprocess_query: -4
-  entity_status:
-    weights:
-      preprocess_index: -10
   highlight:
     highlight: server
     highlight_partial: false
@@ -487,19 +526,17 @@ processor_settings:
     exclude_fields:
       - fulltext_with_original_ocr
       - ocr_text
-    prefix: '<strong>'
+    prefix: '<strong class="purple">'
     suffix: '</strong>'
     weights:
       postprocess_query: 0
   html_filter:
     all_fields: false
     fields:
-      - agents
       - aggregated_field
       - as_image_exif_focallength
       - as_image_exif_mimetype
       - author
-      - author_1
       - city
       - digital_object_type
       - hocr

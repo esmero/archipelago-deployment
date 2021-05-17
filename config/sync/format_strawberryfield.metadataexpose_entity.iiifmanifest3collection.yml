@@ -1,0 +1,18 @@
+uuid: c001ea21-1389-4488-9c44-8456140c5618
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: iiifmanifest3collection
+label: iiifmanifest3collection
+target_entity_types:
+  digital_object: digital_object
+  digital_object_collection: digital_object_collection
+  article: 0
+  page: 0
+  webform: 0
+source_entityfield_name: null
+processor_entity_id: '15'
+cache: true
+active: true

@@ -12,7 +12,7 @@ dependencies:
 id: facet_block_jsonkeys_search_and_replace
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -5
+weight: -2
 provider: null
 plugin: 'facet_block:strawberry_descriptive_metadata_ado_jsonkeys'
 settings:

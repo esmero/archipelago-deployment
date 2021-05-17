@@ -11,7 +11,7 @@ dependencies:
 id: authoredon
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -13
+weight: -17
 provider: null
 plugin: 'facet_block:authored_on'
 settings:

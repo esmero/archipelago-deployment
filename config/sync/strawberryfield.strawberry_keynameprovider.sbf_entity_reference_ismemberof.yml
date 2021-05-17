@@ -8,4 +8,5 @@ pluginid: entityjmespath
 pluginconfig:
   source_key: ismemberof
   exposed_key: sbf_entity_reference_ismemberof
+  entity_type: node
 active: true

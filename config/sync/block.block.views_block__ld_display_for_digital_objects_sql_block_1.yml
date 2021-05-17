@@ -14,14 +14,14 @@ dependencies:
 id: views_block__ld_display_for_digital_objects_sql_block_1
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -12
+weight: -19
 provider: null
 plugin: 'views_block:ld_display_for_digital_objects_sql-block_1'
 settings:
   id: 'views_block:ld_display_for_digital_objects_sql-block_1'
   label: ''
   provider: views
-  label_display: visible
+  label_display: '0'
   views_label: ''
   items_per_page: none
   context_mapping: {  }
@@ -42,8 +42,8 @@ visibility:
   node_type:
     id: node_type
     bundles:
-      digital_object: digital_object
       digital_object_collection: digital_object_collection
+      digital_object: digital_object
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'

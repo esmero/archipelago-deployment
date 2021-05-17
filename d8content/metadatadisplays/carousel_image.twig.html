@@ -26,6 +26,6 @@ Structures passed from Archipelago are
  {% endif %}
    {% set imageurl =  IIIFserverurl ~ image['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %}
 <a href="{{ nodeurl }}" title="{{ data.label }}" alt="{{ data.label }}">
-<img src="{{ imageurl }}/100,100,900,200/,400/0/default.jpg" class="d-block w-100" alt="{{ image.name }}" height="400px">
+<img src="{{ imageurl }}/pct:5,5,90,30/,400/0/default.jpg" class="d-block.w-auto" alt="{{ image.name }}" height="400px" style="min-width:1200px">
 </a> 
 {% endfor %}

@@ -11,7 +11,7 @@ _core:
 id: archipelago_subtheme_content
 theme: archipelago_subtheme
 region: content
-weight: -13
+weight: -18
 provider: null
 plugin: system_main_block
 settings:

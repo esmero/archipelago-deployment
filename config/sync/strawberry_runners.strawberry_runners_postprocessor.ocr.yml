@@ -20,12 +20,17 @@ pluginconfig:
   arguments: '%file'
   path_tesseract: /usr/bin/tesseract
   arguments_tesseract: '%file stdout -l eng hocr'
+  path_pdf2djvu: ''
+  arguments_pdf2djvu: '%file'
+  path_djvudump: ''
+  arguments_djvudump: '%file'
+  path_djvu2hocr: ''
+  arguments_djvu2hocr: '%file'
   output_type: json
   output_destination:
     searchapi: searchapi
-    subkey: 0
-    ownkey: 0
     plugin: 0
+  processor_queue_type: background
   timeout: '99'
   weight: '0'
 pluginid: ocr

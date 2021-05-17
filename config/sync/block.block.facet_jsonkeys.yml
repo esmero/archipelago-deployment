@@ -12,7 +12,7 @@ dependencies:
 id: facet_jsonkeys
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -6
+weight: -3
 provider: null
 plugin: 'facet_block:descriptive_metadata_source_json_keys'
 settings:

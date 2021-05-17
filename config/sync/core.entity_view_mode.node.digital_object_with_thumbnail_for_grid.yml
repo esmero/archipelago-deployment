@@ -1,0 +1,10 @@
+uuid: f0407e74-ec96-475c-95b4-44f4d99d7bc9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_with_thumbnail_for_grid
+label: 'Digital Object with thumbnail for Grid'
+targetEntityType: node
+cache: true

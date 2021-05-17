@@ -1,0 +1,30 @@
+uuid: 19cee80f-df41-4b8a-9f23-80930f7b6d98
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.mime_type_grid
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme
+id: mimetypegrid
+theme: archipelago_subtheme
+region: sidebar_second
+weight: -4
+provider: null
+plugin: 'facet_block:mime_type_grid'
+settings:
+  id: 'facet_block:mime_type_grid'
+  label: 'MIME Type'
+  provider: facets
+  label_display: visible
+  block_id: mimetypegrid
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    view_inclusion:
+      view-solr_search_content-grid: view-solr_search_content-grid
+    negate: false
+    context_mapping: {  }

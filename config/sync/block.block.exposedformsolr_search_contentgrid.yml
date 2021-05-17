@@ -1,0 +1,40 @@
+uuid: c3a9de19-73c5-484d-84ef-8b04bde894d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.solr_search_content
+  module:
+    - context
+    - system
+    - views
+  theme:
+    - archipelago_subtheme
+id: exposedformsolr_search_contentgrid
+theme: archipelago_subtheme
+region: top_header_form
+weight: 0
+provider: null
+plugin: 'views_exposed_filter_block:solr_search_content-grid'
+settings:
+  id: 'views_exposed_filter_block:solr_search_content-grid'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+visibility:
+  request_path_exclusion:
+    id: request_path_exclusion
+    pages: ''
+    negate: null
+    context_mapping: {  }
+  view_inclusion:
+    id: view_inclusion
+    negate: null
+    view_inclusion: {  }
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '/search_grid*'
+    negate: false
+    context_mapping: {  }

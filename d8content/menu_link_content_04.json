@@ -1,0 +1,26 @@
+{
+  "data": {
+    "type": "menu_link_content--menu_link_content",
+    "id": "b858da4a-e1fc-4bf3-a7b8-2e16fd21ccd9",
+    "attributes": {
+      "bundle": "menu_link_content",
+      "enabled": true,
+      "title": "Browse Digital Objects",
+      "description": "See all Digital Objects",
+      "menu_name": "main",
+      "link": {
+        "uri": "internal:/search?search_api_fulltext",
+        "title": null,
+        "options": [
+
+        ]
+      },
+      "external": false,
+      "rediscover": false,
+      "weight": -1,
+      "expanded": false,
+      "parent": null,
+      "default_langcode": true
+    }
+  }
+}

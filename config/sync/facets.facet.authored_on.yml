@@ -12,22 +12,23 @@ name: 'Authored on'
 url_alias: authored_on
 weight: 2
 min_count: 1
-show_only_one_result: true
+show_only_one_result: false
 field_identifier: created
 facet_source_id: 'search_api:views_page__solr_search_content__page_1'
 widget:
-  type: slider
+  type: links
   config:
     show_numbers: true
-    prefix: ''
-    suffix: ''
-    min_type: search_result
-    min_value: !!float 0
-    max_type: search_result
-    max_value: !!float 10
-    step: !!float 1
+    soft_limit: 0
+    soft_limit_settings:
+      show_less_label: 'Show less'
+      show_more_label: 'Show more'
+    show_reset_link: false
+    reset_text: 'Show all'
+    hide_reset_when_no_selection: false
 query_operator: and
 use_hierarchy: false
+keep_hierarchy_parents_active: false
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: true
 hard_limit: 0
@@ -60,11 +61,6 @@ processor_configs:
       sort: 40
     settings:
       sort: ASC
-  slider:
-    processor_id: slider
-    weights:
-      post_query: 60
-    settings: {  }
   url_processor_handler:
     processor_id: url_processor_handler
     weights:

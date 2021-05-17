@@ -6,6 +6,7 @@ id: exif_mimetype
 label: exif_mimetype
 pluginid: jmespath
 pluginconfig:
-  source_key: '"as:image".*."flv:exif"[].MIMEType'
+  source_key: '"as:image".*."flv:exif"[].MIMEType,"as:document".*."flv:exif"[].MIMEType,"as:video".*."flv:exif"[].MIMEType,"as:audio".*."flv:exif"[].MIMEType'
+  is_date: false
   exposed_key: as_image_exif_mimetype
 active: true

@@ -11,7 +11,7 @@ _core:
 id: seven_content
 theme: seven
 region: content
-weight: -4
+weight: -5
 provider: null
 plugin: system_main_block
 settings:

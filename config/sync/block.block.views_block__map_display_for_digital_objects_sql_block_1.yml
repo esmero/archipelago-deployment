@@ -12,14 +12,14 @@ dependencies:
 id: views_block__map_display_for_digital_objects_sql_block_1
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -11
+weight: -18
 provider: null
 plugin: 'views_block:map_display_for_digital_objects_sql-block_1'
 settings:
   id: 'views_block:map_display_for_digital_objects_sql-block_1'
   label: ''
   provider: views
-  label_display: visible
+  label_display: '0'
   views_label: ''
   items_per_page: none
   context_mapping: {  }

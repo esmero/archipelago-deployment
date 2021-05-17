@@ -12,7 +12,7 @@ dependencies:
 id: facet_block_object_type_search_and_replace
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -9
+weight: -14
 provider: null
 plugin: 'facet_block:strawberry_descriptive_metadata_ado_replace'
 settings:
