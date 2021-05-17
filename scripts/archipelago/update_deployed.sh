@@ -61,6 +61,10 @@ echo -e "IIIF 3.0 Collection Manifest for Collections, Newspapers and Serial Pub
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/9be8473c-3fb3-42ee-aef2-431b2d4f93bb --data-binary @d8content/metadatadisplay_entity_15.json;
 
+echo -e "IIIF 3.0 Thumbnail Manifest Snippet for Collections\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/adf12524-11ca-4925-bc23-d028556e75ac --data-binary @d8content/metadatadisplay_entity_16.json;
+
 echo -e "Updating Menu Items\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/menu_link_content/menu_link_content/a580dad6-5932-4f9d-bdaa-06b5563c386c --data-binary @d8content/menu_link_content_01.json;

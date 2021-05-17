@@ -1,0 +1,90 @@
+{# This Template generates Thumbnails for various Media representations
+
+Structures passed from Archipelago are
+- node
+  The full Node entitya
+- data
+  The Full JSON Structure converted in an Array
+- iiif_server
+  The publicly available IIIF Server (Global Setting)
+
+Since JSON was decoded into the 'data' values are valid PHP but could not
+be valid JSON when outputting. So We use data.description|json_encode|raw
+Without Double quotes.
+#}
+{# <---- SETUP ---> #}
+{# -- The Desired width -- #}
+{% set width = 240 %}
+{# -- The IIIF Server URLS -- #}
+{% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %}
+{% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %}
+{# -- Node Info -- #}
+{% if node.id %}
+  {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+{% else %}
+  {% set nodeurl = '<current>' ~ '/iiif/manifest' %}
+{% endif%}
+{# -- Language -- #}
+{% set len = language.getId() ? language.getId() : "en" %}
+{# --THIS WILL BE THE IMAGE IIIF URL. CAN HAVE A DEFAULT VALUE IN CASE OF FAILURE THERE IS ALWAYS A GENERIC THUMB-- #}
+{# -- NOTE: for loops are scoped so if we onlt define source inside one it will not be accesible from the outside- #}
+{% set source = '' %}
+{# <---- END SETUP --> #}
+{#  We will test for 3 main options
+1.- Images
+2.- PDF
+3.- Movies
+#}
+{% apply spaceless %}    
+{% spaceless %}
+{% if attribute(data, 'as:image')|length > 0 %}  
+  {% set document  = data['as:image']|first %} 
+  {# if the default size is smaller than the source use the source one #}
+  {% if document['flv:exif'].ImageWidth is defined and document['flv:exif'].ImageWidth < width %}
+     {% set width = document['flv:exif'].ImageWidth %} 
+  {% endif %}
+  {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %}
+  {% set source = cantaloupeid ~ "/full/" ~ width  ~ ",/0/default.jpg" %}
+{% elseif attribute(data, 'as:document')|length > 0 %}  
+  {% set break = false %}
+  {% for document in data['as:document'] if not break %}
+  {# this is just an example, we  allow every PDF here but we can also filter by pronom id "info:pronom/fmt/17" or info:pronom/fmt/18 #}
+    {% if document['flv:exif'].MIMEType == "application/pdf" and document['flv:exif'].PageCount > 0 %}   
+      {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %} 
+      {% set source = cantaloupeid ~ "/full/" ~ width  ~ ",/0/default.jpg?page=1" %}
+      {% set break = true %}
+    {% endif%}
+  {% endfor %}
+{% elseif attribute(data, 'as:video')|length > 0 %}  
+  {% set break = false %}
+  {% for document in data['as:video'] if not break %}
+  {# this is just an example, we process here only MP4 quicktimes #}
+    {% if document['flv:pronom'].mimetype == "video/quicktime" %}
+      {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %} 
+      {% set source = cantaloupeid ~ "/full/" ~ width  ~ ",/0/default.jpg?time=00:00:01" %}
+      {% set break = true %}
+    {% endif %}
+  {% endfor %}  
+{% endif%}
+{% if source|length > 0 %}
+  {% set thumb_width = width < max_thumb_width ? with: max_thumb_width %}
+  {% set thumb_height = (thumb_width/width * height)|round() %}
+"thumbnail": [{
+  "id": "{{ source }}",
+  "type": "Image",
+  "format": "image/jpeg",
+  "width": {{ width }},
+  "height": 180
+}]
+{% else %}
+"thumbnail": 
+[{
+  "id": "{{ url('<front>')|render ~ file_url('public://media-icons/generic/no-thumbnail.png') }}",
+  "type": "Image",
+  "format": "image/png",
+  "width": 180,
+  "height": 180
+}]
+{% endif %}
+{% endspaceless %}
+{% endapply %}
