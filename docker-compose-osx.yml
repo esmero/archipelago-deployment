@@ -35,7 +35,7 @@ services:
   solr:
     container_name: esmero-solr
     restart: always
-    image: "solr:8.7.0"
+    image: "solr:8.8.2"
     tty: true
     ports:
       - "8983:8983"
@@ -75,7 +75,7 @@ services:
       - esmero-net
   iiif:
     container_name: esmero-cantaloupe
-    image: "esmero/cantaloupe-s3:4.1.7"
+    image: "esmero/cantaloupe-s3:4.1.9"
     restart: always
     environment:
       XMX: 2g
