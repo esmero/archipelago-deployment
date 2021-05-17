@@ -9,7 +9,7 @@
 
 echo -ne "Updating Archipelago Packages to whatever is latest in this release!\n"
 echo -ne "Running as " && whoami;
-php -d memory_limit=-1 /usr/bin/composer update strawberryfield/strawberryfield strawberryfield/format_strawberryfield strawberryfield/webform_strawberryfield archipelago/archipelago_subtheme --no-scripts;
+composer update archipelago/ami strawberryfield/strawberry_runners strawberryfield/strawberryfield strawberryfield/format_strawberryfield strawberryfield/webform_strawberryfield archipelago/archipelago_subtheme --no-scripts;
 (($? != 0)) && { printf '%s\n' "Updating strawberryfield packages via composer failed"; exit 1; }
 drush status bootstrap | grep -q Successful;
 (($? == 0)) && { drush cr; }

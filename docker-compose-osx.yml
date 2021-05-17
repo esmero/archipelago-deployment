@@ -75,7 +75,7 @@ services:
       - esmero-net
   iiif:
     container_name: esmero-cantaloupe
-    image: "esmero/cantaloupe-s3:4.1.9"
+    image: "esmero/cantaloupe-s3:4.1.9RC"
     restart: always
     environment:
       XMX: 2g

@@ -92,7 +92,7 @@
         "strawberryfield/strawberryfield": "dev-1.0.0-RC2",
         "strawberryfield/webform_strawberryfield": "dev-1.0.0-RC2",
         "swaggest/json-schema": "^0.12.10",
-        "symfony/event-dispatcher": "4.4.16",
+        "symfony/event-dispatcher": "4.4.19",
         "symfony/yaml": "^4.4",
         "typo3/phar-stream-wrapper": "3.1.6",
         "vlucas/phpdotenv": "^5.1",
@@ -173,9 +173,6 @@
             "drupal/display_field_copy": {
                 "Fix missing schema 1.x": "patches/1.x-display_field_copy-missing-schema-3107615-2-D8.patch",
                 "D9 readyness": "https://www.drupal.org/files/issues/2020-10-01/drupal9-readiness_3135922-7.patch"
-            },
-            "drupal/search_api": {
-                "Fix Content Entity Tracker in 1.18": "patches/1.18-3178941-metrocustom-referenced_entities_reindexing_fatal_error-D8.patch"
             },
             "drupal/role_theme_switcher": {
                 "D9 readyness": "https://www.drupal.org/files/issues/2020-06-06/role_theme_switcher.1.x-dev.rector.patch"
