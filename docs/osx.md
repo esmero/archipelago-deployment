@@ -67,7 +67,7 @@ Ok, now we are ready to start.
 ```Shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.0.0-RC1
+git checkout 1.0.0-RC2
 cp docker-compose-osx.yml docker-compose.yml
 docker-compose up -d
 ```
@@ -86,7 +86,7 @@ pass:minio123
 
 and create a bucket named "archipelago". To do so press the red/coral `+` button on the bottom-right side and press the `Bucket` icon , it has a tooltip that says "create bucket". Write `archipelago` and submit, done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
-## Step 3: Deploy Drupal 8.9.11 and the awesome Archipelago Modules
+## Step 3: Deploy Drupal 8.9.14 and the awesome Archipelago Modules
 
 The following will run composer inside the esmero-php container to download all dependencies and Drupal Core too.
 
