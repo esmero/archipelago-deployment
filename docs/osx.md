@@ -13,17 +13,20 @@ If something fails (and we hope it does not) troubleshooting will be much easier
 
 Happy deploying!
 
-## Prerequisites
-
-### OSX:
+### OSX: 
 - [Install Docker for Mac](https://docs.docker.com/docker-for-mac/)
+  - For OSX `Catalina` or `Big Sur` on Intel (i5/i7) the tested version is: `3.3.3(64133)`. You may go newer of course.
+  - For `Big Sur` and `Apple Silicon M1` Chips please read https://docs.docker.com/docker-for-mac/apple-silicon/. You may need to enable manual compatibility mode in your `docker-compose.yml` file for the `esmero-php` and `esmero-cantaloupe` containers.
+  - In `Preferences` -> `General`: check `Use gRPC FUSE for file sharing` and restart. Specially if you are using your `$HOME` folder for deploying e.g `/Users/username`
+  - In `Preferences` -> `Resources`: 4 Gbytes of RAM is the recommended minimun and works, 8 Gbytes is faster and snappier.
 - [Install Github Desktop](https://desktop.github.com)
 - At least 10 Gbytes of free space (to get started)
-- Open a terminal
+- Being able to open a terminal
 
-Note: Recent OSX and newer Macs ship with 2 annoying things. Apple Cloud Syncing User Folders and (wait for it), Case insensitive FileSystems. If you happy with your
-shiny new Mac (like i was) we aware that its better to deploy anything mounted outside of the /User folder, or even better, in an external drive formatted using a Case Sensitive Unix Filesystem (Mac OS Extended (Case-sensitive, Journaled)).
-Also please: NEVER ever enable the Docker experimental feature "Use gRPC FUSE for file sharing". Specially after having installed this. Please. Love yourself. Trust us. Its evil.
+**Note:** Recent OSX and newer Macs ship with **2 annoying things**. Apple Cloud Syncing User Folders and (wait for it), Case insensitive File Systems. If you happy with your
+shiny new Mac (like i was) we aware that its better to deploy anything mounted outside of the /User folder, or even better, in an **external drive formatted using a Case Sensitive Unix Filesystem** (Mac OS Extended (Case-sensitive, Journaled)).
+
+**Note 2:** "Use gRPC FUSE for file sharing" experience may vary, recent Docker for Mac do it well. In older RC1 ones it was evil. Changing/Disabling it after having installed Archipelago may affect your S3/Minio storage accesibility. Please let us know what your experience on this is.
 
 ### Wait! Question: Do you have a previous version of Archipelago running?
 
