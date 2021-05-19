@@ -27,6 +27,7 @@ Happy deploying!
 
 **Note:** Recent OSX and newer Macs ship with **2 annoying things**. Apple Cloud Syncing User Folders and (wait for it), Case insensitive File Systems. If you happy with your
 shiny new Mac (like i was) we aware that its better to deploy anything mounted outside of the /User folder, or even better, in an **external drive formatted using a Case Sensitive Unix Filesystem** (Mac OS Extended (Case-sensitive, Journaled)).
+
 **Note 2:** "Use gRPC FUSE for file sharing" experience may vary, recent Docker for Mac do it well. In older RC1 ones it was evil. Changing/Disabling it after having installed Archipelago may affect your S3/Minio storage accesibility. Please let us know what your experience on this is.
 
 ### Wait! Question: Do you have a previous version of Archipelago running? 
