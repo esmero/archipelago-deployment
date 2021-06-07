@@ -6,7 +6,7 @@
 {% if data.creator|length > 0  %}
 	{% if data.creator is iterable %}
 		{% for creator in data.creator %}
-			<dc:creator>{{ creator }}</dc:creator><br>
+			<dc:creator>{{ creator }}</dc:creator>
 		{% endfor %}
      {% else %}
      	<dc:creator>{{ data.creator }}</dc:creator>
