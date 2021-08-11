@@ -4,7 +4,7 @@
 
 This repository serves as bootstrap for a Archipelago 1.0.0-RC2 deployment via Docker using and provides this time many more options:
 
-- minio.io (latest) S3/Azure/Local/Remote alternative and also Gateway to many others.
+- minio.io (RELEASE.2021-06-07T21-40-51Z) S3/Azure/Local/Remote alternative and also Gateway to many others.
 - Apache Solr 8.8.2 (or 7.5 if you go legacy) with the wizardly Solr OCR Highlight library [v0.5](https://github.com/dbmdz/solr-ocrhighlighting/releases/tag/0.5.0) build by the Developement Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter!
 - Mysql 8.0.22 (or Mysql 5.7 if you go legacy)
 - Ngnix 11
