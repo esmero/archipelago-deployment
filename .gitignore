@@ -8,6 +8,7 @@
 /web/libraries/
 /persistent/db/
 /persistent/iiifcache/
+/persistent/iiifconfig/cantaloupe.properties
 /persistent/solrcore/
 /persistent/miniodata/
 /persistent/miniodata/**
