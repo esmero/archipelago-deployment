@@ -82,11 +82,11 @@ Ok, now we are ready to start.
 
 #### IMPORTANT
 
-If you run `docker-compose` as root user (using `sudo`) some enviromental variables, like the current folder used inside the `docker-compose.yml` to mount the Volumens will not work and you will see a bunch of errors.
+If you run `docker-compose` as root user (using `sudo`) some enviroment variables, like the current folder used inside the `docker-compose.yml` to mount the volumes will not work and you will see a bunch of errors.
 
 There are two possible solutions.
 - The best is to add your [user to the docker group](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) (so no `sudo` needed).
-- Second option is to replace every `{$PWD}` inside your `docker-compose.yml` with either the full path to your current folder, or with a `.` and wrap that whole line in double quotes, basically making the paths for volumens relatives.
+- Second option is to replace every `{$PWD}` inside your `docker-compose.yml` with either the full path to your current folder, or with a `.` and wrap that whole line in double quotes, basically making the paths for volumes relative.
 
 Instead of: `- ${PWD}:/var/www/html:cached`
 use: `- ".:/var/www/html:cached"`
@@ -96,7 +96,7 @@ Now that you got it, lets deploy:
 ```Shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.0.0-RC2
+git checkout 1.0.0-RC3
 ```
 
 And now a hard choice. Which docker-compose/ensemble? Edge? Stable? Legacy? So many choices.
@@ -104,6 +104,7 @@ For latest/modern stack PHP7.4/Solr8.8/MySQL8 we recommend:
 
 ```Shell
 cp docker-compose-linux.yml docker-compose.yml
+cp /persistent/iiifconfig/default.cantaloupe.properties /persistent/iiifconfig/cantaloupe.properties
 docker-compose up -d
 ```
 
@@ -113,13 +114,14 @@ You have something running and do not want to update Databases/Solr indexes: Go 
 If you want to stay more traditional and stick with older versions PHP7.3/Solr7.5/MySQL57 we recommend
 ```Shell
 cp docker-compose-legacy.yml docker-compose.yml
+cp /persistent/iiifconfig/default.cantaloupe.properties /persistent/iiifconfig/cantaloupe.properties
 docker-compose up -d
 ```
 
 
-Note: `docker-compose.yml` is git ignored in case you make local adjustments or changes to it.
+Note: `docker-compose.yml` and `cantaloupe.properties` are git ignored in case you need to make local adjustments or changes to them, such as changing passwords.
 
-You need to make sure Docker can read/write to your local Drive a.k.a mounted volumens (specially if you decided not to run it as `root`, because we told you so!)
+You need to make sure Docker can read/write to your local Drive a.k.a mounted volumes (specially if you decided not to run it as `root`, because we told you so!)
 
 This means in practice running:
 ```Shell
@@ -189,7 +191,7 @@ docker exec -ti esmero-php bash -c 'scripts/archipelago/deploy.sh'
 ```
 You are done! Open your most loved Web Browser and point it to http://localhost:8001
 
-Note: It can take some time to start the first time (Drupal needs some warming up). The Ubuntu deployment is WAY faster than the OSX deployment because of the way the bind mount volumens are handled by the driver. Our experience is that Archipelago basically reacts instantly!
+Note: It can take some time to start the first time (Drupal needs some warming up). The Ubuntu deployment is WAY faster than the OSX deployment because of the way the bind mount volumes are handled by the driver. Our experience is that Archipelago basically reacts instantly!
 
 ### Need help? Blue Screen? Missed a step? Need a hug?
 

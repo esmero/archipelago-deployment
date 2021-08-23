@@ -72,12 +72,14 @@ Ok, now we are ready to start.
 ```Shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.0.0-RC2
+git checkout 1.0.0-RC3
 cp docker-compose-osx.yml docker-compose.yml
+cp /persistent/iiifconfig/default.cantaloupe.properties /persistent/iiifconfig/cantaloupe.properties
 docker-compose up -d
 ```
 Note: If you are running from an external Drive or a partition/filesystem that is `Case Sensitive` and is not syncing automatically to `Apple Cloud` you can also use docker-compose-linux.yml
-Note2: `docker-compose.yml` is git ignored in case you make local adjustments or changes to it. 
+
+Note2: `docker-compose.yml` and `cantaloupe.properties` are git ignored in case you need to make local adjustments or changes to them, such as changing passwords.
 
 ## Step 2: Set up your Minio S3 bucket
 
