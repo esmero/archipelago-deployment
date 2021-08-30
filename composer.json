@@ -25,18 +25,18 @@
         "composer/semver": "^3.2",
         "cweagans/composer-patches": "^1.6",
         "drupal/bamboo_twig": "5.x-dev",
-        "drupal/bootstrap_barrio": "^5.1",
+        "drupal/bootstrap_barrio": "5.1",
         "drupal/calendar": "^1.0@alpha",
         "drupal/config_inspector": "dev-1.x",
         "drupal/config_update": "^1.6",
         "drupal/config_update_ui": "^1.6",
         "drupal/context": "^4.0@beta",
-        "drupal/core": "9.1.10 as 8.9.16",
-        "drupal/core-composer-scaffold": "^9.1",
-        "drupal/core-project-message": "^9.1",
-        "drupal/core-recommended": "9.1.10",
+        "drupal/core": "^9",
+        "drupal/core-composer-scaffold": "^9",
+        "drupal/core-project-message": "^9",
+        "drupal/core-recommended": "^9.2",
         "drupal/devel": "4.x-dev@dev",
-        "drupal/display_field_copy": "1.x-dev",
+        "drupal/display_field_copy": "^2.0",
         "drupal/ds": "^3.9",
         "drupal/facets": "1.x-dev",
         "drupal/fancy_file_delete": "^2.0",
@@ -44,19 +44,18 @@
         "drupal/file_mdm": "^2",
         "drupal/file_mdm_exif": "^2",
         "drupal/flag": "^4.0",
-        "drupal/form_mode_manager": "2.x-dev",
-        "drupal/google_api_client": "3.0.0",
+        "drupal/form_mode_manager": "^2.0@RC",
+        "drupal/google_api_client": "3.2",
         "drupal/imagemagick": "^3.1",
         "drupal/imce": "^1.7",
         "drupal/inline_entity_form": "1.x-dev",
         "drupal/jquery_ui_datepicker": "^1.1",
-        "drupal/key_value": "1.x-dev",
         "drupal/moderated_content_bulk_publish": "^1.0",
         "drupal/pathauto": "^1.6",
         "drupal/queue_ui": "^2.0",
         "drupal/quick_node_clone": "^1.12",
         "drupal/restui": "^1.16",
-        "drupal/role_theme_switcher": "1.x-dev",
+        "drupal/role_based_theme_switcher": "^9",
         "drupal/s3fs": "3.x-dev",
         "drupal/schema_metatag": "^1.3",
         "drupal/search_api": "1.19.0",
@@ -76,7 +75,6 @@
         "drush/drush": "10.5",
         "egulias/email-validator": "^2.0",
         "fileeye/mimemap": "^1.1.1",
-        "frictionlessdata/datapackage": "dev-master",
         "maennchen/zipstream-php": "^2.1",
         "mixnode/mixnode-warcreader-php": "^0.0.6",
         "ml/json-ld": "^1.0",
@@ -92,8 +90,8 @@
         "strawberryfield/strawberryfield": "dev-1.0.0-RC3",
         "strawberryfield/webform_strawberryfield": "dev-1.0.0-RC3",
         "swaggest/json-schema": "^0.12.10",
-        "symfony/event-dispatcher": "4.4.19",
-        "symfony/yaml": "^4.4",
+        "symfony/event-dispatcher": "^4",
+        "symfony/yaml": "^4",
         "typo3/phar-stream-wrapper": "3.1.6",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.0.0",
@@ -104,7 +102,7 @@
     "require-dev": {
         "behat/mink": "1.8.x-dev",
         "behat/mink-selenium2-driver": "1.4.x-dev",
-        "drupal/core-dev": "^9.1",
+        "drupal/core-dev": "^9",
         "mglaman/drupal-check": "^1.1"
     },
     "conflict": {
@@ -165,18 +163,6 @@
             ]
         },
         "enable-patching": true,
-        "patches": {
-            "drupal/form_mode_manager": {
-                "Fix Form Mode title": "https://www.drupal.org/files/issues/2019-12-10/form_mode_manager-bundle-label-in-title-3100112-2-D8.patch",
-                "D9 readyness": "https://www.drupal.org/files/issues/2020-10-30/form_mode_manager-drupal-9-compatibility-3164478-6.patch"
-            },
-            "drupal/display_field_copy": {
-                "Fix missing schema 1.x": "patches/1.x-display_field_copy-missing-schema-3107615-2-D8.patch",
-                "D9 readyness": "https://www.drupal.org/files/issues/2020-10-01/drupal9-readiness_3135922-7.patch"
-            },
-            "drupal/role_theme_switcher": {
-                "D9 readyness": "https://www.drupal.org/files/issues/2020-06-06/role_theme_switcher.1.x-dev.rector.patch"
-            }
-        }
+        "patches": null
     }
 }
