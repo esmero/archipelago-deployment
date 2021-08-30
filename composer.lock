@@ -6513,7 +6513,7 @@
         },
         {
             "name": "frictionlessdata/datapackage",
-            "version": "dev-master",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/frictionlessdata/datapackage-php.git",
@@ -6551,7 +6551,7 @@
             "description": "A utility library for working with Data Packages",
             "support": {
                 "issues": "https://github.com/frictionlessdata/datapackage-php/issues",
-                "source": "https://github.com/frictionlessdata/datapackage-php/tree/master"
+                "source": "https://github.com/frictionlessdata/datapackage-php/tree/main"
             },
             "time": "2021-03-09T14:11:03+00:00"
         },
@@ -10594,12 +10594,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "13a20d31a12a6c79bf800bd9502f467667ca3af2"
+                "reference": "9cd787d93e2e1cc2cbc458eff1e753291930c851"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/13a20d31a12a6c79bf800bd9502f467667ca3af2",
-                "reference": "13a20d31a12a6c79bf800bd9502f467667ca3af2",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/9cd787d93e2e1cc2cbc458eff1e753291930c851",
+                "reference": "9cd787d93e2e1cc2cbc458eff1e753291930c851",
                 "shasum": ""
             },
             "require": {
@@ -10607,7 +10607,7 @@
                 "drupal/search_api": "~1.19",
                 "drupal/search_api_solr": "^4.1.10",
                 "ext-json": "*",
-                "frictionlessdata/datapackage": "dev-master",
+                "frictionlessdata/datapackage": "dev-main",
                 "ml/json-ld": "^1.1",
                 "mtdowling/jmespath.php": "^2.5",
                 "php": ">=7.2",
@@ -10641,7 +10641,7 @@
                 "issues": "https://github.com/esmero/strawberryfield/issues",
                 "source": "https://github.com/esmero/strawberryfield/tree/1.0.0-RC2"
             },
-            "time": "2021-05-15T04:17:42+00:00"
+            "time": "2021-08-30T04:17:42+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",
