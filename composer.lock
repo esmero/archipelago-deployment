@@ -7453,7 +7453,7 @@
         },
         {
             "name": "frictionlessdata/datapackage",
-            "version": "dev-master",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/frictionlessdata/datapackage-php.git",
