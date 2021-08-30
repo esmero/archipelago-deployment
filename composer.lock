@@ -7491,7 +7491,7 @@
             "description": "A utility library for working with Data Packages",
             "support": {
                 "issues": "https://github.com/frictionlessdata/datapackage-php/issues",
-                "source": "https://github.com/frictionlessdata/datapackage-php/tree/master"
+                "source": "https://github.com/frictionlessdata/datapackage-php/tree/main"
             },
             "time": "2021-03-09T14:11:03+00:00"
         },
@@ -13414,7 +13414,7 @@
                 "drupal/search_api": "~1.19",
                 "drupal/search_api_solr": "^4.1.10",
                 "ext-json": "*",
-                "frictionlessdata/datapackage": "dev-master",
+                "frictionlessdata/datapackage": "dev-main",
                 "ml/json-ld": "^1.1",
                 "mtdowling/jmespath.php": "^2.5",
                 "php": ">=7.2",
