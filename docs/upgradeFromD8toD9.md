@@ -16,7 +16,7 @@ D9 ready.
 
 ## Backing up
 
-Backups are always going to be your best friends. Archipelago's code, Database and settings are mostly self contained in your current `archipelago-deployment-live` repo folder and backing up is because of that simple
+Backups are always going to be your best friends. Archipelago's code, database, and settings are mostly self-contained in your current `archipelago-deployment` repo folder, and backing up is simple because of that.
 
 ### Step 1:
 
