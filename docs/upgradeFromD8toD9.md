@@ -4,7 +4,7 @@
 
 If you already have a well set up and well loved Archipelago (RC2 or your own custom version) running Drupal 8 (D8), this documentation will allow you to update to Drupal 9 (D9) without major issues.
 
-D8 will be no longer supported by the end of November 2021. D9 has been around for a little while and even if not every module is supported yet, what you need and want for **Archipelago** has been since a long time
+D8 will no longer be supported by the end of November 2021. D9 has been around for a little while, and even if every module is not supported yet, what you need and want for **Archipelago** has long been ready for D9.
 D9 ready. 
 
 ## Requirements
