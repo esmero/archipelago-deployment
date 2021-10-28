@@ -5,7 +5,6 @@
 If you already have a well set up and well loved Archipelago (RC2 or your own custom version) running Drupal 8 (D8), this documentation will allow you to update to Drupal 9 (D9) without major issues.
 
 D8 will no longer be supported by the end of November 2021. D9 has been around for a little while, and even if every module is not supported yet, what you need and want for **Archipelago** has long been ready for D9.
-D9 ready. 
 
 ## Requirements
 
@@ -21,9 +20,9 @@ Backups are always going to be your best friends. Archipelago's code, database, 
 ### Step 1:
 
 Shutdown your `docker-compose` ensemble. Move to your `archipelago-deployment` folder and run this:
+
 ```Shell
 docker-compose down
-````
 
 ### Step 2:
 
@@ -31,7 +30,6 @@ Verify all containers are actually down. The following command should return an 
 
 ```Shell
 docker ps
-````
 
 ### Step 3:
 
@@ -68,7 +66,7 @@ docker-compose up -d
 
 ### Step 1:
 
-Navigate to your current `archipelago-deployment-live` repo folder and open up the file `permissions` for some of your most protected Drupal files.
+Navigate to your current `archipelago-deployment` repo folder and open up the file `permissions` for some of your most protected Drupal files.
 
 ```Shell
 sudo chmod 777 web/sites/default
@@ -122,7 +120,6 @@ docker exec -ti esmero-php bash -c " drush pm-uninstall jsonapi_earlyrendering_w
 docker exec -ti esmero-php bash -c " drush pm-uninstall markdown"
 docker exec -ti esmero-php bash -c " drush pm-uninstall role_theme_switcher"
 docker exec -ti esmero-php bash -c " drush pm-uninstall key_value"
-````
 
 *Note:* If we happened to remove via `composer` a module without using `--no-update` then the `drush pm-uninstall` would totally fail and many other things will become weird! NEVER do that. You can always `drush pm-uninstall` first in the future if you are not going to remember to use `--no-update`, just to be double safe.
 
@@ -132,7 +129,6 @@ Finally! Now we are going to tell `composer` to actually fetch the NEW code and 
 
 ```Shell
 docker exec -ti esmero-php bash -c "composer update -W"
-````
 
 During this process you may see a message like this because of applied patches during Archipelago D8 installation. Select 'y' and press enter.
 
@@ -200,15 +196,13 @@ Type to get all the options.
 
 ```Shell
 docker exec -ti esmero-php bash -c "drush cex --help"
-````
 
 If you run this comman directly it will overwrite your `config/sync` folder, so it may be a good idea to double check OR if you are keeping `configs` in an alternate folder to add the `--destination[=DESTINATION]` flag to the command at the end.
 
 ```Shell
 docker exec -ti esmero-php bash -c "drush cex"
-````
 
----
+___
 
 Thank you for reading! Please contact us on our [Archipelago Commons Google Group](https://groups.google.com/forum/#!forum/archipelago-commons) with any questions or feedback, or open an ISSUE in this [Archipelago Deployment Repository](https://github.com/esmero/archipelago-deployment/).
 
