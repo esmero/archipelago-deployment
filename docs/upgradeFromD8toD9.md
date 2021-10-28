@@ -1,4 +1,4 @@
-# Archipelago-deployment-live: upgrading Drupal 8 to Drupal 9
+# Archipelago-deployment: upgrading Drupal 8 to Drupal 9
 
 ## What is this documentation for?
 
