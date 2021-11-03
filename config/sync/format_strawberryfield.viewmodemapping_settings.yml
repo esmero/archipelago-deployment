@@ -136,6 +136,6 @@ type_to_viewmode:
     weight: 27
   -
     jsontype: Page
-    view_mode: digital_object_with_book_reader
+    view_mode: digital_object_viewmode_fullitem
     active: true
     weight: 28
