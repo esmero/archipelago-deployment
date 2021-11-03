@@ -18,14 +18,22 @@ third_party_settings:
     settings: {  }
   ds:
     layout:
-      id: layout_onecol
-      library: layout_discovery/onecol
+      id: ds_1col
+      library: null
       disable_css: false
       entity_classes: all_classes
       settings:
         label: ''
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
     regions:
-      content:
+      ds_content:
         - links
         - body
         - 'display_field_copy:node-field_descriptive_metadata_image'
@@ -55,10 +63,10 @@ third_party_settings:
         formatter: strawberry_metadata_formatter
         settings:
           formatter:
-            metadatadisplayentity_id: '1'
             specs: 'http://schema.org'
             label: 'Descriptive Metadata'
             metadatadisplayentity_uselabel: '0'
+            metadatadisplayentity_uuid: bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7
       'display_field_copy:node-static_media':
         plugin_id: 'display_field_copy:node-static_media'
         weight: 5
@@ -66,10 +74,10 @@ third_party_settings:
         formatter: strawberry_metadata_formatter
         settings:
           formatter:
-            metadatadisplayentity_id: '3'
             specs: 'https://iiif.io/api/presentation/3.0/'
             label: 'IIIF V3 Manifest'
             metadatadisplayentity_uselabel: '1'
+            metadatadisplayentity_uuid: ad7aab5a-4bb3-43f2-8328-2b62895a3821
 id: node.digital_object.default
 targetEntityType: node
 bundle: digital_object
@@ -81,7 +89,7 @@ content:
     weight: 1
     settings: {  }
     third_party_settings: {  }
-    region: content
+    region: ds_content
   field_descriptive_metadata:
     weight: 4
     label: hidden
@@ -89,10 +97,10 @@ content:
       limit_access: edit
     third_party_settings: {  }
     type: strawberry_default_formatter
-    region: content
+    region: ds_content
   links:
     weight: 0
-    region: content
+    region: ds_content
     settings: {  }
     third_party_settings: {  }
 hidden:

@@ -18,14 +18,16 @@ third_party_settings:
     settings: {  }
   ds:
     layout:
-      id: layout_onecol
-      library: layout_discovery/onecol
+      id: ds_1col
+      library: null
       disable_css: false
       entity_classes: all_classes
       settings:
         label: ''
+        wrappers:
+          ds_content: div
     regions:
-      content:
+      ds_content:
         - node_changed_date
         - node_title
         - field_descriptive_metadata
@@ -54,19 +56,19 @@ content:
     weight: 1
     label: hidden
     settings:
-      metadatadisplayentity_id: '10'
       specs: 'http://schema.org'
       label: 'Descriptive Metadata'
       metadatadisplayentity_uselabel: '0'
       iiif_base_url: 'https://icg.archipelago.nyc/cantaloupe/iiif/2'
       iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
       use_iiif_globals: '1'
+      metadatadisplayentity_uuid: 7ca9ef30-1535-4616-b3b2-201dcc7d6a69
     third_party_settings: {  }
     type: strawberry_metadata_formatter
-    region: content
+    region: ds_content
   search_api_excerpt:
     weight: 2
-    region: content
+    region: ds_content
     settings: {  }
     third_party_settings: {  }
 hidden:

@@ -19,14 +19,16 @@ third_party_settings:
     settings: {  }
   ds:
     layout:
-      id: layout_onecol
-      library: layout_discovery/onecol
+      id: ds_1col
+      library: null
       disable_css: false
       entity_classes: all_classes
       settings:
         label: ''
+        wrappers:
+          ds_content: div
     regions:
-      content:
+      ds_content:
         - links
         - body
         - 'display_field_copy:node-field_descriptive_metadata_image'
@@ -56,10 +58,10 @@ third_party_settings:
         formatter: strawberry_metadata_formatter
         settings:
           formatter:
-            metadatadisplayentity_id: '1'
             specs: 'http://schema.org'
             label: 'Descriptive Metadata'
             metadatadisplayentity_uselabel: '0'
+            metadatadisplayentity_uuid: bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7
 id: node.digital_object.digital_object_with_replay_web_webarchive_with_navbars_
 targetEntityType: node
 bundle: digital_object
@@ -71,7 +73,7 @@ content:
     weight: 1
     settings: {  }
     third_party_settings: {  }
-    region: content
+    region: ds_content
   field_descriptive_metadata:
     weight: 4
     label: hidden
@@ -79,10 +81,10 @@ content:
       limit_access: edit
     third_party_settings: {  }
     type: strawberry_default_formatter
-    region: content
+    region: ds_content
   links:
     weight: 0
-    region: content
+    region: ds_content
     settings: {  }
     third_party_settings: {  }
 hidden:

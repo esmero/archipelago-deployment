@@ -129,3 +129,13 @@ type_to_viewmode:
     view_mode: digital_object_oral_history_with_multiple_media
     active: true
     weight: 26
+  -
+    jsontype: Poster
+    view_mode: digital_object_collection_with_mirador_viewer
+    active: true
+    weight: 27
+  -
+    jsontype: Page
+    view_mode: digital_object_viewmode_fullitem
+    active: true
+    weight: 28

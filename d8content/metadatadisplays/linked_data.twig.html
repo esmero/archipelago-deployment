@@ -1,5 +1,7 @@
-{# Updated Spring 2021 to include all of the available LoD elements included with Archipelago.
-Wikidata Subjects includes example of internal and external referencing. #}
+{# Updated November 2021 to include Europeana and MeSH elements #}
+{# Previously updated Spring 2021 to include more of the available LoD elements included with Archipelago.
+Wikidata Subjects includes example of internal and external referencing.
+Placeholder FA icon and text for when no linked data is provided. #}
 {% if data.subject_loc|length > 0 %}
 <dl class="row">
 <dt class="col-sm-12" text-truncate">Library Of Congress subjects</dt>
@@ -151,17 +153,58 @@ Wikidata Subjects includes example of internal and external referencing. #}
 </dd>
 </dl>
 {% endif %}
-{% if data.viaf|length > 0 %}
+
+{% if data.pubmed_mesh|length > 0 %}
 <dl class="row">
-<dt class="col-sm-12" text-truncate">VIAF</dt>
+<dt class="col-sm-12" text-truncate">MeSH (Medical Subject Headings)</dt>
 </dl>
 <dl class="row">
 <dd class="col-sm-12" text-truncate">
 <div class="list-group">
-{% for viaf in attribute(data, 'viaf') %}
-<a href="{{ viaf.uri }}" target="_blank" >{{ viaf.label }}</a>
+{% for pubmed_mesh in attribute(data, 'pubmed_mesh') %}
+<a href="{{ pubmed_mesh.uri }}" target="_blank" >{{ pubmed_mesh.label }}</a>
 {% endfor %}
 </div>
 </dd>
 </dl>
+{% endif %}
+
+{% if data.europeana_agents|length > 0 or 
+data.europeana_concepts|length > 0 or 
+data.europeana_places|length > 0 %}
+<dl class="row">
+<dt class="col-sm-12 text-truncate">Europeana Entities <i>Agents, Concepts, Places</i></dt>
+</dl>
+<dl class="row">
+<dd class="col-sm-12 text-truncate">
+<div class="list-group">
+{% for agent in attribute(data, 'europeana_agents') %}
+{% set no_lod = FALSE %}
+<a href="{{ agent.uri }}" target="_blank" >{{ agent.label }}</a>
+{% endfor %}
+{% for concept in attribute(data, 'europeana_concepts') %}
+{% set no_lod = FALSE %}
+<a href="{{ concept.uri }}" target="_blank" >{{ concept.label }}</a>
+{% endfor %}
+{% for place in attribute(data, 'europeana_places') %}
+{% set no_lod = FALSE %}
+<a href="{{ place.uri }}" target="_blank" >{{ place.label }}</a>
+{% endfor %}
+</div>
+</dd>
+</dl>
+{% endif %}
+{% if data.subject_loc is empty and
+data.subject_lcnaf_personal_names is empty and
+data.subject_lcnaf_corporate_names is empty and
+data.subject_lcnaf_geographic_names is empty and
+data.subject_lcgft_terms is empty and
+data.term_aat_getty is empty and 
+data.subject_wikidata is empty and
+data.edm_agent is empty and
+data.viaf is empty %}
+<i class="fas fa-bezier-curve fa-9x"></i>
+<p>
+<p>
+<i>Linked Data not provided</i>
 {% endif %}

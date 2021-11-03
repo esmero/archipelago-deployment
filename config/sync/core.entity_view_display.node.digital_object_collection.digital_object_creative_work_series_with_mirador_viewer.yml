@@ -14,14 +14,16 @@ dependencies:
 third_party_settings:
   ds:
     layout:
-      id: layout_onecol
-      library: layout_discovery/onecol
+      id: ds_1col
+      library: null
       disable_css: false
       entity_classes: all_classes
       settings:
         label: ''
+        wrappers:
+          ds_content: div
     regions:
-      content:
+      ds_content:
         - field_descriptive_metadata
         - 'display_field_copy:node-raw_metadata'
     fields:
@@ -32,10 +34,10 @@ third_party_settings:
         formatter: strawberry_metadata_formatter
         settings:
           formatter:
-            metadatadisplayentity_id: '1'
             specs: 'http://schema.org'
             label: 'Descriptive Metadata'
             metadatadisplayentity_uselabel: '0'
+            metadatadisplayentity_uuid: bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7
 id: node.digital_object_collection.digital_object_creative_work_series_with_mirador_viewer
 targetEntityType: node
 bundle: digital_object_collection
@@ -60,7 +62,7 @@ content:
       iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
     third_party_settings: {  }
     type: strawberry_mirador_formatter
-    region: content
+    region: ds_content
 hidden:
   body: true
   content_moderation_control: true
