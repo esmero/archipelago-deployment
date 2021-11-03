@@ -209,7 +209,7 @@ display:
             9:
               action_id: node_assign_owner_action
               preconfiguration:
-                label_override: 'Change Author/Owner of Digital Object/Colleciton'
+                label_override: 'Change Author/Owner of Digital Object/Collection'
                 add_confirmation: 0
             19:
               action_id: views_bulk_operations_delete_entity
