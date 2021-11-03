@@ -95,7 +95,7 @@ docker exec -ti esmero-php bash -c "composer require symfony/yaml:^4  --update-w
 docker exec -ti esmero-php bash -c "composer require drupal/webform:^6  --update-with-dependencies --no-update"
 docker exec -ti esmero-php bash -c "composer require drupal/google_api_client:3.2 --update-with-dependencies --no-update"
 docker exec -ti esmero-php bash -c "composer require drupal/bootstrap_barrio:5.1 --update-with-dependencies --no-update"
-docker exec -ti esmero-php bash -c "composer require 'drupal/role_based_theme_switcher:^9' --update-with-dependencies --no-update"
+docker exec -ti esmero-php bash -c "composer require 'drupal/role_theme_switcher:^1.1'' --update-with-dependencies --no-update"
 ```
 
 *Note:* We are fixing `drupal/bootstrap_barrio` to an exact version (5.1) because 5.5 and later are now Bootstrap 5 and `archipelago_subtheme` is still Bootstrap 4. 
@@ -107,7 +107,6 @@ docker exec -ti esmero-php bash -c "composer remove drupal/config_installer  --u
 docker exec -ti esmero-php bash -c "composer remove drupal/jsonapi_earlyrendering_workaround --no-update"
 docker exec -ti esmero-php bash -c "composer remove drupal/markdown --no-update"
 docker exec -ti esmero-php bash -c "composer remove drupal/module_missing_message_fixer --no-update "
-docker exec -ti esmero-php bash -c "composer remove drupal/role_theme_switcher --no-update"
 docker exec -ti esmero-php bash -c "composer remove drupal/key_value --no-update"
 docker exec -ti esmero-php bash -c "composer remove drupal/olivero --no-update"
 ```
@@ -118,7 +117,7 @@ And we uninstall those from Drupal too (IMPORTANT)
 docker exec -ti esmero-php bash -c " drush pm-uninstall module_missing_message_fixer"
 docker exec -ti esmero-php bash -c " drush pm-uninstall jsonapi_earlyrendering_workaround"
 docker exec -ti esmero-php bash -c " drush pm-uninstall markdown"
-docker exec -ti esmero-php bash -c " drush pm-uninstall role_theme_switcher"
+docker exec -ti esmero-php bash -c " drush pm-uninstall webprofiler"
 docker exec -ti esmero-php bash -c " drush pm-uninstall key_value"
 
 *Note:* If we happened to remove via `composer` a module without using `--no-update` then the `drush pm-uninstall` would totally fail and many other things will become weird! NEVER do that. You can always `drush pm-uninstall` first in the future if you are not going to remember to use `--no-update`, just to be double safe.
@@ -167,7 +166,6 @@ We will now ask Drupal to update its internal Configs and databases and enable a
 
  ```Shell  
 docker exec -ti esmero-php bash -c "drush updatedb"
-docker exec -ti esmero-php bash -c "drush en role_based_theme_switcher"
 docker exec -ti esmero-php bash -c "composer require drupal/core:^9.2 drupal/core-dev:^9.2 -W"
 docker exec -ti esmero-php bash -c "composer require drupal/jquery_ui drupal/jquery_ui_datepicker"
 docker exec -ti esmero-php bash -c "drush en jquery_ui jquery_ui_datepicker"
