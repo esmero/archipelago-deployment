@@ -28,10 +28,13 @@ services:
   php-debug:
     container_name: esmero-php-debug
     restart: always
-    image: esmero/php-7.3-fpm:development
+    image: esmero/php-7.4-fpm:1.0.0-dev-multiarch
+    environment:
+      - XDEBUG_SESSION_START="archipelago"
     tty: true
     networks:
       - host-net
       - esmero-net
     volumes:
       - ${PWD}:/var/www/html:cached
+      - ${PWD}/xdebug/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
