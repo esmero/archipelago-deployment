@@ -37,4 +37,4 @@ services:
       - esmero-net
     volumes:
       - ${PWD}:/var/www/html:cached
-      - ${PWD}:/xdebug/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ${PWD}/xdebug/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
