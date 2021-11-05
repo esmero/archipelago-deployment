@@ -23,6 +23,7 @@ Shutdown your `docker-compose` ensemble. Move to your `archipelago-deployment` f
 
 ```Shell
 docker-compose down
+```
 
 ### Step 2:
 
@@ -30,6 +31,7 @@ Verify all containers are actually down. The following command should return an 
 
 ```Shell
 docker ps
+```
 
 ### Step 3:
 
@@ -37,9 +39,7 @@ Now let's tar.gz the whole ensemble with data and configs. As an example we will
 As a good practice we append the **current date **(YEAR-DAY-MONTH) to the filename. Here we assume today is September 1st of 2021.
 
 ```Shell
-
 sudo tar -czvpf $HOME/archipelago-deployment-backup-20210109.tar.gz ../archipelago-deployment
-
 ```
 
 The process may take a few minutes. Now let's verify all is there and the `tar.gz` is not corrupt.
@@ -50,7 +50,7 @@ tar -tvvf $HOME/archipelago-deployment-backup-20210109.tar.gz
 
 You will see a listing of files. If corrupt (do you have enough space? did your ssh connection drop?) you will see:
 
-```
+```Shell
 tar: Unrecognized archive format
 ```
 
@@ -119,6 +119,7 @@ docker exec -ti esmero-php bash -c " drush pm-uninstall jsonapi_earlyrendering_w
 docker exec -ti esmero-php bash -c " drush pm-uninstall markdown"
 docker exec -ti esmero-php bash -c " drush pm-uninstall webprofiler"
 docker exec -ti esmero-php bash -c " drush pm-uninstall key_value"
+```
 
 *Note:* If we happened to remove via `composer` a module without using `--no-update` then the `drush pm-uninstall` would totally fail and many other things will become weird! NEVER do that. You can always `drush pm-uninstall` first in the future if you are not going to remember to use `--no-update`, just to be double safe.
 
@@ -128,10 +129,11 @@ Finally! Now we are going to tell `composer` to actually fetch the NEW code and 
 
 ```Shell
 docker exec -ti esmero-php bash -c "composer update -W"
+```
 
 During this process you may see a message like this because of applied patches during Archipelago D8 installation. Select 'y' and press enter.
 
-```
+```Shell
  - Upgrading drupal/fancy_file_delete (2.0.3 => 2.0.5): Extracting archive
     drupal/form_mode_manager has modified files:
     M src/AbstractEntityFormModesFactory.php
@@ -194,12 +196,13 @@ Type to get all the options.
 
 ```Shell
 docker exec -ti esmero-php bash -c "drush cex --help"
+```
 
 If you run this comman directly it will overwrite your `config/sync` folder, so it may be a good idea to double check OR if you are keeping `configs` in an alternate folder to add the `--destination[=DESTINATION]` flag to the command at the end.
 
 ```Shell
 docker exec -ti esmero-php bash -c "drush cex"
-
+```
 ___
 
 Thank you for reading! Please contact us on our [Archipelago Commons Google Group](https://groups.google.com/forum/#!forum/archipelago-commons) with any questions or feedback, or open an ISSUE in this [Archipelago Deployment Repository](https://github.com/esmero/archipelago-deployment/).
