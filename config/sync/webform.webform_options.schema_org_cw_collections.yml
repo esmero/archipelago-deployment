@@ -6,4 +6,9 @@ id: schema_org_cw_collections
 label: 'Schema.org Creative Works for Collections'
 category: archipelago
 likert: false
-options: "Collection: Collection\nCreativeWorkSeries: 'Creative Work Series'\nNewspaper: Newspaper\nPeriodical: Periodical\nPublication: Publication"
+options: |-
+  Collection: Collection
+  CreativeWorkSeries: 'Creative Work Series'
+  Newspaper: Newspaper
+  Periodical: Periodical
+  Publication: Publication

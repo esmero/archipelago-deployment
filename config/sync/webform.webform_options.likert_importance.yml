@@ -11,4 +11,9 @@ id: likert_importance
 label: 'Likert: Importance'
 category: Likert
 likert: true
-options: "1: Not at all Important\n2: Somewhat Important\n3: Neutral\n4: Important\n5: Very Important\n"
+options: |
+  1: Not at all Important
+  2: Somewhat Important
+  3: Neutral
+  4: Important
+  5: Very Important

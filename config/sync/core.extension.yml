@@ -121,7 +121,6 @@ module:
   webform_submission_log: 0
   webform_templates: 0
   webform_ui: 0
-  webprofiler: 0
   workflows: 0
   ds: 1
   menu_link_content: 1
@@ -137,10 +136,9 @@ theme:
   classy: 0
   bootstrap_barrio: 0
   archipelago_subtheme: 0
-  claro: 0
   olivero: 0
   bootstrap_barrio_subtheme: 0
-profile:
-  minimal
+  claro: 0
+profile: minimal
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc

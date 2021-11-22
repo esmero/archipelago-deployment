@@ -34,7 +34,7 @@ display:
             anonymous: anonymous
             authenticated: authenticated
       cache:
-        type: search_api_tag
+        type: none
         options: {  }
       query:
         type: views_query
@@ -430,8 +430,9 @@ display:
               raw_output: false
       path: node/%/member_manifests
       pager:
-        type: none
+        type: some
         options:
+          items_per_page: 1000
           offset: 0
       display_description: 'Uses ismemberof to connect Children to Parent'
       auth:

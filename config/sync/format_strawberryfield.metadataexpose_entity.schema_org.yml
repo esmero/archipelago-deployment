@@ -1,0 +1,18 @@
+uuid: beef1ca1-9194-4514-abdf-ff2aa11e5314
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: schema_org
+label: schema.org
+target_entity_types:
+  digital_object: digital_object
+  digital_object_collection: digital_object_collection
+  article: 0
+  page: 0
+  webform: 0
+source_entityfield_name: null
+metadatadisplayentity_uuid: 509ff401-1a6b-47b2-96e2-ba1fa36f8182
+cache: true
+active: true

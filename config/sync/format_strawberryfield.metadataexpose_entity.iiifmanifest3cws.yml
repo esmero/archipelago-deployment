@@ -8,11 +8,11 @@ id: iiifmanifest3cws
 label: iiifmanifest3cws
 target_entity_types:
   digital_object: digital_object
+  digital_object_collection: digital_object_collection
   article: 0
-  digital_object_collection: 0
   page: 0
   webform: 0
 source_entityfield_name: null
-processor_entity_id: '14'
+metadatadisplayentity_uuid: 6c405928-9ae8-4557-b062-91fcf2b0af0a
 cache: true
 active: true
