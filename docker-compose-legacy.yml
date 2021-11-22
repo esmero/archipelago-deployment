@@ -26,7 +26,7 @@ services:
   php:
     container_name: esmero-php
     restart: always
-    image: "esmero/php-7.4-fpm:1.0.0-RC1"
+    image: "esmero/php-7.4-fpm:1.0.0-RC2-multiarch"
     tty: true
     networks:
       - host-net
