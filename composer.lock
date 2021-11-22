@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d740a28106baf9d4f864325767c9361",
+    "content-hash": "006cbde5b4d4f0cfcc4e33b79500ac66",
     "packages": [
         {
             "name": "archipelago/ami",
@@ -4493,6 +4493,49 @@
             "homepage": "https://www.drupal.org/project/jquery_ui_datepicker",
             "support": {
                 "source": "https://git.drupalcode.org/project/jquery_ui_datepicker"
+            }
+        },
+        {
+            "name": "drupal/jsonapi_earlyrendering_workaround",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/jsonapi_earlyrendering_workaround.git",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/jsonapi_earlyrendering_workaround-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "07a0aa14804bf59400fdf5f76de15444053e37ef"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1632311807",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "garphy",
+                    "homepage": "https://www.drupal.org/user/59864"
+                }
+            ],
+            "homepage": "https://www.drupal.org/project/jsonapi_earlyrendering_workaround",
+            "support": {
+                "source": "https://git.drupalcode.org/project/jsonapi_earlyrendering_workaround"
             }
         },
         {

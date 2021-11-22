@@ -52,6 +52,7 @@
         "drupal/imce": "^1.7",
         "drupal/inline_entity_form": "1.x-dev",
         "drupal/jquery_ui_datepicker": "^1.1",
+        "drupal/jsonapi_earlyrendering_workaround": "^1.0",
         "drupal/moderated_content_bulk_publish": "^1.0",
         "drupal/pathauto": "^1.6",
         "drupal/queue_ui": "^2.0",
