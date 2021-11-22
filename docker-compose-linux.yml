@@ -25,7 +25,7 @@ services:
   php:
     container_name: esmero-php
     restart: always
-    image: "esmero/php-7.4-fpm:1.0.0-RC1"
+    image: "esmero/php-7.4-fpm:1.0.0-RC2-multiarch"
     tty: true
     networks:
       - host-net
@@ -54,7 +54,7 @@ services:
  # see https://hub.docker.com/_/mysql/
   db:
     image: mysql:8.0.22
-    command: mysqld --default-authentication-plugin=mysql_native_password  --max_allowed_packet=256M
+    command: mysqld --default-authentication-plugin=mysql_native_password  --max_allowed_packet=256M --sort_buffer_size=512K --binlog-expire-logs-seconds=172800
     container_name: esmero-db
     restart: always
     environment:
