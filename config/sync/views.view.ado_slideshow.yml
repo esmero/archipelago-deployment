@@ -124,7 +124,7 @@ display:
           click_sort_column: value
           type: strawberry_metadata_formatter
           settings:
-            metadatadisplayentity_id: '7'
+            metadatadisplayentity_uuid: df5a93ae-20e0-490f-a212-1b9e8ed3670f
             specs: 'http://schema.org'
             label: 'Descriptive Metadata'
             metadatadisplayentity_uselabel: '0'

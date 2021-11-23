@@ -141,10 +141,10 @@ display:
           click_sort_column: value
           type: strawberry_metadata_formatter
           settings:
-            metadatadisplayentity_id: '12'
             specs: 'http://schema.org'
             label: 'Descriptive Metadata'
             metadatadisplayentity_uselabel: '0'
+            metadatadisplayentity_uuid: e46fe78f-6b37-49a4-b277-1734c81fd847
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -531,10 +531,10 @@ display:
           click_sort_column: value
           type: strawberry_metadata_formatter
           settings:
-            metadatadisplayentity_id: '13'
             specs: 'http://schema.org'
             label: 'Descriptive Metadata'
             metadatadisplayentity_uselabel: '0'
+            metadatadisplayentity_uuid: d37a75ec-5da9-4374-b190-71385e630ded
           group_column: value
           group_columns: {  }
           group_rows: true

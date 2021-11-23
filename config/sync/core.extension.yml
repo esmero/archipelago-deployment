@@ -63,6 +63,7 @@ module:
   jquery_ui: 0
   jquery_ui_datepicker: 0
   jsonapi: 0
+  jsonapi_earlyrendering_workaround: 0
   language: 0
   layout_discovery: 0
   link: 0

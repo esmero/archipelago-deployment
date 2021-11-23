@@ -110,10 +110,10 @@ display:
           click_sort_column: value
           type: strawberry_metadata_formatter
           settings:
-            metadatadisplayentity_id: '2'
             specs: 'http://schema.org'
             label: 'Descriptive Metadata'
             metadatadisplayentity_uselabel: '0'
+            metadatadisplayentity_uuid: 998d30c0-57b7-4219-bcff-6ac2c0bf6563
           group_column: value
           group_columns: {  }
           group_rows: true
