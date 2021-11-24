@@ -10,8 +10,8 @@ dependencies:
     - search_api
     - file
   config:
-    - field.storage.node.field_tags
     - field.storage.node.field_descriptive_metadata
+    - field.storage.node.field_tags
     - search_api.server.esmero_solr_7_5
     - core.entity_view_mode.node.digital_object_image_only_for_carousel
     - core.entity_view_mode.node.search_index
@@ -78,6 +78,14 @@ field_settings:
     configuration:
       type: union
       fields: {  }
+  as_generator_actor_url:
+    label: '🍓 Strawberry (Descriptive Metadata source) » as_generator_actor_url'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:as_generator_actor_url'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   as_image_exif_focallength:
     label: '🍓 Strawberry (Descriptive Metadata source) » as_image_exif_focallength'
     datasource_id: 'entity:node'
@@ -406,6 +414,14 @@ field_settings:
     datasource_id: strawberryfield_flavor_datasource
     property_path: sequence_id
     type: string
+  sequence_id_1:
+    label: '🍓 Strawberry (Descriptive Metadata source) » Child Object sequence_id'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:sequence_id'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   sequence_id_int:
     label: 'Sequence ID numeric'
     datasource_id: strawberryfield_flavor_datasource
@@ -624,6 +640,10 @@ processor_settings:
   sbf_content_access:
     weights:
       preprocess_query: -30
+  solr_boost_more_recent:
+    boosts: {  }
+    weights:
+      preprocess_query: 0
   solr_date_range:
     weights:
       preprocess_index: 0
@@ -633,4 +653,5 @@ tracker_settings:
 options:
   index_directly: true
   cron_limit: 50
+  track_changes_in_references: true
 server: esmero_solr_7_5

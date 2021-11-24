@@ -1,0 +1,43 @@
+uuid: ec52668a-b366-44af-b51e-61505ffcbcb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.strawberry_as_generator_actor_url
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme
+id: as_generator_actor_url
+theme: archipelago_subtheme
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'facet_block:strawberry_as_generator_actor_url'
+settings:
+  id: 'facet_block:strawberry_as_generator_actor_url'
+  label: 'Ingest Method Service URL'
+  provider: facets
+  label_display: visible
+  block_id: as_generator_actor_url
+visibility:
+  context_all:
+    id: context_all
+    values: ''
+    negate: null
+  context:
+    id: context
+    values: ''
+    negate: null
+  user_status:
+    id: user_status
+    user_status:
+      viewing_profile: '0'
+      logged_viewing_profile: '0'
+      own_page_true: '0'
+      field_value: '0'
+    user_fields: uid
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

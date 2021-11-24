@@ -27,7 +27,9 @@ logo:
   use_default: false
   path: ''
 favicon:
-  use_default: true
+  use_default: false
+  path: 'public://strawberries_favicon.png'
+  mimetype: image/png
 bootstrap_barrio_region_clean_top_header: '0'
 bootstrap_barrio_region_class_top_header: row
 bootstrap_barrio_region_clean_top_header_form: '0'
