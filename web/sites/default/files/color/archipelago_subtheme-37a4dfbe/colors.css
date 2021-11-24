@@ -92,19 +92,22 @@ nav > ul > li.active.nav-item > a {
   border-color: #ff4081 !important;
 }
 
-div.webform-progress > ul > li.progress-step.is-active > span.progress-marker {
-  background-color: #ff4081 !important;
-  border-color: #ff4081 !important;
+/* Webform progress tracker */
+.webform-progress-tracker .progress-title[role="link"] {
+  color: #000000 
 }
 
-div.webform-progress > ul > li > span.progress-text > span {
-  color: #000000 !important;
-}
-
-div.webform-progress > ul > li > span.progress-text > span:hover {
-  color: #000000 !important;
-  text-decoration-color: #ff4081;
+.webform-progress-tracker .progress-title[role="link"]:hover,
+.webform-progress-tracker .progress-title[role="link"]:focus {
+  text-decoration: underline;
+  color: #000000;
+  text-decoration-color:#000000;
   text-decoration-thickness: 3px;
+}
+
+.webform-progress-tracker .progress-step.is-active .progress-marker,
+.webform-progress-tracker .progress-step.is-active:hover .progress-marker {
+  background-color: #000000;
 }
 
 div > div.carousel-item.active > div > h3 {
@@ -265,4 +268,15 @@ dt {
 [dir="rtl"] .color-form .color-palette .lock {
     right: -20px;
     left: 0;
+}
+
+/* IABook Reader Color and Shape Overrides */
+
+.BookReader .BookReaderSearchHilite, .BRmobileMenu .BookReaderSearchHilite, .BRfloat .BookReaderSearchHilite {
+    opacity: 0.7;
+    outline: 3px solid #ff4081;
+    outline-offset: 1em;
+    filter: alpha(opacity=70);
+    background-color: #ff4081;
+    animation: hiliteFadeIn 0.5s;
 }
