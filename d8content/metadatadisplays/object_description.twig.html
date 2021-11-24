@@ -1,4 +1,9 @@
-{# Updated May 2021: correct indentations for easier human readability ; Previously updated April 2021 #}
+{# Updated November 2021: addition of Embargo option, |markdown_2_html for data.description and data.rights, change <footer> for <div> #}
+{# Embargo option #}
+{% if data_embargo.embargoed == true %}
+   This is Embargoed!
+{% endif %}
+{# Previously Updated May 2021: correct indentations for easier human readability ; Previously updated April 2021 #}
 <blockquote class="blockquote">
 {% if node.id %}
 	{% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
@@ -10,12 +15,12 @@
 	{% for collection in attribute(data, 'ismemberof')%}
 		{% set parentnode = bamboo_load_entity('node', collection) %}
 		{% set parentnodeurl = url('entity.node.canonical', {'node': collection}, {'absolute': true}) %}
-			<footer class="blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
+			<div class="blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
 	{% endfor %}
 	{% else %}
 		{% set parentnode = bamboo_load_entity('node', attribute(data, 'ismemberof')) %}
 		{% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ismemberof')}, {'absolute': true}) %}
-			<footer class="blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
+			<div class="blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
 {% endif %}
 {% endif %}
 {% if attribute(data, 'ispartof') %}
@@ -23,12 +28,12 @@
 	{% for child in attribute(data, 'ispartof')%}
 		{% set parentnode = bamboo_load_entity('node', child) %}
 		{% set parentnodeurl = url('entity.node.canonical', {'node': child}, {'absolute': true}) %}
-			<footer class="blockquote-footer">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
+			<div class="blockquote-footer">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
 	{% endfor %}
 	{% else %}
 		{% set parentnode = bamboo_load_entity('node', attribute(data, 'ispartof')) %}
 		{% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ispartof')}, {'absolute': true}) %}
-			<footer class="blockquote-footer">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></footer>
+			<div class="blockquote-footer">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
 {% endif %}
 {% endif %}
 </blockquote>
@@ -62,6 +67,7 @@
 		{{ data.creator }} <br>
     {% endif %} 
 	{% endif %}
+</p>    
 {% endif %} 
 {% if data.creator_lod|length > 0 %}
 	<ul>
@@ -82,6 +88,7 @@
 		{{ data.interviewee }} <br>
 	{% endif %} 
 	{% endif %}
+    </p>
 {% endif %}
 {% if data.interviewer|length > 0 %}
 <h2>Interviewer(s)</h2>
@@ -95,6 +102,7 @@
 		{{ data.interviewer }} <br>
 	{% endif %} 
 	{% endif %}
+    </p>
 {% endif %} 
 {% if data.duration|length > 0 %}
 <h2>Duration</h2>
@@ -105,20 +113,30 @@
 	<p>{{ data.website_url }}</p>
 {% endif %}  
 <h2>Description</h2>
-	<p>
+	<div>
 	{% if data.description %}
 	{% if data.description is iterable %}
 		{% for description in data.description %}
-			{{ description }} <br>
+			{{ description|markdown_2_html }}
 		{% endfor %}
 	{% else %}
-		{{ data.description }} <br>
+		{{ data.description|markdown_2_html }}
 	{% endif %} 
 	{% endif %}
-	</p>
+	</div>
 {% if data.date_created|length > 0 %}
 <h2>Date of Original</h2>
 	<p>{{ data.date_created }}</p>
+{% endif %}
+{% if data.date_created_free %}
+<h2>Date Created</h2>
+  {% if data.date_created_free is iterable %}
+    {% for date_created_free in data.date_created_free  %}
+	<p>{{ date_created_free }}</p>
+    {% endfor %}
+  {% else %}
+<p>{{ data.date_created_free }}</p>
+  {% endif %}
 {% endif %}
 {% if data.publisher|length > 0 %}
 <h2>Publisher</h2>
@@ -145,7 +163,7 @@
 {% if data.rights|length > 0 or data.rights_statements|length > 0 %}
 <h2>Rights</h2>
 {% if data.rights|length > 0 %} 
-	<p>{{ data.rights }}</p>
+	<div>{{ data.rights|markdown_2_html }}</div>
 {% endif %}
 {% if data.rights_statements|length > 0 %}
 	{% if data.rights_statements in ['In Copyright'] %} 
@@ -223,7 +241,19 @@
 		{{ data.language }} <br>
 	{% endif %} 
 </p>
-{% endif %}   
+{% endif %}  
+<div class="dropdown">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+  Download Metadata
+  </button>
+  <div class="dropdown-menu">
+    <a download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/mods/{{ (data.label|trim ~ '_mods')|url_encode }}.xml">MODS 3.7</a>
+    <a download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/dc/{{ (data.label|trim ~ '_dc')|url_encode }}.xml">Dublin Core</a>   
+    <a download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/geojson/{{ (data.label|trim ~ '_geojson')|url_encode }}.json">GeoJSON</a>
+    <a download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifest/{{ (data.label|trim ~ '_manifest')|url_encode }}.jsonld">IIIF Presentation Manifest 3.0</a>
+    <a download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifestv2/{{ (data.label|trim ~ '_manifestv2')|url_encode }}.jsonld">IIIF Presentation Manifest 2.1</a>
+  </div>
+</div>
 {% if logged_in %}  
 {% if data.date_published|length > 0 %}
 <h2>Date of Digital</h2>
