@@ -11,4 +11,9 @@ id: likert_quality
 label: 'Likert: Quality'
 category: Likert
 likert: true
-options: "1: Poor\n2: Fair\n3: Good\n4: Very good\n5: Excellent\n"
+options: |
+  1: Poor
+  2: Fair
+  3: Good
+  4: Very good
+  5: Excellent

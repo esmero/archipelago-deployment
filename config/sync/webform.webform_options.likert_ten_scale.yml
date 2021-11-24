@@ -11,4 +11,14 @@ id: likert_ten_scale
 label: 'Likert: Ten Scale'
 category: Likert
 likert: true
-options: "1: 1\n2: 2\n3: 3\n4: 4\n5: 5\n6: 6\n7: 7\n8: 8\n9: 9\n10: 10\n"
+options: |
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+  6: 6
+  7: 7
+  8: 8
+  9: 9
+  10: 10

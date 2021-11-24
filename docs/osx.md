@@ -13,9 +13,9 @@ If something fails (and we hope it does not) troubleshooting will be much easier
 
 Happy deploying!
 
-### OSX: 
+### OSX:
 - [Install Docker for Mac](https://docs.docker.com/docker-for-mac/)
-  - For OSX `Catalina` or `Big Sur` on Intel (i5/i7) the tested version is: `3.3.3(64133)`. You may go newer of course.
+  - For OSX `Catalina` or `Big Sur` on Intel (i5/i7) the tested version is: `4.0.1(68347)`. You may go newer of course.
   - For `Big Sur` and `Apple Silicon M1` Chips please read https://docs.docker.com/docker-for-mac/apple-silicon/. You may need to enable manual compatibility mode in your `docker-compose.yml` file for the `esmero-php` and `esmero-cantaloupe` containers.
   - In `Preferences` -> `General`: check `Use gRPC FUSE for file sharing` and restart. Specially if you are using your `$HOME` folder for deploying e.g `/Users/username`
   - In `Preferences` -> `Resources`: 4 Gbytes of RAM is the recommended minimun and works, 8 Gbytes is faster and snappier.
@@ -80,14 +80,14 @@ Note2: `docker-compose.yml` is git ignored in case you make local adjustments or
 ## Step 2: Set up your Minio S3 bucket
 
 Once all containers are up and running (you can do a `docker ps` to check),
-access `http://localhost:9000` using your most loved Web Browser with the following credentials:
+access the minio console at `http://localhost:9001` using your most loved Web Browser with the following credentials:
 
 ```
 user:minio
 pass:minio123
 ```
 
-and create a bucket named "archipelago". To do so press the red/coral `+` button on the bottom-right side and press the `Bucket` icon , it has a tooltip that says "create bucket". Write `archipelago` and submit, done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
+and once logged in, Press on "Buckets" (left tools column) and then on "Create Bucket"  (top right) and under "Bucket Name" type `archipelago`. Leave all other options unchecked for now (you can experiment with those later) and make sure you write `archipelago` (no spaces, lowercase) and press "Save", done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
 ## Step 3: Deploy Drupal 9.1.8 and the awesome Archipelago Modules
 

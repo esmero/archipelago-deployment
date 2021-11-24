@@ -1,0 +1,30 @@
+uuid: 44bbcb6b-02e2-4801-b471-f78d5f8bb104
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.npl_extracted_agents_from_ocr
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme
+id: nplextractedagentsfromocr
+theme: archipelago_subtheme
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'facet_block:npl_extracted_agents_from_ocr'
+settings:
+  id: 'facet_block:npl_extracted_agents_from_ocr'
+  label: 'NPL Extracted Agents from OCR'
+  provider: facets
+  label_display: visible
+  block_id: nplextractedagentsfromocr
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    view_inclusion:
+      view-solr_search_content-page_3: view-solr_search_content-page_3
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,71 @@
+uuid: cf121bbd-6afe-43f3-ba45-57b3deaf98f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.default_solr_index
+    - views.view.solr_search_content
+  module:
+    - search_api
+id: npl_extracted_sentiment_from_ocr
+name: 'NPL Extracted Sentiment from OCR'
+url_alias: npl_extracted_sentiment_from_ocr
+weight: 0
+min_count: 1
+show_only_one_result: true
+field_identifier: sbf_sentiment
+facet_source_id: 'search_api:views_page__solr_search_content__page_3'
+widget:
+  type: range_slider
+  config:
+    show_numbers: false
+    prefix: ''
+    suffix: ''
+    min_type: fixed
+    min_value: !!float -1
+    max_type: fixed
+    max_value: !!float 1
+    step: 0.5
+query_operator: or
+use_hierarchy: false
+keep_hierarchy_parents_active: false
+expand_hierarchy: false
+enable_parent_when_child_gets_disabled: true
+hard_limit: 0
+exclude: false
+only_visible_when_facet_source_is_visible: true
+processor_configs:
+  active_widget_order:
+    processor_id: active_widget_order
+    weights:
+      sort: 20
+    settings:
+      sort: DESC
+  count_widget_order:
+    processor_id: count_widget_order
+    weights:
+      sort: 30
+    settings:
+      sort: DESC
+  display_value_widget_order:
+    processor_id: display_value_widget_order
+    weights:
+      sort: 40
+    settings:
+      sort: ASC
+  range_slider:
+    processor_id: range_slider
+    weights:
+      pre_query: 60
+      post_query: 60
+      build: 20
+    settings: {  }
+  url_processor_handler:
+    processor_id: url_processor_handler
+    weights:
+      pre_query: 50
+      build: 15
+    settings: {  }
+empty_behavior:
+  behavior: none
+show_title: false

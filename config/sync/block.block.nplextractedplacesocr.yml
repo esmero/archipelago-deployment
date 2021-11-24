@@ -1,0 +1,30 @@
+uuid: b4cc822b-99a7-4191-9de4-fb0a518c77f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.npl_extracted_places_ocr
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme
+id: nplextractedplacesocr
+theme: archipelago_subtheme
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'facet_block:npl_extracted_places_ocr'
+settings:
+  id: 'facet_block:npl_extracted_places_ocr'
+  label: 'NPL Extracted Places OCR'
+  provider: facets
+  label_display: visible
+  block_id: nplextractedplacesocr
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    view_inclusion:
+      view-solr_search_content-page_3: view-solr_search_content-page_3
+    negate: false
+    context_mapping: {  }

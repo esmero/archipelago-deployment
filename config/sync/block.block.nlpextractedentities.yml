@@ -1,0 +1,30 @@
+uuid: dd870c2f-764f-402b-aa58-4e7b66444a35
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.nlp_extracted_entities
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme
+id: nlpextractedentities
+theme: archipelago_subtheme
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'facet_block:nlp_extracted_entities'
+settings:
+  id: 'facet_block:nlp_extracted_entities'
+  label: 'NLP Extracted Locations'
+  provider: facets
+  label_display: visible
+  block_id: nlpextractedentities
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    view_inclusion:
+      view-solr_search_content-page_2: view-solr_search_content-page_2
+    negate: false
+    context_mapping: {  }
