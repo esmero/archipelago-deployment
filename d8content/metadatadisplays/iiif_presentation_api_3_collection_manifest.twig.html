@@ -1,4 +1,6 @@
-{# 
+{#
+Updated 22/11/2021 for RC3
+
 This Template generates IIIF 3.0 API Manifest for reative Works Series using a Drupal Views
 JSON to be used by a Drupal Views (REST) to generate a simpler to parse/join listing of Canvases
 For a Creative Works Series Manifest
@@ -16,17 +18,60 @@ be valid JSON when outputting. So We use data.description|json_encode|raw
 Without Double quotes.
 #}
 {% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %}
-  {% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %}
-    {% set currenturl = url('<current>')|render %}
-      {% if node.id %}
-          {# this is needed to the View Argument can conform to the format even when no node exists when saving the template #}
-          {% set nodeid = node.id %}
-          {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
-      {% else %}
-          {% set nodeid = 1 %} 
-          {% set nodeurl = currenturl %}
-      {% endif%}
-            {% set len = language.getId() ? language.getId() : "en" %}
+{% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %}
+{% set currenturl = url('<current>')|render %}
+{% if node.id %}
+{# this is needed to the View Argument can conform to the format even when no node exists when saving the template #}
+  {% set nodeid = node.id %}
+  {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+{% else %}
+  {% set nodeid = 1 %} 
+  {% set nodeurl = currenturl %}
+{% endif%}
+{% set len = language.getId() ? language.getId() : "en" %}
+{% set computed_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %}
+{% if data.rights|length > 0 or data.rights_statements|length > 0 %}
+	{% if data.rights|length > 0 %} 
+		{% set computed_rights = data.rights %}
+	{% endif %}
+{% elseif data.rights_statements|length > 0 %}
+	{% if data.rights_statements in ['In Copyright'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - EU Orphan Work'] %} 
+    	{% set computed_rights = "http://rightsstatements.org/vocab/InC-OW-EU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Educational Use Permitted'] %} 
+	   	{% set computed_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Non-Commercial Use Permitted'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC-NC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Rights-holder(s) Unlocatable or Unidentifiable'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC-RUU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Contractual Restrictions'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-CR/1.0/" %}
+	{% endif %} 
+	{% if data.rights_statements in ['No Copyright - Non-Commercial Use Only'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-NC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Other Known Legal Restrictions'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-OKLR/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - United States'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-US/1.0/" %}
+	{% endif %} 
+	{% if data.rights_statements in ['Copyright Not Evaluated'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/CNE/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['Copyright Undetermined'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/UND/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Known Copyright'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NKC/1.0/" %}
+	{% endif %}
+{% endif %}
 {
 {# Top Object Metadata #}
 "@context": [
@@ -91,7 +136,7 @@ Without Double quotes.
 },
 "value": {
 "{{ len }}": [
-"http://rightsstatements.org/vocab/InC-EDU/1.0/"
+{{ computed_rights|json_encode|raw }}
 ]
 }
 }

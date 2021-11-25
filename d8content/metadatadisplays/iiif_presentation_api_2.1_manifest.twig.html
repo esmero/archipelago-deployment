@@ -1,4 +1,7 @@
-{# This Template generates IIIF 2.1 Presentation API Manifest from a Strawberry Field
+{# 
+Updated 22/11/2021 for RC3
+
+This Template generates IIIF 2.1 Presentation API Manifest from a Strawberry Field
 JSON.
 
 Structures passed from Archipelago are
@@ -18,15 +21,58 @@ Updated Dec 14th 2020
 - With/Heights for DOCS and IMAGES
 #}
 {% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %}
-  {% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %}
-   {% set currenturl = url('<current>')|render %}
-    {% if node.id %}
-        {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
-    {% else %}
-        {% set nodeurl = currenturl ~ '/iiif/manifest' %}
-    {% endif%}
+{% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %}
+{% set currenturl = url('<current>')|render %}
+{% if node.id %}
+  {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+{% else %}
+  {% set nodeurl = currenturl ~ '/iiif/manifest' %}
+{% endif%}
 {% set pageCount =  0 %} 
 {% set max_thumb_width = 240 %}
+{% set computed_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %}
+{% if data.rights|length > 0 or data.rights_statements|length > 0 %}
+	{% if data.rights|length > 0 %} 
+		{% set computed_rights = data.rights %}
+	{% endif %}
+{% elseif data.rights_statements|length > 0 %}
+	{% if data.rights_statements in ['In Copyright'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - EU Orphan Work'] %} 
+    	{% set computed_rights = "http://rightsstatements.org/vocab/InC-OW-EU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Educational Use Permitted'] %} 
+	   	{% set computed_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Non-Commercial Use Permitted'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC-NC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Rights-holder(s) Unlocatable or Unidentifiable'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC-RUU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Contractual Restrictions'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-CR/1.0/" %}
+	{% endif %} 
+	{% if data.rights_statements in ['No Copyright - Non-Commercial Use Only'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-NC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Other Known Legal Restrictions'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-OKLR/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - United States'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-US/1.0/" %}
+	{% endif %} 
+	{% if data.rights_statements in ['Copyright Not Evaluated'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/CNE/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['Copyright Undetermined'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/UND/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Known Copyright'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NKC/1.0/" %}
+	{% endif %}
+{% endif %}
 {
 "@context": [
 "http://www.w3.org/ns/anno.jsonld",
@@ -57,7 +103,7 @@ Updated Dec 14th 2020
 },
 {
 "label": "license",
-"value": "http://rightsstatements.org/vocab/InC-EDU/1.0/"
+"value": {{ computed_rights|json_encode|raw }}
 },
 {
 "label": "attribution",
