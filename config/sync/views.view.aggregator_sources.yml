@@ -420,6 +420,7 @@ display:
         weight: 0
         context: '0'
         menu_name: tools
+        enabled: false
       display_extenders: {  }
     cache_metadata:
       contexts:

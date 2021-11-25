@@ -15,8 +15,8 @@ pluginconfig:
   processor_queue_type: background
   nlp: 1
   nlp_url: 'http://esmero-nlp:6400'
-  nlp_method: spacy
-  timeout: '10'
+  nlp_method: polyglot
+  timeout: '25'
   weight: '0'
 pluginid: webpage
 active: true
