@@ -1,0 +1,26 @@
+{
+    "data": {
+        "type": "menu_link_content--menu_link_content",
+        "id": "ab52b8d4-14e4-4abc-a676-fbdadd50769a",
+        "attributes": {
+            "bundle": "menu_link_content",
+            "enabled": true,
+            "title": "Search inside Book/Document Pages",
+            "description": "Search for OCRed Full text",
+            "menu_name": "main",
+            "link": {
+                "uri": "internal:/search_pages",
+                "title": "",
+                "options": [
+
+                ]
+            },
+            "external": false,
+            "rediscover": true,
+            "weight": -49,
+            "expanded": false,
+            "parent": "menu_link_content:87ea9325-0dba-4ac6-83da-6e94c5d7f3b5",
+            "default_langcode": true
+        }
+    }
+}

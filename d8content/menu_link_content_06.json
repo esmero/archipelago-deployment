@@ -1,0 +1,26 @@
+{
+    "data": {
+        "type": "menu_link_content--menu_link_content",
+        "id": "999d0644-198b-493f-9d88-9502f4c7650f",
+        "attributes": {
+            "bundle": "menu_link_content",
+            "enabled": true,
+            "title": "Search inside Web Archives",
+            "description": "Search for Web Archive's Full text and URL index",
+            "menu_name": "main",
+            "link": {
+                "uri": "internal:/search_websites?search_api_fulltext",
+                "title": "",
+                "options": [
+
+                ]
+            },
+            "external": false,
+            "rediscover": true,
+            "weight": -50,
+            "expanded": false,
+            "parent": "menu_link_content:87ea9325-0dba-4ac6-83da-6e94c5d7f3b5",
+            "default_langcode": true
+        }
+    }
+}
