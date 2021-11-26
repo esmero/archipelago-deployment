@@ -89,7 +89,7 @@ pass:minio123
 
 and once logged in, Press on "Buckets" (left tools column) and then on "Create Bucket"  (top right) and under "Bucket Name" type `archipelago`. Leave all other options unchecked for now (you can experiment with those later) and make sure you write `archipelago` (no spaces, lowercase) and press "Save", done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
-## Step 3: Deploy Drupal 9.1.8 and the awesome Archipelago Modules
+## Step 3: Deploy Drupal 9.2.9 and the awesome Archipelago Modules
 
 The following will run composer inside the esmero-php container to download all dependencies and Drupal Core too.
 
@@ -111,6 +111,9 @@ If this is the first time you Deploy Drupal using the provided Configurations ru
 ```Shell
 docker exec -ti -u www-data esmero-php bash -c "cd web;../vendor/bin/drush -y si --verbose --existing-config --db-url=mysql://root:esmerodb@esmero-db/drupal9 --account-name=admin --account-pass=archipelago -r=/var/www/html/web --sites-subdir=default --notify=false;drush cr;chown -R www-data:www-data sites;"
 ```
+
+Note: you will see this warning `[warning] The "block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a" was not found`
+Nothing to worry about, we will provide the missing part in Step 5.
 
 This will give you an `admin` Drupal user with `archipelago` as password (!change this if running on a public instance!)
 
