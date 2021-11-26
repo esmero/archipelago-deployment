@@ -1,24 +1,24 @@
 # Archipelago Docker Deployment for Drupal 9
 
-**Updated:** May 16th 2021
+**Updated:** November 25th 2021
 
-This repository serves as bootstrap for a Archipelago 1.0.0-RC2 deployment via Docker using and provides this time many more options:
+This repository serves as bootstrap for a Archipelago 1.0.0-RC3 deployment via Docker using and provides this time many more options:
 
-- minio.io (latest) S3/Azure/Local/Remote alternative and also Gateway to many others.
-- Apache Solr 8.8.2 (or 7.5 if you go legacy) with the wizardly Solr OCR Highlight library [v0.5](https://github.com/dbmdz/solr-ocrhighlighting/releases/tag/0.5.0) build by the Developement Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter!
+- minio.io (latest) S3/Azure/Local/Remote alternative with a new Console and also Gateway to many others.
+- Apache Solr 8.8.2 (or 7.5 if you go legacy) with the wizardly Solr OCR Highlight library [v0.7.1](https://github.com/dbmdz/solr-ocrhighlighting/releases/tag/0.7.1) build by the Developement Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter!
 - Mysql 8.0.22 (or Mysql 5.7 if you go legacy)
 - Ngnix 11
-- Custom PHP FPM 7.4 zuper-tunned for Drupal 8/9 (or 7.3 FPM if you go legacy) with WARC to WACZ processing and Composer 2.0
+- Custom PHP FPM 7.4 zuper-tunned for Drupal 8/9 with multi-arch (so M1 too) capabilities (or 7.3 FPM if you go legacy) with WARC to WACZ processing and Composer 2.0
 - Natural Language Processing via NPLWEB64
 - Cantaloupe 4.1.9 as IIIF Server with Video Frame extraction and PDF support
-- A Skeleton Project setup to run latest Version of Drupal (9.1.8) and strawberryfield modules & friends on 1.0.0-RC2
-- Official *Drupal 9 ready* release again. D9.1 this time. Drupal 8 has its own branch to avoid cluttering this one too much. Look for 1.0.0-RC2
+- A Skeleton Project setup to run latest Version of Drupal (9.2.9) and strawberry field modules on 1.0.0-RC3 & friends on 0.2.0
+- Official *Drupal 9 ready* release again. D9.2.9 this time. Drupal 8 is not longer maintained and we have documented the upgrade path
 
 The skeleton project contains all the pieces needed to run a local deployment of a vanilla Archipelago including (*YES*!) content provided as optional feature from [archipelago-recyclables](https://github.com/esmero/archipelago-recyclables)
 
 # Starting from CERO
 
-This is the recommended, simplest way for this release. There are a too many, tons of fun new features, Metadata Displays, viewers, bug fixes (yes), webform elements and improvements! We include now W3C WebAnnotations capabilities provided by the great team behind https://recogito.github.io/annotorious/api-docs/osd-plugin/ (thanks Rainer Simon) and with complete integration in our UI and metadata backends. Also [WACZ! and replay.web](https://github.com/webrecorder/replayweb.page) both fabulous developments by the Webrecorder team (thanks Ilya Kreymer and Emma Dickson). There is more. Release will have a full feature list. Promised.
+This is the recommended, simplest way for this release. There are a too many, tons of fun new features, Metadata Displays, viewers, new JS libraries, better HUGE import capabilities, bug fixes (yes), webform elements and improvements! W3C WebAnnotations capabilities are even better now by the great team behind https://recogito.github.io/annotorious/api-docs/osd-plugin/ (thanks Rainer Simon) and with complete integration in our UI and metadata backends. Also [WACZ! and replay.web](https://github.com/webrecorder/replayweb.page) both fabulous developments by the Webrecorder team (thanks Ilya Kreymer and Emma Dickson). There is more. Release will have a full feature list. Promised.
 
 ## OSX:
 
@@ -31,11 +31,11 @@ This is the recommended, simplest way for this release. There are a too many, to
 ## More fun if you add content:
 [One-Step Demo content ingest](docs/democontent.md)
 
-## 1.0.0-RC2
+## 1.0.0-RC3
 
-We have been working hard on 1.0.0-RC2 and we may have delayed this a little more than expected. As you may have read (or heard) we take Release Candidates seriously and wanted to advance core features before closing the cycle. There are many bug fixes, improvements, AMI, invisible and visible workflow changes, smarter processing, and most important all made to allow you to extend Archipelago even more. We ship now with a lot more Site Building (fancy word for settings views, field formatters, Solr, etc in Drupal)to make starting with Archipelago or becoming a permanent resident of your own group of always sunny islands fun.
+We have been working hard on 1.0.0-RC3 and it took us again 6 months from the latest releas to reach this point. RC3 is different. There won't be any more Release Candidates and this leads directly, in a time span of 2 weeks into 1.0.0. From there on 1.1.0, etc. You already know we take Release Candidates seriously and this one brings a huge list of new features, improvements and migration tools, finally closing the cycle. There are many bug fixes, requested needs, improvements, AMI with remote import and LoD reconciliation, invisible and visible workflow changes, smarter processing, and most important all made to allow you to extend Archipelago even more. We ship now with a lot more Site Building (fancy word for settings views, field formatters, Solr, etc in Drupal) to make starting with Archipelago or becoming a permanent resident of your own group of always sunny islands fun.
 
-You get (yet) again fresh, strange, bizarre, unusual and/or amazing features that were not even asked for! We still work hard to not deviate from our own roadmap, keeping the North Star always visible while navigating these stormy waters, to make UI/UX clearer to understand, code less redundant and easier to follow, to cover (so close) every Media/and LoD base we could wish for. This Archipelago feels like a beach day everyday we use it and manages from time to time produce wonderful surprises. It is our little tiny secret garden/pumpkin/working-bee/undiscovered-magical-islands and we are happy we see it as our own home. A child with grown-up Repository responsabilities, a planned and consistent Architecture Implementation (and still a novell one, cute, cozy and simple) that can cover, mix and match GLAM, IR, Data and Scientific/Research/Museum Tech/Education needs, metadata and media in any shape.
+You get (yet) again fresh, strange, bizarre, unusual and/or amazing features that were not even asked for! We still work hard to not deviate from our own roadmap, keeping the North Star always visible while navigating these stormy waters, to make UI/UX clearer to understand, code less redundant and easier to follow, to cover (so close) every Media/and LoD base we could wish for. This Archipelago feels like a Sunny beach day with friends and Samba everyday we use it and manages from time to time produce wonderful surprises. It is our little tiny secret garden/pumpkin/working-bee/undiscovered-magical-islands and we are happy we see it as our own home or at least a place you will keep coming back. A child with grown-up Repository responsabilities, a planned and consistent Architecture Implementation (and still a novell one, cute, cozy and simple) that can cover, mix and match GLAM, IR, Data and Scientific/Research/Museum Tech/Education needs, metadata and media in any shape.
 
 Ambitions never end to be enorm (we try to be humble) and we are always a bit quite tired (same as with Beta1, Beta2, Beta3 and RC1). Who knew we could write so much code and deploy and test over and over? We know the Horizon is still far away and we may never end sailing towards it.
 
@@ -48,8 +48,9 @@ If you like it or not, want new features or want to part of making this better, 
 ## Caring & Coding + Fixing + Testing
 
 * [Diego Pino](https://github.com/DiegoPino)
-* [Giancarlo Birello](https://github.com/giancarlobi)
 * [Allison Lund](https://github.com/alliomeria)
+* [Giancarlo Birello](https://github.com/giancarlobi)
+* [Albert Min](https://github.com/aksm)
 
 ## Acknowledgments
 
