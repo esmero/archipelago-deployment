@@ -13,6 +13,10 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+             "type": "composer",
+             "url": "https://asset-packagist.org"
         }
     ],
     "require": {
@@ -40,7 +44,7 @@
         "drupal/devel": "4.x-dev@dev",
         "drupal/display_field_copy": "^2.0",
         "drupal/ds": "^3.9",
-        "drupal/facets": "1.x-dev",
+        "drupal/facets": "2.0.x-dev@dev",
         "drupal/fancy_file_delete": "^2.0",
         "drupal/field_permissions": "^1.0@RC",
         "drupal/file_mdm": "^2",
@@ -52,6 +56,7 @@
         "drupal/imce": "^1.7",
         "drupal/inline_entity_form": "1.x-dev",
         "drupal/jquery_ui_datepicker": "^1.1",
+        "drupal/jquery_ui_slider": "^1.1",
         "drupal/jsonapi_earlyrendering_workaround": "^1.0",
         "drupal/moderated_content_bulk_publish": "^1.0",
         "drupal/pathauto": "^1.6",
@@ -82,6 +87,8 @@
         "mixnode/mixnode-warcreader-php": "^0.0.6",
         "ml/json-ld": "^1.0",
         "mtdowling/jmespath.php": "^2.4",
+        "npm-asset/nouislider": "^14",
+        "oomphinc/composer-installers-extender": "^2.0",
         "pear/archive_tar": "^1.4.12",
         "ramsey/uuid": "^4.1",
         "react/child-process": "^0.6.1",
@@ -143,12 +150,18 @@
                 "web-root": "web/"
             }
         },
+        "installer-types": [
+             "npm-asset",
+             "bower-asset"
+        ],
         "installer-paths": {
             "web/core": [
                 "type:drupal-core"
             ],
             "web/libraries/{$name}": [
-                "type:drupal-library"
+                "type:drupal-library",
+                "type:npm-asset",
+                "type:bower-asset"
             ],
             "web/modules/contrib/{$name}": [
                 "type:drupal-module"
@@ -164,6 +177,10 @@
             ]
         },
         "enable-patching": true,
-        "patches": null
+        "patches": {
+            "drupal/facets": {
+                "Fix deprecated JQUERY UI Slider": "https://www.drupal.org/files/issues/2021-11-12/issue-3153622-nouislider_25.patch" 
+            }
+        }
     }
 }

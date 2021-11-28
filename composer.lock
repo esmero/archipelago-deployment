@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "006cbde5b4d4f0cfcc4e33b79500ac66",
+    "content-hash": "76bcd88ef82f43b34c8c2f528297f4b4",
     "packages": [
         {
             "name": "archipelago/ami",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/ami.git",
-                "reference": "effe38ee1e276c5351730bbcc2c9a076222d8bbc"
+                "reference": "5f94b18f9c24c5415c9645d0b43870e7feb74b74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/ami/zipball/effe38ee1e276c5351730bbcc2c9a076222d8bbc",
-                "reference": "effe38ee1e276c5351730bbcc2c9a076222d8bbc",
+                "url": "https://api.github.com/repos/esmero/ami/zipball/5f94b18f9c24c5415c9645d0b43870e7feb74b74",
+                "reference": "5f94b18f9c24c5415c9645d0b43870e7feb74b74",
                 "shasum": ""
             },
             "require": {
@@ -61,7 +61,7 @@
                 "issues": "https://github.com/esmero/ami/issues",
                 "source": "https://github.com/esmero/ami/tree/0.2.0"
             },
-            "time": "2021-11-18T00:37:10+00:00"
+            "time": "2021-11-27T22:03:14+00:00"
         },
         {
             "name": "archipelago/archipelago_subtheme",
@@ -69,12 +69,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme.git",
-                "reference": "74b350f6115e86b69c7fc720e97fc87759902bb5"
+                "reference": "2193d7818b24864f9fae5d6e1a385ac1cb2153ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/74b350f6115e86b69c7fc720e97fc87759902bb5",
-                "reference": "74b350f6115e86b69c7fc720e97fc87759902bb5",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/2193d7818b24864f9fae5d6e1a385ac1cb2153ac",
+                "reference": "2193d7818b24864f9fae5d6e1a385ac1cb2153ac",
                 "shasum": ""
             },
             "require": {
@@ -99,7 +99,7 @@
                 "issues": "https://github.com/esmero/archipelago_subtheme/issues",
                 "source": "https://github.com/esmero/archipelago_subtheme/tree/1.0.0-RC3"
             },
-            "time": "2021-11-25T17:15:00+00:00"
+            "time": "2021-11-25T20:18:12+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -3683,30 +3683,29 @@
         },
         {
             "name": "drupal/facets",
-            "version": "dev-1.x",
+            "version": "dev-2.0.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/facets.git",
-                "reference": "520baf605bae76182d56f6c6b468a2aacf04b4b0"
+                "reference": "fd466a11f4a6d5cadd928f972875342bc1f25782"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9"
+                "drupal/core": "^9.1"
             },
             "conflict": {
                 "drupal/search_api": "<1.14"
             },
             "require-dev": {
-                "drupal/search_api": "~1.14"
+                "drupal/search_api": "~1.21"
             },
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-1.x": "1.x-dev",
-                    "dev-8.x-1.x": "1.x-dev"
+                    "dev-2.0.x": "2.0.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.8+4-dev",
-                    "datestamp": "1636704920",
+                    "version": "2.0.x-dev",
+                    "datestamp": "1636720696",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -4493,6 +4492,59 @@
             "homepage": "https://www.drupal.org/project/jquery_ui_datepicker",
             "support": {
                 "source": "https://git.drupalcode.org/project/jquery_ui_datepicker"
+            }
+        },
+        {
+            "name": "drupal/jquery_ui_slider",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/jquery_ui_slider.git",
+                "reference": "8.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/jquery_ui_slider-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "79b90cf60d45fc33ffdaa84bb2d6563f78a7d3d1"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9",
+                "drupal/jquery_ui": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.1",
+                    "datestamp": "1584107817",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bnjmnm",
+                    "homepage": "https://www.drupal.org/user/2369194"
+                },
+                {
+                    "name": "lauriii",
+                    "homepage": "https://www.drupal.org/user/1078742"
+                },
+                {
+                    "name": "zrpnr",
+                    "homepage": "https://www.drupal.org/user/1448368"
+                }
+            ],
+            "description": "Provides jQuery UI Slider library.",
+            "homepage": "https://www.drupal.org/project/jquery_ui_slider",
+            "support": {
+                "source": "https://git.drupalcode.org/project/jquery_ui_slider"
             }
         },
         {
@@ -8987,6 +9039,75 @@
             "time": "2021-11-03T20:52:16+00:00"
         },
         {
+            "name": "npm-asset/nouislider",
+            "version": "14.7.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/nouislider/-/nouislider-14.7.0.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "oomphinc/composer-installers-extender",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oomphinc/composer-installers-extender.git",
+                "reference": "8d3fe38a1723e0e91076920c8bb946b1696e28ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oomphinc/composer-installers-extender/zipball/8d3fe38a1723e0e91076920c8bb946b1696e28ca",
+                "reference": "8d3fe38a1723e0e91076920c8bb946b1696e28ca",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1 || ^2.0",
+                "composer/installers": "^1.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "composer/composer": "^2.0",
+                "phpunit/phpunit": "^7.2",
+                "squizlabs/php_codesniffer": "^3.3"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "OomphInc\\ComposerInstallersExtender\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "OomphInc\\ComposerInstallersExtender\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Beemsterboer",
+                    "email": "stephen@oomphinc.com",
+                    "homepage": "https://github.com/balbuf"
+                },
+                {
+                    "name": "Nathan Dentzau",
+                    "email": "nate@oomphinc.com",
+                    "homepage": "http://oomph.is/ndentzau"
+                }
+            ],
+            "description": "Extend the composer/installers plugin to accept any arbitrary package type.",
+            "homepage": "http://www.oomphinc.com/",
+            "support": {
+                "issues": "https://github.com/oomphinc/composer-installers-extender/issues",
+                "source": "https://github.com/oomphinc/composer-installers-extender/tree/2.0.0"
+            },
+            "time": "2020-08-11T21:06:11+00:00"
+        },
+        {
             "name": "paragonie/constant_time_encoding",
             "version": "v2.4.0",
             "source": {
@@ -10972,12 +11093,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "c6bd4aef4d3d2deb1cfc3064dd1dbeef051633ad"
+                "reference": "1d2e51d2b3d0ef07f5f6fbf5d12499e7f62b7895"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/c6bd4aef4d3d2deb1cfc3064dd1dbeef051633ad",
-                "reference": "c6bd4aef4d3d2deb1cfc3064dd1dbeef051633ad",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/1d2e51d2b3d0ef07f5f6fbf5d12499e7f62b7895",
+                "reference": "1d2e51d2b3d0ef07f5f6fbf5d12499e7f62b7895",
                 "shasum": ""
             },
             "require": {
@@ -11008,7 +11129,7 @@
                 "issues": "https://github.com/esmero/format_strawberryfield/issues",
                 "source": "https://github.com/esmero/format_strawberryfield/tree/1.0.0-RC3"
             },
-            "time": "2021-11-24T15:51:40+00:00"
+            "time": "2021-11-27T22:44:01+00:00"
         },
         {
             "name": "strawberryfield/strawberry_runners",
@@ -11016,12 +11137,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberry_runners.git",
-                "reference": "0537d88185aa0b21429f9f8f2f578d61938ba984"
+                "reference": "f6cfcf783b55cc0a206d9436799acf81116fbb46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberry_runners/zipball/0537d88185aa0b21429f9f8f2f578d61938ba984",
-                "reference": "0537d88185aa0b21429f9f8f2f578d61938ba984",
+                "url": "https://api.github.com/repos/esmero/strawberry_runners/zipball/f6cfcf783b55cc0a206d9436799acf81116fbb46",
+                "reference": "f6cfcf783b55cc0a206d9436799acf81116fbb46",
                 "shasum": ""
             },
             "require": {
@@ -11061,7 +11182,7 @@
                 "issues": "https://github.com/esmero/strawberry_runners/issues",
                 "source": "https://github.com/esmero/strawberry_runners/tree/0.2.0"
             },
-            "time": "2021-08-15T20:52:58+00:00"
+            "time": "2021-11-28T22:03:55+00:00"
         },
         {
             "name": "strawberryfield/strawberryfield",
@@ -11069,12 +11190,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "e9be36fda9846c26df5323d5fa8bae6a2fb9fe15"
+                "reference": "f4559d6b7f15ca742b398771e7ed2142a5e8a814"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/e9be36fda9846c26df5323d5fa8bae6a2fb9fe15",
-                "reference": "e9be36fda9846c26df5323d5fa8bae6a2fb9fe15",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/f4559d6b7f15ca742b398771e7ed2142a5e8a814",
+                "reference": "f4559d6b7f15ca742b398771e7ed2142a5e8a814",
                 "shasum": ""
             },
             "require": {
@@ -11117,7 +11238,7 @@
                 "issues": "https://github.com/esmero/strawberryfield/issues",
                 "source": "https://github.com/esmero/strawberryfield/tree/1.0.0-RC3"
             },
-            "time": "2021-11-17T02:40:04+00:00"
+            "time": "2021-11-27T23:37:25+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",
