@@ -1945,10 +1945,10 @@ display:
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
+            strip_tags: true
             trim: true
             preserve_tags: ''
-            html: true
+            html: false
           element_type: ''
           element_class: ''
           element_label_type: ''

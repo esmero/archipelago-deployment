@@ -90,11 +90,6 @@ type_to_viewmode:
     active: true
     weight: 8
   -
-    jsontype: VisualArtwork
-    view_mode: digital_object_with_video_player
-    active: true
-    weight: 9
-  -
     jsontype: Collection
     view_mode: collection_listing
     active: true
@@ -137,5 +132,10 @@ type_to_viewmode:
   -
     jsontype: Page
     view_mode: digital_object_viewmode_fullitem
+    active: true
+    weight: 28
+  -
+    jsontype: VisualArtwork
+    view_mode: digital_object_with_mirador_viewer
     active: true
     weight: 28

@@ -62,6 +62,7 @@ module:
   inline_form_errors: 0
   jquery_ui: 0
   jquery_ui_datepicker: 0
+  jquery_ui_slider: 0
   jsonapi: 0
   jsonapi_earlyrendering_workaround: 0
   language: 0
