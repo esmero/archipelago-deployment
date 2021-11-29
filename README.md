@@ -13,6 +13,7 @@ This repository serves as bootstrap for a Archipelago 1.0.0-RC3 deployment via D
 - Cantaloupe 4.1.9 as IIIF Server with Video Frame extraction and PDF support
 - A Skeleton Project setup to run latest Version of Drupal (9.2.9) and Strawberry Field modules on 1.0.0-RC3 & friends on 0.2.0
 - Official *Drupal 9 ready* release again. D9.2.9 this time. Drupal 8 is no longer maintained, and we have documented the upgrade path
+- Complete support for Apple Silicon *M1* Machines and in general arm64 architecture Chips like Raspberry Pi 4, with specially built arm64 docker containers. Blazing fast OCR!
 
 The skeleton project contains all the pieces needed to run a local deployment of a vanilla Archipelago including (*YES*!) content provided as optional feature from [archipelago-recyclables](https://github.com/esmero/archipelago-recyclables)
 
@@ -20,7 +21,7 @@ The skeleton project contains all the pieces needed to run a local deployment of
 
 This is the recommended, simplest way for this release. There are a too many, tons of fun new features, Metadata Displays, viewers, new JS libraries, better HUGE import capabilities, bug fixes (yes), webform elements and improvements! W3C WebAnnotations capabilities are even better now by the great team behind https://recogito.github.io/annotorious/api-docs/osd-plugin/ (thanks Rainer Simon) and with complete integration in our UI and metadata backends. Also [WACZ! and replay.web](https://github.com/webrecorder/replayweb.page) both fabulous developments by the Webrecorder team (thanks Ilya Kreymer and Emma Dickson). There is more. Release will have a full feature list. Promised.
 
-## OSX:
+## OSX Intel or Apple Silicon M1:
 
 [Step by Step deployment on OSX](docs/osx.md)
 
@@ -33,7 +34,7 @@ This is the recommended, simplest way for this release. There are a too many, to
 
 ## 1.0.0-RC3
 
-We have been working hard on 1.0.0-RC3 and it took us again 6 months from the latest releas to reach this point. RC3 is different. There won't be any more Release Candidates and this leads directly, in a time span of 2 weeks into 1.0.0. From there on 1.1.0, etc. You already know we take Release Candidates seriously and this one brings a huge list of new features, improvements and migration tools, finally closing the cycle. There are many bug fixes, requested needs, improvements, AMI with remote import and LoD reconciliation, invisible and visible workflow changes, smarter processing, and most important all made to allow you to extend Archipelago even more. We ship now with a lot more Site Building (fancy word for settings views, field formatters, Solr, etc in Drupal) to make starting with Archipelago or becoming a permanent resident of your own group of always sunny islands fun.
+We have been working hard on 1.0.0-RC3 and it took us again 6 months from the latest releas to reach this point. RC3 is different. There won't be any more Release Candidates and this leads directly, in a time span of 2-3 weeks into 1.0.0. From there on 1.1.0, etc. You already know we take Release Candidates seriously and this one brings a huge list of new features, improvements and migration tools, finally closing the cycle. There are many bug fixes, requested needs, improvements, AMI with remote import and LoD reconciliation, invisible and visible workflow changes, smarter processing, and most important all made to allow you to extend Archipelago even more. We ship now with a lot more Site Building (fancy word for settings views, field formatters, Solr, etc in Drupal) to make starting with Archipelago or becoming a permanent resident of your own group of always sunny islands fun.
 
 You get (yet) again fresh, strange, bizarre, unusual and/or amazing features that were not even asked for! We still work hard to not deviate from our own roadmap, keeping the North Star always visible while navigating these stormy waters, to make UI/UX clearer to understand, code less redundant and easier to follow, to cover (so close) every Media/and LoD base we could wish for. This Archipelago feels like a Sunny beach day with friends and Samba everyday we use it and manages from time to time produce wonderful surprises. It is our little tiny secret garden/pumpkin/working-bee/undiscovered-magical-islands and we are happy we see it as our own home or at least a place you will keep coming back. A child with grown-up Repository responsabilities, a planned and consistent Architecture Implementation (and still a novell one, cute, cozy and simple) that can cover, mix and match GLAM, IR, Data and Scientific/Research/Museum Tech/Education needs, metadata and media in any shape.
 

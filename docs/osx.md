@@ -64,9 +64,9 @@ docker rm esmero-php
 docker rm esmero-minio
 ```
 
-Ok, now we are ready to start.
+Ok, now we are ready to start. Depending on what type of Chip your Apple uses you have two options:
 
-## Step 1: Docker Deployment
+## Step 1 (Intel): Docker Deployment on Intel Chips Apple Machines
 
 ```Shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
@@ -77,7 +77,18 @@ docker-compose pull
 docker-compose up -d
 ```
 
-Note: If you are running from an external Drive or a partition/filesystem that is `Case Sensitive` and is not syncing automatically to `Apple Cloud` you can also use docker-compose-linux.yml
+## Step 1 (M1): Docker Deployment on Apple Silicon Chips (M1)
+
+```Shell
+git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
+cd archipelago-deployment
+git checkout 1.0.0-RC3
+cp docker-compose-arm64.yml docker-compose.yml
+docker-compose pull
+docker-compose up -d
+```
+
+Note: If you are running on an Intel Apple Machine from an external Drive or a partition/filesystem that is `Case Sensitive` and is not syncing automatically to `Apple Cloud` you can also use docker-compose-linux.yml
 Note2: `docker-compose.yml` is git ignored in case you make local adjustments or changes to it.
 
 ## Step 2: Set up your Minio S3 bucket
