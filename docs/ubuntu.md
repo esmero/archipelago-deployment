@@ -80,7 +80,7 @@ Ok, now we are ready to start.
 
 ## Step 1: Deployment
 
-##### Prefer to watch a video of how to install? Go to our [`user contributed documentation`](#user-contributed-documentation-a-video)!
+##### Prefer to watch a video to see what it's like to install? Go to our [`user contributed documentation`](#user-contributed-documentation-a-video)[^1]!
 
 #### IMPORTANT
 
@@ -206,9 +206,11 @@ If you see any issues or errors or need help with a step, please let us know (AS
 
 If you like this, let us know!
 
-### User contributed documentation (A Video!):
+### User contributed documentation (A Video!)[^1]:
 
-_Installing Archipelago on AWS Ubuntu_ by [Zach Spalding](https://github.com/senyzspalding): https://youtu.be/RBy7UMxSmyQ
+_Installing Archipelago on AWS Ubuntu_ by [Zach Spalding](https://github.com/senyzspalding): <https://youtu.be/RBy7UMxSmyQ>
+
+[^1]: You may find this user contributed tutorial video, which was created for an earlier Archipelago release, to be helpful. Please note that there are significant differences between the executed steps and that you need to follow the current release instructions in order to have a successful deployment.
 
 ## Caring & Coding + Fixing + Testing
 
