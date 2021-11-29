@@ -99,7 +99,7 @@ Now that you got it, lets deploy:
 ```Shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.0.0-RC3D9
+git checkout 1.0.0-RC3
 ```
 
 And now a hard choice. Which docker-compose/ensemble? Edge? Stable? Legacy? So many choices.
