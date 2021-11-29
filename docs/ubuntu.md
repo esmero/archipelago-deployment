@@ -43,7 +43,7 @@ Git tools are included by default in Ubuntu
 
 ### Wait! Question: Do you have a previous version of Archipelago running?
 
-If so, let's give that hard working repository a break first. If not, [Step 1](#step-1-docker-deployment):
+If so, let's give that hard working repository a break first. If not, [Step 1](#step-1-deployment):
 
 - Open a terminal (you have that already right?) and go to your previous download/git clone folder and run:
 
