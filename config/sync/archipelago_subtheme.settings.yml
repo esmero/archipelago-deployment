@@ -88,7 +88,7 @@ bootstrap_barrio_icons: fontawesome
 bootstrap_barrio_system_messages: ''
 bootstrap_barrio_table_style: ''
 bootstrap_barrio_table_head: ''
-bootstrap_barrio_messages_widget: toasts
+bootstrap_barrio_messages_widget: default
 bootstrap_barrio_radio: standard
 bootstrap_barrio_checkbox: switch
 bootstrap_barrio_select: custom
