@@ -15,6 +15,7 @@ you can share that output when asking for help.
 Happy deploying!
 
 ## Prerequisites
+
 - At least 10 Gbytes of free space (to get started)
 - Some basic Unix/Terminal Skills
 - 2-4 Gbytes of RAM (4 Recommended)
@@ -37,6 +38,7 @@ Log out, log in again!
 ```Shell
 sudo apt install docker-compose
 ```
+
 Git tools are included by default in Ubuntu
 
 ### Wait! Question: Do you have a previous version of Archipelago running?
@@ -78,13 +80,14 @@ Ok, now we are ready to start.
 
 ## Step 1: Deployment
 
-##### Prefer to watch a video of how to install? Go to our [`user contributed documentation`](https://github.com/esmero/archipelago-deployment/blob/1.0.0-RC1/docs/ubuntu.md#user-contributed-documentation)!
+##### Prefer to watch a video of how to install? Go to our [`user contributed documentation`](#user-contributed-documentation)!
 
 #### IMPORTANT
 
 If you run `docker-compose` as root user (using `sudo`) some enviromental variables, like the current folder used inside the `docker-compose.yml` to mount the Volumens will not work and you will see a bunch of errors.
 
 There are two possible solutions.
+
 - The best is to add your [user to the docker group](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) (so no `sudo` needed).
 - Second option is to replace every `{$PWD}` inside your `docker-compose.yml` with either the full path to your current folder, or with a `.` and wrap that whole line in double quotes, basically making the paths for volumens relatives.
 
@@ -96,7 +99,7 @@ Now that you got it, lets deploy:
 ```Shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.0.0-RC2D9
+git checkout 1.0.0-RC3D9
 ```
 
 And now a hard choice. Which docker-compose/ensemble? Edge? Stable? Legacy? So many choices.
@@ -107,36 +110,38 @@ cp docker-compose-linux.yml docker-compose.yml
 docker-compose up -d
 ```
 
-You have something running and do not want to update Databases/Solr indexes: Go legact. In doubt? Ask us please. We can help.
-
+You have something running and do not want to update Databases/Solr indexes: Go legacy. In doubt? Ask us please. We can help.
 
 If you want to stay more traditional and stick with older versions PHP7.4/Solr7.5/MySQL57 we recommend
+
 ```Shell
 cp docker-compose-legacy.yml docker-compose.yml
 docker-compose up -d
 ```
-
 
 Note: `docker-compose.yml` is git ignored in case you make local adjustments or changes to it.
 
 You need to make sure Docker can read/write to your local Drive a.k.a mounted volumens (specially if you decided not to run it as `root`, because we told you so!)
 
 This means in practice running:
+
 ```Shell
-sudo chown -R 100:100 persistent/iiifcache
+sudo chown -R 8183:8183 persistent/iiifcache
 sudo chown -R 8983:8983 persistent/solrcore
 ```
 
 And then
+
 ```Shell
 docker exec -ti esmero-php bash -c "chown -R www-data:www-data private"
 ```
+
 *Question:* why this last command different: Answer: Just a variation. Long answer is the internal `www-data` user in that container (Alpine Linux) has uid:82, but on ubuntu the www-data user has a different one so we let docker assing the uid from inside instead. In practice you could also run  directly `sudo chown -R 82:82 private` which would only apply to an Alpine use case, which can differ in the future! Does this make sense? No worries if not.
 
 ## Step 2: Set up your Minio S3 bucket
 
 Once all containers are up and running (you can do a `docker ps` to check),
-access `http://localhost:9000` using your most loved Web Browser with the following credentials:
+access `http://localhost:9001` using your most loved Web Browser with the following credentials:
 
 ```
 user:minio
@@ -145,14 +150,14 @@ pass:minio123
 
 and create a bucket named "archipelago". To do so press the red/coral `+` button on the bottom-right side and press the `Bucket` icon , it has a tooltip that says "create bucket". Write `archipelago` and submit, done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
-
-## Step 3: Deploy Drupal 9.1.8 and the awesome Archipelago Modules
+## Step 3: Deploy Drupal 9.2.9 and the awesome Archipelago Modules
 
 The following will run composer inside the esmero-php container to download all dependencies and Drupal Core too.
 
 ```Shell
 docker exec -ti esmero-php bash -c "composer install"
 ```
+
 You will see a warning: `Do not run Composer as root/super user! See https://getcomposer.org/root for details` and the a long list of PHP packages, don't worry, all is good here, keep following the instructions! Once that command finishes run our setup script:
 
 ```Shell
@@ -208,9 +213,8 @@ _Installing Archipelago on AWS Ubuntu_ by [Zach Spalding](https://github.com/sen
 * [Diego Pino](https://github.com/DiegoPino)
 * [Giancarlo Birello](https://github.com/giancarlobi)
 * [Allison Lund](https://github.com/alliomeria)
+* [Albert Min](https://github.com/aksm
 
 ## License
 
 [GPLv3](http://www.gnu.org/licenses/gpl-3.0.txt)
-
-
