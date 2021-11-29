@@ -29,18 +29,19 @@
 </blockquote>
   <h4>Description</h4>
   {% set text = data.description %}
-  {{ text|length > 200 ? (text|slice(0, 200)|markdown_2_html|striptags('<strong><br><a>') ~ '...')|raw : text|markdown_2_html|raw }}
+  <p>{{ text|length > 200 ? (text|slice(0, 200)|markdown_2_html|striptags('<strong><br>') ~ '...')|raw : text|markdown_2_html|raw }}
 {# To display the full Description length, remove the above lines 31 and 32, this comment and the comments notation { # # } brackets, and use the line containing <p>{{ data.description }}</p> instead.
 <p>{{ data.description }}</p> 
 #}
+  </p> 
   <h4>Type of Resource</h4>
   <p>{{ data.type }}</p>
 {% if data.rights|length > 0 or data.rights_statements|length > 0 %}
 <h4>Rights</h4>
 {% if data.rights|length > 0 %} 
- <div>{% set text = data.rights %}
-  {{ text|length > 200 ? (text|slice(0, 200)|markdown_2_html|striptags('<strong><br><a>') ~ '...')|raw : text|markdown_2_html|raw }}
- </div> 
+ <p>{% set text = data.rights %}
+  {{ text|length > 300 ? (text|slice(0, 300)|markdown_2_html|striptags('<strong><br>') ~ '...')|raw : text|markdown_2_html|raw }}
+ </p> 
 {# To display the full Rights length, remove the above lines 41-43, this comment and the comments notation { # # } brackets, and use the line containing <p>{{ data.rights }}</p> instead.
 <p>{{ data.rights }}</p>
 #}   
@@ -110,3 +111,4 @@
 {% endif %}  
 {# Fixed Rights Statement example from older Archipelago versions: <h4>Rights Statements</h4>
   <a href="http://rightsstatements.org/vocab/InC-EDU/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-EDU.white.svg" title="In Copyright - Educational Use Permitted" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a> #}
+
