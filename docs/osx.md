@@ -14,6 +14,7 @@ If something fails (and we hope it does not) troubleshooting will be much easier
 Happy deploying!
 
 ### OSX:
+
 - [Install Docker for Mac](https://docs.docker.com/docker-for-mac/)
   - For OSX `Catalina` or `Big Sur` on Intel (i5/i7) the tested version is: `4.0.1(68347)`. You may go newer of course.
   - For `Big Sur` and `Apple Silicon M1` Chips please read https://docs.docker.com/docker-for-mac/apple-silicon/. You may need to enable manual compatibility mode in your `docker-compose.yml` file for the `esmero-php` and `esmero-cantaloupe` containers.
@@ -70,10 +71,12 @@ Ok, now we are ready to start.
 ```Shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.0.0-RC2D9
+git checkout 1.0.0-RC3
 cp docker-compose-osx.yml docker-compose.yml
+docker-compose pull
 docker-compose up -d
 ```
+
 Note: If you are running from an external Drive or a partition/filesystem that is `Case Sensitive` and is not syncing automatically to `Apple Cloud` you can also use docker-compose-linux.yml
 Note2: `docker-compose.yml` is git ignored in case you make local adjustments or changes to it.
 
@@ -96,6 +99,7 @@ The following will run composer inside the esmero-php container to download all 
 ```Shell
 docker exec -ti esmero-php bash -c "composer install"
 ```
+
 Once that command finishes run our setup script:
 
 ```Shell
@@ -152,9 +156,8 @@ If you like this, let us know!
 * [Diego Pino](https://github.com/DiegoPino)
 * [Giancarlo Birello](https://github.com/giancarlobi)
 * [Allison Lund](https://github.com/alliomeria)
+* [Albert Min](https://github.com/aksm)
 
 ## License
 
 [GPLv3](http://www.gnu.org/licenses/gpl-3.0.txt)
-
-

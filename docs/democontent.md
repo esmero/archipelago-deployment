@@ -7,6 +7,7 @@ You can learn and test. Then delete and move over.
 ## Prerequisites
 
 ### The new way Archipelago 1.0.0-RC2 or higher.
+
 - You installed it either via the Step by Step [deployment on OSX](osx.md), the one for [Ubuntu](ubuntu.md) or using your secret powers directly on a VM/Metal/Cloud/EC2 or even a raspberryPI.
 - You followed the guides without being too creative which means you have an `jsonapi` drupal user and an `admin` one and you can login and out of your server.
 - You remember your `admin`user
@@ -20,6 +21,7 @@ You can learn and test. Then delete and move over.
 - You are done!
 
 ### Old way, A running Archipelago 1.0-Beta3 or higher.
+
 - You installed it either via the Step by Step [deployment on OSX](osx.md), the one for [Ubuntu](ubuntu.md) or using your secret powers directly on a VM/Metal/Cloud/EC2 or even a raspberryPI.
 - You followed the guides without being too creative which means you have a `jsonapi` drupal user and you can login and out of your server.
 
@@ -66,12 +68,14 @@ File anne_009.jpg sucessfully uploaded with Internal Drupal file ID 13
 File anne_010.jpg sucessfully uploaded with Internal Drupal file ID 14
 New Object 'Anne of Green Gables : Chapters 1 and 2' with UUID 9eb28775-d73a-4904-bc79-f0e925075bc5 successfully ingested. Thanks!
 ```
+
 Gist here is: if the script says `Thanks` you are good.
 
 - If you are not running Docker (You are a unicorn or at least a hacker) you will need to tune/copy/modify the following script:
 `archipelago-deployment/d8content/archipelago-recyclables/deploy_ados.sh`
 
 Inside you will find lines like this one 
+
 ```Shell
 drush archipelago:jsonapi-ingest /var/www/html/d8content/archipelago-recyclables/ado/0c2dc01a-7dc2-48a9-b4fd-3f82331ec803.json --uuid=0c2dc01a-7dc2-48a9-b4fd-3f82331ec803 --bundle=digital_object --uri=http://esmero-web --files=/var/www/html/d8content/archipelago-recyclables/ado/0c2dc01a-7dc2-48a9-b4fd-3f82331ec803 --user=jsonapi --password=jsonapi --moderation_state=published;
 ```
@@ -79,15 +83,16 @@ drush archipelago:jsonapi-ingest /var/www/html/d8content/archipelago-recyclables
 What you want here is to modify/replace the absolute paths that point your demo objects (.json) and their assets (folders with the same name). Basically replace every entry of `/var/www/html/d8content/archipelago-recyclables/` with the path to `archipelago-recyclables`
 
 ### Need help? Blue Screen? Missed a step? Need a hug? Another Hug?
+
 If you have trouble running this or see errors or need help with a step (its only two steps), please let us know (ASAP!). You can either open an `issue` in this repository or use the [Google Group](https://groups.google.com/forum/#!forum/archipelago-commons). We are here to help.
 
 ## Caring & Coding + Fixing
 
 * [Diego Pino](https://github.com/DiegoPino)
 * [Giancarlo Birello](https://github.com/giancarlobi)
+* [Allison Lund](https://github.com/alliomeria)
+* [Albert Min](https://github.com/aksm)
 
 ## License
 
 [GPLv3](http://www.gnu.org/licenses/gpl-3.0.txt)
-
-
