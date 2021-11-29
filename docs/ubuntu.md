@@ -80,7 +80,7 @@ Ok, now we are ready to start.
 
 ## Step 1: Deployment
 
-##### Prefer to watch a video of how to install? Go to our [`user contributed documentation`](#user-contributed-documentation)!
+##### Prefer to watch a video of how to install? Go to our [`user contributed documentation`](#user-contributed-documentation-a-video)!
 
 #### IMPORTANT
 
@@ -107,6 +107,7 @@ For latest/modern stack PHP7.4/Solr8.8/MySQL8 we recommend:
 
 ```Shell
 cp docker-compose-linux.yml docker-compose.yml
+docker-compose pull
 docker-compose up -d
 ```
 
@@ -116,6 +117,7 @@ If you want to stay more traditional and stick with older versions PHP7.4/Solr7.
 
 ```Shell
 cp docker-compose-legacy.yml docker-compose.yml
+docker-compose pull
 docker-compose up -d
 ```
 
@@ -126,7 +128,7 @@ You need to make sure Docker can read/write to your local Drive a.k.a mounted vo
 This means in practice running:
 
 ```Shell
-sudo chown -R 8183:8183 persistent/iiifcache
+sudo chown -R 100:100 persistent/iiifcache
 sudo chown -R 8983:8983 persistent/solrcore
 ```
 
@@ -213,7 +215,7 @@ _Installing Archipelago on AWS Ubuntu_ by [Zach Spalding](https://github.com/sen
 * [Diego Pino](https://github.com/DiegoPino)
 * [Giancarlo Birello](https://github.com/giancarlobi)
 * [Allison Lund](https://github.com/alliomeria)
-* [Albert Min](https://github.com/aksm
+* [Albert Min](https://github.com/aksm)
 
 ## License
 

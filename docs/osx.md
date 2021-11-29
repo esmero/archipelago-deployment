@@ -71,8 +71,9 @@ Ok, now we are ready to start.
 ```Shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.0.0-RC2D9
+git checkout 1.0.0-RC3D9
 cp docker-compose-osx.yml docker-compose.yml
+docker-compose pull
 docker-compose up -d
 ```
 
