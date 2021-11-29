@@ -7,7 +7,7 @@ label: ocr
 weight: '-10'
 pluginconfig:
   source_type: asstructure
-  ado_type: Document
+  ado_type: 'Book,Article'
   jsonkey:
     'as:document': 'as:document'
     'as:image': 0
