@@ -38,8 +38,8 @@
 {% if data.rights|length > 0 or data.rights_statements|length > 0 %}
 <h4>Rights</h4>
 {% if data.rights|length > 0 %} 
- <div>{% set text = data.rights|render %}
-  {{ text|length > 200 ? text|slice(0, 200) ~ '...' : text }}
+ <div>{% set text = data.rights %}
+  {{ text|length > 200 ? (text|slice(0, 200)|markdown_2_html|striptags('<strong><br><a>') ~ '...')|raw : text|markdown_2_html|raw }}
  </div> 
 {# To display the full Rights length, remove the above lines 41-43, this comment and the comments notation { # # } brackets, and use the line containing <p>{{ data.rights }}</p> instead.
 <p>{{ data.rights }}</p>
