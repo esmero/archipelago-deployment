@@ -69,12 +69,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme.git",
-                "reference": "2193d7818b24864f9fae5d6e1a385ac1cb2153ac"
+                "reference": "09204cf738cb9f5f820a36524513b9f5e37cd782"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/2193d7818b24864f9fae5d6e1a385ac1cb2153ac",
-                "reference": "2193d7818b24864f9fae5d6e1a385ac1cb2153ac",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/09204cf738cb9f5f820a36524513b9f5e37cd782",
+                "reference": "09204cf738cb9f5f820a36524513b9f5e37cd782",
                 "shasum": ""
             },
             "require": {
@@ -99,7 +99,7 @@
                 "issues": "https://github.com/esmero/archipelago_subtheme/issues",
                 "source": "https://github.com/esmero/archipelago_subtheme/tree/1.0.0-RC3"
             },
-            "time": "2021-11-25T20:18:12+00:00"
+            "time": "2021-11-30T00:33:28+00:00"
         },
         {
             "name": "asm89/stack-cors",

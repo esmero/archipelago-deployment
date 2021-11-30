@@ -105,11 +105,6 @@ nav > ul > li.active.nav-item > a {
     text-decoration-thickness: 3px;
 }
 
-.webform-progress-tracker .progress-step.is-active .progress-marker,
-.webform-progress-tracker .progress-step.is-active:hover .progress-marker {
-    background-color: #000000;
-}
-
 div > div.carousel-item.active > div > h3 {
     background-color: #f6f6f8;
 }
