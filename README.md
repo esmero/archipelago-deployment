@@ -12,7 +12,7 @@ This repository serves as bootstrap for a Archipelago 1.0.0-RC3 deployment via D
 - Natural Language Processing via NPLWEB64
 - Cantaloupe 4.1.9 as IIIF Server with Video Frame extraction and PDF support
 - A Skeleton Project setup to run latest Version of Drupal (9.2.9) and Strawberry Field modules on 1.0.0-RC3 & friends on 0.2.0
-- Official *Drupal 9 ready* release again. D9.2.9 this time. Drupal 8 is no longer maintained, and we have documented the upgrade path
+- Official *Drupal 9 ready* release again. D9.2.9 this time. Drupal 8 is no longer maintained, and we have [documented the upgrade path](docs/upgradeFromD8ToD9.md)
 - Complete support for Apple Silicon *M1* Machines and in general arm64 architecture Chips like Raspberry Pi 4, with specially built arm64 docker containers. Blazing fast OCR!
 
 The skeleton project contains all the pieces needed to run a local deployment of a vanilla Archipelago including (*YES*!) content provided as optional feature from [archipelago-recyclables](https://github.com/esmero/archipelago-recyclables)
