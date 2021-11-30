@@ -34,7 +34,7 @@ display:
             anonymous: anonymous
             authenticated: authenticated
       cache:
-        type: search_api_tag
+        type: none
         options: {  }
       query:
         type: views_query
@@ -141,10 +141,10 @@ display:
           click_sort_column: value
           type: strawberry_metadata_formatter
           settings:
-            metadatadisplayentity_id: '13'
             specs: 'http://schema.org'
             label: 'Descriptive Metadata'
             metadatadisplayentity_uselabel: '0'
+            metadatadisplayentity_uuid: d37a75ec-5da9-4374-b190-71385e630ded
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -430,8 +430,9 @@ display:
               raw_output: false
       path: node/%/member_manifests
       pager:
-        type: none
+        type: some
         options:
+          items_per_page: 1000
           offset: 0
       display_description: 'Uses ismemberof to connect Children to Parent'
       auth:
@@ -488,10 +489,10 @@ display:
           click_sort_column: value
           type: strawberry_metadata_formatter
           settings:
-            metadatadisplayentity_id: '16'
             specs: 'http://schema.org'
             label: 'Descriptive Metadata'
             metadatadisplayentity_uselabel: '0'
+            metadatadisplayentity_uuid: adf12524-11ca-4925-bc23-d028556e75ac
           group_column: value
           group_columns: {  }
           group_rows: true

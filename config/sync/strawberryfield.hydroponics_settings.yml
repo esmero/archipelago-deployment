@@ -5,3 +5,4 @@ queues:
   - strawberryrunners_process_background
 drush_path: /var/www/html/vendor/drush/drush/drush
 home_path: ''
+time_to_expire: 1440

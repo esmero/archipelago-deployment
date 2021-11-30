@@ -11,4 +11,9 @@ id: relationship
 label: Relationship
 category: Demographic
 likert: false
-options: "Parent: Parent\n'Significant Other': 'Significant Other'\nSibling: Sibling\nChild: Child\nFriend: Friend\n"
+options: |
+  Parent: Parent
+  'Significant Other': 'Significant Other'
+  Sibling: Sibling
+  Child: Child
+  Friend: Friend

@@ -1,2 +1,5 @@
 file_scheme: s3
 object_file_scheme: s3
+file_path: ''
+object_file_strategy: default
+object_file_path: dostorage

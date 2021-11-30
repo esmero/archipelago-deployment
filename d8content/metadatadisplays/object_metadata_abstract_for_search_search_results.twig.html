@@ -1,0 +1,114 @@
+{# Updated November 2021: trim output of data.description, add Rights Statement mapping, and show trimmed output for data.rights (local rights statement) #}
+<blockquote class="blockquote">
+ {% if attribute(data, 'ismemberof') %}
+ {% if attribute(data, 'ismemberof') is iterable %}
+ {% for collection in attribute(data, 'ismemberof')%}
+   {% set parentnode = bamboo_load_entity('node', collection) %}
+   {% set parentnodeurl = url('entity.node.canonical', {'node': collection}, {'absolute': true}) %}
+ <div class="blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
+{% endfor %}
+{% else %}
+  {% set parentnode = bamboo_load_entity('node', attribute(data, 'ismemberof')) %}
+  {% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ismemberof')}, {'absolute': true}) %}
+<div class="blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
+{% endif %}
+{% endif %}
+{% if attribute(data, 'ispartof') %}
+{% if attribute(data, 'ispartof') is iterable %}
+	{% for child in attribute(data, 'ispartof')%}
+		{% set parentnode = bamboo_load_entity('node', child) %}
+		{% set parentnodeurl = url('entity.node.canonical', {'node': child}, {'absolute': true}) %}
+			<div class="blockquote-footer">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
+	{% endfor %}
+	{% else %}
+		{% set parentnode = bamboo_load_entity('node', attribute(data, 'ispartof')) %}
+		{% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ispartof')}, {'absolute': true}) %}
+			<div class="blockquote-footer">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
+{% endif %}
+{% endif %}
+</blockquote>
+  <h4>Description</h4>
+  {% set text = data.description %}
+  <p>{{ text|length > 200 ? (text|slice(0, 200)|markdown_2_html|striptags('<strong><br>') ~ '...')|raw : text|markdown_2_html|raw }}
+{# To display the full Description length, remove the above lines 31 and 32, this comment and the comments notation { # # } brackets, and use the line containing <p>{{ data.description }}</p> instead.
+<p>{{ data.description }}</p> 
+#}
+  </p> 
+  <h4>Type of Resource</h4>
+  <p>{{ data.type }}</p>
+{% if data.rights|length > 0 or data.rights_statements|length > 0 %}
+<h4>Rights</h4>
+{% if data.rights|length > 0 %} 
+ <p>{% set text = data.rights %}
+  {{ text|length > 300 ? (text|slice(0, 300)|markdown_2_html|striptags('<strong><br>') ~ '...')|raw : text|markdown_2_html|raw }}
+ </p> 
+{# To display the full Rights length, remove the above lines 41-43, this comment and the comments notation { # # } brackets, and use the line containing <p>{{ data.rights }}</p> instead.
+<p>{{ data.rights }}</p>
+#}   
+{% endif %}
+{% if data.rights_statements|length > 0 %}
+	{% if data.rights_statements in ['In Copyright'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/InC/1.0/"><img src="https://rightsstatements.org/files/buttons/InC.white.svg" title="In Copyright" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - EU Orphan Work'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/InC-OW-EU/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-OW-EU.white.svg" title="In Copyright - EU Orphan Work" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Educational Use Permitted'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/InC-EDU/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-EDU.white.svg" title="In Copyright - Educational Use Permitted" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Non-Commercial Use Permitted'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/InC-NC/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-NC.white.svg" title="In Copyright - Non-Commercial Use Permitted" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Rights-holder(s) Unlocatable or Unidentifiable'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/InC-RUU/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-RUU.white.svg" title="In Copyright - Rights-holder(s) Unlocatable or Unidentifiable" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Contractual Restrictions'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/NoC-CR/1.0/"><img src="https://rightsstatements.org/files/buttons/NoC-CR.white.svg" title="No Copyright - Contractual Restrictions" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %} 
+	{% if data.rights_statements in ['No Copyright - Non-Commercial Use Only'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/NoC-NC/1.0/"><img src="https://rightsstatements.org/files/buttons/NoC-NC.white.svg" title="No Copyright - Non-Commercial Use Only" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Other Known Legal Restrictions'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/NoC-OKLR/1.0/"><img src="https://rightsstatements.org/files/buttons/NoC-OKLR.white.svg" title="No Copyright - Other Known Legal Restrictions" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - United States'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/NoC-US/1.0/"><img src="https://rightsstatements.org/files/buttons/NoC-US.white.svg" title="No Copyright - United States" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %} 
+	{% if data.rights_statements in ['Copyright Not Evaluated'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/CNE/1.0/"><img src="https://rightsstatements.org/files/buttons/CNE.white.svg" title="Copyright Not Evaluated" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['Copyright Undetermined'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/UND/1.0/"><img src="https://rightsstatements.org/files/buttons/UND.white.svg" title="Copyright Undetermined" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+	{% if data.rights_statements in ['No Known Copyright'] %} 
+		<p>
+		<a href="http://rightsstatements.org/vocab/NKC/1.0/"><img src="https://rightsstatements.org/files/buttons/NKC.white.svg" title="No Known Copyright" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a>
+		</p>
+	{% endif %}
+{% endif %}
+{% endif %}  
+{# Fixed Rights Statement example from older Archipelago versions: <h4>Rights Statements</h4>
+  <a href="http://rightsstatements.org/vocab/InC-EDU/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-EDU.white.svg" title="In Copyright - Educational Use Permitted" style="max-width:120px;height:auto;background-color:pink ;padding:1em"></a> #}
+

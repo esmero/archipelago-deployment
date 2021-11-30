@@ -1,0 +1,315 @@
+{
+    "csv": "305",
+    "zip": null,
+    "plugin": "spreadsheet",
+    "mapping": {
+        "globalmapping": "custom",
+        "custommapping_settings": {
+            "Map": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "Book": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "3DModel": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "WebPage": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "Painting": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "Panorama": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "Collection": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object_collection:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "Photograph": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "AudioObject": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "VideoObject": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "Conversation": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "PublicationIssue": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "Article": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "VisualArtwork": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "CreativeWorkSeries": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object_collection:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            }
+        },
+        "globalmapping_settings": {
+            "files": [],
+            "bundle": "digital_object:field_descriptive_metadata",
+            "metadata_config": {
+                "webform": "descriptive_metadata",
+                "template": "11"
+            }
+        }
+    },
+    "adomapping": {
+        "base": {
+            "label": "label"
+        },
+        "uuid": {
+            "uuid": "node_uuid"
+        },
+        "parents": {
+            "ispartof": "ispartof",
+            "ismemberof": "ismemberof"
+        },
+        "autouuid": 0
+    },
+    "total_rows": 25,
+    "column_keys": [
+        "node_uuid",
+        "ispartof",
+        "ismemberof",
+        "sequence_id",
+        "type",
+        "label",
+        "description",
+        "website_url",
+        "creator_lod",
+        "issue_info",
+        "date_created",
+        "date_published",
+        "publisher",
+        "interviewee",
+        "interviewer",
+        "duration",
+        "language",
+        "owner",
+        "local_identifier",
+        "rights",
+        "rights_statements",
+        "subject_loc",
+        "subject_lcnaf_corporate_names",
+        "subject_lcnaf_geographic_names",
+        "subject_lcgft_terms",
+        "subjects_local",
+        "term_aat_getty",
+        "subject_wikidata",
+        "geographic_location",
+        "images",
+        "documents",
+        "audios",
+        "videos",
+        "model",
+        "upload_associated_warcs"
+    ],
+    "pluginconfig": {
+        "op": "create",
+        "file": [
+            "156"
+        ]
+    }
+}

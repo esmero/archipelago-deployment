@@ -7,7 +7,7 @@ label: ocr
 weight: '-10'
 pluginconfig:
   source_type: asstructure
-  ado_type: Document
+  ado_type: 'Book,Article'
   jsonkey:
     'as:document': 'as:document'
     'as:image': 0
@@ -31,7 +31,10 @@ pluginconfig:
     searchapi: searchapi
     plugin: 0
   processor_queue_type: background
-  timeout: '99'
+  nlp: 1
+  nlp_url: 'http://esmero-nlp:6400'
+  nlp_method: polyglot
+  timeout: '300'
   weight: '0'
 pluginid: ocr
 active: true

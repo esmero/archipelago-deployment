@@ -49,7 +49,7 @@
     that avoids logging every request
 -->
 
-<schema name="drupal-4.1.1-solr-8.x-0" version="1.6">
+<schema name="drupal-4.2.1-solr-8.x-0" version="1.6">
   <!-- attribute "name" is the name of this schema and is only used for display purposes.
        version="x.y" is Solr's version number for the schema syntax and
        semantics.  It should not normally be changed by applications.
@@ -379,6 +379,7 @@
     <fieldType name="boost_term_payload" stored="false" indexed="true" class="solr.TextField" >
       <analyzer>
         <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <filter class="solr.LengthFilterFactory" min="2" max="100"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
         <!--
@@ -393,7 +394,6 @@
              Fully Qualified class name implementing PayloadEncoder, Encoder must have a no arg constructor.
          -->
         <filter class="solr.DelimitedPayloadTokenFilterFactory" encoder="float"/>
-        <filter class="solr.LengthFilterFactory" min="2" max="100"/>
       </analyzer>
     </fieldType>
 

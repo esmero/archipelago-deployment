@@ -17,7 +17,115 @@ id: template_issue
 title: Issue
 description: 'An issue webform template.'
 category: ''
-elements: "meta_data_details:\n  '#title': 'Issue Meta Data'\n  '#type': details\n  '#open': true\n  meta_data_01:\n    '#type': webform_flexbox\n    title:\n      '#type': textfield\n      '#title': Title\n      '#required': true\n    project:\n      '#type': select\n      '#title': Project\n      '#required': true\n      '#options':\n        'Project I': 'Project I'\n        'Project II': 'Project II'\n        'Project III': 'Project III'\n  meta_data_02:\n    '#type': webform_flexbox\n    category:\n      '#type': select\n      '#title': Category\n      '#required': true\n      '#options':\n        'Bug report': 'Bug report'\n        Task: Task\n        'Feature request': 'Feature request'\n        'Support request': 'Support request'\n        Plan: Plan\n    priority:\n      '#type': select\n      '#title': Priority\n      '#required': true\n      '#options':\n        4: Critical\n        3: Major\n        2: Normal\n        1: Minor\n    status:\n      '#type': webform_select_other\n      '#title': Status\n      '#required': true\n      '#options':\n        Active: Active\n        'Needs work': 'Needs work'\n        'Needs review': 'Needs review'\n        'Reviewed & tested by the community': 'Reviewed & tested by the community'\n        'Patch (to be ported)': 'Patch (to be ported)'\n        Fixed: Fixed\n        Postponed: Postponed\n        'Postponed (maintainer needs more info)': 'Postponed (maintainer needs more info)'\n        'Closed (duplicate)': 'Closed (duplicate)'\n        'Closed (won''t fix)': 'Closed (won''t fix)'\n        'Closed (works as designed)': 'Closed (works as designed)'\n        'Closed (cannot reproduce)': 'Closed (cannot reproduce)'\n        'Closed (outdated)': 'Closed (outdated)'\n    version:\n      '#type': webform_autocomplete\n      '#title': Version\n      '#required': true\n      '#autocomplete_existing': true\n    component:\n      '#type': webform_select_other\n      '#title': Component\n      '#required': true\n      '#options':\n        Code: Code\n        Documentation: Documentation\n        Miscellaneous: Miscellaneous\n        'User interface': 'User interface'\n    assigned:\n      '#type': entity_autocomplete\n      '#title': Assigned\n      '#target_type': user\n      '#selection_handler': 'default:user'\n      '#selection_settings':\n        include_anonymous: false\n  meta_data_03:\n    '#type': webform_flexbox\n    tags:\n      '#type': entity_autocomplete\n      '#title': 'Issue Tags'\n      '#description': 'Do <strong>NOT</strong> use tags for adding random keywords or duplicating any other fields.  Separate terms with a comma, not a space.'\n      '#tags': true\n      '#target_type': taxonomy_term\n      '#selection_handler': 'default:taxonomy_term'\n      '#selection_settings':\n        target_bundles:\n          tags: tags\n        auto_create: 1\n        auto_create_bundle: tags\nsummary_and_relationshsips_details:\n  '#title': 'Issue Summary'\n  '#type': details\n  '#open': true\n  summary:\n    '#type': text_format\n    '#title': Summary\n    '#description': 'An issue summary is a concise overview of a full issue report. Issue summaries need to be written if the issue has more than a few comments and/or an average developer cannot understand the subject matter after a few minutes of study. These summaries are key sources of information for core developers, patch reviewers and users who need to skim large amounts of issues and information quickly.'\nfiles_details:\n  '#title': Files\n  '#type': details\n  '#open': true\n  files:\n    '#type': managed_file\n    '#title': Files\n    '#multiple': true\n"
+elements: |
+  meta_data_details:
+    '#title': 'Issue Meta Data'
+    '#type': details
+    '#open': true
+    meta_data_01:
+      '#type': webform_flexbox
+      title:
+        '#type': textfield
+        '#title': Title
+        '#required': true
+      project:
+        '#type': select
+        '#title': Project
+        '#required': true
+        '#options':
+          'Project I': 'Project I'
+          'Project II': 'Project II'
+          'Project III': 'Project III'
+    meta_data_02:
+      '#type': webform_flexbox
+      category:
+        '#type': select
+        '#title': Category
+        '#required': true
+        '#options':
+          'Bug report': 'Bug report'
+          Task: Task
+          'Feature request': 'Feature request'
+          'Support request': 'Support request'
+          Plan: Plan
+      priority:
+        '#type': select
+        '#title': Priority
+        '#required': true
+        '#options':
+          4: Critical
+          3: Major
+          2: Normal
+          1: Minor
+      status:
+        '#type': webform_select_other
+        '#title': Status
+        '#required': true
+        '#options':
+          Active: Active
+          'Needs work': 'Needs work'
+          'Needs review': 'Needs review'
+          'Reviewed & tested by the community': 'Reviewed & tested by the community'
+          'Patch (to be ported)': 'Patch (to be ported)'
+          Fixed: Fixed
+          Postponed: Postponed
+          'Postponed (maintainer needs more info)': 'Postponed (maintainer needs more info)'
+          'Closed (duplicate)': 'Closed (duplicate)'
+          'Closed (won''t fix)': 'Closed (won''t fix)'
+          'Closed (works as designed)': 'Closed (works as designed)'
+          'Closed (cannot reproduce)': 'Closed (cannot reproduce)'
+          'Closed (outdated)': 'Closed (outdated)'
+      version:
+        '#type': webform_autocomplete
+        '#title': Version
+        '#required': true
+        '#autocomplete_existing': true
+      component:
+        '#type': webform_select_other
+        '#title': Component
+        '#required': true
+        '#options':
+          Code: Code
+          Documentation: Documentation
+          Miscellaneous: Miscellaneous
+          'User interface': 'User interface'
+      assigned:
+        '#type': entity_autocomplete
+        '#title': Assigned
+        '#target_type': user
+        '#selection_handler': 'default:user'
+        '#selection_settings':
+          include_anonymous: false
+    meta_data_03:
+      '#type': webform_flexbox
+      tags:
+        '#type': entity_autocomplete
+        '#title': 'Issue Tags'
+        '#description': 'Do <strong>NOT</strong> use tags for adding random keywords or duplicating any other fields.  Separate terms with a comma, not a space.'
+        '#tags': true
+        '#target_type': taxonomy_term
+        '#selection_handler': 'default:taxonomy_term'
+        '#selection_settings':
+          target_bundles:
+            tags: tags
+          auto_create: 1
+          auto_create_bundle: tags
+  summary_and_relationshsips_details:
+    '#title': 'Issue Summary'
+    '#type': details
+    '#open': true
+    summary:
+      '#type': text_format
+      '#title': Summary
+      '#description': 'An issue summary is a concise overview of a full issue report. Issue summaries need to be written if the issue has more than a few comments and/or an average developer cannot understand the subject matter after a few minutes of study. These summaries are key sources of information for core developers, patch reviewers and users who need to skim large amounts of issues and information quickly.'
+  files_details:
+    '#title': Files
+    '#type': details
+    '#open': true
+    files:
+      '#type': managed_file
+      '#title': Files
+      '#multiple': true
 css: ''
 javascript: ''
 settings:

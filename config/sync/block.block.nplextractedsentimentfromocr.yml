@@ -1,0 +1,49 @@
+uuid: 4a837b77-88a2-49ee-8929-9c471d7eaa19
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.npl_extracted_sentiment_from_ocr
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme
+id: nplextractedsentimentfromocr
+theme: archipelago_subtheme
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'facet_block:npl_extracted_sentiment_from_ocr'
+settings:
+  id: 'facet_block:npl_extracted_sentiment_from_ocr'
+  label: 'NPL Extracted Sentiment from OCR'
+  provider: facets
+  label_display: visible
+  block_id: nplextractedsentimentfromocr
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    view_inclusion:
+      view-solr_search_content-page_3: view-solr_search_content-page_3
+    negate: false
+    context_mapping: {  }
+  context_all:
+    id: context_all
+    values: ''
+    negate: null
+  context:
+    id: context
+    values: ''
+    negate: null
+  user_status:
+    id: user_status
+    user_status:
+      viewing_profile: '0'
+      logged_viewing_profile: '0'
+      own_page_true: '0'
+      field_value: '0'
+    user_fields: uid
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

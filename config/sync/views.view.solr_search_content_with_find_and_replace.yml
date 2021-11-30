@@ -268,25 +268,29 @@ display:
           clear_on_exposed: true
           action_title: Action
           selected_actions:
+            0:
+              action_id: 'entity:ami_csvexport_action:node'
             1:
               action_id: 'entity:ami_jsontext_action:node'
-            5:
+            2:
+              action_id: 'entity:ami_jsonwebform_action:node'
+            3:
               action_id: 'entity:ami_jsonpatch_action:node'
-            8:
+            5:
               action_id: publish_latest_revision_action
               preconfiguration:
                 label_override: 'Publish Digital Object'
-            10:
+            7:
               action_id: unpublish_current_revision_action
               preconfiguration:
                 label_override: 'Unpublished Digital Object'
-            11:
+            8:
               action_id: node_assign_owner_action
               preconfiguration:
                 add_confirmation: 0
-            22:
+            15:
               action_id: views_bulk_operations_delete_entity
-          force_selection_info: false
+          force_selection_info: true
           plugin_id: views_bulk_operations_bulk_form
         title:
           id: title

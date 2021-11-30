@@ -13,6 +13,6 @@ target_entity_types:
   page: 0
   webform: 0
 source_entityfield_name: null
-processor_entity_id: '3'
+metadatadisplayentity_uuid: ad7aab5a-4bb3-43f2-8328-2b62895a3821
 cache: true
 active: true

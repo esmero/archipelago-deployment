@@ -6,6 +6,7 @@ cat <<EOT >> /var/www/html/web/sites/default/settings.php
 \$settings['s3fs.secret_key'] = 'minio123';
 \$settings['s3fs.upload_as_private'] = TRUE;
 \$settings['file_private_path'] = '/var/www/html/private';
+\$settings['webform_strawberryfield.europeana_entity_apikey'] = 'apidemo';
 ini_set('memory_limit', '512M');
 \$settings['install_profile'] = 'standard';
 if (PHP_SAPI !== 'cli') {

@@ -27,6 +27,12 @@ third_party_settings:
         label: ''
         wrappers:
           ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
     regions:
       ds_content:
         - links
@@ -49,9 +55,16 @@ third_party_settings:
             max_height: '0'
             posterframe: iiif
             json_key_source_for_poster: 'as:image'
+            upload_json_key_source: ''
+            embargo_json_key_source: ''
             use_iiif_globals: '1'
             iiif_base_url: 'http://localhost:8183/iiif/2'
             iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+            jmespath:
+              jmespath_filter: ''
+              jmespath_alternative_filter: ''
+              use_jmespath: false
+              fallback_jmespath: false
       'display_field_copy:node-formatted_metadata':
         plugin_id: 'display_field_copy:node-formatted_metadata'
         weight: 3

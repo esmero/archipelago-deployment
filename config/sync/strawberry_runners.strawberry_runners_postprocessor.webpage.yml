@@ -1,0 +1,24 @@
+uuid: fa1903ed-e63f-461b-942c-9adca51ad4a7
+langcode: en
+status: true
+dependencies: {  }
+id: webpage
+label: webpage
+weight: '-10'
+pluginconfig:
+  source_type: json
+  ado_type: WebPage
+  output_type: json
+  output_destination:
+    searchapi: searchapi
+    plugin: 0
+  processor_queue_type: background
+  nlp: 1
+  nlp_url: 'http://esmero-nlp:6400'
+  nlp_method: polyglot
+  timeout: '25'
+  weight: '0'
+pluginid: webpage
+active: true
+parent: wacz_page_extractor
+depth: 1

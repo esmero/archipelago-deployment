@@ -1,0 +1,199 @@
+{# 
+Updated 22/11/2021 for RC3
+
+This Template generates IIIF 3.0 Canvas only Partial API Manifest from a Strawberry Field
+JSON to be used by a Drupal Views (REST) to generate a simpler to parse/join listing of Canvases
+For a Creative Works Series Manifest
+
+NOTE: if you modify this make sure you also open/save the parent "IIIF Presentation API 3 Creative Works Series Manifest" 
+Metadatadisplay. Why? because Templates are cached/render arrays too, so the other one will not know this happened.
+
+Structures passed from Archipelago are
+- node
+  The full Node entity
+- data
+  The Full JSON Structure converted in an Array
+- iiif_server
+  The publicly available IIIF Server (Global Setting)
+
+Since JSON was decoded into the 'data' values are valid PHP but could not
+be valid JSON when outputting. So We use data.description|json_encode|raw
+Without Double quotes.
+#}
+{% spaceless %}
+{% set computed_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %}
+{% if data.rights|length > 0 or data.rights_statements|length > 0 %}
+	{% if data.rights|length > 0 %} 
+		{% set computed_rights = data.rights %}
+	{% endif %}
+{% elseif data.rights_statements|length > 0 %}
+	{% if data.rights_statements in ['In Copyright'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - EU Orphan Work'] %} 
+    	{% set computed_rights = "http://rightsstatements.org/vocab/InC-OW-EU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Educational Use Permitted'] %} 
+	   	{% set computed_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Non-Commercial Use Permitted'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC-NC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Rights-holder(s) Unlocatable or Unidentifiable'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC-RUU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Contractual Restrictions'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-CR/1.0/" %}
+	{% endif %} 
+	{% if data.rights_statements in ['No Copyright - Non-Commercial Use Only'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-NC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Other Known Legal Restrictions'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-OKLR/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - United States'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-US/1.0/" %}
+	{% endif %} 
+	{% if data.rights_statements in ['Copyright Not Evaluated'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/CNE/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['Copyright Undetermined'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/UND/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Known Copyright'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NKC/1.0/" %}
+	{% endif %}
+{% endif %}
+{# Mirador 3 has this weird CSS thing that puts the max of thumb to that size #}
+{% set max_thumb_width = 240 %}
+{% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %}
+  {% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %}
+    {% set currenturl = url('<current>')|render %}
+      {% if node.id %}
+          {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+      {% else %}
+          {% set nodeurl = currenturl %}
+      {% endif%}
+            {% set len = language.getId() ? language.getId() : "en" %}
+{% endspaceless %}
+{% set metadata %}
+"metadata": [
+{% for agent in attribute(data, 'edm_agent') %}
+    {
+      "label": {
+        "{{ len }}": [
+          {{ agent.role_label|json_encode|raw }}
+        ]
+      },
+      "value": {
+        "{{ len }}": [
+          {{ agent.name_label|json_encode|raw }}
+        ]
+      }
+    },
+{% endfor %}
+{
+"label": {
+"{{ len }}": [
+"description"
+]
+},
+"value": {
+"{{ len }}": [
+{{ data.description|json_encode|raw }}
+]
+}
+},
+{
+"label": {
+"{{ len }}": [
+"navDate"
+]
+},
+"value":  {
+"{{ len }}": [
+"{{ node.getChangedTime|date("F jS \\a\\t g:ia") }}"
+]
+}
+},
+{
+"label": {
+"{{ len }}": [
+"license"
+]
+},
+"value": {
+"{{ len }}": [
+{{ computed_rights|json_encode|raw }}
+]
+}
+}
+],
+{% endset %}
+{
+"items": [
+{% for page in attribute(data, 'as:image') %}
+  {% set cantaloupeid  = IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %}
+  {% if page["flv:exif"] %}
+    {% set width = page["flv:exif"].ImageWidth %}
+  {% else  %}
+    {% set width = 1200 %}
+  {% endif %}
+  {% if page["flv:exif"] %}
+    {% set height = page["flv:exif"].ImageHeight %}
+  {% else  %}
+    {% set height = 1600 %}
+  {% endif %}
+  {% set thumb_width = width < max_thumb_width ? with: max_thumb_width %}
+  {% set thumb_height = (thumb_width/width * height)|round() %}
+  {% set thumbnail %}
+"thumbnail": [{
+  "id": "{{ cantaloupeid }}/full/{{thumb_width}},/0/default.jpg",
+  "type": "Image",
+  "format": "image/jpeg",
+  "width": {{ thumb_width }},
+  "height": {{ thumb_height }}
+}],
+  {% endset %}
+
+    {
+      "id": "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}",
+      "type": "Canvas",
+      "label": { "none": [ {{ (data.label ~ ' sequence ' ~ loop.index)|json_encode|raw }}] },
+      {{ metadata }}
+      {{ thumbnail }}
+      "height": {{ width }},
+      "width": {{ height }},
+      "items": [
+        {
+          "id": "{{ nodeurl }}/iiif/sequence/p{{ loop.index }}/1",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "{{ nodeurl }}/iiif/annotation/p{{ loop.index }}",
+              "type": "Annotation",
+              "motivation": "painting",
+              {{ thumbnail }}
+              "body": {
+                "id": "{{ cantaloupeid }}/full/full,/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "{{ cantaloupeid }}",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "height": {{ width }},
+                "width": {{ height }}
+              },
+              "target": "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}"
+            }
+          ]
+        }
+      ]
+    }{{ not loop.last ? ',' : '' }}
+{% endfor %}
+]
+}

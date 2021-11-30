@@ -1,0 +1,257 @@
+{# 
+Updated 22/11/2021 for RC3
+
+This Template generates IIIF 2.1 Presentation API Manifest from a Strawberry Field
+JSON.
+
+Structures passed from Archipelago are
+- node
+  The full Node entity
+- data
+  The Full JSON Structure converted in an Array
+- iiif_server
+  The publicly available IIIF Server (Global Setting)
+
+Since JSON was decoded into the 'data' values are valid PHP but could not
+be valid JSON when outputting. So We use data.description|json_encode|raw
+Without Double quotes.
+
+Updated Dec 14th 2020
+- Add @id to annotation
+- With/Heights for DOCS and IMAGES
+#}
+{% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %}
+{% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %}
+{% set currenturl = url('<current>')|render %}
+{% if node.id %}
+  {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+{% else %}
+  {% set nodeurl = currenturl ~ '/iiif/manifest' %}
+{% endif%}
+{% set pageCount =  0 %} 
+{% set max_thumb_width = 240 %}
+{% set computed_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %}
+{% if data.rights|length > 0 or data.rights_statements|length > 0 %}
+	{% if data.rights|length > 0 %} 
+		{% set computed_rights = data.rights %}
+	{% endif %}
+{% elseif data.rights_statements|length > 0 %}
+	{% if data.rights_statements in ['In Copyright'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - EU Orphan Work'] %} 
+    	{% set computed_rights = "http://rightsstatements.org/vocab/InC-OW-EU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Educational Use Permitted'] %} 
+	   	{% set computed_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Non-Commercial Use Permitted'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC-NC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Rights-holder(s) Unlocatable or Unidentifiable'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC-RUU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Contractual Restrictions'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-CR/1.0/" %}
+	{% endif %} 
+	{% if data.rights_statements in ['No Copyright - Non-Commercial Use Only'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-NC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Other Known Legal Restrictions'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-OKLR/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - United States'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-US/1.0/" %}
+	{% endif %} 
+	{% if data.rights_statements in ['Copyright Not Evaluated'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/CNE/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['Copyright Undetermined'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/UND/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Known Copyright'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NKC/1.0/" %}
+	{% endif %}
+{% endif %}
+{
+"@context": [
+"http://www.w3.org/ns/anno.jsonld",
+"http://iiif.io/api/presentation/2/context.json"
+],
+"@type": "sc:Manifest",
+"@id": "{{ currenturl }}",
+"label": "{{ node.label }}",
+"description": {{ data.description|json_encode|raw }},
+"metadata": [
+{% for agent in attribute(data, 'edm_agent') %}
+    {
+    "label": {{ agent.role_label|json_encode|raw }},
+    "value": {{ agent.name_label|json_encode|raw }}
+    },
+{% endfor %}
+{
+"label": "description",
+"value": {{ data.description|json_encode|raw }}
+},
+{
+"label": "type",
+"value": {{ data.type|json_encode|raw }}
+},
+{
+"label": "navDate",
+"value": "{{ node.getChangedTime|date("F jS \\a\\t g:ia") }}"
+},
+{
+"label": "license",
+"value": {{ computed_rights|json_encode|raw }}
+},
+{
+"label": "attribution",
+"value": "Provided by Archipelago's demo"
+}
+],
+{% if attribute(data, 'memberof') %}
+    {% set currentnode = 'node/' ~ data.memberof %}
+    "within": "{{ url(currentnode) }}",
+{% else %}
+    {% set currentnode = '<current>' %}
+{% endif %}
+{# This processes docs like PDF #}
+"sequences": [
+{
+"@id": "{{ nodeurl }}/sequence/normal",
+"@type": "sc:Sequence",
+"label": "Current Page Order",
+"viewingDirection": "left-to-right",
+"viewingHint": "paged",
+"canvases": [
+{% if attribute(data, 'as:document')|length > 0 %}  
+  {% for document in attribute(data, 'as:document') if document['flv:exif'].PageCount %}
+    {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %}
+{# Only Fetch the first Document #}
+    {% if loop.index == 1 %} 
+      {% set pageCount =  document['flv:exif'].PageCount %}
+      {% for pagenumber in 1..pageCount %}
+         {% if attribute(document["flv:pdfinfo"], pagenumber) %}
+            {% set width = attribute(document["flv:pdfinfo"], pagenumber).width ? (attribute(document["flv:pdfinfo"], pagenumber).width * 1.333)|round : 600 %}
+            {% set height = attribute(document["flv:pdfinfo"], pagenumber).height ? (attribute(document["flv:pdfinfo"], pagenumber).height * 1.333)|round : 450 %} 
+         {% else  %}
+            {% if attribute(document["flv:identify"], pagenumber) %}
+               {% set width = attribute(document["flv:identify"], pagenumber).width ? (attribute(document["flv:identify"], pagenumber).width * 1.333)|round : 600 %}
+               {% set height = attribute(document["flv:identify"], pagenumber).height ? (attribute(document["flv:identify"], pagenumber).height * 1.333)|round : 450 %} 
+            {% else  %}
+               {% set width = 600 %}
+               {% set height = 450 %}
+            {% endif %}
+         {% endif %}
+         {% set thumb_width = width < max_thumb_width ? with: max_thumb_width %}
+         {% set thumb_height = (thumb_width/width * height)|round() %}
+         {% set thumbnail %}
+"thumbnail": [{
+  "id": "{{ cantaloupeid }}/full/{{thumb_width}},/0/default.jpg?page={{ pagenumber }}",
+  "type": "Image",
+  "format": "image/jpeg",
+  "width": {{ thumb_width }},
+  "height": {{ thumb_height }}
+}],
+         {% endset %}
+         
+         
+    {
+    "@id": "{{ nodeurl }}/iiif/{{ document['dr:uuid'] }}/canvas/p{{ loop.index }}",
+    "@type": "sc:Canvas",
+    "label": "p. {{ loop.index }}",
+    "width": {{ width }},
+    "height": {{ height }},
+    {{ thumbnail }}
+    "images": [{
+    "@type": "oa:Annotation",
+    "motivation": "sc:painting",
+    {{ thumbnail }}
+    "@id": "{{ nodeurl }}/annotation/p{{ loop.index }}",
+    "resource":{
+      "@id": "{{ cantaloupeid }}/full/full/0/default.jpg?page={{ pagenumber }}",
+      "@type": "dctypes:Image",
+      "format": "image/jpeg",
+      "width": {{ width }},
+      "height": {{ height }}
+    },
+    "on": "{{ nodeurl }}/iiif/{{ document['dr:uuid'] }}/canvas/p{{ loop.index }}"
+    }]
+    }{{ not loop.last ? ',' : '' }}
+      {% endfor %}
+    {% endif %}
+  {% endfor %} 
+{% endif %}
+{% if (attribute(data, 'as:image')|length > 0 and pageCount == 0) or (attribute(data, 'as:image')|length > 0 and data.type == 'Conversation') %}
+  {% if pageCount > 0 %}
+,
+  {% endif %}
+{# This processes images #}
+{% for page in attribute(data, 'as:image') %}
+  {% set cantaloupeid  = IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %}
+  {% if page["flv:exif"] %}
+    {% set width = page["flv:exif"].ImageWidth %}
+  {% else  %}
+    {% set width = 600 %}
+  {% endif %}
+  {% if page["flv:exif"] %}
+    {% set height = page["flv:exif"].ImageHeight %}
+  {% else  %}
+    {% set height = 800 %}
+  {% endif %}
+    {
+    "@id": "{{ nodeurl }}/canvas/p{{ loop.index + pageCount}}",
+    "@type": "sc:Canvas",
+    "label": "Image {{ loop.index }}",
+    "width": {{ width }},
+    "height": {{ height }},
+    "images": [{
+      "@type": "oa:Annotation",
+      "@id": "{{ nodeurl }}/annotation/p{{ loop.index + pageCount}}",
+      "motivation": "sc:painting",
+      "resource":{
+        "@id": "{{ cantaloupeid }}/full/{{ width }},/0/default.jpg",
+        "@type": "dctypes:Image",
+        "format": "image/jpeg",
+        "service": {
+           "@context": "http://iiif.io/api/image/2/context.json",
+           "@id": "{{ cantaloupeid }}",
+           "profile": "http://iiif.io/api/image/2/level2.json"
+        },
+        "width": {{ width }},
+        "height": {{ height }}
+      },
+    "on": "{{ nodeurl }}/canvas/p{{ loop.index + pageCount}}"
+    }]
+    }{{ not loop.last ? ',' : '' }}
+  {% endfor %}
+{% endif %}
+]}], 
+"structures": [{
+"@id": "{{ nodeurl }}/range/r1",
+"@type": "sc:Range",
+"label": "Introduction",
+"canvases": [
+{% if attribute(data, 'as:document')|length > 0 %}    
+  {% for document in attribute(data, 'as:document') if document['flv:exif'].PageCount %}
+    {% if loop.index == 1 %} 
+      {% set pageCount =  document['flv:exif'].PageCount %}
+      {% for pagenumber in 1..pageCount %}
+    "{{ nodeurl }}/canvas/p{{ loop.index }}"{{ not loop.last ? ',' : '' }}
+      {% endfor %}
+    {% endif %}
+ {% endfor %}
+{% endif %}
+{% if (attribute(data, 'as:image')|length > 0 and pageCount == 0) or (attribute(data, 'as:image')|length > 0 and data.type == 'Conversation') %}
+  {% if pageCount > 0 %}
+,
+  {% endif %}
+{% for range in attribute(data, 'as:image') %}
+    "{{ nodeurl }}/canvas/p{{ loop.index + pageCount }}"{{ not loop.last ? ',' : '' }}
+  {% endfor %}
+{% endif %}  
+]
+}]
+}
+

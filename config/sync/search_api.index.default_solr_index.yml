@@ -78,6 +78,14 @@ field_settings:
     configuration:
       type: union
       fields: {  }
+  as_generator_actor_url:
+    label: '🍓 Strawberry (Descriptive Metadata source) » as_generator_actor_url'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:as_generator_actor_url'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   as_image_exif_focallength:
     label: '🍓 Strawberry (Descriptive Metadata source) » as_image_exif_focallength'
     datasource_id: 'entity:node'
@@ -170,7 +178,7 @@ field_settings:
     property_path: file_uuid
     type: string
   fulltext:
-    label: 'Unmodified data body'
+    label: 'Unmodified data body no highlight'
     datasource_id: strawberryfield_flavor_datasource
     property_path: fulltext
     type: text
@@ -356,11 +364,69 @@ field_settings:
         - field.storage.node.field_descriptive_metadata
       module:
         - node
+  sbf_label:
+    label: 'A Label'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: label
+    type: text
+  sbf_metadata:
+    label: 'SBF Ordered list of additional metadata'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: metadata
+    type: string
+  sbf_plaintext:
+    label: 'Data body containing plain text'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: plaintext
+    type: text
+  sbf_sentiment:
+    label: 'SBF Sentiment in integer range'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: sentiment
+    type: decimal
+  sbf_ts:
+    label: 'SBF Time stamp'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: ts
+    type: string
+  sbf_uri:
+    label: 'SBF source or related URI/URL'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: uri
+    type: string
+  sbf_when:
+    label: 'SBF Ordered list of dates in string format'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: when
+    type: string
+  sbf_where:
+    label: 'SBF Ordered list of places'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: where
+    type: string
+  sbf_who:
+    label: 'SBF Ordered list of agents'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: who
+    type: string
   sequence_id:
-    label: 'Sequence ID'
+    label: 'Sequence ID '
     datasource_id: strawberryfield_flavor_datasource
     property_path: sequence_id
     type: string
+  sequence_id_1:
+    label: '🍓 Strawberry (Descriptive Metadata source) » Child Object sequence_id'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:sequence_id'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+  sequence_id_int:
+    label: 'Sequence ID numeric'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: sequence_id
+    type: integer
   status:
     label: 'Publishing status'
     datasource_id: 'entity:node'
@@ -424,7 +490,7 @@ field_settings:
     label: 'Parent Node » Title'
     datasource_id: strawberryfield_flavor_datasource
     property_path: 'target_id:title'
-    type: string
+    type: text
   title_autocomplete:
     label: 'Title for autocomplete'
     datasource_id: 'entity:node'
@@ -514,10 +580,6 @@ processor_settings:
   aggregated_field:
     weights:
       add_properties: 20
-  content_access:
-    weights:
-      preprocess_index: -6
-      preprocess_query: -4
   highlight:
     highlight: server
     highlight_partial: false
@@ -575,6 +637,13 @@ processor_settings:
       add_properties: 0
       pre_index_save: -10
   reverse_entity_references: {  }
+  sbf_content_access:
+    weights:
+      preprocess_query: -30
+  solr_boost_more_recent:
+    boosts: {  }
+    weights:
+      preprocess_query: 0
   solr_date_range:
     weights:
       preprocess_index: 0
@@ -584,4 +653,5 @@ tracker_settings:
 options:
   index_directly: true
   cron_limit: 50
+  track_changes_in_references: true
 server: esmero_solr_7_5

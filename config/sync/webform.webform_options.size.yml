@@ -11,4 +11,9 @@ id: size
 label: Size
 category: General
 likert: false
-options: "Extra Small: Extra Small\nSmall: Small\nMedium: Medium\nLarge: Large\nExtra Large: Extra Large\n"
+options: |
+  Extra Small: Extra Small
+  Small: Small
+  Medium: Medium
+  Large: Large
+  Extra Large: Extra Large

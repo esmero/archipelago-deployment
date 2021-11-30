@@ -1,0 +1,28 @@
+uuid: 49251753-e30b-4059-bbc3-f04d3a69fa5c
+langcode: en
+status: true
+dependencies: {  }
+id: wacz_page_extractor
+label: 'Wacz Page Extractor'
+weight: '-9'
+pluginconfig:
+  source_type: asstructure
+  jsonkey:
+    'as:document': 'as:document'
+    'as:image': 0
+    'as:audio': 0
+    'as:video': 0
+    'as:text': 0
+    'as:application': 0
+  output_destination:
+    plugin: plugin
+  mime_type: application/vnd.datapackage+zip
+  ado_type: WebPage
+  output_type: json
+  processor_queue_type: realtime
+  timeout: '300'
+  weight: '7'
+pluginid: waczpages
+active: true
+parent: ''
+depth: 0

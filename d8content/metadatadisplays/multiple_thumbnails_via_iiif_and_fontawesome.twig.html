@@ -1,8 +1,10 @@
 {# This Template generates Thumbnails for various Media representations
 
+Updated on 25/11/2021 for RC3
+
 Structures passed from Archipelago are
 - node
-  The full Node entitya
+  The full Node entity
 - data
   The Full JSON Structure converted in an Array
 - iiif_server
@@ -69,7 +71,8 @@ Without Double quotes.
 {# <----START OUTPUT --> #}
 <a href="{{ nodeurl }}" alt="{{ node.label.value }}" hreflang="{{ len }}">
 {% if source|length > 0 %}
-<img class="field-iiif image-iiif img-fluid rounded" id="thumb_iiif-field_descriptive_metadata-{{ node.uuid.value }}-0-image1" src="{{ source }}" width="240" alt="Thumbnail for {{ node.label.value }}" typeof="foaf:Image">
+{# NOTE: remote iiif-lazy class if you do not want lazy loading #}
+<img class="field-iiif image-iiif iiif-lazy img-fluid rounded" id="thumb_iiif-field_descriptive_metadata-{{ node.uuid.value }}-0-image1" src="{{ source }}" width="240" alt="Thumbnail for {{ node.label.value }}" typeof="foaf:Image">
 {% else %}
 {# -- IF we have no source we can e.g use font awesome -- #}
 {# 
@@ -100,9 +103,9 @@ ShortStory: 'Short Story'
 #}
 {% if data.type in ['DigitalDocument', 'Article','Thesis'] %}
 <i class="fas fa-file-alt fa-9x"></i>
-{% elseif data.type in ['Photograph','Painting','VisualArtwork','VideoObject'] %}
+{% elseif data.type in ['Photograph','Painting','VisualArtwork'] %}
 <i class="fas fa-photo-video fa-9x"></i>
-{% elseif data.type in ['Movie'] %}
+{% elseif data.type in ['Movie','VideoObject'] %}
 <i class="fas fa-film fa-9x"></i>
 {% elseif data.type in ['MusicRecording', 'AudioObject'] %}
 <i class="fas fa-headphones-alt fa-9x"></i>
@@ -116,7 +119,7 @@ ShortStory: 'Short Story'
 <i class="fas fa-book fa-9x"></i>
 {% elseif data.type in ['WebPage'] %}
 <i class="fas fa-sitemap fa-9x"></i>
-{% elseif data.type in ['PanoramaTour'] %}
+{% elseif data.type in ['Panorama','PanoramaTour'] %}
 <i class="fas fa-vr-cardboard fa-9x"></i>
 {% elseif data.type in ['Dataset'] %}
 <i class="fas fa-table fa-9x"></i>

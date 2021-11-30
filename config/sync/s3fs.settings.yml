@@ -29,3 +29,6 @@ disable_version_sync: true
 read_only: false
 use_cssjs_host: false
 cssjs_host: ''
+domain_root: none
+disable_cert_verify: false
+disable_shared_config_files: false

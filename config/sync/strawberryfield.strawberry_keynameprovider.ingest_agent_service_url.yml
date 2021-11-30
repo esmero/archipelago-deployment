@@ -1,0 +1,12 @@
+uuid: c0509d0d-b9ce-458b-b154-409288ddd12b
+langcode: en
+status: true
+dependencies: {  }
+id: ingest_agent_service_url
+label: 'Ingest Agent Service URL'
+pluginid: jmespath
+pluginconfig:
+  source_key: '"as:generator".actor.url'
+  is_date: false
+  exposed_key: as_generator_actor_url
+active: true

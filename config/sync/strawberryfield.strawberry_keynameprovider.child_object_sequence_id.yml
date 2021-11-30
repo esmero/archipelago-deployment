@@ -1,0 +1,12 @@
+uuid: e86d0faa-62ed-4b8f-99e3-d7d099505570
+langcode: en
+status: true
+dependencies: {  }
+id: child_object_sequence_id
+label: 'Child Object Sequence ID'
+pluginid: jmespath
+pluginconfig:
+  source_key: sequence_id
+  is_date: false
+  exposed_key: sequence_id
+active: true

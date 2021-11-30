@@ -141,10 +141,10 @@ display:
           click_sort_column: value
           type: strawberry_metadata_formatter
           settings:
-            metadatadisplayentity_id: '13'
             specs: 'http://schema.org'
             label: 'Descriptive Metadata'
             metadatadisplayentity_uselabel: '0'
+            metadatadisplayentity_uuid: e46fe78f-6b37-49a4-b277-1734c81fd847
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -299,18 +299,6 @@ display:
           expose:
             label: ''
           plugin_id: search_api
-        changed:
-          id: changed
-          table: search_api_index_default_solr_index
-          field: changed
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          plugin_id: search_api
       title: 'Objects in this Collection'
       header: {  }
       footer: {  }
@@ -400,8 +388,9 @@ display:
               raw_output: false
       path: node/%/member_manifests
       pager:
-        type: none
+        type: some
         options:
+          items_per_page: 2000
           offset: 0
       display_description: 'Uses ismemberof to connect Children to Parent'
       auth:
@@ -449,8 +438,9 @@ display:
               raw_output: false
       path: node/%/children_canvases
       pager:
-        type: none
+        type: some
         options:
+          items_per_page: 2000
           offset: 0
       display_description: 'Uses ispartof to connect Children to Parent'
       auth:
@@ -541,10 +531,10 @@ display:
           click_sort_column: value
           type: strawberry_metadata_formatter
           settings:
-            metadatadisplayentity_id: '13'
             specs: 'http://schema.org'
             label: 'Descriptive Metadata'
             metadatadisplayentity_uselabel: '0'
+            metadatadisplayentity_uuid: d37a75ec-5da9-4374-b190-71385e630ded
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -644,6 +634,48 @@ display:
               - '1'
               - '@count'
           plugin_id: search_api_field
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - url
+        - 'user.node_grants:view'
+        - user.roles
+      tags:
+        - 'config:field.storage.node.field_descriptive_metadata'
+        - 'config:search_api.index.default_solr_index'
+  rest_export_1:
+    display_plugin: rest_export
+    id: rest_export_1
+    display_title: 'ContentDM REST with JSON '
+    position: 2
+    display_options:
+      display_extenders: {  }
+      style:
+        type: serializer
+        options:
+          uses_fields: false
+          formats:
+            json: json
+      row:
+        type: data_field
+        options:
+          field_options:
+            field_descriptive_metadata:
+              alias: DC
+              raw_output: true
+            nid:
+              alias: nid
+              raw_output: true
+      path: node/%/DC_COLLECTION
+      pager:
+        type: none
+        options:
+          offset: 0
+      display_description: 'Uses ismemberof to connect Children to Parent'
+      auth: {  }
     cache_metadata:
       max-age: -1
       contexts:

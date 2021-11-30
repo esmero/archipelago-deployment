@@ -27,7 +27,9 @@ logo:
   use_default: false
   path: ''
 favicon:
-  use_default: true
+  use_default: false
+  path: 'public://strawberries_favicon.png'
+  mimetype: image/png
 bootstrap_barrio_region_clean_top_header: '0'
 bootstrap_barrio_region_class_top_header: row
 bootstrap_barrio_region_clean_top_header_form: '0'
@@ -46,8 +48,8 @@ bootstrap_barrio_region_clean_page_bottom: '0'
 bootstrap_barrio_region_class_page_bottom: row
 bootstrap_barrio_region_clean_highlighted: '1'
 bootstrap_barrio_region_class_highlighted: ''
-bootstrap_barrio_region_clean_featured_top: '0'
-bootstrap_barrio_region_class_featured_top: row
+bootstrap_barrio_region_clean_featured_top: '1'
+bootstrap_barrio_region_class_featured_top: ''
 bootstrap_barrio_region_clean_breadcrumb: '1'
 bootstrap_barrio_region_class_breadcrumb: ''
 bootstrap_barrio_region_clean_content: '1'
@@ -86,7 +88,7 @@ bootstrap_barrio_icons: fontawesome
 bootstrap_barrio_system_messages: ''
 bootstrap_barrio_table_style: ''
 bootstrap_barrio_table_head: ''
-bootstrap_barrio_messages_widget: toasts
+bootstrap_barrio_messages_widget: default
 bootstrap_barrio_radio: standard
 bootstrap_barrio_checkbox: switch
 bootstrap_barrio_select: custom
