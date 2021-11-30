@@ -246,6 +246,19 @@ Please log into your Archipelago and test/check all is working! Enjoy 1.0.0-RC3 
 
 ---
 
-Thank you for reading! Please contact us on our [Archipelago Commons Google Group](https://groups.google.com/forum/#!forum/archipelago-commons) with any questions or feedback, or open an ISSUE in this [Archipelago Deployment Live Repository](https://github.com/esmero/archipelago-deployment-live/).
+### Need help? Blue Screen? Missed a step? Need a hug and such?
 
-Return to [Archipelago Deployment](../README.md).
+If you see any issues or errors or need help with a step, please let us know (ASAP!). You can either open an `issue` in this repository or use the [Google Group](https://groups.google.com/forum/#!forum/archipelago-commons). We are here to help.
+
+If you like this, let us know!
+
+## Caring & Coding + Fixing + Testing
+
+* [Diego Pino](https://github.com/DiegoPino)
+* [Giancarlo Birello](https://github.com/giancarlobi)
+* [Allison Lund](https://github.com/alliomeria)
+* [Albert Min](https://github.com/aksm)
+
+## License
+
+[GPLv3](http://www.gnu.org/licenses/gpl-3.0.txt)
