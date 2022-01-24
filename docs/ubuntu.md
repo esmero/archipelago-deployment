@@ -9,6 +9,8 @@ tags:
 ---
 documentation-->
 
+<!-- This is here as a small test of the workflow trigger. -->
+
 # Installing Archipelago Drupal 9 on Ubuntu 18.04 or 20.04
 
 ## About running terminal commands
