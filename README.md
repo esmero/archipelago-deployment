@@ -1,3 +1,13 @@
+<!--documentation
+---
+title: "Archipelago-deployment for Drupal 9"
+tags:
+  - Archipelago-deployment
+  - Drupal 9
+  - Docker
+---
+documentation-->
+
 # Archipelago Docker Deployment for Drupal 9
 
 **Updated:** November 25th 2021
@@ -9,7 +19,7 @@ This repository serves as bootstrap for a Archipelago 1.0.0-RC3 deployment via D
 - MySQL 8.0.22 (or MySQL 5.7 if you go legacy)
 - NGINX 11
 - Custom PHP FPM 7.4 super-tuned for Drupal 8/9 with multi-arch (so M1 too) capabilities (or 7.3 FPM if you go legacy), WARC to WACZ processing, and Composer 2.0
-- Natural Language Processing via NPLWEB64
+- Natural Language Processing via NLPWEB64
 - Cantaloupe 4.1.9 as IIIF Server with Video Frame extraction and PDF support
 - A Skeleton Project setup to run latest Version of Drupal (9.2.9) and Strawberry Field modules on 1.0.0-RC3 & friends on 0.2.0
 - Official *Drupal 9 ready* release again. D9.2.9 this time. Drupal 8 is no longer maintained, and we have [documented the upgrade path](docs/upgradeFromD8ToD9.md)
@@ -30,6 +40,7 @@ This is the recommended, simplest way for this release. There are a too many, to
 [Step by Step deployment on Ubuntu](docs/ubuntu.md)
 
 ## More fun if you add content:
+
 [One-Step Demo content ingest](docs/democontent.md)
 
 ## 1.0.0-RC3

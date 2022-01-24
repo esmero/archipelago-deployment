@@ -1,3 +1,12 @@
+<!--documentation
+---
+title: "Adding Demo Archipelago Digital Objects (ADOs) to your Repository"
+tags:
+  - Archipelago Digital Objects
+  - Demo Content
+---
+documentation-->
+
 # Adding Demo Archipelago Digital Objects (ADOs) to your Repository
 
 We make this optional since we feel  not everyone wants to have Digital Objects from other people using space in their system. 
@@ -27,9 +36,9 @@ You can learn and test. Then delete and move over.
 
 ## Step 1: Get the content
 
-Go into your `archipelago-deployment` folder and into the `d8content` folder that is inside it. E.g
+Go into your `archipelago-deployment` folder and into the `d8content` folder that is inside it, e.g.
 
-```Shell
+```shell
 cd archipelago-deployment/d8content
 git clone https://github.com/esmero/archipelago-recyclables
 ```
@@ -38,13 +47,13 @@ git clone https://github.com/esmero/archipelago-recyclables
 
 - If running Docker execute:
 
-```Shell
+```shell
 docker exec -ti esmero-php bash -c 'd8content/archipelago-recyclables/deploy_ados.sh'
 ```
 
-You will see multiple outputs similar to this
+You will see multiple outputs similar to this:
 
-```Shell
+```shell
 Files in provided location:
  - anne_001.jpg
  - anne_002.jpg
@@ -69,18 +78,18 @@ File anne_010.jpg sucessfully uploaded with Internal Drupal file ID 14
 New Object 'Anne of Green Gables : Chapters 1 and 2' with UUID 9eb28775-d73a-4904-bc79-f0e925075bc5 successfully ingested. Thanks!
 ```
 
-Gist here is: if the script says `Thanks` you are good.
+The gist here is that if the script says `Thanks` you are good.
 
 - If you are not running Docker (You are a unicorn or at least a hacker) you will need to tune/copy/modify the following script:
 `archipelago-deployment/d8content/archipelago-recyclables/deploy_ados.sh`
 
-Inside you will find lines like this one 
+Inside you will find lines like this one: 
 
-```Shell
+```shell
 drush archipelago:jsonapi-ingest /var/www/html/d8content/archipelago-recyclables/ado/0c2dc01a-7dc2-48a9-b4fd-3f82331ec803.json --uuid=0c2dc01a-7dc2-48a9-b4fd-3f82331ec803 --bundle=digital_object --uri=http://esmero-web --files=/var/www/html/d8content/archipelago-recyclables/ado/0c2dc01a-7dc2-48a9-b4fd-3f82331ec803 --user=jsonapi --password=jsonapi --moderation_state=published;
 ```
 
-What you want here is to modify/replace the absolute paths that point your demo objects (.json) and their assets (folders with the same name). Basically replace every entry of `/var/www/html/d8content/archipelago-recyclables/` with the path to `archipelago-recyclables`
+What you want here is to modify/replace the absolute paths that point your demo objects (.json) and their assets (folders with the same name). Basically replace every entry of `/var/www/html/d8content/archipelago-recyclables/` with the path to `archipelago-recyclables`.
 
 ### Need help? Blue Screen? Missed a step? Need a hug? Another Hug?
 
