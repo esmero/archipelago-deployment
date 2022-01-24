@@ -1,0 +1,19 @@
+name: ci
+on:
+  push:
+    branches:
+      - 1.0.0-RC3
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v5
+        with:
+          github-token: ${{secrets.BOT_KEY}}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'esmero',
+              repo: 'archipelago-documentation',
+              workflow_id: 'ci.yml',
+              ref: '1.0.0-RC3',
+            });
