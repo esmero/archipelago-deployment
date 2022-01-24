@@ -153,7 +153,7 @@ docker exec -ti esmero-php bash -c "chown -R www-data:www-data private"
 Once all containers are up and running (you can do a `docker ps` to check),
 access `http://localhost:9001` using your most loved Web Browser with the following credentials:
 
-```
+```shell
 user:minio
 pass:minio123
 ```
