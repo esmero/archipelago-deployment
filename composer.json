@@ -179,7 +179,7 @@
         "enable-patching": true,
         "patches": {
             "drupal/facets": {
-                "Fix deprecated JQUERY UI Slider": "https://www.drupal.org/files/issues/2021-11-12/issue-3153622-nouislider_25.patch" 
+                "Fix deprecated JQUERY UI Slider": "https://www.drupal.org/files/issues/2022-03-07/issue-315622-nouislider_25_0.patch" 
             }
         }
     }

@@ -3687,7 +3687,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/facets.git",
-                "reference": "fd466a11f4a6d5cadd928f972875342bc1f25782"
+                "reference": "8a9574df5bfd4b4a528a3354ecb3ed77740abf43"
             },
             "require": {
                 "drupal/core": "^9.1"
