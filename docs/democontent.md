@@ -19,7 +19,7 @@ You can learn and test. Then delete and move over.
 
 - You installed it either via the Step by Step [deployment on OSX](osx.md), the one for [Ubuntu](ubuntu.md) or using your secret powers directly on a VM/Metal/Cloud/EC2 or even a raspberryPI.
 - You followed the guides without being too creative which means you have an `jsonapi` drupal user and an `admin` one and you can login and out of your server.
-- You remember your `admin`user
+- You remember your `admin` user. (If you followed one of the deployment guides, password will be `archipelago`)
 
 ## Step 1: (only step)
 
