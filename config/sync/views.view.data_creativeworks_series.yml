@@ -287,6 +287,18 @@ display:
           reduce_duplicates: false
           plugin_id: search_api_options
       sorts:
+        sequence_id_1:
+          id: sequence_id_1
+          table: search_api_index_default_solr_index
+          field: sequence_id_1
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: search_api
         title_string:
           id: title_string
           table: search_api_index_default_solr_index
@@ -299,7 +311,7 @@ display:
           expose:
             label: ''
           plugin_id: search_api
-      title: 'Objects in this Collection'
+      title: 'CreativeWorks Children'
       header: {  }
       footer: {  }
       empty:
@@ -634,48 +646,6 @@ display:
               - '1'
               - '@count'
           plugin_id: search_api_field
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - request_format
-        - url
-        - 'user.node_grants:view'
-        - user.roles
-      tags:
-        - 'config:field.storage.node.field_descriptive_metadata'
-        - 'config:search_api.index.default_solr_index'
-  rest_export_1:
-    display_plugin: rest_export
-    id: rest_export_1
-    display_title: 'ContentDM REST with JSON '
-    position: 2
-    display_options:
-      display_extenders: {  }
-      style:
-        type: serializer
-        options:
-          uses_fields: false
-          formats:
-            json: json
-      row:
-        type: data_field
-        options:
-          field_options:
-            field_descriptive_metadata:
-              alias: DC
-              raw_output: true
-            nid:
-              alias: nid
-              raw_output: true
-      path: node/%/DC_COLLECTION
-      pager:
-        type: none
-        options:
-          offset: 0
-      display_description: 'Uses ismemberof to connect Children to Parent'
-      auth: {  }
     cache_metadata:
       max-age: -1
       contexts:
