@@ -203,17 +203,17 @@ display:
           reduce_duplicates: false
           plugin_id: search_api_options
       sorts:
-        changed:
-          id: changed
+        sequence_id_1:
+          id: sequence_id_1
           table: search_api_index_default_solr_index
-          field: changed
+          field: sequence_id_1
           relationship: none
           group_type: group
           admin_label: ''
           order: ASC
-          exposed: true
+          exposed: false
           expose:
-            label: Changed
+            label: ''
           plugin_id: search_api
         title_string:
           id: title_string

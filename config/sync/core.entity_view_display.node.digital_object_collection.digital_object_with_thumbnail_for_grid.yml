@@ -24,7 +24,6 @@ third_party_settings:
           ds_content: div
     regions:
       ds_content:
-        - node_changed_date
         - node_title
         - field_descriptive_metadata
         - search_api_excerpt
