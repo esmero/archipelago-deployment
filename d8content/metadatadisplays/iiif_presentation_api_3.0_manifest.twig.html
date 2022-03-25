@@ -213,8 +213,8 @@ Without Double quotes.
       {%- endif -%}
       ]},
       {{ thumbnail }}
-      "height": {{ width }},
-      "width": {{ height }},
+      "height": {{ height }},
+      "width": {{ width }},
       "items": [
         {
           "id": "{{ nodeurl }}/iiif/{{ document['dr:uuid'] }}/page/p{{ pagenumber}}",
@@ -229,8 +229,8 @@ Without Double quotes.
                 "id": "{{ cantaloupeid }}/full/full/0/default.jpg?page={{ pagenumber }}",
                 "type": "Image",
                 "format": "image/jpeg",
-                "height": {{ width }},
-                "width": {{ height }}
+                "height": {{ height }},
+                "width": {{ width }}
               },
               "target": "{{ nodeurl }}/iiif/{{ document['dr:uuid'] }}/canvas/p{{ pagenumber }}"
             }
@@ -293,8 +293,8 @@ Without Double quotes.
       {%- endif -%}
       ]},
       {{ thumbnail }}
-      "height": {{ width }},
-      "width": {{ height }},
+      "height": {{ height }},
+      "width": {{ width }},
       "items": [
         {
           "id": "{{ nodeurl }}/iiif/page/p{{ itemCount}}",
@@ -316,8 +316,8 @@ Without Double quotes.
                     "profile": "level2"
                   }
                 ],
-                "height": {{ width }},
-                "width": {{ height }}
+                "height": {{ height }},
+                "width": {{ width }}
               },
               "target": "{{ nodeurl }}/iiif/canvas/p{{ itemCount }}"
             }
@@ -383,8 +383,8 @@ Without Double quotes.
                 "type": "Video",
                 "format": "{{ video["flv:mediainfo"].general.internet_media_type }}",
                 "duration": {{ video["flv:mediainfo"].videos[0].duration.milliseconds|default(1000) }},
-                "height": {{ width }},
-                "width": {{ height }}
+                "height": {{ height }},
+                "width": {{ width }}
               },
               "target": "{{ nodeurl }}/iiif/canvas/p{{ itemCount }}"
             }
