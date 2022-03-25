@@ -1,5 +1,5 @@
 {# 
-Updated 22/11/2021 for RC3
+Updated 25/03/2022 for RC3
 
 This Template generates IIIF 3.0 Canvas only Partial API Manifest from a Strawberry Field
 JSON to be used by a Drupal Views (REST) to generate a simpler to parse/join listing of Canvases
@@ -162,8 +162,8 @@ Without Double quotes.
       "label": { "none": [ {{ (data.label ~ ' sequence ' ~ loop.index)|json_encode|raw }}] },
       {{ metadata }}
       {{ thumbnail }}
-      "height": {{ width }},
-      "width": {{ height }},
+      "height": {{ height }},
+      "width": {{ width }},
       "items": [
         {
           "id": "{{ nodeurl }}/iiif/sequence/p{{ loop.index }}/1",
@@ -185,8 +185,8 @@ Without Double quotes.
                     "profile": "level2"
                   }
                 ],
-                "height": {{ width }},
-                "width": {{ height }}
+                "height": {{ height }},
+                "width": {{ width }}
               },
               "target": "{{ nodeurl }}/iiif/canvas/p{{ loop.index }}"
             }
