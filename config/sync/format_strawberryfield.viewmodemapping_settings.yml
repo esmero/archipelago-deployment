@@ -126,7 +126,7 @@ type_to_viewmode:
     weight: 26
   -
     jsontype: Poster
-    view_mode: digital_object_collection_with_mirador_viewer
+    view_mode: digital_object_with_mirador_viewer
     active: true
     weight: 27
   -
