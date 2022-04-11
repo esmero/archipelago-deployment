@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "76bcd88ef82f43b34c8c2f528297f4b4",
+    "content-hash": "79949efdf4a64ed6fa3d5af883d71a93",
     "packages": [
         {
             "name": "archipelago/ami",
@@ -3687,10 +3687,10 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/facets.git",
-                "reference": "fd466a11f4a6d5cadd928f972875342bc1f25782"
+                "reference": "8a9574df5bfd4b4a528a3354ecb3ed77740abf43"
             },
             "require": {
-                "drupal/core": "^9.1"
+                "drupal/core": "^9.2 || ^10.0"
             },
             "conflict": {
                 "drupal/search_api": "<1.14"
@@ -3704,8 +3704,8 @@
                     "dev-2.0.x": "2.0.x-dev"
                 },
                 "drupal": {
-                    "version": "2.0.x-dev",
-                    "datestamp": "1636720696",
+                    "version": "2.0.1+4-dev",
+                    "datestamp": "1644934086",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
