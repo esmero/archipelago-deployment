@@ -144,7 +144,7 @@ Updated Dec 14th 2020
                {% set height = 450 %}
             {% endif %}
          {% endif %}
-         {% set thumb_width = width < max_thumb_width ? with: max_thumb_width %}
+         {% set thumb_width = width < max_thumb_width ? width: max_thumb_width %}
          {% set thumb_height = (thumb_width/width * height)|round() %}
          {% set thumbnail %}
 "thumbnail": [{
