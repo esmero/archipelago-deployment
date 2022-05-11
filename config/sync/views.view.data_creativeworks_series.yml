@@ -299,6 +299,18 @@ display:
           expose:
             label: ''
           plugin_id: search_api
+        changed:
+          id: changed 
+          table: search_api_index_default_solr_index
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: search_api
         title_string:
           id: title_string
           table: search_api_index_default_solr_index
