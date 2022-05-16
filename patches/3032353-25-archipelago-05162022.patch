@@ -1,0 +1,99 @@
+diff --git a/core/modules/views/js/ajax_view.es6.js b/core/modules/views/js/ajax_view.es6.js
+index 5367f83cc9..386df7947d 100644
+--- a/core/modules/views/js/ajax_view.es6.js
++++ b/core/modules/views/js/ajax_view.es6.js
+@@ -137,6 +137,11 @@
+   Drupal.views.ajaxView.prototype.attachExposedFormAjax = function () {
+     const that = this;
+     this.exposedFormAjax = [];
++
++    // Add exposed_form_display option to the request.
++    if (that.element_settings.submit) {
++      that.element_settings.submit.exposed_form_display = 1;
++    }
+     // Exclude the reset buttons so no AJAX behaviors are bound. Many things
+     // break during the form reset phase if using AJAX.
+     $(
+diff --git a/core/modules/views/js/ajax_view.js b/core/modules/views/js/ajax_view.js
+index f1e2e0121a..9538a14c9d 100644
+--- a/core/modules/views/js/ajax_view.js
++++ b/core/modules/views/js/ajax_view.js
+@@ -80,6 +80,11 @@
+   Drupal.views.ajaxView.prototype.attachExposedFormAjax = function () {
+     var that = this;
+     this.exposedFormAjax = [];
++
++    if (that.element_settings.submit) {
++      that.element_settings.submit.exposed_form_display = 1;
++    }
++
+     $('input[type=submit], button[type=submit], input[type=image]', this.$exposed_form).not('[data-drupal-selector=edit-reset]').each(function (index) {
+       var selfSettings = $.extend({}, that.element_settings, {
+         base: $(this).attr('id'),
+diff --git a/core/modules/views/src/Controller/ViewAjaxController.php b/core/modules/views/src/Controller/ViewAjaxController.php
+index 8b7d115fa5..ad4bc1e8e9 100644
+--- a/core/modules/views/src/Controller/ViewAjaxController.php
++++ b/core/modules/views/src/Controller/ViewAjaxController.php
+@@ -128,6 +128,7 @@ public function ajaxView(Request $request) {
+       $dom_id = isset($dom_id) ? preg_replace('/[^a-zA-Z0-9_-]+/', '-', $dom_id) : NULL;
+       $pager_element = $request->request->get('pager_element');
+       $pager_element = isset($pager_element) ? intval($pager_element) : NULL;
++      $exposed_form_display = $request->request->get('exposed_form_display');
+ 
+       $response = new ViewAjaxResponse();
+ 
+@@ -136,17 +137,18 @@ public function ajaxView(Request $request) {
+       // @todo Remove this parsing once these are removed from the request in
+       //   https://www.drupal.org/node/2504709.
+       foreach ([
+-          'view_name',
+-          'view_display_id',
+-          'view_args',
+-          'view_path',
+-          'view_dom_id',
+-          'pager_element',
+-          'view_base_path',
+-          AjaxResponseSubscriber::AJAX_REQUEST_PARAMETER,
+-          FormBuilderInterface::AJAX_FORM_REQUEST,
+-          MainContentViewSubscriber::WRAPPER_FORMAT,
+-        ] as $key) {
++        'view_name',
++        'view_display_id',
++        'view_args',
++        'view_path',
++        'view_dom_id',
++        'pager_element',
++        'view_base_path',
++        'exposed_form_display',
++        AjaxResponseSubscriber::AJAX_REQUEST_PARAMETER,
++        FormBuilderInterface::AJAX_FORM_REQUEST,
++        MainContentViewSubscriber::WRAPPER_FORMAT,
++      ] as $key) {
+         $request->query->remove($key);
+         $request->request->remove($key);
+       }
+@@ -201,6 +203,24 @@ public function ajaxView(Request $request) {
+         }
+         $response->addCommand(new ReplaceCommand(".js-view-dom-id-$dom_id", $preview));
+ 
++        // Views with ajax enabled aren't refreshing filters placed in blocks.
++        // Only <div> containing view is refreshed. ReplaceCommand is fixing
++        // that for view, if it uses ajax and exposed forms in block.
++        if ($view->display_handler->usesExposed() && $view->display_handler->getOption('exposed_block')) {
++          $view_id = preg_replace('/[^a-zA-Z0-9-]+/', '-', $name . '-' . $display_id);
++          $context = new RenderContext();
++          $exposed_form = $this->renderer->executeInRenderContext($context, function () use ($view) {
++            return $view->display_handler->viewExposedFormBlocks();
++          });
++          if (!$context->isEmpty()) {
++            $bubbleable_metadata = $context->pop();
++            BubbleableMetadata::createFromRenderArray($exposed_form)
++              ->merge($bubbleable_metadata)
++              ->applyTo($exposed_form);
++          }
++          $response->addCommand(new ReplaceCommand("#views-exposed-form-" . $view_id, $this->renderer->render($exposed_form)));
++        }
++
+         return $response;
+       }
+       else {
