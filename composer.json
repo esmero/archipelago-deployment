@@ -126,7 +126,7 @@
         },
         "preferred-install": {
             "archipelago/*": "source",
-            "strawberryfield/*": "source"
+            "strawberryfield/*": "source",
             "*": "dist"
         }
     },
