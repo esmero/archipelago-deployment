@@ -191,6 +191,9 @@
             },
         "drupal/core": {
                 "Fix Ajax/Preserve Facets on exposed forms Drupal 9.3.x": "patches/3032353-25-archipelago-05162022.patch"
+            },    
+        "drupal/moderated_content_bulk_publish": {
+                "Fix access check on every action": "patches/3280584-archipelago-05162022.patch"
             }    
         }
     }
