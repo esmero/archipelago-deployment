@@ -9,6 +9,7 @@ cat <<EOT >> /var/www/html/web/sites/default/settings.php
 \$settings['webform_strawberryfield.europeana_entity_apikey'] = 'apidemo';
 ini_set('memory_limit', '512M');
 \$settings['install_profile'] = 'standard';
+\$settings['class_loader_auto_detect'] = FALSE;
 if (PHP_SAPI !== 'cli') {
   \$settings['reverse_proxy'] = TRUE;
   \$settings['reverse_proxy_addresses'] = [@\$_SERVER['REMOTE_ADDR']];
