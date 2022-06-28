@@ -10,10 +10,12 @@ tags:
 ---
 documentation-->
 
-# Installing Archipelago Drupal 9 on Windows
+# Installing Archipelago Drupal 9 on Windows 10/11
 
 ## Prerequisites
 
+- Windows 11 64-bit: Home or Pro version 21H2 or higher, or Enterprise or Education version 21H2 or higher (see Docker for Windows link below).
+- Windows 10 64-bit: Home or Pro 21H1 (build 19043) or higher, or Enterprise or Education 20H2 (build 19042) or higher (see Docker for Windows link below).
 - [Install Ubuntu on WSL 2](https://ubuntu.com/wsl)
 - [Install Docker for Windows](https://docs.docker.com/desktop/windows/install/)
 - [Install Github for Desktop](https://desktop.github.com/)

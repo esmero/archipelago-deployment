@@ -39,7 +39,7 @@ This is the recommended, simplest way for this release. There are a too many, to
 
 [Step by Step deployment on Ubuntu](docs/ubuntu.md)
 
-## Windows:
+## Windows 10 or 11:
 
 [Step by Step deployment on Windows](docs/windows.md)
 
