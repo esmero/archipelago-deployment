@@ -21,6 +21,10 @@ documentation-->
 - Some basic Unix/Terminal Skills
 - 2-4 Gbytes of RAM (4 Recommended)
 
+### Optional
+
+- [Install Github Desktop](https://desktop.github.com/). Ubuntu comes with Git by default, but for a more full-featured way to work with Github, you can install this application.
+
 Open the Docker Desktop app. The Docker service should start up automatically with a status showing when the service is up and running.
 
 Open an Ubuntu Terminal session (type `Ubuntu` in the Windows Start menu).
