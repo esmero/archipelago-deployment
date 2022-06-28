@@ -33,7 +33,7 @@ Bring everything up to date: `sudo apt update && sudo apt upgrade -y`
 
 ## Acknowledgment
 
-Thanks to [Corinne Chatnik](https://gitub.com/chatnikc) for documenting these steps!
+Thanks to [Corinne Chatnik](https://github.com/chatnikc) for documenting these steps!
 
 ### Need help? Blue Screen? Missed a step? Need a hug?
 
