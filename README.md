@@ -39,6 +39,10 @@ This is the recommended, simplest way for this release. There are a too many, to
 
 [Step by Step deployment on Ubuntu](docs/ubuntu.md)
 
+## Windows 10 or 11:
+
+[Step by Step deployment on Windows](docs/windows.md)
+
 ## More fun if you add content:
 
 [One-Step Demo content ingest](docs/democontent.md)
