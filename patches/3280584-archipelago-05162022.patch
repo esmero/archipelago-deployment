@@ -1,0 +1,295 @@
+From 15076500968b9e30cd0bb4c76c9d67fef3c06677 Mon Sep 17 00:00:00 2001
+From: DiegoPino <diegopino@3564864.no-reply.drupal.org>
+Date: Sun, 15 May 2022 23:56:48 +0000
+Subject: [PATCH 1/5] Fix ::access() and deals with Moderated Entities Field
+ level access
+
+---
+ .../Action/ArchiveCurrentRevisionAction.php   | 27 ++++++++++++-------
+ 1 file changed, 18 insertions(+), 9 deletions(-)
+
+diff --git a/src/Plugin/Action/ArchiveCurrentRevisionAction.php b/src/Plugin/Action/ArchiveCurrentRevisionAction.php
+index 0336366..fc6f784 100644
+--- a/src/Plugin/Action/ArchiveCurrentRevisionAction.php
++++ b/src/Plugin/Action/ArchiveCurrentRevisionAction.php
+@@ -10,6 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Session\AccountInterface;
+ use Drupal\moderated_content_bulk_publish\AdminModeration;
+ use Drupal\Core\Render\Markup;
++use Drupal\Core\Access\AccessResult;
+ 
+ /**
+  * An example action covering most of the possible options.
+@@ -144,15 +145,23 @@ class ArchiveCurrentRevisionAction extends ActionBase/*extends ViewsBulkOperatio
+    * {@inheritdoc}
+    */
+   public function access($object, AccountInterface $account = NULL, $return_as_object = FALSE) {
+-    if ($object->getEntityType() === 'node') {
+-      $access = $object->access('update', $account, TRUE)
+-        ->andIf($object->status->access('edit', $account, TRUE));
+-      return $return_as_object ? $access : $access->isAllowed();
++    if ($object->getEntityTypeId() === 'node') {
++      $moderation_info = \Drupal::service('content_moderation.moderation_information');
++      // Moderated Entities will return AccessResult::forbidden for attemps
++      // to edit $object->status.
++      // @see content_moderation_entity_field_access
++      if ($moderation_info->isModeratedEntity($object)) {
++        $access = $object->access('update', $account, TRUE)
++          ->andIf($object->moderation_state->access('edit', $account, TRUE));
++      }
++      else {
++        $access = $object->access('update', $account, TRUE)
++          ->andIf($object->status->access('edit', $account, TRUE));
++      }
+     }
+-
+-    // Other entity types may have different
+-    // access methods and properties.
+-    return TRUE;
++    else {
++      $access = AccessResult::forbidden()->setReason('The chosen Action only acts on entities of type node')->setCacheMaxAge(0);
++    }
++    return $return_as_object ? $access : $access->isAllowed();
+   }
+-
+ }
+-- 
+GitLab
+
+
+From b9d7b88016b59824c265b4bb4a282fd596582f34 Mon Sep 17 00:00:00 2001
+From: DiegoPino <diegopino@3564864.no-reply.drupal.org>
+Date: Mon, 16 May 2022 00:01:06 +0000
+Subject: [PATCH 2/5] Fix ::access
+
+---
+ src/Plugin/Action/PinContentAction.php | 26 ++++++++++++++++++--------
+ 1 file changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/src/Plugin/Action/PinContentAction.php b/src/Plugin/Action/PinContentAction.php
+index ab0939c..85d2f72 100644
+--- a/src/Plugin/Action/PinContentAction.php
++++ b/src/Plugin/Action/PinContentAction.php
+@@ -9,6 +9,7 @@ use Drupal\Core\Plugin\PluginFormInterface;
+ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Session\AccountInterface;
+ use Drupal\moderated_content_bulk_publish\AdminPin;
++use Drupal\Core\Access\AccessResult;
+ 
+ /**
+  * An example action covering most of the possible options.
+@@ -134,15 +135,24 @@ class PinContentAction extends ActionBase/*extends ViewsBulkOperationsActionBase
+    * {@inheritdoc}
+    */
+   public function access($object, AccountInterface $account = NULL, $return_as_object = FALSE) {
+-    if ($object->getEntityType() === 'node') {
+-      $access = $object->access('update', $account, TRUE)
+-        ->andIf($object->status->access('edit', $account, TRUE));
+-      return $return_as_object ? $access : $access->isAllowed();
++    if ($object->getEntityTypeId() === 'node') {
++      $moderation_info = \Drupal::service('content_moderation.moderation_information');
++      // Moderated Entities will return AccessResult::forbidden for attemps
++      // to edit $object->status.
++      // @see content_moderation_entity_field_access
++      if ($moderation_info->isModeratedEntity($object)) {
++        $access = $object->access('update', $account, TRUE)
++          ->andIf($object->moderation_state->access('edit', $account, TRUE));
++      }
++      else {
++        $access = $object->access('update', $account, TRUE)
++          ->andIf($object->status->access('edit', $account, TRUE));
++      }
+     }
+-
+-    // Other entity types may have different
+-    // access methods and properties.
+-    return TRUE;
++    else {
++      $access = AccessResult::forbidden()->setReason('The chosen Action only acts on entities of type node')->setCacheMaxAge(0);
++    }
++    return $return_as_object ? $access : $access->isAllowed();
+   }
+ 
+ }
+-- 
+GitLab
+
+
+From 1cde892e4e3599e11b1aeab9e46b41c6c8ee78d3 Mon Sep 17 00:00:00 2001
+From: DiegoPino <diegopino@3564864.no-reply.drupal.org>
+Date: Mon, 16 May 2022 00:01:46 +0000
+Subject: [PATCH 3/5] Fix ::access
+
+---
+ .../Action/PublishLatestRevisionAction.php    | 26 +++++++++++++------
+ 1 file changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/src/Plugin/Action/PublishLatestRevisionAction.php b/src/Plugin/Action/PublishLatestRevisionAction.php
+index 064759c..1e6adf4 100644
+--- a/src/Plugin/Action/PublishLatestRevisionAction.php
++++ b/src/Plugin/Action/PublishLatestRevisionAction.php
+@@ -10,6 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Session\AccountInterface;
+ use Drupal\moderated_content_bulk_publish\AdminModeration;
+ use Drupal\Core\Render\Markup;
++use Drupal\Core\Access\AccessResult;
+ 
+ /**
+  * An example action covering most of the possible options.
+@@ -154,15 +155,24 @@ class PublishLatestRevisionAction extends ActionBase/*extends ViewsBulkOperation
+    * {@inheritdoc}
+    */
+   public function access($object, AccountInterface $account = NULL, $return_as_object = FALSE) {
+-    if ($object->getEntityType() === 'node') {
+-      $access = $object->access('update', $account, TRUE)
+-        ->andIf($object->status->access('edit', $account, TRUE));
+-      return $return_as_object ? $access : $access->isAllowed();
++    if ($object->getEntityTypeId() === 'node') {
++      $moderation_info = \Drupal::service('content_moderation.moderation_information');
++      // Moderated Entities will return AccessResult::forbidden for attemps
++      // to edit $object->status.
++      // @see content_moderation_entity_field_access
++      if ($moderation_info->isModeratedEntity($object)) {
++        $access = $object->access('update', $account, TRUE)
++          ->andIf($object->moderation_state->access('edit', $account, TRUE));
++      }
++      else {
++        $access = $object->access('update', $account, TRUE)
++          ->andIf($object->status->access('edit', $account, TRUE));
++      }
+     }
+-
+-    // Other entity types may have different
+-    // access methods and properties.
+-    return TRUE;
++    else {
++      $access = AccessResult::forbidden()->setReason('The chosen Action only acts on entities of type node')->setCacheMaxAge(0);
++    }
++    return $return_as_object ? $access : $access->isAllowed();
+   }
+ 
+ }
+-- 
+GitLab
+
+
+From b864879e0c08c9e8304e8029ce5e8a70b0362109 Mon Sep 17 00:00:00 2001
+From: DiegoPino <diegopino@3564864.no-reply.drupal.org>
+Date: Mon, 16 May 2022 00:02:43 +0000
+Subject: [PATCH 4/5] Fix ::access
+
+---
+ src/Plugin/Action/UnpinContentAction.php | 26 ++++++++++++++++--------
+ 1 file changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/src/Plugin/Action/UnpinContentAction.php b/src/Plugin/Action/UnpinContentAction.php
+index 2313921..9e1c1d2 100644
+--- a/src/Plugin/Action/UnpinContentAction.php
++++ b/src/Plugin/Action/UnpinContentAction.php
+@@ -9,6 +9,7 @@ use Drupal\Core\Plugin\PluginFormInterface;
+ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Session\AccountInterface;
+ use Drupal\moderated_content_bulk_publish\AdminPin;
++use Drupal\Core\Access\AccessResult;
+ 
+ /**
+  * An example action covering most of the possible options.
+@@ -136,15 +137,24 @@ class UnpinContentAction extends ActionBase/*extends ViewsBulkOperationsActionBa
+    * {@inheritdoc}
+    */
+   public function access($object, AccountInterface $account = NULL, $return_as_object = FALSE) {
+-    if ($object->getEntityType() === 'node') {
+-      $access = $object->access('update', $account, TRUE)
+-        ->andIf($object->status->access('edit', $account, TRUE));
+-      return $return_as_object ? $access : $access->isAllowed();
++    if ($object->getEntityTypeId() === 'node') {
++      $moderation_info = \Drupal::service('content_moderation.moderation_information');
++      // Moderated Entities will return AccessResult::forbidden for attemps
++      // to edit $object->status.
++      // @see content_moderation_entity_field_access
++      if ($moderation_info->isModeratedEntity($object)) {
++        $access = $object->access('update', $account, TRUE)
++          ->andIf($object->moderation_state->access('edit', $account, TRUE));
++      }
++      else {
++        $access = $object->access('update', $account, TRUE)
++          ->andIf($object->status->access('edit', $account, TRUE));
++      }
+     }
+-
+-    // Other entity types may have different
+-    // access methods and properties.
+-    return TRUE;
++    else {
++      $access = AccessResult::forbidden()->setReason('The chosen Action only acts on entities of type node')->setCacheMaxAge(0);
++    }
++    return $return_as_object ? $access : $access->isAllowed();
+   }
+ 
+ }
+-- 
+GitLab
+
+
+From cf94ccef9488e6ee4dd712e37407dbcd2aed51bc Mon Sep 17 00:00:00 2001
+From: DiegoPino <diegopino@3564864.no-reply.drupal.org>
+Date: Mon, 16 May 2022 00:03:29 +0000
+Subject: [PATCH 5/5] Fix ::access
+
+---
+ .../Action/UnpublishCurrentRevisionAction.php | 28 +++++++++++++------
+ 1 file changed, 19 insertions(+), 9 deletions(-)
+
+diff --git a/src/Plugin/Action/UnpublishCurrentRevisionAction.php b/src/Plugin/Action/UnpublishCurrentRevisionAction.php
+index 129ce70..65db735 100644
+--- a/src/Plugin/Action/UnpublishCurrentRevisionAction.php
++++ b/src/Plugin/Action/UnpublishCurrentRevisionAction.php
+@@ -9,6 +9,7 @@ use Drupal\Core\Plugin\PluginFormInterface;
+ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Session\AccountInterface;
+ use Drupal\moderated_content_bulk_publish\AdminModeration;
++use Drupal\Core\Access\AccessResult;
+ 
+ /**
+  * An example action covering most of the possible options.
+@@ -133,19 +134,28 @@ class UnpublishCurrentRevisionAction extends ActionBase/*extends ViewsBulkOperat
+   }
+   */
+ 
+-  /**
++ /**
+    * {@inheritdoc}
+    */
+   public function access($object, AccountInterface $account = NULL, $return_as_object = FALSE) {
+-    if ($object->getEntityType() === 'node') {
+-      $access = $object->access('update', $account, TRUE)
+-        ->andIf($object->status->access('edit', $account, TRUE));
+-      return $return_as_object ? $access : $access->isAllowed();
++    if ($object->getEntityTypeId() === 'node') {
++      $moderation_info = \Drupal::service('content_moderation.moderation_information');
++      // Moderated Entities will return AccessResult::forbidden for attemps
++      // to edit $object->status.
++      // @see content_moderation_entity_field_access
++      if ($moderation_info->isModeratedEntity($object)) {
++        $access = $object->access('update', $account, TRUE)
++          ->andIf($object->moderation_state->access('edit', $account, TRUE));
++      }
++      else {
++        $access = $object->access('update', $account, TRUE)
++          ->andIf($object->status->access('edit', $account, TRUE));
++      }
+     }
+-
+-    // Other entity types may have different
+-    // access methods and properties.
+-    return TRUE;
++    else {
++      $access = AccessResult::forbidden()->setReason('The chosen Action only acts on entities of type node')->setCacheMaxAge(0);
++    }
++    return $return_as_object ? $access : $access->isAllowed();
+   }
+ 
+ }
+-- 
+GitLab
+

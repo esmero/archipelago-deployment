@@ -58,7 +58,7 @@
         "drupal/jquery_ui_datepicker": "^1.1",
         "drupal/jquery_ui_slider": "^1.1",
         "drupal/jsonapi_earlyrendering_workaround": "^1.0",
-        "drupal/moderated_content_bulk_publish": "^1.0",
+        "drupal/moderated_content_bulk_publish": "^2.0",
         "drupal/pathauto": "^1.6",
         "drupal/queue_ui": "^2.0",
         "drupal/quick_node_clone": "^1.12",
@@ -75,13 +75,12 @@
         "drupal/twig_field": "^1.0",
         "drupal/twig_tweak": "^2.6",
         "drupal/views_bootstrap": "^4.3",
-        "drupal/views_bulk_operations": "^3.13",
+        "drupal/views_bulk_operations": "^4.1",
         "drupal/webform": "^6",
         "drupal/webform_entity_handler": "1.x-dev",
         "drupal/webformnavigation": "^1.0@alpha",
         "drupal/workflow": "^1.1",
         "drush/drush": "10.5",
-        "egulias/email-validator": "^2.0",
         "fileeye/mimemap": "^1.1.1",
         "maennchen/zipstream-php": "^2.1",
         "mixnode/mixnode-warcreader-php": "^0.0.6",
@@ -102,12 +101,10 @@
         "swaggest/json-schema": "^0.12.10",
         "symfony/event-dispatcher": "^4",
         "symfony/yaml": "^4",
-        "typo3/phar-stream-wrapper": "3.1.6",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
-        "wikibase/data-model": "9.6.1",
-        "zaporylie/composer-drupal-optimizations": "^1.1.1"
+        "wikibase/data-model": "9.6.1"
     },
     "require-dev": {
         "drupal/core-dev": "^9",
@@ -120,7 +117,18 @@
     "prefer-stable": true,
     "config": {
         "discard-changes": true,
-        "sort-packages": true
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "preferred-install": {
+            "archipelago/*": "source",
+            "strawberryfield/*": "source",
+            "*": "dist"
+        }
     },
     "autoload": {
         "classmap": [
@@ -179,8 +187,14 @@
         "enable-patching": true,
         "patches": {
             "drupal/facets": {
-                "Fix deprecated JQUERY UI Slider": "https://www.drupal.org/files/issues/2022-03-07/issue-315622-nouislider_25_0.patch" 
-            }
+                "Fix deprecated JQUERY UI Slider": "https://www.drupal.org/files/issues/2021-11-12/issue-3153622-nouislider_25.patch" 
+            },
+        "drupal/core": {
+                "Fix Ajax/Preserve Facets on exposed forms Drupal 9.3.x": "patches/3032353-25-archipelago-05162022.patch"
+            },    
+        "drupal/moderated_content_bulk_publish": {
+                "Fix access check on every action": "patches/3280584-archipelago-05162022.patch"
+            }    
         }
     }
 }
