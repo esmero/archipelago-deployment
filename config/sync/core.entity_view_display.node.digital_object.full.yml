@@ -22,28 +22,28 @@ bundle: digital_object
 mode: full
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 101
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 101
     region: content
   content_moderation_control:
-    weight: -20
     settings: {  }
     third_party_settings: {  }
+    weight: -20
     region: content
   field_descriptive_metadata:
-    weight: 102
+    type: strawberry_default_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: strawberry_default_formatter
+    weight: 102
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   langcode: true

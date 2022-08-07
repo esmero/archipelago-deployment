@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
   action: 0
   aggregator: 0
@@ -83,7 +85,7 @@ module:
   queue_ui: 0
   quick_node_clone: 0
   quickedit: 0
-  rdf: 0
+  redis: 0
   responsive_image: 0
   rest: 0
   restui: 0
@@ -142,5 +144,3 @@ theme:
   olivero: 0
   claro: 0
 profile: minimal
-_core:
-  default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc

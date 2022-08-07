@@ -1,0 +1,12 @@
+uuid: f7f1aa87-50c8-4b57-9728-827af361075a
+langcode: en
+status: true
+dependencies: {  }
+id: agents_from_lod_and_local
+label: 'Agents from LoD and Local'
+pluginid: jmespath
+pluginconfig:
+  source_key: 'edm_agent[].name_label, creator_lod[].name_label, subject_lcnaf_personal_names[].label, subjects_local_personal_names, subject_lcnaf_corporate_names[].label, subject_lcnaf_personal_names[].label , viaf[].label'
+  is_date: false
+  exposed_key: name_label
+active: true

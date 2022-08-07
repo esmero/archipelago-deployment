@@ -23,9 +23,9 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
         wrappers:
           ds_content: div
+        label: ''
     regions:
       ds_content:
         - node_changed_date
@@ -53,24 +53,24 @@ bundle: digital_object
 mode: digital_object_with_thumbnail_for_grid
 content:
   field_descriptive_metadata:
-    weight: 1
+    type: strawberry_metadata_formatter
     label: hidden
     settings:
-      specs: 'http://schema.org'
-      label: 'Descriptive Metadata'
-      metadatadisplayentity_uselabel: '0'
-      iiif_base_url: 'https://icg.archipelago.nyc/cantaloupe/iiif/2'
+      iiif_base_url: 'http://localhost:8183/iiif/2'
       iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
       use_iiif_globals: '1'
+      label: 'Descriptive Metadata'
+      specs: 'http://schema.org'
       metadatadisplayentity_uuid: 7ca9ef30-1535-4616-b3b2-201dcc7d6a69
+      metadatadisplayentity_uselabel: '0'
     third_party_settings: {  }
-    type: strawberry_metadata_formatter
+    weight: 1
     region: ds_content
   search_api_excerpt:
-    weight: 2
-    region: ds_content
     settings: {  }
     third_party_settings: {  }
+    weight: 2
+    region: ds_content
 hidden:
   body: true
   content_moderation_control: true

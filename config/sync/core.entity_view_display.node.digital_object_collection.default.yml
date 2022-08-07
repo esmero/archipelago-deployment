@@ -18,9 +18,9 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
         wrappers:
           ds_content: div
+        label: ''
     regions:
       ds_content:
         - field_descriptive_metadata
@@ -33,31 +33,31 @@ third_party_settings:
         formatter: strawberry_metadata_formatter
         settings:
           formatter:
-            specs: 'http://schema.org'
             label: 'Descriptive Metadata'
-            metadatadisplayentity_uselabel: '0'
+            specs: 'http://schema.org'
             metadatadisplayentity_uuid: bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7
+            metadatadisplayentity_uselabel: '0'
 id: node.digital_object_collection.default
 targetEntityType: node
 bundle: digital_object_collection
 mode: default
 content:
   field_descriptive_metadata:
-    weight: 0
+    type: strawberry_media_formatter
     label: hidden
     settings:
-      iiif_group: true
-      thumbnails: true
+      iiif_base_url: 'http://localhost:8183/iiif/2'
+      iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
       json_key_source: 'as:image'
       max_width: '0'
       max_height: '512'
-      use_iiif_globals: '1'
-      iiif_base_url: 'http://localhost:8183/iiif/2'
-      iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
       webannotations: false
       webannotations_tool: polygon
+      use_iiif_globals: '1'
+      iiif_group: true
+      thumbnails: true
     third_party_settings: {  }
-    type: strawberry_media_formatter
+    weight: 0
     region: ds_content
 hidden:
   body: true

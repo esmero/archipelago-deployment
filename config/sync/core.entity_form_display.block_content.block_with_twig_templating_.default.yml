@@ -21,19 +21,19 @@ bundle: block_with_twig_templating_
 mode: default
 content:
   field_twig_content:
+    type: twig
     weight: 3
+    region: content
     settings:
-      rows: 10
-      placeholder: ''
-      mode: application/xml
       toolbar: true
-      autoCloseTags: true
-      styleActiveLine: true
       lineNumbers: false
       foldGutter: false
+      autoCloseTags: true
+      styleActiveLine: true
+      mode: application/xml
+      rows: 10
+      placeholder: ''
     third_party_settings: {  }
-    type: twig
-    region: content
   info:
     type: string_textfield
     weight: 0

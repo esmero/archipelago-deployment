@@ -7,6 +7,6 @@ label: ispartof
 pluginid: entityjmespath
 pluginconfig:
   source_key: ispartof
-  entity_type: node
   exposed_key: sbf_entity_reference_ispartof
+  entity_type: node
 active: true

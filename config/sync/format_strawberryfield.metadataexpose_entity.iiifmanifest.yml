@@ -8,8 +8,8 @@ id: iiifmanifest
 label: iiifmanifest
 target_entity_types:
   digital_object: digital_object
+  digital_object_collection: digital_object_collection
   article: 0
-  digital_object_collection: 0
   page: 0
   webform: 0
 source_entityfield_name: null

@@ -14,8 +14,6 @@ domains: {  }
 field_type:
   name: text_ocr_stored
   class: solr.TextField
-  storeOffsetsWithPositions: true
-  termVectors: true
   analyzers:
     -
       type: index
@@ -44,6 +42,8 @@ field_type:
           class: solr.StopFilterFactory
         -
           class: solr.PorterStemFilterFactory
+  storeOffsetsWithPositions: true
+  termVectors: true
 unstemmed_field_type: null
 spellcheck_field_type: null
 collated_field_type: null

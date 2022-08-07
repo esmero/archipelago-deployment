@@ -17,7 +17,7 @@ plugin: 'facet_block:descriptive_metadata_subjects'
 settings:
   id: 'facet_block:descriptive_metadata_subjects'
   label: Subject
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: facet_subjects
 visibility: {  }

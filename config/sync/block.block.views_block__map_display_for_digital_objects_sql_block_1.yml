@@ -18,17 +18,17 @@ plugin: 'views_block:map_display_for_digital_objects_sql-block_1'
 settings:
   id: 'views_block:map_display_for_digital_objects_sql-block_1'
   label: ''
-  provider: views
   label_display: '0'
+  provider: views
+  context_mapping: {  }
   views_label: ''
   items_per_page: none
-  context_mapping: {  }
 visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'
-    bundles:
-      digital_object: digital_object
-      digital_object_collection: digital_object_collection
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+    bundles:
+      digital_object: digital_object
+      digital_object_collection: digital_object_collection

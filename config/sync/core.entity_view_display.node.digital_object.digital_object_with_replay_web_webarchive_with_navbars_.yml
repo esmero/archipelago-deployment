@@ -24,9 +24,9 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
         wrappers:
           ds_content: div
+        label: ''
     regions:
       ds_content:
         - links
@@ -42,15 +42,15 @@ third_party_settings:
         formatter: strawberry_warc_formatter
         settings:
           formatter:
-            json_key_source: 'as:document'
-            json_key_starting_url: website_url
-            max_width: '0'
-            max_height: '960'
-            navbar: true
-            warcurl_json_key_source: ''
-            use_iiif_globals: '1'
             iiif_base_url: 'http://localhost:8183/iiif/2'
             iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+            navbar: true
+            json_key_source: 'as:document'
+            warcurl_json_key_source: ''
+            max_width: '0'
+            max_height: '960'
+            use_iiif_globals: '1'
+            json_key_starting_url: website_url
       'display_field_copy:node-formatted_metadata':
         plugin_id: 'display_field_copy:node-formatted_metadata'
         weight: 3
@@ -58,35 +58,35 @@ third_party_settings:
         formatter: strawberry_metadata_formatter
         settings:
           formatter:
-            specs: 'http://schema.org'
             label: 'Descriptive Metadata'
-            metadatadisplayentity_uselabel: '0'
+            specs: 'http://schema.org'
             metadatadisplayentity_uuid: bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7
+            metadatadisplayentity_uselabel: '0'
 id: node.digital_object.digital_object_with_replay_web_webarchive_with_navbars_
 targetEntityType: node
 bundle: digital_object
 mode: digital_object_with_replay_web_webarchive_with_navbars_
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 1
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
     region: ds_content
   field_descriptive_metadata:
-    weight: 4
+    type: strawberry_default_formatter
     label: hidden
     settings:
       limit_access: edit
     third_party_settings: {  }
-    type: strawberry_default_formatter
+    weight: 4
     region: ds_content
   links:
-    weight: 0
-    region: ds_content
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: ds_content
 hidden:
   content_moderation_control: true
   langcode: true

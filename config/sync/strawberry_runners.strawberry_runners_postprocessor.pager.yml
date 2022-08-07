@@ -7,17 +7,19 @@ label: pager
 weight: '-10'
 pluginconfig:
   source_type: asstructure
-  ado_type: Document
+  ado_type: 'Document,Book,Article'
   jsonkey:
+    'as:image': 'as:image'
     'as:document': 'as:document'
-    'as:image': 0
     'as:audio': 0
     'as:video': 0
     'as:text': 0
     'as:application': 0
   output_destination:
     plugin: plugin
-  mime_type: application/pdf
+  mime_type: 'application/pdf,image/tiff,image/jpeg,image/jp2'
+  language_key: language_iso639_3
+  language_default: eng
   timeout: '10'
   weight: '0'
 pluginid: filesequence

@@ -1,0 +1,12 @@
+uuid: 0ee83798-f5c9-4eef-a0d6-63b00193722c
+langcode: en
+status: true
+dependencies: {  }
+id: legacypid
+label: LegacyPID
+pluginid: jmespath
+pluginconfig:
+  source_key: '"legacy_PID"'
+  is_date: false
+  exposed_key: legacy_pid
+active: true

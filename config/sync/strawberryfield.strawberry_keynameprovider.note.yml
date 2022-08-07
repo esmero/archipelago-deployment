@@ -1,0 +1,12 @@
+uuid: 06cef221-9c44-4f59-b1a3-f293169a68e0
+langcode: en
+status: true
+dependencies: {  }
+id: note
+label: Note
+pluginid: jmespath
+pluginconfig:
+  source_key: '"note"'
+  is_date: false
+  exposed_key: note
+active: true

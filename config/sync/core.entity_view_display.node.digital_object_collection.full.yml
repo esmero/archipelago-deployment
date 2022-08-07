@@ -50,41 +50,41 @@ bundle: digital_object_collection
 mode: full
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 4
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 4
     region: content
   field_descriptive_metadata:
-    weight: 5
+    type: strawberry_media_formatter
     label: hidden
     settings:
-      iiif_group: true
-      thumbnails: true
+      iiif_base_url: 'http://localhost:8183/iiif/2'
+      iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
       json_key_source: 'as:image'
       max_width: '0'
       max_height: '520'
       use_iiif_globals: '1'
-      iiif_base_url: 'http://localhost:8183/iiif/2'
-      iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+      iiif_group: true
+      thumbnails: true
     third_party_settings: {  }
-    type: strawberry_media_formatter
+    weight: 5
     region: content
   langcode:
     type: language
-    weight: 2
-    region: content
     label: hidden
     settings:
       link_to_entity: false
       native_language: false
     third_party_settings: {  }
-  links:
-    weight: 3
+    weight: 2
     region: content
+  links:
     settings: {  }
     third_party_settings: {  }
+    weight: 3
+    region: content
 hidden:
   content_moderation_control: true
   search_api_excerpt: true

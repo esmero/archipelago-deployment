@@ -23,13 +23,13 @@ bundle: digital_object
 mode: default
 content:
   field_descriptive_metadata:
-    weight: 0
-    settings:
-      webform_id: descriptive_metadata
-      placeholder: 'Descriptive Metadata'
-    third_party_settings: {  }
     type: strawberryfield_webform_inline_widget
+    weight: 0
     region: content
+    settings:
+      placeholder: 'Descriptive Metadata'
+      webform_id: descriptive_metadata
+    third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
     weight: 2

@@ -18,13 +18,13 @@ plugin: 'facet_block:mime_type_grid'
 settings:
   id: 'facet_block:mime_type_grid'
   label: 'MIME Type'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: mimetypegrid
 visibility:
   view_inclusion:
     id: view_inclusion
-    view_inclusion:
-      view-solr_search_content-grid: view-solr_search_content-grid
     negate: false
     context_mapping: {  }
+    view_inclusion:
+      view-solr_search_content-grid: view-solr_search_content-grid

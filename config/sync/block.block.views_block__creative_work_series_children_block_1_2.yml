@@ -20,27 +20,20 @@ plugin: 'views_block:creative_work_series_children-block_1'
 settings:
   id: 'views_block:creative_work_series_children-block_1'
   label: ''
-  provider: views
   label_display: '0'
+  provider: views
   views_label: ''
   items_per_page: none
 visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'
-    bundles:
-      digital_object_collection: digital_object_collection
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
-  node_type:
-    id: node_type
     bundles:
       digital_object_collection: digital_object_collection
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
   request_path:
     id: request_path
-    pages: '/node/*'
     negate: false
     context_mapping: {  }
+    pages: '/node/*'

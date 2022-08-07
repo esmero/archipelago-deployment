@@ -41,10 +41,10 @@ third_party_settings:
         formatter: strawberry_metadata_formatter
         settings:
           formatter:
-            specs: 'http://schema.org'
             label: Thumbnail
-            metadatadisplayentity_uselabel: '0'
+            specs: 'http://schema.org'
             metadatadisplayentity_uuid: 7ca9ef30-1535-4616-b3b2-201dcc7d6a69
+            metadatadisplayentity_uselabel: '0'
       node_changed_date:
         plugin_id: node_changed_date
         weight: 3
@@ -66,23 +66,23 @@ mode: strawberryfield_processed_metadata
 content:
   field_descriptive_metadata:
     type: strawberry_metadata_formatter
-    weight: 4
-    region: second
     label: hidden
     settings:
-      specs: 'http://schema.org'
-      label: 'Descriptive Metadata'
-      metadatadisplayentity_uselabel: '0'
       iiif_base_url: 'http://localhost:8183/iiif/2'
       iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
       use_iiif_globals: '1'
+      label: 'Descriptive Metadata'
+      specs: 'http://schema.org'
       metadatadisplayentity_uuid: 0ccc85b4-ed72-4c58-b585-ba652ebcfcaf
+      metadatadisplayentity_uselabel: '0'
     third_party_settings: {  }
+    weight: 4
+    region: second
   search_api_excerpt:
-    weight: 2
-    region: first
     settings: {  }
     third_party_settings: {  }
+    weight: 2
+    region: first
 hidden:
   body: true
   content_moderation_control: true

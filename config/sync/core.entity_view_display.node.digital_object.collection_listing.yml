@@ -35,10 +35,10 @@ third_party_settings:
         formatter: strawberry_metadata_formatter
         settings:
           formatter:
-            specs: 'http://schema.org'
             label: Thumbnail
-            metadatadisplayentity_uselabel: '0'
+            specs: 'http://schema.org'
             metadatadisplayentity_uuid: 7ca9ef30-1535-4616-b3b2-201dcc7d6a69
+            metadatadisplayentity_uselabel: '0'
       node_title:
         plugin_id: node_title
         weight: 0

@@ -19,22 +19,22 @@ plugin: 'facet_block:is_memberof_grid'
 settings:
   id: 'facet_block:is_memberof_grid'
   label: 'Part of Collection'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: strawberrygriddescriptivemetadata_ismemberof
 visibility:
   request_path_exclusion:
     id: request_path_exclusion
-    pages: ''
     negate: null
     context_mapping: {  }
+    pages: ''
   view_inclusion:
     id: view_inclusion
     negate: null
-    view_inclusion: {  }
     context_mapping: {  }
+    view_inclusion: {  }
   request_path:
     id: request_path
-    pages: '/search_grid*'
     negate: false
     context_mapping: {  }
+    pages: '/search_grid*'

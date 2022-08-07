@@ -1,21 +1,21 @@
 roles:
   anonymous:
     theme: archipelago_subtheme
-    admin_theme: archipelago_subtheme
     weight: '-48'
+    admin_theme: archipelago_subtheme
   authenticated:
     theme: archipelago_subtheme
-    admin_theme: archipelago_subtheme
     weight: '-47'
+    admin_theme: archipelago_subtheme
   administrator:
     theme: archipelago_subtheme
-    admin_theme: claro
     weight: '-50'
+    admin_theme: claro
   metadata_api:
     theme: claro
-    admin_theme: claro
     weight: '0'
+    admin_theme: claro
   metadata_pro:
     theme: archipelago_subtheme
-    admin_theme: claro
     weight: '-49'
+    admin_theme: claro

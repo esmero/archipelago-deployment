@@ -4,9 +4,9 @@ status: open
 dependencies:
   module:
     - webform_strawberryfield
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 1
 template: false
 archive: false
@@ -276,6 +276,15 @@ elements: |-
       '#multiple__add_more_input': false
       '#format_items': comma
       '#autocomplete_items': languages
+    physical_description_form:
+      '#type': textfield
+      '#title': Form
+    physical_description_extent:
+      '#type': textfield
+      '#title': Extent
+    physical_description_digital_origin:
+      '#type': textfield
+      '#title': 'Digital origin'
   collection_and_administrative_info:
     '#type': webform_wizard_page
     '#title': 'Collection and Administrative Information'
@@ -312,6 +321,30 @@ elements: |-
           display_name: entity_reference_solr_creativeworks
           arguments:
             - CreativeWorkSeries
+    related_item_fieldset:
+      '#type': fieldset
+      '#title': 'Related item'
+      related_item_details:
+        '#type': details
+        '#title': 'Related item'
+        related_item_host_title_info_title:
+          '#type': textfield
+          '#title': 'Related item Host Title'
+        related_item_host_display_label:
+          '#type': textfield
+          '#title': 'Related item Host Display Label'
+        related_item_host_type_of_resource:
+          '#type': textfield
+          '#title': 'Related item Host Type of Resource'
+        related_item_host_local_identifier:
+          '#type': textfield
+          '#title': 'Related item Host Local Identifier'
+        related_item_note:
+          '#type': textarea
+          '#title': 'Related item Note'
+        related_item_host_location_url:
+          '#type': textfield
+          '#title': 'Related item URL'
     sequence_id:
       '#type': number
       '#title': 'Sequence ID'
@@ -333,6 +366,9 @@ elements: |-
         class:
           - custom-form-input-heading
       '#format_items': comma
+    location_url:
+      '#type': textfield
+      '#title': 'Location URL'
     local_identifier:
       '#type': textfield
       '#title': 'Local identifier'
@@ -475,6 +511,18 @@ elements: |-
       '#type': textarea
       '#title': 'Local Rights Statement'
       '#format_items': comma
+    record_info_fieldset:
+      '#type': fieldset
+      '#title': 'Record info'
+      record_info_details:
+        '#type': details
+        '#title': 'Record info'
+        record_info_language_of_cataloging:
+          '#type': textfield
+          '#title': 'Record Info Language of Cataloging'
+        record_info_record_content_source:
+          '#type': textfield
+          '#title': 'Record Info Record Content Source'
   agent:
     '#type': webform_wizard_page
     '#title': 'Subjects and Other Classifications'
@@ -672,7 +720,6 @@ elements: |-
           This is meant to describe a geographic location closely related to this Digital Object. Such as the origin of the object, where it was created, etc.<br />
           <br />
           Example: <em>Central Park, Manhattan, New York County, New York, United States of America</em>
-          
         '#format_items': ol
         '#lat__access': true
         '#lng__access': true
@@ -845,28 +892,27 @@ settings:
   page_theme_name: ''
   form_title: source_entity_webform
   form_submit_once: true
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: true
+  form_unsaved: true
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: true
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: true
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
@@ -878,7 +924,12 @@ settings:
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -887,11 +938,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -902,13 +948,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -931,9 +977,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: inline
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -960,8 +1006,9 @@ settings:
   results_customize: false
   token_view: false
   token_update: false
-  serial_disabled: false
   token_delete: false
+  serial_disabled: false
+  form_remote_addr: true
 access:
   create:
     roles:
@@ -1011,9 +1058,9 @@ access:
 handlers:
   a_strawberryfield_harvester:
     id: strawberryField_webform_handler
+    handler_id: a_strawberryfield_harvester
     label: 'A strawberryField harvester'
     notes: ''
-    handler_id: a_strawberryfield_harvester
     status: true
     conditions: {  }
     weight: 0

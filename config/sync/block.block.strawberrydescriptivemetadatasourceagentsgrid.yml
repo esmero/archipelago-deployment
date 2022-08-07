@@ -18,13 +18,13 @@ plugin: 'facet_block:strawberry_descriptive_metadata_source_agents_grid'
 settings:
   id: 'facet_block:strawberry_descriptive_metadata_source_agents_grid'
   label: Agents
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: strawberrydescriptivemetadatasourceagentsgrid
 visibility:
   view_inclusion:
     id: view_inclusion
-    view_inclusion:
-      view-solr_search_content-grid: view-solr_search_content-grid
     negate: false
     context_mapping: {  }
+    view_inclusion:
+      view-solr_search_content-grid: view-solr_search_content-grid

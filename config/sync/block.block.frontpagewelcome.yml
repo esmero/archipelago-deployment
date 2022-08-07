@@ -19,24 +19,24 @@ plugin: 'block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a'
 settings:
   id: 'block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a'
   label: 'Front page welcome'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path_exclusion:
     id: request_path_exclusion
-    pages: ''
     negate: null
     context_mapping: {  }
+    pages: ''
   view_inclusion:
     id: view_inclusion
     negate: null
-    view_inclusion: {  }
     context_mapping: {  }
+    view_inclusion: {  }
   request_path:
     id: request_path
-    pages: '<front>'
     negate: false
     context_mapping: {  }
+    pages: '<front>'

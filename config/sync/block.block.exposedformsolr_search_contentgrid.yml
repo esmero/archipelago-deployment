@@ -19,22 +19,22 @@ plugin: 'views_exposed_filter_block:solr_search_content-grid'
 settings:
   id: 'views_exposed_filter_block:solr_search_content-grid'
   label: ''
-  provider: views
   label_display: '0'
+  provider: views
   views_label: ''
 visibility:
   request_path_exclusion:
     id: request_path_exclusion
-    pages: ''
     negate: null
     context_mapping: {  }
+    pages: ''
   view_inclusion:
     id: view_inclusion
     negate: null
-    view_inclusion: {  }
     context_mapping: {  }
+    view_inclusion: {  }
   request_path:
     id: request_path
-    pages: '/search_grid*'
     negate: false
     context_mapping: {  }
+    pages: '/search_grid*'

@@ -11,7 +11,7 @@ third_party_settings:
     parent: 'main:'
 name: 'Digital Object'
 type: digital_object
-description: 'Use this to add photographs, videos, books, datasets or any other type of object to your repository.'
+description: 'Use this to add Photographs, Videos, Books, Datasets or any other type of item level Digital Objects to your Repository. Might be a child of a Digital Object Collection.'
 help: ''
 new_revision: true
 preview_mode: 1
