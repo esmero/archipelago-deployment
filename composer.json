@@ -31,7 +31,7 @@
         "composer/semver": "^3.2",
         "cweagans/composer-patches": "^1.6",
         "drupal/bamboo_twig": "5.x-dev",
-        "drupal/bootstrap_barrio": "5.1",
+        "drupal/bootstrap_barrio": "^5.5",
         "drupal/calendar": "^1.0@alpha",
         "drupal/redis": "^1.5",
         "drupal/config_inspector": "dev-1.x",
