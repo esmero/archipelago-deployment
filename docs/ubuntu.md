@@ -108,10 +108,10 @@ Now that you got it, let's deploy:
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.0.0-RC3
+git checkout 1.0.0
 ```
 
-And now a hard choice. Which docker-compose/ensemble? Edge? Stable? Legacy? So many choices. For latest/modern stack PHP7.4/Solr8.8/MySQL8 we recommend:
+And now a hard choice. Which docker-compose/ensemble? Edge? Stable? Legacy? So many choices. For latest/modern stack PHP8/Solr8.11/MySQL8 we recommend:
 
 ```shell
 cp docker-compose-linux.yml docker-compose.yml
@@ -121,7 +121,7 @@ docker-compose up -d
 
 You have something running and do not want to update Databases/Solr indexes: Go legacy. In doubt? Ask us please. We can help.
 
-If you want to stay more traditional and stick with older versions PHP7.4/Solr7.5/MySQL57 we recommend the following:
+If you want to stay more traditional (not recommended) and stick with older versions PHP7.4/Solr7.5/MySQL57 we recommend the following:
 
 ```shell
 cp docker-compose-legacy.yml docker-compose.yml
@@ -136,7 +136,8 @@ You need to make sure Docker can read/write to your local Drive, a.k.a mounted v
 This means in practice running:
 
 ```shell
-sudo chown -R 100:100 persistent/iiifcache
+sudo chown -R 8183:8183 persistent/iiifcache
+sudo chown -R 8183:8183 persistent/iiiftmp
 sudo chown -R 8983:8983 persistent/solrcore
 ```
 
@@ -160,7 +161,7 @@ pass:minio123
 
 and create a bucket named "archipelago". To do so go to the `Buckets` section in the navigation pane, and click `Create Bucket +`. Type `archipelago` under `Bucket Name` and submit, done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
-## Step 3: Deploy Drupal 9.2.9 and the awesome Archipelago Modules
+## Step 3: Deploy Drupal 9 and the awesome Archipelago Modules
 
 The following will run composer inside the esmero-php container to download all dependencies and Drupal Core too.
 
@@ -181,7 +182,7 @@ Note: We say `local` because your whole Drupal web root (the one you cloned) is 
 If this is the first time you're deploying Drupal using the provided Configurations run:
 
 ```shell
-docker exec -ti -u www-data esmero-php bash -c "cd web;../vendor/bin/drush -y si --verbose --existing-config --db-url=mysql://root:esmerodb@esmero-db/drupal9 --account-name=admin --account-pass=archipelago -r=/var/www/html/web --sites-subdir=default --notify=false;drush cr;chown -R www-data:www-data sites;"
+docker exec -ti -u www-data esmero-php bash -c "cd web;../vendor/bin/drush -y si --verbose --existing-config --db-url=mysql://root:esmerodb@esmero-db/drupal --account-name=admin --account-pass=archipelago -r=/var/www/html/web --sites-subdir=default --notify=false;drush cr;chown -R www-data:www-data sites;"
 ```
 
 This will give you an `admin` Drupal user with `archipelago` as password (change this if running on a public instance!) and also set the right Docker Container owner for your Drupal installation files.
