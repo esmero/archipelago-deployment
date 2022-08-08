@@ -57,6 +57,8 @@ services:
     command: mysqld --default-authentication-plugin=mysql_native_password  --max_allowed_packet=256M --sort_buffer_size=512K --binlog-expire-logs-seconds=172800 --lower_case_table_names=1 
     container_name: esmero-db
     restart: always
+    cap_add:
+      - SYS_NICE
     environment:
       MYSQL_ROOT_PASSWORD: esmerodb
     networks:
