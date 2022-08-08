@@ -1,9 +1,9 @@
 {#
-Updated 22/11/2021 for RC3
+Updated 07/08/2022 for 1.0.0
 
-This Template generates IIIF 3.0 API Manifest for reative Works Series using a Drupal Views
+This Template generates IIIF 3.0 API Manifest for Collections using a Drupal Views
 JSON to be used by a Drupal Views (REST) to generate a simpler to parse/join listing of Canvases
-For a Creative Works Series Manifest
+For a Collection Manifest Manifest
 
 Structures passed from Archipelago are
 - node
@@ -89,6 +89,7 @@ Without Double quotes.
 "label": { "en": [ "Attribution" ] },
 "value": { "en": [ "Provided by Archipelago Deployment" ] }
 },
+"rights": {{ computed_rights|json_encode|raw }},
 "metadata": [
 {% for agent in attribute(data, 'edm_agent') %}
     {
