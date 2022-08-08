@@ -1,6 +1,6 @@
 {# This Template generates Thumbnails for various Media representations
 
-Updated on 25/11/2021 for RC3
+Updated on 07/14/2022 (July) for 1.0.0 for Cantaloupe 5.x and 6.x
 
 Structures passed from Archipelago are
 - node
@@ -29,7 +29,7 @@ Without Double quotes.
 {# -- Language -- #}
 {% set len = language.getId() ? language.getId() : "en" %}
 {# --THIS WILL BE THE IMAGE IIIF URL. CAN HAVE A DEFAULT VALUE IN CASE OF FAILURE THERE IS ALWAYS A GENERIC THUMB-- #}
-{# -- NOTE: for loops are scoped so if we onlt define source inside one it will not be accesible from the outside- #}
+{# -- NOTE: for loops are scoped so if we only define source inside one it will not be accesible from the outside- #}
 {% set source = '' %}
 {# <---- END SETUP --> #}
 {#  We will test for 3 main options
@@ -63,7 +63,7 @@ Without Double quotes.
   {# this is just an example, we process here only MP4 quicktimes #}
     {% if document['flv:pronom'].mimetype == "video/quicktime" %}
       {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %} 
-      {% set source = cantaloupeid ~ "/full/" ~ width  ~ ",/0/default.jpg?time=00:00:01" %}
+      {% set source = cantaloupeid ~ ";1/full/" ~ width  ~ ",/0/default.jpg" %}
       {% set break = true %}
     {% endif %}
   {% endfor %}  
