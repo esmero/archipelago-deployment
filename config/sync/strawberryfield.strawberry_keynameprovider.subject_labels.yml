@@ -6,7 +6,7 @@ id: subject_labels
 label: 'Subject Labels'
 pluginid: jmespath
 pluginconfig:
-  source_key: 'subject_loc[*].label, subject_wikidata[*].label, subject_lcnaf_geographic_names[*].label,subject_temporal[*].label, subject_lcgft_terms[*].label, term_aat_getty[*].label'
+  source_key: 'subject_loc[*].label, subject_wikidata[*].label, subject_lcnaf_geographic_names[*].label,subject_temporal[*].label, subject_lcgft_terms[*].label, term_aat_getty[*].label, pubmed_mesh[*].label'
   is_date: false
   exposed_key: subject_labels
 active: true

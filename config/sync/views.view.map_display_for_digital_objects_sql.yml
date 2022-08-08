@@ -91,12 +91,14 @@ display:
             geojsonurl_json_key_source: geojson
             max_width: '0'
             max_height: '480'
-            initial_zoom: 5
-            max_zoom: 12
+            initial_zoom: 15
+            max_zoom: 18
             min_zoom: 2
             tilemap_url: 'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png'
             tilemap_attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
             use_iiif_globals: '1'
+            upload_json_key_source: ''
+            embargo_json_key_source: ''
           group_column: value
           group_columns: {  }
           group_rows: true

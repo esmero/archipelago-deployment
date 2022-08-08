@@ -24,8 +24,14 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
         label: ''
     regions:
       ds_content:
@@ -34,7 +40,6 @@ third_party_settings:
         - 'display_field_copy:node-field_descriptive_metadata_image'
         - 'display_field_copy:node-formatted_metadata'
         - field_descriptive_metadata
-        - 'display_field_copy:node-static_media'
     fields:
       'display_field_copy:node-field_descriptive_metadata_image':
         plugin_id: 'display_field_copy:node-field_descriptive_metadata_image'
@@ -62,17 +67,6 @@ third_party_settings:
             specs: 'http://schema.org'
             metadatadisplayentity_uuid: bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7
             metadatadisplayentity_uselabel: '0'
-      'display_field_copy:node-static_media':
-        plugin_id: 'display_field_copy:node-static_media'
-        weight: 5
-        label: hidden
-        formatter: strawberry_metadata_formatter
-        settings:
-          formatter:
-            label: 'Descriptive Metadata'
-            specs: 'https://iiif.io/api/presentation/3.0/'
-            metadatadisplayentity_uuid: ad7aab5a-4bb3-43f2-8328-2b62895a3821
-            metadatadisplayentity_uselabel: '1'
 id: node.digital_object.digital_object_with_book_reader
 targetEntityType: node
 bundle: digital_object

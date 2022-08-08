@@ -19,14 +19,26 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
         label: ''
     regions:
       ds_content:
         - field_descriptive_metadata
         - 'display_field_copy:node-raw_metadata'
+        - 'display_field_copy:node-extra_metadata_collection'
     fields:
+      'display_field_copy:node-extra_metadata_collection':
+        plugin_id: 'display_field_copy:node-extra_metadata_collection'
+        weight: 2
+        label: hidden
+        formatter: strawberry_default_formatter
       'display_field_copy:node-raw_metadata':
         plugin_id: 'display_field_copy:node-raw_metadata'
         weight: 1
@@ -60,6 +72,8 @@ content:
       max_width: '0'
       max_height: '512'
       use_iiif_globals: '1'
+      upload_json_key_source: ''
+      embargo_json_key_source: ''
     third_party_settings: {  }
     weight: 0
     region: ds_content

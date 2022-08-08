@@ -32,7 +32,13 @@ third_party_settings:
       ds_content:
         - field_descriptive_metadata
         - 'display_field_copy:node-raw_metadata'
+        - 'display_field_copy:node-extra_metadata_collection'
     fields:
+      'display_field_copy:node-extra_metadata_collection':
+        plugin_id: 'display_field_copy:node-extra_metadata_collection'
+        weight: 2
+        label: hidden
+        formatter: strawberry_default_formatter
       'display_field_copy:node-raw_metadata':
         plugin_id: 'display_field_copy:node-raw_metadata'
         weight: 1

@@ -18,14 +18,14 @@ plugin: 'facet_block:descriptive_metadata_source_json_keys'
 settings:
   id: 'facet_block:descriptive_metadata_source_json_keys'
   label: 'JSON keys in your metadata'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: facet_jsonkeys
 visibility:
   user_role:
     id: user_role
-    roles:
-      metadata_pro: metadata_pro
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
+    roles:
+      metadata_pro: metadata_pro

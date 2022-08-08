@@ -1,5 +1,5 @@
-id: raw_metadata
-label: '🍓 Frutilla'
+id: extra_metadata_collection
+label: '🍓 Awahihte'
 ui_limit: 'digital_object_collection|*'
 type: display_field_copy
 type_label: 'Copy field'

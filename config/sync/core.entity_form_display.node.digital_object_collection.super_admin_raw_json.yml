@@ -1,8 +1,9 @@
-uuid: 6ce60943-82e3-4a2d-86db-865278a0705a
+uuid: 495367d4-302d-4fe6-8881-985ecb9f3ab1
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.node.super_admin_raw_json
     - field.field.node.digital_object_collection.body
     - field.field.node.digital_object_collection.field_descriptive_metadata
     - node.type.digital_object_collection
@@ -11,16 +12,16 @@ dependencies:
     - content_moderation
     - field_layout
     - layout_discovery
-    - webform_strawberryfield
+    - strawberryfield
 third_party_settings:
   field_layout:
     id: layout_onecol
     settings:
       label: ''
-id: node.digital_object_collection.default
+id: node.digital_object_collection.super_admin_raw_json
 targetEntityType: node
 bundle: digital_object_collection
-mode: default
+mode: super_admin_raw_json
 content:
   created:
     type: datetime_timestamp
@@ -29,14 +30,12 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_descriptive_metadata:
-    type: strawberryfield_webform_inline_widget
+    type: strawberry_textarea
     weight: 0
     region: content
     settings:
       placeholder: 'Collection Metadata'
-      webform_id: digital_object_collection
-      render_always: false
-      hide_cancel: false
+      rows: '5'
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default

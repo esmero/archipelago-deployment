@@ -12,7 +12,7 @@ template: false
 archive: false
 id: digital_object_collection
 title: 'Default Digital Object Collection'
-description: 'Default Digital Object Collection Webform: 1.0.0-RC2.'
+description: 'Default Digital Object Collection Webform: 1.0.0'
 category: Archipel
 elements: |-
   metadata:
@@ -73,6 +73,111 @@ elements: |-
         class:
           - custom-form-input-heading
       '#format_items': comma
+    creator_fieldset:
+      '#type': fieldset
+      '#title': Creator/Contributor
+      '#description': 'You may choose to use either the general Creator/Contributor (unmapped, free-text) element, and/or use the Creator/Contributor (Linked Data) element which allows you to select authorized Name headings from the&nbsp;Congress Name Authority File (LCNAF).'
+      '#help_title': Creator/Contributor
+      '#help': 'Individual(s)/Organization(s) responsible for creating the original resource.'
+      '#description_display': before
+      creator_unmapped_details:
+        '#type': details
+        '#title': 'Creator/Contributor (unmapped/free text)'
+        creator:
+          '#type': textfield
+          '#title': Creator/Contributor
+          '#multiple': 5
+          '#title_display': before
+          '#description_display': before
+          '#states_clear': false
+          '#multiple__min_items': 1
+          '#multiple__empty_items': 0
+          '#multiple__sorting': false
+          '#multiple__add_more': false
+          '#label_attributes':
+            class:
+              - custom-form-input-heading
+          '#format_items': comma
+      creator_lod_details:
+        '#type': details
+        '#title': 'Creator/Contributor (Linked Data) '
+        '#description': 'You can select to search from the LCNAF&#39;s Personal, Corporate, or Family Names Classes (<a href="https://id.loc.gov/ontologies/madsrdf/v1.html">listed here</a>). Roles information is being sourced from <a href="https://id.loc.gov/vocabulary/relators.html">LoC Relators terms</a>.'
+        creator_lod:
+          '#type': webform_metadata_multiagent
+          '#title': 'Creator/Contributor (Linked Data)'
+          '#multiple': true
+          '#multiple__min_items': 1
+          '#multiple__empty_items': 0
+          '#multiple__sorting': false
+          '#multiple__add_more': false
+          '#format_items': ol
+          '#agent_type__placeholder': 'Select Creator Type'
+          '#name_label__title': 'Creator Name'
+          '#name_uri__title': 'Creator URI'
+          '#role_uri__title': 'Role URI'
+          '#vocab_personal_name': rdftype
+          '#rdftype_personal_name': PersonalName
+          '#vocab_corporate_name': rdftype
+          '#rdftype_corporate_name': CorporateName
+          '#vocab_family_name': rdftype
+          '#rdftype_family_name': FamilyName
+          '#role_type': loc
+    date_created_fieldset:
+      '#type': fieldset
+      '#title': 'Date Created'
+      '#description': 'You may choose to use either the Date Created in different ways--using <a href="https://www.loc.gov/standards/datetime/">EDTF formatting</a>, as a Fixed/ISO date, or as an&nbsp;unmapped, free-text string. Please note that unmapped/free-text dates will not be indexed for the Date Created facet.'
+      '#states':
+        visible:
+          - ':input[name="type"]':
+              value: CreativeWorkSeries
+          - or
+          - ':input[name="type"]':
+              value: Newspaper
+          - or
+          - ':input[name="type"]':
+              value: Periodical
+          - or
+          - ':input[name="type"]':
+              value: Periodical
+          - or
+          - ':input[name="type"]':
+              value: Publication
+      '#states_clear': false
+      date_created_edtf_details:
+        '#type': details
+        '#title': 'Date Created (EDTF)'
+        date_created_edtf:
+          '#type': webform_metadata_date
+          '#title': 'Date Created (EDTF)'
+          '#format_items': comma
+          '#showfreeformalways': true
+          '#edtf_validateme': true
+          '#date_date_format': ''
+      date_created_fixed_details:
+        '#type': details
+        '#title': 'Date Created (Fixed/ISO: YYYY--MM-DD)'
+        date_created:
+          '#type': date
+          '#title': 'Date Created (Fixed/ISO: YYYY-MM-DD)'
+          '#help_title': 'Date of original'
+          '#help': 'Date the original resource was created (date the photograph was taken, video or audio file was recorded, document or book was published)'
+          '#title_display': before
+          '#description_display': before
+          '#states_clear': false
+          '#format_items': comma
+          '#datepicker': true
+          '#date_part_order':
+            - year
+            - month
+            - day
+          '#date_year_range': ''
+      date_created_free_details:
+        '#type': details
+        '#title': 'Date Created (Free)'
+        date_created_free:
+          '#type': textfield
+          '#title': 'Date Created (Free)'
+          '#format_items': comma
     publisher:
       '#type': textfield
       '#title': Publisher
@@ -123,6 +228,140 @@ elements: |-
         class:
           - custom-form-input-heading
       '#format_items': comma
+    local_identifier:
+      '#type': textfield
+      '#title': 'Local identifier'
+      '#title_display': before
+      '#autocomplete': 'off'
+      '#states':
+        visible:
+          - ':input[name="type"]':
+              value: CreativeWorkSeries
+          - or
+          - ':input[name="type"]':
+              value: Newspaper
+          - or
+          - ':input[name="type"]':
+              value: Periodical
+          - or
+          - ':input[name="type"]':
+              value: Publication
+      '#states_clear': false
+      '#label_attributes':
+        class:
+          - custom-form-input-heading
+      '#format_items': comma
+    related_item_fieldset:
+      '#type': fieldset
+      '#title': 'Related item'
+      '#states':
+        visible:
+          - ':input[name="type"]':
+              value: CreativeWorkSeries
+          - or
+          - ':input[name="type"]':
+              value: Newspaper
+          - or
+          - ':input[name="type"]':
+              value: Periodical
+          - or
+          - ':input[name="type"]':
+              value: Publication
+      '#states_clear': false
+      related_item_details:
+        '#type': details
+        '#title': 'Related item'
+        related_item_host_title_info_title:
+          '#type': textfield
+          '#title': 'Related item Host Title'
+        related_item_host_display_label:
+          '#type': textfield
+          '#title': 'Related item Host Display Label'
+        related_item_host_type_of_resource:
+          '#type': textfield
+          '#title': 'Related item Host Type of Resource'
+        related_item_host_local_identifier:
+          '#type': textfield
+          '#title': 'Related item Host Local Identifier'
+        related_item_note:
+          '#type': textarea
+          '#title': 'Related item Note'
+        related_item_host_location_url:
+          '#type': textfield
+          '#title': 'Related item URL'
+    notes_details:
+      '#type': details
+      '#title': Notes
+      '#states':
+        visible:
+          - ':input[name="type"]':
+              value: CreativeWorkSeries
+          - or
+          - ':input[name="type"]':
+              value: Newspaper
+          - or
+          - ':input[name="type"]':
+              value: Periodical
+          - or
+          - ':input[name="type"]':
+              value: Publication
+      '#states_clear': false
+      note:
+        '#type': textarea
+        '#title': 'General Note'
+      physical_description_note_condition:
+        '#type': textfield
+        '#title': 'Condition Note'
+      note_publishinginfo:
+        '#type': textarea
+        '#title': 'Publishing Info Note'
+    physical_description_details:
+      '#type': details
+      '#title': 'Physical Description'
+      '#states':
+        visible:
+          - ':input[name="type"]':
+              value: CreativeWorkSeries
+          - or
+          - ':input[name="type"]':
+              value: Newspaper
+          - or
+          - ':input[name="type"]':
+              value: Periodical
+          - or
+          - ':input[name="type"]':
+              value: Publication
+      '#states_clear': false
+      physical_location:
+        '#type': textfield
+        '#title': 'Physical location'
+      physical_description_extent:
+        '#type': textfield
+        '#title': Extent
+    date_embargo_lift:
+      '#type': date
+      '#title': 'Date of Embargo Lift'
+      '#description': 'Date that contains an embargo lift date that will be used to Embargo Metadata and Media.'
+      '#title_display': before
+      '#description_display': before
+      '#states':
+        visible:
+          - ':input[name="type"]':
+              value: CreativeWorkSeries
+          - or
+          - ':input[name="type"]':
+              value: Newspaper
+          - or
+          - ':input[name="type"]':
+              value: Periodical
+          - or
+          - ':input[name="type"]':
+              value: Publication
+      '#states_clear': false
+      '#format_items': comma
+      '#access_create_roles':
+        - administrator
+      '#datepicker': true
     rights_statements:
       '#type': select
       '#title': 'Rights Statement'
@@ -382,6 +621,16 @@ elements: |-
     europeana_details:
       '#type': details
       '#title': 'Europeana '
+      '#access': false
+      hidden_europeana_element_note:
+        '#type': webform_markup
+        '#markup': |-
+          Important note: To utilize the Europeana Webform Elements/Lookups:
+          <ul>
+          	<li>You/your institution will need to apply for your own Europeana API key, here:&nbsp;<a href="https://pro.europeana.eu/page/get-api">https://pro.europeana.eu/page/get-api</a>.</li>
+          	<li>Then follow the instructions for using your unique API key as noted here:&nbsp;<a href="https://github.com/esmero/webform_strawberryfield/pull/123">https://github.com/esmero/webform_strawberryfield/pull/123</a></li>
+          	<li>Then select the &#39;Display Element&#39; checkbox on the Access tab or the &#39;europeana_details&#39; webform element.</li>
+          </ul>
       europeana_concepts:
         '#type': webform_metadata_europeana
         '#title': 'European Concepts'
@@ -429,7 +678,6 @@ elements: |-
           This is meant to describe a geographic location closely related to this Digital Object. Such as the origin of the object, where it was created, etc.<br />
           <br />
           Example: <em>Central Park, Manhattan, New York County, New York, United States of America</em>
-          
         '#states_clear': false
         '#format_items': ol
         '#lat__access': true
@@ -507,6 +755,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -527,6 +776,9 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
