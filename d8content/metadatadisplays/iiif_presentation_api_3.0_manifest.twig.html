@@ -380,7 +380,7 @@ Without Double quotes.
                {% set mirador_path = annotation.target.selector.value|replace({'<svg><polygon points="': "", '"></polygon></svg>': ""}) %}
                {% set mirador_path = "M" ~ (mirador_path|split(" ")|join("L")) ~ " z" %}
                {% set target = {
-               "source" : nodeurl|render ~ "/iiif/canvas/p" ~ itemCount,,
+               "source" : nodeurl|render ~ "/iiif/canvas/p" ~ itemCount,
                "selector": {
                  "type":  annotation.target.selector.type,
                  "value": '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="' ~ mirador_path ~ '"/></g></svg>'
