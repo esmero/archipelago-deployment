@@ -1,5 +1,7 @@
 {# This Template generates Thumbnails for various Media representations
 
+Updated 07/08/2022 for 1.0.0
+
 Structures passed from Archipelago are
 - node
   The full Node entitya
@@ -61,13 +63,13 @@ Without Double quotes.
   {# this is just an example, we process here only MP4 quicktimes #}
     {% if document['flv:pronom'].mimetype == "video/quicktime" %}
       {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %} 
-      {% set source = cantaloupeid ~ "/full/" ~ width  ~ ",/0/default.jpg?time=00:00:01" %}
+      {% set source = cantaloupeid ~ ";1/full/" ~ width  ~ ",/0/default.jpg" %}
       {% set break = true %}
     {% endif %}
   {% endfor %}  
 {% endif%}
 {% if source|length > 0 %}
-  {% set thumb_width = width < max_thumb_width ? with: max_thumb_width %}
+  {% set thumb_width = width < max_thumb_width ? width: max_thumb_width %}
   {% set thumb_height = (thumb_width/width * height)|round() %}
 "thumbnail": [{
   "id": "{{ source }}",
