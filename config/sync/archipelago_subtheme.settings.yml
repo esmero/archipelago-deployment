@@ -1,35 +1,45 @@
+_core:
+  default_config_hash: LdPjc1VCTO3_q56LqMexIbDmRvhlTEdTFHajPe4laUs
+favicon:
+  mimetype: image/png
+  path: 'public://strawberries_favicon.png'
+  use_default: false
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+  node_user_picture: true
+logo:
+  path: 'public://strawberries_icon_small.png'
+  use_default: false
 bootstrap_barrio_library: production
+bootstrap_barrio_source: bootstrap_barrio/bootswatch_minty
 bootstrap_barrio_sidebar_position: both
 bootstrap_barrio_content_offset: 0
+bootstrap_barrio_sidebar_collapse: 0
 bootstrap_barrio_sidebar_first_width: 2
 bootstrap_barrio_sidebar_first_offset: 0
 bootstrap_barrio_sidebar_second_width: 3
 bootstrap_barrio_sidebar_second_offset: 0
 bootstrap_barrio_fluid_container: 1
+bootstrap_barrio_image_fluid: 0
 bootstrap_barrio_button: 1
 bootstrap_barrio_button_size: ''
 bootstrap_barrio_button_outline: 0
-bootstrap_barrio_navbar_toggle: 0
-bootstrap_barrio_navbar_container: '0'
+bootstrap_barrio_navbar_top_navbar: 0
 bootstrap_barrio_navbar_top_position: ''
 bootstrap_barrio_navbar_top_color: navbar-dark
+bootstrap_barrio_navbar_top_background: ''
+bootstrap_barrio_navbar_top_class: ''
 bootstrap_barrio_navbar_position: ''
 bootstrap_barrio_navbar_color: navbar-dark
-bootstrap_barrio_table_hover: 1
-_core:
-  default_config_hash: LdPjc1VCTO3_q56LqMexIbDmRvhlTEdTFHajPe4laUs
-features:
-  node_user_picture: true
-  comment_user_picture: true
-  comment_user_verification: true
-  favicon: true
-logo:
-  use_default: false
-  path: ''
-favicon:
-  use_default: false
-  path: 'public://strawberries_favicon.png'
-  mimetype: image/png
+bootstrap_barrio_navbar_background: ''
+bootstrap_barrio_navbar_toggle: 0
+bootstrap_barrio_navbar_container: '0'
+bootstrap_barrio_navbar_class: ''
+bootstrap_barrio_navbar_flyout: 0
+bootstrap_barrio_navbar_slide: 0
+bootstrap_barrio_tabs_style: pills
 bootstrap_barrio_region_clean_top_header: '0'
 bootstrap_barrio_region_class_top_header: row
 bootstrap_barrio_region_clean_top_header_form: '0'
@@ -74,32 +84,22 @@ bootstrap_barrio_region_clean_footer_fourth: '0'
 bootstrap_barrio_region_class_footer_fourth: row
 bootstrap_barrio_region_clean_footer_fifth: '0'
 bootstrap_barrio_region_class_footer_fifth: row
-bootstrap_barrio_sidebar_collapse: 0
-bootstrap_barrio_navbar_top_navbar: 0
-bootstrap_barrio_navbar_top_background: ''
-bootstrap_barrio_navbar_background: ''
-bootstrap_barrio_navbar_top_affix: 0
-bootstrap_barrio_navbar_affix: 0
-bootstrap_barrio_sidebar_first_affix: 0
-bootstrap_barrio_sidebar_second_affix: 0
-bootstrap_barrio_scroll_spy: ''
-bootstrap_barrio_google_fonts: robot_cabin
-bootstrap_barrio_icons: fontawesome
-bootstrap_barrio_system_messages: ''
-bootstrap_barrio_table_style: ''
-bootstrap_barrio_table_head: ''
-bootstrap_barrio_messages_widget: default
+bootstrap_barrio_region_clean_editor_toolbar: 0
+bootstrap_barrio_region_class_editor_toolbar: row
 bootstrap_barrio_radio: standard
 bootstrap_barrio_checkbox: switch
 bootstrap_barrio_select: custom
 bootstrap_barrio_file: standard
-bootstrap_barrio_region_clean_editor_toolbar: 0
-bootstrap_barrio_region_class_editor_toolbar: row
-bootstrap_barrio_navbar_top_class: ''
-bootstrap_barrio_navbar_class: ''
+bootstrap_barrio_table_style: ''
+bootstrap_barrio_table_hover: 1
+bootstrap_barrio_table_head: ''
+bootstrap_barrio_navbar_top_affix: 0
+bootstrap_barrio_navbar_affix: 0
+bootstrap_barrio_sidebar_first_affix: 0
+bootstrap_barrio_sidebar_second_affix: 0
+bootstrap_barrio_messages_widget: default
+bootstrap_barrio_scroll_spy: ''
+bootstrap_barrio_google_fonts: robot_cabin
+bootstrap_barrio_icons: fontawesome
 bootstrap_barrio_bootstrap_icons: 0
-bootstrap_barrio_source: bootstrap_barrio/bootswatch_minty
-bootstrap_barrio_image_fluid: 0
-bootstrap_barrio_navbar_flyout: 0
-bootstrap_barrio_navbar_slide: 0
-bootstrap_barrio_tabs_style: pills
+bootstrap_barrio_system_messages: ''
