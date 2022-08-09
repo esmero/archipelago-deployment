@@ -34,3 +34,5 @@ options: |-
   ArchiveComponent: 'Archive Component'
   NewspaperIssue: 'Newspaper Issue'
   PublicationIssue: 'Publication Issue'
+  Postcard: Postcard
+  Manuscript: Manuscript

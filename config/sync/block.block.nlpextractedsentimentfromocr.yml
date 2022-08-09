@@ -3,47 +3,48 @@ langcode: en
 status: true
 dependencies:
   config:
-    - facets.facet.npl_extracted_sentiment_from_ocr
+    - facets.facet.nlp_extracted_sentiment_from_ocr
   module:
     - context
     - facets
   theme:
     - archipelago_subtheme
-id: nplextractedsentimentfromocr
+id: nlpextractedsentimentfromocr
 theme: archipelago_subtheme
 region: sidebar_second
 weight: 0
 provider: null
-plugin: 'facet_block:npl_extracted_sentiment_from_ocr'
+plugin: 'facet_block:nlp_extracted_sentiment_from_ocr'
 settings:
-  id: 'facet_block:npl_extracted_sentiment_from_ocr'
-  label: 'NPL Extracted Sentiment from OCR'
-  provider: facets
+  id: 'facet_block:nlp_extracted_sentiment_from_ocr'
+  label: 'NLP Extracted Sentiment from OCR'
   label_display: visible
-  block_id: nplextractedsentimentfromocr
+  provider: facets
+  context_mapping: {  }
+  block_id: nlpextractedsentimentfromocr
 visibility:
   view_inclusion:
     id: view_inclusion
-    view_inclusion:
-      view-solr_search_content-page_3: view-solr_search_content-page_3
     negate: false
     context_mapping: {  }
+    view_inclusion:
+      view-solr_search_content-page_3: view-solr_search_content-page_3
   context_all:
     id: context_all
-    values: ''
     negate: null
+    values: ''
   context:
     id: context
-    values: ''
     negate: null
+    values: ''
   user_status:
     id: user_status
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
     user_status:
       viewing_profile: '0'
       logged_viewing_profile: '0'
       own_page_true: '0'
       field_value: '0'
     user_fields: uid
-    negate: false
-    context_mapping:
-      user: '@user.current_user_context:current_user'

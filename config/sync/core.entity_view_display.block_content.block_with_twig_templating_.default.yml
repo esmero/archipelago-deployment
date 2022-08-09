@@ -14,11 +14,11 @@ bundle: block_with_twig_templating_
 mode: default
 content:
   field_twig_content:
-    weight: 0
+    type: twig
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: twig
+    weight: 0
     region: content
 hidden:
   body: true

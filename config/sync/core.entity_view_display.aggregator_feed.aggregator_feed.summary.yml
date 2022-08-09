@@ -19,15 +19,15 @@ bundle: aggregator_feed
 mode: summary
 content:
   items:
+    settings: {  }
+    third_party_settings: {  }
     weight: 0
     region: content
+  more_link:
     settings: {  }
     third_party_settings: {  }
-  more_link:
     weight: 1
     region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   checked: true
   description: true

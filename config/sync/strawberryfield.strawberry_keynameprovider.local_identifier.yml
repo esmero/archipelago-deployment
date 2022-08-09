@@ -1,0 +1,12 @@
+uuid: daf09499-1284-481c-8135-0b957c578d37
+langcode: en
+status: true
+dependencies: {  }
+id: local_identifier
+label: 'Local Identifier'
+pluginid: jmespath
+pluginconfig:
+  source_key: '"local_identifier"'
+  is_date: false
+  exposed_key: local_identifier
+active: true

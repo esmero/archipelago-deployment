@@ -19,20 +19,20 @@ plugin: 'views_block:collection_membership-block_1'
 settings:
   id: 'views_block:collection_membership-block_1'
   label: ''
-  provider: views
   label_display: '0'
+  provider: views
   views_label: ''
   items_per_page: none
 visibility:
-  node_type:
-    id: node_type
-    bundles:
-      digital_object_collection: digital_object_collection
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+    bundles:
+      digital_object_collection: digital_object_collection
   request_path:
     id: request_path
-    pages: '/node/*'
     negate: false
     context_mapping: {  }
+    pages: '/node/*'

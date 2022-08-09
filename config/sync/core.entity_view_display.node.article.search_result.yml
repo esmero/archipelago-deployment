@@ -28,25 +28,27 @@ mode: search_result
 content:
   body:
     type: text_summary_or_trimmed
-    weight: 1
+    label: hidden
     settings:
       trim_length: 300
     third_party_settings: {  }
-    label: hidden
+    weight: 1
     region: content
   field_image:
     type: image
-    weight: 0
-    settings:
-      image_style: thumbnail
-      image_link: content
-    third_party_settings: {  }
     label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
     region: content
   links:
-    weight: 2
     settings: {  }
     third_party_settings: {  }
+    weight: 2
     region: content
 hidden:
   comment: true

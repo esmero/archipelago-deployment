@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
   action: 0
   aggregator: 0
@@ -38,7 +40,6 @@ module:
   ds_switch_view_mode: 0
   dynamic_page_cache: 0
   editor: 0
-  entity_reference: 0
   facets: 0
   facets_range_widget: 0
   facets_rest: 0
@@ -63,6 +64,7 @@ module:
   jquery_ui: 0
   jquery_ui_datepicker: 0
   jquery_ui_slider: 0
+  jquery_ui_touch_punch: 0
   jsonapi: 0
   jsonapi_earlyrendering_workaround: 0
   language: 0
@@ -74,6 +76,7 @@ module:
   migrate: 0
   migrate_drupal: 0
   moderated_content_bulk_publish: 0
+  mysql: 0
   node: 0
   options: 0
   page_cache: 0
@@ -82,7 +85,7 @@ module:
   queue_ui: 0
   quick_node_clone: 0
   quickedit: 0
-  rdf: 0
+  redis: 0
   responsive_image: 0
   rest: 0
   restui: 0
@@ -91,10 +94,10 @@ module:
   search_api: 0
   search_api_autocomplete: 0
   search_api_solr: 0
-  search_api_solr_defaults: 0
   serialization: 0
   settings_tray: 0
   shortcut: 0
+  smtp: 0
   sophron: 0
   strawberry_runners: 0
   strawberryfield: 0
@@ -141,5 +144,3 @@ theme:
   olivero: 0
   claro: 0
 profile: minimal
-_core:
-  default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc

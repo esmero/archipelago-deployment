@@ -1,0 +1,12 @@
+uuid: 61fe36a8-8ae3-491f-a9ed-0a6eb4f7c078
+langcode: en
+status: true
+dependencies: {  }
+id: alternative_title
+label: 'Alternative Title'
+pluginid: jmespath
+pluginconfig:
+  source_key: '"title_info_alternative_title"'
+  is_date: false
+  exposed_key: title_info_alternative_title
+active: true

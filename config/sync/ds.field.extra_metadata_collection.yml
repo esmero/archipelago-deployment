@@ -1,0 +1,9 @@
+id: extra_metadata_collection
+label: '🍓 Awahihte'
+ui_limit: 'digital_object_collection|*'
+type: display_field_copy
+type_label: 'Copy field'
+entities:
+  node: node
+properties:
+  field_id: node.digital_object_collection.field_descriptive_metadata

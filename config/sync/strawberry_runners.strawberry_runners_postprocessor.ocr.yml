@@ -7,25 +7,24 @@ label: ocr
 weight: '-10'
 pluginconfig:
   source_type: asstructure
-  ado_type: 'Book,Article'
+  ado_type: 'Document,Book,Article'
   jsonkey:
+    'as:image': 'as:image'
     'as:document': 'as:document'
-    'as:image': 0
     'as:audio': 0
     'as:video': 0
     'as:text': 0
     'as:application': 0
-  mime_type: application/pdf
+  mime_type: 'application/pdf, image/tiff, image/jpeg, image/jp2'
   path: /usr/bin/gs
   arguments: '%file'
   path_tesseract: /usr/bin/tesseract
-  arguments_tesseract: '%file stdout -l eng hocr'
-  path_pdf2djvu: ''
-  arguments_pdf2djvu: '%file'
-  path_djvudump: ''
-  arguments_djvudump: '%file'
-  path_djvu2hocr: ''
-  arguments_djvu2hocr: '%file'
+  language_key: language_iso639_3
+  language_default: eng
+  arguments_tesseract: '%file stdout -l %language hocr'
+  datafolder_tesseract: /usr/share/tessdata
+  path_pdfalto: /usr/bin/pdfalto
+  arguments_pdfalto: '%file'
   output_type: json
   output_destination:
     searchapi: searchapi
@@ -34,7 +33,7 @@ pluginconfig:
   nlp: 1
   nlp_url: 'http://esmero-nlp:6400'
   nlp_method: polyglot
-  timeout: '300'
+  timeout: '900'
   weight: '0'
 pluginid: ocr
 active: true

@@ -1,4 +1,4 @@
-uuid: cf121bbd-6afe-43f3-ba45-57b3deaf98f2
+uuid: 67c96fe8-b309-4e34-a4b9-76aaad56eb7e
 langcode: en
 status: true
 dependencies:
@@ -7,40 +7,54 @@ dependencies:
     - views.view.solr_search_content
   module:
     - search_api
-id: npl_extracted_sentiment_from_ocr
-name: 'NPL Extracted Sentiment from OCR'
-url_alias: npl_extracted_sentiment_from_ocr
+id: nlp_extracted_places_ocr
+name: 'NLP Extracted Places OCR'
 weight: 0
-min_count: 1
-show_only_one_result: true
-field_identifier: sbf_sentiment
+min_count: 4
+missing: false
+missing_label: others
+url_alias: nlp_extracted_places_ocr
 facet_source_id: 'search_api:views_page__solr_search_content__page_3'
-widget:
-  type: range_slider
-  config:
-    show_numbers: false
-    prefix: ''
-    suffix: ''
-    min_type: fixed
-    min_value: !!float -1
-    max_type: fixed
-    max_value: !!float 1
-    step: 0.5
-query_operator: or
+field_identifier: sbf_where
+query_operator: and
+hard_limit: 40
+exclude: false
 use_hierarchy: false
 keep_hierarchy_parents_active: false
+hierarchy:
+  type: taxonomy
+  config: {  }
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: true
-hard_limit: 0
-exclude: false
+widget:
+  type: links
+  config:
+    show_numbers: true
+    soft_limit: 30
+    show_reset_link: true
+    reset_text: 'Show all'
+    hide_reset_when_no_selection: true
+    soft_limit_settings:
+      show_less_label: 'Show less'
+      show_more_label: 'Show more'
+empty_behavior:
+  behavior: none
 only_visible_when_facet_source_is_visible: true
+show_only_one_result: false
+show_title: false
 processor_configs:
   active_widget_order:
     processor_id: active_widget_order
     weights:
       sort: 20
     settings:
-      sort: DESC
+      sort: ASC
+  ami_vbo_processor_handler:
+    processor_id: ami_vbo_processor_handler
+    weights:
+      pre_query: 50
+    settings:
+      enabled: 0
   count_widget_order:
     processor_id: count_widget_order
     weights:
@@ -53,12 +67,10 @@ processor_configs:
       sort: 40
     settings:
       sort: ASC
-  range_slider:
-    processor_id: range_slider
+  hierarchy_processor:
+    processor_id: hierarchy_processor
     weights:
-      pre_query: 60
-      post_query: 60
-      build: 20
+      build: 100
     settings: {  }
   url_processor_handler:
     processor_id: url_processor_handler
@@ -66,6 +78,3 @@ processor_configs:
       pre_query: 50
       build: 15
     settings: {  }
-empty_behavior:
-  behavior: none
-show_title: false

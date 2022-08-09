@@ -11,7 +11,7 @@ third_party_settings:
     parent: 'main:'
 name: 'Digital Object Collection'
 type: digital_object_collection
-description: 'Create a collection that you can add digital objects to.'
+description: 'Use this to add Collections, Creative Work Series (compounds), or any other type that might have children or group other Digital Objects, to your Repository.'
 help: ''
 new_revision: true
 preview_mode: 0

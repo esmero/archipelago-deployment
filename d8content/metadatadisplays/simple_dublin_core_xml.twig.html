@@ -1,4 +1,6 @@
-{# From May 2021: Simple Dublin Core XML --Contributor, Coverage, and Format elements unmapped #}
+{# Updated August 2022 for 1.0.0 to fix:
+- data.local_identifier that could be multiples
+Simple Dublin Core XML --Contributor, Coverage, and Format elements unmapped #}
 <?xml version="1.0" encoding="UTF-8"?>
 <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
 <dc:title>{{ data.label|escape('html_attr') }}</dc:title>
@@ -71,8 +73,15 @@
 #}
 {# Identifier #}
 {% if data.local_identifier|length > 0 %}
-  <dc:identifier>{{ data.local_identifier }}</dc:identifier>
+ 	{% if data.local_identifier is iterable %}
+     	{% for local_identifier in data.local_identifier %}
+			<dc:identifier>{{ local_identifier|escape('html_attr') }}</dc:identifier>
+        {% endfor %}
+       {% else %}
+     		<dc:identifier>{{ data.local_identifier|escape('html_attr') }}</dc:identifier>
+    {% endif %}    
 {% endif %}
+{# Source #}
 {# Source #}
 {% if data.owner|length > 0 %}
 	<dc:source>{{ data.owner }}</dc:source>

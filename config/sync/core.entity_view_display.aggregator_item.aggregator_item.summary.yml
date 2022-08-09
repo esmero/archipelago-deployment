@@ -19,15 +19,15 @@ bundle: aggregator_item
 mode: summary
 content:
   timestamp:
-    weight: 0
-    region: content
+    type: timestamp
     label: above
     settings:
       date_format: medium
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
-    type: timestamp
+    weight: 0
+    region: content
 hidden:
   author: true
   description: true

@@ -24,13 +24,13 @@ bundle: digital_object
 mode: super_admin_raw_json
 content:
   field_descriptive_metadata:
-    weight: 1
-    settings:
-      rows: '20'
-      placeholder: 'Descriptive Metadata'
-    third_party_settings: {  }
     type: strawberry_textarea
+    weight: 1
     region: content
+    settings:
+      placeholder: 'Descriptive Metadata'
+      rows: '20'
+    third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
     weight: 3

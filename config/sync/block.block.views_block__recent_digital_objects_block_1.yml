@@ -18,13 +18,13 @@ plugin: 'views_block:recent_digital_objects-block_1'
 settings:
   id: 'views_block:recent_digital_objects-block_1'
   label: 'Recently Updated Content'
-  provider: views
   label_display: visible
+  provider: views
   views_label: 'Recently Updated Content'
   items_per_page: none
 visibility:
   request_path:
     id: request_path
-    pages: '/user/*'
     negate: false
     context_mapping: {  }
+    pages: '/user/*'

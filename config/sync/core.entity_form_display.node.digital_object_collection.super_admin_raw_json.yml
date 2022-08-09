@@ -1,0 +1,69 @@
+uuid: 495367d4-302d-4fe6-8881-985ecb9f3ab1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.node.super_admin_raw_json
+    - field.field.node.digital_object_collection.body
+    - field.field.node.digital_object_collection.field_descriptive_metadata
+    - node.type.digital_object_collection
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - field_layout
+    - layout_discovery
+    - strawberryfield
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: node.digital_object_collection.super_admin_raw_json
+targetEntityType: node
+bundle: digital_object_collection
+mode: super_admin_raw_json
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_descriptive_metadata:
+    type: strawberry_textarea
+    weight: 0
+    region: content
+    settings:
+      placeholder: 'Collection Metadata'
+      rows: '5'
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  body: true
+  langcode: true
+  path: true
+  promote: true
+  sticky: true
+  title: true

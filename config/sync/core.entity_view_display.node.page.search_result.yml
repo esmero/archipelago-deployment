@@ -23,16 +23,16 @@ mode: search_result
 content:
   body:
     type: text_summary_or_trimmed
-    weight: 100
+    label: hidden
     settings:
       trim_length: 300
     third_party_settings: {  }
-    label: hidden
+    weight: 100
     region: content
   links:
-    weight: 101
     settings: {  }
     third_party_settings: {  }
+    weight: 101
     region: content
 hidden:
   langcode: true

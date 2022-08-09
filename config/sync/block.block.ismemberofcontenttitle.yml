@@ -19,23 +19,18 @@ plugin: 'facet_block:is_member_of_content_title'
 settings:
   id: 'facet_block:is_member_of_content_title'
   label: 'Part of Collection'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: ismemberofcontenttitle
 visibility:
-  request_path_exclusion:
-    id: request_path_exclusion
-    pages: ''
-    negate: true
-    context_mapping: {  }
   view_inclusion:
     id: view_inclusion
     negate: false
+    context_mapping: {  }
     view_inclusion:
       view-solr_search_content-page_1: view-solr_search_content-page_1
-    context_mapping: {  }
   request_path:
     id: request_path
-    pages: '/search_grid*'
     negate: true
     context_mapping: {  }
+    pages: '/search_grid*'

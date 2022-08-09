@@ -2,6 +2,12 @@ uuid: 0f8e8c19-7450-4356-b6a1-f5b0b99c6069
 langcode: en
 status: true
 dependencies:
+  config:
+    - field.storage.node.field_tags
+    - field.storage.node.field_descriptive_metadata
+    - search_api.server.esmero_solr
+    - core.entity_view_mode.node.digital_object_image_only_for_carousel
+    - core.entity_view_mode.node.search_index
   module:
     - search_api_solr
     - node
@@ -9,30 +15,21 @@ dependencies:
     - strawberryfield
     - search_api
     - file
-  config:
-    - field.storage.node.field_descriptive_metadata
-    - field.storage.node.field_tags
-    - search_api.server.esmero_solr_7_5
-    - core.entity_view_mode.node.digital_object_image_only_for_carousel
-    - core.entity_view_mode.node.search_index
 third_party_settings:
   search_api_solr:
     finalize: false
     commit_before_finalize: false
     commit_after_finalize: false
-    multilingual:
-      limit_to_content_language: false
-      include_language_independent: true
     highlighter:
       maxAnalyzedChars: 51200
       fragmenter: gap
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
       regex:
         slop: 0.5
         pattern: blank
         maxAnalyzedChars: 10000
-      usePhraseHighlighter: true
-      highlightMultiTerm: true
-      preserveMulti: false
       highlight:
         mergeContiguous: false
         requireFieldMatch: false
@@ -56,6 +53,9 @@ third_party_settings:
       index_prefix: ''
       collection: ''
       timezone: ''
+    multilingual:
+      limit_to_content_language: false
+      include_language_independent: true
 _core:
   default_config_hash: 5gcfQOCjXVt6We4_q02H8VjnECSON5NgKOchFAsncxU
 id: default_solr_index
@@ -219,11 +219,27 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_descriptive_metadata
+  legacy_pid:
+    label: '🍓 Strawberry (Descriptive Metadata source) » legacy_pid'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:legacy_pid'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   license:
     label: '🍓 Strawberry (Descriptive Metadata source) » license'
     datasource_id: 'entity:node'
     property_path: 'field_descriptive_metadata:license'
     type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+  local_identifier:
+    label: '🍓 Strawberry (Descriptive Metadata source) » local_identifier'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:local_identifier'
+    type: text
     dependencies:
       config:
         - field.storage.node.field_descriptive_metadata
@@ -270,6 +286,14 @@ field_settings:
     indexed_locked: true
     type_locked: true
     hidden: true
+  note:
+    label: '🍓 Strawberry (Descriptive Metadata source) » note'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:note'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   ocr_text:
     label: 'FullText test'
     datasource_id: strawberryfield_flavor_datasource
@@ -302,7 +326,7 @@ field_settings:
     type: text
     configuration:
       roles:
-        anonymous: anonymous
+        - anonymous
       view_mode:
         'entity:file':
           file: ''
@@ -321,7 +345,7 @@ field_settings:
     type: string
     configuration:
       roles:
-        anonymous: anonymous
+        - anonymous
       view_mode:
         'entity:file':
           file: ''
@@ -499,6 +523,14 @@ field_settings:
     dependencies:
       module:
         - node
+  title_info_alternative_title:
+    label: '🍓 Strawberry (Descriptive Metadata source) » title_info_alternative_title'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:title_info_alternative_title'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   title_string:
     label: Title
     datasource_id: 'entity:node'
@@ -580,19 +612,25 @@ processor_settings:
   aggregated_field:
     weights:
       add_properties: 20
+  auto_aggregated_fulltext_field: {  }
+  entity_type: {  }
   highlight:
-    highlight: server
-    highlight_partial: false
+    weights:
+      postprocess_query: 0
+    prefix: '<strong class="purple">'
+    suffix: '</strong>'
     excerpt: true
+    excerpt_always: false
     excerpt_length: 128
     exclude_fields:
       - fulltext_with_original_ocr
       - ocr_text
-    prefix: '<strong class="purple">'
-    suffix: '</strong>'
-    weights:
-      postprocess_query: 0
+    highlight: server
+    highlight_partial: false
   html_filter:
+    weights:
+      preprocess_index: -3
+      preprocess_query: -6
     all_fields: false
     fields:
       - aggregated_field
@@ -628,9 +666,6 @@ processor_settings:
       h2: 3
       h3: 2
       string: 2
-    weights:
-      preprocess_index: -3
-      preprocess_query: -6
   language_with_fallback: {  }
   rendered_item:
     weights:
@@ -641,9 +676,9 @@ processor_settings:
     weights:
       preprocess_query: -30
   solr_boost_more_recent:
-    boosts: {  }
     weights:
       preprocess_query: 0
+    boosts: {  }
   solr_date_range:
     weights:
       preprocess_index: 0
@@ -651,7 +686,7 @@ tracker_settings:
   default:
     indexing_order: fifo
 options:
-  index_directly: true
   cron_limit: 50
+  index_directly: true
   track_changes_in_references: true
-server: esmero_solr_7_5
+server: esmero_solr

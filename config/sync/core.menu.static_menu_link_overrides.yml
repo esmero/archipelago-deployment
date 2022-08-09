@@ -1,51 +1,51 @@
+_core:
+  default_config_hash: jdY7AU0tU-QsjmiOw3W8vwpYMb-By--_MSFgbqKUTYM
 definitions:
   contact__site_page:
-    enabled: true
     menu_name: footer
     parent: ''
     weight: 0
     expanded: false
+    enabled: true
   standard__front_page:
-    enabled: false
     menu_name: main
     parent: ''
-    expanded: false
     weight: 0
-  user__page:
-    weight: -49
-    menu_name: account
-    parent: ''
-    enabled: true
     expanded: false
-  user__logout:
-    weight: -48
+    enabled: false
+  user__page:
     menu_name: account
     parent: ''
+    weight: -49
+    expanded: false
+    enabled: true
+  user__logout:
+    menu_name: account
+    parent: ''
+    weight: -48
     expanded: false
     enabled: true
   node__add_page:
+    menu_name: tools
     parent: 'menu_link_content:a580dad6-5932-4f9d-bdaa-06b5563c386c'
-    menu_name: tools
-    enabled: true
-    expanded: false
     weight: -50
+    expanded: false
+    enabled: true
   tracker__page:
-    enabled: false
     menu_name: tools
     parent: ''
-    expanded: false
     weight: -49
-  aggregator__feed_add:
+    expanded: false
     enabled: false
+  aggregator__feed_add:
     menu_name: tools
     parent: ''
-    expanded: false
     weight: 0
-  aggregator__page_last:
+    expanded: false
     enabled: false
+  aggregator__page_last:
     menu_name: tools
     parent: ''
     weight: 5
     expanded: false
-_core:
-  default_config_hash: jdY7AU0tU-QsjmiOw3W8vwpYMb-By--_MSFgbqKUTYM
+    enabled: false

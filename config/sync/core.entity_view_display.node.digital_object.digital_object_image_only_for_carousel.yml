@@ -20,12 +20,12 @@ third_party_settings:
     layout:
       id: ds_1col
       library: null
-      disable_css: true
+      disable_css: false
       entity_classes: no_classes
       settings:
-        label: ''
         wrappers:
           ds_content: div
+        label: ''
     regions:
       ds_content:
         - field_descriptive_metadata
@@ -35,18 +35,18 @@ bundle: digital_object
 mode: digital_object_image_only_for_carousel
 content:
   field_descriptive_metadata:
-    weight: 0
+    type: strawberry_metadata_formatter
     label: hidden
     settings:
-      specs: 'http://bootstrap.org'
-      label: 'Descriptive Metadata'
-      metadatadisplayentity_uselabel: '0'
       iiif_base_url: 'http://localhost:8183/iiif/2'
       iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
       use_iiif_globals: '1'
+      label: 'Descriptive Metadata'
+      specs: 'http://bootstrap.org'
       metadatadisplayentity_uuid: df5a93ae-20e0-490f-a212-1b9e8ed3670f
+      metadatadisplayentity_uselabel: '0'
     third_party_settings: {  }
-    type: strawberry_metadata_formatter
+    weight: 0
     region: ds_content
 hidden:
   body: true

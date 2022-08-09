@@ -16,88 +16,23 @@ base_table: search_api_index_default_solr_index
 base_field: search_api_id
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Master
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: none
-        options: {  }
-      cache:
-        type: search_api_tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          bypass_access: false
-          skip_access: false
-      exposed_form:
-        type: basic
-        options:
-          submit_button: Apply
-          reset_button: true
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-      pager:
-        type: full
-        options:
-          items_per_page: 50
-          offset: 0
-          id: 0
-          total_pages: null
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          tags:
-            previous: '‹ Previous'
-            next: 'Next ›'
-            first: '« First'
-            last: 'Last »'
-          quantity: 9
-      style:
-        type: views_bootstrap_grid
-        options:
-          row_class: col
-          default_row_class: false
-          uses_fields: false
-          col_xs: col-6
-          col_sm: col-sm-6
-          col_md: col-md-4
-          col_lg: col-lg-3
-          col_xl: col-xl-3
-      row:
-        type: search_api
-        options:
-          view_modes:
-            'entity:file':
-              file: default
-            'entity:node':
-              article: default
-              digital_object: digital_object_with_thumbnail_for_grid
-              digital_object_collection: digital_object_with_thumbnail_for_grid
-              page: default
-              webform: default
-            strawberryfield_flavor_datasource: ''
+      title: 'Objects in this Series'
       fields:
         author:
+          id: author
           table: search_api_index_default_solr_index
           field: author
-          id: author
-          entity_type: null
-          entity_field: null
-          plugin_id: search_api_field
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: null
+          entity_field: null
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -159,6 +94,111 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 50
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: none
+        options: {  }
+      cache:
+        type: search_api_tag
+        options: {  }
+      empty:
+        messages:
+          id: messages
+          table: views
+          field: messages
+          relationship: none
+          group_type: group
+          admin_label: 'This Digital Collection has no members yet.'
+          plugin_id: messages
+          empty: true
+      sorts:
+        changed:
+          id: changed
+          table: search_api_index_default_solr_index
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: ASC
+          expose:
+            label: Changed
+            field_identifier: changed
+          exposed: false
+        title_string:
+          id: title_string
+          table: search_api_index_default_solr_index
+          field: title_string
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: ASC
+          expose:
+            label: Title
+            field_identifier: title_string
+          exposed: false
+      arguments:
+        nid_ref_partof:
+          id: nid_ref_partof
+          table: search_api_index_default_solr_index
+          field: nid_ref_partof
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: node
+          default_argument_options: {  }
+          default_argument_skip_url: false
+          summary_options: {  }
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
       filters:
         type:
           id: type
@@ -167,6 +207,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_options
           operator: or
           value:
             digital_object: digital_object
@@ -201,33 +242,37 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          plugin_id: search_api_options
-      sorts:
-        changed:
-          id: changed
-          table: search_api_index_default_solr_index
-          field: changed
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: true
-          expose:
-            label: Changed
-          plugin_id: search_api
-        title_string:
-          id: title_string
-          table: search_api_index_default_solr_index
-          field: title_string
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: true
-          expose:
-            label: Title
-          plugin_id: search_api
-      title: 'Objects in this Series'
+      style:
+        type: views_bootstrap_grid
+        options:
+          row_class: col
+          default_row_class: false
+          uses_fields: false
+          col_xs: col-6
+          col_sm: col-sm-6
+          col_md: col-md-4
+          col_lg: col-lg-3
+          col_xl: col-xl-3
+      row:
+        type: search_api
+        options:
+          view_modes:
+            'entity:file':
+              file: default
+            'entity:node':
+              article: default
+              digital_object: digital_object_with_thumbnail_for_grid
+              digital_object_collection: digital_object_with_thumbnail_for_grid
+              page: default
+              webform: default
+            strawberryfield_flavor_datasource: ''
+      query:
+        type: search_api_query
+        options:
+          bypass_access: false
+          skip_access: false
+      relationships: {  }
+      use_ajax: true
       header:
         area:
           id: area
@@ -236,57 +281,14 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: text
           empty: false
-          tokenize: true
           content:
             value: '<h1 class="title">Objects in this Series<h1>'
             format: full_html
-          plugin_id: text
+          tokenize: true
       footer: {  }
-      empty:
-        messages:
-          id: messages
-          table: views
-          field: messages
-          relationship: none
-          group_type: group
-          admin_label: 'This Digital Collection has no members yet.'
-          empty: true
-          plugin_id: messages
-      relationships: {  }
-      arguments:
-        nid_ref_partof:
-          id: nid_ref_partof
-          table: search_api_index_default_solr_index
-          field: nid_ref_partof
-          relationship: none
-          group_type: group
-          admin_label: ''
-          default_action: default
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: node
-          default_argument_options: {  }
-          default_argument_skip_url: false
-          summary_options: {  }
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: false
-          validate:
-            type: none
-            fail: 'not found'
-          validate_options: {  }
-          break_phrase: false
-          not: false
-          plugin_id: search_api
       display_extenders: {  }
-      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -294,18 +296,17 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'
   block_1:
-    display_plugin: block
     id: block_1
     display_title: Block
+    display_plugin: block
     position: 1
     display_options:
       display_extenders: {  }
+      block_hide_empty: true
       allow:
         items_per_page: true
         offset: '0'
@@ -314,7 +315,6 @@ display:
         sort_fields: '0'
         disable_filters: '0'
         configure_sorts: '0'
-      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -322,8 +322,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'

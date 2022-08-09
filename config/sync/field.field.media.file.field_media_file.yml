@@ -5,11 +5,11 @@ dependencies:
   config:
     - field.storage.media.field_media_file
     - media.type.file
+  module:
+    - file
   enforced:
     module:
       - media
-  module:
-    - file
 _core:
   default_config_hash: _C8rbTRQABc6PuyRw2LD9zdf_muwzZVumKG6HSfzqfI
 id: media.file.field_media_file
@@ -23,10 +23,10 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
+  handler: 'default:file'
+  handler_settings: {  }
   file_directory: '[date:custom:Y]-[date:custom:m]'
   file_extensions: 'txt rtf doc docx ppt pptx xls xlsx pdf odf odg odp ods odt fodt fods fodp fodg key numbers pages'
   max_filesize: ''
-  handler: 'default:file'
-  handler_settings: {  }
   description_field: false
 field_type: file

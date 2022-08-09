@@ -33,26 +33,26 @@ content:
     third_party_settings: {  }
   twig:
     type: codemirror_editor
+    weight: 2
+    region: content
     settings:
-      rows: 40
-      placeholder: ''
-      mode: text/x-twig
       toolbar: true
       lineNumbers: true
       foldGutter: true
       autoCloseTags: true
       styleActiveLine: true
-    weight: 2
-    region: content
+      mode: text/x-twig
+      rows: 40
+      placeholder: ''
     third_party_settings: {  }
   user_id:
     type: entity_reference_autocomplete
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-      match_limit: 10
     weight: 1
     region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
 hidden: {  }

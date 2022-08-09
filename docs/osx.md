@@ -80,7 +80,7 @@ Ok, now we are ready to start. Depending on what type of Chip your Apple uses yo
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.0.0-RC3
+git checkout 1.0.0
 cp docker-compose-osx.yml docker-compose.yml
 docker-compose pull
 docker-compose up -d
@@ -91,7 +91,7 @@ docker-compose up -d
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.0.0-RC3
+git checkout 1.0.0
 cp docker-compose-arm64.yml docker-compose.yml
 docker-compose pull
 docker-compose up -d
@@ -111,7 +111,7 @@ pass:minio123
 
 and once logged in, press on "Buckets" (left tools column) and then on "Create Bucket"  (top right) and under "Bucket Name" type `archipelago`. Leave all other options unchecked for now (you can experiment with those later), and make sure you write `archipelago` (no spaces, lowercase) and press "Save". Done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
-## Step 3: Deploy Drupal 9.2.9 and the awesome Archipelago Modules
+## Step 3: Deploy Drupal 9 and the awesome Archipelago Modules
 
 The following will run composer inside the esmero-php container to download all dependencies and Drupal Core too:
 
@@ -132,7 +132,7 @@ Note: We say `local` because your whole Drupal web root (the one you cloned) is 
 If this is the first time you deploy Drupal using the provided Configurations run:
 
 ```shell
-docker exec -ti -u www-data esmero-php bash -c "cd web;../vendor/bin/drush -y si --verbose --existing-config --db-url=mysql://root:esmerodb@esmero-db/drupal9 --account-name=admin --account-pass=archipelago -r=/var/www/html/web --sites-subdir=default --notify=false;drush cr;chown -R www-data:www-data sites;"
+docker exec -ti -u www-data esmero-php bash -c "cd web;../vendor/bin/drush -y si --verbose --existing-config --db-url=mysql://root:esmerodb@esmero-db/drupal --account-name=admin --account-pass=archipelago -r=/var/www/html/web --sites-subdir=default --notify=false;drush cr;chown -R www-data:www-data sites;"
 ```
 
 Note: You will see this warning: `[warning] The "block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a" was not found`. Nothing to worry about. We will provide the missing part in Step 5.

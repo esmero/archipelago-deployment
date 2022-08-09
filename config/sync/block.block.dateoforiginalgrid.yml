@@ -18,13 +18,13 @@ plugin: 'facet_block:date_of_original_grid'
 settings:
   id: 'facet_block:date_of_original_grid'
   label: 'Date of Original'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: dateoforiginalgrid
 visibility:
   view_inclusion:
     id: view_inclusion
-    view_inclusion:
-      view-solr_search_content-grid: view-solr_search_content-grid
     negate: false
     context_mapping: {  }
+    view_inclusion:
+      view-solr_search_content-grid: view-solr_search_content-grid

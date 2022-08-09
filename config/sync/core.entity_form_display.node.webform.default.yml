@@ -29,26 +29,26 @@ content:
   body:
     type: text_textarea_with_summary
     weight: 0
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 10
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_webform2:
+    type: webform_entity_reference_select
     weight: 121
+    region: content
     settings:
       default_data: true
     third_party_settings: {  }
-    type: webform_entity_reference_select
-    region: content
   langcode:
     type: language_select
     weight: 2
@@ -59,63 +59,63 @@ content:
   moderation_state:
     type: moderation_state_default
     weight: 100
-    settings: {  }
     region: content
+    settings: {  }
     third_party_settings: {  }
   path:
     type: path
     weight: 30
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   promote:
     type: boolean_checkbox
+    weight: 15
+    region: content
     settings:
       display_label: true
-    weight: 15
     third_party_settings: {  }
-    region: content
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 120
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
+    weight: 16
+    region: content
     settings:
       display_label: true
-    weight: 16
     third_party_settings: {  }
-    region: content
   title:
     type: string_textfield
     weight: -5
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 5
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
     third_party_settings: {  }
-    region: content
   webform:
+    type: webform_entity_reference_autocomplete
     weight: 0
+    region: content
     settings:
-      default_data: true
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
+      default_data: true
     third_party_settings: {  }
-    type: webform_entity_reference_autocomplete
-    region: content
 hidden: {  }
