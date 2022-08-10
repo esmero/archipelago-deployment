@@ -64,8 +64,9 @@ If you like it (or not), want new features, or want to be part of making this be
 ## Caring & Coding + Fixing + Testing
 
 * [Diego Pino](https://github.com/DiegoPino)
-* [Allison Lund](https://github.com/alliomeria)
 * [Giancarlo Birello](https://github.com/giancarlobi)
+* [Allison Lund](https://github.com/alliomeria)
+* [Katie Romabiles](https://github.com/karomabiles)
 * [Albert Min](https://github.com/aksm)
 
 ## Acknowledgments
