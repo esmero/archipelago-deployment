@@ -72,6 +72,7 @@ docker stop esmero-db
 docker stop esmero-cantaloupe
 docker stop esmero-php
 docker stop esmero-minio
+docker stop esmero-nlp
 ```
 
 Now we need to remove them so we run the following:
@@ -83,6 +84,7 @@ docker rm esmero-db
 docker rm esmero-cantaloupe
 docker rm esmero-php
 docker rm esmero-minio
+docker rm esmero-nlp
 ```
 
 Ok, now we are ready to start.
