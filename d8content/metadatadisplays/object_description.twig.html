@@ -402,7 +402,7 @@ Please edit or remove if desired. #}
  		{% if data.related_item_host_display_label|length > 0 and data.related_item_host_title_info_title|length > 0 %}
 			<h6>{{ data.related_item_host_display_label }}: </h6><p>{{ data.related_item_host_title_info_title }}</p>
 		{% endif %} 
- 		{% if data.related_item_host_display_label|length < 0 and data.related_item_host_title_info_title|length > 0 %}
+ 		{% if data.related_item_host_display_label is empty and data.related_item_host_title_info_title|length > 0 %}
         	<h6>Related Item Host Title Info: </h6><p>{{ data.related_item_host_title_info_title }}</p>
         {% endif %}
  	 	{% if data.related_item_host_local_identifier|length > 0 %}
