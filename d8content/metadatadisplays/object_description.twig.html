@@ -4,6 +4,7 @@
 - Collapsable section for additional information elements.
 - Limits Documents/Image download links.
 - Updated IIIF dropdown menu.
+- Bootstrap 5 compatible but left old data-* selectors to be backwards compat with Bootstrap 4
 #}
 
 {# Embargo option #}
@@ -22,12 +23,12 @@
 	{% for collection in attribute(data, 'ismemberof')%}
 		{% set parentnode = bamboo_load_entity('node', collection) %}
 		{% set parentnodeurl = url('entity.node.canonical', {'node': collection}, {'absolute': true}) %}
-			<div class="blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
+			<div class="blockquote blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
 	{% endfor %}
 	{% else %}
 		{% set parentnode = bamboo_load_entity('node', attribute(data, 'ismemberof')) %}
 		{% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ismemberof')}, {'absolute': true}) %}
-			<div class="blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
+			<div class="blockquote blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
 {% endif %}
 {% endif %}
 {% if attribute(data, 'ispartof') %}
@@ -35,12 +36,12 @@
 	{% for child in attribute(data, 'ispartof')%}
 		{% set parentnode = bamboo_load_entity('node', child) %}
 		{% set parentnodeurl = url('entity.node.canonical', {'node': child}, {'absolute': true}) %}
-			<div class="blockquote-footer">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
+			<div class="blockquote">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
 	{% endfor %}
 	{% else %}
 		{% set parentnode = bamboo_load_entity('node', attribute(data, 'ispartof')) %}
 		{% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ispartof')}, {'absolute': true}) %}
-			<div class="blockquote-footer">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
+			<div class="blockquote">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
 {% endif %}
 {% endif %}
 </blockquote>
@@ -286,12 +287,12 @@ Please edit or remove if desired. #}
 <div class="card">
   <div class="card-header" id="Notes">
     <h5 class="mb-0">
-      <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         Note(s)
       </button>
     </h5>
   </div>
-  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion" data-parent="#accordion">
     <div class="card-body">
 		{% if data.note|length > 0 %}
 		<h6>General note: </h6>
@@ -324,12 +325,12 @@ Please edit or remove if desired. #}
   <div class="card">
     <div class="card-header" id="PhysicalDescription">
       <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
           Physical Description
         </button>
       </h5>
     </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion" data-parent="#accordion">
        <div class="card-body">
  	 	{% if data.physical_location|length > 0 %}
 			<h6>Physical location: </h6><p>{{ data.physical_location }}</p>
@@ -348,12 +349,12 @@ Please edit or remove if desired. #}
   <div class="card">
     <div class="card-header" id="LocalSubjectsNames">
       <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           Local Subjects & Names
         </button>
       </h5>
     </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion" data-bs-parent="#accordion">
        <div class="card-body">
 		{% if data.subjects_local %}
 			<ul>
@@ -391,12 +392,12 @@ Please edit or remove if desired. #}
 <div class="card">
   <div class="card-header" id="RelatedItemNotes">
     <h5 class="mb-0">
-      <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+      <button class="btn btn-link" data-bs-toggle="collapse" data-toggle="collapse" data-bs-target="#collapseFour" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
           Related Item Notes
       </button>
     </h5>
   </div>
-  <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+  <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-bs-parent="#accordion" data-parent="#accordion">
     <div class="card-body">
  		{% if data.related_item_host_display_label|length > 0 and data.related_item_host_title_info_title|length > 0 %}
 			<h6>{{ data.related_item_host_display_label }}: </h6><p>{{ data.related_item_host_title_info_title }}</p>
@@ -425,7 +426,7 @@ Please edit or remove if desired. #}
 {#- End of Additional Information Collapsible Section -#}
 <br>
 <div class="dropdown">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" data-toggle="dropdown">
   Download Metadata
   </button>
   <div class="dropdown-menu">
@@ -446,13 +447,13 @@ Please edit or remove if desired. #}
 {% if data.type in ['Collection'] %}
 	<h2><span class="align-middle">Direct Link to Digital Object's IIIF Collection Manifest </span><img src="https://iiif.io/img/logo-iiif-34x30.png"></h2>
 	{% set iiifmanifest =   nodeurl|render ~ "/metadata/iiifmanifest3collection/default.jsonld" %}
-		<input type="text" value="{{ iiifmanifest }}" id="iiifmanifest_copy" size="{{ iiifmanifest|length }}" class="col-xs-3">
+		<input type="text" value="{{ iiifmanifest }}" id="iiifmanifest_copy" size="{{ iiifmanifest|length }}" class="form-control mw-100">
 {% else %}
 {% if attribute(data, 'as:image')|length > 0  or attribute(data, 'as:document')|length > 0  %}
 	<h2><span class="align-middle">Direct Link to Digital Object's IIIF Presentation Manifest V3 </span><img src="https://iiif.io/img/logo-iiif-34x30.png"></h2>
     {{ clipboard_copy('copy-content','',"Copy Link to Digital Object's IIIF Presentation Manifest V3") }}
 	{% set iiifmanifest =   nodeurl|render ~ "/metadata/iiifmanifest/default.jsonld" %}
-		<input type="text" value="{{ iiifmanifest }}" id="iiifmanifest_copy" size="{{ iiifmanifest|length }}" class="col-xs-3 copy-content">
+		<input type="text" value="{{ iiifmanifest }}" id="iiifmanifest_copy" size="{{ iiifmanifest|length }}" class="form-control col-xs-3 col-lg-8 copy-content">
 	{% endif %}
 
 {% endif %}
