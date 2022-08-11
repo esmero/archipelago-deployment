@@ -56,11 +56,16 @@ third_party_settings:
             json_key_source: 'as:image'
             max_width: '0'
             max_height: '520'
+            icons_prefixurl: 'https://cdn.jsdelivr.net/gh/Benomrans/openseadragon-icons@main/images/'
             webannotations: true
-            webannotations_tool: polygon
+            webannotations_tool: both
+            webannotations_opencv: true
+            webannotations_betterpolygon: true
             use_iiif_globals: '1'
             iiif_group: true
             thumbnails: true
+            upload_json_key_source: ''
+            embargo_json_key_source: ''
 id: node.digital_object.digital_object_viewmode_fullitem
 targetEntityType: node
 bundle: digital_object
