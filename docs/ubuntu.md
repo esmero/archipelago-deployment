@@ -211,6 +211,10 @@ You are done! Open your most loved Web Browser and point it to `http://localhost
 
 Note: It can take some time to start the first time (Drupal needs some warming up). The Ubuntu deployment is WAY faster than the OSX deployment because of the way the bind mount volumes are handled by the driver. Our experience is that Archipelago basically reacts instantly!
 
+## Step 6: Optional but more fun if you add content
+
+[One-Step Demo content ingest](docs/democontent.md)
+
 ### Need help? Blue Screen? Missed a step? Need a hug?
 
 If you see any issues or errors or need help with a step, please let us know (ASAP!). You can either open an `issue` in this repository or use the [Google Group](https://groups.google.com/forum/#!forum/archipelago-commons). We are here to help.
