@@ -60,7 +60,6 @@ table tr th {
     color: #000000;
 }
 .site-name-slogan .navbar-brand-slogan {
-    padding-left: 1.25rem;
     color: #ffffff;
 }
 
@@ -94,7 +93,7 @@ nav > ul > li.active.nav-item > a {
 
 /* Webform progress tracker */
 .webform-progress-tracker .progress-title[role="link"] {
-    color: #000000 
+    color: #000000
 }
 
 .webform-progress-tracker .progress-title[role="link"]:hover,
@@ -183,11 +182,6 @@ dt {
     border-radius: 6px;
 }
 
-#page details div.details-wrapper, .ui-dialog div.details-wrapper {
-    background-color: #ebebeb;
-    padding-left: 1em;
-}
-
 .sidebar h2 {
     margin: 0 0 0.5em;
     border-bottom: none;
@@ -215,7 +209,13 @@ dt {
 .btn-primary:hover,
 .btn-primary:focus {
     background-color:#f3969a !important;
-    border-color:#f3969a !important;
+    border-color: #f3969a !important;
+}
+
+
+.form-check-input:checked {
+  background-color: #f3969a !important;
+  border-color: #f3969a !important;
 }
 
 .site-footer {
