@@ -280,20 +280,20 @@ Please edit or remove if desired. #}
 	data.related_item_note|length > 0
 %}
 <h2>Additional Information</h2>
-<div id="accordion">
+<div id="additionalInformation" class="accordion">
 	{% if data.note|length > 0 or
 	data.note_publishinginfo|length > 0
 	%}
-<div class="card">
-  <div class="card-header" id="Notes">
+<div class="accordion-item">
+  <div class="accordion-header" id="Notes">
     <h5 class="mb-0">
-      <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         Note(s)
       </button>
     </h5>
   </div>
   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion" data-parent="#accordion">
-    <div class="card-body">
+    <div class="accordion-body">
 		{% if data.note|length > 0 %}
 		<h6>General note: </h6>
 			{% if data.note is iterable %}
@@ -322,16 +322,16 @@ Please edit or remove if desired. #}
 	data.physical_description_extent|length > 0 or
     data.data.physical_description_note_condition|length > 0
     %}
-  <div class="card">
-    <div class="card-header" id="PhysicalDescription">
+  <div class="accordion">
+    <div class="accordion-header" id="PhysicalDescription">
       <h5 class="mb-0">
-        <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
           Physical Description
         </button>
       </h5>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion" data-parent="#accordion">
-       <div class="card-body">
+       <div class="accordion-body">
  	 	{% if data.physical_location|length > 0 %}
 			<h6>Physical location: </h6><p>{{ data.physical_location }}</p>
 		{% endif %} 
@@ -346,10 +346,10 @@ Please edit or remove if desired. #}
     </div>
 	{% endif %} 
 	{% if data.subjects_local|length > 0 or data.subjects_local_names|length > 0 %}
-  <div class="card">
-    <div class="card-header" id="LocalSubjectsNames">
+  <div class="accordion">
+    <div class="accordion-header" id="LocalSubjectsNames">
       <h5 class="mb-0">
-        <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           Local Subjects & Names
         </button>
       </h5>
@@ -389,10 +389,10 @@ Please edit or remove if desired. #}
 	data.related_item_host_location_url|length > 0 or
     data.related_item_host_type_of_resource|length > 0 or
 	data.related_item_note|length > 0 %} 
-<div class="card">
-  <div class="card-header" id="RelatedItemNotes">
+<div class="accordion">
+  <div class="accordion-header" id="RelatedItemNotes">
     <h5 class="mb-0">
-      <button class="btn btn-link" data-bs-toggle="collapse" data-toggle="collapse" data-bs-target="#collapseFour" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+      <button class="accordion-button" data-bs-toggle="collapse" data-toggle="collapse" data-bs-target="#collapseFour" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
           Related Item Notes
       </button>
     </h5>
