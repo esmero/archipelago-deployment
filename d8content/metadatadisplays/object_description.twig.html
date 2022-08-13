@@ -322,8 +322,8 @@ Please edit or remove if desired. #}
 	data.physical_description_extent|length > 0 or
     data.data.physical_description_note_condition|length > 0
     %}
-  <div class="accordion">
-    <div class="accordion-header" id="PhysicalDescription">
+  <div class="accordian-item">
+    <div id="PhysicalDescription" class="accordion-header">
       <h5 class="mb-0">
         <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
           Physical Description
@@ -346,8 +346,8 @@ Please edit or remove if desired. #}
     </div>
 	{% endif %} 
 	{% if data.subjects_local|length > 0 or data.subjects_local_names|length > 0 %}
-  <div class="accordion">
-    <div class="accordion-header" id="LocalSubjectsNames">
+  <div class="accordian-item">
+    <div id="LocalSubjectsNames" class="accordian-header">
       <h5 class="mb-0">
         <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           Local Subjects & Names
@@ -355,7 +355,7 @@ Please edit or remove if desired. #}
       </h5>
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion" data-bs-parent="#accordion">
-       <div class="card-body">
+       <div class="accordian-body">
 		{% if data.subjects_local %}
 			<ul>
 			{% if data.subjects_local is iterable %}
@@ -389,8 +389,8 @@ Please edit or remove if desired. #}
 	data.related_item_host_location_url|length > 0 or
     data.related_item_host_type_of_resource|length > 0 or
 	data.related_item_note|length > 0 %} 
-<div class="accordion">
-  <div class="accordion-header" id="RelatedItemNotes">
+<div class="accordian-item">
+  <div id="RelatedItem" class="accordion-header">
     <h5 class="mb-0">
       <button class="accordion-button" data-bs-toggle="collapse" data-toggle="collapse" data-bs-target="#collapseFour" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
           Related Item Notes
@@ -398,11 +398,11 @@ Please edit or remove if desired. #}
     </h5>
   </div>
   <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-bs-parent="#accordion" data-parent="#accordion">
-    <div class="card-body">
+    <div class="accordian-body">
  		{% if data.related_item_host_display_label|length > 0 and data.related_item_host_title_info_title|length > 0 %}
 			<h6>{{ data.related_item_host_display_label }}: </h6><p>{{ data.related_item_host_title_info_title }}</p>
 		{% endif %} 
- 		{% if data.related_item_host_display_label is empty and data.related_item_host_title_info_title|length > 0 %}
+ 		{% if data.related_item_host_display_label|length < 0 and data.related_item_host_title_info_title|length > 0 %}
         	<h6>Related Item Host Title Info: </h6><p>{{ data.related_item_host_title_info_title }}</p>
         {% endif %}
  	 	{% if data.related_item_host_local_identifier|length > 0 %}
