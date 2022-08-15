@@ -186,15 +186,23 @@ If this is the first time you're deploying Drupal using the provided Configurati
 docker exec -ti -u www-data esmero-php bash -c "cd web;../vendor/bin/drush -y si --verbose --existing-config --db-url=mysql://root:esmerodb@esmero-db/drupal --account-name=admin --account-pass=archipelago -r=/var/www/html/web --sites-subdir=default --notify=false;drush cr;chown -R www-data:www-data sites;"
 ```
 
-This will give you an `admin` Drupal user with `archipelago` as password (change this if running on a public instance!) and also set the right Docker Container owner for your Drupal installation files.
+Note: You will see this warning: `[warning] The "block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a" was not found`. Nothing to worry about. We will provide the missing part in Step 5.
 
-Note about Steps 2-3: You don't need to, nor should you do this more than once. You can destroy/stop/update, recreate your Docker containers, and start again (`git pull`), and your Drupal and Data will persist once you've passed the `Installation complete` message. I repeat, all other containers' data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable, and stable inside your `web/` folder.
+Note 2: Please be patient. This step takes now 25-30% longer because of how the most recent Drupal Installation code fetches translations and other resources (see `Performed install task`). This means progress might look like getting "stuck", go and get a coffee/tea and let it run to the end.
 
-## Step 4: Create a "demo "and a "jsonapi" user using drush and assign your "admin" user the Administrator Role (new for Drupal 9).
+Once finished, this will give you an `admin` Drupal user with `archipelago` as password (change this if running on a public instance!) and also set the right Docker Container owner for your Drupal installation files.
+
+Final note about Steps 2-3: You don't need to, nor should you do this more than once. You can destroy/stop/update, recreate your Docker containers, and start again (`git pull`), and your Drupal and Data will persist once you've passed the `Installation complete` message. I repeat, all other containers' data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable, and stable inside your `web/` folder.
+
+## Step 4: Create a "demo "and a "jsonapi" user using drush and assign your "admin" user the Administrator Role (new since Drupal 9).
 
 ```shell
 docker exec -ti esmero-php bash -c 'drush ucrt demo --password="demo"; drush urol metadata_pro "demo"'
+```
+```shell
 docker exec -ti esmero-php bash -c 'drush ucrt jsonapi --password="jsonapi"; drush urol metadata_api "jsonapi"'
+```
+```shell
 docker exec -ti esmero-php bash -c 'drush urol administrator "admin"'
 ```
 
