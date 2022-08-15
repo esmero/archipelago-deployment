@@ -139,7 +139,6 @@ This means in practice running:
 
 ```shell
 sudo chown -R 8183:8183 persistent/iiifcache
-sudo chown -R 8183:8183 persistent/iiiftmp
 sudo chown -R 8983:8983 persistent/solrcore
 ```
 
