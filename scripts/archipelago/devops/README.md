@@ -10,7 +10,7 @@ The script in this folder called `auto_deploy.sh` is a slight modification of th
 
   ```shell
   cd ../../..
-  ./auto_deploy.sh
+  scripts/archipelago/devops/auto_deploy.sh
   ```
 
 The script will give some prompts for a few options for you to select.
