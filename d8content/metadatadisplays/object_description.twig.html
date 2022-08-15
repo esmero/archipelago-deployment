@@ -280,7 +280,7 @@ Please edit or remove if desired. #}
 	data.related_item_note|length > 0
 %}
 <h2>Additional Information</h2>
-<div class="accordion" id="additionalInformation">
+<div id="additionalInformation" class="accordion">
 	{% if data.note|length > 0 or
 	data.note_publishinginfo|length > 0
 	%}
@@ -323,7 +323,7 @@ Please edit or remove if desired. #}
     data.data.physical_description_note_condition|length > 0
     %}
   <div class="accordian-item">
-    <div class="accordion-header" id="PhysicalDescription">
+    <div id="PhysicalDescription" class="accordion-header">
       <h5 class="mb-0">
         <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
           Physical Description
@@ -347,7 +347,7 @@ Please edit or remove if desired. #}
 	{% endif %} 
 	{% if data.subjects_local|length > 0 or data.subjects_local_names|length > 0 %}
   <div class="accordian-item">
-    <div class="accordian-header" id="LocalSubjectsNames">
+    <div id="LocalSubjectsNames" class="accordian-header">
       <h5 class="mb-0">
         <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           Local Subjects & Names
@@ -390,7 +390,7 @@ Please edit or remove if desired. #}
     data.related_item_host_type_of_resource|length > 0 or
 	data.related_item_note|length > 0 %} 
 <div class="accordian-item">
-  <div class="accordion-header" id="RelatedItem">
+  <div id="RelatedItem" class="accordion-header">
     <h5 class="mb-0">
       <button class="accordion-button" data-bs-toggle="collapse" data-toggle="collapse" data-bs-target="#collapseFour" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
           Related Item Notes
