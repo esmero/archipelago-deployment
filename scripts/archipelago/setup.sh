@@ -26,3 +26,5 @@ echo "Downloading JQUERY Slider Pips Library for facets"
 mkdir -p /var/www/html/web/libraries/jquery-ui-slider-pips/dist
 curl -o /var/www/html/web/libraries/jquery-ui-slider-pips/dist/jquery-ui-slider-pips.min.js 'https://raw.githubusercontent.com/simeydotme/jQuery-ui-Slider-Pips/v1.11.3/dist/jquery-ui-slider-pips.min.js'
 curl -o /var/www/html/web/libraries/jquery-ui-slider-pips/dist/jquery-ui-slider-pips.min.css 'https://raw.githubusercontent.com/simeydotme/jQuery-ui-Slider-Pips/v1.11.3/dist/jquery-ui-slider-pips.min.css'
+echo "Setting Git safe directories to permissive/docker"
+git config --global --add safe.directory "*"
