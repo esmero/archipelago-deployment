@@ -3,15 +3,15 @@
 The script in this folder called `auto_deploy.sh` is a slight modification of the documented steps for deployment available in [this repository's main README](../../../README.md). You can run this script from the root of the project by doing the following:
 
 1. Give execution permissions to the script:
-  ```shell
-  sudo chmod 700 ./auto_deploy.sh
-  ```
+    ```shell
+    sudo chmod 700 ./auto_deploy.sh
+    ```
 2. Go to the root of the project, and run the script from there:
 
-  ```shell
-  cd ../../..
-  scripts/archipelago/devops/auto_deploy.sh
-  ```
+    ```shell
+    cd ../../..
+    scripts/archipelago/devops/auto_deploy.sh
+    ```
 
 The script will give some prompts for a few options for you to select.
 
