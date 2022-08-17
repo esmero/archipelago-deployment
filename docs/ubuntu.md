@@ -220,7 +220,7 @@ Note: It can take some time to start the first time (Drupal needs some warming u
 
 ## Step 6: Optional but more fun if you add content
 
-[One-Step Demo content ingest](docs/democontent.md)
+[One-Step Demo content ingest](democontent.md)
 
 ### Need help? Blue Screen? Missed a step? Need a hug?
 
