@@ -2,7 +2,7 @@ name: ci
 on:
   push:
     branches:
-      - 1.0.0-RC3
+      - 1.0.0
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -15,5 +15,5 @@ jobs:
               owner: 'esmero',
               repo: 'archipelago-documentation',
               workflow_id: 'ci.yml',
-              ref: '1.0.0-RC3',
+              ref: '1.0.0',
             });
