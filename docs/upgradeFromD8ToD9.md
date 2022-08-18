@@ -312,6 +312,7 @@ If you like this, let us know!
 * [Diego Pino](https://github.com/DiegoPino)
 * [Giancarlo Birello](https://github.com/giancarlobi)
 * [Allison Lund](https://github.com/alliomeria)
+* [Katie Romabiles](https://github.com/karomabiles)
 * [Albert Min](https://github.com/aksm)
 
 ## License
