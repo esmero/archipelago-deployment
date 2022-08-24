@@ -126,7 +126,7 @@ Then copy the appropriate `docker-compose` file for your architecture:
 
 <!--switch_below
 
-??? info "OSX (macOS)/x86-64"
+??? info "OSX (macOS) Intel/x86-64"
 
     ```shell
     cp docker-compose-osx.yml docker-compose.yml
@@ -138,7 +138,7 @@ Then copy the appropriate `docker-compose` file for your architecture:
     cp docker-compose-linux.yml docker-compose.yml
     ```
 
-??? info "OSX (macOS)/Linux/ARM64"
+??? info "OSX (macOS) M1 and M2/Linux/ARM64"
 
     ```shell
     cp docker-compose-arm64.yml docker-compose.yml
@@ -148,7 +148,7 @@ switch_below-->
 
 ___
 
-OSX (macOS)/x86-64:
+OSX (macOS) Intel/x86-64:
 
 ```shell
 cp docker-compose-osx.yml docker-compose.yml
@@ -164,7 +164,7 @@ cp docker-compose-linux.yml docker-compose.yml
 
 ___
 
-OSX (macOS)/Linux/ARM64:
+OSX (macOS) M1 and M2/Linux/ARM64:
 
 ```shell
 cp docker-compose-arm64.yml docker-compose.yml
