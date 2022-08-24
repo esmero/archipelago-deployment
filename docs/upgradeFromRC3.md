@@ -102,7 +102,7 @@ sudo chmod 666 web/sites/default/*settings.php
 sudo chmod 666 web/sites/default/*services.yml
 ```
 
-If on a Linux host we are going to open up these additional permissions:
+If on a Linux or Windows 10/11 with Windows Subsystem for Linux (WSL) host we are going to open up these additional permissions:
 
 ```shell
 sudo chown -R $USER:$USER web/sites/default/files/color
