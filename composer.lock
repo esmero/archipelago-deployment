@@ -11285,12 +11285,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "1b3997718b02fc59cbbd7bd704a3789c9c02df60"
+                "reference": "8f4a77212d4443212df8c72d980fca8fbb00d686"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/1b3997718b02fc59cbbd7bd704a3789c9c02df60",
-                "reference": "1b3997718b02fc59cbbd7bd704a3789c9c02df60",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/8f4a77212d4443212df8c72d980fca8fbb00d686",
+                "reference": "8f4a77212d4443212df8c72d980fca8fbb00d686",
                 "shasum": ""
             },
             "require": {
@@ -11300,8 +11300,7 @@
                 "league/html-to-markdown": "^5.0.0",
                 "ml/json-ld": "^1.2",
                 "mtdowling/jmespath.php": "^2.5",
-                "strawberryfield/strawberryfield": "1.0.0.x-dev",
-                "seboettg/citeproc-php": "master"
+                "strawberryfield/strawberryfield": "1.0.0.x-dev"
             },
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -11322,7 +11321,7 @@
                 "issues": "https://github.com/esmero/format_strawberryfield/issues",
                 "source": "https://github.com/esmero/format_strawberryfield/tree/1.0.0"
             },
-            "time": "2022-10-18T14:05:30+00:00"
+            "time": "2022-08-11T20:58:07+00:00"
         },
         {
             "name": "strawberryfield/strawberry_runners",
