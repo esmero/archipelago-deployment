@@ -11162,6 +11162,129 @@
             "time": "2021-07-11T12:37:55+00:00"
         },
         {
+            "name": "seboettg/citeproc-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/seboettg/citeproc-php.git",
+                "reference": "3fbaaaca2ea061fd4c51e7880e835d6a669e6fee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/seboettg/citeproc-php/zipball/3fbaaaca2ea061fd4c51e7880e835d6a669e6fee",
+                "reference": "3fbaaaca2ea061fd4c51e7880e835d6a669e6fee",
+                "shasum": ""
+            },
+            "require": {
+                "ext-intl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "myclabs/php-enum": "^1.8",
+                "php": ">=7.3",
+                "seboettg/collection": ">=v3.1.0"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^1",
+                "phpmd/phpmd": "^2.8",
+                "phpunit/phpunit": "^8.5",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "suggest": {
+                "symfony/polyfill-mbstring": "^1.10"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "Seboettg\\CiteProc\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Böttger",
+                    "email": "seboettg@gmail.com",
+                    "homepage": "https://sebastianboettger.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Full-featured CSL processor (https://citationstyles.org)",
+            "support": {
+                "issues": "https://github.com/seboettg/citeproc-php/issues",
+                "source": "https://github.com/seboettg/citeproc-php/tree/master"
+            },
+            "time": "2022-08-05T20:11:50+00:00"
+        },
+        {
+            "name": "seboettg/collection",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/seboettg/Collection.git",
+                "reference": "6f753aef75923965173dcb11696e5dece0533f45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/seboettg/Collection/zipball/6f753aef75923965173dcb11696e5dece0533f45",
+                "reference": "6f753aef75923965173dcb11696e5dece0533f45",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^1",
+                "phpunit/phpunit": "8.5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/ArrayList/Functions.php"
+                ],
+                "psr-4": {
+                    "Seboettg\\Collection\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Böttger",
+                    "email": "seboettg@gmail.com"
+                }
+            ],
+            "description": "Collection is a set of useful PHP wrapper classes for arrays, similar to Java Collection. Contains ArrayList, Stack, Queue.",
+            "keywords": [
+                "OOP",
+                "array",
+                "arraylist",
+                "basic-data-structures",
+                "collections",
+                "comparable",
+                "comparable-interface",
+                "comparator",
+                "datastructures",
+                "filter",
+                "map",
+                "queue",
+                "sort",
+                "stack"
+            ],
+            "support": {
+                "issues": "https://github.com/seboettg/Collection/issues",
+                "source": "https://github.com/seboettg/Collection/tree/v3.1.0"
+            },
+            "time": "2022-07-09T19:47:27+00:00"
+        },
+        {
             "name": "solarium/solarium",
             "version": "6.2.6",
             "source": {
@@ -11285,12 +11408,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "8f4a77212d4443212df8c72d980fca8fbb00d686"
+                "reference": "7bb70d94232d9481bee648c52fef4d2ee30329e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/8f4a77212d4443212df8c72d980fca8fbb00d686",
-                "reference": "8f4a77212d4443212df8c72d980fca8fbb00d686",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/7bb70d94232d9481bee648c52fef4d2ee30329e3",
+                "reference": "7bb70d94232d9481bee648c52fef4d2ee30329e3",
                 "shasum": ""
             },
             "require": {
@@ -11300,6 +11423,7 @@
                 "league/html-to-markdown": "^5.0.0",
                 "ml/json-ld": "^1.2",
                 "mtdowling/jmespath.php": "^2.5",
+                "seboettg/citeproc-php": "dev-master",
                 "strawberryfield/strawberryfield": "1.0.0.x-dev"
             },
             "type": "drupal-module",
@@ -11321,7 +11445,7 @@
                 "issues": "https://github.com/esmero/format_strawberryfield/issues",
                 "source": "https://github.com/esmero/format_strawberryfield/tree/1.0.0"
             },
-            "time": "2022-08-11T20:58:07+00:00"
+            "time": "2022-10-19T20:39:22+00:00"
         },
         {
             "name": "strawberryfield/strawberry_runners",
