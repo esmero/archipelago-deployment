@@ -71,8 +71,8 @@ sudo chown -R 8983:8983 persistent/solrcore &&
 until [ "`docker inspect -f {{.State.Running}} esmero-minio`"=="true" ]; do
     sleep 0.1;
 done;
-docker run -d --name esmero-mc --network="$(basename $(pwd) | tr '[:upper:]' '[:lower:]')_esmero-net" -it --entrypoint sh minio/mc &&
-docker network connect "$(basename $(pwd) | tr '[:upper:]' '[:lower:]')_host-net" esmero-mc &&
+docker run -d --name esmero-mc --network="$(basename "$(pwd)" | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')_esmero-net" -it --entrypoint sh minio/mc &&
+docker network connect "$(basename "$(pwd)" | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')_host-net" esmero-mc &&
 docker exec -ti esmero-mc bash -c "mc config host add esmero-minio http://esmero-minio:9000 minio minio123 && mc mb esmero-minio/archipelago" &&
 docker stop esmero-mc &&
 docker rm esmero-mc &&
