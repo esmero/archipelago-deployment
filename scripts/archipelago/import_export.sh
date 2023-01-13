@@ -30,6 +30,18 @@ Help()
    echo
 }
 
+if ! command -v jq &> /dev/null
+then
+    echo "jq command could not be found. Please install or configure jq."
+    exit
+fi
+
+if ! command -v json_pp &> /dev/null
+then
+    echo "json_pp command could not be found. Please install or configure json_pp."
+    exit
+fi
+
 script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 adl_env_file="$script_dir/../../../deploy/ec2-docker/.env"
 ad_env_file="$script_dir/../../.env"
