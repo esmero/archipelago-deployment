@@ -1,5 +1,7 @@
 {# 
-Updated 07/08/2022 for 1.0.0
+Updated 01/13/2023 for 1.0.0
+Changes:
+  - Fixes mirador_path to handle both standard and self-closing polygon tags.
 
 This Template generates IIIF 3.0 Canvas only Partial API Manifest from a Strawberry Field
 JSON to be used by a Drupal Views (REST) to generate a simpler to parse/join listing of Canvases
@@ -340,7 +342,8 @@ Without Double quotes.
                		{% set target = nodeurl|render ~ "/iiif/canvas/p" ~ itemCount ~ '#' ~ annotation.target.selector.value|replace({"pixel:" : ""}) %}
                {% else %}
                {# Parse our polygon point values into path for Mirador #}
-               {% set mirador_path = annotation.target.selector.value|replace({'<svg><polygon points="': "", '"></polygon></svg>': ""}) %}
+               {% set mirador_path = annotation.target.selector.value|striptags('<polygon>')|split('"') %}
+               {% set mirador_path = mirador_path[1] %}
                {% set mirador_path = "M" ~ (mirador_path|split(" ")|join("L")) ~ " z" %}
                		{% set target = {
                "source" : nodeurl|render ~ "/iiif/canvas/p" ~ itemCount,
