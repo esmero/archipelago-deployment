@@ -120,7 +120,7 @@ export_data() {
   curl -w "\n" -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -K - "$json_api_endpoint" <<< "user = \"$username:$password\"" | jq -cr '.data[]|del(.links)|del(.relationships)|del(.attributes.created)|del(.attributes.drupal_internal__id)|del(.attributes.changed)|del(.attributes.link)|{"data": .}' | while read -r metadatadisplay_entity;
   do
     uuid=$(echo "$metadatadisplay_entity" | jq -r .data.id)
-    echo "$metadatadisplay_entity" >> "metadatadisplay_entity_$uuid.json"
+    echo "$metadatadisplay_entity" | json_pp -json_opt escape_slash >> "metadatadisplay_entity_$uuid.json"
   done
 }
 
