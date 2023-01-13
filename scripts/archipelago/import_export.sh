@@ -30,6 +30,18 @@ Help()
    echo
 }
 
+if ! command -v jq &> /dev/null
+then
+    echo "jq command could not be found. Please install or configure jq."
+    exit
+fi
+
+if ! command -v json_pp &> /dev/null
+then
+    echo "json_pp command could not be found. Please install or configure json_pp."
+    exit
+fi
+
 script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 adl_env_file="$script_dir/../../../deploy/ec2-docker/.env"
 ad_env_file="$script_dir/../../.env"
@@ -120,7 +132,7 @@ export_data() {
   curl -w "\n" -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -K - "$json_api_endpoint" <<< "user = \"$username:$password\"" | jq -cr '.data[]|del(.links)|del(.relationships)|del(.attributes.created)|del(.attributes.drupal_internal__id)|del(.attributes.changed)|del(.attributes.link)|{"data": .}' | while read -r metadatadisplay_entity;
   do
     uuid=$(echo "$metadatadisplay_entity" | jq -r .data.id)
-    echo "$metadatadisplay_entity" >> "metadatadisplay_entity_$uuid.json"
+    echo "$metadatadisplay_entity" | json_pp -json_opt escape_slash >> "metadatadisplay_entity_$uuid.json"
   done
 }
 
