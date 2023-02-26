@@ -337,8 +337,7 @@ field_settings:
           page: ''
           webform: ''
         strawberryfield_flavor_datasource:
-          digital_object: ''
-          digital_object_collection: ''
+          strawberryfield_flavor_datasource: ''
   rendered_item_iiif_img:
     label: 'IIIF Image Tag for ADO'
     property_path: rendered_item
@@ -356,8 +355,7 @@ field_settings:
           page: ''
           webform: ''
         strawberryfield_flavor_datasource:
-          digital_object: search_index
-          digital_object_collection: search_index
+          strawberryfield_flavor_datasource: ''
   sbf_entity_reference_partof_memberof_title:
     label: '🍓 Strawberry (Descriptive Metadata source) » ispartof » ismemberof » Title'
     datasource_id: 'entity:node'
