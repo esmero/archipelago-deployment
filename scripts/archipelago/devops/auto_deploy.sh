@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# For archipelago-deployment 1.0.0
+# For archipelago-deployment 1.1.0
 
 docker_files=( docker-compose-*.yml )
 docker_files+=("Cancel")
@@ -9,6 +9,14 @@ content_opts=("Start with basic templates and demo content" "Blank deployment" "
 selected_docker_file=""
 selected_debug=""
 selected_start_with_content=""
+
+update_permissions () {
+  if [[ ( ! -z "$OSTYPE" && "$OSTYPE" == "linux"* ) || "$(uname)" == "Linux"* ]]
+  then
+    sudo chown -R 8183:8183 persistent/iiifcache &&
+    sudo chown -R 8983:8983 persistent/solrcore
+  fi
+}
 
 PS3="Select a docker-compose file to use: "
 
@@ -66,8 +74,7 @@ cp "$selected_docker_file" docker-compose.yml &&
 [ $selected_debug -eq 1 ] &&
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d ||
 docker-compose up -d &&
-sudo chown -R 8183:8183 persistent/iiifcache &&
-sudo chown -R 8983:8983 persistent/solrcore &&
+update_permissions &&
 until [ "`docker inspect -f {{.State.Running}} esmero-minio`"=="true" ]; do
     sleep 0.1;
 done;
