@@ -16,11 +16,11 @@ third_party_settings:
   ds:
     layout:
       id: layout_onecol
+      settings:
+        label: ''
       library: layout_discovery/onecol
       disable_css: false
       entity_classes: all_classes
-      settings:
-        label: ''
     regions:
       content:
         - node_title
@@ -44,6 +44,10 @@ third_party_settings:
           link: true
           wrapper: h2
           class: ''
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.digital_object_collection.full
 targetEntityType: node
 bundle: digital_object_collection

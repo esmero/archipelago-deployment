@@ -16,17 +16,18 @@ dependencies:
 third_party_settings:
   field_layout:
     id: layout_onecol
-    settings: {  }
+    settings:
+      label: ''
   ds:
     layout:
       id: ds_1col
-      library: null
-      disable_css: false
-      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
         label: ''
+      library: null
+      disable_css: false
+      entity_classes: all_classes
     regions:
       ds_content:
         - 'display_field_copy:node-field_descriptive_metadata_image'

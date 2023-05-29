@@ -15,9 +15,6 @@ third_party_settings:
   ds:
     layout:
       id: bb_cardtopimage
-      library: null
-      disable_css: false
-      entity_classes: all_classes
       settings:
         classes: {  }
         wrappers:
@@ -27,12 +24,19 @@ third_party_settings:
         attributes: ''
         link_attribute: ''
         link_custom: ''
+      library: null
+      disable_css: false
+      entity_classes: all_classes
     regions:
       first:
         - langcode
         - field_descriptive_metadata
         - links
         - body
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.digital_object_collection.teaser
 targetEntityType: node
 bundle: digital_object_collection

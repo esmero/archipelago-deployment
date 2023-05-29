@@ -15,9 +15,6 @@ third_party_settings:
   ds:
     layout:
       id: ds_1col
-      library: null
-      disable_css: false
-      entity_classes: all_classes
       settings:
         classes:
           layout_class: {  }
@@ -28,6 +25,9 @@ third_party_settings:
         link_attribute: ''
         link_custom: ''
         label: ''
+      library: null
+      disable_css: false
+      entity_classes: all_classes
     regions:
       ds_content:
         - field_descriptive_metadata
@@ -50,6 +50,10 @@ third_party_settings:
             specs: 'http://schema.org'
             metadatadisplayentity_uuid: bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7
             metadatadisplayentity_uselabel: '0'
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.digital_object_collection.digital_object_collection_with_mirador_viewer
 targetEntityType: node
 bundle: digital_object_collection
@@ -61,6 +65,7 @@ content:
     settings:
       iiif_base_url: 'http://localhost:8183/iiif/2'
       iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+      custom_js: false
       mediasource:
         manifestnodelist: '0'
         metadataexposeentity: metadataexposeentity
@@ -76,7 +81,7 @@ content:
       embargo_json_key_source: ''
     third_party_settings: {  }
     weight: 0
-    region: ds_content
+    region: content
 hidden:
   body: true
   content_moderation_control: true

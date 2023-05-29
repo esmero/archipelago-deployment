@@ -6,6 +6,11 @@ dependencies:
     - codemirror_editor
     - format_strawberryfield
     - options
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: metadatadisplay_entity.metadatadisplay_entity.default
 targetEntityType: metadatadisplay_entity
 bundle: metadatadisplay_entity

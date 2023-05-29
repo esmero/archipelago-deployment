@@ -7,6 +7,11 @@ dependencies:
     - taxonomy.vocabulary.strawberryfield_voc_id
   module:
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: taxonomy_term.strawberryfield_voc_id.default
 targetEntityType: taxonomy_term
 bundle: strawberryfield_voc_id

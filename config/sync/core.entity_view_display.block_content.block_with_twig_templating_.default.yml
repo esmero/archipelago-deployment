@@ -8,6 +8,11 @@ dependencies:
     - field.field.block_content.block_with_twig_templating_.field_twig_content
   module:
     - twig_field
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: block_content.block_with_twig_templating_.default
 targetEntityType: block_content
 bundle: block_with_twig_templating_

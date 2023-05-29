@@ -16,7 +16,7 @@ dependencies:
 id: data_collection_manifest
 label: 'Data Collection Manifest'
 module: views
-description: 'Lists Member objects of a Collection driven by Solr'
+description: 'Generates IIIF Snippet JSON data for Member objects of a Collection driven by Solr'
 tag: ''
 base_table: search_api_index_default_solr_index
 base_field: search_api_id
@@ -283,6 +283,19 @@ display:
             label: ''
             field_identifier: changed
           exposed: false
+        sequence_id_1:
+          id: sequence_id_1
+          table: search_api_index_default_solr_index
+          field: sequence_id_1
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
       arguments:
         ismemberof:
           id: ismemberof
@@ -395,6 +408,7 @@ display:
       tags:
         - 'config:field.storage.node.field_descriptive_metadata'
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
   children_ismemberof_manifest_rest:
     id: children_ismemberof_manifest_rest
     display_title: 'Collection Members REST with JSON snippets'
@@ -877,3 +891,4 @@ display:
       tags:
         - 'config:field.storage.node.field_descriptive_metadata'
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'

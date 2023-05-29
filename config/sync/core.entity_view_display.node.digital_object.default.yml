@@ -15,13 +15,11 @@ dependencies:
 third_party_settings:
   field_layout:
     id: layout_onecol
-    settings: {  }
+    settings:
+      label: ''
   ds:
     layout:
       id: ds_1col
-      library: null
-      disable_css: false
-      entity_classes: all_classes
       settings:
         classes:
           layout_class: {  }
@@ -32,6 +30,9 @@ third_party_settings:
         link_attribute: ''
         link_custom: ''
         label: ''
+      library: null
+      disable_css: false
+      entity_classes: all_classes
     regions:
       ds_content:
         - links

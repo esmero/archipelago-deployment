@@ -18,17 +18,17 @@ plugin: 'facet_block:descriptive_metadata_object_types'
 settings:
   id: 'facet_block:descriptive_metadata_object_types'
   label: 'Object Type'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: facet_object_type
 visibility:
   request_path_exclusion:
     id: request_path_exclusion
-    pages: ''
     negate: null
     context_mapping: {  }
+    pages: ''
   view_inclusion:
     id: view_inclusion
     negate: null
-    view_inclusion: {  }
     context_mapping: {  }
+    view_inclusion: {  }

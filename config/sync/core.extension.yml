@@ -84,7 +84,6 @@ module:
   path_alias: 0
   queue_ui: 0
   quick_node_clone: 0
-  quickedit: 0
   redis: 0
   responsive_image: 0
   rest: 0

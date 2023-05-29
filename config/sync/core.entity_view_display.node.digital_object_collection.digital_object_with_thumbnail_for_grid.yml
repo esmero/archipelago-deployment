@@ -15,13 +15,13 @@ third_party_settings:
   ds:
     layout:
       id: ds_1col
-      library: null
-      disable_css: false
-      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
         label: ''
+      library: null
+      disable_css: false
+      entity_classes: all_classes
     regions:
       ds_content:
         - node_changed_date
@@ -43,6 +43,10 @@ third_party_settings:
           link: true
           wrapper: h2
           class: ''
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.digital_object_collection.digital_object_with_thumbnail_for_grid
 targetEntityType: node
 bundle: digital_object_collection
@@ -59,14 +63,16 @@ content:
       specs: 'http://schema.org'
       metadatadisplayentity_uuid: 7ca9ef30-1535-4616-b3b2-201dcc7d6a69
       metadatadisplayentity_uselabel: '0'
+      upload_json_key_source: ''
+      embargo_json_key_source: ''
     third_party_settings: {  }
     weight: 2
-    region: ds_content
+    region: content
   search_api_excerpt:
     settings: {  }
     third_party_settings: {  }
     weight: 3
-    region: ds_content
+    region: content
 hidden:
   body: true
   content_moderation_control: true

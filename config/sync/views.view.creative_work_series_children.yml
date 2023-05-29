@@ -10,7 +10,7 @@ dependencies:
 id: creative_work_series_children
 label: 'Creative Work Series Children'
 module: views
-description: 'Lists Member objects of a Collection driven by Solr'
+description: 'Lists Children objects of a Creative Work Series or other Compound driven by Solr'
 tag: ''
 base_table: search_api_index_default_solr_index
 base_field: search_api_id
@@ -95,17 +95,15 @@ display:
             multi_type: separator
             multi_separator: ', '
       pager:
-        type: full
+        type: mini
         options:
           offset: 0
-          items_per_page: 50
+          items_per_page: 25
           total_pages: null
           id: 0
           tags:
             next: 'Next ›'
             previous: '‹ Previous'
-            first: '« First'
-            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -114,7 +112,6 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          quantity: 9
       exposed_form:
         type: basic
         options:
@@ -138,35 +135,22 @@ display:
           field: messages
           relationship: none
           group_type: group
-          admin_label: 'This Digital Collection has no members yet.'
+          admin_label: 'This Digital Object has no children yet.'
           plugin_id: messages
           empty: true
       sorts:
-        changed:
-          id: changed
+        sequence_id_1:
+          id: sequence_id_1
           table: search_api_index_default_solr_index
-          field: changed
+          field: sequence_id_1
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: search_api
           order: ASC
           expose:
-            label: Changed
-            field_identifier: changed
-          exposed: false
-        title_string:
-          id: title_string
-          table: search_api_index_default_solr_index
-          field: title_string
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: search_api
-          order: ASC
-          expose:
-            label: Title
-            field_identifier: title_string
+            label: ''
+            field_identifier: ''
           exposed: false
       arguments:
         nid_ref_partof:
@@ -299,6 +283,7 @@ display:
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
   block_1:
     id: block_1
     display_title: Block
@@ -325,3 +310,4 @@ display:
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'

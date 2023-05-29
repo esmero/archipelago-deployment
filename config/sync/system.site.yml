@@ -2,9 +2,9 @@ _core:
   default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
 langcode: en
 uuid: 6855e385-22b1-43ba-ae50-4180d276445f
-name: '{ Archipelago Commons 1.0.0 }'
+name: '{ Archipelago Commons 1.1.0 - IIIF 2023 }'
 mail: repositorysupport@metro.org
-slogan: 'Shimmering at the meadow''s edge'
+slogan: 'Luccicante ai margini del prato'
 page:
   403: ''
   404: ''

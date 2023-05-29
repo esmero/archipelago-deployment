@@ -3,11 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_tags
     - field.storage.node.field_descriptive_metadata
+    - field.storage.node.field_tags
     - search_api.server.esmero_solr
     - core.entity_view_mode.node.digital_object_image_only_for_carousel
-    - core.entity_view_mode.node.search_index
   module:
     - search_api_solr
     - node
@@ -20,6 +19,7 @@ third_party_settings:
     finalize: false
     commit_before_finalize: false
     commit_after_finalize: false
+    debug_finalize: false
     highlighter:
       maxAnalyzedChars: 51200
       fragmenter: gap
@@ -56,10 +56,14 @@ third_party_settings:
     multilingual:
       limit_to_content_language: false
       include_language_independent: true
+      use_language_undefined_as_fallback_language: false
+      specific_languages:
+        en: '0'
+      use_universal_collation: false
 _core:
   default_config_hash: 5gcfQOCjXVt6We4_q02H8VjnECSON5NgKOchFAsncxU
 id: default_solr_index
-name: 'Drupal Content to Solr 8'
+name: 'Drupal Content to Solr 9'
 description: 'Basic Content'
 read_only: false
 field_settings:
@@ -673,6 +677,7 @@ processor_settings:
   sbf_content_access:
     weights:
       preprocess_query: -30
+  sbf_flavor_aggregated_item: {  }
   solr_boost_more_recent:
     weights:
       preprocess_query: 0

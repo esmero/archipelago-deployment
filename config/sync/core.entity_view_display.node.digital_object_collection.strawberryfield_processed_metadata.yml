@@ -15,11 +15,11 @@ third_party_settings:
   ds:
     layout:
       id: layout_twocol
+      settings:
+        label: ''
       library: layout_discovery/twocol
       disable_css: false
       entity_classes: all_classes
-      settings:
-        label: ''
     regions:
       top:
         - node_title
@@ -55,6 +55,10 @@ third_party_settings:
           link: true
           wrapper: h2
           class: 'fas fa-archive'
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.digital_object_collection.strawberryfield_processed_metadata
 targetEntityType: node
 bundle: digital_object_collection
@@ -71,14 +75,16 @@ content:
       specs: 'http://schema.org'
       metadatadisplayentity_uuid: 7ca9ef30-1535-4616-b3b2-201dcc7d6a69
       metadatadisplayentity_uselabel: '0'
+      upload_json_key_source: ''
+      embargo_json_key_source: ''
     third_party_settings: {  }
     weight: 1
-    region: first
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
     weight: 2
-    region: first
+    region: content
 hidden:
   body: true
   content_moderation_control: true
