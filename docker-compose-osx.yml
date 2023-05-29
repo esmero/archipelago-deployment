@@ -35,8 +35,11 @@ services:
   solr:
     container_name: esmero-solr
     restart: always
-    image: "solr:8.11.2"
+    image: "solr:9.1.1"
     tty: true
+    environment:
+      SOLR_HEAP: 512m
+      SOLR_OPTS: -Dsolr.jetty.request.header.size=65535 -Dsolr.modules=scripting
     ports:
       - "8983:8983"
     networks:

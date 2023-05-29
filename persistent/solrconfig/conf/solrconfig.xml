@@ -38,7 +38,7 @@
        that you fully re-index after changing this setting as it can
        affect both how text is indexed and queried.
     -->
-  <luceneMatchVersion>${solr.luceneMatchVersion:LUCENE_80}</luceneMatchVersion>
+  <luceneMatchVersion>${solr.luceneMatchVersion:LUCENE_90}</luceneMatchVersion>
 
   <!-- <lib/> directives can be used to instruct Solr to load any Jars
        identified and use them to resolve any "plugins" specified in
@@ -75,17 +75,17 @@
        The examples below can be used to load some solr-contribs along
        with their external dependencies.
     -->
-  <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-dataimporthandler-.*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/modules/" regex="solr-dataimporthandler-.*\.jar" />
 
-  <lib dir="${solr.install.dir:../../../..}/contrib/extraction/lib" regex=".*\.jar" />
-  <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-cell-\d.*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/modules/extraction/lib" regex=".*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/modules/" regex="solr-cell-\d.*\.jar" />
 
-  <lib dir="${solr.install.dir:../../../..}/contrib/langid/lib/" regex=".*\.jar" />
-  <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-langid-\d.*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/modules/langid/lib/" regex=".*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/modules/" regex="solr-langid-\d.*\.jar" />
 
-  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" regex=".*\.jar" />
-  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" regex=".*\.jar" />
-  <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-analysis-extras-\d.*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/modules/analysis-extras/lib" regex=".*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/modules/analysis-extras/lucene-libs" regex=".*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/modules/" regex="solr-analysis-extras-\d.*\.jar" />
 
   <!-- an exact 'path' can be used instead of a 'dir' to specify a
        specific jar file.  This will cause a serious error to be logged
@@ -753,7 +753,7 @@
        in Solr's conf/xslt directory.  Changes to xslt files are checked for
        every xsltCacheLifetimeSeconds.
     -->
-  <queryResponseWriter name="xslt" class="solr.XSLTResponseWriter">
+  <queryResponseWriter name="xslt" class="solr.scripting.xslt.XSLTResponseWriter">
     <int name="xsltCacheLifetimeSeconds">5</int>
   </queryResponseWriter>
 

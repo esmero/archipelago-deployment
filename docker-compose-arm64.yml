@@ -35,8 +35,11 @@ services:
   solr:
     container_name: esmero-solr
     restart: always
-    image: "solr:8.11.2"
+    image: "solr:9.1.1"
     tty: true
+    environment:
+      SOLR_HEAP: 512m
+      SOLR_OPTS: -Dsolr.jetty.request.header.size=65535 -Dsolr.modules=scripting
     ports:
       - "8983:8983"
     networks:
@@ -53,8 +56,8 @@ services:
       - /drupalconfig
   # see https://hub.docker.com/_/mysql/
   db:
-    image: mariadb:10.6.8-focal
-    command: mysqld --default-authentication-plugin=mysql_native_password  --max_allowed_packet=256M --sort_buffer_size=512K --lower_case_table_names=1 
+    image: mariadb:10.6.12-focal
+    command: mysqld --default-authentication-plugin=mysql_native_password  --max_allowed_packet=256M --sort_buffer_size=512K --lower_case_table_names=1 --innodb_read_only_compressed=OFF
     container_name: esmero-db
     restart: always
     environment:

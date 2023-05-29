@@ -189,6 +189,6 @@
   7.0.0
 -->
   <searchComponent name="tvComponent" class="solr.TermVectorComponent"/>
-<!-- Archipelago 1.0.0-RC1 -->
-  <searchComponent name="ocrHighlight" class="de.digitalcollections.solrocr.solr.OcrHighlightComponent" />
+<!-- Archipelago 1.1.0 -->
+  <searchComponent name="ocrHighlight" class="solrocr.OcrHighlightComponent" />
 

@@ -91,7 +91,7 @@
 <dynamicField name="tcngrams_X3b_und_*" type="text_ngram" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
 <dynamicField name="tcngrams_*" type="text_ngram" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
 <dynamicField name="tcngramm_X3b_und_*" type="text_ngram" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />
-<dynamicField name="tcngramm_*" type="text_ngram" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />
+<dynamicField name="tcngramm_*" type="text_ngram" stored="true" indexed="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true" omitNorms="false" />
 <dynamicField name="tocngrams_X3b_und_*" type="text_ngram" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="true" />
 <dynamicField name="tocngrams_*" type="text_ngram" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="true" />
 <dynamicField name="tocngramm_X3b_und_*" type="text_ngram" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="true" />
