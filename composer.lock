@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c038c1a78e8911c84013a67e1815cb94",
+    "content-hash": "523157f89c5b115496e7db97107e165e",
     "packages": [
         {
             "name": "archipelago/ami",
@@ -3591,29 +3591,27 @@
         },
         {
             "name": "drupal/ds",
-            "version": "dev-5.0.x",
+            "version": "dev-3.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ds.git",
-                "reference": "103c310d1ef4c6e4a658d3a1c915d2f3ccbf1681"
+                "reference": "1dd1d326f498e9189d390c233790f090a4d89069"
             },
             "require": {
-                "drupal/core": "^9.5 || ^10"
+                "drupal/core": "^9 || ^10"
             },
             "require-dev": {
                 "drupal/classy": "^1.0",
-                "drupal/devel": "5.x-dev",
-                "drupal/field_group": "3.x-dev",
-                "drupal/stable": "^2.0"
+                "drupal/devel": "5.x-dev"
             },
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-5.0.x": "5.0.x-dev"
+                    "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "5.0.0-alpha3+9-dev",
-                    "datestamp": "1667316284",
+                    "version": "8.x-3.15+1-dev",
+                    "datestamp": "1664282052",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."

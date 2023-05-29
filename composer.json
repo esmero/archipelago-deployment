@@ -44,7 +44,7 @@
         "drupal/core-recommended": "^9",
         "drupal/devel": "4.x-dev@dev",
         "drupal/display_field_copy": "^2.0",
-        "drupal/ds": "5.0.x-dev@dev",
+        "drupal/ds": "dev-3.x",
         "drupal/facets": "^2.0",
         "drupal/fancy_file_delete": "^2.0",
         "drupal/field_permissions": "^1.0@RC",
