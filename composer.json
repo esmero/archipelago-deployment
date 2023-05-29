@@ -21,7 +21,7 @@
     ],
     "require": {
         "php": ">=7.3",
-        "archipelago/ami": "0.4.0.x-dev",
+        "archipelago/ami": "0.5.0.x-dev",
         "archipelago/archipelago_subtheme": "1.0.0.x-dev",
         "aws/aws-php-sns-message-validator": "^1.5",
         "aws/aws-sdk-php": "^3.63",
@@ -44,7 +44,7 @@
         "drupal/core-recommended": "^9",
         "drupal/devel": "4.x-dev@dev",
         "drupal/display_field_copy": "^2.0",
-        "drupal/ds": "3.x-dev@dev",
+        "drupal/ds": "5.0.x-dev@dev",
         "drupal/facets": "^2.0",
         "drupal/fancy_file_delete": "^2.0",
         "drupal/field_permissions": "^1.0@RC",
@@ -71,13 +71,13 @@
         "drupal/search_api": "^1.2",
         "drupal/search_api_attachments": "^1.0@beta",
         "drupal/search_api_autocomplete": "^1.2",
-        "drupal/search_api_solr": "^4.2",
+        "drupal/search_api_solr": "4.2.10",
         "drupal/smtp": "^1.0",
         "drupal/tokenuuid": "^2.0",
         "drupal/twig_field": "^1.0",
         "drupal/twig_tweak": "^2.6",
         "drupal/views_bootstrap": "^5.4",
-        "drupal/views_bulk_operations": "^4.1",
+        "drupal/views_bulk_operations": "4.1.2",
         "drupal/webform": "^6",
         "drupal/webform_entity_handler": "1.x-dev",
         "drupal/webformnavigation": "^1.0@alpha",
@@ -96,16 +96,18 @@
         "react/event-loop": "^1.1",
         "react/promise": "^2.7",
         "solarium/solarium": "^6.0",
-        "strawberryfield/format_strawberryfield": "1.0.0.x-dev",
-        "strawberryfield/strawberry_runners": "0.4.0.x-dev",
-        "strawberryfield/strawberryfield": "1.0.0.x-dev",
-        "strawberryfield/webform_strawberryfield": "1.0.0.x-dev",
+        "strawberryfield/format_strawberryfield": "1.1.0.x-dev as 1.0.0.x-dev",
+        "strawberryfield/strawberry_runners": "0.5.0.x-dev",
+        "strawberryfield/strawberryfield": "1.1.0.x-dev as 1.0.0.x-dev",
+        "strawberryfield/webform_strawberryfield": "1.1.0.x-dev as 1.0.0.x-dev",
         "swaggest/json-schema": "^0.12.10",
         "symfony/yaml": "^4",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
-        "wikibase/data-model": "9.6.1"
+        "wikibase/data-model": "9.6.1",
+        "drupal/facets_date_range": "^1.0@beta",
+        "drupal/better_exposed_filters": "^6.0"
     },
     "require-dev": {
         "drupal/core-dev": "^9",
@@ -188,9 +190,6 @@
         },
         "enable-patching": true,
         "patches": {
-           "drupal/core": {
-                "Fix Ajax/Preserve Facets on exposed forms Drupal 9.3.x": "patches/3032353-25-archipelago-05162022.patch"
-            }
         }
     }
 }
