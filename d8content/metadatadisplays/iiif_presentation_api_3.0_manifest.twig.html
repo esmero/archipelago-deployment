@@ -1,7 +1,7 @@
 {# This Template generates IIIF 3.0 Presentation API Manifest from a Strawberry Field
 JSON.
-​
-Updated 07/98/2022 for 1.0.0
+
+Updated 01/20/2023 for 1.1.0
 
 Changes:
   - Better Labeling for Items
@@ -13,6 +13,7 @@ Changes:
   - Adds Annotations for Images
   - Adds PDF/Document/pages
   - Adds Thumbnail for Video
+  - Fixes mirador_path to handle both standard and self-closing polygon tags.
 
 Structures passed from Archipelago are
 - node
@@ -21,7 +22,7 @@ Structures passed from Archipelago are
   The Full JSON Structure converted in an Array
 - iiif_server
   The publicly available IIIF Server (Global Setting)​
-​
+
 Since JSON was decoded into the 'data' values are valid PHP but could not
 be valid JSON when outputting. So We use data.description|json_encode|raw
 Without Double quotes.
@@ -370,25 +371,28 @@ Without Double quotes.
                {% else %}
                {% endif %}
                "body": {{ temp_annotation_body|json_encode|raw }},
-               "type": {{ annotation.type|json_encode(constant('JSON_FORCE_OBJECT'))|raw }},
+               "type": {{ annotation.type|json_encode(constant('JSON_FORCE_OBJECT'))|raw }}
                {# check target type: If polygon we need the selector, if a square, we need the xywh #}
                {% if annotation.target.selector.type == "FragmentSelector" %}
                {# MIRADOR does not know how to hande "pixel:" in the fragment coordinates selector #}
-               		{% set target = nodeurl|render ~ "/iiif/canvas/p" ~ itemCount ~ '#' ~ annotation.target.selector.value|replace({"pixel:" : ""}) %}
+                 {% set target = nodeurl|render ~ "/iiif/canvas/p" ~ itemCount ~ '#' ~ annotation.target.selector.value|replace({"pixel:" : ""}) %}
+                 ,"target": {{ target|json_encode|raw }}
                {% else %}
                {# Parse our polygon point values into path for Mirador #}
-               {% set mirador_path = annotation.target.selector.value|replace({'<svg><polygon points="': "", '"></polygon></svg>': ""}) %}
-               {% set mirador_path = "M" ~ (mirador_path|split(" ")|join("L")) ~ " z" %}
-               {% set target = {
-               "source" : nodeurl|render ~ "/iiif/canvas/p" ~ itemCount,
-               "selector": {
-                 "type":  annotation.target.selector.type,
-                 "value": '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="' ~ mirador_path ~ '"/></g></svg>'
-               },
-               "type": "SpecificResource"
-               		} %}
+                 {% if 'points="' in annotation.target.selector.value %}
+                   {% set mirador_path = annotation.target.selector.value | preg_replace('/.+?points="/','') | preg_replace('/".*/','') %}
+                   {% set mirador_path = "M" ~ (mirador_path|split(" ")|join("L")) ~ " z" %}
+                   {% set target = {
+                     "source" : nodeurl|render ~ "/iiif/canvas/p" ~ itemCount,
+                     "selector": {
+                       "type":  annotation.target.selector.type,
+                       "value": '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="' ~ mirador_path ~ '"/></g></svg>'
+                     },
+                     "type": "SpecificResource"
+               	   } %}
+                   ,"target": {{ target|json_encode|raw }}
+                 {% endif %}
                {% endif %}
-               "target": {{ target|json_encode|raw }}
        }{{ not loop.last ? ',' : '' }}      
        {% endfor -%}
        ]}]
