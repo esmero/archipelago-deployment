@@ -110,23 +110,12 @@ Now that you got it, let's deploy:
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.0.0
+git checkout 1.1.0-iiif
 ```
 
-And now a hard choice. Which docker-compose/ensemble? Edge? Stable? Legacy? So many choices. For latest/modern stack PHP8/Solr8.11/MySQL8 we recommend:
 
 ```shell
 cp docker-compose-linux.yml docker-compose.yml
-docker-compose pull
-docker-compose up -d
-```
-
-You have something running and do not want to update Databases/Solr indexes: Go legacy. In doubt? Ask us please. We can help.
-
-If you want to stay more traditional (not recommended) and stick with older versions PHP7.4/Solr7.5/MySQL57 we recommend the following:
-
-```shell
-cp docker-compose-legacy.yml docker-compose.yml
 docker-compose pull
 docker-compose up -d
 ```
@@ -194,7 +183,7 @@ Once finished, this will give you an `admin` Drupal user with `archipelago` as p
 
 Final note about Steps 2-3: You don't need to, nor should you do this more than once. You can destroy/stop/update, recreate your Docker containers, and start again (`git pull`), and your Drupal and Data will persist once you've passed the `Installation complete` message. I repeat, all other containers' data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable, and stable inside your `web/` folder.
 
-## Step 4: Create a "demo "and a "jsonapi" user using drush and assign your "admin" user the Administrator Role (new since Drupal 9).
+## Step 4: Create a "demo "and a "jsonapi" user using drush and assign your "admin" user the Administrator Role.
 
 ```shell
 docker exec -ti esmero-php bash -c 'drush ucrt demo --password="demo"; drush urol metadata_pro "demo"'
@@ -237,8 +226,8 @@ _Installing Archipelago on AWS Ubuntu_ by [Zach Spalding](https://github.com/sen
 ## Caring & Coding + Fixing + Testing
 
 * [Diego Pino](https://github.com/DiegoPino)
+* [Allison Sherrick](https://github.com/alliomeria)
 * [Giancarlo Birello](https://github.com/giancarlobi)
-* [Allison Lund](https://github.com/alliomeria)
 * [Katie Romabiles](https://github.com/karomabiles)
 * [Albert Min](https://github.com/aksm)
 

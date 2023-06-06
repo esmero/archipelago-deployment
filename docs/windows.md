@@ -50,8 +50,8 @@ If you like this, let us know!
 ## Caring & Coding + Fixing + Testing
 
 * [Diego Pino](https://github.com/DiegoPino)
-* [Giancarlo Birello](https://github.com/giancarlobi)
 * [Allison Lund](https://github.com/alliomeria)
+* [Giancarlo Birello](https://github.com/giancarlobi)
 * [Katie Romabiles](https://github.com/karomabiles)
 * [Albert Min](https://github.com/aksm)
 

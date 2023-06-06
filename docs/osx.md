@@ -82,7 +82,7 @@ Ok, now we are ready to start. Depending on what type of Chip your Apple uses yo
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.0.0
+git checkout 1.1.0-iiif
 cp docker-compose-osx.yml docker-compose.yml
 docker-compose pull
 docker-compose up -d
@@ -93,7 +93,7 @@ docker-compose up -d
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.0.0
+git checkout 1.1.0-iiif
 cp docker-compose-arm64.yml docker-compose.yml
 docker-compose pull
 docker-compose up -d
@@ -145,7 +145,7 @@ Once finished, this will give you an `admin` Drupal user with `archipelago` as p
 
 Final Note about Steps 2-3: You don't need to, nor should you do this more than once. You can destroy/stop/update, recreate your Docker containers, and start again (`git pull`), and your Drupal and Data will persist once you're past the `Installation complete` message. I repeat, all other containers' data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable, and stable inside your `web/` folder.
 
-## Step 4: Create a "demo "and a "jsonapi" user using drush and assign your "admin" user the Administrator Role (new since Drupal 9).
+## Step 4: Create a "demo "and a "jsonapi" user using drush and assign your "admin" user the Administrator Role.
 
 ```shell
 docker exec -ti esmero-php bash -c 'drush ucrt demo --password="demo"; drush urol metadata_pro "demo"'
@@ -184,8 +184,8 @@ If you like this, let us know!
 ## Caring & Coding + Fixing + Testing
 
 * [Diego Pino](https://github.com/DiegoPino)
+* [Allison Sherrick](https://github.com/alliomeria)
 * [Giancarlo Birello](https://github.com/giancarlobi)
-* [Allison Lund](https://github.com/alliomeria)
 * [Katie Romabiles](https://github.com/karomabiles)
 * [Albert Min](https://github.com/aksm)
 
