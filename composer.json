@@ -78,7 +78,7 @@
         "drupal/twig_tweak": "^2.6",
         "drupal/views_bootstrap": "^5.4",
         "drupal/views_bulk_operations": "4.1.2",
-        "drupal/webform": "^6",
+        "drupal/webform": "6.1.4",
         "drupal/webform_entity_handler": "1.x-dev",
         "drupal/webformnavigation": "^1.0@alpha",
         "drupal/workflow": "^1.1",
