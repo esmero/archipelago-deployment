@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de15cce2d2256f54a722e3270bd483aa",
+    "content-hash": "19eaf0e6acf8165325f642a98df565de",
     "packages": [
         {
             "name": "archipelago/ami",
@@ -12,29 +12,27 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/ami.git",
-                "reference": "ae8db2751f50cf208ea6f02c264d430054165908"
+                "reference": "fdf612477fe37485d45018ef7f974a1dcc9d3c0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/ami/zipball/ae8db2751f50cf208ea6f02c264d430054165908",
-                "reference": "ae8db2751f50cf208ea6f02c264d430054165908",
+                "url": "https://api.github.com/repos/esmero/ami/zipball/fdf612477fe37485d45018ef7f974a1dcc9d3c0b",
+                "reference": "fdf612477fe37485d45018ef7f974a1dcc9d3c0b",
                 "shasum": ""
             },
             "require": {
                 "drupal/core": "^9",
-                "drupal/google_api_client": "^3.0 || ^4.0",
+                "drupal/google_api_client": "^3.2 || ^4.3",
                 "drupal/views_bulk_operations": "4.1.2",
                 "ext-json": "*",
                 "ext-zip": "*",
                 "maennchen/zipstream-php": "^1.2 || ^2.1",
-                "monolog/monolog": "^2.8",
+                "monolog/monolog": "^2.9",
                 "phpoffice/phpspreadsheet": "^1.15.0",
                 "ramsey/uuid": "^4.1",
-                "strawberryfield/format_strawberryfield": "1.0.0.x-dev",
-                "strawberryfield/strawberryfield": "1.0.0.x-dev",
-                "strawberryfield/webform_strawberryfield": "1.0.0.x-dev",
-                "swaggest/json-diff": "^3.7.5",
-                "swaggest/json-schema": "^0.12.29"
+                "strawberryfield/format_strawberryfield": "1.1.0.x-dev",
+                "strawberryfield/strawberryfield": "1.1.0.x-dev",
+                "strawberryfield/webform_strawberryfield": "1.1.0.x-dev"
             },
             "type": "drupal-module",
             "extra": {
@@ -56,13 +54,13 @@
                     "role": "Owner"
                 }
             ],
-            "description": "Archipelago Multi Importer for Drupal 8/9. A module of mass ingest/edits made for the masses",
+            "description": "Archipelago Multi Importer for Drupal 9. A module of mass ingest/edits made for the masses",
             "homepage": "https://github.com/esmero/ami",
             "support": {
                 "issues": "https://github.com/esmero/ami/issues",
                 "source": "https://github.com/esmero/ami/tree/0.5.0"
             },
-            "time": "2023-05-27T16:42:43+00:00"
+            "time": "2023-06-27T14:39:05+00:00"
         },
         {
             "name": "archipelago/archipelago_subtheme",
@@ -4139,20 +4137,20 @@
         },
         {
             "name": "drupal/google_api_client",
-            "version": "4.2.0",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/google_api_client.git",
-                "reference": "8.x-4.2"
+                "reference": "8.x-4.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/google_api_client-8.x-4.2.zip",
-                "reference": "8.x-4.2",
-                "shasum": "69b6666876fcb995a67576d6d7b16867eceda162"
+                "url": "https://ftp.drupal.org/files/projects/google_api_client-8.x-4.3.zip",
+                "reference": "8.x-4.3",
+                "shasum": "d8dbb56b5136f32b59593b2e2085e6b1d1259139"
             },
             "require": {
-                "drupal/core": "^8 || ^9",
+                "drupal/core": "^8 || ^9 || ^10",
                 "google/apiclient": "~2",
                 "google/apiclient-services": "~0.200",
                 "php": ">=5.4.0"
@@ -4160,8 +4158,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-4.2",
-                    "datestamp": "1645360425",
+                    "version": "8.x-4.3",
+                    "datestamp": "1663728883",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6128,45 +6126,45 @@
         },
         {
             "name": "drupal/webform",
-            "version": "6.1.4",
+            "version": "6.1.5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/webform.git",
-                "reference": "6.1.4"
+                "reference": "6.1.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform-6.1.4.zip",
-                "reference": "6.1.4",
-                "shasum": "b1c27c2a210670b6d149cdd92cbb37100b19cf64"
+                "url": "https://ftp.drupal.org/files/projects/webform-6.1.5.zip",
+                "reference": "6.1.5",
+                "shasum": "a6d3f10b377add2db2823134b819d443f7a88f86"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9"
+                "drupal/core": "^9.3"
             },
             "require-dev": {
-                "drupal/address": "~1.0",
-                "drupal/bootstrap": "~3.0",
-                "drupal/captcha": "~1.0",
-                "drupal/chosen": "~3.0",
-                "drupal/clientside_validation": "*",
+                "drupal/address": "1.x-dev",
+                "drupal/bootstrap": "3.x-dev",
+                "drupal/captcha": "1.x-dev",
+                "drupal/chosen": "3.0.x-dev",
+                "drupal/clientside_validation": "3.0.x-dev",
                 "drupal/clientside_validation_jquery": "*",
-                "drupal/devel": "*",
-                "drupal/entity": "~1.0",
-                "drupal/entity_print": "*",
+                "drupal/devel": "5.x-dev",
+                "drupal/entity": "1.x-dev",
+                "drupal/entity_print": "2.x-dev",
                 "drupal/gnode": "*",
-                "drupal/group": "*",
-                "drupal/jquery_ui": "~1.0",
-                "drupal/jquery_ui_checkboxradio": "*",
-                "drupal/jquery_ui_datepicker": "~1.0",
-                "drupal/lingotek": "~3.0",
-                "drupal/mailsystem": "~4.0",
-                "drupal/paragraphs": "~1.0",
-                "drupal/select2": "~1.0",
-                "drupal/smtp": "~1.0",
-                "drupal/styleguide": "~2.0",
-                "drupal/telephone_validation": "~2.0",
-                "drupal/token": "*",
-                "drupal/variationcache": "~1.0",
+                "drupal/group": "1.x-dev",
+                "drupal/jquery_ui": "1.x-dev",
+                "drupal/jquery_ui_checkboxradio": "1.x-dev",
+                "drupal/jquery_ui_datepicker": "1.x-dev",
+                "drupal/lingotek": "4.0.x-dev",
+                "drupal/mailsystem": "4.x-dev",
+                "drupal/paragraphs": "1.x-dev",
+                "drupal/select2": "1.x-dev",
+                "drupal/smtp": "1.x-dev",
+                "drupal/styleguide": "1.x-dev",
+                "drupal/telephone_validation": "2.x-dev",
+                "drupal/token": "1.x-dev",
+                "drupal/variationcache": "1.x-dev",
                 "drupal/webform-webform_group": "*",
                 "drupal/webform_access": "*",
                 "drupal/webform_attachment": "*",
@@ -6186,8 +6184,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "6.1.4",
-                    "datestamp": "1673535467",
+                    "version": "6.1.5",
+                    "datestamp": "1686599078",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8900,16 +8898,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "2.8.0",
+            "version": "2.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "720488632c590286b88b80e62aa3d3d551ad4a50"
+                "reference": "f259e2b15fb95494c83f52d3caad003bbf5ffaa1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/720488632c590286b88b80e62aa3d3d551ad4a50",
-                "reference": "720488632c590286b88b80e62aa3d3d551ad4a50",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/f259e2b15fb95494c83f52d3caad003bbf5ffaa1",
+                "reference": "f259e2b15fb95494c83f52d3caad003bbf5ffaa1",
                 "shasum": ""
             },
             "require": {
@@ -8924,7 +8922,7 @@
                 "doctrine/couchdb": "~1.0@dev",
                 "elasticsearch/elasticsearch": "^7 || ^8",
                 "ext-json": "*",
-                "graylog2/gelf-php": "^1.4.2",
+                "graylog2/gelf-php": "^1.4.2 || ^2@dev",
                 "guzzlehttp/guzzle": "^7.4",
                 "guzzlehttp/psr7": "^2.2",
                 "mongodb/mongodb": "^1.8",
@@ -8986,7 +8984,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/2.8.0"
+                "source": "https://github.com/Seldaek/monolog/tree/2.9.1"
             },
             "funding": [
                 {
@@ -8998,7 +8996,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-24T11:55:47+00:00"
+            "time": "2023-02-06T13:44:46+00:00"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -11522,23 +11520,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "715eb8f1e827a246851afaea960e0f8387d38682"
+                "reference": "225f1dde2f40178905be8c6f9512952363b1f1f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/715eb8f1e827a246851afaea960e0f8387d38682",
-                "reference": "715eb8f1e827a246851afaea960e0f8387d38682",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/225f1dde2f40178905be8c6f9512952363b1f1f9",
+                "reference": "225f1dde2f40178905be8c6f9512952363b1f1f9",
                 "shasum": ""
             },
             "require": {
-                "drupal/webform": "^5.23 || ^6.0",
+                "drupal/webform": "^6.1.4",
                 "erusev/parsedown": "^1.7",
                 "ext-json": "*",
                 "league/html-to-markdown": "^5.0.0",
-                "ml/json-ld": "^1.2",
-                "mtdowling/jmespath.php": "^2.5",
                 "seboettg/citeproc-php": "dev-master",
-                "strawberryfield/strawberryfield": "1.0.0.x-dev"
+                "strawberryfield/strawberryfield": "1.1.0.x-dev"
             },
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -11553,13 +11549,13 @@
                     "role": "Owner"
                 }
             ],
-            "description": "Strawberryfield Mash/Smash/extractor/formatters for Drupal 8/9",
+            "description": "Strawberryfield Mash/Smash/extractor/formatters for Drupal 9",
             "homepage": "https://github.com/esmero/format_strawberryfield",
             "support": {
                 "issues": "https://github.com/esmero/format_strawberryfield/issues",
                 "source": "https://github.com/esmero/format_strawberryfield/tree/1.1.0"
             },
-            "time": "2023-06-23T16:08:10+00:00"
+            "time": "2023-06-27T14:29:33+00:00"
         },
         {
             "name": "strawberryfield/strawberry_runners",
@@ -11567,31 +11563,29 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberry_runners.git",
-                "reference": "af0172f7fad9ff2fec19fdfa8278db243ff96837"
+                "reference": "081efbfd23a198c1ba2ee93467ddd5e926ff279f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberry_runners/zipball/af0172f7fad9ff2fec19fdfa8278db243ff96837",
-                "reference": "af0172f7fad9ff2fec19fdfa8278db243ff96837",
+                "url": "https://api.github.com/repos/esmero/strawberry_runners/zipball/081efbfd23a198c1ba2ee93467ddd5e926ff279f",
+                "reference": "081efbfd23a198c1ba2ee93467ddd5e926ff279f",
                 "shasum": ""
             },
             "require": {
-                "drupal/core": "^8.9 || ^9",
+                "drupal/core": "^9",
                 "drupal/search_api_solr": "~4.1",
-                "drupal/views_bulk_operations": "^3.9 || ^4.1",
+                "drupal/views_bulk_operations": "4.1.2",
                 "ext-json": "*",
                 "ext-libxml": "*",
                 "ext-simplexml": "*",
                 "ext-xmlwriter": "*",
                 "ext-zip": "*",
                 "mixnode/mixnode-warcreader-php": ">=0.0",
-                "ml/json-ld": "^1.0",
-                "mtdowling/jmespath.php": "^2.4",
                 "php": ">=8.0",
                 "react/child-process": "^0.6",
                 "react/event-loop": "^1.1",
                 "react/stream": "^1.1",
-                "strawberryfield/strawberryfield": "1.0.0.x-dev",
+                "strawberryfield/strawberryfield": "1.1.0.x-dev",
                 "web64/php-nlp-client": ">=0.4"
             },
             "type": "drupal-module",
@@ -11619,7 +11613,7 @@
                 "issues": "https://github.com/esmero/strawberry_runners/issues",
                 "source": "https://github.com/esmero/strawberry_runners/tree/0.5.0"
             },
-            "time": "2023-04-20T21:23:39+00:00"
+            "time": "2023-06-27T14:42:40+00:00"
         },
         {
             "name": "strawberryfield/strawberryfield",
@@ -11627,26 +11621,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "d498c09c828beebb34411720f2ed36b58162a507"
+                "reference": "3c29354930cabef0d3617d3e63183521732946c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/d498c09c828beebb34411720f2ed36b58162a507",
-                "reference": "d498c09c828beebb34411720f2ed36b58162a507",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/3c29354930cabef0d3617d3e63183521732946c4",
+                "reference": "3c29354930cabef0d3617d3e63183521732946c4",
                 "shasum": ""
             },
             "require": {
-                "drupal/core": "^8.9 || ^9",
-                "drupal/search_api": "~1.19",
-                "drupal/search_api_solr": "~4.1",
+                "drupal/core": ">=9.5 <10.0",
+                "drupal/search_api": "~1.29",
+                "drupal/search_api_solr": "^4.2.10",
                 "ext-json": "*",
                 "frictionlessdata/datapackage": "dev-main",
                 "mhor/php-mediainfo": "~5.4",
                 "ml/json-ld": "~1.1",
-                "mtdowling/jmespath.php": "~2.5",
-                "php": ">=7.3",
+                "mtdowling/jmespath.php": "~2.6",
+                "php": ">=7.4",
                 "professional-wiki/edtf": "~2.0",
-                "swaggest/json-diff": "~3.7",
+                "swaggest/json-diff": "~3.8",
                 "swaggest/json-schema": "~0.12"
             },
             "type": "drupal-module",
@@ -11669,13 +11663,13 @@
                     "role": "Owner"
                 }
             ],
-            "description": "A strawberry field for Drupal 8",
+            "description": "A strawberry field for Drupal 9",
             "homepage": "https://github.com/esmero/strawberryfield",
             "support": {
                 "issues": "https://github.com/esmero/strawberryfield/issues",
                 "source": "https://github.com/esmero/strawberryfield/tree/1.1.0"
             },
-            "time": "2023-05-25T19:50:46+00:00"
+            "time": "2023-06-26T13:20:56+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",
@@ -11683,23 +11677,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/webform_strawberryfield.git",
-                "reference": "f78b6ca3f3c13c92d0903225affab69c46a8c161"
+                "reference": "5936d4e5e385f979fa2cb5cd73e83668ea773d83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/f78b6ca3f3c13c92d0903225affab69c46a8c161",
-                "reference": "f78b6ca3f3c13c92d0903225affab69c46a8c161",
+                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/5936d4e5e385f979fa2cb5cd73e83668ea773d83",
+                "reference": "5936d4e5e385f979fa2cb5cd73e83668ea773d83",
                 "shasum": ""
             },
             "require": {
-                "drupal/webform": "^5.23 || ^6.0",
+                "drupal/webform": "^6.1.4",
                 "ext-json": "*",
-                "ml/json-ld": "^1.2",
-                "mtdowling/jmespath.php": "^2.5",
-                "php": ">=7.2",
+                "php": ">=7.4",
                 "ramsey/uuid": "^4",
-                "strawberryfield/format_strawberryfield": "1.0.0.x-dev",
-                "strawberryfield/strawberryfield": "1.0.0.x-dev"
+                "strawberryfield/format_strawberryfield": "1.1.0.x-dev",
+                "strawberryfield/strawberryfield": "1.1.0.x-dev"
             },
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -11714,13 +11706,13 @@
                     "role": "Owner"
                 }
             ],
-            "description": "A Webform/strawberryfield integration module for Drupal 8",
+            "description": "A Webform/strawberryfield integration module for Drupal 9",
             "homepage": "https://github.com/esmero/webform_strawberryfield",
             "support": {
                 "issues": "https://github.com/esmero/webform_strawberryfield/issues",
                 "source": "https://github.com/esmero/webform_strawberryfield/tree/1.1.0"
             },
-            "time": "2023-05-24T22:39:01+00:00"
+            "time": "2023-06-27T18:08:18+00:00"
         },
         {
             "name": "swaggest/json-diff",
@@ -18949,26 +18941,7 @@
             "time": "2021-07-28T10:34:58+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "strawberryfield/format_strawberryfield",
-            "version": "1.1.0.9999999-dev",
-            "alias": "1.0.0.x-dev",
-            "alias_normalized": "1.0.0.9999999-dev"
-        },
-        {
-            "package": "strawberryfield/strawberryfield",
-            "version": "1.1.0.9999999-dev",
-            "alias": "1.0.0.x-dev",
-            "alias_normalized": "1.0.0.9999999-dev"
-        },
-        {
-            "package": "strawberryfield/webform_strawberryfield",
-            "version": "1.1.0.9999999-dev",
-            "alias": "1.0.0.x-dev",
-            "alias_normalized": "1.0.0.9999999-dev"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
         "archipelago/ami": 20,
