@@ -1,6 +1,7 @@
 langcode: en
 settings:
   default_status: open
+  default_page: true
   default_page_base_path: /form
   default_ajax: false
   default_ajax_progress_type: throbber
@@ -15,6 +16,7 @@ settings:
   default_form_exception_message: 'Unable to display this webform. Please contact the site administrator.'
   default_form_confidential_message: 'This form is confidential. You must <a href="[site:login-url]/logout?destination=[current-page:url:relative]">Log out</a> to submit it.'
   default_form_access_denied_message: 'Please login to access this form.'
+  default_form_disable_remote_addr: false
   default_form_novalidate: false
   default_form_disable_inline_errors: false
   default_form_required: false
@@ -76,6 +78,13 @@ settings:
   default_share_theme_name: ''
   webform_bulk_form: false
   webform_bulk_form_actions: {  }
+  webform_submission_bulk_form: true
+  webform_submission_bulk_form_actions:
+    - webform_submission_make_sticky_action
+    - webform_submission_make_unsticky_action
+    - webform_submission_make_lock_action
+    - webform_submission_make_unlock_action
+    - webform_submission_delete_action
   dialog: false
   dialog_options:
     narrow:
@@ -295,14 +304,17 @@ ui:
   dialog_disabled: false
   offcanvas_disabled: false
   promotions_disabled: false
+  support_disabled: false
   details_save: true
   description_help: true
+  toolbar_item: false
 libraries:
   excluded_libraries:
     - jquery.chosen
     - jquery.icheck
 requirements:
   cdn: true
+  clientside_validation: true
   bootstrap: true
   spam: true
 third_party_settings: {  }
