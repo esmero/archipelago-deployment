@@ -17,14 +17,14 @@ pluginconfig:
     'as:application': 0
   mime_type: 'application/pdf, image/tiff, image/jpeg, image/jp2'
   path: /usr/bin/gs
-  arguments: '%file'
-  path_tesseract: /usr/bin/tesseract
+  arguments: '-r150 %file'
+  path_tesseract: /usr/local/bin/tesseract
   language_key: language_iso639_3
   language_default: eng
   arguments_tesseract: '%file stdout -l %language hocr'
   datafolder_tesseract: /usr/share/tessdata
   path_pdfalto: /usr/bin/pdfalto
-  arguments_pdfalto: '%file'
+  arguments_pdfalto: '%file -q'
   output_type: json
   output_destination:
     searchapi: searchapi

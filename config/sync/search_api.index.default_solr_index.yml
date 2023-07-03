@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_descriptive_metadata
     - field.storage.node.field_tags
+    - field.storage.node.field_descriptive_metadata
     - search_api.server.esmero_solr
     - core.entity_view_mode.node.digital_object_image_only_for_carousel
   module:
@@ -132,7 +132,7 @@ field_settings:
       module:
         - node
   checksum:
-    label: 'Checksum that can be used to check if the source needs reprocessing'
+    label: 'SBF Checksum that can be used to check if the source needs reprocessing'
     datasource_id: strawberryfield_flavor_datasource
     property_path: checksum
     type: string
@@ -177,28 +177,20 @@ field_settings:
       config:
         - field.storage.node.field_tags
   file_uuid:
-    label: 'Source File UUID (first one passed in a Post Processor chain)'
+    label: 'SBF Source File UUID (first one passed in a Post Processor chain)'
     datasource_id: strawberryfield_flavor_datasource
     property_path: file_uuid
     type: string
   fulltext:
-    label: 'Unmodified data body no highlight'
+    label: 'SBF Unmodified data body no highlight'
     datasource_id: strawberryfield_flavor_datasource
     property_path: fulltext
     type: text
   fulltext_with_original_ocr:
-    label: 'Unmodified data body'
+    label: 'SBF Unmodified data body'
     datasource_id: strawberryfield_flavor_datasource
     property_path: fulltext
     type: 'solr_text_custom:ocr_highlight'
-  hocr:
-    label: '🍓 Strawberry (Descriptive Metadata source) » hocr'
-    datasource_id: 'entity:node'
-    property_path: 'field_descriptive_metadata:hocr'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_descriptive_metadata
   ismemberof:
     label: '🍓 Strawberry (Descriptive Metadata source) » ismemberof'
     datasource_id: 'entity:node'
@@ -299,7 +291,7 @@ field_settings:
       config:
         - field.storage.node.field_descriptive_metadata
   ocr_text:
-    label: 'FullText test'
+    label: 'SBF Full OCR with Hightlight'
     datasource_id: strawberryfield_flavor_datasource
     property_path: fulltext
     type: 'solr_text_custom:ocr_highlight'
@@ -315,12 +307,17 @@ field_settings:
       module:
         - node
   parent_id:
-    label: 'Parent ID'
+    label: 'SBF Parent ID'
     datasource_id: strawberryfield_flavor_datasource
     property_path: parent_id
     type: string
+  parent_sequence_id:
+    label: 'SBF Parent Node  »  sequence_id'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: 'target_id:field_descriptive_metadata:sequence_id'
+    type: integer
   processor_id:
-    label: 'Processor Plugin id that populated this data'
+    label: 'SBF Processor Plugin id that populated this data'
     datasource_id: strawberryfield_flavor_datasource
     property_path: processor_id
     type: string
@@ -391,7 +388,7 @@ field_settings:
       module:
         - node
   sbf_label:
-    label: 'A Label'
+    label: 'SBF A Label'
     datasource_id: strawberryfield_flavor_datasource
     property_path: label
     type: text
@@ -401,7 +398,7 @@ field_settings:
     property_path: metadata
     type: string
   sbf_plaintext:
-    label: 'Data body containing plain text'
+    label: 'SBF Data body containing plain text'
     datasource_id: strawberryfield_flavor_datasource
     property_path: plaintext
     type: text
@@ -436,7 +433,7 @@ field_settings:
     property_path: who
     type: string
   sequence_id:
-    label: 'Sequence ID '
+    label: 'SBF Sequence ID '
     datasource_id: strawberryfield_flavor_datasource
     property_path: sequence_id
     type: string
@@ -449,7 +446,7 @@ field_settings:
       config:
         - field.storage.node.field_descriptive_metadata
   sequence_id_int:
-    label: 'Sequence ID numeric'
+    label: 'SBF Sequence ID numeric'
     datasource_id: strawberryfield_flavor_datasource
     property_path: sequence_id
     type: integer
@@ -464,7 +461,7 @@ field_settings:
       module:
         - node
   status_2:
-    label: Status
+    label: 'SBF Status'
     datasource_id: strawberryfield_flavor_datasource
     property_path: status
     type: boolean
@@ -495,7 +492,7 @@ field_settings:
       config:
         - field.storage.node.field_descriptive_metadata
   title:
-    label: Title
+    label: 'Title FullText'
     datasource_id: 'entity:node'
     property_path: title
     type: text
@@ -513,12 +510,12 @@ field_settings:
         - node
         - strawberryfield
   title_2:
-    label: 'Parent Node » Title'
+    label: 'SBF Parent Node » Title'
     datasource_id: strawberryfield_flavor_datasource
     property_path: 'target_id:title'
     type: text
   title_autocomplete:
-    label: 'Title for autocomplete'
+    label: 'Title for autocomplete (ngram)'
     datasource_id: 'entity:node'
     property_path: title
     type: 'solr_text_custom:ngram'
@@ -534,7 +531,7 @@ field_settings:
       config:
         - field.storage.node.field_descriptive_metadata
   title_string:
-    label: Title
+    label: 'Title String'
     datasource_id: 'entity:node'
     property_path: title
     type: string
@@ -542,13 +539,18 @@ field_settings:
       module:
         - node
   title_unstemmed:
-    label: Title
+    label: 'Title Unstemmed'
     datasource_id: 'entity:node'
     property_path: title
     type: solr_text_unstemmed
     dependencies:
       module:
         - node
+  top_parent_id:
+    label: 'SBF Parent Node » isPartOf» ID'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: 'target_id:field_descriptive_metadata:sbf_entity_reference_ispartof:nid'
+    type: integer
   type:
     label: 'Content type'
     datasource_id: 'entity:node'
@@ -576,14 +578,14 @@ field_settings:
       module:
         - node
   uid_2:
-    label: UID
+    label: 'SBF UID'
     datasource_id: strawberryfield_flavor_datasource
     property_path: uid
     type: integer
     indexed_locked: true
     type_locked: true
   uuid:
-    label: 'Parent Node » UUID'
+    label: 'SBF Parent Node » UUID'
     datasource_id: strawberryfield_flavor_datasource
     property_path: 'target_id:uuid'
     type: string
@@ -641,7 +643,6 @@ processor_settings:
       - author
       - city
       - digital_object_type
-      - hocr
       - ismemberof
       - label_1
       - label_2

@@ -13,7 +13,7 @@ logo:
   path: ''
   use_default: false
 bootstrap_barrio_library: production
-bootstrap_barrio_source: bootstrap_barrio/bootswatch_minty
+bootstrap_barrio_source: bootstrap_barrio/bootstrap_cdn
 bootstrap_barrio_fluid_container: 1
 bootstrap_barrio_region_clean_top_header: 0
 bootstrap_barrio_region_class_top_header: 'd-flex flex-column flex-lg-row'
@@ -91,7 +91,7 @@ bootstrap_barrio_scroll_spy: ''
 bootstrap_barrio_google_fonts: robot_cabin
 bootstrap_barrio_bootstrap_icons: 0
 bootstrap_barrio_icons: fontawesome
-bootstrap_barrio_system_messages: messages_gray
+bootstrap_barrio_system_messages: ''
 bootstrap_barrio_table_style: ''
 bootstrap_barrio_table_hover: 1
 bootstrap_barrio_table_head: thead-dark

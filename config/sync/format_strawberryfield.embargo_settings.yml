@@ -1,3 +1,3 @@
-date_until_json_key: ''
+date_until_json_key: date_embargo_lift
 ip_json_key: ''
-enabled: false
+enabled: true
