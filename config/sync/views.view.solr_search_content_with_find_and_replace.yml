@@ -96,19 +96,21 @@ display:
               action_id: 'entity:ami_jsonwebform_action:node'
             3:
               action_id: 'entity:ami_jsonpatch_action:node'
-            5:
+            6:
               action_id: publish_latest_revision_action
               preconfiguration:
                 label_override: 'Publish Digital Object'
-            7:
+            8:
               action_id: unpublish_current_revision_action
               preconfiguration:
                 label_override: 'Unpublished Digital Object'
-            8:
+            9:
               action_id: node_assign_owner_action
               preconfiguration:
                 add_confirmation: false
             15:
+              action_id: 'entity:sbr_posstprocess_action:node'
+            17:
               action_id: views_bulk_operations_delete_entity
         title:
           id: title
@@ -517,6 +519,7 @@ display:
       tags:
         - 'config:field.storage.node.field_descriptive_metadata'
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
       cacheable: false
   block:
     id: block
@@ -609,6 +612,7 @@ display:
       tags:
         - 'config:field.storage.node.field_descriptive_metadata'
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
   page_1:
     id: page_1
     display_title: Page
@@ -643,4 +647,5 @@ display:
       tags:
         - 'config:field.storage.node.field_descriptive_metadata'
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
       cacheable: false
