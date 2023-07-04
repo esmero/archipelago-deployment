@@ -1,7 +1,8 @@
 /* ---------- Color Module Styles ----------- */
 :root {
   --bs-body-color:#1c1c1c !important;
-  --bs-link-color: #7985c4 !important
+  --bs-link-color: #7985c4 !important;
+  --bs-primary: #7985c4 !important;
 }
 body {
     color: #1c1c1c;
@@ -91,7 +92,7 @@ main.main-content div.content {
     background-color: #7985c4;
     border-color: #7985c4;
 }
-nav > ul > li.active.nav-item > a {
+#page nav > ul > li.active.nav-item > a {
     background-color: #7985c4 !important;
     border-color: #7985c4 !important;
 }
@@ -108,8 +109,13 @@ nav > ul > li.active.nav-item > a {
     text-decoration-color:#000000;
 }
 
-div > div.carousel-item.active > div > h3 {
-    background-color: #f9f9fa;
+#page div > div.carousel-item > div > h3 {
+    background-color: transparent;
+    transition: background-color 0.5s ease;
+}
+
+#page div > div.carousel-item.active > div > h3 {
+    background-color: var(--bs-link-color);
 }
 
 .navbar-toggler {
@@ -123,8 +129,19 @@ div > div.carousel-item.active > div > h3 {
 }
 .nav-tabs .nav-link:hover, .nav-link:focus {
     color: #000000;
-    background-color:#a4b1d6 !important;
+    background-color:#8a9ac7 !important;
 }
+
+
+#page .nav-pills .nav-link.active, .nav-pills .show>.nav-link, .badge-primary {
+    color: #f9f9fa !important;
+    background-color: var(--bs-link-color);
+}
+
+.badge-primary > a.nav-link {
+  color: #f9f9fa !important;
+}
+
 
 .link {
     color: #000000 !important;
@@ -208,14 +225,14 @@ dt {
 
 .btn-primary:hover,
 .btn-primary:focus {
-    background-color:#a4b1d6 !important;
-    border-color: #a4b1d6 !important;
+    background-color:#8a9ac7 !important;
+    border-color: #8a9ac7 !important;
 }
 
 
 .form-check-input:checked {
-  background-color: #a4b1d6 !important;
-  border-color: #a4b1d6 !important;
+  background-color: #8a9ac7 !important;
+  border-color: #8a9ac7 !important;
 }
 
 .site-footer {
@@ -235,7 +252,7 @@ input.form-control.button {
 }
 
 input.form-control.button:hover, input.form-control.button:focus {
-    background-color:#a4b1d6 !important;
+    background-color:#8a9ac7 !important;
 }
 
 #edit-preview {
