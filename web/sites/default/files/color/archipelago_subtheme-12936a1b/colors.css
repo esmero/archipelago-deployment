@@ -3,6 +3,8 @@
   --bs-body-color:#1c1c1c !important;
   --bs-link-color: #7985c4 !important;
   --bs-primary: #7985c4 !important;
+  --bs-secondary: #c3c8db !important;
+  --bs-tertiary: #e6e9f4 !important;
 }
 body {
     color: #1c1c1c;
@@ -19,8 +21,6 @@ body {
 .region-primary-menu .menu-item--active-trail a {
     background: #f9f9fa;
 }
-
-
 
 
 .tabs ul.primary li a.is-active {
@@ -302,3 +302,25 @@ input.form-control.button:hover, input.form-control.button:focus {
     background-color: #7985c4;
     animation: hiliteFadeIn 0.5s;
 }
+
+/* Facet Summaries */
+:root .facet-summary-item--facet.btn-secondary {
+  background-color: var(--bs-secondary);
+  border-color: var(--bs-secondary);
+}
+
+:root .facet-summary-item--clear.btn-secondary {
+  color: #f9f9fa !important;
+  background-color: var(--bs-tertiary);
+  border-color: var(--bs-tertiary);
+}
+
+:root .facet-summary-item--query.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+:root .facet-summary-item--query.btn-primary > a {
+  color: #f9f9fa !important;
+}
+
