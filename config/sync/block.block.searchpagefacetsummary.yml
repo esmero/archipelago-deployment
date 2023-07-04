@@ -1,0 +1,48 @@
+uuid: b96aba06-2d29-4a99-b379-9e2fd5e30747
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets_summary.facets_summary.search_page_facet_summary
+  module:
+    - context
+    - facets_summary
+  theme:
+    - archipelago_subtheme
+id: searchpagefacetsummary
+theme: archipelago_subtheme
+region: breadcrumb
+weight: 0
+provider: null
+plugin: 'facets_summary_block:search_page_facet_summary'
+settings:
+  id: 'facets_summary_block:search_page_facet_summary'
+  label: 'Search Page Facet Summary'
+  label_display: '0'
+  provider: facets_summary
+  context_mapping: {  }
+visibility:
+  context_all:
+    id: context_all
+    negate: null
+    values: ''
+  context:
+    id: context
+    negate: null
+    values: ''
+  user_status:
+    id: user_status
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    user_status:
+      viewing_profile: '0'
+      logged_viewing_profile: '0'
+      own_page_true: '0'
+      field_value: '0'
+    user_fields: uid
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content-page_1: view-solr_search_content-page_1

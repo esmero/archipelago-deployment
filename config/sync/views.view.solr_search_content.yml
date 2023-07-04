@@ -617,6 +617,7 @@ display:
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
       cacheable: false
   block:
     id: block
@@ -708,6 +709,7 @@ display:
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
   grid:
     id: grid
     display_title: Grid
@@ -805,7 +807,6 @@ display:
         - 'config:facets.facet.mime_type_grid'
         - 'config:facets.facet.strawberry_descriptive_metadata_source_agents_grid'
         - 'config:search_api.index.default_solr_index'
-        - 'config:views.view.solr_search_content'
         - 'search_api_list:default_solr_index'
       cacheable: false
   page_1:
@@ -848,6 +849,7 @@ display:
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
       cacheable: false
   page_2:
     id: page_2
@@ -1481,7 +1483,6 @@ display:
       tags:
         - 'config:facets.facet.nlp_extracted_entities'
         - 'config:search_api.index.default_solr_index'
-        - 'config:views.view.solr_search_content'
         - 'search_api_list:default_solr_index'
       cacheable: false
   page_3:
@@ -2198,9 +2199,9 @@ display:
         - url.query_args
         - 'user.node_grants:view'
       tags:
-        - 'config:facets.facet.npl_extracted_agents_from_ocr'
-        - 'config:facets.facet.npl_extracted_places_ocr'
-        - 'config:facets.facet.npl_extracted_sentiment_from_ocr'
+        - 'config:facets.facet.nlp_extracted_agents_from_ocr'
+        - 'config:facets.facet.nlp_extracted_places_ocr'
+        - 'config:facets.facet.nlp_extracted_sentiment_from_ocr'
         - 'config:search_api.index.default_solr_index'
-        - 'config:views.view.solr_search_content'
+        - 'search_api_list:default_solr_index'
       cacheable: false

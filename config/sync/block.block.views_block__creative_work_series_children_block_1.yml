@@ -5,7 +5,6 @@ dependencies:
   config:
     - views.view.creative_work_series_children
   module:
-    - ctools
     - node
     - system
     - views

@@ -41,8 +41,11 @@ module:
   dynamic_page_cache: 0
   editor: 0
   facets: 0
+  facets_date_range: 0
   facets_range_widget: 0
   facets_rest: 0
+  facets_searchbox_widget: 0
+  facets_summary: 0
   field: 0
   field_layout: 0
   field_permissions: 0
@@ -53,6 +56,8 @@ module:
   filter: 0
   form_mode_manager: 0
   format_strawberryfield: 0
+  format_strawberryfield_facets: 0
+  format_strawberryfield_views: 0
   google_api_client: 0
   hal: 0
   help: 0

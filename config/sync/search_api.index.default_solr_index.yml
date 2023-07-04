@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_tags
     - field.storage.node.field_descriptive_metadata
+    - field.storage.node.field_tags
     - search_api.server.esmero_solr
     - core.entity_view_mode.node.digital_object_image_only_for_carousel
   module:
@@ -679,6 +679,28 @@ processor_settings:
     weights:
       preprocess_query: -30
   sbf_flavor_aggregated_item: {  }
+  sbf_highlight:
+    weights:
+      postprocess_query: 0
+      preprocess_query: -20
+    prefix: '<strong>'
+    suffix: '</strong>'
+    excerpt: true
+    excerpt_length: 256
+    excerpt_clean: true
+    highlight_link: true
+    exclude_fields:
+      - title
+      - title_2
+      - title_info_alternative_title
+      - title_unstemmed
+    highlight_processing: backend
+    highlight_backend_use_keys: true
+    highlight_partial: false
+    lazy_excerpt: true
+  sbf_reduce_return:
+    weights:
+      preprocess_query: -30
   solr_boost_more_recent:
     weights:
       preprocess_query: 0

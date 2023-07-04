@@ -5,7 +5,6 @@ dependencies:
   config:
     - views.view.collection_membership
   module:
-    - ctools
     - node
     - system
     - views

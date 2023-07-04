@@ -5,7 +5,7 @@ dependencies:
   config:
     - views.view.map_display_for_digital_objects_sql
   module:
-    - ctools
+    - node
     - views
   theme:
     - archipelago_subtheme
