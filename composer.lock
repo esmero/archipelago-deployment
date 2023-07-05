@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/ami.git",
-                "reference": "fdf612477fe37485d45018ef7f974a1dcc9d3c0b"
+                "reference": "9283bf06670296c29ed3bec43edbaf9769f23947"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/ami/zipball/fdf612477fe37485d45018ef7f974a1dcc9d3c0b",
-                "reference": "fdf612477fe37485d45018ef7f974a1dcc9d3c0b",
+                "url": "https://api.github.com/repos/esmero/ami/zipball/9283bf06670296c29ed3bec43edbaf9769f23947",
+                "reference": "9283bf06670296c29ed3bec43edbaf9769f23947",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "issues": "https://github.com/esmero/ami/issues",
                 "source": "https://github.com/esmero/ami/tree/0.5.0"
             },
-            "time": "2023-06-27T14:39:05+00:00"
+            "time": "2023-07-05T19:33:15+00:00"
         },
         {
             "name": "archipelago/archipelago_subtheme",
@@ -11520,12 +11520,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "97e4111829bb8fba388e713ba26a7ae636dc8f17"
+                "reference": "9b89aa85e7f7ae600274cc73bc9d83f8a9b8f869"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/97e4111829bb8fba388e713ba26a7ae636dc8f17",
-                "reference": "97e4111829bb8fba388e713ba26a7ae636dc8f17",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/9b89aa85e7f7ae600274cc73bc9d83f8a9b8f869",
+                "reference": "9b89aa85e7f7ae600274cc73bc9d83f8a9b8f869",
                 "shasum": ""
             },
             "require": {
@@ -11555,7 +11555,7 @@
                 "issues": "https://github.com/esmero/format_strawberryfield/issues",
                 "source": "https://github.com/esmero/format_strawberryfield/tree/1.1.0"
             },
-            "time": "2023-06-30T02:14:50+00:00"
+            "time": "2023-07-05T19:09:46+00:00"
         },
         {
             "name": "strawberryfield/strawberry_runners",
@@ -11621,12 +11621,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "3c29354930cabef0d3617d3e63183521732946c4"
+                "reference": "eaadedfdbee658dc5b8bdf21cd6054c8b5647a12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/3c29354930cabef0d3617d3e63183521732946c4",
-                "reference": "3c29354930cabef0d3617d3e63183521732946c4",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/eaadedfdbee658dc5b8bdf21cd6054c8b5647a12",
+                "reference": "eaadedfdbee658dc5b8bdf21cd6054c8b5647a12",
                 "shasum": ""
             },
             "require": {
@@ -11669,7 +11669,7 @@
                 "issues": "https://github.com/esmero/strawberryfield/issues",
                 "source": "https://github.com/esmero/strawberryfield/tree/1.1.0"
             },
-            "time": "2023-06-26T13:20:56+00:00"
+            "time": "2023-07-05T18:48:56+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",
