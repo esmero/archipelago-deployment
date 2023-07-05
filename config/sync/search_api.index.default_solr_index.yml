@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_descriptive_metadata
     - field.storage.node.field_tags
+    - field.storage.node.field_descriptive_metadata
     - search_api.server.esmero_solr
     - core.entity_view_mode.node.digital_object_image_only_for_carousel
   module:
@@ -357,6 +357,14 @@ field_settings:
           webform: ''
         strawberryfield_flavor_datasource:
           strawberryfield_flavor_datasource: ''
+  represents_parent:
+    label: '🍓 Strawberry (Descriptive Metadata source) » represents_parent'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:represents_parent'
+    type: boolean
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   sbf_entity_reference_partof_memberof_title:
     label: '🍓 Strawberry (Descriptive Metadata source) » ispartof » ismemberof » Title'
     datasource_id: 'entity:node'

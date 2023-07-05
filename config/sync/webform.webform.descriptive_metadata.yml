@@ -12,7 +12,7 @@ template: false
 archive: false
 id: descriptive_metadata
 title: 'Default Descriptive Metadata'
-description: 'Default Descriptive Metadata Webform: 1.0.0'
+description: 'Default Descriptive Metadata Webform: 1.1.0.'
 category: Archipel
 elements: |-
   metadata:
@@ -368,76 +368,6 @@ elements: |-
         class:
           - custom-form-input-heading
       '#format_items': comma
-    related_item_fieldset:
-      '#type': fieldset
-      '#title': 'Related item'
-      related_item_details:
-        '#type': details
-        '#title': 'Related item'
-        '#states_clear': false
-        related_item_host_title_info_title:
-          '#type': textfield
-          '#title': 'Related item Host Title'
-          '#states_clear': false
-          '#format_items': comma
-        related_item_host_display_label:
-          '#type': textfield
-          '#title': 'Related item Host Display Label'
-          '#states_clear': false
-          '#format_items': comma
-        related_item_host_type_of_resource:
-          '#type': textfield
-          '#title': 'Related item Host Type of Resource'
-          '#states_clear': false
-          '#format_items': comma
-        related_item_host_local_identifier:
-          '#type': textfield
-          '#title': 'Related item Host Local Identifier'
-          '#states_clear': false
-          '#format_items': comma
-        related_item_note:
-          '#type': textarea
-          '#title': 'Related item Note'
-          '#states_clear': false
-          '#format_items': comma
-        related_item_host_location_url:
-          '#type': textfield
-          '#title': 'Related item URL'
-          '#states_clear': false
-          '#format_items': comma
-    notes_details:
-      '#type': details
-      '#title': Notes
-      '#states_clear': false
-      note:
-        '#type': textarea
-        '#title': 'General Note'
-        '#states_clear': false
-        '#format_items': comma
-      physical_description_note_condition:
-        '#type': textfield
-        '#title': 'Condition Note'
-        '#states_clear': false
-        '#format_items': comma
-      note_publishinginfo:
-        '#type': textarea
-        '#title': 'Publishing Info Note'
-        '#states_clear': false
-        '#format_items': comma
-    physical_description_details:
-      '#type': details
-      '#title': 'Physical Description'
-      '#states_clear': false
-      physical_location:
-        '#type': textfield
-        '#title': 'Physical location'
-        '#states_clear': false
-        '#format_items': comma
-      physical_description_extent:
-        '#type': textfield
-        '#title': Extent
-        '#states_clear': false
-        '#format_items': comma
     date_published:
       '#type': date
       '#title': 'Date (of Digital)'
@@ -568,7 +498,27 @@ elements: |-
     rights:
       '#type': textarea
       '#title': 'Local Rights Statement'
+      '#states_clear': false
       '#format_items': comma
+    notes_details:
+      '#type': details
+      '#title': 'Notes and Other Information'
+      '#states_clear': false
+      note:
+        '#type': textarea
+        '#title': 'General Note'
+        '#states_clear': false
+        '#format_items': comma
+      physical_description_extent:
+        '#type': textfield
+        '#title': 'Physical Description Extent'
+        '#states_clear': false
+        '#format_items': comma
+      related_item_host_title_info_title:
+        '#type': textfield
+        '#title': 'Related Item Host Title'
+        '#states_clear': false
+        '#format_items': comma
   agent:
     '#type': webform_wizard_page
     '#title': 'Subjects and Other Classifications'
@@ -823,7 +773,7 @@ elements: |-
       '#access_view_roles':
         - authenticated
       '#file_preview': ':image'
-      '#max_filesize': '256'
+      '#max_filesize': '512'
       '#file_extensions': 'jp2 jpg jpeg png tif tiff'
     documents:
       '#type': webform_document_file
@@ -929,6 +879,20 @@ elements: |-
       '#max_filesize': '512'
       '#file_extensions': 'warc warc.gz wacz'
       '#sanitize': true
+    represents_parent:
+      '#type': checkbox
+      '#title': 'This object represents/depicts its parent'
+      '#description': 'Mark this Checkbox to use this Object as a representative Object of its parent. E.g this can be used to use this Object&#39;s Image as thumbnail when listing/showing a collection.&nbsp;'
+      '#states':
+        invisible:
+          ':input[name="files[images][]"]':
+            empty: true
+          ':input[name="files[documents][]"]':
+            empty: true
+          ':input[name="files[videos][]"]':
+            empty: true
+          ':input[name="ismemberof"]':
+            empty: true
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'
@@ -1022,6 +986,8 @@ settings:
   wizard_toggle: true
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 1
   preview_label: ''
   preview_title: ''
@@ -1069,7 +1035,6 @@ settings:
   token_update: false
   token_delete: false
   serial_disabled: false
-  form_remote_addr: true
 access:
   create:
     roles:

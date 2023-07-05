@@ -1,0 +1,12 @@
+uuid: f37d8a0b-b4f9-4c60-bdb2-102ed09945fc
+langcode: en
+status: true
+dependencies: {  }
+id: object_represents_its_parent
+label: 'Object Represents its parent'
+pluginid: jmespath
+pluginconfig:
+  source_key: represents_parent
+  is_date: false
+  exposed_key: represents_parent
+active: true

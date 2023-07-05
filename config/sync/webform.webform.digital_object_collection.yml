@@ -12,7 +12,7 @@ template: false
 archive: false
 id: digital_object_collection
 title: 'Default Digital Object Collection'
-description: 'Default Digital Object Collection Webform: 1.0.0'
+description: 'Default Digital Object Collection Webform: 1.1.0.'
 category: Archipel
 elements: |-
   metadata:
@@ -50,7 +50,7 @@ elements: |-
         - metadata_pro
     type:
       '#type': select
-      '#title': 'Collection Media Type'
+      '#title': 'Collection/Compound Type'
       '#help': 'For Digital Object Collections, recommended selections from the&nbsp;<a href="/admin/structure/webform/config/options/manage">predefined options</a>&nbsp;found in the Schema.org Creative Works list are: Collection, Creative Work Series (Compound Object/Collection), Newspaper, or Periodical.'
       '#options': schema_org_cw_collections
       '#required': true
@@ -80,24 +80,6 @@ elements: |-
       '#help_title': Creator/Contributor
       '#help': 'Individual(s)/Organization(s) responsible for creating the original resource.'
       '#description_display': before
-      creator_unmapped_details:
-        '#type': details
-        '#title': 'Creator/Contributor (unmapped/free text)'
-        creator:
-          '#type': textfield
-          '#title': Creator/Contributor
-          '#multiple': 5
-          '#title_display': before
-          '#description_display': before
-          '#states_clear': false
-          '#multiple__min_items': 1
-          '#multiple__empty_items': 0
-          '#multiple__sorting': false
-          '#multiple__add_more': false
-          '#label_attributes':
-            class:
-              - custom-form-input-heading
-          '#format_items': comma
       creator_lod_details:
         '#type': details
         '#title': 'Creator/Contributor (Linked Data) '
@@ -122,6 +104,24 @@ elements: |-
           '#vocab_family_name': rdftype
           '#rdftype_family_name': FamilyName
           '#role_type': loc
+      creator_unmapped_details:
+        '#type': details
+        '#title': 'Creator/Contributor (unmapped/free text)'
+        creator:
+          '#type': textfield
+          '#title': Creator/Contributor
+          '#multiple': 5
+          '#title_display': before
+          '#description_display': before
+          '#states_clear': false
+          '#multiple__min_items': 1
+          '#multiple__empty_items': 0
+          '#multiple__sorting': false
+          '#multiple__add_more': false
+          '#label_attributes':
+            class:
+              - custom-form-input-heading
+          '#format_items': comma
     date_created_fieldset:
       '#type': fieldset
       '#title': 'Date Created'
@@ -251,93 +251,6 @@ elements: |-
         class:
           - custom-form-input-heading
       '#format_items': comma
-    related_item_fieldset:
-      '#type': fieldset
-      '#title': 'Related item'
-      '#states':
-        visible:
-          - ':input[name="type"]':
-              value: CreativeWorkSeries
-          - or
-          - ':input[name="type"]':
-              value: Newspaper
-          - or
-          - ':input[name="type"]':
-              value: Periodical
-          - or
-          - ':input[name="type"]':
-              value: Publication
-      '#states_clear': false
-      related_item_details:
-        '#type': details
-        '#title': 'Related item'
-        related_item_host_title_info_title:
-          '#type': textfield
-          '#title': 'Related item Host Title'
-        related_item_host_display_label:
-          '#type': textfield
-          '#title': 'Related item Host Display Label'
-        related_item_host_type_of_resource:
-          '#type': textfield
-          '#title': 'Related item Host Type of Resource'
-        related_item_host_local_identifier:
-          '#type': textfield
-          '#title': 'Related item Host Local Identifier'
-        related_item_note:
-          '#type': textarea
-          '#title': 'Related item Note'
-        related_item_host_location_url:
-          '#type': textfield
-          '#title': 'Related item URL'
-    notes_details:
-      '#type': details
-      '#title': Notes
-      '#states':
-        visible:
-          - ':input[name="type"]':
-              value: CreativeWorkSeries
-          - or
-          - ':input[name="type"]':
-              value: Newspaper
-          - or
-          - ':input[name="type"]':
-              value: Periodical
-          - or
-          - ':input[name="type"]':
-              value: Publication
-      '#states_clear': false
-      note:
-        '#type': textarea
-        '#title': 'General Note'
-      physical_description_note_condition:
-        '#type': textfield
-        '#title': 'Condition Note'
-      note_publishinginfo:
-        '#type': textarea
-        '#title': 'Publishing Info Note'
-    physical_description_details:
-      '#type': details
-      '#title': 'Physical Description'
-      '#states':
-        visible:
-          - ':input[name="type"]':
-              value: CreativeWorkSeries
-          - or
-          - ':input[name="type"]':
-              value: Newspaper
-          - or
-          - ':input[name="type"]':
-              value: Periodical
-          - or
-          - ':input[name="type"]':
-              value: Publication
-      '#states_clear': false
-      physical_location:
-        '#type': textfield
-        '#title': 'Physical location'
-      physical_description_extent:
-        '#type': textfield
-        '#title': Extent
     date_embargo_lift:
       '#type': date
       '#title': 'Date of Embargo Lift'
@@ -471,6 +384,27 @@ elements: |-
     rights:
       '#type': textarea
       '#title': 'Local Rights Statement'
+      '#states_clear': false
+      '#format_items': comma
+    notes_details:
+      '#type': details
+      '#title': 'Notes and Other Information'
+      '#states_clear': false
+      note:
+        '#type': textarea
+        '#title': 'General Note'
+        '#states_clear': false
+        '#format_items': comma
+      physical_description_extent:
+        '#type': textfield
+        '#title': 'Physical Description Extent'
+        '#states_clear': false
+        '#format_items': comma
+      related_item_host_title_info_title:
+        '#type': textfield
+        '#title': 'Related Item Host Title'
+        '#states_clear': false
+        '#format_items': comma
   agent:
     '#type': webform_wizard_page
     '#title': 'Subjects and Other Classifications'
@@ -595,7 +529,7 @@ elements: |-
     viaf_details:
       '#type': details
       '#title': 'VIAF (Virtual International Authority File)'
-      viaf_virtual_international_authority_file_:
+      viaf:
         '#type': webform_metadata_viaf
         '#title': 'VIAF (Virtual International Authority File)'
         '#multiple': 5
@@ -727,7 +661,7 @@ elements: |-
       '#access_view_roles':
         - authenticated
       '#file_preview': ':image'
-      '#max_filesize': '256'
+      '#max_filesize': '512'
       '#file_extensions': 'jp2 jpg jpeg png tif tiff'
   actions:
     '#type': webform_actions
@@ -822,6 +756,8 @@ settings:
   wizard_toggle: true
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 1
   preview_label: ''
   preview_title: ''
@@ -869,7 +805,6 @@ settings:
   token_update: false
   token_delete: false
   serial_disabled: false
-  form_remote_addr: true
 access:
   create:
     roles:
