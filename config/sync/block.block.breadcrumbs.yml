@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
-    - node
+    - context
     - system
   theme:
     - archipelago_subtheme
@@ -19,16 +19,27 @@ settings:
   label_display: '0'
   provider: system
 visibility:
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
-    bundles:
-      digital_object: digital_object
-      digital_object_collection: digital_object_collection
   request_path:
     id: request_path
     negate: false
     context_mapping: {  }
-    pages: "/search\r\n/node/*"
+    pages: "/search*\r\n/search_grid*\r\n/node/*\r\n/amiset/*"
+  context_all:
+    id: context_all
+    negate: null
+    values: ''
+  context:
+    id: context
+    negate: null
+    values: ''
+  user_status:
+    id: user_status
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    user_status:
+      viewing_profile: '0'
+      logged_viewing_profile: '0'
+      own_page_true: '0'
+      field_value: '0'
+    user_fields: uid
