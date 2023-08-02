@@ -105,3 +105,7 @@ bootstrap_barrio_select: custom
 bootstrap_barrio_file: standard
 bootstrap_barrio_hide_node_label: 0
 bootstrap_barrio_navbar_offcanvas: ''
+bootstrap_barrio_container: container-fluid
+bootstrap_barrio_breadcrumb_divider: ''
+bootstrap_barrio_button_type: primary
+bootstrap_barrio_float_label: 0

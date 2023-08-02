@@ -11,9 +11,9 @@ dependencies:
       - search_api_solr
       - strawberryfield
 id: ado_tools_children_creative_work_series
-label: ADO_Tools_Children_Creative_Work_Series
+label: 'ADO Tools Children Creative Work Series'
 module: views
-description: 'Lists Member objects of a Collection driven by Solr'
+description: 'Lists Member objects of a CWS driven by Solr'
 tag: ''
 base_table: search_api_index_default_solr_index
 base_field: search_api_id
@@ -702,6 +702,7 @@ display:
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
   block_1:
     id: block_1
     display_title: Block
@@ -728,3 +729,4 @@ display:
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'

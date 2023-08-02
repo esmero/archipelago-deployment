@@ -11,7 +11,7 @@ dependencies:
       - search_api_solr
       - strawberryfield
 id: ado_tools_children
-label: ADO_Tools_Children
+label: 'ADO Tools Children'
 module: views
 description: 'Lists Member objects of a Collection driven by Solr'
 tag: ''
@@ -702,6 +702,7 @@ display:
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
   block_1:
     id: block_1
     display_title: Block
@@ -728,3 +729,4 @@ display:
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'

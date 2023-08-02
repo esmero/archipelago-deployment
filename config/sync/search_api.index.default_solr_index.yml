@@ -310,7 +310,7 @@ field_settings:
     label: 'SBF Parent ID'
     datasource_id: strawberryfield_flavor_datasource
     property_path: parent_id
-    type: string
+    type: integer
   parent_sequence_id:
     label: 'SBF Parent Node  »  sequence_id'
     datasource_id: strawberryfield_flavor_datasource
@@ -592,6 +592,11 @@ field_settings:
     type: integer
     indexed_locked: true
     type_locked: true
+  uri:
+    label: 'Parent File » URI'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: 'target_fileid:uri'
+    type: string
   uuid:
     label: 'SBF Parent Node » UUID'
     datasource_id: strawberryfield_flavor_datasource

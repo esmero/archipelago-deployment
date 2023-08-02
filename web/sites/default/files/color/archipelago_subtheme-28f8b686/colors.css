@@ -218,10 +218,17 @@ dt {
     color: #7985c4 !important;
 }
 
+.btn {
+  border-color: #7985c4;
+}
+.btn:hover {
+  border-color: #7985c4;
+  background-color: #e6e9f4;
+}
+
 .btn-outline-primary {
     border-color: #7985c4 !important;
 }
-
 
 .btn-primary:hover,
 .btn-primary:focus {

@@ -5,6 +5,7 @@ dependencies:
   config:
     - search_api.index.default_solr_index
   module:
+    - format_strawberryfield_views
     - search_api
     - views_bootstrap
 _core:
@@ -556,6 +557,51 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        sbf_flavors_join:
+          id: sbf_flavors_join
+          table: search_api_index_default_solr_index
+          field: sbf_flavors_join
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: sbf_flavors_join
+          operator: or
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          join_fields:
+            parent_id: parent_id
+            top_parent_id: top_parent_id
+          sbf_fields:
+            sbf_plaintext: sbf_plaintext
+          negation_default: omit
+          sbf_type: 'ocr,text'
       style:
         type: default
         options:
@@ -1854,10 +1900,10 @@ display:
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: true
+            strip_tags: false
             trim: true
             preserve_tags: ''
-            html: false
+            html: true
           element_type: ''
           element_class: ''
           element_label_type: ''
