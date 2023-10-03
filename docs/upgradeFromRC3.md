@@ -318,7 +318,6 @@ If you like this, let us know!
 * [Giancarlo Birello](https://github.com/giancarlobi)
 * [Allison Lund](https://github.com/alliomeria)
 * [Katie Romabiles](https://github.com/karomabiles)
-* [Albert Min](https://github.com/aksm)
 
 ## License
 
