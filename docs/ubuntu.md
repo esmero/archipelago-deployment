@@ -1,6 +1,6 @@
 <!--documentation
 ---
-title: "Installing Archipelago Drupal 9 on Ubuntu 18.04 or 20.04"
+title: "Installing Archipelago Drupal 10 on Ubuntu 18.04 or 20.04"
 tags:
   - Archipelago-deployment
   - Drupal 10
@@ -9,7 +9,7 @@ tags:
 ---
 documentation-->
 
-# Installing Archipelago Drupal 9 on Ubuntu 18.04 or 20.04
+# Installing Archipelago Drupal 10 on Ubuntu 18.04 or 20.04
 
 ## About running terminal commands
 
@@ -159,7 +159,7 @@ The following will run composer inside the esmero-php container to download all 
 docker exec -ti esmero-php bash -c "composer install"
 ```
 
-You will see a warning: `Do not run Composer as root/super user! See https://getcomposer.org/root for details` and the a long list of PHP packages. Don't worry. All is good here. Keep following the instructions! Once that command finishes run our setup script:
+You might see a warning: `Do not run Composer as root/super user! See https://getcomposer.org/root for details` and the a long list of PHP packages. Don't worry. All is good here. Keep following the instructions! Once that command finishes run our setup script:
 
 ```shell
 docker exec -ti esmero-php bash -c 'scripts/archipelago/setup.sh'
@@ -175,7 +175,10 @@ If this is the first time you're deploying Drupal using the provided Configurati
 docker exec -ti -u www-data esmero-php bash -c "cd web;../vendor/bin/drush -y si --verbose --existing-config --db-url=mysql://root:esmerodb@esmero-db/drupal --account-name=admin --account-pass=archipelago -r=/var/www/html/web --sites-subdir=default --notify=false;drush cr;chown -R www-data:www-data sites;"
 ```
 
-Note: You will see this warning: `[warning] The "block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a" was not found`. Nothing to worry about. We will provide the missing part in Step 5.
+Note: You will see these warnings:
+ `[warning] The "block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a" was not found`
+ `[warning] The "facets_summary_block:search_page_facet_summary" was not found`
+  Nothing to worry about. We will provide the missing part in Step 5.
 
 Note 2: Please be patient. This step takes now 25-30% longer because of how the most recent Drupal Installation code fetches translations and other resources (see `Performed install task`). This means progress might look like getting "stuck", go and get a coffee/tea and let it run to the end.
 

@@ -1,6 +1,6 @@
 <!--documentation
 ---
-title: "Installing Archipelago Drupal 9 on Ubuntu 18.04 or 20.04"
+title: "Installing Archipelago Drupal 10 on Windows 10/11"
 tags:
   - Archipelago-deployment
   - Drupal 10
