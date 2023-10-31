@@ -1,20 +1,21 @@
-{# Updated August 2022 for 1.0.0 to include:
-- Internal and external search for Pubmed subjects and comment out Europeana subjects for now--noting about API key.
-- Previously updated July & June 2022 to include url_encode for search terms and adjust indentation for human readability and 
-include internal and external referencing for all LC Subjects & Names, Getty Terms, Wikidata Subjects & Names, and VIAF names.
-- LC Subjects & Names, Getty Terms show FA Link Icon for external reference. Wikidata Subjects and Agents show Wikipedia W icon. VIAF shows vocab name in pill box.
-- Placeholder FA icon and text for when no linked data is provided. #}
+{#
+Updated 31/10/2023 for 1.3.0 
+- Previously updated  une ~ April 2023 for by Diego & Allison for 1.1.0 release: better HTML formatting.
+- Previously updated July 2022 by Allison for: Internal and external search for Pubmed subjects and comment out Europeana subjects for now--noting about API key; Include url_encode for search terms and adjust indentation for human readability.
+- Previously updated June 2022 to include internal and external referencing for all LC Subjects & Names, Getty Terms, Wikidata Subjects & Names, and VIAF names.
+LC Subjects & Names, Getty Terms show FA Link Icon for external reference. Wikidata Subjects and Agents show Wikipedia W icon. VIAF shows vocab name in pill box.
+Placeholder FA icon and text for when no linked data is provided. #}
 {% if data.subject_loc|length > 0 %}
-<dl class="row">
-<dt class="col-sm-12 text-truncate">Library Of Congress subjects</dt>
+<dl>
+<dt class="text-truncate">Library Of Congress subjects</dt>
 </dl>
-<dl class="row">
-	<dd class="col-sm-12">
+<dl>
+	<dd>
 		<div class="list-group">
 			{% for subjects in attribute(data, 'subject_loc') %}
-				<ul class="nav nav-pills" style="padding-top:3px">
-					<li class="nav-item facet-item" style="padding:3px;margin-top:4px;">
-						<a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_subjects%3A{{ subjects.label|url_encode }}" target="_blank" >{{ subjects.label }}</a>
+				<ul class="nav nav-pills">
+					<li class="nav-item facet-item">
+						<a class="nav-link" href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_subjects%3A{{ subjects.label|url_encode }}" target="_self">{{ subjects.label }}</a>
 					<li class="nav-item">
 						<a class="nav-link active" href="{{ subjects.uri }}" target="_blank"><i class="fas fa-link fa-1x"></i></a>
   				    </li>
@@ -25,16 +26,16 @@ include internal and external referencing for all LC Subjects & Names, Getty Ter
 </dl>
 {% endif %}
 {% if data.subject_lcnaf_personal_names|length > 0 %}
-<dl class="row">
-<dt class="col-sm-12 text-truncate">LCNAF Personal Names</dt>
+<dl>
+<dt class="text-truncate">LCNAF Personal Names</dt>
 </dl>
-<dl class="row">
-	<dd class="col-sm-12">
+<dl>
+	<dd>
 		<div class="list-group">
 			{% for subjects in attribute(data, 'subject_lcnaf_personal_names') %}
-			<ul class="nav nav-pills" style="padding-top:3px">
-				<li class="nav-item facet-item" style="padding:3px;margin-top:4px;">
-					<a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_agent_labels%3A{{ subjects.label|url_encode }}" target="_blank" >{{ subjects.label }}</a>
+			<ul class="nav nav-pills">
+				<li class="nav-item facet-item">
+					<a class="nav-link" href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_agent_labels%3A{{ subjects.label|url_encode }}" target="_self">{{ subjects.label }}</a>
 				<li class="nav-item">
   				    <a class="nav-link active" href="{{ subjects.uri }}" target="_blank"><i class="fas fa-link fa-1x"></i></a>
 				</li>
@@ -45,16 +46,16 @@ include internal and external referencing for all LC Subjects & Names, Getty Ter
 </dl>
 {% endif %}
 {% if data.subject_lcnaf_corporate_names|length > 0 %}
-<dl class="row">
-<dt class="col-sm-12 text-truncate">LCNAF Corporate Names</dt>
+<dl>
+<dt class="text-truncate">LCNAF Corporate Names</dt>
 </dl>
-<dl class="row">
-	<dd class="col-sm-12">
+<dl>
+	<dd>
 		<div class="list-group">
 			{% for subjects in attribute(data, 'subject_lcnaf_corporate_names') %}
-				<ul class="nav nav-pills" style="padding-top:3px">
-					<li class="nav-item facet-item" style="padding:3px;margin-top:4px;">
-						<a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_agent_labels%3A{{ subjects.label|url_encode }}" target="_blank" >{{ subjects.label }}</a>
+				<ul class="nav nav-pills">
+					<li class="nav-item facet-item">
+						<a class="nav-link" href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_agent_labels%3A{{ subjects.label|url_encode }}" target="_self">{{ subjects.label }}</a>
 					<li class="nav-item">
 						<a class="nav-link active" href="{{ subjects.uri }}" target="_blank" ><i class="fas fa-link fa-1x"></i></a>
   			    	</li>
@@ -65,16 +66,16 @@ include internal and external referencing for all LC Subjects & Names, Getty Ter
 </dl>
 {% endif %}
 {% if data.subject_lcnaf_geographic_names|length > 0 %}
-<dl class="row">
-<dt class="col-sm-12 text-truncate">LCNAF Geographic Names</dt>
+<dl>
+<dt class="text-truncate">LCNAF Geographic Names</dt>
 </dl>
-<dl class="row">
-	<dd class="col-sm-12">
+<dl>
+	<dd>
 		<div class="list-group">
 			{% for subjects in attribute(data, 'subject_lcnaf_geographic_names') %}
-				<ul class="nav nav-pills" style="padding-top:3px">
-					<li class="nav-item facet-item" style="padding:3px;margin-top:4px;">
-						<a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_subjects%3A{{ subjects.label|url_encode }}" target="_blank" >{{ subjects.label }}</a>
+				<ul class="nav nav-pills">
+					<li class="nav-item facet-item">
+						<a class="nav-link" href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_subjects%3A{{ subjects.label|url_encode }}" target="_self">{{ subjects.label }}</a>
 					<li class="nav-item">
 						<a class="nav-link active" href="{{ subjects.uri }}" target="_blank" ><i class="fas fa-link fa-1x"></i></a>
 					</li>
@@ -85,16 +86,16 @@ include internal and external referencing for all LC Subjects & Names, Getty Ter
 </dl>
 {% endif %}
 {% if data.subject_lcgft_terms|length > 0 %}
-<dl class="row">
-<dt class="col-sm-12 text-truncate">Library Of Congress Genre Format Terms</dt>
+<dl>
+<dt class="text-truncate">Library Of Congress Genre Format Terms</dt>
 </dl>
-<dl class="row">
-	<dd class="col-sm-12">
+<dl>
+	<dd>
 		<div class="list-group">
 			{% for subjects in attribute(data, 'subject_lcgft_terms') %}
-				<ul class="nav nav-pills" style="padding-top:3px">
-					<li class="nav-item facet-item" style="padding:3px;margin-top:4px;">
-						<a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_subjects%3A{{ subjects.label|url_encode }}" target="_blank" >{{ subjects.label }}</a>
+				<ul class="nav nav-pills">
+					<li class="nav-item facet-item">
+						<a class="nav-link" href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_subjects%3A{{ subjects.label|url_encode }}" target="_self">{{ subjects.label }}</a>
 					<li class="nav-item">
 						<a class="nav-link active" href="{{ subjects.uri }}" target="_blank" ><i class="fas fa-link fa-1x"></i></a>
 					</li>
@@ -105,16 +106,16 @@ include internal and external referencing for all LC Subjects & Names, Getty Ter
 </dl>
 {% endif %}
 {% if data.term_aat_getty|length > 0 %}
-<dl class="row">
-<dt class="col-sm-12 text-truncate">Getty terms</dt>
+<dl>
+<dt class="text-truncate">Getty terms</dt>
 </dl>
-<dl class="row">
-	<dd class="col-sm-12">
+<dl>
+	<dd>
 		<div class="list-group">
 			{% for subjects in attribute(data, 'term_aat_getty') %}
-				<ul class="nav nav-pills" style="padding-top:3px">
-					<li class="nav-item facet-item" style="padding:3px;margin-top:4px;">
-						<a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_subjects%3A{{ subjects.label|url_encode }}" target="_blank" >{{ subjects.label }}</a>
+				<ul class="nav nav-pills">
+					<li class="nav-item facet-item">
+						<a class="nav-link" href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_subjects%3A{{ subjects.label|url_encode }}" target="_self">{{ subjects.label }}</a>
 					<li class="nav-item">
   					    <a class="nav-link active" href="{{ subjects.uri }}" target="_blank" ><i class="fas fa-link fa-1x"></i></a>
 					</li>
@@ -125,16 +126,16 @@ include internal and external referencing for all LC Subjects & Names, Getty Ter
 </dl>
 {% endif %}
 {% if data.subject_wikidata|length > 0 %}
-<dl class="row">
-<dt class="col-sm-12 text-truncate">Wikidata Subjects</dt>
+<dl>
+<dt class="text-truncate">Wikidata Subjects</dt>
 </dl>
-<dl class="row">
-	<dd class="col-sm-12">
+<dl>
+	<dd>
 		<div class="list-group">
 			{% for subjects in attribute(data, 'subject_wikidata') %}
-				<ul class="nav nav-pills" style="padding-top:3px">
-					<li class="nav-item facet-item" style="padding:3px;margin-top:4px;">
-						<a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_subjects%3A{{ subjects.label|url_encode }}" target="_blank" >{{ subjects.label }}</a>
+				<ul class="nav nav-pills">
+					<li class="nav-item facet-item">
+						<a class="nav-link" href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_subjects%3A{{ subjects.label|url_encode }}" target="_self">{{ subjects.label }}</a>
 					<li class="nav-item">
 						<a class="nav-link active" href="{{ subjects.uri }}" target="_blank" ><i class="fab fa-wikipedia-w fa-1x"></i></a>
 					</li>
@@ -146,16 +147,16 @@ include internal and external referencing for all LC Subjects & Names, Getty Ter
 {% endif %}
 
 {% if data.edm_agent|length > 0 %}
-<dl class="row">
-<dt class="col-sm-12 text-truncate">Wikidata Agents</dt>
+<dl>
+<dt class="text-truncate">Wikidata Agents</dt>
 </dl>
-<dl class="row">
-	<dd class="col-sm-12">
+<dl>
+	<dd>
 		<div class="list-group">
 			{% for agent in attribute(data, 'edm_agent') %}
-				<ul class="nav nav-pills" style="padding-top:3px">
-					<li class="nav-item facet-item" style="padding:3px;margin-top:4px;">
-						<a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_agent_labels%3A{{ agent.name_label|url_encode }}" target="_blank" >{{ agent.name_label }}</a>
+				<ul class="nav nav-pills">
+					<li class="nav-item facet-item">
+						<a class="nav-link" href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_agent_labels%3A{{ agent.name_label|url_encode }}" target="_self">{{ agent.name_label }}</a>
 					<li class="nav-item">
 						<a class="nav-link active" href="{{ agent.name_uri }}" target="_blank" ><i class="fab fa-wikipedia-w fa-1x"></i></a>
 					</li>
@@ -167,16 +168,16 @@ include internal and external referencing for all LC Subjects & Names, Getty Ter
 {% endif %} 
 
 {% if data.viaf|length > 0 %}
-<dl class="row">
-<dt class="col-sm-12 text-truncate">VIAF</dt>
+<dl>
+<dt class="text-truncate">VIAF</dt>
 </dl>
-<dl class="row">
-	<dd class="col-sm-12">
+<dl>
+	<dd>
 		<div class="list-group">
 			{% for viaf in attribute(data, 'viaf') %}
-				<ul class="nav nav-pills" style="padding-top:3px">
-					<li class="nav-item facet-item" style="padding:3px;margin-top:4px;">
-						<a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_agent_labels%3A{{ viaf.label|url_encode }}" target="_blank" >{{ viaf.label }}</a>
+				<ul class="nav nav-pills">
+					<li class="nav-item facet-item">
+						<a class="nav-link" href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_agent_labels%3A{{ viaf.label|url_encode }}" target="_self">{{ viaf.label }}</a>
 					<li class="nav-item">
 						<a class="nav-link active" href="{{ viaf.uri }}" target="_blank" >VIAF</a>
 					</li>
@@ -187,59 +188,59 @@ include internal and external referencing for all LC Subjects & Names, Getty Ter
 </dl>
 {% endif %} 
 
-
 {% if data.pubmed_mesh|length > 0 %}
-<dl class="row">
-<dt class="col-sm-12" text-truncate">MeSH (Medical Subject Headings)</dt>
+<dl>
+<dt class="text-truncate">MeSH (Medical Subject Headings)</dt>
 </dl>
-<dl class="row">
-	<dd class="col-sm-12" text-truncate">
+<dl>
+	<dd>
 		<div class="list-group">
-			{% for pubmed_mesh in attribute(data, 'pubmed_mesh') %}
-            	<ul class="nav nav-pills" style="padding-top:3px">
-        			<li class="nav-item facet-item" style="padding:3px;margin-top:4px;">
-						<a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_subjects%3A{{ pubmed_mesh.label|url_encode }}" target="_blank" >{{ pubmed_mesh.label }}</a>
+			{% for subjects in attribute(data, 'pubmed_mesh') %}
+				<ul class="nav nav-pills">
+					<li class="nav-item facet-item">
+						<a class="nav-link" href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_subjects%3A{{ subjects.label|url_encode }}" target="_self">{{ subjects.label }}</a>
 					<li class="nav-item">
-						<a class="nav-link active" href="{{ pubmed_mesh.uri }}" target="_blank" ><i class="fas fa-link fa-1x"></i></a>
+						<a class="nav-link active" href="{{ subjects.uri }}" target="_blank" ><i class="fab fa-wikipedia-w fa-1x"></i></a>
 					</li>
-            	</ul>
-{% endfor %}
-</div>
-</dd>
+				</ul>
+			{% endfor %}
+		</div>
+	</dd>
 </dl>
 {% endif %}
-{#- *Important note* to utilize the Europeana Webform Elements/Lookups and to reference the values as noted below:
-You/your institution will need to apply for your own Europeana API key, here: https://pro.europeana.eu/page/get-api.
-Then follow the instructions for using your unique API key as noted here: https://github.com/esmero/webform_strawberryfield/pull/123
-Then select the 'Display Element' checkbox on the Access tab or the 'europeana_details' webform element.
-And then removed the enclosing comments for this section -#}
-{#
-{% if data.europeana_agents|length > 0 or 
-data.europeana_concepts|length > 0 or 
-data.europeana_places|length > 0 %}
-<dl class="row">
-<dt class="col-sm-12 text-truncate">Europeana Entities <i>Agents, Concepts, Places</i></dt>
-</dl>
-<dl class="row">
-<dd class="col-sm-12 text-truncate">
-<div class="list-group">
-{% for agent in attribute(data, 'europeana_agents') %}
-{% set no_lod = FALSE %}
-<a href="{{ agent.uri }}" target="_blank" >{{ agent.label }}</a>
-{% endfor %}
-{% for concept in attribute(data, 'europeana_concepts') %}
-{% set no_lod = FALSE %}
-<a href="{{ concept.uri }}" target="_blank" >{{ concept.label }}</a>
-{% endfor %}
-{% for place in attribute(data, 'europeana_places') %}
-{% set no_lod = FALSE %}
-<a href="{{ place.uri }}" target="_blank" >{{ place.label }}</a>
-{% endfor %}
-</div>
-</dd>
-</dl>
-{% endif %}
-#}
+ {# -- Important note : to utilize the Europeana Webform Elements/Lookups and to reference the values as noted below:
+ You/your institution will need to apply for your own Europeana API key, here: https://pro.europeana.eu/page/get-api.
+ Then follow the instructions for using your unique API key as noted here: https://github.com/esmero/webform_strawberryfield/pull/123
+ Then select the 'Display Element' checkbox on the Access tab or the 'europeana_details' webform element.
+ And then removed the enclosing comments for this section -#}
+ {#
+ {% if data.europeana_agents|length > 0 or 
+ data.europeana_concepts|length > 0 or 
+ data.europeana_places|length > 0 %}
+ <dl class="row">
+ <dt class="col-sm-12 text-truncate">Europeana Entities <i>Agents, Concepts, Places</i></dt>
+ </dl>
+ <dl class="row">
+ <dd class="col-sm-12 text-truncate">
+ <div class="list-group">
+ {% for agent in attribute(data, 'europeana_agents') %}
+ {% set no_lod = FALSE %}
+ <a href="{{ agent.uri }}" target="_blank" >{{ agent.label }}</a>
+ {% endfor %}
+ {% for concept in attribute(data, 'europeana_concepts') %}
+ {% set no_lod = FALSE %}
+ <a href="{{ concept.uri }}" target="_blank" >{{ concept.label }}</a>
+ {% endfor %}
+ {% for place in attribute(data, 'europeana_places') %}
+ {% set no_lod = FALSE %}
+ <a href="{{ place.uri }}" target="_blank" >{{ place.label }}</a>
+ {% endfor %}
+ </div>
+ </dd>
+ </dl>
+ {% endif %}
+ #}
+
 {% if data.subject_loc is empty and
 data.subject_lcnaf_personal_names is empty and
 data.subject_lcnaf_corporate_names is empty and
@@ -248,7 +249,8 @@ data.subject_lcgft_terms is empty and
 data.term_aat_getty is empty and 
 data.subject_wikidata is empty and
 data.edm_agent is empty and
-data.viaf is empty %}
+data.viaf is empty and
+data.pubmed_mesh is empty %}
 <i class="fas fa-bezier-curve fa-9x"></i>
 <p>
 <p>

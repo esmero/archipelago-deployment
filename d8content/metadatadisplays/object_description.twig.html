@@ -1,506 +1,293 @@
-{# Updated August 2022 for 1.0.0 to include:
-- Additional metadata elements.
-- Internal searching for Creators/Contributors + LoD icon for external references.
-- Collapsable section for additional information elements.
-- Limits Documents/Image download links.
-- Updated IIIF dropdown menu.
-- Bootstrap 5 compatible but left old data-* selectors to be backwards compat with Bootstrap 4
-#}
-
-{# Embargo option #}
-{% if data_embargo.embargoed == true %}
-   This is Embargoed!
-{% endif %}
-{# Beginning of Main Template Section #}
-<blockquote class="blockquote">
-{% if node.id %}
-	{% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
-{% else %}
-    {% set nodeurl = '<current>' ~ '/iiif/manifest' %}
-{% endif%}
-{% if attribute(data, 'ismemberof') %}
-{% if attribute(data, 'ismemberof') is iterable %}
-	{% for collection in attribute(data, 'ismemberof')%}
-		{% set parentnode = bamboo_load_entity('node', collection) %}
-		{% set parentnodeurl = url('entity.node.canonical', {'node': collection}, {'absolute': true}) %}
-			<div class="blockquote blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
-	{% endfor %}
-	{% else %}
-		{% set parentnode = bamboo_load_entity('node', attribute(data, 'ismemberof')) %}
-		{% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ismemberof')}, {'absolute': true}) %}
-			<div class="blockquote blockquote-footer">In <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
-{% endif %}
-{% endif %}
-{% if attribute(data, 'ispartof') %}
-{% if attribute(data, 'ispartof') is iterable %}
-	{% for child in attribute(data, 'ispartof')%}
-		{% set parentnode = bamboo_load_entity('node', child) %}
-		{% set parentnodeurl = url('entity.node.canonical', {'node': child}, {'absolute': true}) %}
-			<div class="blockquote">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
-	{% endfor %}
-	{% else %}
-		{% set parentnode = bamboo_load_entity('node', attribute(data, 'ispartof')) %}
-		{% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ispartof')}, {'absolute': true}) %}
-			<div class="blockquote">Part of <cite title="{{ parentnode.title.value }}"><a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a></cite></div>
-{% endif %}
-{% endif %}
-</blockquote>
-<h2>Title</h2>
-<p>{{ data.label }}</p>
-{% if data.issue_info|length > 0 %}
-<h2>Issue Information</h2>
-	<ul>
-		{% for issue_info in data.issue_info %}
-        	{% if issue_info.volume|length > 0 %}
-        	<li>Volume: {{ issue_info.volume }}</li> 
-        	{% endif %}
-        	{% if issue_info.issue|length > 0 %}
-        	<li>Issue: {{ issue_info.issue }}</li>
-        	{% endif %}
-        	{% if issue_info.general_issue|length > 0 %}
-        	<li>General Issue: {{ issue_info.general_issue }}</li>
-        	{% endif %}
-        {% endfor %}
-	</ul>   
-{% endif %}
-{% if data.creator|length > 0 or data.creator_lod|length > 0 %}
-<h2>Creators and Contributors</h2>
-<ul>
-	{% if data.creator %}
-	{% if data.creator is iterable %}
-		{% for creator in data.creator %}
-			<li>{{ creator }} </li>
-		{% endfor %}
-	{% else %}
-		<li>{{ data.creator }} </li>>
+{#- 
+Updated 31/10/2023 for 1.3.0 
+- switched to Macro approach; added Nav-tabs for main description display and downloads menu. 
+- MACROS: 
+  - uses two macros originally created by Diego, 
+  - uses two macros orginally created by Allison for internal-search referenced elements 
+- File downloads nav-tab 
+-#} 
+{#- ------ Macros Start ----- -#} 
+{%- macro html_output(html_title, source_datum, list_wrapper = "p", markdown = false) -%} 
+  {# -- Macro note: if markdown is selected no wrapper will be used -#} 
+  {%- if source_datum and source_datum|length > 0 -%} 
+    {%- if html_title|length > 0 -%} 
+<h3>{{html_title}}</h3> 
+    {%- endif -%} 
+	{%- if source_datum is iterable -%} 
+      {%- for source_data in source_datum -%} 
+        {%- if markdown -%} 
+		  {{ source_data|markdown_2_html }} 
+        {%- else -%} 
+          <{{list_wrapper}}>{{ source_data }}</{{list_wrapper}}> 
+        {%- endif -%} 
+      {%- endfor -%} 
+	{%- else -%} 
+      {%- if markdown -%} 
+          {{ source_datum|markdown_2_html }} 
+      {%- else -%} 
+		  <{{list_wrapper}}>{{ source_datum }}</{{list_wrapper}}> 
+      {%- endif -%} 
+    {%- endif -%} 
+  {%- endif -%} 
+{%- endmacro html_output -%} 
+{%- macro html_output_list(html_title, source_datum, markdown = false) -%} 
+  {# -- Macro note: if markdown is selected no wrapper will be used -#} 
+  {%- if source_datum and source_datum|length > 0 -%} 
+    {%- if html_title|length > 0 -%} 
+<h3>{{html_title}}</h3> 
+    {%- endif -%} 
+  <ul> 
+	{%- if source_datum is iterable -%} 
+	  {%- for source_data in source_datum -%} 
+        {%- if markdown -%} 
+	      <li>{{ source_data|markdown_2_html }}</li> 
+        {%- else -%} 
+          <li>{{ source_data }}</li> 
+        {%- endif -%} 
+	  {%- endfor -%} 
+	{%- else -%} 
+      {%- if markdown -%} 
+        <li>{{ source_datum|markdown_2_html }}</li> 
+      {%- else -%} 
+		<li>{{ source_datum }}</li> 
+      {%- endif -%} 
+    {%- endif -%} 
+  </ul> 
+  {%- endif -%} 
+{%- endmacro html_output_list -%} 
+{# Allison: internal search macros based off Diego's list output macro above; 
+added flag and formatting for internal search-based on value set within corresponding facet config; 
+one macro for simple non-LoD elements; second for LoD elements with URI and label values #} 
+{%- macro html_output_search(html_title, source_datum, search_facet) -%} 
+  {%- if source_datum and source_datum|length > 0 -%} 
+    {%- if html_title|length > 0 -%} 
+<h3>{{html_title}}</h3> 
+    {%- endif -%} 
+  <ul> 
+	{%- if source_datum is iterable -%} 
+	  {%- for source_data in source_datum -%} 
+	  <li><a href="/search?search_api_fulltext=&f%5B0%5D={{search_facet}}%3A{{ source_data|url_encode }}" target="_blank" >{{ source_data }}</a></li> 
+	  {%- endfor -%} 
+	  {%- else -%} 
+	  <li><a href="/search?search_api_fulltext=&f%5B0%5D={{search_facet}}%3A{{ source_datum|url_encode }}" target="_blank" >{{ source_datum }}</a></li> 
+	  {%- endif -%} 
+  </ul> 
+  {%- endif -%} 
+{%- endmacro html_output_search -%} 
+{# Use for LoD elements with URI and label values#} 
+{%- macro html_output_search_lod(html_title, source_datum, search_facet) -%} 
+  {%- if source_datum and source_datum|length > 0 -%} 
+    {%- if html_title|length > 0 -%} 
+<h3>{{html_title}}</h3> 
+    {%- endif -%} 
+  <ul> 
+	  {%- for source_data in source_datum -%} 
+	  <li><a href="/search?search_api_fulltext=&f%5B0%5D={{search_facet}}%3A{{ source_data.label|url_encode }}" target="_blank" >{{ source_data.label }}</a></li> 
+	  {%- endfor -%} 
+  </ul> 
+  {%- endif -%} 
+{%- endmacro html_output_search_lod -%} 
+{#- --- End Macros ---- -#} 
+{# -- Embargo option -- #} 
+{% set file_download_restricted = false %} 
+{% if data_embargo.embargoed == true %} 
+   {# also restrict if embargoed #} 
+   {% set file_download_restricted = true %} 
+{% endif %} 
+{# -- File Downloads Section -- #} 
+  {% set download_label = "Download" %} 
+  {% set download_metadata_label = "Metadata" %} 
+  {% set download_file_label = "Files" %} 
+  {% set download_file_video = "Videos" %} 
+  {% set download_file_audio = "Audios" %} 
+  {% set download_file_img = "Images" %} 
+  {% set download_file_doc = "Documents" %} 
+  {% set download_file_text = "Texts and transcripts" %} 
+{# Downloads as a set variable #} 
+  {% set downloadlist %} 
+{# May 2023, new downloads #} 
+    <li><a download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/mods/mods.xml">MODS 3.7</a></li> 
+    <li><a download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/dc/dc.xml">Dublin Core</a></li> 
+    <li><a download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/geojson/geojson.json">GeoJSON</a></li> 
+  {% if not file_download_restricted %} 
+    {% if data.type not in ['Collection','CreativeWorkSeries'] %} 
+    <li><a rel="nofollow" download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifest/default.jsonld">IIIF Presentation Manifest 3.0</a></li> 
+    <li><a rel="nofollow" download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifestv2/default.jsonld">IIIF Presentation Manifest 2.1</a></li> 
+    {% elseif data.type == 'CreativeWorkSeries' %} 
+    <li><a rel="nofollow" download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifest3cws/default.jsonld">IIIF Presentation Manifest 3.0</a></li> 
+    {% else %} 
+    <li><a rel="nofollow" download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifest3collection/default.jsonld">IIIF Presentation Manifest 3.0</a></li> 
     {% endif %} 
-	{% endif %}
-</ul>    
-{% endif %} 
-{% if data.creator_lod|length > 0 %}
-<div class="field-content">
-	<ul>
-	{% for creator_lod in data.creator_lod %} 
-  	<li class="nav-item" style="padding:3px;margin-top:4px;">{{ creator_lod.role_label }}: <a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_agent_labels%3A{{ creator_lod.name_label|url_encode }}" target="_blank" >{{ creator_lod.name_label }}</a>   
-    {% if creator_lod.name_uri|length > 2 %}
-    	<span class="badge badge-primary badge-pill"><a class="nav-link active" href="{{ creator_lod.name_uri }}" target="_blank" ><i class="fas fa-link fa-1x"></i></a></span>
-        {% endif %}
-    </li>
-	{% endfor %}   
-	</ul>
-</div>
-{% endif %} 
-{% if data.interviewee|length > 0 %}
-<h2>Interviewee(s)</h2>
-	<p>
-	{% if data.interviewee %}
-	{% if data.interviewee is iterable %}
-		{% for interviewee in data.interviewee %}
-			{{ interviewee }} <br>
-		{% endfor %}
-	{% else %}
-		{{ data.interviewee }} <br>
-	{% endif %} 
-	{% endif %}
-    </p>
-{% endif %}
-{% if data.interviewer|length > 0 %}
-<h2>Interviewer(s)</h2>
-	<p>
-	{% if data.interviewer %}
-	{% if data.interviewer is iterable %}
-		{% for interviewer in data.interviewer %}
-			{{ interviewer }} <br>
-		{% endfor %}
-	{% else %}
-		{{ data.interviewer }} <br>
-	{% endif %} 
-	{% endif %}
-    </p>
-{% endif %} 
-{% if data.duration|length > 0 %}
-<h2>Duration</h2>
-	<p>{{ data.duration }}</p>
-{% endif %} 
-{% if data.website_url|length > 0 %}
-<h2>URL of Original Website</h2>
-	<p>{{ data.website_url }}</p>
-{% endif %}  
-{% if data.description|length > 0 %}
-<h2>Description</h2>
-<div>
-	{% if data.description %}
-		{% if data.description is iterable %}
-			{% for description in data.description %}
-				{{ description|markdown_2_html }}
-				{% endfor %}
-			{% else %}
-				{{ data.description|markdown_2_html }}
-		{% endif %} 
-	{% endif %}
-</div>
-{% endif %}
-{# Date Created Advanced Example -- showing multiple potential dates sources #} 
-{% set all_date_created = [] %}
-{% if (data.date_created_edtf.date_free is defined and not empty)  %}
-  {% set all_date_created = all_date_created|merge([data.date_created_edtf.date_free|trim|edtf_2_human_date('en')]) %}
-{% endif %}
-{% if ((data.date_created is defined and not empty) and (data.date_created is not iterable and data.date_created|trim|length > 0)) %}
-  {% set all_date_created = all_date_created|merge([data.date_created]) %}
-{% endif %}
-{% if ((data.date_created_free is defined and not empty) and (data.date_created_free is not iterable and data.date_created_free|trim|length > 0))  %}
-   {% if data.date_created_free is iterable %}
-      {% set all_date_created = all_date_created|merge(data.date_created_free) %}
-   {% else %}
-     {% set all_date_created = all_date_created|merge([data.date_created_free]) %}
-   {% endif %}
-{% endif %}
-{% if all_date_created|length > 0 %}
-<h2>Date Created</h2>
-  {% for date_created in all_date_created  %}
-<p>{{ date_created }}</p>
-  {% endfor %}
-{% endif %}
-{# End of Date Created Advanced Example #}
-{# Simple Example for single Date Created standard date-type element source:
-{% if data.date_created|length > 0 %}
-<h2>Date Created</h2>
-<p>{{ data.date_created }}</p>
-{% endif %}
-#}
-{% if data.publisher|length > 0 %}
-<h2>Publisher</h2>
-	<p>{{ data.publisher }}</p>
-{% endif %}
-{% if data.place_of_publication|length > 0 %}
-<h2>Place of Publication</h2>
-	<p>{{ data.place_of_publication }}</p>
-{% endif %}
-{% if data.owner|length > 0 %}
-<h2>Institutional Owner</h2>
-	<p>{{ data.owner }}</p>
-{% endif %}
-{% if data.rights|length > 0 or data.rights_statements|length > 0 %}
-<h2>Rights</h2>
-{% if data.rights|length > 0 %} 
-	<div>{{ data.rights|markdown_2_html }}</div>
-{% endif %}
-{% if data.rights_statements|length > 0 %}
-	{% if data.rights_statements in ['In Copyright'] %} 
-		<p>
-		<a href="http://rightsstatements.org/vocab/InC/1.0/"><img src="https://rightsstatements.org/files/buttons/InC.white.svg" title="In Copyright" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
-		</p>
-	{% endif %}
-	{% if data.rights_statements in ['In Copyright - EU Orphan Work'] %} 
-		<p>
-		<a href="http://rightsstatements.org/vocab/InC-OW-EU/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-OW-EU.white.svg" title="In Copyright - EU Orphan Work" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
-		</p>
-	{% endif %}
-	{% if data.rights_statements in ['In Copyright - Educational Use Permitted'] %} 
-		<p>
-		<a href="http://rightsstatements.org/vocab/InC-EDU/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-EDU.white.svg" title="In Copyright - Educational Use Permitted" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
-		</p>
-	{% endif %}
-	{% if data.rights_statements in ['In Copyright - Non-Commercial Use Permitted'] %} 
-		<p>
-		<a href="http://rightsstatements.org/vocab/InC-NC/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-NC.white.svg" title="In Copyright - Non-Commercial Use Permitted" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
-		</p>
-	{% endif %}
-	{% if data.rights_statements in ['In Copyright - Rights-holder(s) Unlocatable or Unidentifiable'] %} 
-		<p>
-		<a href="http://rightsstatements.org/vocab/InC-RUU/1.0/"><img src="https://rightsstatements.org/files/buttons/InC-RUU.white.svg" title="In Copyright - Rights-holder(s) Unlocatable or Unidentifiable" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
-		</p>
-	{% endif %}
-	{% if data.rights_statements in ['No Copyright - Contractual Restrictions'] %} 
-		<p>
-		<a href="http://rightsstatements.org/vocab/NoC-CR/1.0/"><img src="https://rightsstatements.org/files/buttons/NoC-CR.white.svg" title="No Copyright - Contractual Restrictions" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
-		</p>
-	{% endif %} 
-	{% if data.rights_statements in ['No Copyright - Non-Commercial Use Only'] %} 
-		<p>
-		<a href="http://rightsstatements.org/vocab/NoC-NC/1.0/"><img src="https://rightsstatements.org/files/buttons/NoC-NC.white.svg" title="No Copyright - Non-Commercial Use Only" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
-		</p>
-	{% endif %}
-	{% if data.rights_statements in ['No Copyright - Other Known Legal Restrictions'] %} 
-		<p>
-		<a href="http://rightsstatements.org/vocab/NoC-OKLR/1.0/"><img src="https://rightsstatements.org/files/buttons/NoC-OKLR.white.svg" title="No Copyright - Other Known Legal Restrictions" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
-		</p>
-	{% endif %}
-	{% if data.rights_statements in ['No Copyright - United States'] %} 
-		<p>
-		<a href="http://rightsstatements.org/vocab/NoC-US/1.0/"><img src="https://rightsstatements.org/files/buttons/NoC-US.white.svg" title="No Copyright - United States" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
-		</p>
-	{% endif %} 
-	{% if data.rights_statements in ['Copyright Not Evaluated'] %} 
-		<p>
-		<a href="http://rightsstatements.org/vocab/CNE/1.0/"><img src="https://rightsstatements.org/files/buttons/CNE.white.svg" title="Copyright Not Evaluated" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
-		</p>
-	{% endif %}
-	{% if data.rights_statements in ['Copyright Undetermined'] %} 
-		<p>
-		<a href="http://rightsstatements.org/vocab/UND/1.0/"><img src="https://rightsstatements.org/files/buttons/UND.white.svg" title="Copyright Undetermined" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
-		</p>
-	{% endif %}
-	{% if data.rights_statements in ['No Known Copyright'] %} 
-		<p>
-		<a href="http://rightsstatements.org/vocab/NKC/1.0/"><img src="https://rightsstatements.org/files/buttons/NKC.white.svg" title="No Known Copyright" style="max-width:200px;height:auto;background-color:pink ;padding:1em"></a>
-		</p>
-	{% endif %}
-{% endif %}
-{% endif %}
-<h2>Type of Resource</h2>
-	<p>{{ data.type }}</p>
-{% if data.language|length > 0 %}
-<h2>Language</h2>
-<p>
-	{% if data.language is iterable %}
-		{% for language in data.language %}
-			{{ language }} <br>
-		{% endfor %}
-	{% else %}
-		{{ data.language }} <br>
-	{% endif %} 
-</p>
-{% endif %} 
-{#- Beginning of Additional Information Collapsible Section -#}
-{# Some elements referenced in this section may not be present/mapped in your repository environment. 
-Please edit or remove if desired. #}
-{% if data.note|length > 0 or
-    data.note_publishinginfo|length > 0 or
-	data.physical_location|length > 0 or
-	data.physical_description_extent|length > 0 or
-    data.physical_description_note_condition|length > 0 or
-	data.subjects_local|length > 0 or 
-	data.subjects_local_names|length > 0 or
-	data.related_item_host_display_label|length > 0 or
-	data.related_item_host_local_identifier|length > 0 or
-	data.related_item_host_title_info_title|length > 0 or
-	data.related_item_host_location_url|length > 0 or
-    data.related_item_host_type_of_resource|length > 0 or
-	data.related_item_note|length > 0
-%}
-<h2>Additional Information</h2>
-<div id="additionalInformation" class="accordion">
-	{% if data.note|length > 0 or
-	data.note_publishinginfo|length > 0
-	%}
-<div class="accordion-item">
-  <div class="accordion-header" id="Notes">
-    <h5 class="mb-0">
-      <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Note(s)
-      </button>
-    </h5>
-  </div>
-  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion" data-parent="#accordion">
-    <div class="accordion-body">
-		{% if data.note|length > 0 %}
-		<h6>General note: </h6>
-			{% if data.note is iterable %}
-				{% for note in data.note %}
-				<p>{{ note }}</p>
-				{% endfor %}
-			{% else %}
-				<p>{{ data.note }}</p>
-			{% endif %}
-		{% endif %}  			
-		{% if data.note_publishinginfo|length > 0 %}
-		<h6>Publishing Info Note: </h6>
-			{% if data.note_publishinginfo is iterable %}
-				{% for note_publishinginfo in data.note_publishinginfo %}
-					<p>{{ note_publishinginfo }}</p>
-				{% endfor %}
-			{% else %}
-				   <p>{{ data.note_publishinginfo }}</p>
-			{% endif %} 
-		{% endif %}		
-    </div>
-  </div>
-</div>
-	{% endif %} 
-    {% if data.physical_location|length > 0 or
-	data.physical_description_extent|length > 0 or
-    data.data.physical_description_note_condition|length > 0
-    %}
-  <div class="accordian-item">
-    <div id="PhysicalDescription" class="accordion-header">
-      <h5 class="mb-0">
-        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Physical Description
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion" data-parent="#accordion">
-       <div class="accordion-body">
- 	 	{% if data.physical_location|length > 0 %}
-			<h6>Physical location: </h6><p>{{ data.physical_location }}</p>
-		{% endif %} 
- 	 	{% if data.physical_description_extent|length > 0 %}
-			<h6>Extent: </h6><p>{{ data.physical_description_extent }}</p>
-		{% endif %} 
- 	 	{% if data.physical_description_note_condition|length > 0 %}
-			<h6>Condition Note: </h6><p>{{ data.physical_description_note_condition }}</p>
-		{% endif %} 
-	  	</div>
-      </div>
-    </div>
-	{% endif %} 
-	{% if data.subjects_local|length > 0 or data.subjects_local_names|length > 0 %}
-  <div class="accordian-item">
-    <div id="LocalSubjectsNames" class="accordian-header">
-      <h5 class="mb-0">
-        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Local Subjects & Names
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion" data-bs-parent="#accordion">
-       <div class="accordian-body">
-		{% if data.subjects_local %}
-			<ul>
-			{% if data.subjects_local is iterable %}
-				{% for subjects_local in data.subjects_local %}
-			<li>{{ subjects_local }}</li>
-				{% endfor %}
-			{% else %}
-			<li>{{ data.subjects_local }}</li>
-			{% endif %} 
-           </ul>
-		{% endif %}		
-		{% if data.subjects_local_personal_names %}
-			<ul>
-			{% if data.subjects_local_personal_names is iterable %}
-				{% for subjects_local_personal_names in data.subjects_local_personal_names %}
-			<li>{{ subjects_local_personal_names }}</li>
-				{% endfor %}
-			{% else %}
-			<li>{{ data.subjects_local_personal_names }}</li>
-			{% endif %} 
-           </ul>
-		{% endif %}		
-        </div>
-      </div>
-    </div>
-  {% endif %}
-{#- Related Item Notes section: -#}
-{% if data.related_item_host_display_label|length > 0 or
-	data.related_item_host_local_identifier|length > 0 or
-	data.related_item_host_title_info_title|length > 0 or
-	data.related_item_host_location_url|length > 0 or
-    data.related_item_host_type_of_resource|length > 0 or
-	data.related_item_note|length > 0 %} 
-<div class="accordian-item">
-  <div id="RelatedItem" class="accordion-header">
-    <h5 class="mb-0">
-      <button class="accordion-button" data-bs-toggle="collapse" data-toggle="collapse" data-bs-target="#collapseFour" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Related Item Notes
-      </button>
-    </h5>
-  </div>
-  <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-bs-parent="#accordion" data-parent="#accordion">
-    <div class="accordian-body">
- 		{% if data.related_item_host_display_label|length > 0 and data.related_item_host_title_info_title|length > 0 %}
-			<h6>{{ data.related_item_host_display_label }}: </h6><p>{{ data.related_item_host_title_info_title }}</p>
-		{% endif %} 
- 		{% if data.related_item_host_display_label|length < 0 and data.related_item_host_title_info_title|length > 0 %}
-        	<h6>Related Item Host Title Info: </h6><p>{{ data.related_item_host_title_info_title }}</p>
-        {% endif %}
- 	 	{% if data.related_item_host_local_identifier|length > 0 %}
-			<h6>Related Item Host Local Identifier: </h6><p>{{ data.related_item_host_local_identifier }}</p>
-        {% endif %}     
- 	 	{% if data.related_item_host_location_url|length > 0 %}
-			<h6>Related Item Host Location URL: </h6><p>{{ data.related_item_host_location_url }}</p>
-		{% endif %}
-        {% if data.related_item_host_type_of_resource|length > 0 %}
-			<h6>Related Item Host Type of Resource: </h6><p>{{ data.related_item_host_type_of_resource }}</p>
-		{% endif %} 
-        {% if data.related_item_note|length > 0 %}
-			<h6>Related Item Note: </h6><p>{{ data.related_item_note }}</p>
-		{% endif %} 
-    </div>	
-  </div>
-</div>
-{% endif %}
-</div>
-{% endif %}
-{#- End of Additional Information Collapsible Section -#}
-<br>
-<div class="dropdown">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" data-toggle="dropdown">
-  Download Metadata
-  </button>
-  <div class="dropdown-menu">
-    <a download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/mods/{{ (data.label|trim ~ '_mods')|url_encode }}.xml">MODS 3.7</a>
-    <a download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/dc/{{ (data.label|trim ~ '_dc')|url_encode }}.xml">Dublin Core</a>   
-    <a download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/geojson/{{ (data.label|trim ~ '_geojson')|url_encode }}.json">GeoJSON</a>
-    {% if data.type not in ['Collection','CreativeWorkSeries'] %}
-    <a rel="nofollow" download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifest/{{ (data.label|trim ~ '_manifest')|url_encode }}.jsonld">IIIF Presentation Manifest 3.0</a>
-    <a rel="nofollow" download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifestv2/{{ (data.label|trim ~ '_manifestv2')|url_encode }}.jsonld">IIIF Presentation Manifest 2.1</a>
-    {% elseif data.type == 'CreativeWorkSeries' %}
-     <a rel="nofollow" download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifest3cws/{{ (data.label|trim ~ '_manifest')|url_encode }}.jsonld">IIIF Presentation Manifest 3.0</a>
-    {% else %}
-    <a rel="nofollow" download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifest3collection/{{ (data.label|trim ~ '_manifest')|url_encode }}.jsonld">IIIF Presentation Manifest 3.0</a>
-    {% endif %}
-  </div>
-</div>
-<p>
-{% if data.type in ['Collection'] %}
-	<h2><span class="align-middle">Direct Link to Digital Object's IIIF Collection Manifest </span><img src="https://iiif.io/img/logo-iiif-34x30.png"></h2>
-	{% set iiifmanifest =   nodeurl|render ~ "/metadata/iiifmanifest3collection/default.jsonld" %}
-		<input type="text" value="{{ iiifmanifest }}" id="iiifmanifest_copy" size="{{ iiifmanifest|length }}" class="form-control mw-100">
-{% else %}
-{% if attribute(data, 'as:image')|length > 0  or attribute(data, 'as:document')|length > 0  %}
-	<h2><span class="align-middle">Direct Link to Digital Object's IIIF Presentation Manifest V3 </span><img src="https://iiif.io/img/logo-iiif-34x30.png"></h2>
-    {{ clipboard_copy('copy-content','',"Copy Link to Digital Object's IIIF Presentation Manifest V3") }}
-	{% set iiifmanifest =   nodeurl|render ~ "/metadata/iiifmanifest/default.jsonld" %}
-		<input type="text" value="{{ iiifmanifest }}" id="iiifmanifest_copy" size="{{ iiifmanifest|length }}" class="form-control col-xs-3 col-lg-8 copy-content">
-	{% endif %}
+    {% if attribute(data, 'as:document')|length < 10 and attribute(data, 'as:document')|length > 0 %} 
+	   <li><hr class="dropdown-divider"></li> 
+       <li><h2 class="dropdown-header">{{ download_file_doc }}</h2></li> 
+      {% for singledocument in attribute(data, 'as:document') %} 
+		<li><a download rel="nofollow" class="dropdown-item" href="/do/{{ node.uuid.value }}/file/{{ singledocument['dr:uuid'] }}/download/{{ singledocument.name }}" target="_blank">{{ singledocument.name }}</a></li> 
+	  {% endfor %} 
+    {% endif %} 
+    {% if attribute(data, 'as:text')|length < 10 and attribute(data, 'as:text')|length > 0 %} 
+	   <li><hr class="dropdown-divider"></li> 
+       <li><h2 class="dropdown-header">{{ download_file_text }}</h2></li> 
+      {% for singletext in attribute(data, 'as:text') %} 
+		<li><a download rel="nofollow" class="dropdown-item" href="/do/{{ node.uuid.value }}/file/{{ singletext['dr:uuid'] }}/download/{{ singletext.name }}" target="_blank">{{ singletext.name }}</a></li> 
+	  {% endfor %} 
+    {% endif %} 
+    {% if attribute(data, 'as:image')|length <= 10 and attribute(data, 'as:image')|length > 0 %} 
+	   <li><hr class="dropdown-divider"></li> 
+       <li><h2 class="dropdown-header">{{ download_file_img }}</h2></li> 
+      {% for singleimage in attribute(data, 'as:image') %} 
+		<li><a download rel="nofollow" class="dropdown-item" href="/do/{{ node.uuid.value }}/file/{{ singleimage['dr:uuid'] }}/download/{{  singleimage.name }}" target="_blank">{{ singleimage.name }}</a></li> 
+	  {% endfor %} 
+    {% endif %} 
+    {% if attribute(data, 'as:video')|length <= 10 and attribute(data, 'as:video')|length > 0 %} 
+	   <li><hr class="dropdown-divider"></li> 
+       <li><h2 class="dropdown-header">{{ download_file_video }}</h2></li> 
+      {% for singlevideo in attribute(data, 'as:video') %} 
+		<li><a download rel="nofollow" class="dropdown-item" href="/do/{{ node.uuid.value }}/file/{{ singlevideo['dr:uuid'] }}/download/{{ singlevideo.name }}" target="_blank">{{ singlevideo.name }}</a></li> 
+	  {% endfor %} 
+    {% endif %} 
+    {% if attribute(data, 'as:audio')|length <= 10 and attribute(data, 'as:audio')|length > 0 %} 
+	   <li><hr class="dropdown-divider"></li> 
+       <li><h2 class="dropdown-header">{{ download_file_audio }}</h2></li> 
+      {% for singleaudio in attribute(data, 'as:audio') %} 
+		<li><a download rel="nofollow" class="dropdown-item" href="/do/{{ node.uuid.value }}/file/{{ singleaudio['dr:uuid'] }}/download/{{ singleaudio.name }}" target="_blank">{{ singleaudio.name }}</a></li> 
+	  {% endfor %} 
+    {% endif %} 
+  {% endif %} 
+  {% endset %} 
+{# -- Main Object Description Display Template : Primary Nav-tab -- #} 
+<nav> 
+  <ul class="nav nav-tabs" id="nav-tab" role="tablist"> 
+  <li class="nav-item"> 
+    <button class="nav-link active" id="nav-en-tab" data-bs-toggle="tab" data-bs-target="#nav-en" type="button" role="tab" aria-controls="nav-en" aria-selected="false">Description</button> 
+  </li> 
 
-{% endif %}
-{% if logged_in %} 
-<p>
-<p>
-<h2>Administrative Information</h2>
-<p><i>Please note, this information is only being display for Logged In Users.</i></p> 
-{% if data.date_published|length > 0 %}
-<h2>Date of Digital</h2>
-	<p>{{ data.date_published }}</p>
-{% endif %}
-{% if data.local_identifier|length > 0 %}
-<h2>Identifier</h2>
-	<ul>
-    {% if data.local_identifier is iterable %}
-		{% for identifier in data.local_identifier %}
-		<li>{{ identifier }}</li>
-		{% endfor %}
-	{% else %}
-		<li>{{ data.local_identifier }}</li>
+{# evaluate download restriction here #} 
+  <li class="nav-item dropdown"> 
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{{ download_label }}</a> 
+    <ul class="dropdown-menu"> 
+      <li><h2 class="dropdown-header">{{ download_metadata_label }}</h2></li> 
+      <li><hr class="dropdown-divider"></li> 
+      {{ downloadlist }} 
+    </ul> 
+  </li> 
+{# End evaluate download restriction here #} 
+</ul> 
+</nav> 
+<div class="tab-pane fade show active" id="nav-en" role="tabpanel" aria-labelledby="nav-en-tab"> 
+{# Collection, Part of membership section #} 
+{% if attribute(data, 'ismemberof') %} 
+<h3>Part of Collection</h3> 
+{% if attribute(data, 'ismemberof') is iterable %} 
+	{% for collection in attribute(data, 'ismemberof')%} 
+		{% set parentnode = bamboo_load_entity('node', collection) %} 
+        {% if parentnode %} 
+		  {% set parentnodeurl = url('entity.node.canonical', {'node': collection}, {'absolute': true}) %} 
+			<a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a> 
+        {% endif %} 
+	{% endfor %} 
+	{% else %} 
+		{% set parentnode = bamboo_load_entity('node', attribute(data, 'ismemberof')) %} 
+        {% if parentnode %} 
+		  {% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ismemberof')}, {'absolute': true}) %} 
+			<a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a> 
+        {% endif %} 
+{% endif %} 
+{% endif %} 
+{% if attribute(data, 'ispartof') %} 
+<h3>Part Of</h3> 
+{% if attribute(data, 'ispartof') is iterable %} 
+	{% for child in attribute(data, 'ispartof')%} 
+		{% set parentnode = bamboo_load_entity('node', child) %} 
+        {% if parentnode %} 
+		  {% set parentnodeurl = url('entity.node.canonical', {'node': child}, {'absolute': true}) %} 
+			<a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a> 
+        {% endif %} 
+	{% endfor %} 
+	{% else %} 
+		{% set parentnode = bamboo_load_entity('node', attribute(data, 'ispartof')) %} 
+        {% if parentnode %} 
+		  {% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ispartof')}, {'absolute': true}) %} 
+			<a href="{{ parentnodeurl }}">{{  parentnode.title.value }}</a> 
+        {% endif %} 
+{% endif %} 
+{% endif %} 
+{# End of Collection, Part of membership section #} 
+{{ _self.html_output("Title", data.label) }} 
+{{ _self.html_output("URL of Original Website", data.website_url) }} 
+{% if data.creator|length > 0 or data.creator_lod|length > 0 %} 
+<h3>Creators/Contributors</h3> 
+<div class="field-content"> 
+<ul> 
+	{% if data.creator %} 
+	{% if data.creator is iterable %} 
+		{% for creator in data.creator %} 
+  	<li class="nav-item" style="padding:3px;margin-top:4px;"><a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_agent_labels%3A{{ creator|url_encode }}" target="_blank" >{{ creator }}</a> 
+		{% endfor %} 
+	{% else %} 
+  	<li class="nav-item" style="padding:3px;margin-top:4px;"><a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_agent_labels%3A{{ creator|url_encode }}" target="_blank" >{{ creator }}</a> 
+    {% endif %} 
 	{% endif %} 
-	</ul>    
-{% endif %}
-<p>
-{% if attribute(data, 'as:document')|length < 10 and attribute(data, 'as:document')|length > 0 %}
-<h2>Files referenced in this Digital Object</h2>
-<ul>
-	{% for document in attribute(data, 'as:document') %}
-		<li><a download href="/do/{{ node.id }}/iiif/{{ document['dr:uuid'] }}/full/full/0/{{  document.name }}" target="_blank">Download {{ document.name }}</a></li>
-	{% endfor %}
-</ul>
-{% endif %}
-{% if attribute(data, 'as:document')|length > 10 %}
-<h2>Files referenced in this Digital Object</h2>
-<p>This Digital Object is comprised of more than 10 Files. Please access the individual files via an Adminstrator interface.</p>
-{% endif %}
-{% if attribute(data, 'as:image')|length <= 10 and attribute(data, 'as:image')|length > 0 %}
-<h2>Images in this Digital Object</h2>
-<ul>
-	{% for singleimage in attribute(data, 'as:image') %}
-		<li><a href="/do/{{ node.id }}/iiif/{{ singleimage['dr:uuid'] }}/full/full/0/{{  singleimage.name }}" target="_blank">Download Image {{ singleimage.name }}</a></li>
-	{% endfor %}
-</ul>
-{% endif %}
-{% if attribute(data, 'as:image')|length > 10 %}
-<h2>Images in this Digital Object</h2>
-<p>This Digital Object is comprised of more than 10 Image Files. Please access the individual files via an Adminstrator interface.</p>
-{% endif %}
-{% endif %}
+	{% for creator_lod in data.creator_lod %} 
+  	<li class="nav-item" style="padding:3px;margin-top:4px;">{{ creator_lod.role_label }}: <a href="/search?search_api_fulltext=&sort_by=changed&sort_order=DESC&items_per_page=25&f%5B0%5D=descriptive_metadata_agent_labels%3A{{ creator_lod.name_label|url_encode }}" target="_blank" >{{ creator_lod.name_label }}</a> 
+    {% if creator_lod.name_uri|length > 2 %} 
+    	<span class="badge badge-primary badge-pill"><a class="nav-link active" href="{{ creator_lod.name_uri }}" target="_blank" ><i class="fas fa-link fa-1x"></i></a></span> 
+        {% endif %} 
+    </li> 
+	{% endfor %} 
+	</ul> 
+</div> 
+{% endif %} 
+{{ _self.html_output('Description', data.description, '', true) }} 
+{% set all_date_created = [] %} 
+{% if data.date_created_edtf.date_free|length > 0  %} 
+  {% set all_date_created = all_date_created|merge([data.date_created_edtf.date_free|trim|edtf_2_human_date('en')]) %} 
+{% endif %} 
+{% if ((data.date_created is defined and not empty) and (data.date_created is not iterable and data.date_created|trim|length > 0)) %} 
+  {% set all_date_created = all_date_created|merge([data.date_created]) %} 
+{% endif %} 
+{% if ((data.date_created_free is defined and not empty) and (data.date_created_free is not iterable and data.date_created_free|trim|length > 0))  %} 
+    {% set all_date_created = all_date_created|merge([data.date_created_free]) %} 
+{% endif %} 
+{% if all_date_created|length > 0 %} 
+<h3>Date Created</h3> 
+  {% for date_created in all_date_created  %} 
+<p>{{ date_created }}</p> 
+  {% endfor %} 
+{% endif %} 
+{# End of Date Created Advanced Example #} 
+{# Date Issued mapping #} 
+{% set all_date_issued = [] %} 
+{% if data.date_issued_edtf.date_free|length > 0  %} 
+  {% set all_date_issued = all_date_issued|merge([data.date_issued_edtf.date_free|trim|edtf_2_human_date('en')]) %} 
+{% endif %} 
+{% if ((data.date_issued is defined and not empty) and (data.date_issued is not iterable and data.date_issued|trim|length > 0)) %} 
+  {% set all_date_issued = all_date_issued|merge([data.date_issued]) %} 
+{% endif %} 
+{% if ((data.date_issued_free is defined and not empty) and (data.date_issued_free is not iterable and data.date_issued_free|trim|length > 0))  %} 
+     {% set all_date_issued = all_date_issued|merge([data.date_issued_free]) %} 
+{% endif %} 
+{% if all_date_issued|length > 0 %} 
+<h3>Date Issued</h3> 
+  {% for date_issued in all_date_issued  %} 
+<p>{{ date_issued }}</p> 
+  {% endfor %} 
+{% endif %} 
+{{ _self.html_output('Type', data.type, 'p') }} 
+{{ _self.html_output('Duration', data.duration, 'p') }} 
+{{ _self.html_output_list('Publisher', data.publisher) }} 
+{{ _self.html_output('Rights', data.rights, '', true) }} 
+{{ _self.html_output('Owning institution', data.nowner, 'p') }} 
+{{ _self.html_output('Language', data.language, 'p') }} 
+{{ _self.html_output('Note', data.note, 'p') }} 
+{{ _self.html_output('Physical Description Extent', data.physical_description_extent, 'p') }} 
+{{ _self.html_output('Related Item', data.related_item_host_title_info_title, 'p') }} 
+{{ _self.html_output_search("Local Subjects", data.subjects_local, "descriptive_metadata_subjects") }} 
+{{ _self.html_output_search("Local Personal Names", data.subjects_local_personal_names, "descriptive_metadata_subjects") }} 
+{# Still part of nav-tab for Additional Information #} 
+{% if logged_in %} 
+<h3>Administrative Information</h3> 
+<p><i>This information is only being display for Logged In Users.</i></p> 
+{{ _self.html_output('Local Identifier', data.local_identifier, 'p') }} 
+{% endif %} 
+</div>{# Closes Main Content Nav-tab #} 
