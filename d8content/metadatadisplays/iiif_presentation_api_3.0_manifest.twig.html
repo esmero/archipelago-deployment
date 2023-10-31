@@ -151,7 +151,7 @@ Without Double quotes.
       }, 
       "value":  { 
         "{{ len }}": [ 
-          "{{ node.getChangedTime|date("F jS \a\t g:ia") }}" 
+          {{ node.getChangedTime|date("F jS \\a\\t g:ia")|json_encode|raw }}
         ] 
       } 
     }, 
