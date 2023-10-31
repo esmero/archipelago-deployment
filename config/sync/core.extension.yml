@@ -1,6 +1,9 @@
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
+  search_api: 0
+  search_api_autocomplete: 0
+  search_api_solr: 0
   action: 0
   aggregator: 0
   ami: 0
@@ -72,7 +75,6 @@ module:
   jquery_ui_slider: 0
   jquery_ui_touch_punch: 0
   jsonapi: 0
-  jsonapi_earlyrendering_workaround: 0
   language: 0
   layout_discovery: 0
   link: 0
@@ -96,9 +98,6 @@ module:
   restui: 0
   role_theme_switcher: 0
   s3fs: 0
-  search_api: 0
-  search_api_autocomplete: 0
-  search_api_solr: 0
   serialization: 0
   settings_tray: 0
   shortcut: 0
