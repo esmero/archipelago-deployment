@@ -16,7 +16,7 @@ archive: false
 id: template_feedback
 title: Feedback
 description: 'A basic feedback template.'
-category: ''
+categories: {  }
 elements: |
   type:
     '#title': 'Type of Feedback'

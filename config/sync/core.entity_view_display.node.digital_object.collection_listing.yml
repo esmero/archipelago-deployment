@@ -19,11 +19,11 @@ third_party_settings:
   ds:
     layout:
       id: layout_onecol
-      settings:
-        label: ''
       library: layout_discovery/onecol
       disable_css: false
       entity_classes: all_classes
+      settings:
+        label: ''
     regions:
       content:
         - node_title

@@ -22,6 +22,7 @@ settings:
   provider: views
   views_label: ''
   items_per_page: '4'
+  exposed: {  }
 visibility:
   request_path:
     id: request_path

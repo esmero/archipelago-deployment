@@ -41,7 +41,7 @@ tips:
     label: Tracker
     weight: 4
     selector: '#edit-tracker'
-    body: 'An index''s tracker is the system that keeps track of which items there are available for the index, and which of them still need to be indexed. Changing the tracker of an existing index will lead to reindexing of all items.'
+    body: "An index's tracker is the system that keeps track of which items there are available for the index, and which of them still need to be indexed. Changing the tracker of an existing index will lead to reindexing of all items."
   search-api-index-form-server:
     id: search-api-index-form-server
     plugin: text

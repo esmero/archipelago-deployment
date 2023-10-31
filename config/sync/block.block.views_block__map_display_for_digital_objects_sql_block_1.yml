@@ -23,6 +23,7 @@ settings:
   context_mapping: {  }
   views_label: ''
   items_per_page: none
+  exposed: {  }
 visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'

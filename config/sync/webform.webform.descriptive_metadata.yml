@@ -12,8 +12,9 @@ template: false
 archive: false
 id: descriptive_metadata
 title: 'Default Descriptive Metadata'
-description: 'Default Descriptive Metadata Webform: 1.1.0.'
-category: Archipel
+description: 'Default Descriptive Metadata Webform: 1.3.0.'
+categories:
+  - Archipelago
 elements: |-
   metadata:
     '#type': webform_wizard_page

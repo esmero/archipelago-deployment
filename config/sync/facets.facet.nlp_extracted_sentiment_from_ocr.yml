@@ -33,9 +33,9 @@ widget:
     prefix: ''
     suffix: ''
     min_type: fixed
-    min_value: !!float -1
+    min_value: -1.0
     max_type: fixed
-    max_value: !!float 1
+    max_value: 1.0
     step: 0.5
 empty_behavior:
   behavior: none

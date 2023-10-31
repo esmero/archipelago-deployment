@@ -12,8 +12,9 @@ template: false
 archive: false
 id: digital_object_collection
 title: 'Default Digital Object Collection'
-description: 'Default Digital Object Collection Webform: 1.1.0.'
-category: Archipel
+description: 'Default Digital Object Collection Webform: 1.3.0.'
+categories:
+  - Archipelago
 elements: |-
   metadata:
     '#type': webform_wizard_page

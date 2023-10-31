@@ -15,11 +15,11 @@ third_party_settings:
   ds:
     layout:
       id: layout_twocol
-      settings:
-        label: ''
       library: layout_discovery/twocol
       disable_css: false
       entity_classes: all_classes
+      settings:
+        label: ''
     regions:
       top:
         - node_title

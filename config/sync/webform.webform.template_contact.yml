@@ -16,7 +16,7 @@ archive: false
 id: template_contact
 title: 'Contact Us'
 description: 'A basic contact webform template.'
-category: ''
+categories: {  }
 elements: |
   name:
     '#title': 'Your Name'

@@ -23,6 +23,7 @@ settings:
   provider: views
   views_label: ''
   items_per_page: none
+  exposed: {  }
 visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'

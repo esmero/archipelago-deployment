@@ -16,3 +16,4 @@ source_entityfield_name: null
 metadatadisplayentity_uuid: ad7aab5a-4bb3-43f2-8328-2b62895a3821
 cache: true
 active: true
+hide_on_embargo: false

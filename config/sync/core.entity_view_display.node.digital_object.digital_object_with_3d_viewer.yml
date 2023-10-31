@@ -56,9 +56,9 @@ third_party_settings:
             max_height: '720'
             use_iiif_globals: '1'
             number_models: 1
+            invert_up_axis: true
             upload_json_key_source: ''
             embargo_json_key_source: ''
-            invert_up_axis: '1'
       'display_field_copy:node-formatted_metadata':
         plugin_id: 'display_field_copy:node-formatted_metadata'
         weight: 3

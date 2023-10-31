@@ -20,13 +20,13 @@ third_party_settings:
   ds:
     layout:
       id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
         label: ''
-      library: null
-      disable_css: false
-      entity_classes: all_classes
     regions:
       ds_content:
         - node_changed_date

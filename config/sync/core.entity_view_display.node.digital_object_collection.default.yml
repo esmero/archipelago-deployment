@@ -14,6 +14,9 @@ third_party_settings:
   ds:
     layout:
       id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
       settings:
         classes:
           layout_class: {  }
@@ -24,9 +27,6 @@ third_party_settings:
         link_attribute: ''
         link_custom: ''
         label: ''
-      library: null
-      disable_css: false
-      entity_classes: all_classes
     regions:
       ds_content:
         - field_descriptive_metadata
@@ -72,16 +72,16 @@ content:
       webannotations_tool: polygon
       webannotations_opencv: false
       webannotations_betterpolygon: false
+      webannotations_georeferencewidget: false
       use_iiif_globals: '1'
       iiif_group: true
       thumbnails: true
       upload_json_key_source: ''
       embargo_json_key_source: ''
-      metadataexposeentity_source_required: false
-      webannotations_georeferencewidget: false
-      viewer_overrides: ''
       mediasource: null
       main_mediasource: null
+      viewer_overrides: ''
+      metadataexposeentity_source_required: false
       metadataexposeentity_source: null
       manifestnodelist_json_key_source: isrelatedto
       manifesturl_json_key_source: iiifmanifest
