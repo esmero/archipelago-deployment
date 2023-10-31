@@ -1,6 +1,6 @@
-{# This Template generates Thumbnails for various Media representations
-
-Updated 07/08/2022 for 1.0.0
+{# 
+This Template generates Thumbnails for various Media representations
+Updated 31/10/2023 for 1.3.0 
 
 Structures passed from Archipelago are
 - node
@@ -38,7 +38,6 @@ Without Double quotes.
 3.- Movies
 #}
 {% apply spaceless %}    
-{% spaceless %}
 {% if attribute(data, 'as:image')|length > 0 %}  
   {% set document  = data['as:image']|first %} 
   {# if the default size is smaller than the source use the source one #}
@@ -47,24 +46,28 @@ Without Double quotes.
   {% endif %}
   {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %}
   {% set source = cantaloupeid ~ "/full/" ~ width  ~ ",/0/default.jpg" %}
-{% elseif attribute(data, 'as:document')|length > 0 %}  
+{% elseif attribute(data, 'as:document')|length > 0 %}
   {% set break = false %}
-  {% for document in data['as:document'] if not break %}
+  {% for document in data['as:document'] %}
+    {% if not break %}
   {# this is just an example, we  allow every PDF here but we can also filter by pronom id "info:pronom/fmt/17" or info:pronom/fmt/18 #}
-    {% if document['flv:exif'].MIMEType == "application/pdf" and document['flv:exif'].PageCount > 0 %}   
-      {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %} 
-      {% set source = cantaloupeid ~ "/full/" ~ width  ~ ",/0/default.jpg?page=1" %}
-      {% set break = true %}
+      {% if document['flv:exif'].MIMEType == "application/pdf" and document['flv:exif'].PageCount > 0 %}   
+        {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %} 
+        {% set source = cantaloupeid ~ ";1/full/" ~ width  ~ ",/0/default.jpg" %}
+        {% set break = true %}
+      {% endif%}
     {% endif%}
   {% endfor %}
 {% elseif attribute(data, 'as:video')|length > 0 %}  
   {% set break = false %}
-  {% for document in data['as:video'] if not break %}
+  {% for document in data['as:video'] %}
+    {% if not break %}
   {# this is just an example, we process here only MP4 quicktimes #}
-    {% if document['flv:pronom'].mimetype == "video/quicktime" %}
-      {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %} 
-      {% set source = cantaloupeid ~ ";1/full/" ~ width  ~ ",/0/default.jpg" %}
-      {% set break = true %}
+      {% if document['flv:pronom'].mimetype == "video/quicktime" %}
+        {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %} 
+        {% set source = cantaloupeid ~ ";1/full/" ~ width  ~ ",/0/default.jpg" %}
+        {% set break = true %}
+      {% endif %}
     {% endif %}
   {% endfor %}  
 {% endif%}
@@ -88,5 +91,4 @@ Without Double quotes.
   "height": 180
 }]
 {% endif %}
-{% endspaceless %}
 {% endapply %}
