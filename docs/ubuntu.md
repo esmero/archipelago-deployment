@@ -3,7 +3,7 @@
 title: "Installing Archipelago Drupal 9 on Ubuntu 18.04 or 20.04"
 tags:
   - Archipelago-deployment
-  - Drupal 9
+  - Drupal 10
   - Ubuntu 18.04
   - Ubuntu 20.04
 ---
@@ -110,7 +110,7 @@ Now that you got it, let's deploy:
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.1.0-iiif
+git checkout 1.3.0
 ```
 
 
@@ -151,7 +151,7 @@ pass:minio123
 
 and create a bucket named "archipelago". To do so go to the `Buckets` section in the navigation pane, and click `Create Bucket +`. Type `archipelago` under `Bucket Name` and submit, done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
-## Step 3: Deploy Drupal 9 and the awesome Archipelago Modules
+## Step 3: Deploy Drupal 10 and the awesome Archipelago Modules
 
 The following will run composer inside the esmero-php container to download all dependencies and Drupal Core too.
 

@@ -3,7 +3,7 @@
 title: "Installing Archipelago Drupal 9 on OSX (macOS)"
 tags:
   - Archipelago-deployment
-  - Drupal 9
+  - Drupal 10
   - macOS
   - OSX
 ---
