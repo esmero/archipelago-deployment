@@ -9,6 +9,7 @@ dependencies:
     - node.type.digital_object_collection
   module:
     - ds
+    - field_layout
     - format_strawberryfield
     - user
 third_party_settings:
@@ -75,13 +76,15 @@ content:
       manifestnodelist_json_key_source: isrelatedto
       manifesturl_json_key_source: iiifmanifest
       max_width: '0'
-      max_height: '512'
+      max_height: '720'
       use_iiif_globals: '1'
       upload_json_key_source: ''
       embargo_json_key_source: ''
+      hide_on_embargo: '0'
+      viewer_overrides: ''
     third_party_settings: {  }
     weight: 0
-    region: content
+    region: ds_content
 hidden:
   body: true
   content_moderation_control: true

@@ -66,7 +66,7 @@ bootstrap_barrio_sidebar_first_width: 2
 bootstrap_barrio_sidebar_first_offset: 0
 bootstrap_barrio_sidebar_second_width: 3
 bootstrap_barrio_sidebar_second_offset: 0
-bootstrap_barrio_button: 1
+bootstrap_barrio_button: 0
 bootstrap_barrio_button_size: ''
 bootstrap_barrio_button_outline: 0
 bootstrap_barrio_navbar_container: '0'
@@ -88,7 +88,7 @@ bootstrap_barrio_navbar_affix: 0
 bootstrap_barrio_sidebar_first_affix: 0
 bootstrap_barrio_sidebar_second_affix: 0
 bootstrap_barrio_scroll_spy: ''
-bootstrap_barrio_google_fonts: robot_cabin
+bootstrap_barrio_google_fonts: roboto
 bootstrap_barrio_bootstrap_icons: 0
 bootstrap_barrio_icons: fontawesome
 bootstrap_barrio_system_messages: ''
@@ -109,3 +109,4 @@ bootstrap_barrio_container: container-fluid
 bootstrap_barrio_breadcrumb_divider: ''
 bootstrap_barrio_button_type: primary
 bootstrap_barrio_float_label: 0
+bootstrap_barrio_enable_color: 0

@@ -57,6 +57,10 @@ third_party_settings:
             mediasource: metadatadisplayentity
             metadatadisplayentity_uuid: 05fe574d-7534-4261-b49b-895b94ac3fce
             manifesturl_source: ''
+            upload_json_key_source: ''
+            embargo_json_key_source: ''
+            hide_on_embargo: '0'
+            textselection: false
       'display_field_copy:node-formatted_metadata':
         plugin_id: 'display_field_copy:node-formatted_metadata'
         weight: 3
