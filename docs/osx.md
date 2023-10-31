@@ -9,7 +9,7 @@ tags:
 ---
 documentation-->
 
-# Installing Archipelago Drupal 9 on OSX (macOS)
+# Installing Archipelago Drupal 10 on OSX (macOS)
 
 ## About running terminal commands
 
@@ -26,8 +26,7 @@ Happy deploying!
 ### OSX (macOS):
 
 - [Install Docker for Mac](https://docs.docker.com/docker-for-mac/)
-  - For OSX (macOS) `Catalina` or `Big Sur` on Intel (i5/i7) the tested version is: `4.0.1(68347)`. You may go newer of course.
-  - For `Big Sur` and `Apple Silicon M1` Chips please read <https://docs.docker.com/docker-for-mac/apple-silicon/>. You may need to enable manual compatibility mode in your `docker-compose.yml` file for the `esmero-php` and `esmero-cantaloupe` containers.
+  - For OSX (macOS) `Ventura` or Higher on Intel (i5/i7) and Apple Silicon Chips (M1/M2/M3) the tested version is: `4.23.0(120376)`. You may go newer of course.
   - In `Preferences` -> `General`: check `Use gRPC FUSE for file sharing` and restart. Specially if you are using your `$HOME` folder for deploying, e.g. `/Users/username`.
   - In `Preferences` -> `Resources`: 4 Gbytes of RAM is the recommended minimun and works; 8 Gbytes is faster and snappier.
 - [Install Github Desktop](https://desktop.github.com).
@@ -82,7 +81,7 @@ Ok, now we are ready to start. Depending on what type of Chip your Apple uses yo
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.1.0-iiif
+git checkout 1.3.0
 cp docker-compose-osx.yml docker-compose.yml
 docker-compose pull
 docker-compose up -d
@@ -93,7 +92,7 @@ docker-compose up -d
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.1.0-iiif
+git checkout 1.3.0
 cp docker-compose-arm64.yml docker-compose.yml
 docker-compose pull
 docker-compose up -d
@@ -113,7 +112,7 @@ pass:minio123
 
 and once logged in, press on "Buckets" (left tools column) and then on "Create Bucket"  (top right) and under "Bucket Name" type `archipelago`. Leave all other options unchecked for now (you can experiment with those later), and make sure you write `archipelago` (no spaces, lowercase) and press "Save". Done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
-## Step 3: Deploy Drupal 9 and the awesome Archipelago Modules
+## Step 3: Deploy Drupal 10 and the awesome Archipelago Modules
 
 The following will run composer inside the esmero-php container to download all dependencies and Drupal Core too:
 
