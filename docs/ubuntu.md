@@ -228,8 +228,6 @@ _Installing Archipelago on AWS Ubuntu_ by [Zach Spalding](https://github.com/sen
 * [Diego Pino](https://github.com/DiegoPino)
 * [Allison Sherrick](https://github.com/alliomeria)
 * [Giancarlo Birello](https://github.com/giancarlobi)
-* [Katie Romabiles](https://github.com/karomabiles)
-* [Albert Min](https://github.com/aksm)
 
 ## License
 

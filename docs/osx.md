@@ -138,7 +138,7 @@ docker exec -ti -u www-data esmero-php bash -c "cd web;../vendor/bin/drush -y si
 
 Note: You will see this warning: `[warning] The "block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a" was not found`. Nothing to worry about. We will provide the missing part in Step 5.
 
-Note 2: Please be patient. This step takes now 25-30% longer because of how the most recent Drupal Installation code fetches translations and other resources (see `Performed install task`). This means progress might look like getting "stuck", go and get a coffee/tea and let it run to the end.
+Note 2: Please be patient. This step takes since composer 2.0 25-30% longer because of how the most recent Drupal Installation code fetches translations and other resources (see `Performed install task`). This means progress might look like getting "stuck", go and get a coffee/tea and let it run to the end.
 
 Once finished, this will give you an `admin` Drupal user with `archipelago` as password (Change this if running on a public instance!).
 
@@ -185,8 +185,6 @@ If you like this, let us know!
 * [Diego Pino](https://github.com/DiegoPino)
 * [Allison Sherrick](https://github.com/alliomeria)
 * [Giancarlo Birello](https://github.com/giancarlobi)
-* [Katie Romabiles](https://github.com/karomabiles)
-* [Albert Min](https://github.com/aksm)
 
 ## License
 

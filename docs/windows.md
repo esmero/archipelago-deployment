@@ -52,8 +52,6 @@ If you like this, let us know!
 * [Diego Pino](https://github.com/DiegoPino)
 * [Allison Lund](https://github.com/alliomeria)
 * [Giancarlo Birello](https://github.com/giancarlobi)
-* [Katie Romabiles](https://github.com/karomabiles)
-* [Albert Min](https://github.com/aksm)
 
 ## License
 
