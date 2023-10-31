@@ -1,6 +1,6 @@
 {
     "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 9 projects with composer",
+    "description": "Project template for Drupal 10/Archipelago projects with composer",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -20,9 +20,9 @@
         }
     ],
     "require": {
-        "php": ">=7.3",
-        "archipelago/ami": "0.5.0.x-dev",
-        "archipelago/archipelago_subtheme": "1.1.0.x-dev",
+        "php": ">=8.0",
+        "archipelago/ami": "0.7.0.x-dev",
+        "archipelago/archipelago_subtheme": "1.3.0.x-dev",
         "aws/aws-php-sns-message-validator": "^1.5",
         "aws/aws-sdk-php": "^3.63",
         "behat/mink": "^1.8",
@@ -34,32 +34,28 @@
         "drupal/bootstrap_barrio": "^5.5",
         "drupal/calendar": "^1.0@alpha",
         "drupal/redis": "^1.7",
-        "drupal/config_inspector": "dev-1.x",
-        "drupal/config_update": "^1.6",
-        "drupal/config_update_ui": "^1.6",
-        "drupal/context": "^4.0@beta",
-        "drupal/core": "^9",
-        "drupal/core-composer-scaffold": "^9",
-        "drupal/core-project-message": "^9",
-        "drupal/core-recommended": "^9",
-        "drupal/devel": "4.x-dev@dev",
+        "drupal/config_inspector": "^2",
+        "drupal/config_update": "2.0.x-dev",
+        "drupal/context": "^5.0@RC",
+        "drupal/core": "^10",
+        "drupal/core-composer-scaffold": "^10",
+        "drupal/core-project-message": "^10",
+        "drupal/core-recommended": "^10",
+        "drupal/devel": "^5.1",
         "drupal/display_field_copy": "^2.0",
         "drupal/ds": "dev-3.x",
-        "drupal/facets": "^2.0",
-        "drupal/fancy_file_delete": "^2.0",
+        "drupal/facets": "2.0.6",
         "drupal/field_permissions": "^1.0@RC",
         "drupal/file_mdm": "^2",
         "drupal/file_mdm_exif": "^2",
         "drupal/flag": "^4.0",
-        "drupal/form_mode_manager": "^2.0@RC",
         "drupal/google_api_client": "^4",
-        "drupal/imagemagick": "^3.1",
-        "drupal/imce": "^1.7",
+        "drupal/imagemagick": "^3",
+        "drupal/imce": "^3.0",
         "drupal/inline_entity_form": "1.x-dev",
-        "drupal/jquery_ui_datepicker": "^1.1",
-        "drupal/jquery_ui_slider": "^1.1",
-        "drupal/jquery_ui_touch_punch": "~1.0",
-        "drupal/jsonapi_earlyrendering_workaround": "^1.0",
+        "drupal/jquery_ui_datepicker": "^2.0",
+        "drupal/jquery_ui_slider": "^2.0",
+        "drupal/jquery_ui_touch_punch": "^1.0.1",
         "drupal/moderated_content_bulk_publish": "^2.0",
         "drupal/pathauto": "^1",
         "drupal/queue_ui": "^3.1",
@@ -69,21 +65,20 @@
         "drupal/s3fs": "3.x-dev",
         "drupal/schema_metatag": "^1.3",
         "drupal/search_api": "^1.2",
-        "drupal/search_api_attachments": "^1.0@beta",
+        "drupal/search_api_attachments": "^9.0",
         "drupal/search_api_autocomplete": "^1.2",
         "drupal/search_api_solr": "^4.2.10",
         "drupal/smtp": "^1.0",
         "drupal/tokenuuid": "^2.0",
         "drupal/twig_field": "^1.0",
-        "drupal/twig_tweak": "^2.6",
+        "drupal/twig_tweak": "^3.2",
         "drupal/views_bootstrap": "^5.4",
-        "drupal/views_bulk_operations": "4.1.2",
-        "drupal/webform": "^6.1.5",
-        "drupal/webform_entity_handler": "1.x-dev",
-        "drupal/webformnavigation": "^1.0@alpha",
+        "drupal/views_bulk_operations": "^4.2",
+        "drupal/webform": "6.2.0-RC3",
+        "drupal/webform_entity_handler": "^2.0",
+        "drupal/webformnavigation": "^2.0",
         "drupal/workflow": "^1.1",
-        "drush/drush": "10.5",
-        "fileeye/mimemap": "^1.1.1",
+        "drush/drush": "^12.4",
         "maennchen/zipstream-php": "^2.1",
         "mixnode/mixnode-warcreader-php": "^0.0.6",
         "ml/json-ld": "^1.0",
@@ -96,25 +91,38 @@
         "react/event-loop": "^1.1",
         "react/promise": "^2.7",
         "solarium/solarium": "^6.0",
-        "strawberryfield/format_strawberryfield": "1.1.0.x-dev",
-        "strawberryfield/strawberry_runners": "0.5.0.x-dev",
-        "strawberryfield/strawberryfield": "1.1.0.x-dev",
-        "strawberryfield/webform_strawberryfield": "1.1.0.x-dev",
+        "strawberryfield/format_strawberryfield": "1.3.0.x-dev",
+        "strawberryfield/strawberry_runners": "0.7.0.x-dev",
+        "strawberryfield/strawberryfield": "1.3.0.x-dev",
+        "strawberryfield/webform_strawberryfield": "1.3.0.x-dev",
         "swaggest/json-schema": "^0.12.10",
-        "symfony/yaml": "^4",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
         "wikibase/data-model": "9.6.1",
         "drupal/facets_date_range": "^1.0@beta",
-        "drupal/better_exposed_filters": "^6.0",
+        "drupal/better_exposed_filters": "^6.0.3",
         "monolog/monolog": "^2.9",
-        "symfony/http-kernel": "^v4",
-        "egulias/email-validator": "^3.2"
+        "egulias/email-validator": "^3.2",
+        "drupal/upgrade_status": "^4.0",
+        "drupal/jquery_ui_effects": "^2.0",
+        "drupal/jquery_ui": "^1.6",
+        "archipelago/fragaria": "0.2.0.x-dev",
+        "mglaman/composer-drupal-lenient": "^1.0",
+        "drupal/form_mode_manager": "2.x-dev@dev",
+        "drupal/color": "^1.0",
+        "drupal/seven": "^1.0",
+        "drupal/hal": "^2.0",
+        "drupal/ckeditor": "^1.0",
+        "drupal/aggregator": "^2.1",
+        "drupal/classy": "^1.0",
+        "drupal/stable": "^2.0"
     },
     "require-dev": {
-        "drupal/core-dev": "^9",
-        "mglaman/drupal-check": "^1.1"
+        "drupal/core-dev": "^10",
+        "mglaman/drupal-check": "^1.1",
+        "phpcompatibility/php-compatibility": "dev-develop",
+        "rector/rector": "^0.14.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -129,7 +137,9 @@
             "cweagans/composer-patches": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true,
+            "mglaman/composer-drupal-lenient": true
         },
         "preferred-install": {
             "archipelago/*": "source",
@@ -153,10 +163,12 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+             "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
         ]
     },
     "extra": {
@@ -193,6 +205,15 @@
         },
         "enable-patching": true,
         "patches": {
+           "drupal/form_mode_manager": {
+             "D10 compatibility": "https://www.drupal.org/files/issues/2023-10-11/3297262-20.patch"
+           },
+           "drupal/ds": {
+              "https://www.drupal.org/project/ds/issues/3338860": "https://www.drupal.org/files/issues/2023-04-04/3338860-5-d10-compatible_0.patch"
+           }
+        },
+        "drupal-lenient": {
+            "allowed-list": ["drupal/form_mode_manager"]
         }
     }
 }

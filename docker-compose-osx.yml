@@ -25,7 +25,7 @@ services:
   php:
     container_name: esmero-php
     restart: always
-    image: "esmero/php-8.0.28-fpm:1.1.0-multiarch"
+    image: "esmero/php-8.1-fpm:1.2.0-multiarch"
     tty: true
     networks:
       - host-net
@@ -80,7 +80,7 @@ services:
       - esmero-net
   iiif:
     container_name: esmero-cantaloupe
-    image: "esmero/cantaloupe-s3:6.0.0-multiarch"
+    image: "esmero/cantaloupe-s3:6.0.1-multiarch"
     restart: always
     environment:
       XMX: 2g
