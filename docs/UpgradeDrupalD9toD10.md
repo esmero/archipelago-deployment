@@ -217,7 +217,7 @@ docker exec -ti esmero-php bash -c "composer require 'drupal/webformnavigation:^
 docker exec -ti esmero-php bash -c "composer remove drupal/form_mode_manager --no-update"
 ```
 
-Well done! If you see **no** issues and all ends in **Green colored messages**, all is good!  [Jump to Step 5](#step-5-update-composer-json)
+Well done! If you see **no** issues and all ends in **Green colored messages**, all is good!  [Jump to Step 5](#step-5-update-composerjson)
 
 #### What if all is not OK, and I see red and a lot of dependency explanations?
 
