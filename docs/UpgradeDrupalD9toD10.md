@@ -283,7 +283,7 @@ docker exec -ti esmero-php bash -c "composer require archipelago/archipelago_sub
 docker exec -ti esmero-php bash -c "drush pm:uninstall quickedit"
 docker exec -ti esmero-php bash -c "composer require drupal/quickedit drupal/classy drupal/stable"
 docker exec -ti esmero-php bash -c "drush pm:uninstall hal"
-docker exec -ti esmero-php bash -c “drush pm:install jquery_ui”
+docker exec -ti esmero-php bash -c "drush pm:install jquery_ui"
 ```
 
 Whew, that's a lot of module updates! Now run one final database update command:
