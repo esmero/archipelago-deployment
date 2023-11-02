@@ -20,6 +20,8 @@ be valid JSON when outputting. So We use data.description|json_encode|raw
 Without Double quotes.
 #}
 {%- set structureCanvasIds = [] %}
+{%- set itemCount = 0 %}
+{%- max_thumb_width = 240 %}
 {%- set pdf_resolution = (150/72) %} 
 {%- set baseurl =  url('<front>')|render -%} 
 {% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %}
