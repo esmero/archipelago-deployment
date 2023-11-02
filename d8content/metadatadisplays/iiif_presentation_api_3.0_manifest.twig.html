@@ -269,14 +269,15 @@ Without Double quotes.
                   "type": "ImageService2",
                   "profile": "level2"
                    }
-                ],
+                ]
                 {% if data.type in ['Book','Document','ArchivalDescription','Page','Letter'] %}
+		 ,
                 "seeAlso": {
                    "@id":  "{{ nodeurl }}/flavorsearch/{{ document['dr:uuid'] }}/ocr/originalocr/{{ pagenumber}}",
                    {# "profile": "http://www.loc.gov/standards/alto/v3/alto.xsd", NOTE THIS CAN BE ANY URL YOU ARE GOING TO USE TO IDENTIFY/DISCERN between XML formats. Up to you#}
                    "format": "text/xml",
                    "label": "MINIOCR XML"
-                },
+                }
               {% endif %}
               }, 
               "target": "{{ nodeurl }}/iiif/{{ document['dr:uuid'] }}/canvas/p{{ pagenumber }}" 
