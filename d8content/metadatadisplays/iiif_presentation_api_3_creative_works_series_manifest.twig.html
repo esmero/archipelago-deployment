@@ -184,17 +184,17 @@ Without Double quotes.
 {%- if node.uuid.value -%} 
     "service": [ 
         { 
-            "id": "{{ baseurl }}/iiifcontentsearch/v2/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest/mode/advanced/page/0",
+            "id": "{{ baseurl }}iiifcontentsearch/v2/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest/mode/advanced/page/0",
             "type": "SearchService2" 
         }, 
         { 
-            "id": "{{ baseurl }}/iiifcontentsearch/v1/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest/mode/advanced/page/0",
+            "id": "{{ baseurl }}iiifcontentsearch/v1/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest/mode/advanced/page/0",
             "type": "SearchService1", 
             "@context": "http://iiif.io/api/search/1/context.json", 
             "profile": "http://iiif.io/api/search/1/search" 
         }, 
         { 
-            "@id": "{{ baseurl }}/iiifcontentsearch/v1/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest/mode/advanced/page/0",
+            "@id": "{{ baseurl }}iiifcontentsearch/v1/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest/mode/advanced/page/0",
             "@context": "http://iiif.io/api/search/0/context.json", 
             "profile": "http://iiif.io/api/search/0/search" 
         }
