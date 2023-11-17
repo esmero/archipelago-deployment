@@ -12,7 +12,6 @@ permissions:
   - 'access comments'
   - 'access content'
   - 'access site-wide contact form'
-  - 'search content'
   - 'use search_api_autocomplete for solr_search_content'
   - 'use text format restricted_html'
   - 'view media'

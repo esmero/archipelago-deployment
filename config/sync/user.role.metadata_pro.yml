@@ -1,7 +1,39 @@
 uuid: 13872365-795c-4dc9-999b-d8b137ce995d
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+    - filter.format.restricted_html
+    - media.type.audio
+    - media.type.file
+    - media.type.image
+    - node.type.article
+    - node.type.digital_object
+    - node.type.digital_object_collection
+    - node.type.page
+    - node.type.webform
+    - taxonomy.vocabulary.tags
+    - workflows.workflow.editorial
+  module:
+    - ami
+    - comment
+    - contact
+    - content_moderation
+    - content_translation
+    - ds_switch_view_mode
+    - facets
+    - file
+    - filter
+    - form_mode_manager
+    - format_strawberryfield
+    - media
+    - moderated_content_bulk_publish
+    - node
+    - shortcut
+    - strawberryfield
+    - taxonomy
+    - workflows
 id: metadata_pro
 label: 'Metadata Pro'
 weight: 4
@@ -35,7 +67,6 @@ permissions:
   - 'create image media'
   - 'create media'
   - 'create page content'
-  - 'create terms in islandora'
   - 'create terms in tags'
   - 'customize shortcut links'
   - 'delete amiset entity'
@@ -53,11 +84,11 @@ permissions:
   - 'delete own digital_object content'
   - 'delete own digital_object_collection content'
   - 'delete own file media'
+  - 'delete own files'
   - 'delete own image media'
   - 'delete own page content'
   - 'delete own webform content'
   - 'delete page revisions'
-  - 'delete terms in islandora'
   - 'delete terms in tags'
   - 'ds switch digital_object'
   - 'ds switch digital_object_collection'
@@ -75,7 +106,6 @@ permissions:
   - 'edit own digital_object_collection content'
   - 'edit own page content'
   - 'edit own strawberryfield webannotation'
-  - 'edit terms in islandora'
   - 'edit terms in tags'
   - 'moderated content bulk publish'
   - 'moderated content bulk unpublish'

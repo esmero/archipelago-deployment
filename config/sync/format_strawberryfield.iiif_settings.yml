@@ -1,2 +1,12 @@
 pub_server_url: 'http://localhost:8183/iiif/2'
 int_server_url: 'http://esmero-cantaloupe:8182/iiif/2'
+iiif_content_search_api_active: 1
+iiif_content_search_validate_exposed: 1
+iiif_content_search_api_parent_node_fields:
+  parent_id: parent_id
+  top_parent_id: top_parent_id
+iiif_content_search_api_file_uri_fields:
+  sbf_uri: sbf_uri
+  uri: uri
+iiif_content_search_api_results_per_page: '25'
+iiif_content_search_api_query_length: '64'

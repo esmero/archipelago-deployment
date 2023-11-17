@@ -1,0 +1,81 @@
+uuid: 19feb516-64d2-4537-a121-854cc1bc6ec3
+langcode: en
+status: true
+dependencies:
+  module:
+    - ami
+    - field_layout
+    - file
+    - layout_discovery
+    - strawberryfield
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: ami_set_entity.ami_set_entity.default
+targetEntityType: ami_set_entity
+bundle: ami_set_entity
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  processed_data:
+    type: file_generic
+    weight: 6
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  set:
+    type: strawberry_textarea
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+      rows: '10'
+    third_party_settings: {  }
+  source_data:
+    type: file_generic
+    weight: 2
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    description:
+      theme: file_upload_help
+      description: 'Your Source Data for this Set'
+  status:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  zip_file:
+    type: file_generic
+    weight: 3
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    description:
+      theme: file_upload_help
+      description: 'Source Files for this Set'
+hidden:
+  report_file: true

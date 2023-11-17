@@ -1,0 +1,79 @@
+uuid: 20a173de-6fd5-4063-964d-2dd600050736
+langcode: en
+status: true
+dependencies:
+  module:
+    - ami
+    - file
+    - options
+    - strawberryfield
+id: ami_set_entity.ami_set_entity.default
+targetEntityType: ami_set_entity
+bundle: ami_set_entity
+mode: default
+content:
+  name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  processed_data:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  report_file:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  set:
+    type: strawberry_default_formatter
+    label: hidden
+    settings:
+      limit_access: edit
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  source_data:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  status:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  user_id:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  zip_file:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  search_api_excerpt: true
