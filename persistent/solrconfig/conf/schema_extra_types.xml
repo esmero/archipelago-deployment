@@ -191,6 +191,8 @@
   <analyzer type="index">
     <charFilter class="solrocr.OcrCharFilterFactory"/>
     <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+    <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="0" generateNumberParts="1" protected="protwords_en.txt" splitOnCaseChange="0" generateWordParts="1" preserveOriginal="1" catenateAll="0" catenateWords="1"/>
+    <filter class="solr.FlattenGraphFilterFactory"/> <!-- required on index analyzers after graph filters -->
     <filter class="solr.LowerCaseFilterFactory"/>
     <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_und.txt"/>
     <filter class="solr.PorterStemFilterFactory"/>
@@ -198,6 +200,7 @@
   </analyzer>
   <analyzer type="query">
     <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+    <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="0" generateNumberParts="1" protected="protwords_en.txt" splitOnCaseChange="0" generateWordParts="1" preserveOriginal="1" catenateAll="0" catenateWords="0"/>
     <filter class="solr.LowerCaseFilterFactory"/>
     <filter class="solr.StopFilterFactory"/>
     <filter class="solr.PorterStemFilterFactory"/>
