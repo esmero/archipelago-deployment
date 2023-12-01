@@ -1,4 +1,4 @@
-{#
+{#-
 
 Updated 31/11/2023 for 1.3.0. Fixes Video/Audio Urls when attached directly to a top object
 
@@ -21,7 +21,7 @@ Structures passed from Archipelago are
 Since JSON was decoded into the 'data' values are valid PHP but could not
 be valid JSON when outputting. So We use data.description|json_encode|raw
 Without Double quotes.
-#}
+-#}
 {%- set structureCanvasIds = [] %}
 {%- set pdf_resolution = (150/72) %} 
 {% set max_thumb_width = 240 %}
