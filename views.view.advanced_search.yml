@@ -1,0 +1,591 @@
+uuid: 0b6f6a42-bc08-4dc1-a534-4b23c8c88980
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.default_solr_index
+  module:
+    - format_strawberryfield_views
+    - search_api
+_core:
+  default_config_hash: iVQLTta_FfMvw_Voy7HFOHZlM1sV04-PT8kM0rTI9YI
+id: advanced_search
+label: 'Advanced Search'
+module: views
+description: 'A search page preconfigured to search through the content of your site'
+tag: ''
+base_table: search_api_index_default_solr_index
+base_field: search_api_id
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Advanced Search'
+      fields:
+        sbf_label:
+          id: sbf_label
+          table: search_api_index_default_solr_index
+          field: sbf_label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          link_to_item: true
+          use_highlighting: true
+          multi_type: separator
+          multi_separator: ', '
+        sbf_metadata:
+          id: sbf_metadata
+          table: search_api_index_default_solr_index
+          field: sbf_metadata
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          link_to_item: false
+          use_highlighting: false
+          multi_type: separator
+          multi_separator: ', '
+        title_2:
+          id: title_2
+          table: search_api_index_default_solr_index
+          field: title_2
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          field_rendering: true
+          fallback_handler: search_api
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+        processor_id:
+          id: processor_id
+          table: search_api_index_default_solr_index
+          field: processor_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          link_to_item: false
+          use_highlighting: false
+          multi_type: separator
+          multi_separator: ', '
+        sbf_plaintext:
+          id: sbf_plaintext
+          table: search_api_index_default_solr_index
+          field: sbf_plaintext
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          link_to_item: false
+          use_highlighting: true
+          multi_type: separator
+          multi_separator: ', '
+      pager:
+        type: mini
+        options:
+          offset: 0
+          items_per_page: 25
+          total_pages: null
+          id: 0
+          tags:
+            next: 'next ›'
+            previous: '‹ previous'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Search
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'sort by '
+          expose_sort_order: true
+          sort_asc_label: Ascending
+          sort_desc_label: Descending
+      access:
+        type: none
+        options: {  }
+      cache:
+        type: none
+        options: {  }
+      empty:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: true
+          content: 'Oops! Sorry your search term did not match any indexed Digital Objects. Please try again.'
+      sorts:
+        sbf_label:
+          id: sbf_label
+          table: search_api_index_default_solr_index
+          field: sbf_label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: ASC
+          expose:
+            label: Title
+            field_identifier: sbf_label
+          exposed: true
+        sequence_id:
+          id: sequence_id
+          table: search_api_index_default_solr_index
+          field: sequence_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: sequence_id
+          exposed: false
+      arguments: {  }
+      filters:
+        sbf_advanced_search_api_fulltext:
+          id: sbf_advanced_search_api_fulltext
+          table: search_api_index_default_solr_index
+          field: sbf_advanced_search_api_fulltext
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: sbf_advanced_search_api_fulltext
+          operator: and
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: sbf_advanced_search_api_fulltext_op
+            label: 'Advanced Fulltext search'
+            description: ''
+            use_operator: true
+            operator: sbf_advanced_search_api_fulltext_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: sbf_advanced_search_api_fulltext
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              metadata_api: '0'
+              metadata_pro: '0'
+            placeholder: ''
+            expose_fields: 1
+            searched_fields_id: sbf_advanced_search_api_fulltext_searched_fields
+            value_maxlength: '128'
+            advanced_search_fields_multiple: 1
+            advanced_search_fields_count: '4'
+            advanced_search_fields_count_min: '1'
+            advanced_search_use_operator: 1
+            advanced_search_operator_id: sbf_advanced_search_api_fulltext_group_operator
+            advanced_search_fields_add_one_label: add
+            advanced_search_fields_remove_one_label: remove
+            advanced_search_classic_mode: 0
+            advanced_search_multiple_remove: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          parse_mode: terms
+          min_length: ''
+          fields:
+            local_identifier: local_identifier
+            name_1: name_1
+            rendered_item: rendered_item
+            title: title
+          advanced_search_fields_add_one_label:
+            - 'add one'
+          advanced_search_fields_remove_one_label:
+            - 'remove one'
+          fields_label_replace: "rendered_item|Rendered HTML Output\r\ntitle|Title (full text)\r\nname_1|Names/Agents\r\nlocal_identifier|Local Identifier\r\nnote|Note\r\nfulltext|Strawberryfield Flavor Datasource » SBF Unmodified data body no highlight\r\nfulltext_with_original_ocr|Strawberryfield Flavor Datasource » SBF Unmodified data body\r\nlabel_1|Title\r\nlegacy_pid|Content » 🍓 Strawberry (Descriptive Metadata source) » legacy_pid\r\nocr_text|Strawberryfield Flavor Datasource » SBF Full OCR with Hightlight\r\nsbf_label|Strawberryfield Flavor Datasource » SBF A Label\r\nsbf_plaintext|Strawberryfield Flavor Datasource » SBF Data body containing plain text\r\ntitle_2|Strawberryfield Flavor Datasource » SBF Parent Node » Title\r\ntitle_autocomplete|Content » Title for autocomplete (ngram)\r\ntitle_info_alternative_title|Content » 🍓 Strawberry (Descriptive Metadata source) » title_info_alternative_title\r\ntitle_unstemmed|Content » Title Unstemmed"
+        type:
+          id: type
+          table: search_api_index_default_solr_index
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_options
+          operator: or
+          value:
+            digital_object: digital_object
+            digital_object_collection: digital_object_collection
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups: {  }
+      style:
+        type: default
+        options:
+          row_class: 'd-flex flex-column'
+          default_row_class: false
+          uses_fields: false
+      row:
+        type: search_api
+        options:
+          view_modes:
+            'entity:node':
+              article: search_result
+              digital_object: strawberryfield_processed_metadata
+              digital_object_collection: strawberryfield_processed_metadata
+              page: search_result
+              webform: default
+      query:
+        type: search_api_query
+        options:
+          bypass_access: false
+          skip_access: false
+          preserve_facet_query_args: false
+      relationships: {  }
+      css_class: advanced-search-box
+      use_ajax: false
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: '<div> Displaying results @start - @end of @total </div>'
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
+        - 'user.node_grants:view'
+      tags:
+        - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
+      cacheable: false
+  page_1:
+    id: page_1
+    display_title: 'Modern Advanced Search'
+    display_plugin: page
+    position: 1
+    display_options:
+      cache:
+        type: none
+      sorts:
+        changed:
+          id: changed
+          table: search_api_index_default_solr_index
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: changed
+          exposed: false
+      defaults:
+        cache: false
+        use_ajax: false
+        sorts: false
+      use_ajax: false
+      display_description: ''
+      exposed_block: false
+      display_extenders:
+        sbf_ajax_interactions: {  }
+      path: advanced-search
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+      tags:
+        - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
+      cacheable: false

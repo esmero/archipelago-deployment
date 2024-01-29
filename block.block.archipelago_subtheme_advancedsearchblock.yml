@@ -1,0 +1,31 @@
+uuid: fadf435b-9e75-42e6-9829-0e40e3a9a1d1
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:block_with_twig_templating_:9aa72fb1-2817-44a7-8fb5-a3eb51166e83'
+  module:
+    - block_content
+    - context
+  theme:
+    - archipelago_subtheme
+id: archipelago_subtheme_advancedsearchblock
+theme: archipelago_subtheme
+region: breadcrumb
+weight: -25
+provider: null
+plugin: 'block_content:9aa72fb1-2817-44a7-8fb5-a3eb51166e83'
+settings:
+  id: 'block_content:9aa72fb1-2817-44a7-8fb5-a3eb51166e83'
+  label: 'Advanced Search Block'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-advanced_search-page_1: view-advanced_search-page_1

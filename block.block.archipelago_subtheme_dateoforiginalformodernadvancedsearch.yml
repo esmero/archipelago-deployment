@@ -1,0 +1,30 @@
+uuid: d4e49665-732c-4d7c-ac7a-b892a7cf61a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.date_of_original_for_modern_advanced_search
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme
+id: archipelago_subtheme_dateoforiginalformodernadvancedsearch
+theme: archipelago_subtheme
+region: sidebar_second
+weight: -6
+provider: null
+plugin: 'facet_block:date_of_original_for_modern_advanced_search'
+settings:
+  id: 'facet_block:date_of_original_for_modern_advanced_search'
+  label: 'Date of Original for Modern Advanced Search'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_dateoforiginalformodernadvancedsearch
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-advanced_search-page_1: view-advanced_search-page_1

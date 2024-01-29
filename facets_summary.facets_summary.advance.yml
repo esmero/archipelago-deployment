@@ -1,0 +1,77 @@
+uuid: f72b1e86-58ca-4233-a6d6-d4b22b72395d
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.default_solr_index
+    - views.view.advanced_search
+  module:
+    - search_api
+id: advance
+name: 'Advanced Search Facet Summary'
+facet_source_id: 'search_api:views_page__advanced_search__page_1'
+processor_configs:
+  hide_when_not_rendered:
+    processor_id: hide_when_not_rendered
+    weights:
+      build: '45'
+    settings: {  }
+  reset_facets:
+    processor_id: reset_facets
+    weights:
+      build: '30'
+    settings:
+      link_text: Reset
+      position: before
+  sbf_last_active_facets:
+    processor_id: sbf_last_active_facets
+    weights:
+      build: '60'
+    settings:
+      enable: 1
+      enable_empty_message: 1
+      enable_query: 0
+      multiple_query: 0
+      quote_query: true
+      text:
+        format: plain_text
+        value: 'No results found.'
+  show_text_when_empty:
+    processor_id: show_text_when_empty
+    weights:
+      build: '10'
+    settings:
+      text:
+        value: 'No results found.'
+        format: plain_text
+facets:
+  agents_for_modern_advanced_search:
+    checked: true
+    label: 'Agents for Modern Advanced Search'
+    separator: ', '
+    show_count: false
+    weight: 0
+  collection_membership_for_modern_advanced_search:
+    checked: true
+    label: 'Collection Membership for Modern Advanced Search'
+    separator: ', '
+    show_count: false
+    weight: 0
+  date_of_original_for_modern_advanced_search:
+    checked: true
+    label: 'Date of Original for Modern Advanced Search'
+    separator: ', '
+    show_count: false
+    weight: 0
+  digital_object_type_for_modern_advanced_search:
+    checked: true
+    label: 'Digital Object Type for Modern Advanced Search'
+    separator: ', '
+    show_count: false
+    weight: 0
+  subjects_for_modern_advanced_search:
+    checked: true
+    label: 'Subjects for Modern Advanced Search'
+    separator: ', '
+    show_count: false
+    weight: 0
