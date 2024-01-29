@@ -11,7 +11,7 @@ dependencies:
     - archipelago_subtheme
 id: archipelago_subtheme_advancedsearchblock
 theme: archipelago_subtheme
-region: breadcrumb
+region: highlighted
 weight: -25
 provider: null
 plugin: 'block_content:9aa72fb1-2817-44a7-8fb5-a3eb51166e83'
