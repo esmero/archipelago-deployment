@@ -1,0 +1,30 @@
+uuid: cc48859d-72d5-45c8-98ca-c80d2cff2b46
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.collection_membership_for_modern_advanced_search
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme
+id: archipelago_subtheme_collectionmembershipformodernadvancedsearch
+theme: archipelago_subtheme
+region: sidebar_second
+weight: -4
+provider: null
+plugin: 'facet_block:collection_membership_for_modern_advanced_search'
+settings:
+  id: 'facet_block:collection_membership_for_modern_advanced_search'
+  label: 'Collection Membership for Modern Advanced Search'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_collectionmembershipformodernadvancedsearch
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-advanced_search-page_1: view-advanced_search-page_1

@@ -1,0 +1,19 @@
+{
+  "data": {
+    "type": "block_content--block_with_twig_templating_",
+    "id": "9aa72fb1-2817-44a7-8fb5-a3eb51166e83",
+    "links": {
+      "self": {
+        "href": "http://esmero-web/jsonapi/block_content/block_with_twig_templating_/9aa72fb1-2817-44a7-8fb5-a3eb51166e83?resourceVersion=id%3A10"
+      }
+    },
+    "attributes": {
+      "status": true,
+      "info": "Advanced Search Block",
+      "reusable": true,
+      "default_langcode": true,
+      "body": null,
+      "field_twig_content": "<h5>Default Advanced Search Note:</h5>\r\n<p>This default Advanced Search setup is intended to serve as an initial blueprint for your own learning and future customizations.</p>\r\n<p>We strongly encourage reading our <a href=\"https://docs.archipelago.nyc/1.3.0/search_advanced/\" target=\"_blank\">Advanced Search documentation</a> to learn more about customizing the setup for this important functionality</p>\r\n"
+    }
+  }
+}

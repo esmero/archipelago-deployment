@@ -71,6 +71,7 @@ curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Co
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/menu_link_content/menu_link_content/2c576406-2a37-4fb8-b988-cd6db1105084 --data-binary @d8content/menu_link_content_02.json;
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/menu_link_content/menu_link_content/9085dade-61be-4581-ba00-239f16787d7f --data-binary @d8content/menu_link_content_03.json;
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/menu_link_content/menu_link_content/b858da4a-e1fc-4bf3-a7b8-2e16fd21ccd9 --data-binary @d8content/menu_link_content_04.json;
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/menu_link_content/menu_link_content/3756cd18-6387-4c37-9033-5045f6a4a525 --data-binary @d8content/menu_link_content_08.json;
 
 echo -e "Adding your Demo AMI Set\n"
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/ami_set_entity/ami_set_entity/5e537ff6-3b84-4540-afef-94e5e81e4768  --data-binary @d8content/ami_set_entity_01.json;
@@ -79,6 +80,10 @@ curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Co
 echo -e "A welcome message\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/block_content/block_with_twig_templating_/1cdf7155-eb60-4f27-9e5e-64fffe93127a --data-binary @d8content/block_content_01.json;
+
+echo -e "Advanced Search Page Block\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/block_content/block_with_twig_templating_/9aa72fb1-2817-44a7-8fb5-a3eb51166e83 --data-binary @d8content/block_content_02.json;
 
 echo -e "Last pass, setting web owner to tmp files folder and clearing Drupal caches\n"
 

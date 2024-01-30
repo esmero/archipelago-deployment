@@ -1,0 +1,29 @@
+uuid: 774fb6ba-4383-4799-b828-a862cc15aec7
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets_summary.facets_summary.advance
+  module:
+    - context
+    - facets_summary
+  theme:
+    - archipelago_subtheme
+id: archipelago_subtheme_advancedsearchfacetsummary
+theme: archipelago_subtheme
+region: sidebar_second
+weight: -7
+provider: null
+plugin: 'facets_summary_block:advance'
+settings:
+  id: 'facets_summary_block:advance'
+  label: 'Advanced Search Facet Summary'
+  label_display: '0'
+  provider: facets_summary
+  context_mapping: {  }
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-advanced_search-page_1: view-advanced_search-page_1
