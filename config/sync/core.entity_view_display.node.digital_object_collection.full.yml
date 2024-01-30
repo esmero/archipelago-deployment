@@ -9,6 +9,7 @@ dependencies:
     - node.type.digital_object_collection
   module:
     - ds
+    - field_layout
     - format_strawberryfield
     - text
     - user
