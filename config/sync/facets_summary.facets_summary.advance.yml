@@ -36,14 +36,6 @@ processor_configs:
       text:
         format: plain_text
         value: 'No results found.'
-  show_text_when_empty:
-    processor_id: show_text_when_empty
-    weights:
-      build: '10'
-    settings:
-      text:
-        value: 'No results found.'
-        format: plain_text
 facets:
   agents_for_modern_advanced_search:
     checked: true
