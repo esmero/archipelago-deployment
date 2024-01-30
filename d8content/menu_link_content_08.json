@@ -1,0 +1,26 @@
+{
+    "data": {
+      "type": "menu_link_content--menu_link_content",
+      "id": "3756cd18-6387-4c37-9033-5045f6a4a525",
+      "attributes": {
+        "bundle": "menu_link_content",
+        "enabled": true,
+        "title": "Advanced Search",
+        "description": "Advanced Search",
+        "menu_name": "main",
+        "link": {
+          "uri": "internal:/advanced-search",
+          "title": null,
+          "options": [
+  
+          ]
+        },
+        "external": false,
+        "rediscover": false,
+        "weight": 0,
+        "expanded": false,
+        "parent": null,
+        "default_langcode": true
+      }
+    }
+  }
