@@ -8,7 +8,6 @@
       }
     },
     "attributes": {
-      "langcode": "en",
       "status": true,
       "info": "Advanced Search Block",
       "reusable": true,
