@@ -334,7 +334,7 @@ field_settings:
         'entity:node':
           article: ''
           digital_object: default
-          digital_object_collection: ''
+          digital_object_collection: default
           page: ''
           webform: ''
         strawberryfield_flavor_datasource:
@@ -630,6 +630,7 @@ processor_settings:
     weights:
       add_properties: 20
   auto_aggregated_fulltext_field: {  }
+  custom_value: {  }
   entity_type: {  }
   highlight:
     weights:

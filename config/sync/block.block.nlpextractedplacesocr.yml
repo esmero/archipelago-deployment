@@ -29,14 +29,6 @@ visibility:
     context_mapping: {  }
     view_inclusion:
       view-solr_search_content-page_3: view-solr_search_content-page_3
-  context_all:
-    id: context_all
-    negate: null
-    values: ''
-  context:
-    id: context
-    negate: null
-    values: ''
   user_status:
     id: user_status
     negate: false

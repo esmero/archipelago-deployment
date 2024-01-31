@@ -88,6 +88,7 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
+  phpass: 0
   queue_ui: 0
   quick_node_clone: 0
   redis: 0

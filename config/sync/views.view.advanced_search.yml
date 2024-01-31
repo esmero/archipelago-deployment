@@ -414,7 +414,6 @@ display:
             placeholder: ''
             expose_fields: 1
             searched_fields_id: sbf_advanced_search_api_fulltext_searched_fields
-            value_maxlength: '128'
             advanced_search_fields_multiple: 1
             advanced_search_fields_count: '4'
             advanced_search_fields_count_min: '1'
@@ -422,6 +421,7 @@ display:
             advanced_search_operator_id: sbf_advanced_search_api_fulltext_group_operator
             advanced_search_fields_add_one_label: add
             advanced_search_fields_remove_one_label: remove
+            value_maxlength: '128'
             advanced_search_classic_mode: 0
             advanced_search_multiple_remove: 0
           is_grouped: false
@@ -515,6 +515,7 @@ display:
           bypass_access: false
           skip_access: false
           preserve_facet_query_args: true
+          query_tags: {  }
       relationships: {  }
       css_class: advanced-search-box
       use_ajax: false

@@ -1,6 +1,8 @@
 file_scheme: s3
+multipart_upload_threshold: 5368709120
 file_path: ''
 object_file_scheme: s3
 object_file_strategy: default
 object_file_path: dostorage
 compost_maximum_age: 21600
+compost_dot_files: false
