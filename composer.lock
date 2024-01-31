@@ -12435,12 +12435,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "5072ecfd94128562064e5974b11936f7f5fb4a9a"
+                "reference": "eea7249abf8255ddf04abb2e556a188a58b159ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/5072ecfd94128562064e5974b11936f7f5fb4a9a",
-                "reference": "5072ecfd94128562064e5974b11936f7f5fb4a9a",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/eea7249abf8255ddf04abb2e556a188a58b159ba",
+                "reference": "eea7249abf8255ddf04abb2e556a188a58b159ba",
                 "shasum": ""
             },
             "require": {
@@ -12475,7 +12475,7 @@
                 "issues": "https://github.com/esmero/format_strawberryfield/issues",
                 "source": "https://github.com/esmero/format_strawberryfield/tree/1.3.0"
             },
-            "time": "2024-01-30T22:42:32+00:00"
+            "time": "2024-01-31T22:20:57+00:00"
         },
         {
             "name": "strawberryfield/strawberry_runners",
@@ -12541,12 +12541,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "ff229bb45864d6438a053d3921290c27b8192bc0"
+                "reference": "a046b251b3a77659c93c8975d538e0c0bd63c675"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/ff229bb45864d6438a053d3921290c27b8192bc0",
-                "reference": "ff229bb45864d6438a053d3921290c27b8192bc0",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/a046b251b3a77659c93c8975d538e0c0bd63c675",
+                "reference": "a046b251b3a77659c93c8975d538e0c0bd63c675",
                 "shasum": ""
             },
             "require": {
@@ -12589,7 +12589,7 @@
                 "issues": "https://github.com/esmero/strawberryfield/issues",
                 "source": "https://github.com/esmero/strawberryfield/tree/1.3.0"
             },
-            "time": "2024-01-08T19:47:25+00:00"
+            "time": "2024-01-31T22:30:08+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",
