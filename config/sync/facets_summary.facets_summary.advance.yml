@@ -30,8 +30,8 @@ processor_configs:
     settings:
       enable: 1
       enable_empty_message: 1
-      enable_query: 0
-      multiple_query: 0
+      enable_query: 1
+      multiple_query: 1
       quote_query: true
       text:
         format: plain_text
