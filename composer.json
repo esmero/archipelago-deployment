@@ -104,7 +104,6 @@
         "drupal/facets_date_range": "^1.0@beta",
         "drupal/better_exposed_filters": "^6.0.3",
         "monolog/monolog": "^2.9",
-        "egulias/email-validator": "^4",
         "drupal/upgrade_status": "^4.0",
         "drupal/jquery_ui_effects": "^2.0",
         "drupal/jquery_ui": "^1.6",

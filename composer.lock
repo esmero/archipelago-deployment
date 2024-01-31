@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b10ebbf936a1786ed3d256a21f6836be",
+    "content-hash": "713524073de561cdff7302aebc0e0167",
     "packages": [
         {
             "name": "archipelago/ami",

@@ -47,8 +47,8 @@ If anything is still running, wait a little longer and run the command again.
 
 ### Step 3:
 
-Now let's `tar.gz` the whole ensemble with data and configs. As an example we will save this into your `$HOME` folder. 
-As a good practice we append the **current date **(YEAR-MONTH-DAY) to the filename. Here we assume today is October 31st of 2023.
+Now let's `tar.gz` the whole ensemble with data and configs. As an example we will save this into your `$HOME` folder.
+As a good practice we append the **current date** (YEAR-MONTH-DAY) to the filename. Here we assume today is October 31st of 2023.
 
 ```shell
 cd ..
@@ -59,7 +59,7 @@ cd archipelago-deployment
 The process may take a few minutes. Now let's verify that all is there and that the `tar.gz` is not corrupt.
 
 ```shell
-tar -tvvf $HOME/archipelago-deployment-D9-20231031.tar.gz 
+tar -tvvf $HOME/archipelago-deployment-D9-20231031.tar.gz
 ```
 
 You will see a listing of files, and at the end you will see something like this: `Archive Format: POSIX pax interchange format, Compression: gzip`. If corrupt (Do you have enough space? Did your ssh connection drop?) you will see the following:
@@ -136,7 +136,7 @@ Give all a little time to start. Please be patient. To ensure all is well, run (
 docker ps
 ```
 
-You should see something like this: 
+You should see something like this:
 
 ```shell
 CONTAINER ID   IMAGE                                      COMMAND                  CREATED          STATUS          PORTS                              NAMES
@@ -153,7 +153,7 @@ Important here is the `STATUS` column. It **needs** to be a number that goes up 
 
 ### Step 3. Updates for key Drupal and Archipelago modules
 
-Now we are going to tell `composer` to update the key Drupal and Archipelago modules. 
+Now we are going to tell `composer` to update the key Drupal and Archipelago modules.
 
 First we are going to disable and remove a few minor Drupal modules. Run the following commands (in order):
 
@@ -183,7 +183,7 @@ sudo chmod 666 web/sites/default/*settings.php
 sudo chmod 666 web/sites/default/*services.yml
 ```
 
-### Step 4: Disable/Remove for additional select Drupal modules
+### Step 4: Disable/Remove additional Drupal modules and loosen up dependencies
 
 We are going to remove additional select Drupal modules that are not 1.3.0 or D10 compliant.
 
@@ -191,7 +191,8 @@ Please run each of the following commands separately, in order, and do not skip 
 
 ```shell
 docker exec -ti esmero-php bash -c "composer remove symfony/http-kernel symfony/yaml --no-update"
-docker exec -ti esmero-php bash -c "composer require drupal/config_inspector:^2 --no-update" 
+docker exec -ti esmero-php bash -c 'composer remove egulias/email-validator --no-update'
+docker exec -ti esmero-php bash -c "composer require drupal/config_inspector:^2 --no-update"
 docker exec -ti esmero-php bash -c "drush pm:uninstall jsonapi_earlyrendering_workaround"
 docker exec -ti esmero-php bash -c "composer remove drupal/jsonapi_earlyrendering_workaround --no-update"
 docker exec -ti esmero-php bash -c "composer require 'drupal/core:^10' 'drupal/core-recommended:^10' 'drupal/core-composer-scaffold:^10' 'drupal/core-project-message:^10' --update-with-dependencies --no-update"
@@ -207,10 +208,9 @@ docker exec -ti esmero-php bash -c "composer remove drupal/sophron --no-update"
 docker exec -ti esmero-php bash -c "composer remove fileeye/mimemap --no-update"
 docker exec -ti esmero-php bash -c "composer require drupal/imagemagick:^3 --no-update"  
 docker exec -ti esmero-php bash -c "composer remove fileeye/mimemap --no-update"    
-docker exec -ti esmero-php bash -c "drush pm:uninstall jsonapi_earlyrendering_workaround"
-docker exec -ti esmero-php bash -c "composer remove drupal/jsonapi_earlyrendering_workaround --no-update"
-docker exec -ti esmero-php bash -c "composer require 'drupal/imce:^3.0' --no-update" 
-docker exec -ti esmero-php bash -c "composer require 'drupal/search_api_attachments:^9.0' --no-update" 
+docker exec -ti esmero-php bash -c "composer require 'drupal/imce:^3.0' --no-update"
+docker exec -ti esmero-php bash -c "composer require 'drupal/search_api_attachments:^9.0' --no-update"
+docker exec -ti esmero-php bash -c "composer require drupal/search_api_solr:^4.3 solarium/solarium ^6.3 --no-update"
 docker exec -ti esmero-php bash -c "composer require 'drupal/twig_tweak:^3.2' --no-update"
 docker exec -ti esmero-php bash -c "composer require 'drupal/webform_entity_handler:^2.0' --no-update"
 docker exec -ti esmero-php bash -c "composer require 'drupal/webformnavigation:^2.0' --no-update"
@@ -221,16 +221,16 @@ Well done! If you see **no** issues and all ends in **Green colored messages**, 
 
 #### What if all is not OK, and I see red and a lot of dependency explanations?
 
-If you have manually installed packages via composer in the past that are NO longer Drupal 10 compatible you may see errors. 
-In that case you need to check each package website's (normally https://www.drupal.org/project/the_module_name) and check if there is a Drupal 10 compatible version. 
+If you have manually installed packages via composer in the past that are NO longer Drupal 10 compatible you may see errors.
+In that case you need to check each package website's (normally https://www.drupal.org/project/the_module_name) and check if there is a Drupal 10 compatible version.
 
 If so run:
 
 ```shell
-docker exec -ti esmero-php bash -c "composer require 'drupal/the_module_name:^VERSION_NUMBER_THAT_WORKS_ON_DRUPAL10_' --update-with-dependencies --no-update" and run **Step 3 ** again (and again until all is cleared)
+docker exec -ti esmero-php bash -c "composer require drupal/the_module_name:^VERSION_NUMBER_THAT_WORKS_ON_DRUPAL10_ --update-with-dependencies --no-update" and run **Step 3** again (and again until all is cleared)
 ```
 
-If not, try to find a replacement module that does something similar, but in any case you may end up having to remove before proceeding. Give us a ping/slack/google group/open a github ISSUE if you find yourself uncertain about this. 
+If not, try to find a replacement module that does something similar, but in any case you may end up having to remove before proceeding. Give us a ping/slack/google group/open a github ISSUE if you find yourself uncertain about this.
 
 ```shell
 docker exec -ti esmero-php bash -c "drush pm-uninstall the_module_name"
@@ -274,14 +274,14 @@ Please run each of the following commands separately, in order, and do not skip 
 docker exec -ti esmero-php bash -c "composer require mglaman/composer-drupal-lenient"
 docker exec -ti esmero-php bash -c "composer config --merge --json extra.drupal-lenient.allowed-list '[\"drupal/form_mode_manager\"]'"
 docker exec -ti esmero-php bash -c "composer require 'drupal/form_mode_manager:2.x-dev@dev'"
-docker exec -ti esmero-php bash -c "composer require 'drupal/color:^1.0'" 
-docker exec -ti esmero-php bash -c "composer require drupal/hal"  
+docker exec -ti esmero-php bash -c "composer require 'drupal/color:^1.0'"
+docker exec -ti esmero-php bash -c "composer require drupal/hal"
 docker exec -ti esmero-php bash -c "composer require drupal/aggregator"
-docker exec -ti esmero-php bash -c "composer require drupal/ckeditor"  
+docker exec -ti esmero-php bash -c "composer require drupal/ckeditor"
 docker exec -ti esmero-php bash -c "composer require drupal/seven"
 docker exec -ti esmero-php bash -c "composer require archipelago/archipelago_subtheme:1.3.0.x-dev"
-docker exec -ti esmero-php bash -c "drush pm:uninstall quickedit"
 docker exec -ti esmero-php bash -c "composer require drupal/quickedit drupal/classy drupal/stable"
+docker exec -ti esmero-php bash -c "drush pm:uninstall quickedit"
 docker exec -ti esmero-php bash -c "drush pm:uninstall hal"
 docker exec -ti esmero-php bash -c "drush pm:install jquery_ui"
 ```
@@ -298,19 +298,19 @@ Optionally, you can sync your new Archipelago 1.3.0 and bring in all the latest 
 
 #### A Partial Sync, which will bring new configs and update existing ones but will **not** remove ones that only exist in your custom setup, e.g. new Webforms or View Modes.
 
-```shell 
+```shell
 docker exec esmero-php drush cim -y --partial   
 ```
 
 #### A Complete Sync, which will bring new things and update existing but will also remove all the ones that are not part of 1.3.0. It's a like clean factory reset.
 
-```shell 
-docker exec esmero-php drush cim -y 
+```shell
+docker exec esmero-php drush cim -y
 ```
 
 If all goes well here and you see no errors it's time to reindex `Solr` because there are new Fields. Run the following:
 
-```shell 
+```shell
 docker exec esmero-php drush search-api-reindex
 docker exec esmero-php drush search-api-index
 ```
@@ -327,7 +327,7 @@ Recommended: If you want to add new templates and menu items 1.3.0 provides, run
 docker exec -ti esmero-php bash -c 'scripts/archipelago/deploy.sh'
 ```
 
-Once that is done, you can choose to update all Metadata Displays (twig templates) we ship with new 1.3.0 versions (heavily adjusted IIIF manifests, better Object description template using Macros). Before you do this, we **strongly** recommend that you first make sure to manually (copy/paste) backup any Twig templates you have modified. If unsure, do not run the command that comes after this warning! You can always manually copy the new templates from the `d8content/metadatadisplays` folder which contains text versions (again, copy/paste) of each shipped template you can pick and use when you feel ready. 
+Once that is done, you can choose to update all Metadata Displays (twig templates) we ship with new 1.3.0 versions (heavily adjusted IIIF manifests, better Object description template using Macros). Before you do this, we **strongly** recommend that you first make sure to manually (copy/paste) backup any Twig templates you have modified. If unsure, do not run the command that comes after this warning! You can always manually copy the new templates from the `d8content/metadatadisplays` folder which contains text versions (again, copy/paste) of each shipped template you can pick and use when you feel ready.
 
 If you are sure (like really?) you want to overwrite the ones you modified (sure, just checking?), then you can run this:
 
@@ -335,7 +335,7 @@ If you are sure (like really?) you want to overwrite the ones you modified (sure
 docker exec -ti esmero-php bash -c 'scripts/archipelago/update_deployed.sh'
 ```
 
-Done! (For realz now) 
+Done! (For realz now)
 
 ### Step 9 (or should we say 10)
 
