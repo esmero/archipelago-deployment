@@ -11,6 +11,7 @@ documentation-->
 # Archipelago Docker Deployment
 
 **Updated:** January 30th 2024
+
 **Previously Updated:** October 31st 2023
 
 This repository serves as bootstrap for a Archipelago 1.3.0 deployment on a localhost for development/testing/customizing via Docker and provides a more unified experience this time:
