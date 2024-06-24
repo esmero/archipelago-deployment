@@ -1,0 +1,153 @@
+{# Created by Allison & Diego March 2024.
+Uses Archipelago's default Simple Dublin Core XML template as base. #}
+{%- set oai_id = 'oai:fake:test' -%}
+{%- if node.uuid.value -%}
+{%- set oai_id = node.uuid.value -%}
+{%- set changed = node.changed.value|date("Y-m-d") -%}
+{%- endif -%}
+<header>
+      <identifier>oai:localhost:{{ oai_id }}</identifier>
+      <datestamp>{{ changed }}</datestamp>
+{%- if attribute(data, 'ismemberof') -%} 
+  {%- if attribute(data, 'ismemberof') is iterable -%} 
+    {%- for collection in attribute(data, 'ismemberof') -%} 
+      {%- set parentnode = bamboo_load_entity('node', collection) -%} 
+      {%- if parentnode -%} 
+      <setSpec>{{ parentnode.uuid.value }}</setSpec>
+      {%- endif -%} 
+    {%- endfor -%} 
+  {% else %} 
+	 {% set parentnode = bamboo_load_entity('node', attribute(data, 'ismemberof')) %} 
+     {% if parentnode %} 
+		<setSpec>{{ parentnode.uuid.value }}</setSpec>
+     {% endif %} 
+  {% endif %} 
+{% endif %} 
+    </header>
+{% if data_api.query.verb == "ListRecords" or data_api.query.verb == "GetRecord" %}    
+<metadata>
+{% if data_api.query.metadataPrefix == 'oai_dc' %}
+
+<oai_dc:dc 
+         xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" 
+         xmlns:dc="http://purl.org/dc/elements/1.1/" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ 
+         http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+<dc:title>{{ data.label|escape('html') }}</dc:title>
+{# Creator #}
+{% if data.creator|length > 0  %}
+	{% if data.creator is iterable %}
+		{% for creator in data.creator %}
+			<dc:creator>{{ creator }}</dc:creator>
+		{% endfor %}
+     {% else %}
+     	<dc:creator>{{ data.creator }}</dc:creator>
+	{% endif %} 
+{% endif %}
+{% if data.creator_lod|length > 0 %}
+	{% for creator_lod in data.creator_lod %}
+     	<dc:creator>{{ creator_lod.name_label }}</dc:creator>
+	{% endfor %}
+{% endif %}
+{# Contributor
+<dc:contributor></dc:contributor>
+#}
+{# Coverage 
+<dc:coverage></dc:coverage>
+#}
+{# Date #}
+{% if data.date_created|length > 0 %}
+	<dc:date>{{ data.date_created }}</dc:date>
+{% endif %}
+	{% if data.date_created_edtf.date_free is defined and not empty %}
+		<dc:date>{{ data.date_created_edtf.date_free }}</dc:date>
+	{% endif %}
+	{% if data.date_issued_edtf.date_free is defined and not empty %}	
+		<dc:date>{{ data.date_issued_edtf.date_free }}</dc:date>
+	{% endif %}	
+{# Description #}
+{% if data.description|length > 0 %}
+	{% if data.description is iterable %}
+		{% for description in data.description %}
+			<dc:description>{{ description|escape('html_attr') }}</dc:description>
+		{% endfor %}
+     {% else %}
+	<dc:description>{{ data.description|escape('html_attr') }}</dc:description>
+	{% endif %} 
+{% endif %}
+{# Subject #}
+{# LoD Subjects #}
+{% if data.subject_loc|length > 0 %}
+	{% for subject_loc in data.subject_loc %}
+     	<dc:subject>{{ subject_loc.label }}</dc:subject>
+	{% endfor %}
+{% endif %}
+{% if data.subject_lcgft_terms|length > 0 %}
+	{% for subject_lcgft_terms in data.subject_lcgft_terms %}
+     	<dc:subject>{{ subject_lcgft_terms.label }}</dc:subject>
+	{% endfor %}
+{% endif %}
+{# Publisher #}
+{% if data.publisher|length > 0 %}
+	<dc:publisher>{{ data.publisher }}</dc:publisher>
+{% endif %}  
+{# Language #}
+{% if data.language|length > 0 %}
+     {% if data.language is iterable %}
+     	{% for language in data.language %}
+       		<dc:language>{{ language }}</dc:language>
+     	{% endfor %}
+     {% else %}
+     		<dc:language>{{ data.language }}</dc:language>
+     {% endif %} 
+{% endif %}
+{# Type #}
+{% if data.type|length > 0 %}
+	<dc:type>{{ data.type }}</dc:type>
+{% endif %}    
+{# Format 
+<dc:format></dc:format>
+#}
+{# Identifier #}
+{% if data.local_identifier|length > 0 %}
+ 	{% if data.local_identifier is iterable %}
+     	{% for local_identifier in data.local_identifier %}
+			<dc:identifier>{{ local_identifier|escape('html_attr') }}</dc:identifier>
+        {% endfor %}
+       {% else %}
+     		<dc:identifier>{{ data.local_identifier|escape('html_attr') }}</dc:identifier>
+    {% endif %}    
+{% endif %}
+{# Source #}
+{# Source #}
+{% if data.owner|length > 0 %}
+	<dc:source>{{ data.owner }}</dc:source>
+{% endif %}
+{# Relation #}
+{% if node.id %}
+    {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+{% else %}
+    {% set nodeurl = '<current>' ~ '/iiif/manifest' %}
+{% endif%}
+ {% if attribute(data, 'ismemberof') %}
+ {% if attribute(data, 'ismemberof') is iterable %}
+ {% for collection in attribute(data, 'ismemberof')%}
+   {% set parentnode = bamboo_load_entity('node', collection) %}
+   {% set parentnodeurl = url('entity.node.canonical', {'node': collection}, {'absolute': true}) %}
+<dc:relation>{{ parentnode.title.value }}</dc:relation>
+{% endfor %}
+{% else %}
+  {% set parentnode = bamboo_load_entity('node', attribute(data, 'ismemberof')) %}
+  {% set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ismemberof')}, {'absolute': true}) %}
+  <dc:relation>{{ parentnode.title.value }}</dc:relation>
+  {% endif %}
+{% endif %}
+{# Rights #}
+{% if data.rights|length > 0 %} 
+  <dc:rights>{{ data.rights }}</dc:rights>
+{% endif %}
+</oai_dc:dc>
+{% endif %}
+</metadata>
+{% endif %}
