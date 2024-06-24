@@ -1,0 +1,186 @@
+uuid: 0484e0db-4339-4cb1-b33e-caeb5dcaaa1a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: oai_pmh
+label: oai-pmh
+configuration:
+  openAPI:
+    verb:
+      name: verb
+      weight: '-10'
+      param:
+        in: query
+        name: verb
+        schema:
+          type: string
+          enum:
+            - GetRecord
+            - Identify
+            - ListIdentifiers
+            - ListMetadataFormats
+            - ListRecords
+            - ListSets
+        style: form
+        explode: true
+        required: true
+        deprecated: false
+        description: ''
+      mapping:
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed_1': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid_ref': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:@page': 0
+    set:
+      name: set
+      mapping:
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid_ref': 'oai_exposed_entity_reference:entity_reference_solr_1:nid_ref'
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed_1': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:@page': 0
+      weight: '-9'
+      param:
+        in: query
+        name: set
+        schema:
+          type: string
+          format: uuid
+        style: form
+        explode: true
+        required: false
+        deprecated: false
+        description: ''
+    identifier:
+      name: identifier
+      mapping:
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid': 'oai_exposed_entity_reference:entity_reference_solr_1:nid'
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed_1': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid_ref': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:@page': 0
+      weight: '-8'
+      param:
+        in: query
+        name: identifier
+        schema:
+          type: string
+          format: uuid
+        style: form
+        explode: true
+        required: false
+        deprecated: false
+        description: ''
+    oai:
+      name: oai
+      weight: '-7'
+      param:
+        in: path
+        name: oai
+        schema:
+          type: string
+        style: simple
+        explode: false
+        required: true
+        deprecated: false
+        description: ''
+      mapping:
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed_1': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid_ref': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:@page': 0
+    page:
+      name: page
+      mapping:
+        'oai_exposed_entity_reference:entity_reference_solr_1:@page': 'oai_exposed_entity_reference:entity_reference_solr_1:@page'
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed_1': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid_ref': 0
+      weight: '-6'
+      param:
+        in: query
+        name: page
+        schema:
+          type: integer
+        style: form
+        explode: true
+        required: false
+        deprecated: false
+        description: ''
+    metadataPrefix:
+      name: metadataPrefix
+      weight: '-5'
+      param:
+        in: query
+        name: metadataPrefix
+        schema:
+          type: string
+          enum:
+            - oai_dc
+            - mods
+        style: form
+        explode: true
+        required: false
+        deprecated: false
+        description: ''
+      mapping:
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed_1': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid_ref': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:@page': 0
+    from:
+      name: from
+      mapping:
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed': 'oai_exposed_entity_reference:entity_reference_solr_1:changed'
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed_1': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid_ref': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:@page': 0
+      weight: '7'
+      param:
+        in: query
+        name: from
+        schema:
+          type: string
+          format: date
+        style: form
+        explode: true
+        required: false
+        deprecated: false
+        description: ''
+    until:
+      name: until
+      mapping:
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed_1': 'oai_exposed_entity_reference:entity_reference_solr_1:changed_1'
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:changed': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:nid_ref': 0
+        'oai_exposed_entity_reference:entity_reference_solr_1:@page': 0
+      weight: '8'
+      param:
+        in: query
+        name: until
+        schema:
+          type: string
+          format: date
+        style: form
+        explode: true
+        required: false
+        deprecated: false
+        description: ''
+  metadataWrapperDisplayentity:
+    - 7ed7f7b2-7690-402f-93ea-a9b50a094f30
+  metadataItemDisplayentity:
+    - b5c12175-e0a9-49e9-a698-cbba342667e0
+  api_type:
+    - SWORD
+views_source_ids:
+  'oai_exposed_entity_reference:entity_reference_solr_1': 'oai_exposed_entity_reference:entity_reference_solr_1'
+cache: 0
+active: true

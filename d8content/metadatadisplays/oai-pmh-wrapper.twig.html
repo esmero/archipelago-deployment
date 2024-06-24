@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/
+         http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+ <responseDate>{{ data_api.request_date }}</responseDate>
+ {%- if data|length > 0 -%}
+   {%- set resumptiontoken_arguments = data_api.query %}
+   {%-  if data_api.query.page is defined and not empty -%}
+     {%- set resumptiontoken_arguments = resumptiontoken_arguments|merge({"page":(data_api.query.page+1)})-%}
+   {%- else -%}
+     {%- set resumptiontoken_arguments = resumptiontoken_arguments|merge({"page":2})-%}
+   {% endif %}
+   {%-
+   set resumptiontoken = '?' ~  resumptiontoken_arguments|url_encode
+   -%}
+ {%- else -%}
+ {# No results so no resumption token #}
+  {%- set resumptiontoken = '' -%}
+ {%- endif -%}
+ <request {%- for var,value in data_api.query %} {{var}}="{{value}}" {% endfor -%}>{{ resumptiontoken }}</request>
+ {%- if data_api.query.verb == "ListSets" -%} 
+		<error code="noSetHierarchy">This repository does not support sets</error>
+ {%- else -%}
+   {%- if data_api.query.verb -%}
+ <{{ data_api.query.verb }}>
+   {%- else -%}
+ <GetRecord>
+   {%- endif -%} 
+   {%- for XML_doc in data -%}
+     {%- if data_api.query.verb == "ListRecords" -%}
+ <record>
+     {%- endif -%}
+   {{ XML_doc }}
+     {%- if data_api.query.verb == "ListRecords" -%}  
+ </record>
+     {%- endif -%}
+   {% endfor %}
+ {#   {{ data_api|json_encode|raw }} #}
+  {#  {{ data_api_context|json_encode|raw }} #}
+   {%- if data_api.query.verb -%}
+ </{{ data_api.query.verb }}>
+   {%- else -%}
+ </GetRecord>
+   {%- endif -%}
+ {%- endif -%}
+</OAI-PMH>
