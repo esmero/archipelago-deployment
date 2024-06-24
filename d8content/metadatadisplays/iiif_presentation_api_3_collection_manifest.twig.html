@@ -1,5 +1,7 @@
 {#
-Updated 07/08/2022 for 1.0.0
+Updated 06/13/2024 for 1.4.0
+
+Uses metadata exposed endpoint Route to generate URL so Aliases don't break it
 
 This Template generates IIIF 3.0 API Manifest for Collections using a Drupal Views
 JSON to be used by a Drupal Views (REST) to generate a simpler to parse/join listing of Canvases
@@ -20,6 +22,7 @@ Without Double quotes.
 {% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %}
 {% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %}
 {% set currenturl = url('<current>')|render %}
+{% set nodeid = 1 %} 
 {% if node.id %}
 {# this is needed to the View Argument can conform to the format even when no node exists when saving the template #}
   {% set nodeid = node.id %}
@@ -156,13 +159,16 @@ Without Double quotes.
 {# canvas|json_encode #}
     {
     {% if 'CreativeWorkSeries' in items['ado_type']|split(',') %}
-        "id": "{{ url('entity.node.canonical', {'node': items['nid']}, {'absolute': true}) }}/metadata/iiifmanifest3cws/default.jsonld",
+        "id": "{{ url('format_strawberryfield.metadatadisplay_caster', {'node': items['uuid'],'metadataexposeconfig_entity':'iiifmanifest3cws', 
+        'format':'default.jsonld'}, {'absolute': true, 'alias': true}) }}",
         "type": "Manifest",
      {% elseif 'Collection' in items['ado_type']|split(',') %}
-        "id": "{{ url('entity.node.canonical', {'node': items['nid']}, {'absolute': true}) }}/metadata/iiifmanifest3collection/default.jsonld",
+        "id": "{{ url('format_strawberryfield.metadatadisplay_caster', {'node': items['uuid'], 'metadataexposeconfig_entity':'iiifmanifest3collection', 
+        'format':'default.jsonld'}, {'absolute': true, 'alias': true}) }}",
         "type": "Collection",
     {% else %}
-        "id": "{{ url('entity.node.canonical', {'node': items['nid']}, {'absolute': true}) }}/metadata/iiifmanifest/default.jsonld",
+         "id": "{{ url('format_strawberryfield.metadatadisplay_caster', {'node': items['uuid'], 'metadataexposeconfig_entity':'iiifmanifest', 
+        'format':'default.jsonld'}, {'absolute': true, 'alias': true}) }}",
         "type": "Manifest",
     {% endif %}
        "label": { "{{len}}": [ "{{ items['label'] }}" ] },
