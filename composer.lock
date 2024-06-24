@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2515126d137f88a748d77a1498fc4497",
+    "content-hash": "ad690a0cdbff6b59f34323e612fc67cf",
     "packages": [
         {
             "name": "archipelago/ami",
@@ -8900,49 +8900,6 @@
                 }
             ],
             "time": "2021-09-02T16:50:53+00:00"
-        },
-        {
-            "name": "laracasts/transcriptions",
-            "version": "v0.3.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laracasts/transcriptions.git",
-                "reference": "497454b1a9c3cfd8fd9f1627eb90275ea1be3c99"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laracasts/transcriptions/zipball/497454b1a9c3cfd8fd9f1627eb90275ea1be3c99",
-                "reference": "497454b1a9c3cfd8fd9f1627eb90275ea1be3c99",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Laracasts\\Transcriptions\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jeffrey Way",
-                    "email": "jeffrey@laracasts.com"
-                }
-            ],
-            "description": "Load and parse VTT files.",
-            "support": {
-                "issues": "https://github.com/laracasts/transcriptions/issues",
-                "source": "https://github.com/laracasts/transcriptions/tree/v0.3.4"
-            },
-            "time": "2024-01-08T14:32:18+00:00"
         },
         {
             "name": "league/container",

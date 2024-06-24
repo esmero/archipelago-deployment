@@ -120,8 +120,7 @@
         "drupal/rest_oai_pmh": "2.0.x-dev",
         "cebe/php-openapi": "^1",
         "league/openapi-psr7-validator": "^0.21.0",
-        "drupal/views_load_more": "^2.0@RC",
-        "laracasts/transcriptions": "^0.3.4"
+        "drupal/views_load_more": "^2.0@RC"
     },
     "require-dev": {
         "drupal/core-dev": "^10",
