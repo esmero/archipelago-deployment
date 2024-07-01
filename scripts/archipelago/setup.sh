@@ -1,7 +1,8 @@
 #!/bin/bash
-echo "Adding Drupal 9 basic Configs"
+echo "Adding Drupal 10 basic Configs"
 chmod 755 /var/www/html/web/sites/default/settings.php
 cat <<EOT >> /var/www/html/web/sites/default/settings.php
+\$settings['config_sync_directory'] = '../config/sync';
 \$settings['s3fs.access_key'] = 'minio';
 \$settings['s3fs.secret_key'] = 'minio123';
 \$settings['s3fs.upload_as_private'] = TRUE;
