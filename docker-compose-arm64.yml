@@ -100,7 +100,7 @@ services:
   minio:
     container_name: esmero-minio
     restart: always
-    image: minio/minio:RELEASE.2022-06-11T19-55-32Z
+    image: minio/minio:latest
     volumes:
          - ${PWD}/persistent/miniodata:/data:cached
     ports:

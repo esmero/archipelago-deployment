@@ -142,6 +142,7 @@ Note: You will see these warnings:
  `[warning] The "block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a" was not found`
  `[warning] The "facets_summary_block:advance" was not found`
  `[warning] The "facets_summary_block:search_page_facet_summary" was not found`
+ `[notice] Missing required data for configuration: role_theme_switcher.settings`
  
    Nothing to worry about. We will provide the missing part in Step 5.
 

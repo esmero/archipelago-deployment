@@ -12,7 +12,7 @@ documentation-->
 
 **Updated:** July 1st 2024
 
-**Previously Updated:** July 1st 2024
+**Previously Updated:** January 30th 2024
 
 This repository serves as bootstrap for a Archipelago 1.4.0 deployment on a localhost for development/testing/customizing via Docker and provides a more unified experience this time:
 
