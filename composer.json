@@ -99,7 +99,6 @@
         "swaggest/json-schema": "^0.12.10",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.0.0",
-        "webmozart/path-util": "^2.3",
         "wikibase/data-model": "9.6.1",
         "drupal/facets_date_range": "^1.0@beta",
         "drupal/better_exposed_filters": "^6.0.3",
@@ -119,8 +118,9 @@
         "drupal/form_mode_manager": "2.x-dev@dev",
         "drupal/rest_oai_pmh": "2.0.x-dev",
         "cebe/php-openapi": "^1",
-        "league/openapi-psr7-validator": "^0.21.0",
-        "drupal/views_load_more": "^2.0@RC"
+        "league/openapi-psr7-validator": "0.22",
+        "drupal/views_load_more": "^2.0@RC",
+        "devizzent/cebe-php-openapi": "1.0.3"
     },
     "require-dev": {
         "drupal/core-dev": "^10",
@@ -209,9 +209,6 @@
         },
         "enable-patching": true,
         "patches": {
-           "drupal/form_mode_manager": {
-             "D10 compatibility": "https://www.drupal.org/files/issues/2023-11-07/3297262-62-form-mode-manager-D10.patch"
-           },
            "drupal/ds": {
               "https://www.drupal.org/project/ds/issues/3338860": "https://www.drupal.org/files/issues/2023-04-04/3338860-5-d10-compatible_0.patch"
            }
