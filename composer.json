@@ -120,7 +120,8 @@
         "cebe/php-openapi": "^1",
         "league/openapi-psr7-validator": "0.22",
         "drupal/views_load_more": "^2.0@RC",
-        "devizzent/cebe-php-openapi": "1.0.3"
+        "devizzent/cebe-php-openapi": "1.0.3",
+        "webmozart/path-util": "^2.3"
     },
     "require-dev": {
         "drupal/core-dev": "^10",
