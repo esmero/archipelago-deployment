@@ -7,7 +7,6 @@
 # Start these services with: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 # Stop these services with: docker-compose -f docker-compose.yml -f docker-compose.dev.yml down
 # (with just "docker-compose down", you will leave an orphan container dangling)
-version: '3.5'
 services:
   web:
     container_name: esmero-web

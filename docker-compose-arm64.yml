@@ -4,7 +4,6 @@
 # If running Linux, make sure /persistent/solrcore has 8983:8983 ownership
 # enabling :cache for the volumens can bypass that need.
 # on OSX brew install minio/stable/mc for the minio client
-version: '3.5'
 services:
   web:
     container_name: esmero-web
@@ -35,7 +34,11 @@ services:
   solr:
     container_name: esmero-solr
     restart: always
-    image: "solr:9.1.1"
+    image: "solr:9.2.1"
+    # If running Docker < 20.10.10 please uncomment the following lines
+    # See https://solr.apache.org/guide/solr/latest/upgrade-notes/major-changes-in-solr-9.html#solr-9-2 
+    #security_opt:
+    #  - seccomp:unconfined
     tty: true
     environment:
       SOLR_HEAP: 512m
@@ -56,7 +59,7 @@ services:
       - /drupalconfig
   # see https://hub.docker.com/_/mysql/
   db:
-    image: mariadb:10.6.12-focal
+    image: mariadb:10.6.18-focal
     command: mysqld --default-authentication-plugin=mysql_native_password  --max_allowed_packet=256M --sort_buffer_size=512K --lower_case_table_names=1 --innodb_read_only_compressed=OFF
     container_name: esmero-db
     restart: always
@@ -71,6 +74,8 @@ services:
     container_name: esmero-nlp
     restart: always
     image: "esmero/esmero-nlp:fasttext-multiarch"
+    # ML processing image. replace previous line with this if using Semantic Search or Image similarity 
+    #image: "esmero/esmero-nlp:1.1-multiarch"
     ports:
       - "6400:6400"
     networks:
