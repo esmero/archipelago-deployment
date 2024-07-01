@@ -1,0 +1,23 @@
+uuid: eaf9db6d-bf73-4800-9e61-19a0b084c9bc
+langcode: en
+status: true
+dependencies:
+  module:
+    - strawberryfield
+    - search_api_solr
+id: dense_vector_field_512_und
+label: 'Dense Vector Field of 512 dimensions suitable for Apple Vision ML Image FingerPrint (embeddings) using dot_product as comparison algorithm'
+minimum_solr_version: 9.0.0
+custom_code: knn_512
+field_type_language_code: und
+domains: {  }
+field_type:
+  name: knn_vector_512
+  class: solr.DenseVectorField
+  vectorDimension: 512
+  similarityFunction: dot_product
+unstemmed_field_type: null
+spellcheck_field_type: null
+collated_field_type: null
+solr_configs: null
+text_files: {  }

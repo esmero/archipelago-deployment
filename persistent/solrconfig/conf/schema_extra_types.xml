@@ -1,4 +1,24 @@
 <!--
+  Dense Vector Field of 384 dimensions suitable for Bert text feature extraction (embeddings) using dot_product as comparison algorithm
+  9.0.0
+-->
+<fieldType name="knn_vector_384" class="solr.DenseVectorField" vectorDimension="384" similarityFunction="dot_product"/>
+<!--
+  Dense Vector Field of 512 dimensions suitable for Apple Vision ML Image FingerPrint (embeddings) using dot_product as comparison algorithm
+  9.0.0
+-->
+<fieldType name="knn_vector_512" class="solr.DenseVectorField" vectorDimension="512" similarityFunction="dot_product"/>
+<!--
+  Dense Vector Field of 576 dimensions suitable for YOLOv8 feature extraction using dot_product as comparison algorithm
+  9.0.0
+-->
+<fieldType name="knn_vector_576" class="solr.DenseVectorField" vectorDimension="576" similarityFunction="dot_product"/>
+<!--
+  Dense Vector Field of 1024 dimensions suitable for mobileNetV3 feature extraction (embeddings) using dot_product as comparison algorithm
+  9.0.0
+-->
+<fieldType name="knn_vector_1024" class="solr.DenseVectorField" vectorDimension="1024" similarityFunction="dot_product"/>
+<!--
   Edge NGram String Field
   6.0.0
 -->
@@ -191,8 +211,6 @@
   <analyzer type="index">
     <charFilter class="solrocr.OcrCharFilterFactory"/>
     <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-    <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="0" generateNumberParts="1" protected="protwords_en.txt" splitOnCaseChange="0" generateWordParts="1" preserveOriginal="1" catenateAll="0" catenateWords="1"/>
-    <filter class="solr.FlattenGraphFilterFactory"/> <!-- required on index analyzers after graph filters -->
     <filter class="solr.LowerCaseFilterFactory"/>
     <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_und.txt"/>
     <filter class="solr.PorterStemFilterFactory"/>
@@ -200,7 +218,6 @@
   </analyzer>
   <analyzer type="query">
     <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-    <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="0" generateNumberParts="1" protected="protwords_en.txt" splitOnCaseChange="0" generateWordParts="1" preserveOriginal="1" catenateAll="0" catenateWords="0"/>
     <filter class="solr.LowerCaseFilterFactory"/>
     <filter class="solr.StopFilterFactory"/>
     <filter class="solr.PorterStemFilterFactory"/>

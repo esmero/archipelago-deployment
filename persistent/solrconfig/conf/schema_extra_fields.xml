@@ -100,3 +100,21 @@
 <dynamicField name="tucngrams_*" type="text_ngram" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
 <dynamicField name="tucngramm_X3b_und_*" type="text_ngram" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />
 <dynamicField name="tucngramm_*" type="text_ngram" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />
+<!-- ML/vectors -->
+<dynamicField name="knn576m_*" type="knn_vector_576" stored="true" indexed="true" multiValued="false"/>
+<dynamicField name="knn576s_*" type="pfloat" stored="true" indexed="true" multiValued="false" />
+<dynamicField name="knn512m_*" type="knn_vector_512" stored="true" indexed="true" multiValued="false"/>
+<dynamicField name="knn512s_*" type="pfloat" stored="true" indexed="true" multiValued="false" />
+<dynamicField name="knn1024m_*" type="knn_vector_1024" stored="true" indexed="true" multiValued="false"/>
+<dynamicField name="knn1024s_*" type="pfloat" stored="true" indexed="true" multiValued="false" />
+<dynamicField name="knn384m_*" type="knn_vector_384" stored="true" indexed="true" multiValued="false"/>
+<dynamicField name="knn384s_*" type="pfloat" stored="true" indexed="true" multiValued="false" />
+<dynamicField name="knn576m_X3b_und_*" type="knn_vector_576" stored="true" indexed="true" multiValued="false"/>
+<dynamicField name="knn576s_X3b_und_*" type="pfloat" stored="true" indexed="true" multiValued="false" />
+<dynamicField name="knn512m_X3b_und_*" type="knn_vector_512" stored="true" indexed="true" multiValued="false"/>
+<dynamicField name="knn512s_X3b_und_*" type="pfloat" stored="true" indexed="true" multiValued="false" />
+<dynamicField name="knn1024m_X3b_und_*" type="knn_vector_1024" stored="true" indexed="true" multiValued="false"/>
+<dynamicField name="knn1024s_X3b_und_*" type="pfloat" stored="true" indexed="true" multiValued="false" />
+<dynamicField name="knn384m_X3b_und_*" type="knn_vector_384" stored="true" indexed="true" multiValued="false"/>
+<dynamicField name="knn384s_X3b_und_*" type="pfloat" stored="true" indexed="true" multiValued="false" />
+

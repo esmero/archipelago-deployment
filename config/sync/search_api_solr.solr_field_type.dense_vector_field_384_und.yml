@@ -1,0 +1,23 @@
+uuid: 3ac7a111-8af9-40d8-9d41-5edfa8e3971a
+langcode: en
+status: true
+dependencies:
+  module:
+    - strawberryfield
+    - search_api_solr
+id: dense_vector_field_384_und
+label: 'Dense Vector Field of 384 dimensions suitable for Bert text feature extraction (embeddings) using dot_product as comparison algorithm'
+minimum_solr_version: 9.0.0
+custom_code: knn_384
+field_type_language_code: und
+domains: {  }
+field_type:
+  name: knn_vector_384
+  class: solr.DenseVectorField
+  vectorDimension: 384
+  similarityFunction: dot_product
+unstemmed_field_type: null
+spellcheck_field_type: null
+collated_field_type: null
+solr_configs: null
+text_files: {  }

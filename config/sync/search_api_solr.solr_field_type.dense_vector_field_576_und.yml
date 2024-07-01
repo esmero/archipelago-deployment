@@ -1,0 +1,23 @@
+uuid: 38af5bbc-99de-43cb-9916-a70be8f1f9da
+langcode: en
+status: true
+dependencies:
+  module:
+    - strawberryfield
+    - search_api_solr
+id: dense_vector_field_576_und
+label: 'Dense Vector Field of 576 dimensions suitable for YOLOv8 feature extraction using dot_product as comparison algorithm'
+minimum_solr_version: 9.0.0
+custom_code: null
+field_type_language_code: und
+domains: {  }
+field_type:
+  name: knn_vector_576
+  class: solr.DenseVectorField
+  vectorDimension: 576
+  similarityFunction: dot_product
+unstemmed_field_type: null
+spellcheck_field_type: null
+collated_field_type: null
+solr_configs: null
+text_files: {  }
