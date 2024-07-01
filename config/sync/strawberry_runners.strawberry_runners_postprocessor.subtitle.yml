@@ -1,0 +1,29 @@
+uuid: 1a06e92b-f2ad-47ba-b563-d7d4463df8c1
+langcode: en
+status: true
+dependencies: {  }
+id: subtitle
+label: subtitle
+weight: '-4'
+pluginconfig:
+  source_type: asstructure
+  ado_type: ''
+  jsonkey:
+    'as:text': 'as:text'
+  mime_type: text/vtt
+  language_key: language_iso639_3
+  language_default: eng
+  output_type: json
+  output_destination:
+    searchapi: searchapi
+    plugin: 0
+  processor_queue_type: background
+  nlp: 1
+  nlp_url: 'http://esmero-nlp:6400'
+  nlp_method: polyglot
+  timeout: '300'
+  weight: '0'
+pluginid: subtitle
+active: true
+parent: ''
+depth: 0

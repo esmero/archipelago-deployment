@@ -1,0 +1,31 @@
+uuid: 40415509-1efd-414e-aa68-3cfddfc3a43d
+langcode: en
+status: true
+dependencies: {  }
+id: text
+label: text
+weight: '-3'
+pluginconfig:
+  source_type: asstructure
+  ado_type: 'Book,Manuscript'
+  jsonkey:
+    'as:document': 'as:document'
+    'as:text': 'as:text'
+    'as:application': 0
+  mime_type: text/plain
+  language_key: language_iso639_3
+  language_default: eng
+  output_type: json
+  output_destination:
+    searchapi: searchapi
+    plugin: 0
+  processor_queue_type: background
+  nlp: 1
+  nlp_url: 'http://esmero-nlp:6400'
+  nlp_method: polyglot
+  timeout: '300'
+  weight: '0'
+pluginid: text
+active: true
+parent: ''
+depth: 0
