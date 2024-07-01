@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.super_admin_raw_json
 label: 'Raw JSON Metadata'
+description: ''
 targetEntityType: node
 cache: true

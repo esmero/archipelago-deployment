@@ -8,5 +8,6 @@ _core:
   default_config_hash: 0LZvohlEB6FpI9Irz7wHVLBVKGcjHzhvI8mCzjHndrc
 id: aggregator_item.summary
 label: Summary
+description: ''
 targetEntityType: aggregator_item
 cache: true

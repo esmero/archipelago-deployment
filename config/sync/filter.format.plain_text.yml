@@ -10,6 +10,21 @@ name: 'Plain text'
 format: plain_text
 weight: 10
 filters:
+  codemirror_editor:
+    id: codemirror_editor
+    provider: codemirror_editor
+    status: true
+    weight: 0
+    settings:
+      lineWrapping: false
+      lineNumbers: true
+      foldGutter: false
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }
   filter_html_escape:
     id: filter_html_escape
     provider: filter
@@ -23,18 +38,3 @@ filters:
     weight: 0
     settings:
       filter_url_length: 72
-  filter_autop:
-    id: filter_autop
-    provider: filter
-    status: true
-    weight: 0
-    settings: {  }
-  codemirror_editor:
-    id: codemirror_editor
-    provider: codemirror_editor
-    status: true
-    weight: 0
-    settings:
-      lineWrapping: false
-      lineNumbers: true
-      foldGutter: false

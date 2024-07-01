@@ -12,5 +12,6 @@ _core:
   default_config_hash: 9KZ3WmwficPZQW4KRu0DdKX2V9A1Xiz5LFFm2NHg4_A
 id: node.revision
 label: Revision
+description: ''
 targetEntityType: node
 cache: true

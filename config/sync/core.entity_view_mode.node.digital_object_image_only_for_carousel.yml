@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.digital_object_image_only_for_carousel
 label: 'Digital Object Image Only for Carousel'
+description: ''
 targetEntityType: node
 cache: true

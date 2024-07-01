@@ -6,5 +6,6 @@ dependencies:
     - aggregator
 id: aggregator_feed.token
 label: Token
+description: ''
 targetEntityType: aggregator_feed
 cache: true

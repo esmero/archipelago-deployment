@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.digital_object_with_pannellum_panorama
 label: 'Digital Object with Pannellum Panorama'
+description: ''
 targetEntityType: node
 cache: true
