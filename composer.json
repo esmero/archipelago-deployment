@@ -212,6 +212,9 @@
         "patches": {
            "drupal/ds": {
               "https://www.drupal.org/project/ds/issues/3338860": "https://www.drupal.org/files/issues/2023-04-04/3338860-5-d10-compatible_0.patch"
+           },
+           "drupal/core": {
+              "https://www.drupal.org/project/drupal/issues/3364109": "https://git.drupalcode.org/project/drupal/-/merge_requests/4092.diff"
            }
         },
         "drupal-lenient": {
