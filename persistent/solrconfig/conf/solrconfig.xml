@@ -9,9 +9,9 @@
 
 <!--
      For more details about configurations options that may appear in
-     this file, see http://wiki.apache.org/solr/SolrConfigXml.
+     this file, see https://solr.apache.org/guide/solr/latest/configuration-guide/configuring-solrconfig-xml.html
 -->
-<config name="drupal-4.2.1-solr-8.x-0" >
+<config name="drupal-4.3.2-solr-9.x-0" >
   <!-- In all configuration below, a prefix of "solr." for class names
        is an alias that causes solr to search appropriate packages,
        including org.apache.solr.(search|update|request|core|analysis)
@@ -72,20 +72,18 @@
        If a 'dir' option (with or without a regex) is used and nothing
        is found that matches, a warning will be logged.
 
-       The examples below can be used to load some solr-contribs along
-       with their external dependencies.
+       The examples below can be used to load some Solr Modules along
+       with their external dependencies as an alternative to using a
+       startup parameter to define the modules to load globally.  For more info
+       see https://solr.apache.org/guide/solr/latest/configuration-guide/solr-modules.html
     -->
-  <lib dir="${solr.install.dir:../../../..}/modules/" regex="solr-dataimporthandler-.*\.jar" />
-
   <lib dir="${solr.install.dir:../../../..}/modules/extraction/lib" regex=".*\.jar" />
-  <lib dir="${solr.install.dir:../../../..}/modules/" regex="solr-cell-\d.*\.jar" />
 
   <lib dir="${solr.install.dir:../../../..}/modules/langid/lib/" regex=".*\.jar" />
-  <lib dir="${solr.install.dir:../../../..}/modules/" regex="solr-langid-\d.*\.jar" />
 
-  <lib dir="${solr.install.dir:../../../..}/modules/analysis-extras/lib" regex=".*\.jar" />
-  <lib dir="${solr.install.dir:../../../..}/modules/analysis-extras/lucene-libs" regex=".*\.jar" />
-  <lib dir="${solr.install.dir:../../../..}/modules/" regex="solr-analysis-extras-\d.*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/modules/ltr/lib/" regex=".*\.jar" />
+
+  <lib dir="${solr.install.dir:../../../..}/modules/analysis-extras/lib/" regex=".*\.jar" />
 
   <!-- an exact 'path' can be used instead of a 'dir' to specify a
        specific jar file.  This will cause a serious error to be logged
@@ -223,7 +221,7 @@
                    'simple' is the default
 
          More details on the nuances of each LockFactory...
-         http://wiki.apache.org/lucene-java/AvailableLockFactories
+         https://cwiki.apache.org/confluence/display/lucene/AvailableLockFactories
     -->
     <lockType>${solr.lock.type:native}</lockType>
 
@@ -284,6 +282,7 @@
                 solr data directory.  -->
     <updateLog>
       <str name="dir">${solr.ulog.dir:}</str>
+      <int name="numVersionBuckets">${solr.ulog.numVersionBuckets:65536}</int>
     </updateLog>
 
     <!-- AutoCommit
@@ -292,7 +291,7 @@
          Instead of enabling autoCommit, consider using "commitWithin"
          when adding documents.
 
-         http://wiki.apache.org/solr/UpdateXmlMessages
+         https://solr.apache.org/guide/solr/latest/indexing-guide/indexing-with-update-handlers.html
 
          maxDocs - Maximum number of documents to add since the last
                    commit before automatically triggering a new commit.
@@ -439,6 +438,51 @@
 
   </query>
 
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Circuit Breaker Section - This section consists of configurations for
+     circuit breakers
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- Circuit breakers are designed to allow stability and predictable query
+     execution. They prevent operations that can take down the node and cause
+     noisy neighbour issues.
+
+     The CircuitBreakerManager is the default manager for all circuit breakers.
+     The enabled flag here controls the activation/deactivation of all circuit
+     breakers specified within.
+  -->
+  <circuitBreaker class="solr.CircuitBreakerManager" enabled="true">
+    <!-- Memory Circuit Breaker
+
+     Specific configuration for max JVM heap usage circuit breaker. This configuration defines
+     whether the circuit breaker is enabled and the threshold percentage of maximum heap allocated
+     beyond which queries will be rejected until the current JVM usage goes below the threshold.
+     The valid value for this range is 50-95.
+
+     Consider a scenario where the max heap allocated is 4 GB and memThreshold is defined as 75.
+     Threshold JVM usage will be 4 * 0.75 = 3 GB. Its generally a good idea to keep this value
+     between 75 - 80% of maximum heap allocated.
+
+     If, at any point, the current JVM heap usage goes above 3 GB, queries will be rejected until
+     the heap usage goes below 3 GB again. If you see queries getting rejected with 503 error code,
+     check for "Circuit Breakers tripped" in logs and the corresponding error message should tell
+     you what transpired (if the failure was caused by tripped circuit breakers).
+    -->
+    <!--
+    <str name="memEnabled">true</str>
+    <str name="memThreshold">75</str>
+    -->
+
+    <!-- CPU Circuit Breaker Configuration
+
+     Specific configuration for CPU utilization based circuit breaker. This configuration defines
+     whether the circuit breaker is enabled and the average load over the last minute at which the
+     circuit breaker should start rejecting queries.
+    -->
+    <!--
+    <str name="cpuEnabled">true</str>
+    <str name="cpuThreshold">75</str>
+    -->
+  </circuitBreaker>
 
   <!-- Request Dispatcher
 
@@ -454,6 +498,9 @@
 
          enableRemoteStreaming - enables use of the stream.file
          and stream.url parameters for specifying remote streams.
+
+         enableStreamBody - This attribute controls whether streaming
+         content from the HTTP parameter stream.body is allowed.
 
          multipartUploadLimitInKB - specifies the max size (in KiB) of
          Multipart File Uploads that Solr will allow in a Request.
@@ -474,7 +521,8 @@
          Before enabling remote streaming, you should make sure your
          system has authentication enabled.
 
-    <requestParsers enableRemoteStreaming="false"
+    <requestParsers enableRemoteStreaming="true"
+                    enableStreamBody="true"
                     multipartUploadLimitInKB="-1"
                     formdataUploadLimitInKB="-1"
                     addHttpRequestToContext="false"/>
@@ -748,14 +796,6 @@
       <str name="template.base.dir">${velocity.template.base.dir:}</str>
     </queryResponseWriter>
     -->
-
-  <!-- XSLT response writer transforms the XML output by any xslt file found
-       in Solr's conf/xslt directory.  Changes to xslt files are checked for
-       every xsltCacheLifetimeSeconds.
-    -->
-  <queryResponseWriter name="xslt" class="solr.scripting.xslt.XSLTResponseWriter">
-    <int name="xsltCacheLifetimeSeconds">5</int>
-  </queryResponseWriter>
 
   <!-- Query Parsers
 

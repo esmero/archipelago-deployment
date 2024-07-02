@@ -13,6 +13,7 @@
       <str name="minQueryLength">4</str>
       <str name="maxQueryFrequency">0.01</str>
       <str name="thresholdTokenFrequency">.01</str>
+      <str name="onlyMorePopular">true</str>
     </lst>
 
     <lst name="spellchecker">
@@ -40,6 +41,7 @@
       <str name="contextField">sm_context_tags</str>
       <str name="buildOnCommit">true</str>
       <str name="buildOnStartup">false</str>
+      <str name="indexPath">./en</str>
     </lst>
 
     <lst name="suggester">
@@ -51,6 +53,7 @@
       <str name="contextField">sm_context_tags</str>
       <str name="buildOnCommit">true</str>
       <str name="buildOnStartup">false</str>
+      <str name="indexPath">./und</str>
     </lst>
   </searchComponent>
 <!--

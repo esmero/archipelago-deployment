@@ -26,10 +26,9 @@
 <dynamicField name="tm_X3b_en_*" type="text_en" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />
 <dynamicField name="tos_X3b_en_*" type="text_en" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="true" />
 <dynamicField name="tom_X3b_en_*" type="text_en" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="true" />
-<dynamicField name="tus_X3b_en_*" type="text_en" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
-<dynamicField name="tum_X3b_en_*" type="text_en" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />
-<dynamicField name="spellcheck_en*" type="text_spell_en" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="true" />
-<dynamicField name="sort_X3b_en_*" type="collated_en" stored="false" indexed="false" docValues="true" />
+<dynamicField name="tus_X3b_en_*" type="text_unstemmed_en" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
+<dynamicField name="tum_X3b_en_*" type="text_unstemmed_en" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />
+<dynamicField name="sort_X3b_en_*" type="collated_en" stored="false" indexed="false" docValues="true" useDocValuesAsStored="false" />
 <dynamicField name="tcphonetics_X3b_und_*" type="text_phonetic_und" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
 <dynamicField name="tcphonetics_*" type="text_phonetic_und" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
 <dynamicField name="tcphoneticm_X3b_und_*" type="text_phonetic_und" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />
@@ -62,8 +61,8 @@
 <dynamicField name="tum_*" type="text_und" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />
 <dynamicField name="spellcheck_und*" type="text_spell_und" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="true" />
 <dynamicField name="spellcheck_*" type="text_spell_und" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="true" />
-<dynamicField name="sort_X3b_und_*" type="collated_und" stored="false" indexed="false" docValues="true" />
-<dynamicField name="sort_*" type="collated_und" stored="false" indexed="false" docValues="true" />
+<dynamicField name="sort_X3b_und_*" type="collated_und" stored="false" indexed="false" docValues="true" useDocValuesAsStored="false" />
+<dynamicField name="sort_*" type="collated_und" stored="false" indexed="false" docValues="true" useDocValuesAsStored="false" />
 <dynamicField name="tcocr_highlights_X3b_und_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
 <dynamicField name="tcocr_highlights_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="false" termVectors="true" omitNorms="false" />
 <dynamicField name="tcocr_highlightm_X3b_und_*" type="text_ocr_stored" stored="true" indexed="true" multiValued="true" termVectors="true" omitNorms="false" />
@@ -117,4 +116,3 @@
 <dynamicField name="knn1024s_X3b_und_*" type="pfloat" stored="true" indexed="true" multiValued="false" />
 <dynamicField name="knn384m_X3b_und_*" type="knn_vector_384" stored="true" indexed="true" multiValued="false"/>
 <dynamicField name="knn384s_X3b_und_*" type="pfloat" stored="true" indexed="true" multiValued="false" />
-

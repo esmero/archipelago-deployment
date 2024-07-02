@@ -91,28 +91,40 @@
   </analyzer>
 </fieldType>
 <!--
-  English Text Field spellcheck
-  7.0.0
--->
-<fieldType name="text_spell_en" class="solr.TextField" positionIncrementGap="100">
-  <analyzer>
-    <charFilter class="solr.MappingCharFilterFactory" mapping="accents_en.txt"/>
-    <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-    <filter class="solr.LengthFilterFactory" min="2" max="100"/>
-    <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_en.txt"/>
-    <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
-  </analyzer>
-</fieldType>
-<!--
   English Text Field collated
   7.0.0
 -->
 <fieldType name="collated_en" class="solr.ICUCollationField" locale="en" strength="primary" caseLevel="false"/>
 <!--
+  English Text Field unstemmed
+  7.0.0
+-->
+<fieldType name="text_unstemmed_en" class="solr.TextField" positionIncrementGap="100">
+  <analyzer type="index">
+    <charFilter class="solr.MappingCharFilterFactory" mapping="accents_en.txt"/>
+    <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+    <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_en.txt"/>
+    <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="1" generateNumberParts="1" protected="protwords_en.txt" splitOnCaseChange="0" generateWordParts="1" preserveOriginal="1" catenateAll="0" catenateWords="1"/>
+    <filter class="solr.LengthFilterFactory" min="2" max="100"/>
+    <filter class="solr.LowerCaseFilterFactory"/>
+    <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+  </analyzer>
+  <analyzer type="query">
+    <charFilter class="solr.MappingCharFilterFactory" mapping="accents_en.txt"/>
+    <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+    <filter class="solr.SynonymGraphFilterFactory" ignoreCase="true" synonyms="synonyms_en.txt" expand="true"/>
+    <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_en.txt"/>
+    <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="0" generateNumberParts="1" protected="protwords_en.txt" splitOnCaseChange="0" generateWordParts="1" preserveOriginal="1" catenateAll="0" catenateWords="0"/>
+    <filter class="solr.LengthFilterFactory" min="2" max="100"/>
+    <filter class="solr.LowerCaseFilterFactory"/>
+    <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+  </analyzer>
+</fieldType>
+<!--
   Fulltext Phonetic
   7.0.0
 -->
-<fieldType name="text_phonetic_und" class="solr.TextField" positionIncrementGap="100"  termPositions="true" termOffsets="true" storeOffsetsWithPositions="true" termVectors="true">
+<fieldType name="text_phonetic_und" class="solr.TextField" positionIncrementGap="100">
   <analyzer type="index">
     <tokenizer class="solr.WhitespaceTokenizerFactory"/>
     <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_und.txt"/>
@@ -164,9 +176,7 @@
   <analyzer type="index">
     <charFilter class="solr.MappingCharFilterFactory" mapping="accents_und.txt"/>
     <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-<!--
     <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_und.txt"/>
-    -->
     <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="1" generateNumberParts="1" protected="protwords_und.txt" splitOnCaseChange="0" generateWordParts="1" preserveOriginal="1" catenateAll="0" catenateWords="1"/>
     <filter class="solr.LengthFilterFactory" min="2" max="100"/>
     <filter class="solr.LowerCaseFilterFactory"/>
@@ -175,11 +185,9 @@
   <analyzer type="query">
     <charFilter class="solr.MappingCharFilterFactory" mapping="accents_und.txt"/>
     <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-    <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms_und.txt" expand="true" ignoreCase="true"/>
-    <!--
+    <filter class="solr.SynonymGraphFilterFactory" ignoreCase="true" synonyms="synonyms_und.txt" expand="true"/>
     <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_und.txt"/>
-     -->
-    <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="1" generateNumberParts="1" protected="protwords_und.txt" splitOnCaseChange="0" generateWordParts="1" preserveOriginal="1" catenateAll="0" catenateWords="1"/>
+    <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="0" generateNumberParts="1" protected="protwords_und.txt" splitOnCaseChange="0" generateWordParts="1" preserveOriginal="1" catenateAll="0" catenateWords="0"/>
     <filter class="solr.LengthFilterFactory" min="2" max="100"/>
     <filter class="solr.LowerCaseFilterFactory"/>
     <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
@@ -207,7 +215,7 @@
   Language Undefined Text OCR Field with Coordinate highlight
   7.0.0
 -->
-<fieldType name="text_ocr_stored" class="solr.TextField"  termPositions="true" termOffsets="true" storeOffsetsWithPositions="true" termVectors="true">
+<fieldType name="text_ocr_stored" class="solr.TextField" storeOffsetsWithPositions="true" termVectors="true" termPositions="true" termOffsets="true">
   <analyzer type="index">
     <charFilter class="solrocr.OcrCharFilterFactory"/>
     <tokenizer class="solr.WhitespaceTokenizerFactory"/>
