@@ -23,7 +23,7 @@
         "php": ">=8.0",
         "mglaman/composer-drupal-lenient": "^1",
         "archipelago/ami": "0.8.0.x-dev",
-        "archipelago/archipelago_subtheme": "1.3.0.x-dev",
+        "archipelago/archipelago_subtheme": "1.4.0.x-dev",
         "aws/aws-php-sns-message-validator": "^1.5",
         "aws/aws-sdk-php": "^3.63",
         "behat/mink": "^1.8",
