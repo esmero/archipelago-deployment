@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.digital_object_with_mirador_viewer
 label: 'Digital Object with Mirador Viewer'
+description: ''
 targetEntityType: node
 cache: true

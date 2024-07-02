@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.digital_object_with_pdf
 label: 'Digital Object with PDF Viewer'
+description: ''
 targetEntityType: node
 cache: true

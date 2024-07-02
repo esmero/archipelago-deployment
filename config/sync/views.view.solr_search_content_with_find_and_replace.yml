@@ -359,7 +359,7 @@ display:
             administrator: administrator
             metadata_pro: metadata_pro
       cache:
-        type: none
+        type: search_api_none
         options: {  }
       empty:
         result:
@@ -532,7 +532,7 @@ display:
     position: 1
     display_options:
       cache:
-        type: none
+        type: search_api_none
       defaults:
         cache: false
       exposed_block: false

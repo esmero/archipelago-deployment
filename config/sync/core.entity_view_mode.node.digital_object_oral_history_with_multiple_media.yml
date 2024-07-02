@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.digital_object_oral_history_with_multiple_media
 label: 'Digital Object Oral History with Multiple Media'
+description: ''
 targetEntityType: node
 cache: true

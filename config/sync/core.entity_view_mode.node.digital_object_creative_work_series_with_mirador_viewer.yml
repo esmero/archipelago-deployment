@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.digital_object_creative_work_series_with_mirador_viewer
 label: 'Digital Object Creative Work Series with Mirador Viewer'
+description: ''
 targetEntityType: node
 cache: true

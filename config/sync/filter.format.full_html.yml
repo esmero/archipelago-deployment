@@ -10,6 +10,12 @@ name: 'Full HTML'
 format: full_html
 weight: 1
 filters:
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: true
+    weight: 11
+    settings: {  }
   filter_align:
     id: filter_align
     provider: filter
@@ -27,12 +33,6 @@ filters:
     provider: filter
     status: true
     weight: 10
-    settings: {  }
-  editor_file_reference:
-    id: editor_file_reference
-    provider: editor
-    status: true
-    weight: 11
     settings: {  }
   filter_image_lazy_load:
     id: filter_image_lazy_load

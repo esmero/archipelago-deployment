@@ -26,8 +26,8 @@ Happy deploying!
 ### OSX (macOS):
 
 - [Install Docker for Mac](https://docs.docker.com/docker-for-mac/)
-  - For OSX (macOS) `Ventura` or Higher on Intel (i5/i7) and Apple Silicon Chips (M1/M2/M3) the tested version is: `4.23.0(120376)`. You may go newer of course.
-  - In `Preferences` -> `General`: check `Use gRPC FUSE for file sharing` and restart. Specially if you are using your `$HOME` folder for deploying, e.g. `/Users/username`.
+  - For OSX (macOS) `Ventura` or Higher on Intel (i5/i7) and Apple Silicon Chips (M1/M2/M3) the tested version is: `4.31.0(153195)` with Docker engine v26.1.4. You may go newer of course.
+  - In `Preferences` -> `General`: check under `Choose file sharing implementation for your containers` either the new `VirtioFS`(faster) or `gRPC FUSE` and restart. Specially if you are using your `$HOME` folder for deploying, e.g. `/Users/username`.
   - In `Preferences` -> `Resources`: 4 Gbytes of RAM is the recommended minimun and works; 8 Gbytes is faster and snappier.
 - [Install Github Desktop](https://desktop.github.com).
 - At least 10 Gbytes of free space (to get started).
@@ -35,7 +35,7 @@ Happy deploying!
 
 **Note:** Recent OSX (macOS) and newer Macs ship with **2 annoying things**: Apple Cloud Syncing User Folders and (wait for it) Case insensitive File Systems. If you are happy with your shiny new Mac (like i was) we are aware that it's better to deploy anything mounted outside of the `/User` folder or even better, in an **external drive formatted using a Case Sensitive Unix Filesystem** (Mac OS Extended (Case-sensitive, Journaled)).
 
-**Note 2:** "Use gRPC FUSE for file sharing" experience may vary, recent Docker for Mac does it well. In older RC1 ones it was evil. Changing/Disabling it after having installed Archipelago may affect your S3/Minio storage accessibility. Please let us know what your experience on this is.
+**Note 2:** "gRPC FUSE" experience may vary, recent Docker for Mac does it well. In older RC1 ones it was evil. Changing/Disabling it after having installed Archipelago may affect your S3/Minio storage accessibility. Please let us know what your experience on this is.
 
 ### Wait! Question: Do you have a previous version of Archipelago running?
 
@@ -81,18 +81,18 @@ Ok, now we are ready to start. Depending on what type of Chip your Apple uses yo
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.3.0
+git checkout 1.4.0
 cp docker-compose-osx.yml docker-compose.yml
 docker-compose pull
 docker-compose up -d
 ```
 
-## Step 1 (M1): Docker Deployment on Apple Silicon Chips (M1)
+## Step 1 (M1/M2/M3): Docker Deployment on Apple Silicon Chips (M1/M2/M3)
 
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.3.0
+git checkout 1.4.0
 cp docker-compose-arm64.yml docker-compose.yml
 docker-compose pull
 docker-compose up -d
@@ -142,6 +142,7 @@ Note: You will see these warnings:
  `[warning] The "block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a" was not found`
  `[warning] The "facets_summary_block:advance" was not found`
  `[warning] The "facets_summary_block:search_page_facet_summary" was not found`
+ `[notice] Missing required data for configuration: role_theme_switcher.settings`
  
    Nothing to worry about. We will provide the missing part in Step 5.
 

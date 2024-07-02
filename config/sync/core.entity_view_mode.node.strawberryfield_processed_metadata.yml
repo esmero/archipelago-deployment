@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.strawberryfield_processed_metadata
 label: 'Digital Object with thumbnail and abstract'
+description: ''
 targetEntityType: node
 cache: true

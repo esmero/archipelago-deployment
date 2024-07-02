@@ -304,7 +304,7 @@ display:
           role:
             authenticated: authenticated
       cache:
-        type: none
+        type: search_api_none
         options: {  }
       empty: {  }
       sorts: {  }
@@ -327,7 +327,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: CreativeWorkSeries
-          default_argument_skip_url: true
           summary_options: {  }
           summary:
             sort_order: asc
@@ -606,7 +605,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: Photograph
-          default_argument_skip_url: 1
           summary_options: {  }
           summary:
             sort_order: asc

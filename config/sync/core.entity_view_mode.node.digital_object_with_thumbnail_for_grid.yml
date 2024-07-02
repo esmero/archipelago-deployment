@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.digital_object_with_thumbnail_for_grid
 label: 'Digital Object with thumbnail for Grid'
+description: ''
 targetEntityType: node
 cache: true

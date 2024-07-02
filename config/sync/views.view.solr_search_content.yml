@@ -340,7 +340,7 @@ display:
         type: none
         options: {  }
       cache:
-        type: none
+        type: search_api_none
         options: {  }
       empty:
         result:
@@ -862,7 +862,7 @@ display:
     position: 1
     display_options:
       cache:
-        type: none
+        type: search_api_none
       sorts:
         changed:
           id: changed

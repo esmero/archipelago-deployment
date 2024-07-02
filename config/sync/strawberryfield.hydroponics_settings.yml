@@ -1,9 +1,10 @@
 active: true
-time_to_expire: 1440
+time_to_expire: 0
 drush_path: /var/www/html/vendor/drush/drush/drush
 home_path: ''
 queues:
   - ami_ingest_ado
-  - strawberryrunners_process_index
+  - ami_csv_ado
   - strawberryrunners_process_background
+  - strawberryrunners_process_index
   - sbf_compost_file
