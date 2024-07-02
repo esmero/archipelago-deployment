@@ -2,7 +2,7 @@ _core:
   default_config_hash: LdPjc1VCTO3_q56LqMexIbDmRvhlTEdTFHajPe4laUs
 favicon:
   mimetype: image/png
-  path: 'public://strawberries_favicon.png'
+  path: 'public://ArchipelagoCommonsLogo_favicon-32x32_0.png'
   use_default: false
 features:
   comment_user_picture: true
@@ -10,7 +10,7 @@ features:
   favicon: true
   node_user_picture: true
 logo:
-  path: ''
+  path: 'public://ArchipelagoCommonsLogoDumpling_Final_2024_Web_320px_Purple_0.png'
   use_default: false
 bootstrap_barrio_library: production
 bootstrap_barrio_source: bootstrap_barrio/bootstrap_cdn
@@ -88,7 +88,7 @@ bootstrap_barrio_navbar_affix: 0
 bootstrap_barrio_sidebar_first_affix: 0
 bootstrap_barrio_sidebar_second_affix: 0
 bootstrap_barrio_scroll_spy: ''
-bootstrap_barrio_google_fonts: roboto
+bootstrap_barrio_google_fonts: playfair_alice
 bootstrap_barrio_bootstrap_icons: 0
 bootstrap_barrio_icons: fontawesome
 bootstrap_barrio_system_messages: ''
