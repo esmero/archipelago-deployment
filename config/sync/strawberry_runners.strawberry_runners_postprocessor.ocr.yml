@@ -27,8 +27,8 @@ pluginconfig:
   arguments_pdfalto: '%file -q'
   output_type: json
   output_destination:
+    plugin: plugin
     searchapi: searchapi
-    plugin: 0
   processor_queue_type: background
   nlp: 1
   nlp_url: 'http://esmero-nlp:6400'
