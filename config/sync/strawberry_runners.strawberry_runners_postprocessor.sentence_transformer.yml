@@ -1,0 +1,35 @@
+uuid: 3f59885d-3ecb-4ed8-aaed-d011b1f3fbe3
+langcode: en
+status: true
+dependencies: {  }
+id: sentence_transformer
+label: sentence_transformer
+weight: '-10'
+pluginconfig:
+  source_type: json
+  ado_type: Book
+  jsonkey:
+    'as:image': 'as:image'
+    'as:document': 0
+    'as:audio': 0
+    'as:video': 0
+    'as:text': 0
+    'as:application': 0
+  jmespath: ''
+  mime_type: image/jpeg
+  language_key: language_iso639_3
+  language_default: eng
+  output_type: json
+  output_destination:
+    searchapi: searchapi
+    plugin: 0
+  processor_queue_type: background
+  nlp_url: 'http://esmero-nlp:6400'
+  ml_method: /text/sentence_transformer
+  iiif_server: 'http://esmero-cantaloupe:8182/iiif/2'
+  timeout: '300'
+  weight: '0'
+pluginid: ml_sentence_transformer
+active: true
+parent: ocr
+depth: 2

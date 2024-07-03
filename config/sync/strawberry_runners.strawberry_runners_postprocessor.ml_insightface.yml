@@ -1,0 +1,35 @@
+uuid: cf35608a-1ee8-49fa-9dd9-0c79706739c2
+langcode: en
+status: true
+dependencies: {  }
+id: ml_insightface
+label: ml_insightface
+weight: '-7'
+pluginconfig:
+  source_type: asstructure
+  ado_type: 'Photograph,Painting'
+  jsonkey:
+    'as:image': 'as:image'
+    'as:document': 0
+    'as:audio': 0
+    'as:video': 0
+    'as:text': 0
+    'as:application': 0
+  jmespath: ''
+  mime_type: 'image/jpeg, image/jp2, image/tiff'
+  language_key: language_iso639_3
+  language_default: eng
+  output_type: json
+  output_destination:
+    searchapi: searchapi
+    plugin: 0
+  processor_queue_type: background
+  nlp_url: 'http://esmero-nlp:6400'
+  ml_method: /image/insightface
+  iiif_server: 'http://esmero-cantaloupe:8182/iiif/2'
+  timeout: '300'
+  weight: '0'
+pluginid: ml_insightface
+active: true
+parent: ''
+depth: 0
