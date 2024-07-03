@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e461d40dc1818150c0214ac869bbbad",
+    "content-hash": "efce8e2eb6dc1ade5a16c3be1da5fa7f",
     "packages": [
         {
             "name": "archipelago/ami",
@@ -13194,12 +13194,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberry_runners.git",
-                "reference": "42a36ebb3cac28d1548e5e9b8eefdfe26742a59c"
+                "reference": "927877c28fb44b958dabc5bb3f6e2686bfc15bf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberry_runners/zipball/42a36ebb3cac28d1548e5e9b8eefdfe26742a59c",
-                "reference": "42a36ebb3cac28d1548e5e9b8eefdfe26742a59c",
+                "url": "https://api.github.com/repos/esmero/strawberry_runners/zipball/927877c28fb44b958dabc5bb3f6e2686bfc15bf0",
+                "reference": "927877c28fb44b958dabc5bb3f6e2686bfc15bf0",
                 "shasum": ""
             },
             "require": {
@@ -13244,7 +13244,7 @@
                 "issues": "https://github.com/esmero/strawberry_runners/issues",
                 "source": "https://github.com/esmero/strawberry_runners/tree/0.8.0"
             },
-            "time": "2024-06-20T18:43:00+00:00"
+            "time": "2024-07-03T21:49:53+00:00"
         },
         {
             "name": "strawberryfield/strawberryfield",
