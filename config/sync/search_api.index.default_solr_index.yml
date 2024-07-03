@@ -82,6 +82,15 @@ field_settings:
     configuration:
       type: union
       fields: {  }
+  any_parent_nid:
+    label: 'Related ADOs » Content » ID'
+    datasource_id: 'entity:node'
+    property_path: 'field_sbf_nodetonode:entity:nid'
+    type: integer
+    dependencies:
+      module:
+        - node
+        - strawberryfield
   as_generator_actor_url:
     label: '🍓 Strawberry (Descriptive Metadata source) » as_generator_actor_url'
     datasource_id: 'entity:node'
@@ -395,6 +404,11 @@ field_settings:
         - field.storage.node.field_descriptive_metadata
       module:
         - node
+  sbf_file_uri:
+    label: 'Parent File » URI'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: 'target_fileid:uri'
+    type: string
   sbf_label:
     label: 'SBF A Label'
     datasource_id: strawberryfield_flavor_datasource
@@ -458,6 +472,11 @@ field_settings:
     datasource_id: strawberryfield_flavor_datasource
     property_path: sequence_id
     type: integer
+  service_md5:
+    label: 'An MD5 checksum characterizing the Service that generated the values'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: service_md5
+    type: string
   status:
     label: 'Publishing status'
     datasource_id: 'entity:node'
@@ -554,6 +573,11 @@ field_settings:
     dependencies:
       module:
         - node
+  top_parent_collection_id:
+    label: 'Parent Node » 🍓 Strawberry (Descriptive Metadata source) » entity_sbf_entity_reference_ismemberof » ID'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: 'target_id:field_descriptive_metadata:sbf_entity_reference_ismemberof:nid'
+    type: integer
   top_parent_id:
     label: 'SBF Parent Node » isPartOf» ID'
     datasource_id: strawberryfield_flavor_datasource
@@ -602,6 +626,26 @@ field_settings:
     datasource_id: strawberryfield_flavor_datasource
     property_path: 'target_id:uuid'
     type: string
+  vector_1024:
+    label: 'Vector of size 1024 coming from ML'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: vector_1024
+    type: densevector_1024
+  vector_384:
+    label: 'Vector of size 384 coming from ML'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: vector_384
+    type: densevector_384
+  vector_512:
+    label: 'Vector of size 512 coming from ML'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: vector_512
+    type: densevector_512
+  vector_576:
+    label: 'Vector of size 576 coming from ML'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: vector_576
+    type: densevector_576
 datasource_settings:
   'entity:file': {  }
   'entity:node':
