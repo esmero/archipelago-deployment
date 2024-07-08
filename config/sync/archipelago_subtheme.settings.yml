@@ -105,8 +105,15 @@ bootstrap_barrio_select: custom
 bootstrap_barrio_file: standard
 bootstrap_barrio_hide_node_label: 0
 bootstrap_barrio_navbar_offcanvas: ''
-bootstrap_barrio_container: container-fluid
+bootstrap_barrio_container: container-lg
 bootstrap_barrio_breadcrumb_divider: ''
 bootstrap_barrio_button_type: primary
 bootstrap_barrio_float_label: 0
 bootstrap_barrio_enable_color: 0
+bootstrap_barrio_base_primary_color: '#a8c6fe'
+bootstrap_barrio_base_secondary_color: '#3a88fe'
+bootstrap_barrio_body_color: gray-800
+bootstrap_barrio_body_bg_color: white
+bootstrap_barrio_h1_color: base
+bootstrap_barrio_h2_color: base
+bootstrap_barrio_h3_color: base

@@ -6,7 +6,7 @@ palette:
   footer: '#5C88C4'
   button: '#83A2FF'
   buttonhover: '#B4BDFF'
-  titleslogan: '#83A2FF'
+  titleslogan: '#1c1c1c'
   text: '#1c1c1c'
   navbar_link: '#000000'
   navbar_background: '#FFE3BB'
@@ -16,9 +16,9 @@ palette:
   buttonprimary: '#83A2FF'
   textoverdark: '#f7f7f7'
   searchbutton: '#83A2FF'
-logo: 'public://color/archipelago_subtheme-44e04381/logo.svg'
+logo: 'public://color/archipelago_subtheme-2db70f9b/logo.svg'
 stylesheets:
-  - 'public://color/archipelago_subtheme-44e04381/colors.css'
+  - 'public://color/archipelago_subtheme-2db70f9b/colors.css'
 files:
-  - 'public://color/archipelago_subtheme-44e04381/logo.svg'
-  - 'public://color/archipelago_subtheme-44e04381/colors.css'
+  - 'public://color/archipelago_subtheme-2db70f9b/logo.svg'
+  - 'public://color/archipelago_subtheme-2db70f9b/colors.css'

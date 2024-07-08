@@ -104,7 +104,7 @@ body {
 }
 
 .site-name-slogan .navbar-brand-slogan {
-    color: #fdfdf7;
+    color: #1c1c1c;
 }
 
 #navbar-main .nav-link {
@@ -184,20 +184,20 @@ main.main-content div.content {
 .link {
     color: #000000 !important;
 }
-a:not(.toolbar-item) {
+a:not(.toolbar-item, .btn) {
     color: #000000 !important;
 }
 
 
-a:not(.toolbar-item):hover,
-a:not(.toolbar-item):focus,
+a:not(.toolbar-item, .btn):hover,
+a:not(.toolbar-item, .btn):focus,
 .link:hover,
 .link:focus {
     color: #000000 !important;
     decoration:none;
 }
 
-a:not(.toolbar-item):active,
+a:not(.toolbar-item, .btn):active,
 .link:active {
     color: #000000 !important;
     text-decoration-color: #83a2ff;
@@ -311,7 +311,7 @@ input.form-control.button:hover, input.form-control.button:focus {
 .region-header .site-branding a,
 .region-secondary-menu .menu-item a,
 .region-secondary-menu .menu-item a.is-active {
-    color: #83a2ff;
+    color: #1c1c1c;
 }
 
 
