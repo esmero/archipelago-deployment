@@ -330,6 +330,7 @@ display:
           bypass_access: false
           skip_access: false
       relationships: {  }
+      css_class: container
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -342,13 +343,15 @@ display:
       tags:
         - 'config:field.storage.node.field_descriptive_metadata'
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
   block_1:
     id: block_1
     display_title: Block
     display_plugin: block
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        sbf_ajax_interactions: {  }
       block_hide_empty: true
     cache_metadata:
       max-age: -1
@@ -359,3 +362,4 @@ display:
       tags:
         - 'config:field.storage.node.field_descriptive_metadata'
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
