@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "efce8e2eb6dc1ade5a16c3be1da5fa7f",
+    "content-hash": "c8d5f359d8a9e71a9c8a5c38e059c81f",
     "packages": [
         {
             "name": "archipelago/ami",
@@ -68,12 +68,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme.git",
-                "reference": "506b4da07204a45c175f52311254d4e855971118"
+                "reference": "20eeb6ca82ff0745513d29f27893707d2d3c8215"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/506b4da07204a45c175f52311254d4e855971118",
-                "reference": "506b4da07204a45c175f52311254d4e855971118",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/20eeb6ca82ff0745513d29f27893707d2d3c8215",
+                "reference": "20eeb6ca82ff0745513d29f27893707d2d3c8215",
                 "shasum": ""
             },
             "require": {
@@ -98,7 +98,7 @@
                 "issues": "https://github.com/esmero/archipelago_subtheme/issues",
                 "source": "https://github.com/esmero/archipelago_subtheme/tree/1.4.0"
             },
-            "time": "2024-03-14T23:34:26+00:00"
+            "time": "2024-07-08T21:57:24+00:00"
         },
         {
             "name": "archipelago/fragaria",
@@ -5639,17 +5639,17 @@
         },
         {
             "name": "drupal/search_api",
-            "version": "1.32.0",
+            "version": "1.35.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api.git",
-                "reference": "8.x-1.32"
+                "reference": "8.x-1.35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api-8.x-1.32.zip",
-                "reference": "8.x-1.32",
-                "shasum": "db113afc4d6aa6d36a341dfede718b732ee0ba6f"
+                "url": "https://ftp.drupal.org/files/projects/search_api-8.x-1.35.zip",
+                "reference": "8.x-1.35",
+                "shasum": "d119726e870f793c6470d2a4fa9286662c5eb45d"
             },
             "require": {
                 "drupal/core": "^10.1 || ^11"
@@ -5670,8 +5670,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.32",
-                    "datestamp": "1711906241",
+                    "version": "8.x-1.35",
+                    "datestamp": "1718551025",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5810,24 +5810,24 @@
         },
         {
             "name": "drupal/search_api_solr",
-            "version": "4.3.2",
+            "version": "4.3.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api_solr.git",
-                "reference": "4.3.2"
+                "reference": "4.3.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api_solr-4.3.2.zip",
-                "reference": "4.3.2",
-                "shasum": "ea15725d12aa9481e8f1650324d2585eec766f67"
+                "url": "https://ftp.drupal.org/files/projects/search_api_solr-4.3.4.zip",
+                "reference": "4.3.4",
+                "shasum": "e3f4ded975d57d4fa1d57786dcd6174e97804f45"
             },
             "require": {
                 "composer-runtime-api": ">=2.0",
                 "composer/semver": "^1.0|^3.0",
                 "consolidation/annotated-command": "^2.12|^4.1",
                 "drupal/core": "^10.1 || ^11.0",
-                "drupal/search_api": "~1.30",
+                "drupal/search_api": "~1.34",
                 "ext-dom": "*",
                 "ext-json": "*",
                 "ext-simplexml": "*",
@@ -5859,8 +5859,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "4.3.2",
-                    "datestamp": "1705573676",
+                    "version": "4.3.4",
+                    "datestamp": "1718742899",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
