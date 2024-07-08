@@ -105,7 +105,7 @@ domain_questions() {
 import_data() {
   [[ "${source_target}" != */ ]] && source_target="${source_target}/"
   shopt -s nullglob
- 
+
   for f in $source_target*.json
   do
     import_id=$(jq -cr .data.id "$f")
@@ -129,7 +129,7 @@ export_data() {
   fi
   cd "$source_target" &&
   echo "Exporting Metadata Displays to $source_target"
-  curl -w "\n" -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -K - "$json_api_endpoint" <<< "user = \"$username:$password\"" | jq -cr '.data[]|del(.links)|del(.relationships)|del(.attributes.created)|del(.attributes.drupal_internal__id)|del(.attributes.changed)|del(.attributes.link)|{"data": .}' | while read -r metadatadisplay_entity;
+  curl -w "\n" -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -K - "$json_api_endpoint" <<< "user = \"$username:$password\"" | jq -cr '.data[]|del(.links)|del(.relationships)|del(.attributes.created)|del(.attributes.drupal_internal__id)|del(.attributes.drupal_internal__vid)|del(.attributes.revision_created)|del(.attributes.revision_log_message)|del(.attributes.revision_translation_affected)|del(.attributes.changed)|del(.attributes.link)|{"data": .}' | while read -r metadatadisplay_entity;
   do
     uuid=$(echo "$metadatadisplay_entity" | jq -r .data.id)
     echo "$metadatadisplay_entity" | json_pp -json_opt escape_slash >> "metadatadisplay_entity_$uuid.json"
@@ -139,7 +139,7 @@ export_data() {
 interactive_prompts() {
   echo 'What would you like to do? '
   PS3='> '
-  
+
   select opt in "${metadata_action_opts[@]}"; do
     case "$opt" in
       "Cancel")
@@ -153,7 +153,7 @@ interactive_prompts() {
       *) echo "Please select an option.";;
     esac
   done
-  
+
   unset username
   unset password
   echo "JSON:API Username:"
@@ -170,9 +170,9 @@ interactive_prompts() {
   echo $'\n'
 
   domain_questions
-  
+
   json_api_endpoint="$archipelago_url/jsonapi/metadatadisplay_entity/metadatadisplay_entity"
-  
+
   if [ "${selected_metadata_action}" == "export" ]; then
     source_target=""
     echo 'Export to the current directory? (Please note that any existing .json files will be deleted first.) '
@@ -191,7 +191,7 @@ interactive_prompts() {
       esac
     done
     export_data
- 
+
   elif [ "${selected_metadata_action}" == "import" ]; then
     source_target=""
     echo 'Import from the current directory? '
