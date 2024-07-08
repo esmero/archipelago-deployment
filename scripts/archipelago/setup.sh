@@ -23,6 +23,7 @@ echo "Please edit your web/sites/default/settings.php and change \$settings['has
 echo "Updating your web root folder permissions."
 chmod 0666 /var/www/html/web/sites/default/settings.php
 chown -R www-data:www-data /var/www/html/web/sites
+chown -R www-data:www-data /var/www/html/private
 echo "Downloading JQUERY Slider Pips Library for facets"
 mkdir -p /var/www/html/web/libraries/jquery-ui-slider-pips/dist
 curl -o /var/www/html/web/libraries/jquery-ui-slider-pips/dist/jquery-ui-slider-pips.min.js 'https://raw.githubusercontent.com/simeydotme/jQuery-ui-Slider-Pips/v1.11.3/dist/jquery-ui-slider-pips.min.js'
