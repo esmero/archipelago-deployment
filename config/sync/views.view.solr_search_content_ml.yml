@@ -1066,7 +1066,7 @@ display:
         row: false
         filters: false
         filter_groups: false
-      css_class: 'search_box bg-secondary'
+      css_class: search_box
       display_extenders:
         sbf_ajax_interactions: {  }
       path: search_ml_images
