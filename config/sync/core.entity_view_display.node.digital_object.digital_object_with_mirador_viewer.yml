@@ -51,6 +51,7 @@ third_party_settings:
           formatter:
             iiif_base_url: 'http://localhost:8183/iiif/2'
             iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+            custom_js: false
             mediasource:
               manifestnodelist: manifestnodelist
               metadataexposeentity: metadataexposeentity
@@ -62,6 +63,10 @@ third_party_settings:
             max_width: '0'
             max_height: '960'
             use_iiif_globals: '1'
+            upload_json_key_source: ''
+            embargo_json_key_source: ''
+            hide_on_embargo: '0'
+            viewer_overrides: ''
       'display_field_copy:node-formatted_metadata':
         plugin_id: 'display_field_copy:node-formatted_metadata'
         weight: 3

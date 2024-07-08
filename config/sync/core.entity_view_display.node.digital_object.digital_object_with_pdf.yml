@@ -59,6 +59,8 @@ third_party_settings:
             number_documents: null
             number_pages: 0
             initial_page: 1
+            upload_json_key_source: ''
+            embargo_json_key_source: ''
       'display_field_copy:node-formatted_metadata':
         plugin_id: 'display_field_copy:node-formatted_metadata'
         weight: 3
