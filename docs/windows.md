@@ -10,7 +10,7 @@ tags:
 ---
 documentation-->
 
-# Installing Archipelago Drupal 9 on Windows 10/11
+# Installing Archipelago Drupal 10 on Windows 10/11
 
 ## Prerequisites
 
