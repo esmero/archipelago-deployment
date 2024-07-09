@@ -1,0 +1,151 @@
+{# This Template generates Thumbnails with Dynamic Web Annotations that can trigger ML image similaries
+Updated on 07/07/2024 for 1.4.0 for Cantaloupe 6.x 
+Structures passed from Archipelago are 
+- node 
+  The full Node entity 
+- data 
+  The Full JSON Structure converted in an Array 
+- iiif_server 
+  The publicly available IIIF Server (Global Setting) 
+Since JSON was decoded into the 'data' values are valid PHP but could not 
+be valid JSON when outputting. So We use data.description|json_encode|raw 
+Without Double quotes. 
+#} 
+{# <---- SETUP ---> #} 
+{# -- The Desired width -- #} 
+{% set width = 240 %} 
+{# -- The IIIF Server URLS -- #} 
+{% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %} 
+{% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %} 
+{% set file_uuid = null %}
+{# -- Node Info -- #} 
+{% if node.id %} 
+  {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %} 
+{% else %} 
+  {% set nodeurl = '<current>' ~ '/iiif/manifest' %} 
+{% endif%} 
+{# -- Language -- #} 
+{% set len = language.getId() ? language.getId() : "en" %} 
+{# --THIS WILL BE THE IMAGE IIIF URL. CAN HAVE A DEFAULT VALUE IN CASE OF FAILURE THERE IS ALWAYS A GENERIC THUMB-- #} 
+{# -- NOTE: for loops are scoped so if we only define source inside one it will not be accesible from the outside- #} 
+{% set source = '' %} 
+{# <---- END SETUP --> #} 
+{#  We will test for 3 main options 
+1.- Images 
+2.- PDF 
+3.- Movies 
+#} 
+{% apply spaceless %} 
+{% if attribute(data, 'as:image')|length > 0 %} 
+  {% set document  = data['as:image']|first %} 
+  {# if the default size is smaller than the source use the source one #} 
+  {% if document['flv:exif'].ImageWidth is defined and document['flv:exif'].ImageWidth < width %} 
+     {% set width = document['flv:exif'].ImageWidth %} 
+  {% endif %} 
+  {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %} 
+  {% if logged_in  %}
+    {% set width = 480 %} 
+  {% endif %}
+  {% set source = cantaloupeid ~ "/full/" ~ width  ~ ",/0/default.jpg" %} 
+  {% set file_uuid = document['dr:uuid'] %} 
+{% elseif attribute(data, 'as:document')|length > 0 %} 
+  {% set break = false %} 
+  {% for document in data['as:document']%} 
+{#- WIZARDLY UPDATED BY ARCHIPELAGO -#} 
+{%  if not break %} 
+  {# this is just an example, we  allow every PDF here but we can also filter by pronom id "info:pronom/fmt/17" or info:pronom/fmt/18 #} 
+    {% if document['flv:exif'].MIMEType == "application/pdf" and document['flv:exif'].PageCount > 0 %} 
+      {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %} 
+      {% set source = cantaloupeid ~ ";1" ~"/full/" ~ width  ~ ",/0/default.jpg" %} 
+      {% set break = true %} 
+    {% endif%} 
+  {#- WIZARDLY UPDATED BY ARCHIPELAGO -#} 
+{% endif %} 
+{% endfor %} 
+{% elseif attribute(data, 'as:video')|length > 0 %} 
+  {% set break = false %} 
+  {% for document in data['as:video']%} 
+{#- WIZARDLY UPDATED BY ARCHIPELAGO -#} 
+{%  if not break %} 
+  {# this is just an example, we process here only MP4 quicktimes #} 
+    {% if document['flv:pronom'].mimetype == "video/quicktime" %} 
+      {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %} 
+      {% set source = cantaloupeid ~ ";1/full/" ~ width  ~ ",/0/default.jpg" %} 
+      {% set break = true %} 
+    {% endif %} 
+  {#- WIZARDLY UPDATED BY ARCHIPELAGO -#} 
+{% endif %} 
+{% endfor %} 
+{% endif%} 
+{# <----START OUTPUT --> #} 
+<a href="{{ nodeurl }}" alt="{{ node.label.value }}" hreflang="{{ len }}"> 
+{% if source|length > 0 %} 
+{# NOTE: remote iiif-lazy class if you do not want lazy loading #}
+  {% set annon_attributes = '' %}
+  {% if logged_in and file_uuid %}
+    {% set annon_attributes = ' data-sbf-annotations-nodeuuid=' ~ node.uuid.value ~ ' data-sbf-annotations-fileuuid=' ~ file_uuid ~ ' data-sbf-annotations-processors=ml_yolov8' %}
+  {% endif %}
+<img class="field-iiif image-iiif iiif-lazy img-fluid rounded"{{ annon_attributes }} id="thumb_iiif-field_descriptive_metadata-{{ node.uuid.value }}-0-image1" src="{{ source }}" width="{{ width }}" alt="Thumbnail for {{ node.label.value }}" typeof="foaf:Image"> 
+{% else %} 
+{# -- IF we have no source we can e.g use font awesome -- #} 
+{# 
+Options we took from /admin/structure/webform/config/options/manage/schema_org_creative_works/source 
+Article: Article 
+Book: Book 
+Collection: Collection 
+Dataset: Dataset 
+DigitalDocument: 'Digital Document' 
+Map: Map 
+Movie: Movie 
+MusicRecording: 'Music Recording' 
+Painting: Painting 
+Photograph: Photograph 
+Sculpture: Sculpture 
+VisualArtwork: VisualArtwork 
+Thesis: Thesis 
+Podcast: Podcast 
+PodcastEpisode: 'Podcast Episode' 
+Panorama: 'Panorama (http://ns.google.com/photos/1.0/panorama)' 
+PanoramaTour: 'Panorama Tour (http://ns.google.com/photos/1.0/panorama)' 
+3DModel: '3D Model' 
+WebPage: 'Web Page' 
+AudioObject: 'Audio Object' 
+VideoObject: 'Video Object' 
+Conversation: 'Conversation (Oral History)' 
+ShortStory: 'Short Story' 
+#} 
+{% if data.type in ['DigitalDocument', 'Article','Thesis'] %} 
+<i class="fas fa-file-alt fa-9x"></i> 
+{% elseif data.type in ['Photograph','Painting','VisualArtwork'] %} 
+<i class="fas fa-photo-video fa-9x"></i> 
+{% elseif data.type in ['Movie','VideoObject'] %} 
+<i class="fas fa-film fa-9x"></i> 
+{% elseif data.type in ['MusicRecording', 'AudioObject'] %} 
+<i class="fas fa-headphones-alt fa-9x"></i> 
+{% elseif data.type in ['Podcast','PodcastEpisode'] %} 
+<i class="fas fa-podcast"></i> 
+{% elseif data.type in ['ShortStory','Conversation',] %} 
+<i class="fas fa-comments fa-9x"></i> 
+{% elseif data.type in ['Sculpture','3DModel'] %} 
+<i class="fas fa-cubes fa-9x"></i> 
+{% elseif data.type in ['Book'] %} 
+<i class="fas fa-book fa-9x"></i> 
+{% elseif data.type in ['WebPage'] %} 
+<i class="fas fa-sitemap fa-9x"></i> 
+{% elseif data.type in ['Panorama','PanoramaTour'] %} 
+<i class="fas fa-vr-cardboard fa-9x"></i> 
+{% elseif data.type in ['Dataset'] %} 
+<i class="fas fa-table fa-9x"></i> 
+{% elseif data.type in ['CreativeWorkSeries'] %} 
+<i class="fab fa-buffer fa-9x"></i> 
+{% elseif data.type in ['Collection'] %} 
+<i class="fas fa-archive fa-9x"></i> 
+{% elseif data.type in ['Map'] %} 
+<i class="fas fa-map-marked-alt fa-9x"></i> 
+{% else %} 
+<i class="fas fa-file-contract fa-9x"></i> 
+{% endif %} 
+{# -- ENDIF fontawesome -- #} 
+{% endif %} 
+</a> 
+{% endapply %}
