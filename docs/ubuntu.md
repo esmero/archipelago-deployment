@@ -110,7 +110,7 @@ Now that you got it, let's deploy:
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.3.0
+git checkout 1.4.0
 ```
 
 

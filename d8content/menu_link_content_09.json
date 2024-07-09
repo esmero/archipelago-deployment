@@ -3,7 +3,6 @@
         "type": "menu_link_content--menu_link_content",
         "id": "0faa6a44-e022-4320-9460-33b9fe3b8b01",
         "attributes": {
-            "langcode": "en",
             "bundle": "menu_link_content",
             "enabled": true,
             "title": "ML Image Similarity",
@@ -20,8 +19,7 @@
             "rediscover": true,
             "weight": -46,
             "expanded": false,
-            "parent": "menu_link_content:a580dad6-5932-4f9d-bdaa-06b5563c386c",
-            "default_langcode": true
+            "parent": "menu_link_content:a580dad6-5932-4f9d-bdaa-06b5563c386c"
         }
     }
 }
