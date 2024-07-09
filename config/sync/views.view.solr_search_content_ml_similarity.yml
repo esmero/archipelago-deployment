@@ -655,7 +655,7 @@ display:
           preserve_facet_query_args: true
           query_tags: {  }
       relationships: {  }
-      css_class: 'flex-column w-100 p-2'
+      css_class: 'flex-column p-2'
       use_ajax: true
       header:
         result:

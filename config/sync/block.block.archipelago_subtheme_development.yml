@@ -12,7 +12,7 @@ dependencies:
 id: archipelago_subtheme_development
 theme: archipelago_subtheme
 region: content
-weight: -13
+weight: -17
 provider: null
 plugin: 'system_menu_block:devel'
 settings:
@@ -31,3 +31,7 @@ visibility:
       user: '@user.current_user_context:current_user'
     roles:
       administrator: administrator
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/user/*\r\n<front>"

@@ -1,0 +1,31 @@
+uuid: b433ddbe-eb1a-4f7f-a380-ebe17a4578bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.solr_search_content_ml_similarity
+  module:
+    - context
+    - views
+  theme:
+    - archipelago_subtheme
+id: archipelago_subtheme_views_block__similarity_ml_imagenet
+theme: archipelago_subtheme
+region: content
+weight: -19
+provider: null
+plugin: 'views_block:solr_search_content_ml_similarity-block_1'
+settings:
+  id: 'views_block:solr_search_content_ml_similarity-block_1'
+  label: MobileNetV3
+  label_display: visible
+  provider: views
+  views_label: MobileNetV3
+  items_per_page: none
+  exposed: {  }
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content_ml-page_1: view-solr_search_content_ml-page_1

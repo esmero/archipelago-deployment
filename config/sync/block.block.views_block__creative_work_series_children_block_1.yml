@@ -13,7 +13,7 @@ dependencies:
 id: views_block__creative_work_series_children_block_1
 theme: archipelago_subtheme
 region: content
-weight: -14
+weight: -21
 provider: null
 plugin: 'views_block:creative_work_series_children-block_1'
 settings:

@@ -1,0 +1,31 @@
+uuid: 13e4f0e3-8d24-4bf0-a224-677fab4e8bf7
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.solr_search_content_ml_similarity
+  module:
+    - context
+    - views
+  theme:
+    - archipelago_subtheme
+id: archipelago_subtheme_views_block__similarity_ml_yolov8
+theme: archipelago_subtheme
+region: content
+weight: -20
+provider: null
+plugin: 'views_block:solr_search_content_ml_similarity-ml_block_with_contextual'
+settings:
+  id: 'views_block:solr_search_content_ml_similarity-ml_block_with_contextual'
+  label: YOLOV8
+  label_display: visible
+  provider: views
+  views_label: YOLOV8
+  items_per_page: none
+  exposed: {  }
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content_ml-page_1: view-solr_search_content_ml-page_1

@@ -1,0 +1,31 @@
+uuid: b29bb4cd-ae04-4942-b1f2-7904283a1acf
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.solr_search_content_ml_similarity
+  module:
+    - context
+    - views
+  theme:
+    - archipelago_subtheme
+id: archipelago_subtheme_views_block__similarity_ml_insightface
+theme: archipelago_subtheme
+region: content
+weight: -18
+provider: null
+plugin: 'views_block:solr_search_content_ml_similarity-block_2'
+settings:
+  id: 'views_block:solr_search_content_ml_similarity-block_2'
+  label: InsightFace
+  label_display: visible
+  provider: views
+  views_label: InsightFace
+  items_per_page: none
+  exposed: {  }
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content_ml-page_1: view-solr_search_content_ml-page_1
