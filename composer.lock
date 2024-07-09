@@ -68,12 +68,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme.git",
-                "reference": "be2a9547ba1ff09b0b455ab2ea264b1ff430c24c"
+                "reference": "4c71f6a6a6d83018f477dc55f458bb9591f99b3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/be2a9547ba1ff09b0b455ab2ea264b1ff430c24c",
-                "reference": "be2a9547ba1ff09b0b455ab2ea264b1ff430c24c",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/4c71f6a6a6d83018f477dc55f458bb9591f99b3b",
+                "reference": "4c71f6a6a6d83018f477dc55f458bb9591f99b3b",
                 "shasum": ""
             },
             "require": {
@@ -98,7 +98,7 @@
                 "issues": "https://github.com/esmero/archipelago_subtheme/issues",
                 "source": "https://github.com/esmero/archipelago_subtheme/tree/1.4.0"
             },
-            "time": "2024-07-09T00:19:15+00:00"
+            "time": "2024-07-09T20:03:31+00:00"
         },
         {
             "name": "archipelago/fragaria",
