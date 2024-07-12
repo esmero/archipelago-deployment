@@ -75,7 +75,7 @@ services:
     restart: always
     image: "esmero/esmero-nlp:fasttext-multiarch"
     # ML processing image. replace previous line with this if using Semantic Search or Image similarity 
-    #image: "esmero/esmero-nlp:1.1.1-multiarch"
+    #image: "esmero/esmero-nlp:1.4.1-amd64"
     ports:
       - "6400:6400"
     networks:
