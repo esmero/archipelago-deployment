@@ -1,7 +1,9 @@
 {# This Template generates IIIF 3.0 Presentation API Manifest from a Strawberry Field 
 JSON. 
-Updated 31/10/2023 for 1.3.0 
+Updated 17/06/2024 for 1.4.0 
 Changes: 
+  - Plain Text added as supplementing for Images if present. Processed in the same block as direct Annotations
+  - VTTs added as supplementing for Videos if present.
   - Better Labeling for Items 
   - Adds Rights 
   - Fixes on Canvas IDs 
@@ -111,7 +113,8 @@ Without Double quotes.
       {{ node.label|json_encode|raw }} 
     ] 
   }, 
-  "rights": {{ computed_rights|json_encode|raw }},   
+  "rights": {{ computed_rights|json_encode|raw }},  
+  "behavior": ["paged"],
   "requiredStatement": { 
     "label": { "en": [ "Attribution" ] }, 
     "value": { "en": [ "Provided by Archipelago Deployment" ] } 
@@ -151,7 +154,8 @@ Without Double quotes.
       }, 
       "value":  { 
         "{{ len }}": [ 
-          {{ node.getChangedTime|date("F jS \\a\\t g:ia")|json_encode|raw }}
+        {{ "now"|date("F jS \\a\\t g:ia")|json_encode|raw }}
+         {# node.getChangedTime|date("F jS \\a\\t g:ia")|json_encode|raw #} 
         ] 
       } 
     }, 
@@ -175,8 +179,9 @@ Without Double quotes.
 {%- if attribute(data, 'ispartof') %} 
   "within": "{{ parentnodeurl }}", 
   "partOf": [ { "id": "{{ parentnodeurl }}/metadata/iiifmanifest3cws/default.jsonld", "type": "Manifest" } ], 
-{%- endif -%} 
-{%- if node.uuid.value -%} 
+{%- endif -%}
+{# Allison: add note why we have 3 services. SearchService2 is the current one, no viewer supports it, SearchService1 is for Mirador, http://iiif.io/api/search/0/search is for UV #}
+{%- if node.uuid.value -%}
     "service": [ 
         { 
             "id": "{{ baseurl }}iiifcontentsearch/v2/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest/mode/advanced/page/0", 
@@ -271,7 +276,7 @@ Without Double quotes.
                    }
                 ]
                 {% if data.type in ['Book','Document','ArchivalDescription','Page','Letter'] %}
-		 ,
+                ,
                 "seeAlso": {
                    "@id":  "{{ nodeurl }}/flavorsearch/{{ document['dr:uuid'] }}/ocr/originalocr/{{ pagenumber}}",
                    {# "profile": "http://www.loc.gov/standards/alto/v3/alto.xsd", NOTE THIS CAN BE ANY URL YOU ARE GOING TO USE TO IDENTIFY/DISCERN between XML formats. Up to you#}
@@ -388,55 +393,95 @@ Without Double quotes.
           ] 
         } 
       ] 
- #}       
-      {%- if data["ap:annotationCollection"][cantaloupeid ~ '/info.json'] is defined %} 
+ #}   
+{#- starts Pure Text annotation and direct Image annotations-#}
+{% set texts = [] %}
+{%- for text_uuid, text_file in data["as:text"] %} 
+   {# only generate an annotation if text and image where uploaded to the same key OR
+   there is exactly a single Image #}
+  {% if (text_file["dr:for"] == page["dr:for"] or data["as:image"]|length == 1) and text_file["dr:mimetype"] == "text\/plain" %}
+    {% set texts = texts|merge([{'dr:uuid': text_file['dr:uuid'], 'name': text_file['name']}]) %}
+  {% endif %}
+{%- endfor %}
+{% if texts|length > 0 or data["ap:annotationCollection"][cantaloupeid ~ '/info.json'] is defined %}
        , 
-       "annotations": [ 
-           { 
-           "id": "{{ nodeurl }}/iiif/comments/p{{ itemCount }}", 
+       "annotations": [
+  {%- if texts|length > 0 -%}
+           {
+           "id": "{{ nodeurl }}/iiif/subtitles/s{{ itemCount }}", 
            "type": "AnnotationPage", 
-           "items": [ 
-        {% for annotation in data["ap:annotationCollection"][cantaloupeid ~ '/info.json'] %} 
-    	{ 
-               "id": "{{ nodeurl }}/iiif/comments/p{{ itemCount }}/{{ annotation.id }}", 
+           "items": [
+    {%- for text_file in texts %} 
+            {
+              "id": "{{ nodeurl }}/iiif/text/p{{ itemCount }}/{{ text_file['dr:uuid'] }}", 
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "body": {
+                "id": "{{ Webserverurl }}do/{{ node.uuid.value }}/file/{{ text_file['dr:uuid'] }}/download/{{  text_file["name"] }}",
+                "type": "Text",
+                "format": "text/plain",
+                "label": {
+                  "en": [
+                    "{{ text_file.name  }}"
+                  ]
+                },
+                "language": "en"
+              },
+              "target": "{{ nodeurl }}/iiif/canvas/p{{ itemCount }}" 
+            }{{ not loop.last ? ',' : '' }}       
+    {% endfor -%} 
+  {%- endif -%}
+  {% if data["ap:annotationCollection"][cantaloupeid ~ '/info.json'] is defined %}
+    {%- if texts|length > 0 -%},{% endif %}
+            {
+              "id": "{{ nodeurl }}/iiif/comments/p{{ itemCount }}",
+              "type": "AnnotationPage", 
+              "items": [
+       {% for annotation in data["ap:annotationCollection"][cantaloupeid ~ '/info.json'] %}
+              {
+              "id": "{{ nodeurl }}/iiif/comments/p{{ itemCount }}/{{ annotation.id }}",
                {# @TODO a single annotation might have multiple Bodies and multiple motivations #} 
-               "motivation": "tagging", 
-               {% set temp_annotation_body = [] %} 
-               {# We need to enrich here, missing language and format #} 
-               {% if annotation.body is iterable %} 
-                 {% for body in annotation.body %} 
-                   {% set annotation_body = body|merge({'language': len, 'format': 'text/plain'}) %} 
-                   {% set temp_annotation_body = temp_annotation_body|merge([annotation_body]) %} 
-                 {% endfor %} 
-               {% else %} 
-               {% endif %} 
-               "body": {{ temp_annotation_body|json_encode|raw }}, 
-               "type": {{ annotation.type|json_encode(constant('JSON_FORCE_OBJECT'))|raw }} 
-               {# check target type: If polygon we need the selector, if a square, we need the xywh #} 
-               {% if annotation.target.selector.type == "FragmentSelector" %} 
-               {# MIRADOR does not know how to hande "pixel:" in the fragment coordinates selector #} 
-                 {% set target = nodeurl|render ~ "/iiif/canvas/p" ~ itemCount ~ '#' ~ annotation.target.selector.value|replace({"pixel:" : ""}) %} 
-                 ,"target": {{ target|json_encode|raw }} 
-               {% else %} 
-               {# Parse our polygon point values into path for Mirador #} 
-                 {% if 'points="' in annotation.target.selector.value %} 
-                   {% set mirador_path = annotation.target.selector.value | preg_replace('/.+?points="/','') | preg_replace('/".*/','') %} 
-                   {% set mirador_path = "M" ~ (mirador_path|split(" ")|join("L")) ~ " z" %} 
-                   {% set target = { 
+              "motivation": "tagging",
+              {% set temp_annotation_body = [] %}
+              {# We need to enrich here, missing language and format #} 
+              {% if annotation.body is iterable %}
+                {% for body in annotation.body %}
+                  {% set annotation_body = body|merge({'language': len, 'format': 'text/plain'}) %}
+                  {% set temp_annotation_body = temp_annotation_body|merge([annotation_body]) %}
+                {% endfor %}
+              {% else %}
+              {% endif %}
+              "body": {{ temp_annotation_body|json_encode|raw }},
+              "type": {{ annotation.type|json_encode(constant('JSON_FORCE_OBJECT'))|raw }} 
+              {# check target type: If polygon we need the selector, if a square, we need the xywh #} 
+              {% if annotation.target.selector.type == "FragmentSelector" %} 
+              {# MIRADOR does not know how to hande "pixel:" in the fragment coordinates selector #} 
+                {% set target = nodeurl|render ~ "/iiif/canvas/p" ~ itemCount ~ '#' ~ annotation.target.selector.value|replace({"pixel:" : ""}) %} 
+              ,"target": {{ target|json_encode|raw }}
+              {% else %} 
+              {# Parse our polygon point values into path for Mirador #} 
+                {% if 'points="' in annotation.target.selector.value %} 
+                  {% set mirador_path = annotation.target.selector.value | preg_replace('/.+?points="/','') | preg_replace('/".*/','') %} 
+                  {% set mirador_path = "M" ~ (mirador_path|split(" ")|join("L")) ~ " z" %} 
+                  {% set target = {
                      "source" : nodeurl|render ~ "/iiif/canvas/p" ~ itemCount, 
                      "selector": { 
                        "type":  annotation.target.selector.type, 
                        "value": '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="' ~ mirador_path ~ '"/></g></svg>' 
                      }, 
                      "type": "SpecificResource" 
-               	   } %} 
-                   ,"target": {{ target|json_encode|raw }} 
-                 {% endif %} 
-               {% endif %} 
+               	   }
+                 %}
+              ,"target": {{ target|json_encode|raw }} 
+              {% endif %}
+            {% endif %}
        }{{ not loop.last ? ',' : '' }}       
-       {% endfor -%} 
-       ]}] 
+       {% endfor -%}
+       {% endif %}   
+       ]
+    }]
       {% endif %} 
+{#- ends Pure text and Direct Image annotation -#}  
     }{{ not loop.last ? ',' : '' }} 
 {% endfor %} 
 {#- Video Manifest -#} 
@@ -464,7 +509,7 @@ Without Double quotes.
   {% set thumbnail -%} 
 "thumbnail": [ 
         { 
-          "id": "{{ cantaloupeid }}1;/full/{{thumb_width}},/0/default.jpg", 
+          "id": "{{ cantaloupeid }};1/full/{{thumb_width}},/0/default.jpg", 
           "type": "Image", 
           "format": "image/jpeg", 
           "width": {{ thumb_width }}, 
@@ -492,25 +537,61 @@ Without Double quotes.
         { 
           "id": "{{ nodeurl }}/iiif/page/p{{ itemCount }}", 
           "type": "AnnotationPage", 
-          "items": [ 
+          "items": [
             { 
               "id": "{{ nodeurl }}/iiif/annotation/p{{ itemCount }}", 
               "type": "Annotation", 
               "motivation": "painting", 
               {{ thumbnail }} 
-              "body": { 
+              "body": [{ 
                 "id": "{{ Webserverurl }}do/{{ node.id }}/iiif/{{ video['dr:uuid'] }}/full/full/0/{{  video.name }}", 
                 "type": "Video", 
                 "format": "{{ video["flv:mediainfo"].general.internet_media_type }}", 
                 "duration": {{ video["flv:mediainfo"].videos[0].duration.milliseconds|default(1000) }}, 
                 "height": {{ height }}, 
                 "width": {{ width }} 
-              }, 
+              }], 
               "target": "{{ nodeurl }}/iiif/canvas/p{{ itemCount }}" 
             } 
-          ] 
+          ]
         } 
-      ] 
+      ]
+    {#- starts subtitle annotation -#}
+          {% set vtts = [] %}
+          {%- for text_uuid, subtitle_track in data["as:text"] %} 
+              {% if subtitle_track["dr:for"] == video["dr:for"] and subtitle_track["dr:mimetype"] == "text\/vtt" %}
+              {% set vtts = vtts|merge([{'dr:uuid': subtitle_track['dr:uuid'], 'name': subtitle_track['name']}]) %}
+              {% endif %}
+          {%- endfor %}
+       {% if vtts|length > 0 %}
+       , 
+       "annotations": [{ 
+           "id": "{{ nodeurl }}/iiif/subtitles/s{{ itemCount }}", 
+           "type": "AnnotationPage", 
+           "items": [ 
+{%- for subtitle_track in vtts %} 
+            {
+              "id": "{{ nodeurl }}/iiif/subtitles/p{{ itemCount }}/{{ subtitle_track['dr:uuid'] }}", 
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "body": {
+                "id": "{{ Webserverurl }}do/{{ node.uuid.value }}/file/{{ subtitle_track['dr:uuid'] }}/download/{{  subtitle_track["name"] }}",
+                "type": "Text",
+                "format": "text/vtt",
+                "label": {
+                  "en": [
+                    "{{ subtitle_track.name  }}"
+                  ]
+                },
+                "language": "en"
+              },
+              "target": "{{ nodeurl }}/iiif/canvas/p{{ itemCount }}" 
+            }{{ not loop.last ? ',' : '' }}       
+       {% endfor -%} 
+       ]
+    }]
+      {% endif %} 
+{#- ends subtitle annotation -#}  
     }{{ not loop.last ? ',' : '' }} 
   {% endfor %} 
 {% endif %} 
