@@ -33,6 +33,8 @@ Happy deploying!
 - At least 10 Gbytes of free space (to get started).
 - Being able to open a terminal.
 
+**Note:** Most Recent Docker Desktop for macOS removed `docker-compose` and replace it with `docker compose`. We updated this documentation to reflect the newer version. If you are running an older one, either upgrade or please replace every mention of `docker composer` with the legacy `docker-compose` when going through the steps.
+
 **Note:** Recent OSX (macOS) and newer Macs ship with **2 annoying things**: Apple Cloud Syncing User Folders and (wait for it) Case insensitive File Systems. If you are happy with your shiny new Mac (like i was) we are aware that it's better to deploy anything mounted outside of the `/User` folder or even better, in an **external drive formatted using a Case Sensitive Unix Filesystem** (Mac OS Extended (Case-sensitive, Journaled)).
 
 **Note 2:** "gRPC FUSE" experience may vary, recent Docker for Mac does it well. In older RC1 ones it was evil. Changing/Disabling it after having installed Archipelago may affect your S3/Minio storage accessibility. Please let us know what your experience on this is.
@@ -44,8 +46,8 @@ If so, let's give that hard working repository a break first. If not, skip to [S
 - Open a terminal (you have that already right?) and go to your previous download/git clone folder and run:
 
 ```shell
-docker-compose down
-docker-compose rm
+docker compose down
+docker compose rm
 ```
 
 - Can't remember where you downloaded it? Ok. We can deal with that!
@@ -83,8 +85,8 @@ git clone https://github.com/esmero/archipelago-deployment.git archipelago-deplo
 cd archipelago-deployment
 git checkout 1.4.0
 cp docker-compose-osx.yml docker-compose.yml
-docker-compose pull
-docker-compose up -d
+docker compose pull
+docker compose up -d
 ```
 
 ## Step 1 (M1/M2/M3): Docker Deployment on Apple Silicon Chips (M1/M2/M3)
@@ -94,8 +96,8 @@ git clone https://github.com/esmero/archipelago-deployment.git archipelago-deplo
 cd archipelago-deployment
 git checkout 1.4.0
 cp docker-compose-arm64.yml docker-compose.yml
-docker-compose pull
-docker-compose up -d
+docker compose pull
+docker compose up -d
 ```
 
 Note: If you are running on an Intel Apple Machine from an external Drive or a partition/filesystem that is `Case Sensitive` and is not syncing automatically to `Apple Cloud` you can also use `docker-compose-linux.yml`.
