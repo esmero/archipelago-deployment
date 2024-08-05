@@ -4,8 +4,8 @@
 # as Bookmark elements in your Browser to set/unset the cookie that triggers the
 # mapping between esmero-php-debug and esmero-php
 
-# Start these services with: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
-# Stop these services with: docker-compose -f docker-compose.yml -f docker-compose.dev.yml down
+# Start these services with: docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+# Stop these services with: docker compose -f docker-compose.yml -f docker-compose.dev.yml down
 # (with just "docker-compose down", you will leave an orphan container dangling)
 services:
   web:
