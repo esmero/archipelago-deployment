@@ -13252,12 +13252,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberryfield.git",
-                "reference": "5aee2f74c8c7376645210e96d0d8ca0e9d38c57f"
+                "reference": "bc567d106f3ff52654a213cdf72f608dd2195cd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/5aee2f74c8c7376645210e96d0d8ca0e9d38c57f",
-                "reference": "5aee2f74c8c7376645210e96d0d8ca0e9d38c57f",
+                "url": "https://api.github.com/repos/esmero/strawberryfield/zipball/bc567d106f3ff52654a213cdf72f608dd2195cd3",
+                "reference": "bc567d106f3ff52654a213cdf72f608dd2195cd3",
                 "shasum": ""
             },
             "require": {
@@ -13300,7 +13300,7 @@
                 "issues": "https://github.com/esmero/strawberryfield/issues",
                 "source": "https://github.com/esmero/strawberryfield/tree/1.4.0"
             },
-            "time": "2024-07-01T15:56:50+00:00"
+            "time": "2024-08-14T18:03:48+00:00"
         },
         {
             "name": "strawberryfield/webform_strawberryfield",
