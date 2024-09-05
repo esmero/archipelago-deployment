@@ -1,0 +1,20 @@
+diff --git a/src/Controller/FacetBlockAjaxController.php b/src/Controller/FacetBlockAjaxController.php
+index 253e376..c7e300c 100644
+--- a/src/Controller/FacetBlockAjaxController.php
++++ b/src/Controller/FacetBlockAjaxController.php
+@@ -130,6 +130,15 @@
+ 
+     $new_request = Request::create($path);
+     $request_stack = new RequestStack();
++    $new_request->setSession($request->getSession());
++
++    // Add ajax_page_state to the new request if set.
++    if ($request->request->has('ajax_page_state')) {
++      $new_request->request->set('ajax_page_state', $request->request->all('ajax_page_state'));
++    }
++    elseif ($request->query->has('ajax_page_state')) {
++      $new_request->query->set('ajax_page_state', $request->query->all('ajax_page_state'));
++    }
+
+     $processed = $this->pathProcessor->processInbound($path, $new_request);
+     $processed_request = Request::create($processed);
