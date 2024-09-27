@@ -24,7 +24,7 @@ pluginconfig:
   arguments_tesseract: '%file stdout -l %language hocr'
   datafolder_tesseract: /usr/share/tessdata
   path_pdfalto: /usr/bin/pdfalto
-  arguments_pdfalto: '%file -q'
+  arguments_pdfalto: '-q %file'
   output_type: json
   output_destination:
     plugin: plugin
