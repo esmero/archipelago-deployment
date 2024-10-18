@@ -25,7 +25,7 @@ Happy deploying!
 
 ### OSX (macOS):
 
-- [Install Docker for Mac](https://docs.docker.com/docker-for-mac/)
+- [Install Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
   - For OSX (macOS) `Ventura` or Higher on Intel (i5/i7) and Apple Silicon Chips (M1/M2/M3) the tested version is: `4.31.0(153195)` with Docker engine v26.1.4. You may go newer of course.
   - In `Preferences` -> `General`: check under `Choose file sharing implementation for your containers` either the new `VirtioFS`(faster) or `gRPC FUSE` and restart. Specially if you are using your `$HOME` folder for deploying, e.g. `/Users/username`.
   - In `Preferences` -> `Resources`: 4 Gbytes of RAM is the recommended minimun and works; 8 Gbytes is faster and snappier.
