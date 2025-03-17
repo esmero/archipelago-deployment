@@ -3,9 +3,9 @@ IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
-diff --git a/better_exposed_filters.js b/better_exposed_filters.js
---- a/better_exposed_filters.js	
-+++ b/better_exposed_filters.js	
+diff --git a/js/better_exposed_filters.js b/js/better_exposed_filters.js
+--- a/js/better_exposed_filters.js	
++++ b/js/better_exposed_filters.js	
 @@ -40,7 +40,15 @@
        if (!settings.better_exposed_filters?.autosubmit_exclude_textfield) {
          return;
