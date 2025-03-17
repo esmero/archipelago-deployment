@@ -1,0 +1,25 @@
+Index: better_exposed_filters.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/better_exposed_filters.js b/better_exposed_filters.js
+--- a/better_exposed_filters.js	
++++ b/better_exposed_filters.js	
+@@ -40,7 +40,15 @@
+       if (!settings.better_exposed_filters?.autosubmit_exclude_textfield) {
+         return;
+       }
+-      $(once('autosubmit-exclude-textfield', '.bef-exposed-form', context)).each(function () {
++      let elementsToAttach = [];
++      if (context !== document && context.classList.contains('.bef-exposed-form')) {
++        elementsToAttach = once('autosubmit-exclude-textfield', context);
++      }
++      else {
++        elementsToAttach = once('autosubmit-exclude-textfield', '.bef-exposed-form', context);
++      }
++
++      $(elementsToAttach).each(function () {
+         $(this).find('*[type="text"]').attr('data-bef-auto-submit-exclude', '');
+       });
+     }
