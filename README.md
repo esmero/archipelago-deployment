@@ -10,7 +10,9 @@ documentation-->
 
 # Archipelago Docker Deployment
 
-**Updated:** July 1st 2024
+**Updated:** March 18th 2025 (Pre 1.5.0 release patches for 1.4.0)
+
+**Previously Updated:** July 1st 2024
 
 **Previously Updated:** January 30th 2024
 
