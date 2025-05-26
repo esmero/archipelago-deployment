@@ -1,8 +1,9 @@
-# Run `docker-compose up` -d or `docker compose up -d` if on MacOS
+# Run docker-compose up -d or docker compose up -d if on MacOS
 # If running Linux, make sure /persistent/iiifcache has 8183:8183 ownership
 # If running Linux, make sure /persistent/solrcore has 8983:8983 ownership
 # enabling :cache for the volumens can bypass that need.
 # on OSX brew install minio/stable/mc for the minio client
+
 services:
   web:
     container_name: esmero-web
@@ -70,7 +71,7 @@ services:
       - esmero-net
     volumes:
       - ${PWD}/persistent/db:/var/lib/mysql:cached
-   nlp:
+  nlp:
     container_name: esmero-nlp
     restart: always
     image: "esmero/esmero-nlp:1.4.2-fasttext-multiarch"
