@@ -10,11 +10,6 @@ pluginconfig:
   ado_type: 'Photograph, Painting'
   jsonkey:
     'as:image': 'as:image'
-    'as:document': 0
-    'as:audio': 0
-    'as:video': 0
-    'as:text': 0
-    'as:application': 0
   jmespath: ''
   mime_type: 'image/jpeg, image/jp2, image/tiff'
   language_key: language_iso639_3
@@ -27,10 +22,11 @@ pluginconfig:
   nlp_url: 'http://esmero-nlp:6400'
   ml_method: /image/mobilenet
   iiif_server: 'http://esmero-cantaloupe:8182/iiif/2'
+  iiif_server_image_type: default.jpg
   timeout: '300'
   weight: '0'
   use_inherited_region: 1
 pluginid: ml_mobilenet
-active: true
+active: 0
 parent: ''
 depth: 0

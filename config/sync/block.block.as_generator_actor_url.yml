@@ -12,7 +12,7 @@ dependencies:
 id: as_generator_actor_url
 theme: archipelago_subtheme
 region: sidebar_second
-weight: 0
+weight: -3
 provider: null
 plugin: 'facet_block:strawberry_as_generator_actor_url'
 settings:

@@ -11,7 +11,7 @@ dependencies:
 id: facet_subjects
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -8
+weight: -16
 provider: null
 plugin: 'facet_block:descriptive_metadata_subjects'
 settings:

@@ -12,7 +12,7 @@ dependencies:
 id: facet_object_type
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -12
+weight: -20
 provider: null
 plugin: 'facet_block:descriptive_metadata_object_types'
 settings:

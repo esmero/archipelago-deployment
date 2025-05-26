@@ -356,7 +356,7 @@ display:
             sort:
               plugin_id: default
               advanced:
-                combine: false
+                combine: true
                 combine_rewrite: ''
                 reset: false
                 reset_label: ''
@@ -701,8 +701,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'
@@ -1804,8 +1802,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
       tags:
         - 'config:facets.facet.nlp_extracted_entities'

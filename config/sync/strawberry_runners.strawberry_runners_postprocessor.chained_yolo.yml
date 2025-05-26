@@ -22,10 +22,11 @@ pluginconfig:
   nlp_url: 'http://esmero-nlp:6400'
   ml_method: /image/yolo
   iiif_server: 'http://esmero-cantaloupe:8182/iiif/2'
+  iiif_server_image_type: default.jpg
   timeout: '300'
   weight: '0'
   use_inherited_region: 0
 pluginid: ml_yolo
-active: true
+active: 0
 parent: ''
 depth: 0

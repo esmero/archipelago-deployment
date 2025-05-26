@@ -12,7 +12,7 @@ dependencies:
 id: nlpextractedsentimentfromocr
 theme: archipelago_subtheme
 region: sidebar_second
-weight: 0
+weight: 1
 provider: null
 plugin: 'facet_block:nlp_extracted_sentiment_from_ocr'
 settings:
