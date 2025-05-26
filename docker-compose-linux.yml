@@ -41,7 +41,8 @@ services:
     tty: true
     environment:
       SOLR_HEAP: 512m
-      SOLR_OPTS: -Dsolr.jetty.request.header.size=65535 -Dsolr.modules=scripting
+      SOLR_OPTS: -Dsolr.jetty.request.header.size=65535 -Dsolr.install.dir=/opt/solr
+      SOLR_MODULES: "extraction,langid,ltr,analysis-extras,scripting"
     ports:
       - "8983:8983"
     networks:
@@ -50,7 +51,7 @@ services:
     volumes:
       - ${PWD}/persistent/solrcore:/var/solr/data:cached
       - ${PWD}/persistent/solrconfig:/drupalconfig:cached
-      - ${PWD}/persistent/solrlib:/opt/solr/contrib/archipelago/lib:cached
+      - ${PWD}/persistent/solrlib:/var/solr/data/lib:cached
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
