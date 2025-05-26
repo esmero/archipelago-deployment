@@ -8,6 +8,6 @@ pluginid: jmespath
 pluginconfig:
   source_key: '"date_created", date_created_edtf.date_free, [date_created_edtf][?"date_type" == ''date_range''][ join(''/'',[date_from,date_to])][]'
   is_date: true
+  is_date_range: false
   exposed_key: date_created_original
-  is_date_range: 0
 active: true

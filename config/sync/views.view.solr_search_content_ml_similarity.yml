@@ -347,13 +347,13 @@ display:
               autosubmit: false
               autosubmit_exclude_textfield: false
               autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
               autosubmit_hide: false
               input_required: false
               allow_secondary: false
               secondary_label: 'Advanced options'
               secondary_open: false
               reset_button_always_show: true
-              autosubmit_textfield_minimum_length: 3
             filter:
               search_api_fulltext:
                 plugin_id: default

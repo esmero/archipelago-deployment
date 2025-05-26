@@ -81,10 +81,10 @@ content:
       thumbnails: true
       upload_json_key_source: ''
       embargo_json_key_source: ''
+      hide_on_embargo: ''
       mediasource: null
       main_mediasource: null
       viewer_overrides: ''
-      hide_on_embargo: ''
       metadataexposeentity_source_required: false
       metadataexposeentity_source: null
       manifestnodelist_json_key_source: isrelatedto

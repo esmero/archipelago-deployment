@@ -1,0 +1,13 @@
+uuid: 7d3056da-9fe8-4d60-8aa4-62a722858ddc
+langcode: en
+status: true
+dependencies: {  }
+id: date_created_original_as_native_range
+label: 'Date Created Original as Native Range'
+pluginid: jmespath
+pluginconfig:
+  source_key: '"date_created", date_created_edtf.date_free, date_created_issued.date_free'
+  is_date: true
+  is_date_range: true
+  exposed_key: date_as_range
+active: true
