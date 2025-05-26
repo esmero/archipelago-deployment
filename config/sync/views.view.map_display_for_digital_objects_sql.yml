@@ -99,6 +99,16 @@ display:
             use_iiif_globals: '1'
             upload_json_key_source: ''
             embargo_json_key_source: ''
+            overlaysource:
+              metadataexposeentity: 0
+              manifesturl: 0
+              manifestnodelist: 0
+              fixediiifurl: 0
+            main_overlaysource: metadataexposeentity
+            metadataexposeentity_overlaysource: null
+            manifesturl_json_key_source: iiifmanifest
+            manifestnodelist_json_key_source: isrelatedto
+            iiifstatic_url_source: ''
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -178,11 +188,17 @@ display:
             sort_order: asc
             number_of_records: 0
             format: default_summary
-          specify_validation: false
+          specify_validation: true
           validate:
-            type: none
+            type: ado_access
             fail: 'not found'
-          validate_options: {  }
+          validate_options:
+            bundles:
+              digital_object: digital_object
+              digital_object_collection: digital_object_collection
+            access: 1
+            operation: view_embargoed
+            multiple: '0'
           break_phrase: false
           not: false
       filters:
@@ -251,6 +267,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      css_class: w-100
       header:
         area:
           id: area
@@ -283,7 +300,8 @@ display:
     display_plugin: block
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        sbf_ajax_interactions: {  }
       block_hide_empty: true
     cache_metadata:
       max-age: -1

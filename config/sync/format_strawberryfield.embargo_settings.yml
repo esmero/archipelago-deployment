@@ -1,3 +1,9 @@
 date_until_json_key: date_embargo_lift
-ip_json_key: ''
+ip_json_key: ip_embargo_bypass
 enabled: true
+file_embargo_enabled: true
+global_ip_bypass_enabled: true
+global_ip_bypass_mode: replace
+global_ip_bypass_addresses:
+  - 172.18.0.2
+  - 172.18.1.0/24

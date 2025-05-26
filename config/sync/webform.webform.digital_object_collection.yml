@@ -130,6 +130,9 @@ elements: |-
       '#states':
         visible:
           - ':input[name="type"]':
+              value: Collection
+          - or
+          - ':input[name="type"]':
               value: CreativeWorkSeries
           - or
           - ':input[name="type"]':
@@ -153,6 +156,15 @@ elements: |-
           '#format_items': comma
           '#showfreeformalways': true
           '#edtf_validateme': true
+          '#date_date_format': ''
+        date_modified_edtf:
+          '#type': webform_metadata_date
+          '#title': 'Date Modified (EDTF)'
+          '#multiple': 3
+          '#format_items': comma
+          '#showfreeformalways': true
+          '#edtf_validateme': true
+          '#edtf_only': true
           '#date_date_format': ''
       date_created_fixed_details:
         '#type': details
@@ -522,11 +534,12 @@ elements: |-
         '#type': webform_metadata_getty
         '#title': 'Getty Art & Architecture Thesaraus (AAT)'
         '#multiple': 10
-        '#states_clear': 0
+        '#states_clear': false
         '#multiple__min_items': 1
         '#multiple__empty_items': 0
         '#multiple__sorting': false
         '#multiple__add_more': false
+        '#matchtype': terms
     viaf_details:
       '#type': details
       '#title': 'VIAF (Virtual International Authority File)'

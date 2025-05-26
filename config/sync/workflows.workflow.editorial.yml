@@ -15,7 +15,7 @@ type: content_moderation
 type_settings:
   states:
     archived:
-      label: Unpublished
+      label: Archived
       weight: 5
       published: false
       default_revision: true
@@ -29,14 +29,18 @@ type_settings:
       weight: 0
       published: true
       default_revision: true
+    unpublished:
+      label: Unpublished
+      weight: 6
+      published: false
+      default_revision: true  
   transitions:
     archive:
-      label: Unpublish
+      label: Archive
       from:
-        - archived
         - published
       to: archived
-      weight: -1
+      weight: 2
     archived_draft:
       label: 'Restore to Draft'
       from:
@@ -64,13 +68,18 @@ type_settings:
       to: published
       weight: -2
     unpublished:
-      label: 'Draft to Unpublished'
+      label: 'Draft to Archived'
       from:
         - draft
       to: archived
       weight: 0
+    unpublish:
+      label: Unpublish
+      from:
+        - published
+      to: unpublished
+      weight: 5  
   entity_types:
     node:
       - digital_object
       - digital_object_collection
-  default_moderation_state: archived

@@ -494,7 +494,11 @@ display:
           hide_empty: false
       query:
         type: search_api_query
-        options: {  }
+        options:
+          bypass_access: false
+          skip_access: false
+          preserve_facet_query_args: true
+          query_tags: {  }
       relationships: {  }
       css_class: search_box
       use_ajax: false
@@ -511,6 +515,33 @@ display:
           content: 'Displaying results @start - @end of @total'
       footer: {  }
       display_extenders: {  }
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.roles
+      tags:
+        - 'config:field.storage.node.field_descriptive_metadata'
+        - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
+      cacheable: false
+  block_advanced_search:
+    id: block_advanced_search
+    display_title: Block
+    display_plugin: block
+    position: 1
+    display_options:
+      cache:
+        type: search_api_none
+      defaults:
+        cache: false
+      exposed_block: false
+      display_extenders:
+        sbf_ajax_interactions: {  }
     cache_metadata:
       max-age: 0
       contexts:

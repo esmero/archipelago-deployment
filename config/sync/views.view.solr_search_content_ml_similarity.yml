@@ -315,6 +315,7 @@ display:
         type: mini
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 25
           total_pages: null
           id: 0
@@ -352,6 +353,7 @@ display:
               secondary_label: 'Advanced options'
               secondary_open: false
               reset_button_always_show: true
+              autosubmit_textfield_minimum_length: 3
             filter:
               search_api_fulltext:
                 plugin_id: default
@@ -359,8 +361,11 @@ display:
                   placeholder_text: ''
                   rewrite:
                     filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
                   collapsible: false
+                  collapsible_disable_automatic_open: false
                   is_secondary: false
+                  hide_label: false
       access:
         type: none
         options: {  }
@@ -655,7 +660,7 @@ display:
           preserve_facet_query_args: true
           query_tags: {  }
       relationships: {  }
-      css_class: 'flex-column p-2'
+      css_class: 'flex-column w-100 p-2'
       use_ajax: true
       header:
         result:
@@ -1141,6 +1146,108 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
+        search_api_id:
+          id: search_api_id
+          table: search_api_index_default_solr_index
+          field: search_api_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+        file_uuid:
+          id: file_uuid
+          table: search_api_index_default_solr_index
+          field: file_uuid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          link_to_item: false
+          use_highlighting: false
+          multi_type: separator
+          multi_separator: ', '
         sbf_file_uri:
           id: sbf_file_uri
           table: search_api_index_default_solr_index
@@ -1153,7 +1260,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<img class="rounded" src="http://localhost:8183/iiif/2/{{ sbf_file_uri|replace({''s3://'': '''' })|url_encode }}/full/320,/0/default.jpg"/>'
+            text: "{% set parentnode = bamboo_load_entity('node', parent_id|render|raw) %}\r\n{% set annon_attributes = null %}\r\n{% if parentnode  %} \r\n   {% set annon_attributes = ' data-sbf-annotations-nodeuuid=' ~ parentnode.uuid.value ~ ' data-sbf-annotations-fileuuid=' ~ file_uuid|render|raw   ~ ' data-sbf-annotations-flavorid =' ~ search_api_id |render|raw %}\r\n{% endif %}\r\n<img id=\"sbf-annotations-vit{{search_api_id|escape('html_attr') }}\"   {{ annon_attributes}}  class=\"rounded\" src=\"http://localhost:8183/iiif/2/{{ sbf_file_uri|replace({'s3://': '' })|url_encode }}/full/320,/0/default.jpg\"/>"
             make_link: false
             path: ''
             absolute: false
@@ -1279,11 +1386,7 @@ display:
         options: {  }
       cache:
         type: search_api_none
-        options:
-          results_lifespan: 300
-          results_lifespan_custom: 0
-          output_lifespan: 300
-          output_lifespan_custom: 0
+        options: {  }
       sorts:
         search_api_relevance:
           id: search_api_relevance
@@ -1359,7 +1462,7 @@ display:
           sbf_fields: vector_1024
           pre_query: 1
           pre_query_facets: 1
-          topk: '5'
+          topk: '10'
           ml_strawberry_postprocessor: ml_mobilenet
       filters:
         processor_id:
@@ -1374,7 +1477,7 @@ display:
           value:
             min: ''
             max: ''
-            value: ml_mobilenet
+            value: chained_mobilenet_child
           group: 1
           exposed: false
           expose:
@@ -1523,11 +1626,11 @@ display:
       cacheable: false
   block_2:
     id: block_2
-    display_title: InsightFace
+    display_title: ViT
     display_plugin: block
     position: 1
     display_options:
-      title: InsightFace
+      title: 'Vision Transformer (Google Vit)'
       fields:
         parent_id:
           id: parent_id
@@ -2033,6 +2136,55 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
+        search_api_id:
+          id: search_api_id
+          table: search_api_index_default_solr_index
+          field: search_api_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
         sbf_file_uri:
           id: sbf_file_uri
           table: search_api_index_default_solr_index
@@ -2045,7 +2197,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{% set parentnode = bamboo_load_entity('node', parent_id|render|raw) %}\r\n{% set annon_attributes = null %}\r\n{% if parentnode  %} \r\n   {% set annon_attributes = ' data-sbf-annotations-nodeuuid=' ~ parentnode.uuid.value ~ ' data-sbf-annotations-fileuuid=' ~ file_uuid|render|raw  ~ ' data-sbf-annotations-processors=ml_insightface' %}\r\n{% endif %}\r\n<img id=\"sbf-annotations-insightface{{file_uuid|raw }}\"   {{ annon_attributes}}  class=\"rounded\" src=\"http://localhost:8183/iiif/2/{{ sbf_file_uri|replace({'s3://': '' })|url_encode }}/full/320,/0/default.jpg\"/>"
+            text: "{% set parentnode = bamboo_load_entity('node', parent_id|render|raw) %}\r\n{% set annon_attributes = null %}\r\n{% if parentnode  %} \r\n   {% set annon_attributes = ' data-sbf-annotations-nodeuuid=' ~ parentnode.uuid.value ~ ' data-sbf-annotations-fileuuid=' ~ file_uuid|render|raw  ~ ' data-sbf-annotations-processors=chained_vit_child'  ~ ' data-sbf-annotations-flavorid =' ~ search_api_id |render|raw %}\r\n{% endif %}\r\n<img id=\"sbf-annotations-vit{{search_api_id|escape('html_attr') }}\"   {{ annon_attributes}}  class=\"rounded\" src=\"http://localhost:8183/iiif/2/{{ sbf_file_uri|replace({'s3://': '' })|url_encode }}/full/320,/0/default.jpg\"/>"
             make_link: false
             path: ''
             absolute: false
@@ -2248,11 +2400,11 @@ display:
           break_phrase: false
           not: 0
           value: {  }
-          sbf_fields: vector_512
+          sbf_fields: vector_768
           pre_query: 1
           pre_query_facets: 1
-          topk: '5'
-          ml_strawberry_postprocessor: ml_insightface
+          topk: '12'
+          ml_strawberry_postprocessor: chained_vit_child
       filters:
         processor_id:
           id: processor_id
@@ -2266,7 +2418,7 @@ display:
           value:
             min: ''
             max: ''
-            value: ml_insightface
+            value: chained_vit_child
           group: 1
           exposed: false
           expose:
@@ -2339,7 +2491,7 @@ display:
         filter_groups: false
         header: false
       use_ajax: true
-      display_description: 'OCR Display'
+      display_description: ''
       header:
         result:
           id: result
@@ -2357,7 +2509,7 @@ display:
           sbf_ajax_interactions: 1
           sbf_ajax_interactions_arguments:
             sbr_imageml_filter: sbr_imageml_filter
-      block_description: 'InsightFace results Block'
+      block_description: 'ViT results Block'
     cache_metadata:
       max-age: -1
       contexts:
@@ -2828,6 +2980,108 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
+        file_uuid:
+          id: file_uuid
+          table: search_api_index_default_solr_index
+          field: file_uuid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          link_to_item: false
+          use_highlighting: false
+          multi_type: separator
+          multi_separator: ', '
+        search_api_id:
+          id: search_api_id
+          table: search_api_index_default_solr_index
+          field: search_api_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
         sbf_file_uri:
           id: sbf_file_uri
           table: search_api_index_default_solr_index
@@ -2840,7 +3094,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<img class="rounded" src="http://localhost:8183/iiif/2/{{ sbf_file_uri|replace({''s3://'': '''' })|url_encode }}/full/320,/0/default.jpg"/>'
+            text: "{% set parentnode = bamboo_load_entity('node', parent_id|render|raw) %}\r\n{% set annon_attributes = null %}\r\n{% if parentnode  %} \r\n{# ~ ' data-sbf-annotations-processors=chained_vit_child'  #}\r\n   {% set annon_attributes = ' data-sbf-annotations-nodeuuid=' ~ parentnode.uuid.value ~ ' data-sbf-annotations-fileuuid=' ~ file_uuid|render|raw   ~ ' data-sbf-annotations-flavorid =' ~ search_api_id |render|raw %}\r\n{% endif %}\r\n<img id=\"sbf-annotations-vit{{search_api_id|escape('html_attr') }}\"   {{ annon_attributes}}  class=\"rounded\" src=\"http://localhost:8183/iiif/2/{{ sbf_file_uri|replace({'s3://': '' })|url_encode }}/full/320,/0/default.jpg\"/>"
             make_link: false
             path: ''
             absolute: false
@@ -2960,6 +3214,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 10
           total_pages: 1
           id: 1
@@ -3077,7 +3332,7 @@ display:
           value:
             min: ''
             max: ''
-            value: ml_yolov8
+            value: chained_yolo_child
           group: 1
           exposed: false
           expose:

@@ -17,7 +17,7 @@ pluginconfig:
     'as:application': 0
   mime_type: application/warc
   path: /usr/bin/wacz
-  arguments: 'create %file -t -o %outfile.wacz'
+  arguments: 'create %file -t --detect-pages -o %outfile.wacz'
   output_type: 'entity:file'
   output_destination:
     file: file
@@ -25,7 +25,9 @@ pluginconfig:
     ownkey: 0
     plugin: 0
     searchapi: 0
-  timeout: '99'
+  timeout: '900'
+  uses_timeout_executable: 1
+  timeout_path: /usr/bin/timeout
   weight: '0'
 pluginid: binary
 active: true

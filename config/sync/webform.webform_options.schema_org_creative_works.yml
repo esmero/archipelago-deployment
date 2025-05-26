@@ -36,3 +36,5 @@ options: |-
   PublicationIssue: 'Publication Issue'
   Postcard: Postcard
   Manuscript: Manuscript
+  Scrapbook: Scrapbook
+  InsetGroup: InsetGroup

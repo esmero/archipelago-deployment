@@ -334,6 +334,7 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
+          pagination_heading_level: h4
       exposed_form:
         type: bef
         options:
@@ -357,6 +358,7 @@ display:
               secondary_label: 'Advanced options'
               secondary_open: false
               reset_button_always_show: false
+              autosubmit_textfield_minimum_length: 3
             sort:
               plugin_id: bef_links
               advanced:
@@ -374,8 +376,11 @@ display:
                   placeholder_text: ''
                   rewrite:
                     filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
                   collapsible: false
                   is_secondary: false
+                  collapsible_disable_automatic_open: false
+                  hide_label: false
       access:
         type: none
         options: {  }
@@ -1106,6 +1111,7 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
+          pagination_heading_level: h4
       access:
         type: role
         options:
@@ -1113,7 +1119,7 @@ display:
             administrator: administrator
             metadata_pro: metadata_pro
       cache:
-        type: search_api_time
+        type: search_api_none
         options:
           results_lifespan: 300
           results_lifespan_custom: 0

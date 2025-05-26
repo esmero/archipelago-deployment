@@ -24,6 +24,10 @@ suggester_settings:
         digital_object: ''
         page: ''
         webform: ''
+    highlight:
+      enabled: false
+      field: ''
+    suggest_keys: false
   server:
     fields:
       - label

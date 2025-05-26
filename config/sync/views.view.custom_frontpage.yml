@@ -277,7 +277,8 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        sbf_ajax_interactions: {  }
       path: node
     cache_metadata:
       max-age: -1

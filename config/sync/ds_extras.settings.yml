@@ -10,3 +10,4 @@ region_to_block: null
 override_node_revision: null
 override_node_revision_view_mode: null
 switch_view_mode: null
+switch_field_prefix: node--view-mode-

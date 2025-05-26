@@ -1,5 +1,6 @@
 _core:
   default_config_hash: LdPjc1VCTO3_q56LqMexIbDmRvhlTEdTFHajPe4laUs
+langcode: en
 favicon:
   mimetype: image/png
   path: 'public://ArchipelagoCommonsLogo_favicon-32x32.png'
@@ -88,7 +89,7 @@ bootstrap_barrio_navbar_affix: 0
 bootstrap_barrio_sidebar_first_affix: 0
 bootstrap_barrio_sidebar_second_affix: 0
 bootstrap_barrio_scroll_spy: ''
-bootstrap_barrio_google_fonts: playfair_alice
+bootstrap_barrio_google_fonts: roboto
 bootstrap_barrio_bootstrap_icons: 0
 bootstrap_barrio_icons: fontawesome
 bootstrap_barrio_system_messages: ''
@@ -105,7 +106,7 @@ bootstrap_barrio_select: custom
 bootstrap_barrio_file: standard
 bootstrap_barrio_hide_node_label: 0
 bootstrap_barrio_navbar_offcanvas: ''
-bootstrap_barrio_container: container-lg
+bootstrap_barrio_container: container-fluid
 bootstrap_barrio_breadcrumb_divider: ''
 bootstrap_barrio_button_type: primary
 bootstrap_barrio_float_label: 0

@@ -37,6 +37,21 @@ content:
     region: content
     settings:
       toolbar: true
+      buttons:
+        - bold
+        - italic
+        - underline
+        - strike-through
+        - list-numbered
+        - list-bullet
+        - link
+        - horizontal-rule
+        - undo
+        - redo
+        - clear-formatting
+        - enlarge
+        - shrink
+      lineWrapping: false
       lineNumbers: true
       foldGutter: true
       autoCloseTags: true

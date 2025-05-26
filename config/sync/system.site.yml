@@ -2,9 +2,9 @@ _core:
   default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
 langcode: en
 uuid: 6855e385-22b1-43ba-ae50-4180d276445f
-name: '{ Archipelago Commons 1.4.0 }'
+name: '{ Archipelago Commons 1.5.0 }'
 mail: repositorysupport@metro.org
-slogan: '1.4.0: Where many paths and errands meet'
+slogan: 'People Got to Be Free'
 page:
   403: ''
   404: ''
@@ -12,3 +12,4 @@ page:
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: en
+mail_notification: null

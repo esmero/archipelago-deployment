@@ -4,10 +4,10 @@ status: true
 dependencies: {  }
 id: text
 label: text
-weight: '-3'
+weight: '-2'
 pluginconfig:
   source_type: asstructure
-  ado_type: 'Book,Manuscript'
+  ado_type: 'Book,Manuscript,InsetItem'
   jsonkey:
     'as:document': 'as:document'
     'as:text': 'as:text'

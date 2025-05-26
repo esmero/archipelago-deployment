@@ -4,10 +4,10 @@ status: true
 dependencies: {  }
 id: pager
 label: pager
-weight: '-10'
+weight: '-9'
 pluginconfig:
   source_type: asstructure
-  ado_type: 'Document,Book,Article'
+  ado_type: 'Document,Book,Article, ScrapbookPage, InsetItem, Page'
   jsonkey:
     'as:image': 'as:image'
     'as:document': 'as:document'

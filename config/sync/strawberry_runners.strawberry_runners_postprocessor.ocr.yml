@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: ocr
 label: ocr
-weight: '-10'
+weight: '-8'
 pluginconfig:
   source_type: asstructure
   ado_type: 'Document,Book,Article'
@@ -33,7 +33,9 @@ pluginconfig:
   nlp: 1
   nlp_url: 'http://esmero-nlp:6400'
   nlp_method: polyglot
-  timeout: '900'
+  timeout: '120'
+  uses_timeout_executable: 1
+  timeout_path: /usr/bin/timeout
   weight: '0'
 pluginid: ocr
 active: true

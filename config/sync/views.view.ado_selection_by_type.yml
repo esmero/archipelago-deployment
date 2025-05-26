@@ -442,6 +442,7 @@ display:
           plugin_id: search_api_options
           operator: or
           value:
+            digital_object: digital_object
             digital_object_collection: digital_object_collection
           group: 1
           exposed: false
@@ -507,6 +508,7 @@ display:
         - user.roles
       tags:
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
   entity_reference_1:
     id: entity_reference_1
     display_title: 'Entity Reference'
@@ -539,13 +541,15 @@ display:
         - user.roles
       tags:
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
   entity_reference_solr_1:
     id: entity_reference_solr_1
     display_title: 'Solr Search API Entity Reference for Photographs'
     display_plugin: entity_reference_solr
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        sbf_ajax_interactions: {  }
       style:
         type: entity_reference
         options:
@@ -562,6 +566,39 @@ display:
           separator: '-'
           hide_empty: false
       display_description: ''
+      arguments:
+        type_1:
+          id: type_1
+          table: search_api_index_default_solr_index
+          field: type_1
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: 0
+            title: All
+          title_enable: 0
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: Photograph
+          summary_options: {  }
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: 0
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: 0
+          not: 0
+          plugin_id: search_api
+      defaults:
+        arguments: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -572,13 +609,15 @@ display:
         - user.roles
       tags:
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
   entity_reference_solr_2:
     id: entity_reference_solr_2
     display_title: 'Solr Search API Entity Reference 2'
     display_plugin: entity_reference_solr
     position: 3
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        sbf_ajax_interactions: {  }
       style:
         type: entity_reference
         options:
@@ -586,7 +625,7 @@ display:
             title: title
             title_autocomplete: title_autocomplete
             search_api_id: search_api_id
-            title_autocomplete_1: 0
+            title_autocomplete_1: title_autocomplete_1
       arguments:
         type_1:
           id: type_1
@@ -642,6 +681,7 @@ display:
         - user.roles
       tags:
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'
   entity_reference_solr_creativeworks:
     id: entity_reference_solr_creativeworks
     display_title: 'Solr Search API Entity Reference for Creative Works'
@@ -674,3 +714,4 @@ display:
         - user.roles
       tags:
         - 'config:search_api.index.default_solr_index'
+        - 'search_api_list:default_solr_index'

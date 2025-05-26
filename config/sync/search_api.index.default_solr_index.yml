@@ -49,6 +49,7 @@ third_party_settings:
     term_modifiers:
       slop: 3
       fuzzy: 1
+      fuzzy_analyzer: true
     advanced:
       index_prefix: ''
       collection: ''
@@ -115,6 +116,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_descriptive_metadata
+  as_image_exif_mimetype_full:
+    label: '🍓 Strawberry (Descriptive Metadata source) Mime type Full Text'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:as_image_exif_mimetype'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   author:
     label: 'Author name'
     datasource_id: 'entity:node'
@@ -161,6 +170,14 @@ field_settings:
     dependencies:
       module:
         - node
+  date_as_range:
+    label: '🍓 Strawberry (Descriptive Metadata source) » date_as_range'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:date_as_range'
+    type: solr_date_range
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   date_created_original:
     label: '🍓 Strawberry (Descriptive Metadata source) » Date created original'
     datasource_id: 'entity:node'
@@ -284,6 +301,26 @@ field_settings:
         - field.storage.node.field_descriptive_metadata
       module:
         - node
+  nid_ref_partof_partof:
+    label: '🍓 Strawberry (Descriptive Metadata source) » ispartof » ispartof » ID'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:sbf_entity_reference_ispartof:field_descriptive_metadata:sbf_entity_reference_ispartof:nid'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+      module:
+        - node
+  nid_ref_partof_partof_partof:
+    label: '🍓 Strawberry (Descriptive Metadata source) » ispartof » ispartof »  ispartof » ID'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:sbf_entity_reference_ispartof:field_descriptive_metadata:sbf_entity_reference_ispartof:field_descriptive_metadata:sbf_entity_reference_ispartof:nid'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+      module:
+        - node      
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -291,6 +328,14 @@ field_settings:
     indexed_locked: true
     type_locked: true
     hidden: true
+  node_uuid:
+    label: Node UUID
+    datasource_id: 'entity:node'
+    property_path: uuid
+    type: string
+    dependencies:
+      module:
+        - node
   note:
     label: '🍓 Strawberry (Descriptive Metadata source) » note'
     datasource_id: 'entity:node'
@@ -330,6 +375,14 @@ field_settings:
     datasource_id: strawberryfield_flavor_datasource
     property_path: processor_id
     type: string
+  raw_json:
+    label: '🍓 Strawberry (Descriptive Metadata source) RAW JSON'
+    datasource_id: 'entity:node'
+    property_path: field_descriptive_metadata
+    type: solr_string_storage
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   rendered_item:
     label: 'Rendered HTML output'
     property_path: rendered_item
@@ -374,6 +427,16 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_descriptive_metadata
+  sbf_aggregated_items:
+    label: 'Aggregated Strawberry Flavor Documents'
+    property_path: sbf_aggregated_items
+    type: text
+    configuration:
+      roles: anonymous
+      processor_ids: 'ocr,text'
+      join_fields:
+        parent_id: parent_id
+        top_parent_id: top_parent_id
   sbf_entity_reference_partof_memberof_title:
     label: '🍓 Strawberry (Descriptive Metadata source) » ispartof » ismemberof » Title'
     datasource_id: 'entity:node'
@@ -646,6 +709,11 @@ field_settings:
     datasource_id: strawberryfield_flavor_datasource
     property_path: vector_576
     type: densevector_576
+  vector_768:
+    label: 'Vector of size 768 coming from ML'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: vector_768
+    type: densevector_768
 datasource_settings:
   'entity:file': {  }
   'entity:node':
@@ -771,6 +839,7 @@ tracker_settings:
     indexing_order: fifo
 options:
   cron_limit: 50
+  delete_on_fail: true
   index_directly: true
   track_changes_in_references: true
 server: esmero_solr

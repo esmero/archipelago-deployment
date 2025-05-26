@@ -308,7 +308,7 @@ display:
           interval: '5000'
           keyboard: 0
           ride: 1
-          navigation: 1
+          navigation: 0
           indicators: 0
           pause: 1
           use_caption: 1
