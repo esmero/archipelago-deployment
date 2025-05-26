@@ -1,0 +1,32 @@
+uuid: 78f95804-ffb8-4d9b-b158-55150f847173
+langcode: en
+status: true
+dependencies: {  }
+id: chained_mobilenet_child
+label: chained_mobilenet_child
+weight: '-8'
+pluginconfig:
+  source_type: asstructure
+  ado_type: Car
+  jsonkey:
+    'as:image': 'as:image'
+  jmespath: ''
+  mime_type: 'image/jpeg,image/tiff'
+  language_key: language_iso639_3
+  language_default: eng
+  output_type: json
+  output_destination:
+    searchapi: searchapi
+    plugin: 0
+  processor_queue_type: background
+  nlp_url: 'http://esmero-nlp:6400'
+  ml_method: /image/mobilenet
+  iiif_server: 'http://esmero-cantaloupe:8182/iiif/2'
+  iiif_server_image_type: gray.jpg
+  timeout: '300'
+  weight: '0'
+  use_inherited_region: 1
+pluginid: ml_mobilenet
+active: true
+parent: chained_yolo
+depth: 1
