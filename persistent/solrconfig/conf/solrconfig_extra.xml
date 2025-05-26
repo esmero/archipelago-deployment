@@ -1,5 +1,3 @@
-<lib dir="${solr.install.dir:../../../..}/contrib/archipelago/lib" regex=".*\.jar" />
-
 <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
     <lst name="spellchecker">
       <str name="name">en</str>
