@@ -1,0 +1,23 @@
+uuid: 3ddbbe04-b91d-487f-ba86-cf77e12e07a7
+langcode: en
+status: true
+dependencies:
+  module:
+    - strawberryfield
+    - search_api_solr
+id: dense_vector_field_768_und
+label: 'Dense Vector Field of 768 dimensions suitable for ViT feature extraction using dot_product as comparison algorithm'
+minimum_solr_version: 9.0.0
+custom_code: null
+field_type_language_code: und
+domains: {  }
+field_type:
+  name: knn_vector_768
+  class: solr.DenseVectorField
+  vectorDimension: 768
+  similarityFunction: dot_product
+unstemmed_field_type: null
+spellcheck_field_type: null
+collated_field_type: null
+solr_configs: null
+text_files: {  }
