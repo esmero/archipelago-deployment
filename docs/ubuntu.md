@@ -1,15 +1,14 @@
 <!--documentation
 ---
-title: "Installing Archipelago Drupal 10 on Ubuntu 18.04 or 20.04"
+title: "Installing Archipelago (1.5.0) Drupal 10 on Ubuntu 20.04+"
 tags:
   - Archipelago-deployment
   - Drupal 10
-  - Ubuntu 18.04
   - Ubuntu 20.04
 ---
 documentation-->
 
-# Installing Archipelago Drupal 10 on Ubuntu 18.04 or 20.04
+# Installing Archipelago (1.5.0) Drupal 10 on Ubuntu 20.04+
 
 ## About running terminal commands
 
@@ -25,9 +24,9 @@ Happy deploying!
 
 ## Prerequisites
 
-- At least 10 Gbytes of free space (to get started)
+- At least 15 Gbytes of free space (to get started. NLP container uses a bit more. Sorry!)
 - Some basic Unix/Terminal Skills
-- 2-4 Gbytes of RAM (4 Recommended)
+- 2-8 Gbytes of RAM (8 Recommended)
 - Install Docker if you don't have it already by running:
 
 ```shell
@@ -91,7 +90,7 @@ Ok, now we are ready to start.
 
 ## Step 1: Deployment
 
-##### Prefer to watch a video to see what it's like to install? Go to our [`user contributed documentation`](#user-contributed-documentation-a-video1)[^1]!
+##### Prefer to watch a video to see what it's like to install (previous version, but very similar)? Go to our [`user contributed documentation`](#user-contributed-documentation-a-video1)[^1]!
 
 #### IMPORTANT
 
@@ -110,7 +109,7 @@ Now that you got it, let's deploy:
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.4.0
+git checkout 1.5.0
 ```
 
 
