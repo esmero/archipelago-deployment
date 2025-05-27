@@ -1,0 +1,53 @@
+uuid: 055cf956-c5ed-4cb2-8ddd-4c822f8e6651
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.digital_object_and_collection_search_api_rendered_item
+    - field.field.node.digital_object.body
+    - field.field.node.digital_object.field_descriptive_metadata
+    - node.type.digital_object
+  module:
+    - ds
+    - field_layout
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      content:
+        - 'display_field_copy:node-formatted_metadata'
+    fields:
+      'display_field_copy:node-formatted_metadata':
+        plugin_id: 'display_field_copy:node-formatted_metadata'
+        weight: 0
+        label: hidden
+        formatter: strawberry_metadata_formatter
+        settings:
+          formatter:
+            label: 'Descriptive Metadata'
+            specs: 'http://schema.org'
+            metadatadisplayentity_uuid: bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7
+            metadatadisplayentity_uselabel: '0'
+id: node.digital_object.digital_object_and_collection_search_api_rendered_item
+targetEntityType: node
+bundle: digital_object
+mode: digital_object_and_collection_search_api_rendered_item
+content: {  }
+hidden:
+  body: true
+  content_moderation_control: true
+  field_descriptive_metadata: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

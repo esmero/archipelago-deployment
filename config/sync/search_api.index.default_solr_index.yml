@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.digital_object_and_collection_search_api_rendered_item
     - core.entity_view_mode.node.digital_object_image_only_for_carousel
     - field.storage.node.field_descriptive_metadata
     - field.storage.node.field_tags
@@ -391,15 +392,19 @@ field_settings:
         - anonymous
       view_mode:
         'entity:file':
+          ':default': ''
           file: ''
         'entity:node':
+          ':default': ''
           article: ''
-          digital_object: default
-          digital_object_collection: default
+          digital_object: digital_object_and_collection_search_api_rendered_item
+          digital_object_collection: digital_object_and_collection_search_api_rendered_item
           page: ''
           webform: ''
         strawberryfield_flavor_datasource:
-          strawberryfield_flavor_datasource: ''
+          ':default': ''
+          digital_object: ''
+          digital_object_collection: ''
   rendered_item_iiif_img:
     label: 'IIIF Image Tag for ADO'
     property_path: rendered_item

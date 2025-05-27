@@ -1,0 +1,11 @@
+uuid: ddbec505-ac25-4bb3-bf90-abc3828d83cf
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_and_collection_search_api_rendered_item
+label: 'Digital Object and Collection Search API Rendered Item'
+description: 'To be used to Index HTML, no viewers'
+targetEntityType: node
+cache: true

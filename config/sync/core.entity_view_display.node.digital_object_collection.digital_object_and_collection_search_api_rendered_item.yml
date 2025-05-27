@@ -1,0 +1,57 @@
+uuid: eab95d6a-b5b2-4d26-8330-cb192e3992dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.digital_object_and_collection_search_api_rendered_item
+    - field.field.node.digital_object_collection.body
+    - field.field.node.digital_object_collection.field_descriptive_metadata
+    - node.type.digital_object_collection
+  module:
+    - ds
+    - field_layout
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      content:
+        - 'display_field_copy:node-raw_metadata'
+    fields:
+      'display_field_copy:node-raw_metadata':
+        plugin_id: 'display_field_copy:node-raw_metadata'
+        weight: 0
+        label: hidden
+        formatter: strawberry_metadata_formatter
+        settings:
+          formatter:
+            iiif_base_url: 'http://localhost:8183/iiif/2'
+            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+            use_iiif_globals: '1'
+            label: 'Descriptive Metadata'
+            specs: 'http://schema.org'
+            metadatadisplayentity_uuid: bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7
+            metadatadisplayentity_uselabel: '0'
+            hide_on_embargo: '0'
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: node.digital_object_collection.digital_object_and_collection_search_api_rendered_item
+targetEntityType: node
+bundle: digital_object_collection
+mode: digital_object_and_collection_search_api_rendered_item
+content: {  }
+hidden:
+  body: true
+  content_moderation_control: true
+  field_descriptive_metadata: true
+  langcode: true
+  links: true
+  search_api_excerpt: true
