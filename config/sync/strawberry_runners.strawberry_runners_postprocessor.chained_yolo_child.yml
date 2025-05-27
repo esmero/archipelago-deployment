@@ -1,0 +1,32 @@
+uuid: cce9b967-59c6-4996-9459-eb6fd372cde8
+langcode: en
+status: true
+dependencies: {  }
+id: chained_yolo_child
+label: 'Chained YOLO Child'
+weight: '-10'
+pluginconfig:
+  source_type: asstructure
+  ado_type: Car
+  jsonkey:
+    'as:image': 'as:image'
+  jmespath: ''
+  mime_type: image/jpeg
+  language_key: language_iso639_3
+  language_default: eng
+  output_type: json
+  output_destination:
+    searchapi: searchapi
+    plugin: 0
+  processor_queue_type: background
+  nlp_url: 'http://esmero-nlp:6400'
+  ml_method: /image/yolo
+  iiif_server: 'http://esmero-cantaloupe:8182/iiif/2'
+  iiif_server_image_type: gray.jpg
+  timeout: '300'
+  weight: '0'
+  use_inherited_region: 0
+pluginid: ml_yolo
+active: true
+parent: chained_yolo
+depth: 1

@@ -19,6 +19,7 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
+        label: ''
         classes:
           layout_class: {  }
         wrappers:
@@ -27,7 +28,6 @@ third_party_settings:
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        label: ''
     regions:
       ds_content:
         - field_descriptive_metadata
@@ -79,6 +79,7 @@ content:
       thumbnails: true
       upload_json_key_source: ''
       embargo_json_key_source: ''
+      hide_on_embargo: ''
       mediasource: null
       main_mediasource: null
       viewer_overrides: ''

@@ -10,35 +10,33 @@ documentation-->
 
 # Archipelago Docker Deployment
 
-**Updated:** March 18th 2025 (Pre 1.5.0 release patches for 1.4.0)
+**Updated:** May 26th 2025 (1.5.0)
 
-**Previously Updated:** July 1st 2024
+This repository serves as bootstrap for a Archipelago 1.5.0 deployment on a localhost for development/testing/customizing via Docker and provides a more unified experience this time:
 
-**Previously Updated:** January 30th 2024
-
-This repository serves as bootstrap for a Archipelago 1.4.0 deployment on a localhost for development/testing/customizing via Docker and provides a more unified experience this time:
-
-- minio.io (latest)for local S3 with Console.
-- Apache Solr 9.2.1 with the wizardly Solr OCR Highlight library [v0.8.4](https://github.com/dbmdz/solr-ocrhighlighting/releases/tag/wip) built by the Developement Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter and team.
-- MySQL 8.x (amd64/x86)/MariaDB 10.6.x(Arm64/M1/M2/M3)
-- NGINX 11
-- Custom PHP-FPM 8.1 multi architecture, fine-tuned for Drupal 10 , WARC to WACZ processing, Tesseract 5 with JP2 support, PDFAlto and Composer 2.x, Drush 12, etc
-- Natural Language Processing via NLPWEB64 multi architecture with FastText Language detection (Thanks Mike Bennet!) or alternatively new ML (Image similarity: YOLO,MobileNet,Insightface and Text transformer: SBERT)
-- Cantaloupe 6.0.1 Snapshot multi architecture as IIIF2/3 Server with Video Frame extraction and PDF support (with custom fix for tiled PDF)
-- A Skeleton Project setup to run latest Version of Drupal (10.2.x), our new Bootstrap 5 theme and Strawberry Field modules on 1.4.0 & friends on 0.8.0
-- Complete support for Apple Silicon *M1* Machines and in general `arm64` architecture Chips like Raspberry Pi 4, with specially built arm64 docker containers. The only differences now between deployment strategies is the DB. Blazing fast OCR.
+- minio.io (latest) for local S3 with Console.
+- Updated Apache Solr 9.8.1 with the (updated) wizardly Solr OCR Highlight library [v0.9.4](https://github.com/dbmdz/solr-ocrhighlighting/releases/tag/wip) built by the Developement Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter and team.
+- MySQL 8.0.42 (amd64/x86)/MariaDB 10.6.22(Arm64/M1/M2/M3/M4)
+- NGINX 1.27.5
+- Custom PHP-FPM 8.3 multi architecture, fine-tuned for Drupal 10 , WARC to WACZ processing, Tesseract 5 with JP2 support, PDFAlto and Composer 2.x, Drush 12, FFMPEG, FIDO
+- Updated Natural Language Processing via NLPWEB64 multi architecture with FastText Language detection (Thanks Mike Bennett!) or alternatively new ML containers/APIs. (Image similarity: YOLO,MobileNet,ViT(New),Insightface and Text transformer: SBERT) differentiated for `arm64` and `amd/intel/64`
+- Cantaloupe 6.0.5 Snapshot on Java 23 multi architecture as IIIF2/3 Server with precise Video Frame, PDF extraction, PDF Tiling support with tons of community and custom fixes.
+- A Skeleton Project setup to run latest Version of Drupal (10.4.x), Bootstrap 5 theme and Strawberry Field modules on 1.5.0 & friends on 0.9.0
+- Complete support for Apple Silicon *M1/M2/M3/M4* Machines and in general `arm64` architecture Chips like Raspberry Pi 4, with specially built arm64 docker containers. The only differences now between deployment strategies is the DB. Blazing fast OCR.
 
 The skeleton project contains all the pieces needed to run a local deployment of a vanilla Archipelago including (*YES*!) content provided as an optional feature from [archipelago-recyclables](https://github.com/esmero/archipelago-recyclables)
 
-# Starting from ZERO
+# Starting from ZERO (baby steps/spring cleanup)
 
-This is the recommended, simplest way for this release. There are a too many, tons of fun new features, Metadata Displays, Webforms, New formatters and Twig extensions, improved viewers, new and improved JS libraries, OpenCV/Face Detection, smarter NLP, File composting, better HUGE import/update capabilities, bug fixes (yes so many) so please try them out. The team has also updated the DEMO AMI set (Content) to showcase metadata/display improvements.
+This is the way. Also the recommended, cleanest way, to evaluate this release. The amount (quantity/quality/flavor) of amazing new features, bug fixes and performance improvements is simply atonishing. To mention a few: smarter Date Range faceting (fast/super fast even if your collection spans from 300 BC to our shared, very own, strange year of 2025), new AMI mass ingest features including Actions on AMI Sets, new CSV expander queues, EAD Sync, per CSV Row actions, Super fast (danger!) deletes, background Hydroponics driven Search API indexing (edited thousand Objects? probably already indexed and ready to go!), better IIIF Content Search API including now also Metadata discovery (Sorry specs, people asked for it), new Twig Extensions and even Twig Rendering (deep down/nerd mode) overrides to please the render array evil gods, new AJAX overrides and improvements, better OCR,TEXT Joins on searches. ML/AI evaluation continues for authenticated user: Chained Detection/Identification workflows with dynamic Annotations (clickable/searchable, new and improved models (every wondered if a model has a "color" fixation? try your vectors in gray scale). Totally new embargo options, with, per ADO/global overrides including File download endpoint enforcements and exposed metadata endpoints. Have a multi gigabyte file you need to upload in realtime? No need to modify your PHP settings anymore, chunked (resumable) file transfer via TUS was integrated into your webforms. ORCID autocomplete and new IR scholar/student/faculty custom elements. Tons of new Formatter/Viewers features. And so much more. So much.
 
-## macOS Intel or Apple Silicon M1/M2/M3:
+But (that is not all! that is not all), also: backend improvements/upgrades is great. Moving from Solr 9.1 to 9.8.1 (wow), new PHP 8.3 (we made sure we got one that has no security issues!), new Cantaloupe Server with more JAVA customizations and of course the all new/refreshed NLP/ML containers.
+
+## macOS Intel or Apple Silicon M1/M2/M3/M4:
 
 [Step by Step deployment on macOS](docs/osx.md)
 
-## Ubuntu 18.04 or 20.04:
+## Ubuntu 20.04+:
 
 [Step by Step deployment on Ubuntu](docs/ubuntu.md)
 
@@ -50,7 +48,7 @@ This is the recommended, simplest way for this release. There are a too many, to
 
 [One-Step Demo content ingest](docs/democontent.md)
 
-If you like it (or not), want new features, or want to be part of making this better (documenting, coding and planning) let us know. Make your voice and opinion be heard, this is a community effort.
+If you like it (or not.. but we know you like it), want new features, need a bug fix, are in doubt, or want to be part of making this better (documenting, coding and planning) let us know. Make your voice and opinion be heard, this is a community effort.
 
 ## Caring & Coding + Fixing + Testing
 

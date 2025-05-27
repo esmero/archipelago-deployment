@@ -1,16 +1,15 @@
 <!--documentation
 ---
-title: "Installing Archipelago Drupal 10 on Windows 10/11"
+title: "Installing Archipelago (1.5.0) Drupal 10 on Windows 10/11"
 tags:
   - Archipelago-deployment
   - Drupal 10
   - Windows
-  - Ubuntu 18.04
   - Ubuntu 20.04
 ---
 documentation-->
 
-# Installing Archipelago Drupal 10 on Windows 10/11
+# Installing Archipelago (1.5.0) Drupal 10 on Windows 10/11
 
 ## Prerequisites
 
@@ -19,7 +18,7 @@ documentation-->
 - [Install Ubuntu on WSL 2](https://ubuntu.com/wsl)
 - [Install Docker for Windows](https://docs.docker.com/desktop/windows/install/)
 - [Install Github for Desktop](https://desktop.github.com/)
-- At least 10 Gbytes of free space (to get started)
+- At least 15 Gbytes of free space (to get started)
 - Some basic Unix/Terminal Skills
 - 4 Gbytes of RAM (8 Recommended)
 

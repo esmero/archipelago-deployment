@@ -12,7 +12,7 @@ dependencies:
 id: mimetype
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -5
+weight: -10
 provider: null
 plugin: 'facet_block:mime_type'
 settings:

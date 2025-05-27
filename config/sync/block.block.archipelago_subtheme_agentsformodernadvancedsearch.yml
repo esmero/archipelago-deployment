@@ -12,7 +12,7 @@ dependencies:
 id: archipelago_subtheme_agentsformodernadvancedsearch
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -2
+weight: -4
 provider: null
 plugin: 'facet_block:agents_for_modern_advanced_search'
 settings:

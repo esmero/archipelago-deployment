@@ -12,7 +12,7 @@ dependencies:
 id: dateoforiginalgrid
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -15
+weight: -24
 provider: null
 plugin: 'facet_block:date_of_original_grid'
 settings:

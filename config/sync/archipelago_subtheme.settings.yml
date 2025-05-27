@@ -1,5 +1,6 @@
 _core:
   default_config_hash: LdPjc1VCTO3_q56LqMexIbDmRvhlTEdTFHajPe4laUs
+langcode: en
 favicon:
   mimetype: image/png
   path: 'public://ArchipelagoCommonsLogo_favicon-32x32.png'
@@ -88,7 +89,7 @@ bootstrap_barrio_navbar_affix: 0
 bootstrap_barrio_sidebar_first_affix: 0
 bootstrap_barrio_sidebar_second_affix: 0
 bootstrap_barrio_scroll_spy: ''
-bootstrap_barrio_google_fonts: playfair_alice
+bootstrap_barrio_google_fonts: roboto
 bootstrap_barrio_bootstrap_icons: 0
 bootstrap_barrio_icons: fontawesome
 bootstrap_barrio_system_messages: ''
@@ -105,7 +106,7 @@ bootstrap_barrio_select: custom
 bootstrap_barrio_file: standard
 bootstrap_barrio_hide_node_label: 0
 bootstrap_barrio_navbar_offcanvas: ''
-bootstrap_barrio_container: container-lg
+bootstrap_barrio_container: container-fluid
 bootstrap_barrio_breadcrumb_divider: ''
 bootstrap_barrio_button_type: primary
 bootstrap_barrio_float_label: 0
@@ -117,3 +118,27 @@ bootstrap_barrio_body_bg_color: white
 bootstrap_barrio_h1_color: base
 bootstrap_barrio_h2_color: base
 bootstrap_barrio_h3_color: base
+bootstrap_barrio_region_width_top_header: 0
+bootstrap_barrio_region_width_top_header_form: 0
+bootstrap_barrio_region_width_header: 0
+bootstrap_barrio_region_width_header_form: 0
+bootstrap_barrio_region_width_primary_menu: 0
+bootstrap_barrio_region_width_secondary_menu: 0
+bootstrap_barrio_region_width_editor_toolbar: 0
+bootstrap_barrio_region_width_page_top: 0
+bootstrap_barrio_region_width_page_bottom: 0
+bootstrap_barrio_region_width_highlighted: 0
+bootstrap_barrio_region_width_featured_top: 0
+bootstrap_barrio_region_width_breadcrumb: 0
+bootstrap_barrio_region_width_content: 0
+bootstrap_barrio_region_width_sidebar_first: 0
+bootstrap_barrio_region_width_sidebar_second: 0
+bootstrap_barrio_region_width_featured_bottom_first: 0
+bootstrap_barrio_region_width_featured_bottom_second: 0
+bootstrap_barrio_region_width_featured_bottom_third: 0
+bootstrap_barrio_region_width_footer_first: 0
+bootstrap_barrio_region_width_footer_second: 0
+bootstrap_barrio_region_width_footer_third: 0
+bootstrap_barrio_region_width_footer_fourth: 0
+bootstrap_barrio_region_width_footer_fifth: 0
+bootstrap_barrio_messages_widget_toast_delay: '10000'

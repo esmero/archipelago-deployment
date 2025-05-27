@@ -1,0 +1,32 @@
+uuid: a4876666-8394-44fc-90bd-c48904790e8e
+langcode: en
+status: true
+dependencies: {  }
+id: chained_vit_child
+label: chained_vit_child
+weight: '-9'
+pluginconfig:
+  source_type: asstructure
+  ado_type: Car
+  jsonkey:
+    'as:image': 'as:image'
+  jmespath: ''
+  mime_type: 'image/jpeg,image/tiff'
+  language_key: language_iso639_3
+  language_default: eng
+  output_type: json
+  output_destination:
+    searchapi: searchapi
+    plugin: 0
+  processor_queue_type: background
+  nlp_url: 'http://esmero-nlp:6400'
+  ml_method: /image/vision_transformer
+  iiif_server: 'http://esmero-cantaloupe:8182/iiif/2'
+  iiif_server_image_type: gray.jpg
+  timeout: '300'
+  weight: '0'
+  use_inherited_region: 1
+pluginid: ml_vit
+active: true
+parent: chained_yolo
+depth: 1

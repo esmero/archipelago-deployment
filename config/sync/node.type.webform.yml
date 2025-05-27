@@ -10,7 +10,7 @@ _core:
 name: Webform
 type: webform
 description: 'A basic page with a webform attached.'
-help: ''
+help: null
 new_revision: false
 preview_mode: 1
 display_submitted: true

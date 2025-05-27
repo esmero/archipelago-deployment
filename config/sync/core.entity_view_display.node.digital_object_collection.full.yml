@@ -70,9 +70,25 @@ content:
       json_key_source: 'as:image'
       max_width: '0'
       max_height: '520'
+      icons_prefixurl: ''
+      webannotations: false
+      webannotations_tool: polygon
+      webannotations_opencv: false
+      webannotations_betterpolygon: false
+      webannotations_georeferencewidget: false
       use_iiif_globals: '1'
       iiif_group: true
       thumbnails: true
+      upload_json_key_source: ''
+      embargo_json_key_source: ''
+      hide_on_embargo: ''
+      mediasource: null
+      main_mediasource: null
+      viewer_overrides: ''
+      metadataexposeentity_source_required: false
+      metadataexposeentity_source: null
+      manifestnodelist_json_key_source: isrelatedto
+      manifesturl_json_key_source: iiifmanifest
     third_party_settings: {  }
     weight: 5
     region: content

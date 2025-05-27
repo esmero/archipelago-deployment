@@ -18,6 +18,10 @@ suggester_settings:
       - label_1
       - name_1
       - title
+    highlight:
+      enabled: false
+      field: ''
+    suggest_keys: false
     view_modes:
       'entity:node':
         article: ''

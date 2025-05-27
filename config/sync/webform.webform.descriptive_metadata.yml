@@ -783,6 +783,9 @@ elements: |-
       '#states':
         visible:
           - ':input[name="type"]':
+              value: Painting
+          - xor
+          - ':input[name="type"]':
               value: ShortStory
           - xor
           - ':input[name="type"]':
@@ -811,9 +814,12 @@ elements: |-
           - xor
           - ':input[name="type"]':
               value: Book
+          - xor
+          - ':input[name="type"]':
+              value: Manuscript    
       '#states_clear': false
-      '#file_placeholder': 'Archipelago is currently only configured to display pdfs, but can still enable download other file types.'
-      '#file_extensions': 'txt rtf pdf doc docx odt ppt pptx odp xls xlsx ods csv'
+      '#file_placeholder': 'Archipelago is currently only configured to display pdfs via a Viewer, but can still enable download other file types.'
+      '#file_extensions': 'txt rtf pdf doc docx odt ppt pptx odp xls xlsx ods csv jsonld'
       '#sanitize': true
     audios:
       '#type': managed_file
@@ -880,6 +886,13 @@ elements: |-
       '#max_filesize': '512'
       '#file_extensions': 'warc warc.gz wacz'
       '#sanitize': true
+    large_files:
+      '#type': webform_tus_file
+      '#title': 'Upload Large Files via Multipart (TUS)'
+      '#multiple': 2
+      '#file_placeholder': 'Upload a file via TUS'
+      '#file_extensions': 'tiff tif mp4 mov zip warc warc.gz wacz'
+      '#max_filesize_tus': '4000'
     represents_parent:
       '#type': checkbox
       '#title': 'This object represents/depicts its parent'

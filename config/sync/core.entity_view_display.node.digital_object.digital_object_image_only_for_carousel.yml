@@ -24,9 +24,9 @@ third_party_settings:
       disable_css: false
       entity_classes: no_classes
       settings:
+        label: ''
         wrappers:
           ds_content: div
-        label: ''
     regions:
       ds_content:
         - field_descriptive_metadata

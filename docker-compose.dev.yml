@@ -6,7 +6,10 @@
 
 # Start these services with: docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 # Stop these services with: docker compose -f docker-compose.yml -f docker-compose.dev.yml down
-# (with just "docker-compose down", you will leave an orphan container dangling)
+# Note: On linux the command might be `docker-compose` instead of `docker compose`
+# Note 2: If using PHP Storm make sure you close it first, in case a Port Clashes happens (PHP Storm uses sometimes 8xxx available ports
+# for its own XDEBUG needs)
+# (with just "docker compose down", you will leave an orphan container dangling)
 services:
   web:
     container_name: esmero-web
@@ -27,7 +30,7 @@ services:
   php-debug:
     container_name: esmero-php-debug
     restart: always
-    image: esmero/php-8.1-fpm:1.2.0-dev-multiarch
+    image: esmero/php-8.3-fpm:1.5.0-dev-multiarch
     environment:
       - XDEBUG_SESSION_START="archipelago"
     tty: true

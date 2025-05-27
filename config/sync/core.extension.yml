@@ -72,6 +72,7 @@ module:
   jquery_ui_effects: 0
   jquery_ui_slider: 0
   jquery_ui_touch_punch: 0
+  js_cookie: 0
   jsonapi: 0
   language: 0
   layout_discovery: 0
@@ -122,6 +123,7 @@ module:
   user: 0
   views_bootstrap: 0
   views_bulk_operations: 0
+  views_load_more: 0
   views_ui: 0
   webform: 0
   webform_examples_accessibility: 0

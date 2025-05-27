@@ -25,9 +25,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
+        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
-        label: ''
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
     regions:
       ds_content:
         - 'display_field_copy:node-field_descriptive_metadata_image'
@@ -57,17 +63,23 @@ third_party_settings:
           formatter:
             iiif_base_url: 'http://localhost:8183/iiif/2'
             iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+            custom_js: false
+            mirador_version: 4
             mediasource:
               manifestnodelist: '0'
               metadataexposeentity: metadataexposeentity
               manifesturl: '0'
             main_mediasource: metadataexposeentity
-            metadataexposeentity_source: iiifmanifestv2
+            metadataexposeentity_source: iiifmanifest
             manifestnodelist_json_key_source: isrelatedto
             manifesturl_json_key_source: iiifmanifest
             max_width: '0'
             max_height: '960'
             use_iiif_globals: '1'
+            upload_json_key_source: ''
+            embargo_json_key_source: ''
+            hide_on_embargo: '0'
+            viewer_overrides: ''
       'display_field_copy:node-static_media':
         plugin_id: 'display_field_copy:node-static_media'
         weight: 5
@@ -96,6 +108,9 @@ content:
       specs: 'http://schema.org'
       metadatadisplayentity_uuid: bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7
       metadatadisplayentity_uselabel: '0'
+      upload_json_key_source: ''
+      embargo_json_key_source: ''
+      hide_on_embargo: ''
     third_party_settings: {  }
     weight: 4
     region: ds_content

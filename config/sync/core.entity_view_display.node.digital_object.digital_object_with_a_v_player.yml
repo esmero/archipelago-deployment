@@ -25,9 +25,9 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
+        label: ''
         wrappers:
           ds_content: div
-        label: ''
     regions:
       ds_content:
         - links

@@ -12,7 +12,7 @@ dependencies:
 id: strawberrydescriptivemetadatasourceagentsgrid
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -6
+weight: -13
 provider: null
 plugin: 'facet_block:strawberry_descriptive_metadata_source_agents_grid'
 settings:

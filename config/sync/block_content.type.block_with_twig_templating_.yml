@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: block_with_twig_templating_
 label: 'Block with Twig Templating '
-revision: 1
+revision: true
 description: 'Custom Block with a Twig field'

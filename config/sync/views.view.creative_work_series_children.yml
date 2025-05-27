@@ -95,9 +95,10 @@ display:
             multi_type: separator
             multi_separator: ', '
       pager:
-        type: mini
+        type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 25
           total_pages: null
           id: 0
@@ -112,6 +113,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+          quantity: 1
       exposed_form:
         type: basic
         options:
@@ -289,7 +291,8 @@ display:
     display_plugin: block
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        sbf_ajax_interactions: {  }
       block_hide_empty: true
       allow:
         items_per_page: true

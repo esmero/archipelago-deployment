@@ -1,6 +1,6 @@
 <!--documentation
 ---
-title: "Installing Archipelago Drupal 10 on OSX (macOS)"
+title: "Installing Archipelago (1.5.0) Drupal 10 on OSX (macOS)"
 tags:
   - Archipelago-deployment
   - Drupal 10
@@ -9,7 +9,7 @@ tags:
 ---
 documentation-->
 
-# Installing Archipelago Drupal 10 on OSX (macOS)
+# Installing Archipelago (1.5.0) Drupal 10 on OSX (macOS)
 
 ## About running terminal commands
 
@@ -26,11 +26,11 @@ Happy deploying!
 ### OSX (macOS):
 
 - [Install Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
-  - For OSX (macOS) `Ventura` or Higher on Intel (i5/i7) and Apple Silicon Chips (M1/M2/M3) the tested version is: `4.31.0(153195)` with Docker engine v26.1.4. You may go newer of course.
+  - For OSX (macOS) `Ventura` or Higher on Intel (i5/i7) and Apple Silicon Chips (M1/M2/M3/mM4) the tested version is: `4.41.2 (191736)` with Docker engine v28.1.1. You may go newer of course.
   - In `Preferences` -> `General`: check under `Choose file sharing implementation for your containers` either the new `VirtioFS`(faster) or `gRPC FUSE` and restart. Specially if you are using your `$HOME` folder for deploying, e.g. `/Users/username`.
-  - In `Preferences` -> `Resources`: 4 Gbytes of RAM is the recommended minimun and works; 8 Gbytes is faster and snappier.
+  - In `Preferences` -> `Resources`: a minimum of 4 Gbytes of RAM is needed and works; 8 Gbytes is faster and snappier. Go for 16 GBytes if you are going to evaluate the ML/AI features on large sets of images/text.
 - [Install Github Desktop](https://desktop.github.com).
-- At least 10 Gbytes of free space (to get started).
+- At least 15 Gbytes of free space (to get started).
 - Being able to open a terminal.
 
 **Note:** Most Recent Docker Desktop for macOS removed `docker-compose` and replace it with `docker compose`. We updated this documentation to reflect the newer version. If you are running an older one, either upgrade or please replace every mention of `docker composer` with the legacy `docker-compose` when going through the steps.
@@ -83,18 +83,18 @@ Ok, now we are ready to start. Depending on what type of Chip your Apple uses yo
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.4.0
+git checkout 1.5.0
 cp docker-compose-osx.yml docker-compose.yml
 docker compose pull
 docker compose up -d
 ```
 
-## Step 1 (M1/M2/M3): Docker Deployment on Apple Silicon Chips (M1/M2/M3)
+## Step 1 (M1/M2/M3/M4): Docker Deployment on Apple Silicon Chips (M1/M2/M3)
 
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.4.0
+git checkout 1.5.0
 cp docker-compose-arm64.yml docker-compose.yml
 docker compose pull
 docker compose up -d
@@ -184,7 +184,7 @@ Also, to make this docker-compose easier to use we are doing something named `bi
 
 [One-Step Demo content ingest](democontent.md)
 
-### Need help? Blue Screen? Missed a step? Need a hug and such?
+### Need help? Blue/white Screen? Missed a step? Need a hug (a pat?) and such?
 
 If you see any issues or errors or need help with a step, please let us know (ASAP!). You can either open an `issue` in this repository or use the [Google Group](https://groups.google.com/forum/#!forum/archipelago-commons). We are here to help.
 

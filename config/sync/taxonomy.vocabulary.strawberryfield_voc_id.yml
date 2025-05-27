@@ -6,3 +6,4 @@ name: strawberryfield_voc_id
 vid: strawberryfield_voc_id
 description: 'Strawberryfield Metadata Keys'
 weight: 0
+new_revision: false

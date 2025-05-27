@@ -1,31 +1,30 @@
-uuid: 06db4cb7-9897-42e9-a45c-77df978f846c
+uuid: 69101250-20aa-4263-94f5-4e499e01408d
 langcode: en
 status: true
 dependencies:
   config:
-    - facets.facet.date_of_original
+    - facets.facet.date_of_original_page
   module:
     - context
     - facets
   theme:
     - archipelago_subtheme
-id: dateoforiginal
+id: archipelago_subtheme_dateoforiginalpage
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -16
+weight: -23
 provider: null
-plugin: 'facet_block:date_of_original'
+plugin: 'facet_block:date_of_original_page'
 settings:
-  id: 'facet_block:date_of_original'
+  id: 'facet_block:date_of_original_page'
   label: 'Date of Original'
   label_display: visible
   provider: facets
-  block_id: dateoforiginal
+  context_mapping: {  }
+  block_id: archipelago_subtheme_dateoforiginalpage
 visibility:
   view_inclusion:
     id: view_inclusion
     negate: false
-    context_mapping: {  }
     view_inclusion:
-      view-solr_search_content-grid: view-solr_search_content-grid
       view-solr_search_content-page_1: view-solr_search_content-page_1

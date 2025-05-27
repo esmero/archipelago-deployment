@@ -1,0 +1,41 @@
+{
+    "_hash": "6e2cb630a245044c7c2688a4236d46ac737175837910dfc60f2f9a23e871394e",
+    "patches": {
+        "drupal/facets": [
+            {
+                "package": "drupal/facets",
+                "description": "D10.3 Facet Ajax fix",
+                "url": "https://www.drupal.org/files/issues/2024-08-10/3052574-session-not-set-warning-251.patch",
+                "sha256": "ee5a451e3c8c4f4843a50c07d3d679b5d15464c11730e43f0551f35aa0f2fe90",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/better_exposed_filters": [
+            {
+                "package": "drupal/better_exposed_filters",
+                "description": "D10.3 Reset Fix",
+                "url": "https://www.drupal.org/files/issues/2024-07-08/3459811-6.patch",
+                "sha256": "87a97207c09b70df903c2d86096ab05683a5f79da2bfacdebc917ee3f08fe8a4",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "ankitpokhrel/tus-php": [
+            {
+                "package": "ankitpokhrel/tus-php",
+                "description": "Less Cache writes during upload fix",
+                "url": "patches/tus-file-cache.patch",
+                "sha256": "98775d13829feec42c3e88e9ae5fd4852997b9c617c8cb58770b049d4111c186",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}

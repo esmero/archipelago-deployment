@@ -1,0 +1,25 @@
+Index: ankitpokhrel/tus-php/src/File.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/File.php b/src/File.php
+--- a/src/File.php
++++ b/src/File.php
+@@ -328,7 +328,7 @@
+
+                 $this->offset += $bytes;
+
+-                $this->cache->set($key, ['offset' => $this->offset]);
++                //$this->cache->set($key, ['offset' => $this->offset]);
+
+                 if ($this->offset > $totalBytes) {
+                     throw new OutOfRangeException('The uploaded file is corrupt.');
+@@ -338,6 +338,7 @@
+                     break;
+                 }
+             }
++            $this->cache->set($key, ['offset' => $this->offset]);
+         } finally {
+             $this->close($input);
+             $this->close($output);

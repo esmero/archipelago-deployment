@@ -20,6 +20,7 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
+        label: ''
         classes:
           layout_class: {  }
         wrappers:
@@ -28,7 +29,6 @@ third_party_settings:
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        label: ''
     regions:
       ds_content:
         - field_descriptive_metadata
@@ -67,6 +67,7 @@ content:
       iiif_base_url: 'http://localhost:8183/iiif/2'
       iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
       custom_js: false
+      mirador_version: 4
       mediasource:
         manifestnodelist: '0'
         metadataexposeentity: metadataexposeentity
@@ -80,6 +81,8 @@ content:
       use_iiif_globals: '1'
       upload_json_key_source: ''
       embargo_json_key_source: ''
+      hide_on_embargo: ''
+      viewer_overrides: ''
     third_party_settings: {  }
     weight: 0
     region: content

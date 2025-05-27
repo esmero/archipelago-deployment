@@ -6,7 +6,8 @@ id: date_created_original_
 label: 'Date Created (original)'
 pluginid: jmespath
 pluginconfig:
-  source_key: '"date_created"'
+  source_key: '"date_created", date_created_edtf.date_free, [date_created_edtf][?"date_type" == ''date_range''][ join(''/'',[date_from,date_to])][]'
   is_date: true
+  is_date_range: false
   exposed_key: date_created_original
 active: true

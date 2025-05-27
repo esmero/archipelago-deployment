@@ -80,7 +80,7 @@ New Object 'Anne of Green Gables : Chapters 1 and 2' with UUID 9eb28775-d73a-490
 
 The gist here is that if the script says `Thanks` you are good.
 
-- If you are not running Docker (You are a unicorn or at least a hacker) you will need to tune/copy/modify the following script:
+- If you are not running Docker (You are a unicorn, a Wombat, or at least a hacker) you will need to tune/copy/modify the following script:
 `archipelago-deployment/d8content/archipelago-recyclables/deploy_ados.sh`
 
 Inside you will find lines like this one: 
@@ -91,15 +91,15 @@ drush archipelago:jsonapi-ingest /var/www/html/d8content/archipelago-recyclables
 
 What you want here is to modify/replace the absolute paths that point your demo objects (.json) and their assets (folders with the same name). Basically replace every entry of `/var/www/html/d8content/archipelago-recyclables/` with the path to `archipelago-recyclables`.
 
-### Need help? Blue Screen? Missed a step? Need a hug? Another Hug?
+### Need help? Blue Screen? Missed a step? Need a hug? Another Hug? More Hugs?
 
 If you have trouble running this or see errors or need help with a step (its only two steps), please let us know (ASAP!). You can either open an `issue` in this repository or use the [Google Group](https://groups.google.com/forum/#!forum/archipelago-commons). We are here to help.
 
 ## Caring & Coding + Fixing
 
 * [Diego Pino](https://github.com/DiegoPino)
-* [Giancarlo Birello](https://github.com/giancarlobi)
 * [Allison Lund](https://github.com/alliomeria)
+* [Giancarlo Birello](https://github.com/giancarlobi)
 
 ## License
 

@@ -13,7 +13,7 @@ dependencies:
 id: strawberrygriddescriptivemetadata_ismemberof
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -10
+weight: -18
 provider: null
 plugin: 'facet_block:is_memberof_grid'
 settings:
