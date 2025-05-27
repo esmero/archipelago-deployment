@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7352288919b227fec7bc6be979a5b337",
+    "content-hash": "47a08a1b6230f4f6ce8adf89d980b2ad",
     "packages": [
         {
             "name": "ankitpokhrel/tus-php",
@@ -5888,17 +5888,11 @@
         },
         {
             "name": "drupal/search_api",
-            "version": "1.38.0",
+            "version": "dev-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api.git",
-                "reference": "8.x-1.38"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api-8.x-1.38.zip",
-                "reference": "8.x-1.38",
-                "shasum": "d1c83ba74e553eca07d3ea4b15e5d9c7f009a496"
+                "reference": "51e38fda4ad2ce07f0ffc44def948e497fd35dfa"
             },
             "require": {
                 "drupal/core": "^10.2 || ^11"
@@ -5907,8 +5901,8 @@
                 "drupal/search_api_solr": "2.* || 3.0 || 3.1"
             },
             "require-dev": {
-                "drupal/language_fallback_fix": "@dev",
-                "drupal/search_api_autocomplete": "@dev",
+                "drupal/language_fallback_fix": "1.x-dev",
+                "drupal/search_api_autocomplete": "1.x-dev",
                 "drupal/search_api_db": "*"
             },
             "suggest": {
@@ -5918,12 +5912,15 @@
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
                 "drupal": {
-                    "version": "8.x-1.38",
-                    "datestamp": "1740298961",
+                    "version": "8.x-1.38+10-dev",
+                    "datestamp": "1746981977",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -13457,12 +13454,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "4a8810a1e4a489898fe00c274d7da879585f0aea"
+                "reference": "76eb2143c249ab4015a8c3ad76c1be7d85532c44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/4a8810a1e4a489898fe00c274d7da879585f0aea",
-                "reference": "4a8810a1e4a489898fe00c274d7da879585f0aea",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/76eb2143c249ab4015a8c3ad76c1be7d85532c44",
+                "reference": "76eb2143c249ab4015a8c3ad76c1be7d85532c44",
                 "shasum": ""
             },
             "require": {
@@ -13499,7 +13496,7 @@
                 "issues": "https://github.com/esmero/format_strawberryfield/issues",
                 "source": "https://github.com/esmero/format_strawberryfield/tree/1.5.0"
             },
-            "time": "2025-05-26T23:49:20+00:00"
+            "time": "2025-05-27T01:26:35+00:00"
         },
         {
             "name": "strawberryfield/strawberry_runners",
@@ -13624,12 +13621,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/webform_strawberryfield.git",
-                "reference": "cf1378e2297f59c07cfd5dced8b894383d929107"
+                "reference": "bd79cb3c13182295c68e3969eb9501946320adc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/cf1378e2297f59c07cfd5dced8b894383d929107",
-                "reference": "cf1378e2297f59c07cfd5dced8b894383d929107",
+                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/bd79cb3c13182295c68e3969eb9501946320adc8",
+                "reference": "bd79cb3c13182295c68e3969eb9501946320adc8",
                 "shasum": ""
             },
             "require": {
@@ -13661,7 +13658,7 @@
                 "issues": "https://github.com/esmero/webform_strawberryfield/issues",
                 "source": "https://github.com/esmero/webform_strawberryfield/tree/1.5.0"
             },
-            "time": "2025-05-26T18:19:40+00:00"
+            "time": "2025-05-27T00:53:57+00:00"
         },
         {
             "name": "swaggest/json-diff",
@@ -22136,6 +22133,7 @@
         "drupal/inline_entity_form": 20,
         "drupal/rest_oai_pmh": 20,
         "drupal/s3fs": 20,
+        "drupal/search_api": 20,
         "drupal/twig_tweak": 20,
         "drupal/views_load_more": 5,
         "phpcompatibility/php-compatibility": 20,
