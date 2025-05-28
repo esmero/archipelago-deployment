@@ -1,0 +1,30 @@
+uuid: 6299f49b-0ca2-42a5-a491-90d9c4170851
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.grid_subject_labels
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_subject_labels_grid
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: -10
+provider: null
+plugin: 'facet_block:grid_subject_labels'
+settings:
+  id: 'facet_block:grid_subject_labels'
+  label: Subjects
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_subject_labels_grid
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content-grid: view-solr_search_content-grid

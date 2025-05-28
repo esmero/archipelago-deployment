@@ -1,0 +1,30 @@
+uuid: 3ccd77ec-fe02-4273-b267-618c14c5e1ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.strawberry_descriptive_metadata_source_agents_grid
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_agentsgrid
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: -12
+provider: null
+plugin: 'facet_block:strawberry_descriptive_metadata_source_agents_grid'
+settings:
+  id: 'facet_block:strawberry_descriptive_metadata_source_agents_grid'
+  label: 'Creators & Contributors'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_agentsgrid
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content-grid: view-solr_search_content-grid

@@ -1,0 +1,30 @@
+uuid: 2595c709-e7e7-462c-9a3e-8c45dbdad5d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.subjects_for_modern_advanced_search
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_subjectsformodernadvancedsearch
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: -4
+provider: null
+plugin: 'facet_block:subjects_for_modern_advanced_search'
+settings:
+  id: 'facet_block:subjects_for_modern_advanced_search'
+  label: Subjects
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_subjectsformodernadvancedsearch
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-advanced_search-page_1: view-advanced_search-page_1

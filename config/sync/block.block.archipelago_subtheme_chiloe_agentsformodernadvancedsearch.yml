@@ -1,0 +1,30 @@
+uuid: c6b53fa3-66b6-40c5-8656-7c5d477b3c96
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.agents_for_modern_advanced_search
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_agentsformodernadvancedsearch
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: -5
+provider: null
+plugin: 'facet_block:agents_for_modern_advanced_search'
+settings:
+  id: 'facet_block:agents_for_modern_advanced_search'
+  label: 'Creators & Contributors'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_agentsformodernadvancedsearch
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-advanced_search-page_1: view-advanced_search-page_1

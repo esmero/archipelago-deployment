@@ -1,0 +1,30 @@
+uuid: 9c22add1-737c-4d6c-8da7-7ac055e49f84
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.strawberry_descriptive_metadata_ado_jsonkeys
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_jsonkeysdefined_searchandreplace
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: -2
+provider: null
+plugin: 'facet_block:strawberry_descriptive_metadata_ado_jsonkeys'
+settings:
+  id: 'facet_block:strawberry_descriptive_metadata_ado_jsonkeys'
+  label: 'JSON Keys Defined'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_jsonkeysdefined_searchandreplace
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content_with_find_and_replace-page_1: view-solr_search_content_with_find_and_replace-page_1

@@ -1,0 +1,30 @@
+uuid: 401f5f41-5f74-49d9-8637-7b9a7b417eb2
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.strawberry_as_generator_actor_url
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_as_generator_actor_url
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: -1
+provider: null
+plugin: 'facet_block:strawberry_as_generator_actor_url'
+settings:
+  id: 'facet_block:strawberry_as_generator_actor_url'
+  label: 'Ingest Method Service URL'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_as_generator_actor_url
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content_with_find_and_replace-page_1: view-solr_search_content_with_find_and_replace-page_1

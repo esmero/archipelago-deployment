@@ -1,0 +1,30 @@
+uuid: 7faa76dc-a224-43df-8db3-82063ac3068a
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.descriptive_metadata_subjects
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_subject_labels
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: -11
+provider: null
+plugin: 'facet_block:descriptive_metadata_subjects'
+settings:
+  id: 'facet_block:descriptive_metadata_subjects'
+  label: Subjects
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_subject_labels
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content-page_1: view-solr_search_content-page_1
