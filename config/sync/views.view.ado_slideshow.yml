@@ -330,7 +330,7 @@ display:
           bypass_access: false
           skip_access: false
       relationships: {  }
-      css_class: container
+      css_class: ' container rounded-3'
       header: {  }
       footer: {  }
       display_extenders: {  }

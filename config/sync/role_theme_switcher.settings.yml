@@ -8,7 +8,7 @@ roles:
     weight: '-47'
     admin_theme: archipelago_subtheme
   administrator:
-    theme: archipelago_subtheme
+    theme: archipelago_subtheme_chiloe
     weight: '-50'
     admin_theme: claro
   metadata_api:

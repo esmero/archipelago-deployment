@@ -1,17 +1,15 @@
-uuid: c1e609f7-3b13-4621-b578-faeb9062f8aa
+uuid: 5918adec-be95-4aee-8bd4-af198e2affb1
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - olivero
-_core:
-  default_config_hash: sYjScJ6uW1UvGZ-G3AtTcZmPoOiQJtndHqamm8FAFgU
-id: olivero_site_branding
-theme: olivero
-region: header
-weight: 0
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_sitebranding_2
+theme: archipelago_subtheme_chiloe
+region: top_header
+weight: -7
 provider: null
 plugin: system_branding_block
 settings:
@@ -21,5 +19,5 @@ settings:
   provider: system
   use_site_logo: true
   use_site_name: true
-  use_site_slogan: false
+  use_site_slogan: true
 visibility: {  }

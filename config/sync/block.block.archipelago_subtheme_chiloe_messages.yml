@@ -1,17 +1,17 @@
-uuid: 94aca5f9-e4c2-4907-8248-9c3d971beb3c
+uuid: 733658ed-bd2b-4881-a812-4a27675d1a02
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - olivero
+    - archipelago_subtheme_chiloe
 _core:
-  default_config_hash: KfyaTPRJEcAyy2e5AxEfWQnuHcn4WrfvcWek7lSmHZQ
-id: olivero_messages
-theme: olivero
+  default_config_hash: XJqWwLt1LDCnazcEN6QkJmCLjk4R0__-8s0OO9xeNjg
+id: archipelago_subtheme_chiloe_messages
+theme: archipelago_subtheme_chiloe
 region: highlighted
-weight: -5
+weight: -8
 provider: null
 plugin: system_messages_block
 settings:

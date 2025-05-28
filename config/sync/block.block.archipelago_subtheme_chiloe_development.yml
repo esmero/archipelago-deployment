@@ -1,0 +1,33 @@
+uuid: 5d11c8cd-4039-47b2-93a5-2656ab0359da
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.devel
+  module:
+    - system
+    - user
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_development
+theme: archipelago_subtheme_chiloe
+region: content
+weight: -4
+provider: null
+plugin: 'system_menu_block:devel'
+settings:
+  id: 'system_menu_block:devel'
+  label: Development
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      administrator: administrator

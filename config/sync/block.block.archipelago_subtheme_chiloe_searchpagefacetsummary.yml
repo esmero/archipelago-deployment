@@ -1,0 +1,29 @@
+uuid: 5bc5764f-aacc-4ae3-91e8-bcb4b0fae0e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets_summary.facets_summary.search_page_facet_summary
+  module:
+    - context
+    - facets_summary
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_searchpagefacetsummary
+theme: archipelago_subtheme_chiloe
+region: featured_top
+weight: 0
+provider: null
+plugin: 'facets_summary_block:search_page_facet_summary'
+settings:
+  id: 'facets_summary_block:search_page_facet_summary'
+  label: 'Search Page Facet Summary'
+  label_display: '0'
+  provider: facets_summary
+  context_mapping: {  }
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content-page_1: view-solr_search_content-page_1

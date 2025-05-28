@@ -1,0 +1,22 @@
+uuid: a4e54737-1690-45bb-9ea5-a3886eef9b72
+langcode: en
+status: true
+dependencies:
+  theme:
+    - archipelago_subtheme_chiloe
+_core:
+  default_config_hash: ddy1OsBbWxjwEI8VL1viD4I69qcLHOkul4BxbTqLBTs
+id: archipelago_subtheme_chiloe_primary_local_tasks
+theme: archipelago_subtheme_chiloe
+region: content_top
+weight: -7
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

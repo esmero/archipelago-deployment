@@ -1,17 +1,17 @@
-uuid: fca7590c-82e5-4e2e-a8c6-15fa6a555afe
+uuid: 84f45754-7bd6-4ed9-91fd-591ad03dfe32
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - olivero
+    - archipelago_subtheme_chiloe
 _core:
-  default_config_hash: BL6Gcw5Us0zai1ADadlNYLxlEblMedc_3C3lF0PjtCE
-id: olivero_content
-theme: olivero
+  default_config_hash: YRY68JWkaUiGeZlWMv1nzeIgDm0ZZwXYgpqUpLFzwAY
+id: archipelago_subtheme_chiloe_content
+theme: archipelago_subtheme_chiloe
 region: content
-weight: 0
+weight: -6
 provider: null
 plugin: system_main_block
 settings:

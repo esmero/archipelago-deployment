@@ -1,17 +1,17 @@
-uuid: c5237601-5733-4852-b4c3-0b49d7e48926
+uuid: 7def32cc-e23d-47dc-b6ce-fe07848a53f9
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - olivero
+    - archipelago_subtheme_chiloe
 _core:
-  default_config_hash: XMsRP1YhWAcorbrFWZglMYJ_SgWHyF3fyCh5vDXaUN4
-id: olivero_breadcrumbs
-theme: olivero
+  default_config_hash: WWu2OQswgCztl9OeXjD1stexIEMZsSgPMYIdC-JHx9c
+id: archipelago_subtheme_chiloe_breadcrumbs
+theme: archipelago_subtheme_chiloe
 region: breadcrumb
-weight: 0
+weight: -8
 provider: null
 plugin: system_breadcrumb_block
 settings:

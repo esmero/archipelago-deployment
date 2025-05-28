@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f8ae9f18a5f451114580fdf4f1d57ae",
+    "content-hash": "850ada7a747dd4ca584c7e0c76106691",
     "packages": [
         {
             "name": "ankitpokhrel/tus-php",
@@ -170,6 +170,45 @@
                 "source": "https://github.com/esmero/archipelago_subtheme/tree/1.4.0"
             },
             "time": "2024-08-14T15:56:53+00:00"
+        },
+        {
+            "name": "archipelago/archipelago_subtheme_chiloe",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/esmero/archipelago_subtheme_chiloe.git",
+                "reference": "afdb1b827f7fb5715e6eaa6ecc3e6e6b809a561f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme_chiloe/zipball/afdb1b827f7fb5715e6eaa6ecc3e6e6b809a561f",
+                "reference": "afdb1b827f7fb5715e6eaa6ecc3e6e6b809a561f",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/bootstrap_barrio": ">=5.5.6"
+            },
+            "default-branch": true,
+            "type": "drupal-theme",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Diego Pino Navarro",
+                    "email": "dpino@metro.org",
+                    "homepage": "https://github.com/DiegoPino",
+                    "role": "Owner"
+                }
+            ],
+            "description": "Archipelago SASS Bootstrap Barrio Sub Theme made for good people.",
+            "homepage": "https://github.com/esmero/archipelago_subtheme_chiloe",
+            "support": {
+                "issues": "https://github.com/esmero/archipelago_subtheme_chiloe/issues",
+                "source": "https://github.com/esmero/archipelago_subtheme_chiloe/tree/main"
+            },
+            "time": "2025-05-27T23:28:49+00:00"
         },
         {
             "name": "archipelago/fragaria",
@@ -13379,12 +13418,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "76eb2143c249ab4015a8c3ad76c1be7d85532c44"
+                "reference": "ee7582baf70a83b8df15c3ec2d90fb5ca28e5f29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/76eb2143c249ab4015a8c3ad76c1be7d85532c44",
-                "reference": "76eb2143c249ab4015a8c3ad76c1be7d85532c44",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/ee7582baf70a83b8df15c3ec2d90fb5ca28e5f29",
+                "reference": "ee7582baf70a83b8df15c3ec2d90fb5ca28e5f29",
                 "shasum": ""
             },
             "require": {
@@ -13421,7 +13460,7 @@
                 "issues": "https://github.com/esmero/format_strawberryfield/issues",
                 "source": "https://github.com/esmero/format_strawberryfield/tree/1.5.0"
             },
-            "time": "2025-05-27T01:26:35+00:00"
+            "time": "2025-05-27T23:52:03+00:00"
         },
         {
             "name": "strawberryfield/strawberry_runners",
@@ -22044,6 +22083,7 @@
     "stability-flags": {
         "archipelago/ami": 20,
         "archipelago/archipelago_subtheme": 20,
+        "archipelago/archipelago_subtheme_chiloe": 20,
         "archipelago/fragaria": 20,
         "drupal/bamboo_twig": 20,
         "drupal/calendar": 15,

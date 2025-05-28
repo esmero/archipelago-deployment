@@ -1,0 +1,39 @@
+uuid: baca4303-37fc-4369-ac37-044fc10b343e
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.creative_work_series_children
+  module:
+    - node
+    - system
+    - views
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_views_block__creative_work_series_children_block_1_2
+theme: archipelago_subtheme_chiloe
+region: sidebar_second
+weight: -6
+provider: null
+plugin: 'views_block:creative_work_series_children-block_1'
+settings:
+  id: 'views_block:creative_work_series_children-block_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+  exposed: {  }
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      digital_object_collection: digital_object_collection
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: '/node/*'

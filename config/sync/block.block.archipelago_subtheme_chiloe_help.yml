@@ -1,0 +1,22 @@
+uuid: 03ecf582-f3b1-453a-8106-d63e33f29a2b
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - archipelago_subtheme_chiloe
+_core:
+  default_config_hash: NU5A_49mwLHfs5xFzMFrZ850w9pgUolxMS9NNF3vv4c
+id: archipelago_subtheme_chiloe_help
+theme: archipelago_subtheme_chiloe
+region: top_header
+weight: -8
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }
