@@ -1,4 +1,4 @@
-uuid: be7d8a80-36fe-4460-8235-efab96f04eb6
+uuid: 479f0868-5980-438e-a650-8be41f24d395
 langcode: en
 status: true
 dependencies:
@@ -8,11 +8,11 @@ dependencies:
     - context
     - facets
   theme:
-    - archipelago_subtheme
-id: mimetype
-theme: archipelago_subtheme
-region: sidebar_second
-weight: -10
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_mimetype
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: -17
 provider: null
 plugin: 'facet_block:mime_type'
 settings:
@@ -21,11 +21,10 @@ settings:
   label_display: visible
   provider: facets
   context_mapping: {  }
-  block_id: mimetype
+  block_id: archipelago_subtheme_chiloe_mimetype
 visibility:
   view_inclusion:
     id: view_inclusion
     negate: false
-    context_mapping: {  }
     view_inclusion:
       view-solr_search_content-page_1: view-solr_search_content-page_1

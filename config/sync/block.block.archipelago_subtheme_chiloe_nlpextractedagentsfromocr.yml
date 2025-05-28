@@ -1,0 +1,30 @@
+uuid: ddb45b99-a653-4bb9-a1bd-a5672e79e594
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.nlp_extracted_agents_from_ocr
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_nlpextractedagentsfromocr
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'facet_block:nlp_extracted_agents_from_ocr'
+settings:
+  id: 'facet_block:nlp_extracted_agents_from_ocr'
+  label: 'NLP Extracted Agents from OCR'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_nlpextractedagentsfromocr
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content-page_3: view-solr_search_content-page_3

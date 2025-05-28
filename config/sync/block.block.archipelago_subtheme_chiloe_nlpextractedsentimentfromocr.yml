@@ -1,0 +1,30 @@
+uuid: e5faab32-c9da-44e0-83ec-2c687bcdb127
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.nlp_extracted_sentiment_from_ocr
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_nlpextractedsentimentfromocr
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: 2
+provider: null
+plugin: 'facet_block:nlp_extracted_sentiment_from_ocr'
+settings:
+  id: 'facet_block:nlp_extracted_sentiment_from_ocr'
+  label: 'NLP Extracted Sentiment from OCR'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_nlpextractedsentimentfromocr
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content-page_3: view-solr_search_content-page_3

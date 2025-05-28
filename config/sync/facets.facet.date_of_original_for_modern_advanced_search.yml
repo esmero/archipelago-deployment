@@ -17,7 +17,7 @@ url_alias: date_of_original
 facet_source_id: 'search_api:views_page__advanced_search__page_1'
 field_identifier: date_created_original
 query_operator: and
-hard_limit: 0
+hard_limit: 100
 exclude: false
 use_hierarchy: false
 keep_hierarchy_parents_active: false
@@ -27,16 +27,26 @@ hierarchy:
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: true
 widget:
-  type: links
+  type: sbf_range_date_slider
   config:
     show_numbers: true
-    soft_limit: 5
+    min_type: search_result
+    min_value: 1810.0
+    max_type: search_result
+    max_value: 2025
+    restrict_to_fixed: 1
+    step: 1
+    allow_full_entry: true
+    allow_year_entry: true
     show_reset_link: true
-    reset_text: 'Show all'
     hide_reset_when_no_selection: true
-    soft_limit_settings:
-      show_less_label: 'Show less'
-      show_more_label: 'Show more'
+    reset_text: 'Show all'
+    submit_text: Update
+    step_variable_granularity: true
+    restrict_frequency_to_range: 1
+    show_histogram: 1
+    histogram_color: 'rgb(97, 211, 157)'
+    histogram_bg_color: 'rgba(245, 40, 145, 0.55)'
 empty_behavior:
   behavior: none
 only_visible_when_facet_source_is_visible: true
@@ -61,15 +71,6 @@ processor_configs:
       sort: 30
     settings:
       sort: DESC
-  date_item:
-    processor_id: date_item
-    weights:
-      build: 35
-    settings:
-      date_display: actual_date
-      granularity: 6
-      date_format: ''
-      hierarchy: false
   display_value_widget_order:
     processor_id: display_value_widget_order
     weights:
@@ -81,6 +82,14 @@ processor_configs:
     weights:
       build: 100
     settings: {  }
+  sbf_date_range_slider:
+    processor_id: sbf_date_range_slider
+    weights:
+      pre_query: 60
+      build: 20
+    settings:
+      enabled: 1
+      variable_granularity: 1
   url_processor_handler:
     processor_id: url_processor_handler
     weights:

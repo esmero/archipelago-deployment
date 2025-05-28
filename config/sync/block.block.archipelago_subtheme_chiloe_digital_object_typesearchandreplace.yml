@@ -1,0 +1,30 @@
+uuid: b0d4cdcd-ec35-4bf2-b67e-81ba0fd1f684
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.strawberry_descriptive_metadata_ado_replace
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_digital_object_typesearchandreplace
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: -3
+provider: null
+plugin: 'facet_block:strawberry_descriptive_metadata_ado_replace'
+settings:
+  id: 'facet_block:strawberry_descriptive_metadata_ado_replace'
+  label: 'Object Type'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_digital_object_typesearchandreplace
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content_with_find_and_replace-page_1: view-solr_search_content_with_find_and_replace-page_1

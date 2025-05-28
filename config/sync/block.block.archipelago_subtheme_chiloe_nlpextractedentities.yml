@@ -1,0 +1,30 @@
+uuid: 4859b499-1258-46b0-8549-99583f923960
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.nlp_extracted_entities
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_nlpextractedentities
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: 3
+provider: null
+plugin: 'facet_block:nlp_extracted_entities'
+settings:
+  id: 'facet_block:nlp_extracted_entities'
+  label: 'NLP Extracted Entities'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_nlpextractedentities
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content-page_2: view-solr_search_content-page_2

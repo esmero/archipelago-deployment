@@ -1,0 +1,30 @@
+uuid: 5ac91d25-db29-4524-a076-0253369cd0bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.mime_type_grid
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_mimetypegrid
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: -16
+provider: null
+plugin: 'facet_block:mime_type_grid'
+settings:
+  id: 'facet_block:mime_type_grid'
+  label: 'MIME Type'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_mimetypegrid
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content-grid: view-solr_search_content-grid

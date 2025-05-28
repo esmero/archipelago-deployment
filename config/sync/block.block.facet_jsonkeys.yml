@@ -20,6 +20,7 @@ settings:
   label: 'JSON keys in your metadata'
   label_display: visible
   provider: facets
+  context_mapping: {  }
   block_id: facet_jsonkeys
 visibility:
   user_role:
@@ -28,4 +29,5 @@ visibility:
     context_mapping:
       user: '@user.current_user_context:current_user'
     roles:
+      administrator: administrator
       metadata_pro: metadata_pro

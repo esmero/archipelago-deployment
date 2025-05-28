@@ -1,0 +1,30 @@
+uuid: 4b928e30-b3a6-4e33-a743-39fb1959e400
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.descriptive_metadata_object_types
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_digital_object_type
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: -19
+provider: null
+plugin: 'facet_block:descriptive_metadata_object_types'
+settings:
+  id: 'facet_block:descriptive_metadata_object_types'
+  label: 'Object Type'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_digital_object_type
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content-page_1: view-solr_search_content-page_1

@@ -1,0 +1,30 @@
+uuid: 9a79b3f2-d795-46fb-a998-44d31c02c570
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.date_of_original_for_modern_advanced_search
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_dateoforiginal_advancedsearch
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: -8
+provider: null
+plugin: 'facet_block:date_of_original_for_modern_advanced_search'
+settings:
+  id: 'facet_block:date_of_original_for_modern_advanced_search'
+  label: 'Date of Original'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_dateoforiginal_advancedsearch
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-advanced_search-page_1: view-advanced_search-page_1

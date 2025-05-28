@@ -1,0 +1,30 @@
+uuid: c4945e87-3c15-42e8-b2b7-fbb9f813f271
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.nlp_extracted_places_ocr
+  module:
+    - context
+    - facets
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_nlpextractedplacesocr
+theme: archipelago_subtheme_chiloe
+region: sidebar_first
+weight: 1
+provider: null
+plugin: 'facet_block:nlp_extracted_places_ocr'
+settings:
+  id: 'facet_block:nlp_extracted_places_ocr'
+  label: 'NLP Extracted Places OCR'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: archipelago_subtheme_chiloe_nlpextractedplacesocr
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content-page_3: view-solr_search_content-page_3
