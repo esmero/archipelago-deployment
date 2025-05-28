@@ -12,7 +12,7 @@ dependencies:
     - archipelago_subtheme_chiloe
 id: archipelago_subtheme_chiloe_views_block__creative_work_series_children_block_1_2
 theme: archipelago_subtheme_chiloe
-region: sidebar_second
+region: content_bottom
 weight: -6
 provider: null
 plugin: 'views_block:creative_work_series_children-block_1'

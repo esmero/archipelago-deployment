@@ -25,20 +25,20 @@ third_party_settings:
       entity_classes: all_classes
       settings:
         label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
     regions:
       ds_content:
-        - node_changed_date
         - node_title
         - field_descriptive_metadata
         - search_api_excerpt
     fields:
-      node_changed_date:
-        plugin_id: node_changed_date
-        weight: 0
-        label: hidden
-        formatter: ds_post_date_long
       node_title:
         plugin_id: node_title
         weight: 0
@@ -64,6 +64,9 @@ content:
       specs: 'http://schema.org'
       metadatadisplayentity_uuid: 7ca9ef30-1535-4616-b3b2-201dcc7d6a69
       metadatadisplayentity_uselabel: '0'
+      upload_json_key_source: ''
+      embargo_json_key_source: ''
+      hide_on_embargo: ''
     third_party_settings: {  }
     weight: 1
     region: ds_content
