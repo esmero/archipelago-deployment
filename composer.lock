@@ -13468,12 +13468,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/strawberry_runners.git",
-                "reference": "694ce6168b39959ad64c5dff407d3cc8be675009"
+                "reference": "7cf289849a3441b255a62d73d976af3008006cd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/strawberry_runners/zipball/694ce6168b39959ad64c5dff407d3cc8be675009",
-                "reference": "694ce6168b39959ad64c5dff407d3cc8be675009",
+                "url": "https://api.github.com/repos/esmero/strawberry_runners/zipball/7cf289849a3441b255a62d73d976af3008006cd6",
+                "reference": "7cf289849a3441b255a62d73d976af3008006cd6",
                 "shasum": ""
             },
             "require": {
@@ -13518,7 +13518,7 @@
                 "issues": "https://github.com/esmero/strawberry_runners/issues",
                 "source": "https://github.com/esmero/strawberry_runners/tree/0.9.0"
             },
-            "time": "2025-05-26T21:23:30+00:00"
+            "time": "2025-05-28T19:13:26+00:00"
         },
         {
             "name": "strawberryfield/strawberryfield",
