@@ -1,0 +1,25 @@
+uuid: c27da574-51b5-4c08-b98a-8c20503ffc6e
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_mainnavigation
+theme: archipelago_subtheme_chiloe
+region: top_header_form
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

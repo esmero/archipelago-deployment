@@ -1,0 +1,30 @@
+uuid: 4e6e8245-d1b0-4f33-b799-dc92834d4db5
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:block_with_twig_templating_:1cdf7155-eb60-4f27-9e5e-64fffe93127a'
+  module:
+    - block_content
+    - system
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_frontpagewelcome
+theme: archipelago_subtheme_chiloe
+region: content_top_flex
+weight: 0
+provider: null
+plugin: 'block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a'
+settings:
+  id: 'block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a'
+  label: 'Front page welcome'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

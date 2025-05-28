@@ -8,7 +8,7 @@ logo:
 favicon:
   use_default: 1
 bootstrap_barrio_source: '0'
-bootstrap_barrio_enable_color: 0
+bootstrap_barrio_enable_color: 1
 bootstrap_barrio_system_messages: ''
 bootstrap_barrio_table_style: ''
 bootstrap_barrio_table_hover: 0
@@ -120,10 +120,10 @@ bootstrap_barrio_navbar_top_color: ''
 bootstrap_barrio_navbar_top_background: ''
 bootstrap_barrio_navbar_position: ''
 bootstrap_barrio_navbar_color: ''
-bootstrap_barrio_navbar_background: ''
+bootstrap_barrio_navbar_background: bg-white
 bootstrap_barrio_navbar_top_class: ''
 bootstrap_barrio_navbar_class: ''
-bootstrap_barrio_navbar_offcanvas: ''
+bootstrap_barrio_navbar_offcanvas: offcanvas-collapse
 bootstrap_barrio_navbar_flyout: 0
 bootstrap_barrio_navbar_slide: 0
 bootstrap_barrio_tabs_style: ''
@@ -140,3 +140,13 @@ bootstrap_barrio_scroll_spy: ''
 bootstrap_barrio_google_fonts: dosis_opensans
 bootstrap_barrio_bootstrap_icons: 0
 bootstrap_barrio_icons: fontawesome
+bootstrap_barrio_base_primary_color: '#FE2076'
+bootstrap_barrio_base_secondary_color: '#61D39D'
+bootstrap_barrio_body_color: gray-800
+bootstrap_barrio_body_bg_color: warm-white
+bootstrap_barrio_h1_color: base
+bootstrap_barrio_h2_color: base
+bootstrap_barrio_h3_color: base
+bootstrap_barrio_base_tertiary_color: '#C3A2FC'
+bootstrap_barrio_base_quaternary_color: '#F3A6C8'
+bootstrap_barrio_footer_bg_color: secondary
