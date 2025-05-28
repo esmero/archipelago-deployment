@@ -10,7 +10,7 @@ _core:
   default_config_hash: WWu2OQswgCztl9OeXjD1stexIEMZsSgPMYIdC-JHx9c
 id: archipelago_subtheme_chiloe_breadcrumbs
 theme: archipelago_subtheme_chiloe
-region: breadcrumb
+region: highlighted
 weight: -8
 provider: null
 plugin: system_breadcrumb_block
