@@ -177,12 +177,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme_chiloe.git",
-                "reference": "e651f5324f77b02f72707293e4771b2bd38051b5"
+                "reference": "750d73b83bb6024a18db5173e458d7bfe6a5d3c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme_chiloe/zipball/e651f5324f77b02f72707293e4771b2bd38051b5",
-                "reference": "e651f5324f77b02f72707293e4771b2bd38051b5",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme_chiloe/zipball/750d73b83bb6024a18db5173e458d7bfe6a5d3c4",
+                "reference": "750d73b83bb6024a18db5173e458d7bfe6a5d3c4",
                 "shasum": ""
             },
             "require": {
@@ -208,7 +208,7 @@
                 "issues": "https://github.com/esmero/archipelago_subtheme_chiloe/issues",
                 "source": "https://github.com/esmero/archipelago_subtheme_chiloe/tree/main"
             },
-            "time": "2025-05-28T21:30:04+00:00"
+            "time": "2025-05-29T01:33:45+00:00"
         },
         {
             "name": "archipelago/fragaria",
