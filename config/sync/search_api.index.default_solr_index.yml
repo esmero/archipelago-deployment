@@ -9,7 +9,6 @@ dependencies:
     - field.storage.node.field_tags
     - search_api.server.esmero_solr
   module:
-    - file
     - node
     - search_api_solr
     - strawberryfield
@@ -178,6 +177,11 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_descriptive_metadata
+  date_as_range_1:
+    label: 'Parent Node » 🍓 Strawberry (Descriptive Metadata source) » date_as_range'
+    datasource_id: strawberryfield_flavor_datasource
+    property_path: 'target_id:field_descriptive_metadata:date_as_range'
+    type: solr_date_range
   date_created_original:
     label: '🍓 Strawberry (Descriptive Metadata source) » Date created original'
     datasource_id: 'entity:node'
@@ -719,7 +723,6 @@ field_settings:
     property_path: vector_768
     type: densevector_768
 datasource_settings:
-  'entity:file': {  }
   'entity:node':
     bundles:
       default: true
