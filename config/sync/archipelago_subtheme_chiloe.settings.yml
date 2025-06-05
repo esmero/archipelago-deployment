@@ -6,7 +6,9 @@ features:
 logo:
   use_default: 1
 favicon:
-  use_default: 1
+  use_default: 0
+  path: 'public://ArchipelagoCommonsLogo_favicon-32x32.png'
+  mimetype: image/png
 bootstrap_barrio_source: '0'
 bootstrap_barrio_enable_color: 1
 bootstrap_barrio_system_messages: ''
@@ -156,3 +158,6 @@ bootstrap_barrio_region_class_header_right: row
 bootstrap_barrio_region_clean_content_bottom_flex: 0
 bootstrap_barrio_region_width_content_bottom_flex: 0
 bootstrap_barrio_region_class_content_bottom_flex: ''
+bootstrap_barrio_region_clean_sidebar_first_bottom_flex: 0
+bootstrap_barrio_region_width_sidebar_first_bottom_flex: 0
+bootstrap_barrio_region_class_sidebar_first_bottom_flex: row
