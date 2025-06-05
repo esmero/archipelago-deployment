@@ -1,4 +1,4 @@
-uuid: 588b28f5-ae2d-4d48-a365-b040008117ec
+uuid: 1c99fac1-4518-4c16-b294-202649b63b96
 langcode: en
 status: true
 dependencies:
@@ -13,8 +13,8 @@ dependencies:
     - views_bootstrap
 _core:
   default_config_hash: iVQLTta_FfMvw_Voy7HFOHZlM1sV04-PT8kM0rTI9YI
-id: solr_search_content_ml
-label: 'Solr search content ML'
+id: solr_search_content_ml_insightface
+label: 'Solr search content ML Insighface'
 module: views
 description: 'A search page preconfigured to search through the content of your site'
 tag: ''
@@ -27,7 +27,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Image KNN similarity search'
+      title: 'Human Face (Insightface) similarity search'
       fields:
         title:
           id: title
@@ -984,7 +984,7 @@ display:
       exposed_block: true
       display_extenders:
         sbf_ajax_interactions: {  }
-      path: search_ml_images
+      path: search_ml_faces
     cache_metadata:
       max-age: -1
       contexts:

@@ -4,7 +4,7 @@ drush_path: /var/www/html/vendor/drush/drush/drush
 home_path: ''
 search_api_indexes:
   - default_solr_index
-search_api_indexes_count: 25
+search_api_indexes_count: 10
 queues:
   - ami_ingest_ado
   - ami_action_ado

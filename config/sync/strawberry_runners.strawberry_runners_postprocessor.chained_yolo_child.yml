@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies: {  }
 id: chained_yolo_child
-label: 'Chained YOLO Child'
+label: chained_yolo_child
 weight: '-10'
 pluginconfig:
   source_type: asstructure
-  ado_type: Car
+  ado_type: ''
   jsonkey:
     'as:image': 'as:image'
   jmespath: ''
@@ -22,10 +22,10 @@ pluginconfig:
   nlp_url: 'http://esmero-nlp:6400'
   ml_method: /image/yolo
   iiif_server: 'http://esmero-cantaloupe:8182/iiif/2'
-  iiif_server_image_type: gray.jpg
+  iiif_server_image_type: default.jpg
   timeout: '300'
   weight: '0'
-  use_inherited_region: 0
+  use_inherited_region: 1
 pluginid: ml_yolo
 active: true
 parent: chained_yolo

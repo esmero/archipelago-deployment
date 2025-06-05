@@ -11,8 +11,8 @@ dependencies:
     - archipelago_subtheme_chiloe
 id: archipelago_subtheme_chiloe_views_block__ado_slideshow_block_1
 theme: archipelago_subtheme_chiloe
-region: content_top_flex
-weight: 0
+region: content
+weight: -25
 provider: null
 plugin: 'views_block:ado_slideshow-block_1'
 settings:

@@ -52,6 +52,7 @@ third_party_settings:
             iiif_base_url: 'http://localhost:8183/iiif/2'
             iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
             custom_js: false
+            mirador_version: 4
             mediasource:
               manifestnodelist: manifestnodelist
               metadataexposeentity: metadataexposeentity

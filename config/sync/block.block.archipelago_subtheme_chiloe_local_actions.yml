@@ -9,7 +9,7 @@ _core:
 id: archipelago_subtheme_chiloe_local_actions
 theme: archipelago_subtheme_chiloe
 region: content
-weight: -12
+weight: -23
 provider: null
 plugin: local_actions_block
 settings:

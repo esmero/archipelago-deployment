@@ -7,7 +7,7 @@ label: chained_vit_child
 weight: '-9'
 pluginconfig:
   source_type: asstructure
-  ado_type: Car
+  ado_type: ''
   jsonkey:
     'as:image': 'as:image'
   jmespath: ''
@@ -22,7 +22,7 @@ pluginconfig:
   nlp_url: 'http://esmero-nlp:6400'
   ml_method: /image/vision_transformer
   iiif_server: 'http://esmero-cantaloupe:8182/iiif/2'
-  iiif_server_image_type: gray.jpg
+  iiif_server_image_type: default.jpg
   timeout: '300'
   weight: '0'
   use_inherited_region: 1

@@ -7,7 +7,7 @@ label: ml_mobilenet
 weight: '-6'
 pluginconfig:
   source_type: asstructure
-  ado_type: 'Photograph, Painting'
+  ado_type: ML
   jsonkey:
     'as:image': 'as:image'
   jmespath: ''
@@ -27,6 +27,6 @@ pluginconfig:
   weight: '0'
   use_inherited_region: 1
 pluginid: ml_mobilenet
-active: 0
+active: true
 parent: ''
 depth: 0

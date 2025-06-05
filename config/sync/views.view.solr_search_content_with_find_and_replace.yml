@@ -83,35 +83,74 @@ display:
           batch: true
           batch_size: 5
           form_step: true
+          ajax_loader: false
           buttons: false
           action_title: Action
           clear_on_exposed: true
           force_selection_info: true
           selected_actions:
-            0:
+            -
               action_id: 'entity:ami_csvexport_action:node'
-            1:
+              preconfiguration:
+                add_confirmation: false
+                confirm_help_text: ''
+                message_override: ''
+            -
               action_id: 'entity:ami_jsontext_action:node'
-            2:
+              preconfiguration:
+                add_confirmation: false
+                confirm_help_text: ''
+                message_override: ''
+            -
               action_id: 'entity:ami_jsonwebform_action:node'
-            3:
+              preconfiguration:
+                add_confirmation: false
+                confirm_help_text: ''
+                message_override: ''
+            -
               action_id: 'entity:ami_jsonpatch_action:node'
-            6:
+              preconfiguration:
+                add_confirmation: false
+                confirm_help_text: ''
+                message_override: ''
+            -
               action_id: publish_latest_revision_action
               preconfiguration:
+                add_confirmation: false
+                confirm_help_text: ''
                 label_override: 'Publish Digital Object'
-            8:
+                message_override: ''
+            -
               action_id: unpublish_current_revision_action
               preconfiguration:
+                add_confirmation: false
+                confirm_help_text: ''
                 label_override: 'Unpublished Digital Object'
-            9:
+                message_override: ''
+            -
               action_id: node_assign_owner_action
               preconfiguration:
                 add_confirmation: false
-            15:
+                confirm_help_text: ''
+                message_override: ''
+            -
               action_id: 'entity:sbr_posstprocess_action:node'
-            17:
+              preconfiguration:
+                add_confirmation: false
+                confirm_help_text: ''
+                message_override: ''
+            -
               action_id: views_bulk_operations_delete_entity
+              preconfiguration:
+                add_confirmation: false
+                confirm_help_text: ''
+                message_override: ''
+            -
+              action_id: 'entity:sbr_flavordelete_action:node'
+              preconfiguration:
+                add_confirmation: true
+                confirm_help_text: "This action can't be undone. Are you Sure?"
+                message_override: ''
         title:
           id: title
           table: search_api_datasource_default_solr_index_entity_node
@@ -417,8 +456,12 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+              metadata_api: '0'
               metadata_pro: '0'
+            expose_fields: false
             placeholder: ''
+            searched_fields_id: ''
+            value_maxlength: 128
           is_grouped: false
           group_info:
             label: ''
@@ -431,7 +474,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          parse_mode: phrase
+          parse_mode: terms
           min_length: 3
           fields: {  }
         type:
@@ -575,7 +618,7 @@ display:
         type: normal
         title: 'Advanced Batch Find and Replace'
         description: 'Allows you to find and replace Metadata '
-        weight: 10
+        weight: -44
         expanded: false
         menu_name: tools
         parent: 'menu_link_content:a580dad6-5932-4f9d-bdaa-06b5563c386c'

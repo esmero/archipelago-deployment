@@ -1,0 +1,31 @@
+uuid: 34e86e22-c2ec-4d62-bab5-0fe1a2596dea
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.solr_content_ml_face_similarity_with_exposed_ml_image
+  module:
+    - context
+    - views
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_ml_face_similarity_block_1
+theme: archipelago_subtheme_chiloe
+region: content_bottom_flex
+weight: -28
+provider: null
+plugin: 'views_block:solr_content_ml_face_similarity_with_exposed_ml_image-block_1'
+settings:
+  id: 'views_block:solr_content_ml_face_similarity_with_exposed_ml_image-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: none
+  exposed: {  }
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content_ml_insightface-page_1: view-solr_search_content_ml_insightface-page_1

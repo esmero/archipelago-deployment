@@ -1,22 +1,22 @@
-uuid: a6a102c5-7efb-470c-bb75-23ef608617c0
+uuid: 820fafce-6f97-430e-ae9a-9b38b852d11f
 langcode: en
 status: true
 dependencies:
   config:
-    - views.view.solr_search_content
+    - views.view.solr_search_content_ml_insightface
   module:
+    - context
     - format_strawberryfield_views
-    - system
   theme:
     - archipelago_subtheme_chiloe
-id: archipelago_subtheme_chiloe_exposedformsolr_search_page
+id: archipelago_subtheme_chiloe_exposedform_ml_insightfacepage_1
 theme: archipelago_subtheme_chiloe
 region: header_right
-weight: -23
+weight: 0
 provider: null
-plugin: 'views_exposed_filter_block_sbf:solr_search_content-page_1'
+plugin: 'views_exposed_filter_block_sbf:solr_search_content_ml_insightface-page_1'
 settings:
-  id: 'views_exposed_filter_block_sbf:solr_search_content-page_1'
+  id: 'views_exposed_filter_block_sbf:solr_search_content_ml_insightface-page_1'
   label: ''
   label_display: '0'
   provider: format_strawberryfield_views
@@ -24,7 +24,7 @@ settings:
   views_exposed_sbf_show_text_filter: 1
   views_exposed_sbf_show_select_filter: 1
   views_exposed_sbf_show_checksandoptions_filter: 1
-  views_exposed_sbf_show_sort_filter: 0
+  views_exposed_sbf_show_sort_filter: 1
   views_exposed_sbf_show_pager: 1
   views_exposed_sbf_show_submit: 1
   views_exposed_sbf_show_reset: 1
@@ -35,7 +35,8 @@ settings:
   views_exposed_sbf_override_css: 0
   views_exposed_sbf_overriden_css: ''
 visibility:
-  request_path:
-    id: request_path
-    negate: true
-    pages: "/search_grid\r\n/search_ml_images\r\n/search_ml_faces"
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content_ml_insightface-page_1: view-solr_search_content_ml_insightface-page_1

@@ -11,8 +11,8 @@ dependencies:
     - archipelago_subtheme_chiloe
 id: archipelago_subtheme_chiloe_frontpagewelcome
 theme: archipelago_subtheme_chiloe
-region: content_top_flex
-weight: 0
+region: content
+weight: -24
 provider: null
 plugin: 'block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a'
 settings:

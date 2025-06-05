@@ -16,7 +16,7 @@ _core:
 id: solr_search_content_ml_similarity
 label: 'Solr content ML Similarity with Exposed ML Image'
 module: views
-description: 'A search page preconfigured to search through the content of your site'
+description: 'ML Blocks that take IIIF Annotations/regions as input for KNN search'
 tag: ''
 base_table: search_api_index_default_solr_index
 base_field: search_api_id
@@ -1260,7 +1260,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{% set parentnode = bamboo_load_entity('node', parent_id|render|raw) %}\r\n{% set annon_attributes = null %}\r\n{% if parentnode  %} \r\n   {% set annon_attributes = ' data-sbf-annotations-nodeuuid=' ~ parentnode.uuid.value ~ ' data-sbf-annotations-fileuuid=' ~ file_uuid|render|raw   ~ ' data-sbf-annotations-flavorid =' ~ search_api_id |render|raw %}\r\n{% endif %}\r\n<img id=\"sbf-annotations-vit{{search_api_id|escape('html_attr') }}\"   {{ annon_attributes}}  class=\"rounded\" src=\"http://localhost:8183/iiif/2/{{ sbf_file_uri|replace({'s3://': '' })|url_encode }}/full/320,/0/default.jpg\"/>"
+            text: "{% set parentnode = bamboo_load_entity('node', parent_id|render|raw) %}\r\n{% set annon_attributes = null %}\r\n{% if parentnode  %} \r\n   {% set annon_attributes = ' data-sbf-annotations-nodeuuid=' ~ parentnode.uuid.value ~ ' data-sbf-annotations-fileuuid=' ~ file_uuid|render|raw   ~ ' data-sbf-annotations-processors=chained_mobilenet_child' ~  ' data-sbf-annotations-flavorid =' ~ search_api_id |render|raw %}\r\n{% endif %}\r\n<img id=\"sbf-annotations-mobilenet{{search_api_id|escape('html_attr') }}\"   {{ annon_attributes}}  class=\"rounded\" src=\"http://localhost:8183/iiif/2/{{ sbf_file_uri|replace({'s3://': '' })|url_encode }}/full/320,/0/default.jpg\"/>"
             make_link: false
             path: ''
             absolute: false
@@ -2403,7 +2403,7 @@ display:
           sbf_fields: vector_768
           pre_query: 1
           pre_query_facets: 1
-          topk: '12'
+          topk: '10'
           ml_strawberry_postprocessor: chained_vit_child
       filters:
         processor_id:
@@ -3317,7 +3317,7 @@ display:
           sbf_fields: vector_576
           pre_query: 1
           pre_query_facets: 1
-          topk: '5'
+          topk: '10'
           ml_strawberry_postprocessor: ml_yolov8
       filters:
         processor_id:
