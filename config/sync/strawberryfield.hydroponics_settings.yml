@@ -7,7 +7,6 @@ search_api_indexes:
 search_api_indexes_count: 10
 queues:
   - ami_ingest_ado
-  - ami_action_ado
   - ami_csv_ado
   - strawberryrunners_process_background
   - strawberryrunners_process_index
