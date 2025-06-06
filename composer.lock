@@ -81,12 +81,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/ami.git",
-                "reference": "d72f477c0cbe67600ca7beccf06de1cf75b3341d"
+                "reference": "7dbfe85ec1bc3e61679ff0ad9c3fbf2d7c4d0556"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/ami/zipball/d72f477c0cbe67600ca7beccf06de1cf75b3341d",
-                "reference": "d72f477c0cbe67600ca7beccf06de1cf75b3341d",
+                "url": "https://api.github.com/repos/esmero/ami/zipball/7dbfe85ec1bc3e61679ff0ad9c3fbf2d7c4d0556",
+                "reference": "7dbfe85ec1bc3e61679ff0ad9c3fbf2d7c4d0556",
                 "shasum": ""
             },
             "require": {
@@ -131,7 +131,7 @@
                 "issues": "https://github.com/esmero/ami/issues",
                 "source": "https://github.com/esmero/ami/tree/0.9.0"
             },
-            "time": "2025-06-05T20:22:09+00:00"
+            "time": "2025-06-06T13:16:45+00:00"
         },
         {
             "name": "archipelago/archipelago_subtheme",
@@ -139,12 +139,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme.git",
-                "reference": "876fd1338777ea870c6570166b67456229f675b6"
+                "reference": "cec6e2217c4ab9bd18c82d1e1e5ae0a611249850"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/876fd1338777ea870c6570166b67456229f675b6",
-                "reference": "876fd1338777ea870c6570166b67456229f675b6",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme/zipball/cec6e2217c4ab9bd18c82d1e1e5ae0a611249850",
+                "reference": "cec6e2217c4ab9bd18c82d1e1e5ae0a611249850",
                 "shasum": ""
             },
             "require": {
@@ -167,9 +167,9 @@
             "homepage": "https://github.com/esmero/archipelago_subtheme",
             "support": {
                 "issues": "https://github.com/esmero/archipelago_subtheme/issues",
-                "source": "https://github.com/esmero/archipelago_subtheme/tree/1.4.0"
+                "source": "https://github.com/esmero/archipelago_subtheme/tree/1.5.0"
             },
-            "time": "2024-08-14T15:56:53+00:00"
+            "time": "2025-06-05T23:24:10+00:00"
         },
         {
             "name": "archipelago/archipelago_subtheme_chiloe",
@@ -177,12 +177,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme_chiloe.git",
-                "reference": "8029b8fab8b9661d936590ee3a1b0f84786ee00a"
+                "reference": "43b233cc9bb10d5f7d5f24057e3983841c1b0bcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme_chiloe/zipball/8029b8fab8b9661d936590ee3a1b0f84786ee00a",
-                "reference": "8029b8fab8b9661d936590ee3a1b0f84786ee00a",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme_chiloe/zipball/43b233cc9bb10d5f7d5f24057e3983841c1b0bcb",
+                "reference": "43b233cc9bb10d5f7d5f24057e3983841c1b0bcb",
                 "shasum": ""
             },
             "require": {
@@ -208,7 +208,7 @@
                 "issues": "https://github.com/esmero/archipelago_subtheme_chiloe/issues",
                 "source": "https://github.com/esmero/archipelago_subtheme_chiloe/tree/main"
             },
-            "time": "2025-06-02T18:54:32+00:00"
+            "time": "2025-06-05T23:00:39+00:00"
         },
         {
             "name": "archipelago/fragaria",
