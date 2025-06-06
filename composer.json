@@ -222,10 +222,10 @@
            "ankitpokhrel/tus-php": {
              "Less Cache writes during upload fix": "patches/tus-file-cache.patch"
             },
-           "league/openapi-psr7-validator" : { 
+           "league/openapi-psr7-validator" : {
              "Fixes OpenAPI 1.8 compat": "https://github.com/DiegoPino/openapi-psr7-validator/commit/94e9df4c152d0db46cfa475fa8bb319ff5ac551a.patch"
-            }  
-	 },
+            }
+	    },
         "drupal-lenient": {
             "allowed-list": ["drupal/form_mode_manager"]
         }
