@@ -98,6 +98,10 @@ echo -e "A welcome Message Block\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/block_content/block_with_twig_templating_ --data-binary @d8content/block_content_01.json;
 
+echo -e "A Footer Block with cute icons\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/block_content/basic --data-binary @d8content/block_content_03.json;
+
 echo -e "Advanced Search Page Block\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/block_content/block_with_twig_templating_ --data-binary @d8content/block_content_02.json;

@@ -1,0 +1,25 @@
+uuid: ef266f77-5d9f-496d-8aed-3bfc3c3fda53
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:3922a818-cb0d-438c-bdde-7761ff27cb19'
+  module:
+    - block_content
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_footerlinks
+theme: archipelago_subtheme_chiloe
+region: footer_fifth
+weight: 0
+provider: null
+plugin: 'block_content:3922a818-cb0d-438c-bdde-7761ff27cb19'
+settings:
+  id: 'block_content:3922a818-cb0d-438c-bdde-7761ff27cb19'
+  label: 'Footer Links'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

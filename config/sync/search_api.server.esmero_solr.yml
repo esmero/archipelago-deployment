@@ -12,6 +12,7 @@ dependencies:
     - search_api_solr.solr_field_type.dense_vector_field_384_und
     - search_api_solr.solr_field_type.dense_vector_field_512_und
     - search_api_solr.solr_field_type.dense_vector_field_576_und
+    - search_api_solr.solr_field_type.dense_vector_field_768_und
     - search_api_solr.solr_field_type.text_edge_und_7_0_0
     - search_api_solr.solr_field_type.text_edgestring_und_6_0_0
     - search_api_solr.solr_field_type.text_en_7_0_0
