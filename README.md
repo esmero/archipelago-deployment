@@ -10,12 +10,12 @@ documentation-->
 
 # Archipelago Docker Deployment
 
-**Updated:** May 26th 2025 (1.5.0)
+**Updated:** Jun 10th 2025 (1.5.0)
 
 This repository serves as bootstrap for a Archipelago 1.5.0 deployment on a localhost for development/testing/customizing via Docker and provides a more unified experience this time:
 
 - minio.io (latest) for local S3 with Console.
-- Updated Apache Solr 9.8.1 with the (updated) wizardly Solr OCR Highlight library [v0.9.4](https://github.com/dbmdz/solr-ocrhighlighting/releases/tag/wip) built by the Developement Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter and team.
+- Updated Apache Solr 9.8.1 with the (updated) wizardly Solr OCR Highlight library [v0.9.4](https://github.com/dbmdz/solr-ocrhighlighting/releases/tag/wip) built by the Development Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter and team.
 - MySQL 8.0.42 (amd64/x86)/MariaDB 10.6.22(Arm64/M1/M2/M3/M4)
 - NGINX 1.27.5
 - Custom PHP-FPM 8.3 multi architecture, fine-tuned for Drupal 10 , WARC to WACZ processing, Tesseract 5 with JP2 support, PDFAlto and Composer 2.x, Drush 12, FFMPEG, FIDO
