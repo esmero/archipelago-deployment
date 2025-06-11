@@ -60,7 +60,7 @@ services:
   # see https://hub.docker.com/_/mysql/
   db:
     image: mysql:8.0.42
-    command: mysqld --transaction-isolation=READ-COMMITTED --default-authentication-plugin=mysql_native_password  --skip-log-bin --max_allowed_packet=256M --sort_buffer_size=512K --lower_case_table_names=1 --innodb_read_only_compressed=OFF
+    command: mysqld --transaction-isolation=READ-COMMITTED --default-authentication-plugin=mysql_native_password  --skip-log-bin --max_allowed_packet=256M --sort_buffer_size=512K --lower_case_table_names=1
     container_name: esmero-db
     restart: always
     cap_add:
