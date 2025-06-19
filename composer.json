@@ -79,7 +79,7 @@
         "drupal/webform_entity_handler": "^2.0",
         "drupal/webformnavigation": "^2.0",
         "drupal/workflow": "^1.1",
-        "drush/drush": "^12",
+        "drush/drush": "13.x-dev",
         "maennchen/zipstream-php": "^2.1",
         "mixnode/mixnode-warcreader-php": "^0.0.6",
         "ml/json-ld": "^1.0",
