@@ -10,7 +10,7 @@ documentation-->
 
 # Archipelago Docker Deployment
 
-**Updated:** June 10th 2025 (1.5.0)
+**Updated:** June 19th 2025 (1.5.0)
 
 This repository serves as bootstrap for a Archipelago 1.5.0 deployment on a localhost for development/testing/customizing via Docker and provides a more unified experience this time:
 
@@ -18,7 +18,7 @@ This repository serves as bootstrap for a Archipelago 1.5.0 deployment on a loca
 - Updated Apache Solr 9.8.1 with the (updated) wizardly Solr OCR Highlight library [v0.9.4](https://github.com/dbmdz/solr-ocrhighlighting/releases/tag/wip) built by the Development Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter and team.
 - MySQL 8.0.42 (amd64/x86)/MariaDB 10.6.22(Arm64/M1/M2/M3/M4)
 - NGINX 1.27.5
-- Custom PHP-FPM 8.3 multi architecture, fine-tuned for Drupal 10 , WARC to WACZ processing, Tesseract 5 with JP2 support, PDFAlto and Composer 2.x, Drush 12, FFMPEG, FIDO
+- Custom PHP-FPM 8.3 multi architecture, fine-tuned for Drupal 10 , WARC to WACZ processing, Tesseract 5 with JP2 support, PDFAlto and Composer 2.x, Drush 13.x-dev, FFMPEG, FIDO
 - Updated Natural Language Processing via NLPWEB64 multi architecture with FastText Language detection (Thanks Mike Bennett!) or alternatively new ML containers/APIs. (Image similarity: YOLO,MobileNet,ViT(New),Insightface and Text transformer: SBERT) differentiated for `arm64` and `amd/intel/64`
 - Cantaloupe 6.0.5 Snapshot on Java 23 multi architecture as IIIF2/3 Server with precise Video Frame, PDF extraction, PDF Tiling support with tons of community and custom fixes.
 - A Skeleton Project setup to run latest Version of Drupal (10.4.x), Bootstrap 5 theme and Strawberry Field modules on 1.5.0 & friends on 0.9.0
