@@ -135,10 +135,10 @@ Note: We say `local` because your whole Drupal web root (the one you cloned) is 
 If this is the first time you deploy Drupal using the provided Configurations run:
 
 ```shell
-docker exec -ti -u www-data esmero-php bash -c "cd web;../vendor/bin/drush -y si --verbose --existing-config --db-url=mysql://root:esmerodb@esmero-db/drupal --account-name=admin --account-pass=archipelago -r=/var/www/html/web --sites-subdir=default --notify=false;drush cr;chown -R www-data:www-data sites;"
+docker exec -ti -u www-data esmero-php bash -c "cd web;../vendor/bin/drush -y si --verbose --existing-config --extra=--skip-ssl --db-url=mysql://root:esmerodb@esmero-db/drupal --account-name=admin --account-pass=archipelago -r=/var/www/html/web --sites-subdir=default --notify=false;drush cr;chown -R www-data:www-data sites;"
 ```
 
-Note: You will see these warnings:
+Note: You will see some warnings like these:
 
  `[warning] The "block_content:9aa72fb1-2817-44a7-8fb5-a3eb51166e83" was not found`
  `[warning] The "block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a" was not found`
