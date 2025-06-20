@@ -92,7 +92,7 @@ services:
     environment:
       XMX: 2g
       XMS: 256m
-      JAVA_OPS: -XX:+UseZGC
+      JAVA_OPS: -XX:+UseG1GC
     ports:
       - "8183:8182"
     networks:
