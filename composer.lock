@@ -13650,12 +13650,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/webform_strawberryfield.git",
-                "reference": "e2c5fdd20a3c333f1a960d2ae85d977ccaf13acc"
+                "reference": "3a8f118ec9c843767729f714f1a8d91b5b2da600"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/e2c5fdd20a3c333f1a960d2ae85d977ccaf13acc",
-                "reference": "e2c5fdd20a3c333f1a960d2ae85d977ccaf13acc",
+                "url": "https://api.github.com/repos/esmero/webform_strawberryfield/zipball/3a8f118ec9c843767729f714f1a8d91b5b2da600",
+                "reference": "3a8f118ec9c843767729f714f1a8d91b5b2da600",
                 "shasum": ""
             },
             "require": {
@@ -13687,7 +13687,7 @@
                 "issues": "https://github.com/esmero/webform_strawberryfield/issues",
                 "source": "https://github.com/esmero/webform_strawberryfield/tree/1.5.0"
             },
-            "time": "2025-06-10T13:53:08+00:00"
+            "time": "2025-07-03T13:53:36+00:00"
         },
         {
             "name": "swaggest/json-diff",
