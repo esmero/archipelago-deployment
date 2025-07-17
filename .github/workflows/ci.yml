@@ -2,12 +2,12 @@ name: ci
 on:
   push:
     branches:
-      - 1.0.0
+      - 1.5.0
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v5
+      - uses: actions/github-script@v7
         with:
           github-token: ${{secrets.BOT_KEY}}
           script: |
@@ -15,5 +15,5 @@ jobs:
               owner: 'esmero',
               repo: 'archipelago-documentation',
               workflow_id: 'ci.yml',
-              ref: '1.0.0',
+              ref: '1.5.0',
             });
