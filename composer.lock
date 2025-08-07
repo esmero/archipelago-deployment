@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f4c8d47c2f9cf27fcf92d6f592883b34",
+    "content-hash": "0c21f0d290c14303c716e06fe761e37f",
     "packages": [
         {
             "name": "ankitpokhrel/tus-php",
@@ -81,12 +81,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/ami.git",
-                "reference": "d93e0d8d002b295faa17eb165bac0c90e74b08a3"
+                "reference": "595c8e11c0716326a973c4d9e608f04dce0022a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/ami/zipball/d93e0d8d002b295faa17eb165bac0c90e74b08a3",
-                "reference": "d93e0d8d002b295faa17eb165bac0c90e74b08a3",
+                "url": "https://api.github.com/repos/esmero/ami/zipball/595c8e11c0716326a973c4d9e608f04dce0022a3",
+                "reference": "595c8e11c0716326a973c4d9e608f04dce0022a3",
                 "shasum": ""
             },
             "require": {
@@ -131,7 +131,7 @@
                 "issues": "https://github.com/esmero/ami/issues",
                 "source": "https://github.com/esmero/ami/tree/0.9.0"
             },
-            "time": "2025-06-11T00:15:43+00:00"
+            "time": "2025-08-07T00:18:09+00:00"
         },
         {
             "name": "archipelago/archipelago_subtheme",
