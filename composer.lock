@@ -177,12 +177,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme_chiloe.git",
-                "reference": "4b0dd08583650a01be85e12a41c2d95278079128"
+                "reference": "140a1e40360945fbf700edc4c4d7d9769de9c800"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme_chiloe/zipball/4b0dd08583650a01be85e12a41c2d95278079128",
-                "reference": "4b0dd08583650a01be85e12a41c2d95278079128",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme_chiloe/zipball/140a1e40360945fbf700edc4c4d7d9769de9c800",
+                "reference": "140a1e40360945fbf700edc4c4d7d9769de9c800",
                 "shasum": ""
             },
             "require": {
@@ -208,7 +208,7 @@
                 "issues": "https://github.com/esmero/archipelago_subtheme_chiloe/issues",
                 "source": "https://github.com/esmero/archipelago_subtheme_chiloe/tree/main"
             },
-            "time": "2025-06-10T18:49:27+00:00"
+            "time": "2025-08-08T18:25:13+00:00"
         },
         {
             "name": "archipelago/fragaria",
@@ -13483,12 +13483,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "caa6c23122c8bb88bc8049c0c84b961228664f77"
+                "reference": "b898a0588d3978cf25823bcebb233d8cefb717a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/caa6c23122c8bb88bc8049c0c84b961228664f77",
-                "reference": "caa6c23122c8bb88bc8049c0c84b961228664f77",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/b898a0588d3978cf25823bcebb233d8cefb717a9",
+                "reference": "b898a0588d3978cf25823bcebb233d8cefb717a9",
                 "shasum": ""
             },
             "require": {
@@ -13525,7 +13525,7 @@
                 "issues": "https://github.com/esmero/format_strawberryfield/issues",
                 "source": "https://github.com/esmero/format_strawberryfield/tree/1.5.0"
             },
-            "time": "2025-07-24T19:06:26+00:00"
+            "time": "2025-08-07T19:17:44+00:00"
         },
         {
             "name": "strawberryfield/strawberry_runners",
