@@ -1,8 +1,8 @@
 {#-
 
-Updated 31/11/2023 for 1.3.0. Fixes Video/Audio Urls when attached directly to a top object
-
-Previously Updated 31/10/2023 for 1.3.0 
+Updated for 1.5.0: Fixes IIIF Content Search API to match exposed URL machine/id, this template is 
+normally used at (iiifmanifest3cws).
+Previously Updated 31/11/2023 for 1.3.0. Fixes Video/Audio Urls when attached directly to a top object
 
 - Includes top level objects too now.
 
@@ -186,17 +186,17 @@ Without Double quotes.
 {%- if node.uuid.value -%} 
     "service": [
         { 
-            "id": "{{ baseurl }}iiifcontentsearch/v2/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest/mode/advanced/page/0",
+            "id": "{{ baseurl }}iiifcontentsearch/v2/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest3cws/mode/advanced/page/0",
             "type": "SearchService2" 
         }, 
         { 
-            "id": "{{ baseurl }}iiifcontentsearch/v1/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest/mode/advanced/page/0",
+            "id": "{{ baseurl }}iiifcontentsearch/v1/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest3cws/mode/advanced/page/0",
             "type": "SearchService1", 
             "@context": "http://iiif.io/api/search/1/context.json", 
             "profile": "http://iiif.io/api/search/1/search" 
         }, 
         { 
-            "@id": "{{ baseurl }}iiifcontentsearch/v1/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest/mode/advanced/page/0",
+            "@id": "{{ baseurl }}iiifcontentsearch/v1/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest3cws/mode/advanced/page/0",
             "@context": "http://iiif.io/api/search/0/context.json", 
             "profile": "http://iiif.io/api/search/0/search" 
         }
