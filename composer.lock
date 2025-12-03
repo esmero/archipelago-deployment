@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ffca7f67a2e8c592db0b3f69a0f9de50",
+    "content-hash": "4a3126f81d027518e0896c9235870f6a",
     "packages": [
         {
             "name": "ankitpokhrel/tus-php",
@@ -5904,7 +5904,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api.git",
-                "reference": "088cb85"
+                "reference": "9b7c54afafbc85b8b162a674e855ee7be4f8dfed"
             },
             "require": {
                 "drupal/core": "^10.3 || ^11"
