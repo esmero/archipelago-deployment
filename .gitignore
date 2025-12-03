@@ -41,3 +41,4 @@ web/sites/default/services.yml
 /.gitattributes
 persistent/.DS_Store
 .DS_Store
+rector.php
