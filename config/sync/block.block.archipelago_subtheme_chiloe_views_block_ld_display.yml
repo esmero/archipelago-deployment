@@ -29,7 +29,7 @@ visibility:
   request_path:
     id: request_path
     negate: true
-    pages: "/node/*/edit\r\n/add/*\r\n/search"
+    pages: "/node/*/edit\r\n/node/*/edit/*\r\n/add/*\r\n/search\r\n/node/*/adotools\r\n/node/*/delete\r\n/node/*/revisions"
   'entity_bundle:node':
     id: 'entity_bundle:node'
     negate: false
