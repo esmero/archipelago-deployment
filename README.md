@@ -10,27 +10,29 @@ documentation-->
 
 # Archipelago Docker Deployment
 
-**Updated:** June 19th 2025 (1.5.0)
+**Updated:** Dec 3rd 2025 (1.6.0)
 
-This repository serves as bootstrap for a Archipelago 1.5.0 deployment on a localhost for development/testing/customizing via Docker and provides a more unified experience this time:
+This repository serves as bootstrap for a Archipelago 1.6.0 under Drupal 10 deployment on a localhost for development/testing/customizing and learning via Docker, providing a unified experience:
+Also: 
+ - For Drupal 11, with same features, please deploy [Archipelago 2.0.0](https://github.com/esmero/archipelago-deployment/tree/2.0.0)
+ - For a public facing and production ready environment please deploy [Archipelago 1.6.0 Live](https://github.com/esmero/archipelago-deployment-live/tree/1.6.0)
 
+This release includes:
 - minio.io (latest) for local S3 with Console.
-- Updated Apache Solr 9.8.1 with the (updated) wizardly Solr OCR Highlight library [v0.9.4](https://github.com/dbmdz/solr-ocrhighlighting/releases/tag/wip) built by the Development Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter and team.
-- MySQL 8.0.42 (amd64/x86)/MariaDB 10.6.22(Arm64/M1/M2/M3/M4)
-- NGINX 1.27.5
-- Custom PHP-FPM 8.3 multi architecture, fine-tuned for Drupal 10 , WARC to WACZ processing, Tesseract 5 with JP2 support, PDFAlto and Composer 2.x, Drush 13.x-dev, FFMPEG, FIDO
-- Updated Natural Language Processing via NLPWEB64 multi architecture with FastText Language detection (Thanks Mike Bennett!) or alternatively new ML containers/APIs. (Image similarity: YOLO,MobileNet,ViT(New),Insightface and Text transformer: SBERT) differentiated for `arm64` and `amd/intel/64`
+- Updated Apache Solr 9.10.0 with the wizardly Solr OCR Highlight library [v0.9.4](https://github.com/dbmdz/solr-ocrhighlighting/releases/tag/wip) built by the Development Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter and team.
+- MySQL 8.0.44 (amd64/x86)/MariaDB 10.6.22(Arm64/M1/M2/M3/M4)
+- NGINX 1.29.3
+- Custom PHP-FPM 8.3 multi architecture, fine-tuned for Drupal 10/11 , WARC to WACZ processing, Tesseract 5 with JP2 support, PDFAlto and Composer 2.x, Drush 13.x-dev, FFMPEG, FIDO
+- Natural Language Processing via NLPWEB64 multi architecture with FastText Language detection (Thanks Mike Bennett!) or alternatively Machine learning/ML containers/APIs. (Image similarity: YOLO,MobileNet,ViT(New),Insightface and Text transformer: SBERT) differentiated for `arm64` and `amd/intel/64`
 - Cantaloupe 6.0.5 Snapshot on Java 23 multi architecture as IIIF2/3 Server with precise Video Frame, PDF extraction, PDF Tiling support with tons of community and custom fixes.
-- A Skeleton Project setup to run latest Version of Drupal (10.4.x), Bootstrap 5 theme and Strawberry Field modules on 1.5.0 & friends on 0.9.0
+- A Skeleton Project setup to run latest Version of Drupal 10 (10.5.x), Updated Archipelago Chiloe Base theme based on Bootstrap 5 and Strawberry Field modules on 1.6.0 & friends on 1.0.0
 - Complete support for Apple Silicon *M1/M2/M3/M4* Machines and in general `arm64` architecture Chips like Raspberry Pi 4, with specially built arm64 docker containers. The only differences now between deployment strategies is the DB. Blazing fast OCR.
 
 The skeleton project contains all the pieces needed to run a local deployment of a vanilla Archipelago including (*YES*!) content provided as an optional feature from [archipelago-recyclables](https://github.com/esmero/archipelago-recyclables)
 
 # Starting from ZERO (baby steps/spring cleanup)
 
-This is the way. Also the recommended, cleanest way, to evaluate this release. The amount (quantity/quality/flavor) of amazing new features, bug fixes and performance improvements is simply atonishing. To mention a few: smarter Date Range faceting (fast/super fast even if your collection spans from 300 BC to our shared, very own, strange year of 2025), new AMI mass ingest features including Actions on AMI Sets, new CSV expander queues, EAD Sync, per CSV Row actions, Super fast (danger!) deletes, background Hydroponics driven Search API indexing (edited thousand Objects? probably already indexed and ready to go!), better IIIF Content Search API including now also Metadata discovery (Sorry specs, people asked for it), new Twig Extensions and even Twig Rendering (deep down/nerd mode) overrides to please the render array evil gods, new AJAX overrides and improvements, better OCR,TEXT Joins on searches. ML/AI evaluation continues for authenticated user: Chained Detection/Identification workflows with dynamic Annotations (clickable/searchable, new and improved models (every wondered if a model has a "color" fixation? try your vectors in gray scale). Totally new embargo options, with, per ADO/global overrides including File download endpoint enforcements and exposed metadata endpoints. Have a multi gigabyte file you need to upload in realtime? No need to modify your PHP settings anymore, chunked (resumable) file transfer via TUS was integrated into your webforms. ORCID autocomplete and new IR scholar/student/faculty custom elements. Tons of new Formatter/Viewers features. And so much more. So much.
-
-But (that is not all! that is not all), also: backend improvements/upgrades is great. Moving from Solr 9.1 to 9.8.1 (wow), new PHP 8.3 (we made sure we got one that has no security issues!), new Cantaloupe Server with more JAVA customizations and of course the all new/refreshed NLP/ML containers.
+This is a special holiday's, dual version release. To be able to cover the large difference between good old stable Drupal 10 and ongoing and evolving Drupal 11, we released a 1.6.0 and a 2.0.0 Archipelago. Both versions have exact (1 to 1) feature parity but differ under the hood to accomodate for Drupal 11's Symonfy 6 to 7 upgrade and deprecations, and some - sometimes strange - core decisions. These Archipelagos (both sisters, like minded siblings, but not twins) include updated libraries and modules, deep performance improvements, new Field formatter settings and supporting Javascript (for many Viewers, Facets and Ajax interactions) being probably the most extensive addon the the ability to use Wavesurfer and HTML blueprints to control Video and Audio (so you can style your Home Theater experience using mid century furniture, 70's courtains, while you chew on chili-flake-covered-popcorn), improved Search API filters, new Javascript everywhere and also JQuery 4.x (D11) compatibility, new Webform Elements and options for those, a new API builder tool: Custom - Digital Object/CSV driven - LoD Endpoints. New simple and humble useful tools like `JSON-API` ready Metadata Display Downloads (so you can print your creations and send via snail post to your friends), better caching and Twig improvements, overrides and new extensions, bugfixes all over the place, deprecation, faster resolving Embargoes, new DOI DataCite Integration now part of the Fragaria Module, The Strawberry Shortcake Module so you can play interactively finding similar images and grouping them together, more logs (so much more logging), improved Promon Extraction with better candidate selection, AMI Set Improvements and eye candy all over the place (sugarless or high on glucose if you prefer too). But, all that said, as with every previous release (6 years! time is a social construct), no deprecations on your data, entities, ways or needs. We hope you like it (well `them`, in this oportunity)
 
 ## macOS Intel or Apple Silicon M1/M2/M3/M4:
 
@@ -54,6 +56,9 @@ If you like it (or not.. but we know you like it), want new features, need a bug
 
 * [Diego Pino](https://github.com/DiegoPino)
 * [Allison Sherrick](https://github.com/alliomeria)
+
+### Historic Core Contributors (Same Caring)
+
 * [Giancarlo Birello](https://github.com/giancarlobi)
 
 ## Acknowledgments
