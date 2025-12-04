@@ -12,6 +12,14 @@ targetEntityType: ami_set_entity
 bundle: ami_set_entity
 mode: default
 content:
+  last_processed_config:
+    type: strawberry_default_formatter
+    label: hidden
+    settings:
+      limit_access: edit
+    third_party_settings: {  }
+    weight: 1
+    region: content
   name:
     type: string
     label: above
