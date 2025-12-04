@@ -87,7 +87,6 @@ display:
           buttons: false
           action_title: Action
           clear_on_exposed: true
-          force_selection_info: true
           selected_actions:
             -
               action_id: 'entity:ami_csvexport_action:node'
@@ -151,6 +150,7 @@ display:
                 add_confirmation: true
                 confirm_help_text: "This action can't be undone. Are you Sure?"
                 message_override: ''
+          force_selection_info: true
         title:
           id: title
           table: search_api_datasource_default_solr_index_entity_node
