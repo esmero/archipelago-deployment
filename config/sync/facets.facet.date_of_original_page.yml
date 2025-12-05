@@ -8,14 +8,14 @@ dependencies:
   module:
     - search_api
 id: date_of_original_page
-name: 'Date of Original (page)'
+name: 'Date of Original (page, using date range field)'
 weight: 0
 min_count: 1
 missing: false
 missing_label: others
 url_alias: date_of_original
 facet_source_id: 'search_api:views_page__solr_search_content__page_1'
-field_identifier: date_created_original
+field_identifier: date_as_range
 query_operator: and
 hard_limit: 100
 exclude: false

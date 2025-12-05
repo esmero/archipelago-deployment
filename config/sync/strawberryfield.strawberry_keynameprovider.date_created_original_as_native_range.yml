@@ -6,7 +6,7 @@ id: date_created_original_as_native_range
 label: 'Date Created Original as Native Range'
 pluginid: jmespath
 pluginconfig:
-  source_key: '"date_created", date_created_edtf.date_free, date_created_issued.date_free'
+  source_key: "\"date_created\", date_created_edtf.date_free, date_created_issued.date_free, [date_created_edtf][?\"date_type\" == 'date_range'][ join('/',[date_from,date_to])][], [date_created_issued][?\"date_type\" == 'date_range'][ join('/',[date_from,date_to])][]"
   is_date: true
   is_date_range: true
   exposed_key: date_as_range
