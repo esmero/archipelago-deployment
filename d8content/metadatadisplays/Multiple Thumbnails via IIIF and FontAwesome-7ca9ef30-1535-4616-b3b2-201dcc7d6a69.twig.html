@@ -1,0 +1,173 @@
+{#- This Template generates Thumbnails for various Media representations
+
+- Updated on 05/12/2025 for 1.6.0. Deprecates ?page= and cleanups. Includes
+Children (first for PDF and Images) based on data_collection_children_thumbnails:children_ispartof_thumbnail view
+- Previously Updated on 06/05/2025 for 1.5.0 and Cantaloupe 6.x 
+
+Structures passed from Archipelago are
+- node
+  The full Node entity
+- data
+  The Full JSON Structure converted in an Array
+- iiif_server
+  The publicly available IIIF Server (Global Setting)
+Since JSON was decoded into the 'data' values are valid PHP but could not
+be valid JSON when outputting. So We use data.description|json_encode|raw
+Without Double quotes.
+-#}
+{# <---- SETUP ---> #}
+{# -- The Desired width -- #}
+{% set width = 240 %}
+{# -- Which ADO Types to check for childen --#}
+{% set ado_types_with_children = ['CreativeWorkSeries','Book','Card','NewspaperIssue'] %}
+{# -- The IIIF Server URLS -- #}
+{% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %}
+{% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %}
+{# -- Node Info -- #}
+{% if node.id %}
+  {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+{% else %}
+  {% set nodeurl = '<current>' ~ '/iiif/manifest' %}
+{% endif%}
+{# -- Language -- #}
+{% set len = language.getId() ? language.getId() : "en" %}
+{# --THIS WILL BE THE IMAGE IIIF URL. CAN HAVE A DEFAULT VALUE IN CASE OF FAILURE THERE IS ALWAYS A GENERIC THUMB-- #}
+{# -- NOTE: for loops are scoped so if we only define source inside one it will not be accesible from the outside- #}
+{% set source = '' %}
+{# <---- END SETUP --> #}
+{#  We will test for 3 main options
+1.- Images
+2.- PDF
+3.- Movies
+#}
+{% apply spaceless %}
+{# Embargo option #}
+{% if data_embargo.embargoed == true %}
+<a href="{{ nodeurl }}" alt="{{ node.label.value }}" hreflang="{{ len }}">
+	<i class="fas fa-file fa-9x"></i>
+{% else %}
+  {% if attribute(data, 'as:image')|length > 0 %}
+    {% set document  = data['as:image']|first %}
+{# if the default size is smaller than the source use the source one #}
+    {% if document['flv:exif'].ImageWidth is defined and document['flv:exif'].ImageWidth < width %}
+      {% set width = document['flv:exif'].ImageWidth %}
+    {% endif %}
+    {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %}
+    {% set source = cantaloupeid ~ "/full/" ~ width  ~ ",/0/default.jpg" %}
+  {% elseif attribute(data, 'as:document')|length > 0 %}
+    {% set break = false %}
+    {% for document in data['as:document']%}
+      {%  if not break %}
+      {# this is just an example, we  allow every PDF here but we can also filter by pronom id "info:pronom/fmt/17" or info:pronom/fmt/18 #}
+        {% if document['flv:exif'].MIMEType == "application/pdf" %}
+          {% set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %}
+          {% set source = cantaloupeid ~ ";1/full/" ~ width  ~ ",/0/default.jpg" %}
+          {% set break = true %}
+        {% endif%}
+      {% endif %}
+    {% endfor %}
+  {% elseif attribute(data, 'as:video')|length > 0 %}
+    {% set break = false %}
+    {% for video in data['as:video']%}
+    {% if not break %}
+  {# this is just an example, we process here only MP4 quicktimes #}
+      {% if video['flv:pronom'].mimetype == "video/quicktime" or
+    video['flv:pronom'].mimetype == "video/mp4" %}
+        {% set cantaloupeid  = IIIFserverurl ~ video['url']|replace({'s3://':''})|replace({'private://':''})|url_encode %}
+        {% set source = cantaloupeid ~ ";1/full/" ~ width  ~ ",/0/default.jpg" %}
+        {% set break = true %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif%}
+{# <----START OUTPUT --> #}
+<a href="{{ nodeurl }}" title="{{ data.label }}" hreflang="{{ len }}">
+{# if so far we have no direct source try with a view to fetch a child #}
+{% if source|length == 0  and data.type in ado_types_with_children %}
+  {% set thumbnail_view = drupal_view('data_collection_children_thumbnails','children_ispartof_thumbnail', node.id)|render %}
+  {% set thumbnail_item = thumbnail_view|sbf_json_decode %}
+  {# will look like [{"thumbnail":"
+  \u0022thumbnail\u0022:
+  [{\n  \u0022id\u0022:
+  \u0022https:\/\/digitalcollections.sdsu.edu\/cantaloupe\/iiif\/2\/202%2Fimage-pc-002-890a-0941087d-94bf-499b-a8f2-f2b95534d720.tiff\/full\/300,\/0\/default.jpg\u0022,\n
+  \u0022type\u0022: \u0022Image\u0022,\n  \u0022format\u0022: \u0022image\/jpeg\u0022,\n
+  \u0022width\u0022: 300,\n  \u0022height\u0022: 180\n}]","nid":"63223",
+  "label":"El Roblar Hotel, Ojai, California","uuid":"56cba857-429b-451b-b038-6c65255c1b74","ado_type":"Create, Image, Postcard, Service"}]
+  #}
+  {# because we have double encoding we verify that the double encoded starts with what i
+  want, then append { } to make it valid JSON again so we can sbf_json_decode it and extract
+  the actual JSON/ID #}
+  {% if thumbnail_item[0]["thumbnail"] is defined and thumbnail_item[0]["thumbnail"] starts with '  \"thumbnail\"' %}
+    {% set thumbnail_iiif = ("{"~ thumbnail_item[0]["thumbnail"] ~"}")|sbf_json_decode %}
+    {% if thumbnail_iiif["thumbnail"][0]["id"] is defined %}
+    {# yay we got a thumbnail for a child #}
+    {% set source = thumbnail_iiif["thumbnail"][0]["id"] %}
+    {% endif %}
+  {% endif%}
+{% endif%}
+{% if source|length > 0 %}
+{# NOTE: remote iiif-lazy class if you do not want lazy loading #}
+<img class="field-iiif image-iiif iiif-lazy img-fluid rounded" id="thumb_iiif-field_descriptive_metadata-{{ node.uuid.value }}-0-image1" src="{{ source }}" width="240" alt="Thumbnail for {{ data.label }}" typeof="foaf:Image">
+{% else %}
+{# -- IF we have no source we can font awesome icons --
+Options: we took from /admin/structure/webform/config/options/manage/schema_org_creative_works/source
+Article: Article
+Book: Book
+Collection: Collection
+Dataset: Dataset
+DigitalDocument: 'Digital Document'
+Map: Map
+Movie: Movie
+MusicRecording: 'Music Recording'
+Painting: Painting
+Photograph: Photograph
+Sculpture: Sculpture
+VisualArtwork: VisualArtwork
+Thesis: Thesis
+Podcast: Podcast
+PodcastEpisode: 'Podcast Episode'
+Panorama: 'Panorama (http://ns.google.com/photos/1.0/panorama)'
+PanoramaTour: 'Panorama Tour (http://ns.google.com/photos/1.0/panorama)'
+3DModel: '3D Model'
+WebPage: 'Web Page'
+AudioObject: 'Audio Object'
+VideoObject: 'Video Object'
+Conversation: 'Conversation (Oral History)'
+ShortStory: 'Short Story'
+#}
+{% if data.type in ['DigitalDocument', 'Article','Thesis'] %}
+<i class="fas fa-file-alt fa-9x"></i>
+{% elseif data.type in ['Photograph','Painting','VisualArtwork', 'Card'] %}
+<i class="fas fa-photo-video fa-9x"></i>
+{% elseif data.type in ['Movie','VideoObject'] %}
+<i class="fas fa-film fa-9x"></i>
+{% elseif data.type in ['MusicRecording', 'AudioObject'] %}
+<i class="fas fa-headphones-alt fa-9x"></i>
+{% elseif data.type in ['Podcast','PodcastEpisode'] %}
+<i class="fas fa-podcast"></i>
+{% elseif data.type in ['ShortStory','Conversation',] %}
+<i class="fas fa-comments fa-9x"></i>
+{% elseif data.type in ['Sculpture','3DModel'] %}
+<i class="fas fa-cubes fa-9x"></i>
+{% elseif data.type in ['Book'] %}
+<i class="fas fa-book fa-9x"></i>
+{% elseif data.type in ['WebPage'] %}
+<i class="fas fa-sitemap fa-9x"></i>
+{% elseif data.type in ['Panorama','PanoramaTour'] %}
+<i class="fas fa-vr-cardboard fa-9x"></i>
+{% elseif data.type in ['Dataset'] %}
+<i class="fas fa-table fa-9x"></i>
+{% elseif data.type in ['CreativeWorkSeries'] %}
+<i class="fab fa-buffer fa-9x"></i>
+{% elseif data.type in ['Collection'] %}
+<i class="fas fa-archive fa-9x"></i>
+{% elseif data.type in ['Map'] %}
+<i class="fas fa-map-marked-alt fa-9x"></i>
+{% else %}
+<i class="fas fa-file-contract fa-9x"></i>
+{% endif %}
+{# -- ENDIF fontawesome -- #}
+{% endif %}
+{% endif %}
+</a>
+{% endapply %}

@@ -39,7 +39,7 @@ curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Co
 
 echo -e "Multiple Thumbnails via IIIF and FontAwesome\n"
 
-curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/7ca9ef30-1535-4616-b3b2-201dcc7d6a69 --data-binary @d8content/metadatadisplay_entity_10.json;
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/7ca9ef30-1535-4616-b3b2-201dcc7d6a69 --data-binary @'d8content/Multiple Thumbnails via IIIF and FontAwesome-7ca9ef30-1535-4616-b3b2-201dcc7d6a69.json';
 
 echo -e "AMI Ingest JSON Template\n"
 
