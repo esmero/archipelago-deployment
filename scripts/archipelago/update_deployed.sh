@@ -3,7 +3,7 @@ echo -e "Updating Metadata Display entities or better known as Twig Templates:\n
 
 echo -e "General HTML Description block\n"
 
-curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7 --data-binary @d8content/metadatadisplay_entity_01.json;
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7 --data-binary @'d8content/Object Description-bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7.json';
 
 echo -e  "Linked Data Block HTML\n"
 
