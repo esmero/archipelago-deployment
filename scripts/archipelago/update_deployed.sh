@@ -57,6 +57,10 @@ echo -e "IIIF 3.0 Manifest for Creative Work Series Parents\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/6c405928-9ae8-4557-b062-91fcf2b0af0a --data-binary @d8content/metadatadisplay_entity_14.json;
 
+echo -e "IIIF 3.0 Manifest for Simple and Creative Work Series (Unified)\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/d4ca85ee-4ecd-40f3-ae6b-d24732863b27 --data-binary @'d8content/IIIF Presentation API 3 Series Manifest Unified-d4ca85ee-4ecd-40f3-ae6b-d24732863b27.json';
+
 echo -e "IIIF 3.0 Collection Manifest for Collections, Newspapers and Serial Publications\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/9be8473c-3fb3-42ee-aef2-431b2d4f93bb --data-binary @d8content/metadatadisplay_entity_15.json;
