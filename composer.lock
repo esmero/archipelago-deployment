@@ -13501,12 +13501,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "9b873ff35da8329f4e651fdbedf915c98f7448ca"
+                "reference": "43233d7925e093ae22726e82fbe30fd127dcb5e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/9b873ff35da8329f4e651fdbedf915c98f7448ca",
-                "reference": "9b873ff35da8329f4e651fdbedf915c98f7448ca",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/43233d7925e093ae22726e82fbe30fd127dcb5e3",
+                "reference": "43233d7925e093ae22726e82fbe30fd127dcb5e3",
                 "shasum": ""
             },
             "require": {
@@ -13543,7 +13543,7 @@
                 "issues": "https://github.com/esmero/format_strawberryfield/issues",
                 "source": "https://github.com/esmero/format_strawberryfield/tree/1.6.0"
             },
-            "time": "2025-12-03T19:20:07+00:00"
+            "time": "2025-12-05T15:03:03+00:00"
         },
         {
             "name": "strawberryfield/strawberry_runners",
