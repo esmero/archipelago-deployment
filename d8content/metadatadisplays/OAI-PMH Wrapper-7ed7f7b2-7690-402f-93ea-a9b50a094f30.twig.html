@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/
+         http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+ <responseDate>{{ "now"|date("Y-m-y") }}T{{ data_api.request_date }}-5:00</responseDate>
+ {%- if data|length > 0 -%}
+   {%- set resumptiontoken_arguments = data_api.query %}
+   {%-  if data_api.query.page is defined and not empty -%}
+     {%- set resumptiontoken_arguments = resumptiontoken_arguments|default([])|merge({"page":(data_api.query.page+1)})-%}
+   {%- else -%}
+     {%- set resumptiontoken_arguments = resumptiontoken_arguments|default([])|merge({"page":2})-%}
+   {% endif %}
+   {%-
+   set resumptiontoken = '?' ~  resumptiontoken_arguments|url_encode
+   -%}
+ {%- else -%}
+ {# No results so no resumption token #}
+  {%- set resumptiontoken = '' -%}
+ {%- endif -%}
+ <request {%- for var,value in data_api.query %} {{var}}="{{value}}" {% endfor -%}>{{ resumptiontoken }}</request>
+ {%- if data_api.query.verb == "ListSets" -%} 
+		<error code="noSetHierarchy">This repository does not support sets</error>
+ {%- else -%}
+   {%- if data_api.query.verb -%}
+ <{{ data_api.query.verb }}>
+   {%- else -%}
+ <GetRecord>
+   {%- endif -%} 
+   {%- for XML_doc in data -%}
+     {%- if data_api.query.verb == "ListRecords" -%}
+ <record>
+     {%- endif -%}
+   {{ XML_doc is not iterable ? XML_doc : ''  }}
+     {%- if data_api.query.verb == "ListRecords" -%}  
+ </record>
+     {%- endif -%}
+   {% endfor %}
+ {#   {{ data_api|json_encode|raw }} #}
+  {#  {{ data_api_context|json_encode|raw }} #}
+   {%- if data_api.query.verb -%}
+     {%- if data_api.query.verb == "ListRecords" and data_api.resumption_token[2] is defined -%}  
+         <resumptionToken>{{ data_api.resumption_token[2] }}</resumptionToken>
+     {%- endif %}
+ </{{ data_api.query.verb }}>
+   {%- else -%}
+ </GetRecord>
+   {%- endif -%}
+ {%- endif -%}
+</OAI-PMH>

@@ -71,7 +71,7 @@ curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Co
 
 echo -e "OAI-PMH Wrapper\n"
 
-curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/7ed7f7b2-7690-402f-93ea-a9b50a094f30 --data-binary @d8content/metadatadisplay_entity_17.json;
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/7ed7f7b2-7690-402f-93ea-a9b50a094f30 --data-binary @'d8content/OAI-PMH Wrapper-7ed7f7b2-7690-402f-93ea-a9b50a094f30.json';
 
 echo -e "OAI-PMH Item with DC\n"
 
