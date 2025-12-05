@@ -4,7 +4,8 @@ features:
   comment_user_verification: 1
   favicon: 1
 logo:
-  use_default: 1
+  use_default: 0
+  path: 'public://ArchipelagoCommonsLogoDumpling_Final_2024_Web_480px_Yellow.png'
 favicon:
   use_default: 0
   path: 'public://ArchipelagoCommonsLogo_favicon-32x32.png'
@@ -142,15 +143,15 @@ bootstrap_barrio_scroll_spy: ''
 bootstrap_barrio_google_fonts: dosis_opensans
 bootstrap_barrio_bootstrap_icons: 0
 bootstrap_barrio_icons: fontawesome
-bootstrap_barrio_base_primary_color: '#FE2076'
-bootstrap_barrio_base_secondary_color: '#61D39D'
-bootstrap_barrio_body_color: gray-800
-bootstrap_barrio_body_bg_color: warm-white
+bootstrap_barrio_base_primary_color: '#525AFF'
+bootstrap_barrio_base_secondary_color: '#F3E308'
+bootstrap_barrio_body_color: bluegray-800
+bootstrap_barrio_body_bg_color: gray-100
 bootstrap_barrio_h1_color: base
 bootstrap_barrio_h2_color: base
 bootstrap_barrio_h3_color: base
-bootstrap_barrio_base_tertiary_color: '#C3A2FC'
-bootstrap_barrio_base_quaternary_color: '#F3A6C8'
+bootstrap_barrio_base_tertiary_color: '#8FD9FB'
+bootstrap_barrio_base_quaternary_color: '#FF9C5F'
 bootstrap_barrio_footer_bg_color: secondary
 bootstrap_barrio_region_clean_header_right: 0
 bootstrap_barrio_region_width_header_right: 0
