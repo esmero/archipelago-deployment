@@ -1,0 +1,766 @@
+{#-
+Updated 05/12/2025 for 1.6.0. IIIF Presentation API 3 Series Manifest Unified 
+- Uses a single Search API Views, paged, bringing children up to two level downs. -
+Sorts by more far away Sequence id, then lowering to its own.
+Also adds the "," before instead at the end. That way we always know IF we will end outputting. I should have known this before!
+Updated 31/05/2024 for 1.4.0 & Scrapbook. Content Search API matching the exposed manifest iiifmanifest3cws_scrapbook
+Updated 31/05/2024 for 1.4.0 & Scrapbook. 3 levels down of canvases
+Updated 31/11/2023 for 1.3.0. Fixes Video/Audio Urls when attached directly to a top object
+
+Previously Updated 31/10/2023 for 1.3.0 
+
+- Includes top level objects too now.
+
+This Template generates IIIF 3.0 API Manifest for Creative Works Series using a Drupal Views
+JSON to be used by a Drupal Views (REST) to generate a simpler to parse/join listing of Canvases
+For a Creative Works Series Manifest
+
+Structures passed from Archipelago are
+- node
+  The full Node entity
+- data
+  The Full JSON Structure converted in an Array
+- iiif_server
+  The publicly available IIIF Server (Global Setting)
+
+Since JSON was decoded into the 'data' values are valid PHP but could not
+be valid JSON when outputting. So We use data.description|json_encode|raw
+Without Double quotes.
+-#}
+{%- set structureCanvasIds = [] %}
+{%- set pdf_resolution = (150/72) %} 
+{%- set max_thumb_width = 240 -%}
+{%- set baseurl =  url('<front>')|render -%} 
+{% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %}
+{% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %}
+{% set currenturl = url('<current>')|render %}
+{% if node.id %}
+	{# this is needed to the View Argument can conform to the format even when no node exists when saving the template #}
+    {% set nodeid = node.id %}
+    {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
+{% else %}
+    {% set nodeid = 1 %} 
+    {% set nodeurl = currenturl %}
+{% endif%}
+{% set len = language.getId() ? language.getId() : "en" %}
+{% set computed_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %}
+{% if data.rights|length > 0 or data.rights_statements|length > 0 %}
+	{% if data.rights|length > 0 %}
+		{% set computed_rights = data.rights %}
+	{% endif %}
+{% elseif data.rights_statements|length > 0 %}
+	{% if data.rights_statements in ['In Copyright'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - EU Orphan Work'] %} 
+    	{% set computed_rights = "http://rightsstatements.org/vocab/InC-OW-EU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Educational Use Permitted'] %} 
+	   	{% set computed_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Non-Commercial Use Permitted'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC-NC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['In Copyright - Rights-holder(s) Unlocatable or Unidentifiable'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/InC-RUU/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Contractual Restrictions'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-CR/1.0/" %}
+	{% endif %} 
+	{% if data.rights_statements in ['No Copyright - Non-Commercial Use Only'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-NC/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - Other Known Legal Restrictions'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-OKLR/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Copyright - United States'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-US/1.0/" %}
+	{% endif %} 
+	{% if data.rights_statements in ['Copyright Not Evaluated'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/CNE/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['Copyright Undetermined'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/UND/1.0/" %}
+	{% endif %}
+	{% if data.rights_statements in ['No Known Copyright'] %} 
+		{% set computed_rights = "http://rightsstatements.org/vocab/NKC/1.0/" %}
+	{% endif %}
+{% endif %}
+{
+{# Top Object Metadata #}
+"@context": [
+  "http://www.w3.org/ns/anno.jsonld",
+  "http://iiif.io/api/presentation/3/context.json"
+],
+"type": "Manifest",
+"id": "{{ currenturl }}",
+"label": {
+"{{ len }}": [
+{{ node.label|json_encode|raw }}
+]
+},
+"requiredStatement": {
+"label": { "en": [ "Attribution" ] },
+"value": { "en": [ "Provided by Archipelago Deployment" ] }
+},
+"rights": {{ computed_rights|json_encode|raw }},
+"metadata": [
+{% for agent in attribute(data, 'edm_agent') %}
+    {
+    "label": {
+    "{{ len }}": [
+    {{ agent.role_label|json_encode|raw }}
+    ]
+    },
+    "value": {
+    "{{ len }}": [
+    {{ agent.name_label|json_encode|raw }}
+    ]
+    }
+    },
+{% endfor %}
+{
+"label": {
+"{{ len }}": [
+"description"
+]
+},
+"value": {
+"{{ len }}": [
+{{ data.description|json_encode|raw }}
+]
+}
+},
+{
+"label": {
+"{{ len }}": [
+"navDate"
+]
+},
+"value":  {
+"{{ len }}": [
+   "{{ node.getChangedTime|date("F jS \\a\\t g:ia") }}"
+    ]
+  }
+},
+{
+"label": {
+   "{{ len }}": [
+       "license"
+  ]
+},
+"value": {
+  "{{ len }}": [
+     {{ computed_rights|json_encode|raw }}
+     ]
+    }
+  }
+],
+{# New Jan 2023:added to bring IIIF CWS and IIIF Normal V3 in sync #}
+{%- if attribute(data, 'ismemberof') %}
+    {%- if attribute(data, 'ismemberof') is iterable -%}
+	    {%- for collection in attribute(data, 'ismemberof') -%}
+           {% set parentnode = bamboo_load_entity('node', collection) %}
+           {% if parentnode %}
+             {%  set parentcollectionurl = url('format_strawberryfield.metadatadisplay_caster', {'node': parentnode.uuid.value, 'metadataexposeconfig_entity': 'iiifmanifest3collection', 'format':'default.jsonld'}, {'absolute': true}) -%}
+	       {% endif %}
+        {%- endfor -%}
+	{%- else -%}
+         {% set parentnode = bamboo_load_entity('node',  attribute(data, 'ismemberof')) %}
+        {% if parentnode %}
+          {%  set parentcollectionurl = url('format_strawberryfield.metadatadisplay_caster', {'node': parentnode.uuid.value, 'metadataexposeconfig_entity': 'iiifmanifest3collection', 'format':'default.jsonld'}, {'absolute': true}) -%}
+        {%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if attribute(data, 'ispartof') -%}
+   {%- if attribute(data, 'ispartof') is iterable -%}
+	    {%- for child in attribute(data, 'ispartof') -%}
+           {% set parentnode = bamboo_load_entity('node', child) %}
+           {% if parentnode %}
+             {%  set parentcollectionurl = url('format_strawberryfield.metadatadisplay_caster', {'node': parentnode.uuid.value, 'metadataexposeconfig_entity': 'iiifmanifest3cws', 'format':'default.jsonld'}, {'absolute': true}) -%}
+	       {% endif %}
+        {%- endfor -%}
+	{%- else -%}
+         {% set parentnode = bamboo_load_entity('node',  attribute(data, 'ispartof')) %}
+        {% if parentnode %}
+          {%  set parentcollectionurl = url('format_strawberryfield.metadatadisplay_caster', {'node': parentnode.uuid.value, 'metadataexposeconfig_entity': 'iiifmanifest3cws', 'format':'default.jsonld'}, {'absolute': true}) -%}
+        {%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if node.uuid.value -%} 
+    "service": [
+        { 
+            "id": "{{ baseurl }}iiifcontentsearch/v2/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest3cws_multiple/mode/advanced/page/0",
+            "type": "SearchService2" 
+        }, 
+        { 
+            "id": "{{ baseurl }}iiifcontentsearch/v1/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest3cws_multiple/mode/advanced/page/0",
+            "type": "SearchService1", 
+            "@context": "http://iiif.io/api/search/1/context.json", 
+            "profile": "http://iiif.io/api/search/1/search" 
+        }, 
+        { 
+            "@id": "{{ baseurl }}iiifcontentsearch/v1/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest3cws_multiple/mode/advanced/page/0",
+            "@context": "http://iiif.io/api/search/0/context.json", 
+            "profile": "http://iiif.io/api/search/0/search" 
+        }
+    ],
+{%- endif -%}
+"items": [
+{%- set itemCount = 0 %}
+{%- set document_count = attribute(data, 'as:document')|length -%}
+{%- set TotalpageCount = 0 -%}
+{%- for document in attribute(data, 'as:document')%}
+  {%  if document['flv:exif'].PageCount -%} 
+    {%- set TotalpageCount = (TotalpageCount + document['flv:exif'].PageCount) -%}
+  {% endif %}
+{%- endfor -%}
+{% for document in attribute(data, 'as:document')%} 
+{%  if document['flv:exif'].PageCount %} 
+   {%- set pageCount =  document['flv:exif'].PageCount -%} 
+   {%- set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode -%}
+   {%  for pagenumber in 1..pageCount %}{ 
+        {%- set itemCount = itemCount + 1 -%} 
+        {% if attribute(document["flv:pdfinfo"], pagenumber) %} 
+            {% set width = attribute(document["flv:pdfinfo"], pagenumber).width ? (attribute(document["flv:pdfinfo"], pagenumber).width * pdf_resolution)|round : 600 %}
+            {% set height = attribute(document["flv:pdfinfo"], pagenumber).height ? (attribute(document["flv:pdfinfo"], pagenumber).height * pdf_resolution)|round : 450 %}
+         {% else  %} 
+            {% if attribute(document["flv:identify"], pagenumber) %} 
+               {% set width = attribute(document["flv:identify"], pagenumber).width ? (attribute(document["flv:identify"], pagenumber).width * pdf_resolution)|round : 600 %}
+               {% set height = attribute(document["flv:identify"], pagenumber).height ? (attribute(document["flv:identify"], pagenumber).height * pdf_resolution)|round : 450 %}
+            {% else  %} 
+               {% set width = 600 %} 
+               {% set height = 450 %} 
+            {% endif %} 
+         {% endif %} 
+         {% set thumb_width = width < max_thumb_width ? width: max_thumb_width %} 
+         {% set thumb_height = (thumb_width/width * height)|round() %} 
+         {% set canvasId = nodeurl|render ~ '/iiif/' ~ document['dr:uuid'] ~ '/canvas/p' ~ pagenumber %} 
+         {% set structureCanvasIds = structureCanvasIds|merge([canvasId]) %} 
+         {% set thumbnail %} 
+  "thumbnail": [{ 
+  "id": "{{ cantaloupeid }}/full/{{thumb_width}},/0/default.jpg?page={{ pagenumber }}", 
+  "type": "Image", 
+  "format": "image/jpeg", 
+  "width": {{ thumb_width }}, 
+  "height": {{ thumb_height }} 
+}], 
+  {% endset %}   
+      "id": "{{ canvasId }}", 
+      "type": "Canvas", 
+      "label": { "{{ len }}": [ 
+      {%- if (pageCount > 1) -%} 
+      {{ (loop.index ~ ' of ' ~ pageCount ~ ' pages: ' ~ data.label)|json_encode|raw }} 
+      {% else %} 
+        {{ data.label|json_encode|raw }} 
+      {%- endif -%} 
+      ]}, 
+      {{ thumbnail }} 
+      "height": {{ height }}, 
+      "width": {{ width }}, 
+      "items": [ 
+        { 
+          "id": "{{ nodeurl }}/iiif/{{ document['dr:uuid'] }}/page/p{{ pagenumber}}", 
+          "type": "AnnotationPage", 
+          "items": [ 
+            { 
+              "id": "{{ nodeurl }}/iiif/{{ document['dr:uuid'] }}/annotation/p{{ pagenumber }}", 
+              "type": "Annotation", 
+              "motivation": "painting", 
+              {{ thumbnail }} 
+              "body": { 
+               "id": "{{ cantaloupeid ~ ';' ~  pagenumber }}/full/full/0/default.jpg",
+               "type": "Image",
+               "format": "image/jpeg",
+               "service": [
+                  {
+                  "id": "{{ cantaloupeid ~ ';' ~  pagenumber }}",
+                  "type": "ImageService2",
+                  "profile": "level2"
+                   }
+                ]
+                {% if data.type in ['Book','Document','ArchivalDescription','Page','Letter'] %}
+                ,
+                "seeAlso": {
+                   "@id":  "{{ nodeurl }}/flavorsearch/{{ document['dr:uuid'] }}/ocr/originalocr/{{ pagenumber}}",
+                   {# "profile": "http://www.loc.gov/standards/alto/v3/alto.xsd", NOTE THIS CAN BE ANY URL YOU ARE GOING TO USE TO IDENTIFY/DISCERN between XML formats. Up to you#}
+                   "format": "text/xml",
+                   "label": "MINIOCR XML"
+                }
+              {% endif %}
+              }, 
+              "target": "{{ nodeurl }}/iiif/{{ document['dr:uuid'] }}/canvas/p{{ pagenumber }}" 
+            } 
+          ] 
+        } 
+      ] 
+    }{{ itemCount < TotalpageCount ? ',' : '' }} 
+    {% endfor %} 
+  {% endif %}
+{% endfor %}
+{#- ImagesManifest -#} 
+{#- Count Images upfront -#} 
+{%- if (attribute(data, 'as:image')|length > 0) -%} 
+  {%- if itemCount > 0 -%} 
+,
+  {%- endif -%}
+{%- endif -%}
+{% for page in attribute(data, 'as:image') %}
+   {
+   {%- set itemCount = itemCount + 1 %} 
+   {%- set cantaloupeid  = IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode -%} 
+   {%- if page["flv:exif"] -%} 
+      {%- set width = page["flv:exif"].ImageWidth -%} 
+   {%- else  -%} 
+      {%- set width = 1200 -%} 
+  {%- endif -%} 
+  {%- if page["flv:exif"] -%} 
+    {%- set height = page["flv:exif"].ImageHeight -%} 
+  {%- else  -%} 
+    {%- set height = 1600 -%} 
+  {%- endif -%} 
+  {%- set thumb_width = width < max_thumb_width ? width: max_thumb_width -%} 
+  {%- set thumb_height = (thumb_width/width * height)|round() -%} 
+  {% set canvasId = nodeurl|render ~ '/iiif/canvas/p' ~ itemCount %} 
+  {% set structureCanvasIds = structureCanvasIds|merge([canvasId]) %} 
+{% set thumbnail -%} 
+"thumbnail": [ 
+        { 
+          "id": "{{ cantaloupeid }}/full/{{thumb_width}},/0/default.jpg", 
+          "type": "Image", 
+          "format": "image/jpeg", 
+          "width": {{ thumb_width }}, 
+          "height": {{ thumb_height }} 
+        } 
+      ], 
+{%- endset %} 
+      "id": "{{ canvasId }}", 
+      "type": "Canvas", 
+      "label": { "{{ len }}": [ 
+      {%- if (image_count > 1) -%} 
+      {{ (loop.index ~ ' of ' ~ image_count ~ ' images: ' ~ data.label)|json_encode|raw }} 
+      {% else %} 
+       {{ data.label|json_encode|raw }} 
+      {%- endif -%} 
+      ]}, 
+      {{ thumbnail }} 
+      "height": {{ height }}, 
+      "width": {{ width }}, 
+      "items": [ 
+        { 
+          "id": "{{ nodeurl }}/iiif/page/p{{ itemCount}}", 
+          "type": "AnnotationPage", 
+          "items": [ 
+            { 
+              "id": "{{ nodeurl }}/iiif/annotation/p{{ itemCount }}", 
+              "type": "Annotation", 
+              "motivation": "painting",      
+              {{ thumbnail }}           
+              "body": { 
+                "id": "{{ cantaloupeid }}/full/full/0/default.jpg", 
+                "type": "Image", 
+                "format": "image/jpeg", 
+                "service": [ 
+                  { 
+                    "id": "{{ cantaloupeid }}", 
+                    "type": "ImageService2", 
+                    "profile": "level2" 
+                  } 
+                ], 
+                "height": {{ height }}, 
+                "width": {{ width }} 
+              }, 
+              "target": "{{ nodeurl }}/iiif/canvas/p{{ itemCount }}" 
+            } 
+          ] 
+        } 
+      ] 
+  {#- Annotations for this canvas 
+ "annotations": [ 
+        { 
+          "id": "https://iiif.io/api/cookbook/recipe/0021-tagging/page/p2/1", 
+          "type": "AnnotationPage", 
+          "items": [ 
+            { 
+              "id": "https://iiif.io/api/cookbook/recipe/0021-tagging/annotation/p0002-tag", 
+              "type": "Annotation", 
+              "motivation": "tagging", 
+              "body": { 
+                "type": "TextualBody", 
+                "value": "Gänseliesel-Brunnen", 
+                "language": "de", 
+                "format": "text/plain" 
+              }, 
+              "target": "https://iiif.io/api/cookbook/recipe/0021-tagging/canvas/p1#xywh=265,661,1260,1239" 
+            } 
+          ] 
+        } 
+      ] 
+ -#}  
+      {%- if data["ap:annotationCollection"][cantaloupeid ~ '/info.json'] is defined %} 
+       , 
+       "annotations": [ 
+           { 
+           "id": "{{ nodeurl }}/iiif/comments/p{{ itemCount }}", 
+           "type": "AnnotationPage", 
+           "items": [ 
+        {% for annotation in data["ap:annotationCollection"][cantaloupeid ~ '/info.json'] %} 
+    	{ 
+               "id": "{{ nodeurl }}/iiif/comments/p{{ itemCount }}/{{ annotation.id }}", 
+               {# @TODO a single annotation might have multiple Bodies and multiple motivations #} 
+               "motivation": "tagging", 
+               {% set temp_annotation_body = [] %} 
+               {# We need to enrich here, missing language and format #} 
+               {% if annotation.body is iterable %} 
+                 {% for body in annotation.body %} 
+                   {% set annotation_body = body|merge({'language': len, 'format': 'text/plain'}) %} 
+                   {% set temp_annotation_body = temp_annotation_body|merge([annotation_body]) %} 
+                 {% endfor %} 
+               {% else %} 
+               {% endif %} 
+               "body": {{ temp_annotation_body|json_encode|raw }}, 
+               "type": {{ annotation.type|json_encode(constant('JSON_FORCE_OBJECT'))|raw }} 
+               {# check target type: If polygon we need the selector, if a square, we need the xywh #} 
+               {% if annotation.target.selector.type == "FragmentSelector" %} 
+               {# MIRADOR does not know how to hande "pixel:" in the fragment coordinates selector #} 
+                 {% set target = nodeurl|render ~ "/iiif/canvas/p" ~ itemCount ~ '#' ~ annotation.target.selector.value|replace({"pixel:" : ""}) %} 
+                 ,"target": {{ target|json_encode|raw }} 
+               {% else %} 
+               {# Parse our polygon point values into path for Mirador #} 
+                 {% if 'points="' in annotation.target.selector.value %} 
+                   {% set mirador_path = annotation.target.selector.value | preg_replace('/.+?points="/','') | preg_replace('/".*/','') %} 
+                   {% set mirador_path = "M" ~ (mirador_path|split(" ")|join("L")) ~ " z" %} 
+                   {% set target = { 
+                     "source" : nodeurl|render ~ "/iiif/canvas/p" ~ itemCount, 
+                     "selector": { 
+                       "type":  annotation.target.selector.type, 
+                       "value": '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="' ~ mirador_path ~ '"/></g></svg>' 
+                     }, 
+                     "type": "SpecificResource" 
+               	   } %} 
+                   ,"target": {{ target|json_encode|raw }} 
+                 {% endif %} 
+               {% endif %} 
+       }{{ not loop.last ? ',' : '' }}       
+       {% endfor -%} 
+       ]}] 
+      {% endif %} 
+    }{{ not loop.last ? ',' : '' }} 
+{% endfor %}
+{#- Video Manifest -#}
+{%- if (attribute(data, 'as:video')|length > 0) -%}
+  {%- if itemCount > 0 -%}
+, 
+  {%- endif -%} 
+{#- Count Videos upfront -#}
+{%- set video_count = attribute(data, 'as:video')|length -%} 
+{% for video in attribute(data, 'as:video') %}
+  {%- set itemCount = itemCount + 1 -%}
+  {%- set cantaloupeid  = IIIFserverurl ~ video['url']|replace({'s3://':''})|replace({'private://':''})|url_encode -%}
+  {%- if video["flv:exif"] -%} 
+    {%- set width = video["flv:mediainfo"].videos[0].width.absoluteValue|default(720) -%}
+  {% else  %}
+    {%- set width = 720 -%}
+  {% endif %}
+  {%- if video["flv:mediainfo"] -%}
+    {%- set height = video["flv:mediainfo"].videos[0].height.absoluteValue -%}
+  {%- else  -%}
+    {%- set height = 480 -%}
+  {%- endif -%}
+  {%- set thumb_width = width < max_thumb_width ? width: max_thumb_width -%}
+  {%- set thumb_height = (thumb_width/width * height)|round() -%}
+  {% set thumbnail -%}
+"thumbnail": [ 
+        { 
+          "id": "{{ cantaloupeid }};1/full/{{thumb_width}},/0/default.jpg", 
+          "type": "Image", 
+          "format": "image/jpeg", 
+          "width": {{ thumb_width }}, 
+          "height": {{ thumb_height }} 
+        } 
+      ], 
+{%- endset %} 
+    {% set canvasId = nodeurl|render ~ '/iiif/canvas/p' ~ itemCount %} 
+    {% set structureCanvasIds = structureCanvasIds|merge([canvasId]) %} 
+    { 
+    "id": "{{ canvasId }}", 
+    "type": "Canvas", 
+    "label": { "{{ len }}": [ 
+    {%- if (video_count > 1) -%} 
+      {{ (loop.index ~ ' of ' ~ video_count ~ ' videos: ' ~ data.label)|json_encode|raw }} 
+    {% else %} 
+      {{ ("Video:" ~ data.label)|json_encode|raw }} 
+    {%- endif -%} 
+    ]}, 
+    {{ thumbnail }} 
+    "width": {{ width }}, 
+    "height": {{ height }}, 
+    "duration": {{ video["flv:mediainfo"].videos[0].duration.milliseconds|default(1000) }}, 
+    "items": [ 
+        { 
+          "id": "{{ nodeurl }}/iiif/page/p{{ itemCount }}", 
+          "type": "AnnotationPage", 
+          "items": [ 
+            { 
+              "id": "{{ nodeurl }}/iiif/annotation/p{{ itemCount }}", 
+              "type": "Annotation", 
+              "motivation": "painting", 
+              {{ thumbnail }} 
+              "body": { 
+                "id": "{{ baseurl }}do/{{ node.id }}/iiif/{{ video['dr:uuid'] }}/full/full/0/{{  video.name }}", 
+                "type": "Video", 
+                "format": "{{ video["flv:mediainfo"].general.internet_media_type }}", 
+                "duration": {{ video["flv:mediainfo"].videos[0].duration.milliseconds|default(1000) }}, 
+                "height": {{ height }}, 
+                "width": {{ width }} 
+              }, 
+              "target": "{{ nodeurl }}/iiif/canvas/p{{ itemCount }}" 
+            } 
+          ] 
+        } 
+      ] 
+    }{{ not loop.last ? ',' : '' }} 
+  {% endfor %} 
+{% endif %} 
+{# Audio Manifest #} 
+{%- if (attribute(data, 'as:audio')|length > 0) -%} 
+  {%- if itemCount > 0 -%} 
+, 
+  {%- endif -%} 
+{#- Count Audios upfront -#} 
+{%- set audio_count = attribute(data, 'as:audio')|length -%} 
+{% for audio in attribute(data, 'as:audio') %} 
+    {%- set itemCount = itemCount + 1 -%} 
+    {% set canvasId = nodeurl|render ~ '/iiif/canvas/p' ~ itemCount %} 
+    {% set structureCanvasIds = structureCanvasIds|merge([canvasId]) %} 
+    { 
+    "id": "{{ canvasId }}", 
+    "type": "Canvas", 
+    "label": { "{{ len }}": [ 
+      {%- if (audio_count > 1) -%} 
+        {{ (loop.index ~ ' of ' ~ audio_count ~ ' audios: ' ~ data.label)|json_encode|raw }} 
+      {% else %} 
+        {{ ("Audio:" ~ data.label )|json_encode|raw }} 
+      {%- endif -%} 
+      ]}, 
+    "duration": {{ audio["flv:mediainfo"].audios[0].duration.milliseconds|default(1000) }}, 
+    "items": [ 
+        { 
+          "id": "{{ nodeurl }}/iiif/page/p{{ itemCount }}", 
+          "type": "AnnotationPage", 
+          "items": [ 
+            { 
+              "id": "{{ nodeurl }}/iiif/annotation/p{{ itemCount }}", 
+              "type": "Annotation", 
+              "motivation": "painting",      
+              {{ thumbnail }}           
+              "body": { 
+                "id": "{{ baseurl }}do/{{ node.id }}/iiif/{{ audio['dr:uuid'] }}/full/full/0/{{  audio.name }}", 
+                "type": "Sound", 
+                "format": "{{ audio["flv:mediainfo"].general.internet_media_type }}", 
+                "duration": {{ audio["flv:mediainfo"].audios[0].duration.milliseconds|default(1000) }} 
+              }, 
+              "target": "{{ nodeurl }}/iiif/canvas/p{{ itemCount }}" 
+            } 
+          ] 
+        } 
+      ] 
+    }{{ not loop.last ? ',' : '' }} 
+  {% endfor %} 
+{% endif %} 
+{#-- END TOP LEVEL --#}
+{# start fetch all children using a View and attach them as Items #}
+{# since Scrapbooks might have Empty Pages and InsetGroups are always empty we will Fix here 3 levels and used "nid"#}
+
+{% set max_views_pages = 500 %}
+{% set break_views = false %}
+{% set children_data_had_image = false %}
+{# This assumes that if the Pager of the view returns 50, this will limit the total to 5000 #}
+
+{%- for page in 0..max_views_pages -%}
+  {%- if not break_views and node.id -%}
+   {%- set raw_json_view = sbf_drupal_view_paged('data_creativeworks_series_multiple_levels','children_raw_json', page , {'nid_ref_partof':nodeid, 'nid_ref_partof_partof':nodeid, 'nid_ref_partof_partof_partof':nodeid}, 'all')|render -%}
+   {%- set raw_json_view = raw_json_view|sbf_json_decode -%}
+   {% for item in raw_json_view %}
+      {% set children_data = item['raw_json']|sbf_json_decode(true) %}
+       {# children_data|json_encode #}
+      {% set children_data_had_image = false %}
+   {# THIS should be a macro #}
+   {%- for page in attribute(children_data, 'as:image')-%}
+    {% if itemCount %}
+    {{ "," }} {# New Idea... gosh.. adds the commma before .. when we know we will have something to output #}
+    {% endif %}
+   {
+   {% set children_data_had_image = true %}
+   {%- set itemCount = itemCount + 1 %} 
+   {%- set cantaloupeid  = IIIFserverurl ~ page['url']|replace({'s3://':''})|replace({'private://':''})|url_encode -%} 
+   {%- if page["flv:exif"] -%} 
+      {%- set width = page["flv:exif"].ImageWidth -%} 
+   {%- else  -%} 
+      {%- set width = 1200 -%} 
+  {%- endif -%} 
+  {%- if page["flv:exif"] -%} 
+    {%- set height = page["flv:exif"].ImageHeight -%} 
+  {%- else  -%} 
+    {%- set height = 1600 -%} 
+  {%- endif -%} 
+  {%- set thumb_width = width < max_thumb_width ? width: max_thumb_width -%} 
+  {%- set thumb_height = (thumb_width/width * height)|round() -%}
+  {%- set child_nodeurl = url('entity.node.canonical', {'node': item['nid']}, {'absolute': true}) %}
+  {% set canvasId = child_nodeurl|render ~ '/iiif/canvas/p' ~ itemCount %} 
+  {% set structureCanvasIds = structureCanvasIds|merge([canvasId]) %} 
+{% set thumbnail -%} 
+"thumbnail": [ 
+        { 
+          "id": "{{ cantaloupeid }}/full/{{thumb_width}},/0/default.jpg", 
+          "type": "Image", 
+          "format": "image/jpeg", 
+          "width": {{ thumb_width }}, 
+          "height": {{ thumb_height }} 
+        } 
+      ], 
+{%- endset %} 
+      "id": "{{ canvasId }}", 
+      "type": "Canvas", 
+      "label": { "{{ len }}": [ 
+      {%- if (image_count > 1) -%} 
+      {{ (loop.index ~ ' of ' ~ image_count ~ ' images: ' ~ children_data.label)|json_encode|raw }} 
+      {% else %}
+       {{ children_data.label|json_encode|raw }} 
+      {%- endif -%} 
+      ]}, 
+      {{ thumbnail }}
+      "sbf:ado:view:change": {{item['nid']|json_encode|raw }},
+      "height": {{ height }}, 
+      "width": {{ width }}, 
+      "items": [ 
+        { 
+          "id": "{{ child_nodeurl }}/iiif/page/p{{ itemCount}}", 
+          "type": "AnnotationPage", 
+          "items": [ 
+            { 
+              "id": "{{ child_nodeurl }}/iiif/annotation/p{{ itemCount }}", 
+              "type": "Annotation", 
+              "motivation": "painting",      
+              {{ thumbnail }}           
+              "body": { 
+                "id": "{{ cantaloupeid }}/full/full/0/default.jpg", 
+                "type": "Image", 
+                "format": "image/jpeg", 
+                "service": [ 
+                  { 
+                    "id": "{{ cantaloupeid }}", 
+                    "type": "ImageService2", 
+                    "profile": "level2" 
+                  } 
+                ], 
+                "height": {{ height }}, 
+                "width": {{ width }} 
+              }, 
+              "target": "{{ child_nodeurl }}/iiif/canvas/p{{ itemCount }}" 
+            } 
+          ] 
+        } 
+      ] 
+  {#- Annotations for this canvas 
+ "annotations": [ 
+        { 
+          "id": "https://iiif.io/api/cookbook/recipe/0021-tagging/page/p2/1", 
+          "type": "AnnotationPage", 
+          "items": [ 
+            { 
+              "id": "https://iiif.io/api/cookbook/recipe/0021-tagging/annotation/p0002-tag", 
+              "type": "Annotation", 
+              "motivation": "tagging", 
+              "body": { 
+                "type": "TextualBody", 
+                "value": "Gänseliesel-Brunnen", 
+                "language": "de", 
+                "format": "text/plain" 
+              }, 
+              "target": "https://iiif.io/api/cookbook/recipe/0021-tagging/canvas/p1#xywh=265,661,1260,1239" 
+            } 
+          ] 
+        } 
+      ] 
+ -#}  
+      {%- if children_data["ap:annotationCollection"][cantaloupeid ~ '/info.json'] is defined %} 
+       , 
+       "annotations": [ 
+           { 
+           "id": "{{ child_nodeurl }}/iiif/comments/p{{ itemCount }}", 
+           "type": "AnnotationPage", 
+           "items": [ 
+        {% for annotation in children_data["ap:annotationCollection"][cantaloupeid ~ '/info.json'] %} 
+    	{ 
+               "id": "{{ child_nodeurl }}/iiif/comments/p{{ itemCount }}/{{ annotation.id }}", 
+               {# @TODO a single annotation might have multiple Bodies and multiple motivations #} 
+               "motivation": "tagging", 
+               {% set temp_annotation_body = [] %} 
+               {# We need to enrich here, missing language and format #} 
+               {% if annotation.body is iterable %} 
+                 {% for body in annotation.body %} 
+                   {% set annotation_body = body|merge({'language': len, 'format': 'text/plain'}) %} 
+                   {% set temp_annotation_body = temp_annotation_body|merge([annotation_body]) %} 
+                 {% endfor %} 
+               {% else %} 
+               {% endif %} 
+               "body": {{ temp_annotation_body|json_encode|raw }}, 
+               "type": {{ annotation.type|json_encode(constant('JSON_FORCE_OBJECT'))|raw }} 
+               {# check target type: If polygon we need the selector, if a square, we need the xywh #} 
+               {% if annotation.target.selector.type == "FragmentSelector" %} 
+               {# MIRADOR does not know how to hande "pixel:" in the fragment coordinates selector #} 
+                 {% set target = child_nodeurl|render ~ "/iiif/canvas/p" ~ itemCount ~ '#' ~ annotation.target.selector.value|replace({"pixel:" : ""}) %} 
+                 ,"target": {{ target|json_encode|raw }} 
+               {% else %} 
+               {# Parse our polygon point values into path for Mirador #} 
+                 {% if 'points="' in annotation.target.selector.value %} 
+                   {% set mirador_path = annotation.target.selector.value | preg_replace('/.+?points="/','') | preg_replace('/".*/','') %} 
+                   {% set mirador_path = "M" ~ (mirador_path|split(" ")|join("L")) ~ " z" %} 
+                   {% set target = { 
+                     "source" : nodeurl|render ~ "/iiif/canvas/p" ~ itemCount, 
+                     "selector": { 
+                       "type":  annotation.target.selector.type, 
+                       "value": '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="' ~ mirador_path ~ '"/></g></svg>' 
+                     }, 
+                     "type": "SpecificResource" 
+               	   } %} 
+                   ,"target": {{ target|json_encode|raw }} 
+                 {% endif %} 
+               {% endif %} 
+       }{{ not loop.last ? ',' : '' }}       
+       {% endfor -%} 
+       ]}]
+      {% endif %} 
+    }{{ not loop.last ? ',' : '' }} 
+{% endfor %}
+   {# end this should be a macro #}
+   {# not loop.last and children_data_had_image ? ', ---' : '---' #} 
+   {% endfor %}
+   {% if raw_json_view|length == 0 %}
+       {# loop.index0 will be the number of Views calls we had ..#}
+       {% set break_views = true %}
+   {% endif %}
+  {% endif %}
+{% endfor %}
+],
+"structures": [
+    {
+      "id": "{{ nodeurl }}/iiif/range/r1",
+      "type": "Range",
+      "label": {
+        "{{ len }}": [
+          {{ node.label|json_encode|raw  }}
+        ]
+      },
+      "items": [
+{%- for rangeItem in structureCanvasIds -%}
+        {
+          "id":  "{{ rangeItem }}",
+          "type": "Canvas"
+        }{{- not loop.last ? ',' : '' -}}
+{%- endfor -%}
+      ]
+    }
+  ]
+}

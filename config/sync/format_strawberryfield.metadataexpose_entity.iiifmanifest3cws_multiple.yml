@@ -1,0 +1,19 @@
+uuid: 95bf525a-6406-4c0a-8d9f-d1f5ac7cf2bd
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: iiifmanifest3cws_multiple
+label: iiifmanifest3cws_multiple
+target_entity_types:
+  digital_object: digital_object
+  digital_object_collection: digital_object_collection
+  article: 0
+  page: 0
+  webform: 0
+source_entityfield_name: null
+metadatadisplayentity_uuid: d4ca85ee-4ecd-40f3-ae6b-d24732863b27
+cache: true
+active: true
+hide_on_embargo: true
