@@ -82,6 +82,17 @@ field_settings:
     configuration:
       type: union
       fields: {  }
+  aggregated_sequence_id:
+    label: 'Aggregated ADO Sequence_id via ispartof'
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: concat
+      separator: ''
+      fields:
+        - 'entity:node/field_descriptive_metadata:sbf_entity_reference_ispartof:field_descriptive_metadata:sbf_entity_reference_ispartof:field_descriptive_metadata:sequence_id'
+        - 'entity:node/field_descriptive_metadata:sbf_entity_reference_ispartof:field_descriptive_metadata:sequence_id'
+        - 'entity:node/field_descriptive_metadata:sequence_id'
   any_parent_nid:
     label: 'Related ADOs » Content » ID'
     datasource_id: 'entity:node'
@@ -543,6 +554,26 @@ field_settings:
     datasource_id: strawberryfield_flavor_datasource
     property_path: sequence_id
     type: integer
+  sequence_id_ispartof_int:
+    label: '🍓 Strawberry (Descriptive Metadata source) ispartof sequence_id'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:sbf_entity_reference_ispartof:field_descriptive_metadata:sequence_id'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+      module:
+        - node
+  sequence_id_ispartof_ispartof_int:
+    label: '🍓 Strawberry (Descriptive Metadata source) ispartof ispartof sequence_id'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:sbf_entity_reference_ispartof:field_descriptive_metadata:sbf_entity_reference_ispartof:field_descriptive_metadata:sequence_id'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+      module:
+        - node
   service_md5:
     label: 'An MD5 checksum characterizing the Service that generated the values'
     datasource_id: strawberryfield_flavor_datasource
