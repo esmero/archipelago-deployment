@@ -1,0 +1,74 @@
+{#
+- Updated 05/12/2025 for 1.6.0. Use a macro now and corrects dl/dt/dd hierarchy issues we had (W3C)
+- Previously Updated 31/10/2023 for 1.3.0 
+- Previously updated June ~ April 2023 for by Diego & Allison for 1.1.0 release: better HTML formatting.
+- Previously updated July 2022 by Allison for: Internal and external search for Pubmed subjects and comment out Europeana subjects for now--noting about API key; Include url_encode for search terms and adjust indentation for human readability.
+- Previously updated June 2022 to include internal and external referencing for all LC Subjects & Names, Getty Terms, Wikidata Subjects & Names, and VIAF names.
+LC Subjects & Names, Getty Terms show FA Link Icon for external reference. Wikidata Subjects and Agents show Wikipedia W icon. VIAF shows vocab name in pill box.
+Placeholder FA icon and text for when no linked data is provided. #}
+{# Use for LoD elements with URI and label values#} 
+{%- macro html_output_search_lod(html_title, source_datum, search_facet, icon_type_classes = "fas fa-link fa-1x") -%} 
+  {%- if source_datum and source_datum|length > 0 %} 
+  <dl> 
+    <dt class="text-truncate">{{html_title|default("LoD")}}</dt>
+    {%- for source_data in source_datum -%}
+    <dd> 
+      <ul class="list-unstyled nav nav-pills">
+	  <li class="nav-item facet-item"><a class="py-1 nav-link" rel="nofollow" href="/search?f%5B0%5D={{search_facet}}%3A{{ source_data.label|url_encode }}" target="_blank" >{{ source_data.label }}</a></li> 
+	  <li class="nav-item"><a class="py-1 nav-link active" href="{{ source_data.uri }}" target="_blank"><i class="{{icon_type_classes}}"></i></a></li>
+      </ul> 
+    </dd>
+    {%- endfor -%} 
+  </dl> 
+  {% endif -%} 
+{%- endmacro html_output_search_lod -%} 
+{% if data.subject_loc|length > 0 %}
+{{ _self.html_output_search_lod("Library Of Congress subjects", data.subject_loc, "descriptive_metadata_subjects") }} 
+{% endif %}
+{% if data.subject_lcnaf_personal_names|length > 0 %}
+{{ _self.html_output_search_lod("LCNAF Personal Names", data.subject_lcnaf_personal_names, "descriptive_metadata_agent_labels") }} 
+{% endif %}
+{% if data.subject_lcnaf_corporate_names|length > 0 %}
+{{ _self.html_output_search_lod("LCNAF Corporate Names", data.subject_lcnaf_corporate_names, "descriptive_metadata_agent_labels") }} 
+{% endif %}
+{% if data.subject_lcnaf_geographic_names|length > 0 %}
+{{ _self.html_output_search_lod("LCNAF Geographic Names", data.subject_lcnaf_geographic_names, "descriptive_metadata_subjects") }} 
+{% endif %}
+{% if data.subject_lcgft_terms|length > 0 %}
+{{ _self.html_output_search_lod("Library Of Congress Genre Format Terms", data.subject_lcgft_terms, "descriptive_metadata_subjects") }} 
+{% endif %}
+{% if data.term_aat_getty|length > 0 %}
+{{ _self.html_output_search_lod("Getty terms", data.term_aat_getty, "descriptive_metadata_subjects") }} 
+{% endif %}
+{% if data.subject_wikidata|length > 0 %}
+{{ _self.html_output_search_lod("Wikidata Subjects", data.subject_wikidata, "descriptive_metadata_subjects", "fab fa-wikipedia-w fa-1x") }} 
+{% endif %}
+{% if data.edm_agent|length > 0 %}
+{{ _self.html_output_search_lod("Wikidata Agents", data.edm_agent, "descriptive_metadata_agent_labels", "fab fa-wikipedia-w fa-1x") }} 
+{% endif %}
+{% if data.viaf|length > 0 %}
+{{ _self.html_output_search_lod("VIAF", data.viaf, "descriptive_metadata_agent_labels") }} 
+{% endif %} 
+{% if data.pubmed_mesh|length > 0 %}
+ {{ _self.html_output_search_lod("MeSH (Medical Subject Headings)", data.pubmed_mesh, "descriptive_metadata_subjects") }} 
+{% endif %}
+{#- -- Important note : to utilize the Europeana Webform Elements/Lookups and to reference the values as noted below:
+ You/your institution will need to apply for your own Europeana API key, here: https://pro.europeana.eu/page/get-api.
+ Then follow the instructions for using your unique API key as noted here: https://github.com/esmero/webform_strawberryfield/pull/123
+ Then select the 'Display Element' checkbox on the Access tab or the 'europeana_details' webform element.
+ And use the same macro for those, using as source   data.europeana_agents, data.europeana_concepts and  data.europeana_places -#}
+{%- if data.subject_loc is empty and
+data.subject_lcnaf_personal_names is empty and
+data.subject_lcnaf_corporate_names is empty and
+data.subject_lcnaf_geographic_names is empty and
+data.subject_lcgft_terms is empty and
+data.term_aat_getty is empty and 
+data.subject_wikidata is empty and
+data.edm_agent is empty and
+data.viaf is empty and
+data.pubmed_mesh is empty -%}
+<i class="fas fa-bezier-curve fa-9x"></i>
+<p>
+<i>Linked Data not provided</i>
+</p>
+{%- endif -%}
