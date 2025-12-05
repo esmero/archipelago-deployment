@@ -243,6 +243,19 @@ display:
         type: search_api_none
         options: {  }
       empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: " <div class=\"card\">\r\n      <div class=\"card-body\">\r\n            <p>To evaluate the Image ML similarity Views and Processed (via ML Strawberry Post processors) Detected Regions and Vectors, you need to make sure that:<p>\r\n            <ul>\r\n                  <li> Docker is using  \"esmero/esmero-nlp:1.4.2-amd64\" or \"esmero/esmero-nlp:1.4.2-arm64\" as esmero-nlp images</li>\r\n                  <li> You need to either (one of):</li>\r\n                  <li>\r\n                        <ul>\r\n                              <li>edit the Image ML driven (YOLO, etc) to target existing ADO types and then trigger strawberry runners reprocessing</li>\r\n                              <li>add Images (recommended) that use \"ML\" as ADO type.</li>\r\n                        </ul>\r\n                  </li>\r\n            </ul>\r\n      </div>\r\n</div>"
+            format: full_html
+          tokenize: false
         result:
           id: result
           table: views
