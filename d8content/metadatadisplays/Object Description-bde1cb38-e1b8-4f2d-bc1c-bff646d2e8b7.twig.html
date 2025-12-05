@@ -235,8 +235,10 @@ one macro for simple non-LoD elements; second for LoD elements with URI and labe
         <div class="card-body">
             <h5 class="card-title mediaTitle">{{ data.label }}</h5> {# Up to the user to set this as the node label/exclude. Not used by our Library #}
             <p class="card-text mediaFileName">Audio - Helen</p>{# Optional: class="mediaFileName" will get its Inner Text replaced with the aria-label *from exif or filename* provided by the audio/video formatter  #}
-            <div class="wavesurferContainer w-100" style="width:720px;overflow:visible"></div>{# Optional: class="wavesurferContainer" will used by wavesurfer if enabled in the audio/video formatter. If not present wavesurfer will attach itself to the original HTML5 element #}
-            <div class="mediaContainer d-flex justify-content-center m-auto" style="width:auto;max-height:70vh;overflow:hidden"></div>{# Optional: class="mediaContainer" will used "MOVE" the original HTML5 element while playing. For Video it will basically allow the Video to be Inside the Controller #}
+            <div>
+              <div class="mediaContainer d-flex justify-content-center m-auto" style="width:auto;max-height:70vh;overflow:hidden"></div>{# Optional: class="mediaContainer" will used "MOVE" the original HTML5 element while playing. For Video it will basically allow the Video to be Inside the Controller #}
+            </div>
+            <div class="wavesurferContainer w-100" style="width:720px;overflow:visible"></div>{# Optional: class="wavesurferContainer" will used by wavesurfer if enabled in the audio/video formatter. If not present wavesurfer will attach itself to the original HTML5 element #}   
             <div class="progress mb-3">
                 <progress class="progress-bar progressSlider w-100 h-100" max="100" value="0" style="cursor:grab"></progress>
             </div>{# Optional: class="progress" and child element progressSlider will replace the timeline #}
@@ -254,7 +256,7 @@ one macro for simple non-LoD elements; second for LoD elements with URI and labe
                 <button class="muteBtn btn btn-secondary"><i class="fas fa-volume-up"></i></button>{# Required:  class="muteBtn" will mute sound #}
                 <button class="unmuteBtn btn btn-secondary"><i class="fas fa-volume-mute"></i></button>{# Required:  class="unmuteBtn" will unmute sound #}
                 <button class="ccBtn btn btn-secondary"><i class="fas fa-closed-captioning"></i></button>{# Optional:  class="ccBtn" will disable/enable CC#}
-                <button class="fullscreenBtn btn btn-tertiary"><i class="fas fa-expand"></i></button># Optional:  class="fullscreenBtn" will enter the complete Controller into fullscreen. Up to the user to style that correctly CC #}
+                <button class="fullscreenBtn btn btn-tertiary"><i class="fas fa-expand"></i></button>{# Optional:  class="fullscreenBtn" will enter the complete Controller into fullscreen. Up to the user to style that correctly CC #}
             </div>
             <div class="w-25">
             {#Optional: class="volumeSlider" will control volumne. One could also use a <progress> element instead too, <progress> has min=0 as only choice #}

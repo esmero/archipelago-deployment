@@ -26,8 +26,14 @@ third_party_settings:
       entity_classes: all_classes
       settings:
         label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
     regions:
       ds_content:
         - links
@@ -44,10 +50,29 @@ third_party_settings:
         formatter: strawberry_audio_formatter
         settings:
           formatter:
+            iiif_base_url: 'http://localhost:8183/iiif/2'
+            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
             json_key_source: 'as:audio'
             max_width: '0'
             max_height: '50'
+            use_iiif_globals: '0'
             number_media: 1
+            jmespath:
+              use_jmespath: false
+              fallback_jmespath: false
+              jmespath_filter: '"as:image".*|[?"dr:for"==''images'' && "dr:mimetype"== ''image/jpeg'' ]|[?"flv:exif".ImageWidth!=''null'']|[?"sequence">=`2`]'
+              jmespath_alternative_filter: '"as:image".*|[?"dr:for"==''images'' && "dr:mimetype"== ''image/jpeg'' ]|[?"flv:exif".ImageWidth!=''null'']|[?"sequence">=`2`]'
+            upload_json_key_source: ''
+            embargo_json_key_source: ''
+            hide_on_embargo: '0'
+            use_wavesurfer: true
+            wavesurfer_filesize_limit: '1 GB'
+            use_external_control: true
+            hide_native_control: true
+            use_external_control_shared: false
+            external_control_element_active_class: bg-tertiary
+            external_control_selector: .sbf_media_control
+            viewer_overrides: "{\r\n        \"height\": 128,\r\n        \"width\": 720,\r\n        \"splitChannels\": false,\r\n        \"normalize\": false,\r\n        \"waveColor\": \"rgb(255, 156, 95)\",\r\n        \"progressColor\": \"#dd5e98\",\r\n        \"cursorColor\": \"#ddd5e9\",\r\n        \"cursorWidth\": 2,\r\n        \"barWidth\": null,\r\n        \"barGap\": null,\r\n        \"barRadius\": null,\r\n        \"barHeight\": null,\r\n        \"barAlign\": \"\",\r\n        \"minPxPerSec\": 1,\r\n        \"fillParent\": true,\r\n        \"autoplay\": false,\r\n        \"interact\": true,\r\n        \"dragToSeek\": false,\r\n        \"hideScrollbar\": false,\r\n        \"audioRate\": 1,\r\n        \"autoScroll\": true,\r\n        \"autoCenter\": true,\r\n        \"sampleRate\": 8000\r\n      }"
       'display_field_copy:node-formatted_metadata':
         plugin_id: 'display_field_copy:node-formatted_metadata'
         weight: 4
@@ -71,11 +96,27 @@ third_party_settings:
             json_key_source: 'as:image'
             max_width: '0'
             max_height: '960'
+            icons_prefixurl: 'https://cdn.jsdelivr.net/gh/Benomrans/openseadragon-icons@main/images/'
             webannotations: false
             webannotations_tool: polygon
+            webannotations_opencv: false
+            webannotations_betterpolygon: false
+            webannotations_georeferencewidget: false
             use_iiif_globals: '1'
             iiif_group: true
             thumbnails: true
+            upload_json_key_source: ''
+            embargo_json_key_source: ''
+            hide_on_embargo: '1'
+            mediasource:
+              manifestnodelist: '0'
+              metadataexposeentity: '0'
+              manifesturl: '0'
+            main_mediasource: metadataexposeentity
+            viewer_overrides: ''
+            metadataexposeentity_source: null
+            manifesturl_json_key_source: iiifmanifest
+            manifestnodelist_json_key_source: isrelatedto
 id: node.digital_object.digital_object_with_a_v_player
 targetEntityType: node
 bundle: digital_object
