@@ -1,0 +1,405 @@
+{# December 2025, for 1.6.0
+AMI set Display. Because we don't have yet an AMI Entity Preview, we provide an 
+example Config there that will be used (and can be used) if previewed using an ADO.
+Once applied to the Display/Field formatter in AMI set the real data structure will be used
+automatically #}
+{% set example_data = {
+    "csv": "305",
+    "zip": null,
+    "plugin": "spreadsheet",
+    "mapping": {
+        "globalmapping": "custom",
+        "custommapping_settings": {
+            "Map": {
+                "files": {
+                    "datafiles": "datafiles",
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "Book": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "3DModel": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "WebPage": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "Painting": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "Panorama": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "Collection": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object_collection:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "Photograph": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "AudioObject": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "VideoObject": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "Conversation": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "PublicationIssue": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "Article": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "VisualArtwork": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            },
+            "CreativeWorkSeries": {
+                "files": {
+                    "model": "model",
+                    "audios": "audios",
+                    "images": "images",
+                    "videos": "videos",
+                    "documents": "documents",
+                    "upload_associated_warcs": "upload_associated_warcs"
+                },
+                "bundle": "digital_object_collection:field_descriptive_metadata",
+                "metadata": "template",
+                "metadata_config": {
+                    "webform": "descriptive_metadata",
+                    "template": "11"
+                }
+            }
+        },
+        "globalmapping_settings": {
+            "files": {"documents":"documents"},
+            "bundle": "digital_object:field_descriptive_metadata",
+            "metadata_config": {
+                "webform": "descriptive_metadata",
+                "template": "11"
+            }
+        }
+    },
+    "adomapping": {
+        "base": {
+            "label": "label"
+        },
+        "uuid": {
+            "uuid": "node_uuid"
+        },
+        "parents": {
+            "ispartof": "ispartof",
+            "ismemberof": "ismemberof"
+        },
+        "autouuid": 0
+    },
+    "total_rows": 25,
+    "column_keys": [
+        "node_uuid",
+        "ispartof",
+        "ismemberof",
+        "sequence_id",
+        "type",
+        "label",
+        "description",
+        "website_url",
+        "creator_lod",
+        "issue_info",
+        "date_created",
+        "date_published",
+        "publisher",
+        "interviewee",
+        "interviewer",
+        "duration",
+        "language",
+        "owner",
+        "local_identifier",
+        "rights",
+        "rights_statements",
+        "subject_loc",
+        "subject_lcnaf_corporate_names",
+        "subject_lcnaf_geographic_names",
+        "subject_lcgft_terms",
+        "subjects_local",
+        "term_aat_getty",
+        "subject_wikidata",
+        "geographic_location",
+        "images",
+        "documents",
+        "audios",
+        "videos",
+        "model",
+        "upload_associated_warcs"
+    ],
+    "pluginconfig": {
+        "op": "create",
+        "file": [
+            "156"
+        ]
+    },
+    "reconcileconfig": {
+        "columns": {
+            "publisher": "publisher"
+        },
+        "mappings": {
+            "publisher": [
+                "loc;names;thing",
+                "wikidata;subjects;thing"
+            ]
+        }
+    }
+} %}
+{% if logged_in %}
+{# If using the preview with A NODE, example data will be used #}
+{# Note: Classes of instanceof test required double slash bc of slash escaping #}
+{% if node is instanceof("Drupal\\node\\NodeInterface") %}
+  {% set data = example_data %}
+{% endif %}
+<div>
+<h6>Configured Operation for this AMI set:</h6>
+<span>{{ data.pluginconfig.op|title }}</span>
+<h6>AMI Plugin used to create this set's data:</h6>
+<span>{{ data.plugin }}</span>
+{% if data.zip %}
+<h6>ZIP File:</h6>
+<span>Was provided on creation (could have been modified later on)</span>
+{% endif %}
+<h6>Source data to ADO data mapping approach:</h6>
+<span>{{ data.mapping.globalmapping }}</span>
+{% if data.mapping.globalmapping == "custom" %}
+<h6>Per ADO Type processing configuration</h6>
+<ul>
+{% for ado_type, settings in data.mapping.custommapping_settings %}
+  <li><b>{{ ado_type }}</b>
+      <ul>
+      <li><b>Colums holding files: </b>{{settings.files|default("No Columns hold files")|join(",")}}</li>
+      <li><b>CSV row to JSON processing: </b>{{settings.metadata}}</li>
+      {% if settings.metadata == "template" and  settings.metadata_config.template is defined and not empty %}
+          {% set metadatadisplay = bamboo_load_entity('metadatadisplay_entity', settings.metadata_config.template|default(null)) %} 
+          {% if metadatadisplay %}
+             {% set url = url('entity.metadatadisplay_entity.canonical', {'metadatadisplay_entity': metadatadisplay.id()}, {'absolute': false})|render %}
+       <li><b>Metadata Display to be used: </b>{{ link(metadatadisplay.label(), url|drupal_escape|render) }}</li>
+         {% else %}
+         	 <li><b class="text-danger">The Metadata Display configured to be used does not exist!: </b>
+             Please edit this AMI set and set a valid/existing Metadata Display ID</li>
+         {% endif %}
+      {% elseif settings.metadata == "direct" %}
+      <li><b>Direct processing (CSV to JSON) will be used</b></li>  
+      {% else %}
+         <li><b class="text-danger">Missing transformation approach:! <b> Please recreate this AMI set or edit this AMI setting either 
+         <em>"direct"</em> or <em>"template"</em> with the corresponding Metadata Display ID under "mapping.custommapping_settings.{{ ado_type }}"
+         </li>
+      {% endif %}
+       <li><b>Rows of this type have as destination bundle/field: </b>{{ settings.bundle }}</li>
+      </ul>
+  </li>
+{% endfor %}
+</ul>
+{% elseif data.mapping.globalmapping == "template" %}
+ <ul>
+      <li><b>Colums holding files: </b>{{data.mapping.globalmapping_settings.files|default("No Columns hold files")|join(",")}}</li>
+ 	 {% if data.mapping.globalmapping_settings.metadata_config.template is defined and not empty %}
+          {% set metadatadisplay = bamboo_load_entity('metadatadisplay_entity',data.mapping.globalmapping_settings.metadata_config.template|default(null)) %} 
+          {% if metadatadisplay %}
+             {% set url = url('entity.metadatadisplay_entity.canonical', {'metadatadisplay_entity': metadatadisplay.id()}, {'absolute': false})|render %}
+       <li><b>Metadata Display to be used for all Rows: </b>{{ link(metadatadisplay.label(), url|drupal_escape|render) }}</li>
+         {% else %}
+         	 <li><b class="text-danger">The Metadata Display configured to be used does not exist!: </b>
+             Please edit this AMI set and set a valid/existing Metadata Display ID</li>
+         {% endif %}
+     {% else %}
+         <li><b class="text-danger">The Metadata Display to be used is not defined. </b>
+         Please edit this AMI set and set a valid/existing Metadata Display ID </li>
+     {% endif %}
+     <li><b>All Rows have as destination bundle/field: </b>{{ data.mapping.globalmapping_settings.bundle }}</b></li>
+<ul>
+{% elseif data.mapping.globalmapping  == "direct" %}
+ <ul>
+    <li><b>Colums holding files: </b>{{data.mapping.globalmapping_settings.files|default("No Columns hold files")|join(",")}}</li>
+    <li><b>Direct processing (CSV to JSON) will be used</b></li>  
+{% else %}
+   <b class="text-danger">This AMI set does not have a valid transformation approach configured. Either recreate it or edit its configuration JSON</b>
+{% endif %}
+</div>
+{% endif %}

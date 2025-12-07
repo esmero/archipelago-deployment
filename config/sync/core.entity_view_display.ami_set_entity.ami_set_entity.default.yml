@@ -5,6 +5,7 @@ dependencies:
   module:
     - ami
     - file
+    - format_strawberryfield
     - options
     - strawberryfield
 id: ami_set_entity.ami_set_entity.default
@@ -17,12 +18,13 @@ content:
     label: hidden
     settings:
       limit_access: edit
+      label: 'Last Config used to send to processing (JSON)'
     third_party_settings: {  }
-    weight: 1
+    weight: 6
     region: content
   name:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -45,12 +47,21 @@ content:
     weight: 5
     region: content
   set:
-    type: strawberry_default_formatter
+    type: strawberry_metadata_formatter
     label: hidden
     settings:
-      limit_access: edit
+      iiif_base_url: 'http://localhost:8183/iiif/2'
+      iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+      use_iiif_globals: '1'
+      label: 'AMI Set Processing Configuration'
+      specs: 'http://docs.archipelago.nyc'
+      metadatadisplayentity_uuid: 80a5d179-1689-4cdc-b21b-5a9461d86501
+      metadatadisplayentity_uselabel: '1'
+      upload_json_key_source: ''
+      embargo_json_key_source: ''
+      hide_on_embargo: '0'
     third_party_settings: {  }
-    weight: 6
+    weight: 5
     region: content
   source_data:
     type: file_default
