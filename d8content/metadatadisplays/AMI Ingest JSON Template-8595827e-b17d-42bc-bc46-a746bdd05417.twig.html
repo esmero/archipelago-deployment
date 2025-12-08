@@ -1,4 +1,29 @@
 {
+{#- Updated for 1.6.0 to handle DOI events from CSV 
+- Requires DataCite subscription and most importantly the Fragaria module to be enabled
+which is the one that provides the sbf_datacite twig extension doing all validation
+For an AMI set, a CSV column "doi_datacite_action" can contain one of: draft, register, publish or delete
+doi_event and dataOriginal (original data of an ADO being updated,
+only present if this template is used to update existing ones) is
+passed to the `sbf_datacite` twig extension, wich will return only an entry for the active API
+if all is valid based on previously known state #}
+{# Data Cite Setup: If all previos conditions apply, please remove lines 12 and 25 #}
+{% set ap_tasks = null %}
+{#-
+{%- if datacite_enabled %}
+  {% set doi_event = data.doi_datacite_action|default(null) %} 
+  {% set doi_ap_tasks = sbf_datacite(dataOriginal|default([]), doi_event) %}
+  {% set ap_tasks = doi_ap_tasks["ap:tasks"]|default([]) %}
+  {% if dataOriginal["ap:tasks"] is defined and dataOriginal["ap:tasks"] is not empty %}
+    {% if dataOriginal["ap:tasks"]["ap:fragaria"] is defined and ap_tasks["ap:fragaria"] is defined %}
+       {% set ap_fragaria = dataOriginal["ap:tasks"]["ap:fragaria"]|merge(ap_tasks["ap:fragaria"]) %}
+       {% set ap_tasks = {"ap:fragaria": ap_fragaria } %}
+    {% endif %}
+	{% set ap_tasks = dataOriginal["ap:tasks"]|merge(ap_tasks) %} 
+  {% endif %}
+{% endif -%}
+-#}
+{# ap_tasks is used at the end of this template #}
     "type": {{ data.type|json_encode|raw }},
     "label": {{ data.label|json_encode|raw }},
     "issue_number": {{ data.issue_number|json_encode|raw }},
@@ -66,5 +91,9 @@
         "summary": "Generator",
         "@context": "https:\/\/www.w3.org\/ns\/activitystreams"
     },
+    {%- if ap_tasks is defined and ap_tasks is iterable and ap_tasks is not empty -%},
+    "ap:tasks": {{ ap_tasks|json_encode|raw }},
+    {% endif %}
     "upload_associated_warcs": []
+   
 }

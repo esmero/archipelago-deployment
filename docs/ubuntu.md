@@ -266,7 +266,6 @@ _Installing Archipelago on AWS Ubuntu_ by [Zach Spalding](https://github.com/sen
 
 * [Giancarlo Birello](https://github.com/giancarlobi)
 
-
 ## License
 
 [GPLv3](http://www.gnu.org/licenses/gpl-3.0.txt)

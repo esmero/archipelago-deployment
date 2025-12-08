@@ -1,0 +1,175 @@
+{# Custom DataCite V4 mappings for default Archipelago instances.
+  - Includes all required DataCite elements, plus a couple optional elements.
+  - Multiple options for date sourcing.
+
+For date: we will go in this order, first one wins.
+date_created_edtf,
+date_created,
+date_created_free,
+#}
+{% if data.date_created_edtf.date_free is defined and not empty %}
+  {% set date_canditate = date_canditate|length ? date_canditate : data.date_created_edtf.date_free|edtf_2_iso_date %}
+{% elseif data.date_created_edtf[0].date_free is defined and not empty %}
+  {% set date_canditate = date_canditate|length ? date_canditate :data.date_created_edtf[0].date_free|edtf_2_iso_date %}
+{% endif %}
+{% set date_canditate = date_canditate|length ? date_canditate : data.date_created_free|edtf_2_iso_date %}
+{% if date_canditate|length > 0 %}
+  {% set date_canditate = date_canditate[0]|date('Y') %}
+{% else %}
+  {% set date_canditate = "now"|date('Y') %}
+{% endif %}
+
+{% set resourceTypeGeneralMapping = {
+    "article": "JournalArticle",
+    "book": "Book",
+    "dataset": "Dataset",
+    "digitaldocument": "Text",
+    "map": "PhysicalObject",
+    "movie": "Audiovisual",
+    "musicrecording": "Sound",
+    "painting": "PhysicalObject",
+    "photograph": "Image",
+    "sculpture": "PhysicalObject",
+    "visualartwork": "Other",
+    "thesis": "Text",
+    "page": "Text",
+    "podcast": "Sound",
+    "podcastepisode": "Sound",
+    "poster": "Image",
+    "panorama": "InteractiveResource",
+    "panoramatour": "InteractiveResource",
+    "3dmodel": "Model",
+    "webpage": "InteractiveResource",
+    "audiobject": "Sound",
+    "videoobject": "Audiovisual",
+    "conversation": "Other",
+    "shortstory": "Text",
+    "archivecomponent": "Other",
+    "newspaperissue": "Text",
+    "publicationissue": "Journal",
+    "postcard": "Other",
+    "manuscript": "Text",
+    "scrapbook": "Book",
+    "insetgroup": "Other",
+    "collection": "Collection",
+    "creativeworkseries": "Collection"
+    }
+ %}
+ 
+{% set dataCiteType = "Other" %}
+ {% set normalized_type = data.type|default("other")|lower %}
+ {% if normalized_type in resourceTypeGeneralMapping|keys %}
+   {% set dataCiteType = resourceTypeGeneralMapping[normalized_type] %}
+ {% endif %}
+ {% set normalized_type = normalized_type|default("Other")|title %}
+ 
+{
+      {# "event": "publish", THIS IS SET AND ALWAYS OVERRIDEN BY OUR API #}
+      {# "prefix": "10.5438",  THIS IS SET AND ALWAYS OVERRIDEN BY OUR API #}
+      "creators": 
+    {% if data.creator is not iterable and data.creator is not empty %}
+      [
+        {
+          "name": {{ data.creator|default(":unas")|json_encode|raw }}
+        }
+      ]
+      {% elseif data.creator is not empty %}
+      [
+         {% for creator in data.creator %}
+           {{ loop.index0 != 0 ? "," : "" }} 
+         {
+         "name": {{ creator|default(":unas")|json_encode|raw }}
+          }
+         {% endfor %}
+      ]
+     {% endif %}      
+    {% if data.creator_lod is iterable and data.creator_lod is not empty %}
+      [
+         {% for creator_lod in data.creator_lod %}    
+           {{ loop.index0 != 0 ? "," : "" }} 
+         {
+         "name": {{ creator_lod.name_label|default(":unas")|json_encode|raw }},
+         "nameIdentifiers": [{
+        	"schemeUri": "http://id.loc.gov/authorities/names",
+        	"nameIdentifier": {{ creator_lod.name_uri|default(":unas")|json_encode|raw }},
+        	"nameIdentifierScheme": "LCNAF" 
+            			}]         
+          }
+         {% endfor %}
+      ]
+      {% elseif data.creator_lod is not empty %}
+      [
+      	{
+        "name": {{ data.creator_lod.name_label|default(":unas")|json_encode|raw }},
+        "nameIdentifiers": [{
+        	"schemeUri": "http://id.loc.gov/authorities/names",
+        	"nameIdentifier": {{ creator_lod.name_uri|default(":unas")|json_encode|raw }},
+        	"nameIdentifierScheme": "LCNAF" 
+            			}]             
+        }
+      ]
+    {% endif %}
+    {% if data.creator is empty and data.creator_lod is empty %}
+     {% set name_unknown = name_unknown|default("Unknown")|title %}
+      [
+        {
+          "name": {{ name_unknown|default("Unknown")|json_encode|raw }}
+        }
+      ]
+    {% endif %} 
+      ,
+      "titles": [
+        {
+          "title": {{ data.label|json_encode|raw }}
+        }
+      ],     
+      "publisher": {
+          "name": {{ data.publisher|default(":unas")|json_encode|raw }}
+          } 
+      ,    
+      "publicationYear": {{date_canditate|json_encode(constant('JSON_NUMERIC_CHECK'))|raw }}, 
+      "types": {
+        "resourceType": {{ normalized_type|default("Other")|json_encode|raw }},
+        "resourceTypeGeneral": {{ dataCiteType|json_encode|raw }}
+      },
+    {% if data.subjects_local|length > 0 %}
+      "subjects": 
+      {% if data.subjects_local is not iterable and data.subjects_local is not empty %}
+      [
+        {
+          "subject": {{ data.subjects_local|default(":unas")|json_encode|raw }},
+          "subjectScheme": "Local"
+        }
+      ]
+      {% elseif data.subjects_local is not empty %} 
+      [
+         {% for subjects_local in data.subjects_local %}
+           {{ loop.index0 != 0 ? "," : "" }} 
+         {
+         "subject": {{ subjects_local|default(":unas")|json_encode|raw }},
+         "subjectScheme": "Local"
+          }
+         {% endfor %}
+      ]
+      {% else %}
+      [
+      	{
+        "subject": {{ data.subjects_local|default(":unas")|json_encode|raw }},
+        "subjectScheme": "Local"
+        }
+      ]
+      {% endif %}
+     ,
+    {% endif %}
+      "descriptions": [
+        {
+          "lang": "en",
+          "description": {{ data.description|default(":unas")|json_encode|raw }},
+          "descriptionType": "Abstract"
+        }
+      ]
+   {# Example URL will be overriden by the API always - uncomment to show
+    ,
+      "url": "https://example.org"
+    #}   
+    }
