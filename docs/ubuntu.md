@@ -1,14 +1,14 @@
 <!--documentation
 ---
-title: "Installing Archipelago (1.5.0) Drupal 10 on Ubuntu 20.04+"
+title: "Installing Archipelago (1.6.0) Drupal 10 on Ubuntu 20.04+"
 tags:
   - Archipelago-deployment
   - Drupal 10
-  - Ubuntu 20.04
+  - Ubuntu
 ---
 documentation-->
 
-# Installing Archipelago (1.5.0) Drupal 10 on Ubuntu 20.04+
+# Installing Archipelago (1.6.0) Drupal 10 on Ubuntu 20.04+
 
 ## About running terminal commands
 
@@ -24,15 +24,36 @@ Happy deploying!
 
 ## Prerequisites
 
-- At least 15 Gbytes of free space (to get started. NLP container uses a bit more. Sorry!)
+- At least 15 Gbytes of free space (to get started. 20 Gbytes if evaluating ML)
 - Some basic Unix/Terminal Skills
-- 2-8 Gbytes of RAM (8 Recommended)
+- 2-8 Gbytes of RAM (8 Recommended, 16 if evaluating ML)
 - Install Docker if you don't have it already by running:
 
+
+
+
+# Add Docker's official GPG key:
+
 ```shell
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt update
+sudo apt install ca-certificates curl apt-transport-https software-properties-common
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+````
+
+# Add the repository to Apt sources:
+
+````shell
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+sudo apt update
 sudo apt update
 sudo apt-cache policy docker-ce
 sudo apt install docker-ce
@@ -98,7 +119,7 @@ If you run `docker-compose` as root user (using `sudo`) some enviromental variab
 
 There are two possible solutions.
 
-- The best is to add your [user to the docker group](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) (so no `sudo` needed).
+- The best is to add your [user to the docker group](https://docs.docker.com/engine/install/linux-postinstall) (so no `sudo` needed).
 - The second option is to replace every `{$PWD}` inside your `docker-compose.yml` with either the full path to your current folder, or with a `.` and wrap that whole line in double quotes, basically making the paths for volumes relatives.
 
 Instead of: `- ${PWD}:/var/www/html:cached`
@@ -109,7 +130,7 @@ Now that you got it, let's deploy:
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.5.0
+git checkout 1.6.0
 ```
 
 
@@ -148,7 +169,7 @@ user:minio
 pass:minio123
 ```
 
-and create a bucket named "archipelago". To do so go to the `Buckets` section in the navigation pane, and click `Create Bucket +`. Type `archipelago` under `Bucket Name` and submit, done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
+accept the license and then create a bucket named "archipelago". To do so go to the `Buckets` section in the navigation pane, and click `Create Bucket +`. Type `archipelago` under `Bucket Name` and submit, done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
 ## Step 3: Deploy Drupal 10 and the awesome Archipelago Modules
 
@@ -174,7 +195,7 @@ If this is the first time you're deploying Drupal using the provided Configurati
 docker exec -ti -u www-data esmero-php bash -c "cd web;../vendor/bin/drush -y si --verbose --existing-config --extra=--skip-ssl --db-url=mysql://root:esmerodb@esmero-db/drupal --account-name=admin --account-pass=archipelago -r=/var/www/html/web --sites-subdir=default --notify=false;drush cr;chown -R www-data:www-data sites;"
 ```
 
-Note: You will see warnings like these:
+Note: You might see warnings like these:
 
  `[warning] The "block_content:9aa72fb1-2817-44a7-8fb5-a3eb51166e83" was not found`
  `[warning] The "block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a" was not found`
@@ -187,7 +208,14 @@ Note 2: Please be patient. This step takes now 25-30% longer because of how the 
 
 Once finished, this will give you an `admin` Drupal user with `archipelago` as password (change this if running on a public instance!) and also set the right Docker Container owner for your Drupal installation files.
 
-Final note about Steps 2-3: You don't need to, nor should you do this more than once. You can destroy/stop/update, recreate your Docker containers, and start again (`git pull`), and your Drupal and Data will persist once you've passed the `Installation complete` message. I repeat, all other containers' data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable, and stable inside your `web/` folder.
+Note about Steps 2-3: You don't need to, nor should you do this more than once. You can destroy/stop/update, recreate your Docker containers, and start again (`git pull`), and your Drupal and Data will persist once you've passed the `Installation complete` message. I repeat, all other containers' data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable, and stable inside your `web/` folder.
+
+Final Note/optional: In between releases (Post release announcement, the period between 1.6.0 and 1.7.0), you can always run:
+
+```shell
+docker exec -ti esmero-php bash -c "composer update archipelago/* strawberryfield/* -W"
+```
+
 
 ## Step 4: Create a "demo "and a "jsonapi" user using drush and assign your "admin" user the Administrator Role.
 
