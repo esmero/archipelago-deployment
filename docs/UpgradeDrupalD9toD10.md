@@ -341,8 +341,6 @@ Done! (For realz now)
 
 Please login to your Archipelago and test/check all is working! Enjoy 1.3.0 and Drupal 10. Thanks!
 
-___
-
 ### Need help? Blue Screen? Missed a step? Need a hug and such?
 
 If you see any issues or errors or need help with a step, please let us know (ASAP!). You can either open an `issue` in this repository or use the [Google Group](https://groups.google.com/forum/#!forum/archipelago-commons). We are here to help.
@@ -351,6 +349,9 @@ If you see any issues or errors or need help with a step, please let us know (AS
 
 * [Diego Pino](https://github.com/DiegoPino)
 * [Allison Sherrick](https://github.com/alliomeria)
+
+### Historic Core Contributors (Same Caring)
+
 * [Giancarlo Birello](https://github.com/giancarlobi)
 
 ## License
