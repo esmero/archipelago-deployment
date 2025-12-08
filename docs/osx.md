@@ -1,6 +1,6 @@
 <!--documentation
 ---
-title: "Installing Archipelago (1.5.0) Drupal 10 on OSX (macOS)"
+title: "Installing Archipelago (1.6.0) Drupal 10 on OSX (macOS)"
 tags:
   - Archipelago-deployment
   - Drupal 10
@@ -9,7 +9,7 @@ tags:
 ---
 documentation-->
 
-# Installing Archipelago (1.5.0) Drupal 10 on OSX (macOS)
+# Installing Archipelago (1.6.0) Drupal 10 on macOS
 
 ## About running terminal commands
 
@@ -26,16 +26,16 @@ Happy deploying!
 ### OSX (macOS):
 
 - [Install Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
-  - For OSX (macOS) `Ventura` or Higher on Intel (i5/i7) and Apple Silicon Chips (M1/M2/M3/mM4) the tested version is: `4.41.2 (191736)` with Docker engine v28.1.1. You may go newer of course.
+  - For macOS `Ventura` or Higher on Intel (i5/i7) and Apple Silicon Chips (M1/M2/M3/M4) macOS Sonoma or higher, the latest tested version is: `4.47.0 (206054)` with Docker engine v28.4.0. You may go newer of course.
   - In `Preferences` -> `General`: check under `Choose file sharing implementation for your containers` either the new `VirtioFS`(faster) or `gRPC FUSE` and restart. Specially if you are using your `$HOME` folder for deploying, e.g. `/Users/username`.
   - In `Preferences` -> `Resources`: a minimum of 4 Gbytes of RAM is needed and works; 8 Gbytes is faster and snappier. Go for 16 GBytes if you are going to evaluate the ML/AI features on large sets of images/text.
 - [Install Github Desktop](https://desktop.github.com).
-- At least 15 Gbytes of free space (to get started).
+- At least 15 Gbytes of free space (to get started). 20 Gbytes if Running ML Containers
 - Being able to open a terminal.
 
 **Note:** Most Recent Docker Desktop for macOS removed `docker-compose` and replace it with `docker compose`. We updated this documentation to reflect the newer version. If you are running an older one, either upgrade or please replace every mention of `docker composer` with the legacy `docker-compose` when going through the steps.
 
-**Note:** Recent OSX (macOS) and newer Macs ship with **2 annoying things**: Apple Cloud Syncing User Folders and (wait for it) Case insensitive File Systems. If you are happy with your shiny new Mac (like i was) we are aware that it's better to deploy anything mounted outside of the `/User` folder or even better, in an **external drive formatted using a Case Sensitive Unix Filesystem** (Mac OS Extended (Case-sensitive, Journaled)).
+**Note:** Recent macOS and newer Macs ship with **2 annoying things**: Apple Cloud Syncing User Folders and (wait for it) Case insensitive File Systems. If you are happy with your shiny new Mac (like i was) we are aware that it's better to deploy anything mounted outside of the `/User` folder or even better, in an **external drive formatted using a Case Sensitive Unix Filesystem** (Mac OS Extended (Case-sensitive, Journaled)).
 
 **Note 2:** "gRPC FUSE" experience may vary, recent Docker for Mac does it well. In older RC1 ones it was evil. Changing/Disabling it after having installed Archipelago may affect your S3/Minio storage accessibility. Please let us know what your experience on this is.
 
@@ -83,7 +83,7 @@ Ok, now we are ready to start. Depending on what type of Chip your Apple uses yo
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.5.0
+git checkout 1.6.0
 cp docker-compose-osx.yml docker-compose.yml
 docker compose pull
 docker compose up -d
@@ -94,7 +94,7 @@ docker compose up -d
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.5.0
+git checkout 1.6.0
 cp docker-compose-arm64.yml docker-compose.yml
 docker compose pull
 docker compose up -d
@@ -112,7 +112,7 @@ user:minio
 pass:minio123
 ```
 
-and once logged in, press on "Buckets" (left tools column) and then on "Create Bucket"  (top right) and under "Bucket Name" type `archipelago`. Leave all other options unchecked for now (you can experiment with those later), and make sure you write `archipelago` (no spaces, lowercase) and press "Save". Done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
+and once logged in, accept the licence, then press on "Buckets" (left tools column) and then on "Create Bucket"  (top right) and under "Bucket Name" type `archipelago`. Leave all other options unchecked for now (you can experiment with those later), and make sure you write `archipelago` (no spaces, lowercase) and press "Save". Done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
 ## Step 3: Deploy Drupal 10 and the awesome Archipelago Modules
 
@@ -138,7 +138,7 @@ If this is the first time you deploy Drupal using the provided Configurations ru
 docker exec -ti -u www-data esmero-php bash -c "cd web;../vendor/bin/drush -y si --verbose --existing-config --extra=--skip-ssl --db-url=mysql://root:esmerodb@esmero-db/drupal --account-name=admin --account-pass=archipelago -r=/var/www/html/web --sites-subdir=default --notify=false;drush cr;chown -R www-data:www-data sites;"
 ```
 
-Note: You will see some warnings like these:
+Note: You might see some warnings like these:
 
  `[warning] The "block_content:9aa72fb1-2817-44a7-8fb5-a3eb51166e83" was not found`
  `[warning] The "block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a" was not found`
@@ -148,11 +148,20 @@ Note: You will see some warnings like these:
  
    Nothing to worry about. We will provide the missing part in Step 5.
 
-Note 2: Please be patient. This step takes since composer 2.0 25-30% longer because of how the most recent Drupal Installation code fetches translations and other resources (see `Performed install task`). This means progress might look like getting "stuck", go and get a coffee/tea and let it run to the end.
+Note 2: Please be patient. This step takes since composer 2.x 25-30% longer because of how the most recent Drupal Installation code fetches translations and other resources (see `Performed install task`). This means progress might look like getting "stuck", go and get a coffee/tea and let it run to the end.
 
 Once finished, this will give you an `admin` Drupal user with `archipelago` as password (Change this if running on a public instance!).
 
-Final Note about Steps 2-3: You don't need to, nor should you do this more than once. You can destroy/stop/update, recreate your Docker containers, and start again (`git pull`), and your Drupal and Data will persist once you're past the `Installation complete` message. I repeat, all other containers' data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable, and stable inside your `web/` folder.
+ Note about Steps 2-3: You don't need to, nor should you do this more than once. You can destroy/stop/update, recreate your Docker containers, and start again (`git pull`), and your Drupal and Data will persist once you're past the `Installation complete` message. I repeat, all other containers' data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable, and stable inside your `web/` folder.
+
+
+Final Note/optional: In between releases (Post release announcement, the period between 1.6.0 and 1.7.0), you can always run:
+
+```shell
+docker exec -ti esmero-php bash -c "composer update archipelago/* strawberryfield/* -W"
+```
+
+To fetch, under the same release version, any `Hot Fixes` and post release compatibility changes (e.g some weird deprecation introduced in a Drupal version we did not had at the time of the release)
 
 ## Step 4: Create a "demo "and a "jsonapi" user using drush and assign your "admin" user the Administrator Role.
 
@@ -178,7 +187,7 @@ Open your most loved Web Browser and point it to `http://localhost:8001`.
 
 Note: It can take some time to start the first time (Drupal needs some warming up).
 
-Also, to make this docker-compose easier to use we are doing something named `bind mounting` (or similar...) your folders. The good thing is that you can edit files in your machine, and they get updated instantly to docker. The bad thing is that the OSX (macOS) driver runs slower than on Linux. Speed is a huge factor here, but you get the flexibility of changing, backing up, and persisting files without needing a Docker University Degree.
+Also, to make this docker-compose easier to use we are doing something named `bind mounting` (or similar...) your folders. The good thing is that you can edit files in your machine, and they get updated instantly to docker. The bad thing is that the macOS driver runs slower than on Linux. Speed is a huge factor here, but you get the flexibility of changing, backing up, and persisting files without needing a Docker University Degree.
 
 ## Step 6: Optional but more fun if you add content
 
@@ -194,6 +203,9 @@ If you like this, let us know!
 
 * [Diego Pino](https://github.com/DiegoPino)
 * [Allison Sherrick](https://github.com/alliomeria)
+
+### Historic Core Contributors (Same Caring)
+
 * [Giancarlo Birello](https://github.com/giancarlobi)
 
 ## License
