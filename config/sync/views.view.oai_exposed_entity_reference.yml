@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.digital_object
+    - node.type.digital_object_collection
     - search_api.index.default_solr_index
   module:
     - search_api
@@ -153,11 +155,17 @@ display:
             sort_order: asc
             number_of_records: 0
             format: default_summary
-          specify_validation: false
+          specify_validation: true
           validate:
-            type: none
+            type: 'entity:node'
             fail: 'not found'
-          validate_options: {  }
+          validate_options:
+            bundles:
+              digital_object: digital_object
+              digital_object_collection: digital_object_collection
+            access: true
+            operation: view
+            multiple: 0
           break_phrase: false
           not: false
         nid:
@@ -188,8 +196,10 @@ display:
             type: 'entity:node'
             fail: 'not found'
           validate_options:
-            bundles: {  }
-            access: false
+            bundles:
+              digital_object: digital_object
+              digital_object_collection: digital_object_collection
+            access: true
             operation: view
             multiple: 0
           break_phrase: false
@@ -255,7 +265,7 @@ display:
           value:
             min: ''
             max: ''
-            value: '25'
+            value: '1'
           group: 1
           exposed: false
           expose:

@@ -180,6 +180,7 @@ configuration:
     - b5c12175-e0a9-49e9-a698-cbba342667e0
   api_type:
     - SWORD
+  resumption_token: resumptionToken
 views_source_ids:
   'oai_exposed_entity_reference:entity_reference_solr_1': 'oai_exposed_entity_reference:entity_reference_solr_1'
 cache: 0
