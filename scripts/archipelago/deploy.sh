@@ -87,7 +87,7 @@ curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Co
 
 echo -e "DataCite Schema V4 \n"
 
-curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity ---data-binary @'d8content/DataCite V4 Default Template for 1.6.0+-4003250e-a596-4c29-a7e3-d55ff1009d44.json';
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @'d8content/DataCite V4 Default Template for 1.6.0+-4003250e-a596-4c29-a7e3-d55ff1009d44.json';
 
 echo -e "Deploying Menu Items\n"
 
