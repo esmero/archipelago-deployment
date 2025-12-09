@@ -1,5 +1,6 @@
 {#-
-Updated for 1.5.0. Mostly styling and format
+Updated for 1.6.0. Adds VTTs to Audio too.
+Previously Updated for 1.5.0. Mostly styling and format
 Previously Updated 17/06/2024 for 1.4.0.
   - Adds Annotations for VTTs (Videos) and Images with Plain Text
 Previusly Updated 30/11/2023 for 1.3.0. Fixes wrong Video URLs, lack of initial values for itemCount
@@ -150,7 +151,6 @@ Without Double quotes.
 {% endif %}
 {%- endfor -%}
 {% for document in attribute(data, 'as:document') %}
-{#- WIZARDLY UPDATED BY ARCHIPELAGO -#}
 {%  if document['flv:exif'].PageCount %}
    {%- set pageCount =  document['flv:exif'].PageCount -%}
    {%- set cantaloupeid  = IIIFserverurl ~ document['url']|replace({'s3://':''})|replace({'private://':''})|url_encode -%}
@@ -225,7 +225,6 @@ Without Double quotes.
 ] -#}
     }{{ itemCount < TotalpageCount ? ',' : '' }} 
     {% endfor %}
-{#- WIZARDLY UPDATED BY ARCHIPELAGO -#}
   {% endif %}
 {% endfor %}
 {#- ImagesManifest -#}
@@ -358,7 +357,7 @@ Without Double quotes.
                 },
                 "language": "en"
               },
-              "target": "{{ nodeurl }}/iiif/canvas/p{{ itemCount }}" 
+              "target": "{{ nodeurl }}/iiif/canvas/p{{ itemCount }}#xywh=0,0,{{width}},{{height}}" 
             }{{ not loop.last ? ',' : '' }}       
     {% endfor -%} 
   {%- endif -%}
@@ -394,14 +393,15 @@ Without Double quotes.
                 {% if 'points="' in annotation.target.selector.value %} 
                   {% set mirador_path = annotation.target.selector.value | preg_replace('/.+?points="/','') | preg_replace('/".*/','') %} 
                   {% set mirador_path = "M" ~ (mirador_path|split(" ")|join("L")) ~ " z" %} 
-                  {% set target = {
+                  {%- set target = {
                      "source" : nodeurl|render ~ "/iiif/canvas/p" ~ itemCount, 
                      "selector": { 
                        "type":  annotation.target.selector.type, 
                        "value": '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="' ~ mirador_path ~ '"/></g></svg>' 
                      }, 
                      "type": "SpecificResource" 
-               	   } %}
+               	   } 
+               	   -%}
                    ,"target": {{ target|json_encode|raw }} 
               {% endif %}
             {% endif %}
@@ -563,6 +563,42 @@ Without Double quotes.
           ]
         }
       ]
+          {#- starts subtitle annotation for audio -#}
+          {% set vtts = [] %}
+          {%- for text_uuid, subtitle_track in data["as:text"] %} 
+              {% if subtitle_track["dr:for"] == audio["dr:for"] and subtitle_track["dr:mimetype"] == "text\/vtt" %}
+              {% set vtts = vtts|merge([{'dr:uuid': subtitle_track['dr:uuid'], 'name': subtitle_track['name']}]) %}
+              {% endif %}
+          {%- endfor %}
+       {% if vtts|length > 0 %}
+       , 
+       "annotations": [{ 
+           "id": "{{ nodeurl }}/iiif/audiosubtitles/s{{ itemCount }}", 
+           "type": "AnnotationPage", 
+           "items": [ 
+{%- for subtitle_track in vtts %} 
+            {
+              "id": "{{ nodeurl }}/iiif/audiosubtitles/p{{ itemCount }}/{{ subtitle_track['dr:uuid'] }}", 
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "body": {
+                "id": "{{ Webserverurl }}do/{{ node.uuid.value }}/file/{{ subtitle_track['dr:uuid'] }}/download/{{  subtitle_track["name"] }}",
+                "type": "Text",
+                "format": "text/vtt",
+                "label": {
+                  "en": [
+                    "{{ subtitle_track.name  }}"
+                  ]
+                },
+                "language": "en"
+              },
+              "target": "{{ nodeurl }}/iiif/canvas/p{{ itemCount }}" 
+            }{{ not loop.last ? ',' : '' }}       
+       {% endfor -%} 
+       ]
+    }]
+      {% endif %} 
+{#- ends subtitle annotation -#}  
     }{{ not loop.last ? ',' : '' }} 
   {% endfor %}
 {% endif %}
