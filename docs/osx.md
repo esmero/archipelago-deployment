@@ -1,15 +1,15 @@
 <!--documentation
 ---
-title: "Installing Archipelago (1.6.0) Drupal 10 on OSX (macOS)"
+title: "Installing Archipelago (2.0.0) Drupal 11 on OSX (macOS)"
 tags:
   - Archipelago-deployment
-  - Drupal 10
+  - Drupal 11
   - macOS
   - OSX
 ---
 documentation-->
 
-# Installing Archipelago (1.6.0) Drupal 10 on macOS
+# Installing Archipelago (2.0.0) Drupal 11 on macOS
 
 ## About running terminal commands
 
@@ -83,7 +83,7 @@ Ok, now we are ready to start. Depending on what type of Chip your Apple uses yo
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.6.0
+git checkout 2.0.0
 cp docker-compose-osx.yml docker-compose.yml
 docker compose pull
 docker compose up -d
@@ -94,7 +94,7 @@ docker compose up -d
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.6.0
+git checkout 2.0.0
 cp docker-compose-arm64.yml docker-compose.yml
 docker compose pull
 docker compose up -d
@@ -114,7 +114,7 @@ pass:minio123
 
 and once logged in, accept the licence, then press on "Buckets" (left tools column) and then on "Create Bucket"  (top right) and under "Bucket Name" type `archipelago`. Leave all other options unchecked for now (you can experiment with those later), and make sure you write `archipelago` (no spaces, lowercase) and press "Save". Done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
-## Step 3: Deploy Drupal 10 and the awesome Archipelago Modules
+## Step 3: Deploy Drupal 11 and the awesome Archipelago Modules
 
 The following will run composer inside the esmero-php container to download all dependencies and Drupal Core too:
 
@@ -155,7 +155,7 @@ Once finished, this will give you an `admin` Drupal user with `archipelago` as p
  Note about Steps 2-3: You don't need to, nor should you do this more than once. You can destroy/stop/update, recreate your Docker containers, and start again (`git pull`), and your Drupal and Data will persist once you're past the `Installation complete` message. I repeat, all other containers' data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable, and stable inside your `web/` folder.
 
 
-Final Note/optional: In between releases (Post release announcement, the period between 1.6.0 and 1.7.0), you can always run:
+Final Note/optional: In between releases (Post release announcement, the period between 2.0.0 and 2.1.0), you can always run:
 
 ```shell
 docker exec -ti esmero-php bash -c "composer update archipelago/* strawberryfield/* -W"
