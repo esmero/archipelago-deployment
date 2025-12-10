@@ -1,14 +1,14 @@
 <!--documentation
 ---
-title: "Installing Archipelago (1.6.0) Drupal 10 on Ubuntu 20.04+"
+title: "Installing Archipelago (2.0.0) Drupal 11 on Ubuntu 20.04+"
 tags:
   - Archipelago-deployment
-  - Drupal 10
+  - Drupal 11
   - Ubuntu
 ---
 documentation-->
 
-# Installing Archipelago (1.6.0) Drupal 10 on Ubuntu 20.04+
+# Installing Archipelago (2.0.0) Drupal 11 on Ubuntu 20.04+
 
 ## About running terminal commands
 
@@ -130,7 +130,7 @@ Now that you got it, let's deploy:
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.6.0
+git checkout 2.0.0
 ```
 
 
@@ -171,7 +171,7 @@ pass:minio123
 
 accept the license and then create a bucket named "archipelago". To do so go to the `Buckets` section in the navigation pane, and click `Create Bucket +`. Type `archipelago` under `Bucket Name` and submit, done! That is where we will persist all your Files and also your File copies of each Digital Object. You can always go there and explore what Archipelago (well really Strawberryfield does the hard work) has persisted so you can get comfortable with our architecture.
 
-## Step 3: Deploy Drupal 10 and the awesome Archipelago Modules
+## Step 3: Deploy Drupal 11 and the awesome Archipelago Modules
 
 The following will run composer inside the esmero-php container to download all dependencies and Drupal Core too.
 
