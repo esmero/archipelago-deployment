@@ -438,10 +438,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              metadata_api: '0'
-              metadata_pro: '0'
             expose_fields: false
             placeholder: ''
             searched_fields_id: ''
@@ -1260,7 +1256,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{% set parentnode = bamboo_load_entity('node', parent_id|render|raw) %}\r\n{% set annon_attributes = null %}\r\n{% if parentnode  %} \r\n   {% set annon_attributes = ' data-sbf-annotations-nodeuuid=' ~ parentnode.uuid.value ~ ' data-sbf-annotations-fileuuid=' ~ file_uuid|render|raw   ~ ' data-sbf-annotations-processors=chained_mobilenet_child' ~  ' data-sbf-annotations-flavorid =' ~ search_api_id |render|raw %}\r\n{% endif %}\r\n<img id=\"sbf-annotations-mobilenet{{search_api_id|escape('html_attr') }}\"   {{ annon_attributes}}  class=\"rounded\" src=\"http://localhost:8183/iiif/2/{{ sbf_file_uri|replace({'s3://': '' })|url_encode }}/full/320,/0/default.jpg\"/>"
+            text: "{% set parentnode = bamboo_load_entity('node', parent_id|sbf_render|raw) %}\r\n{% set annon_attributes = null %}\r\n{% if parentnode  %} \r\n   {% set annon_attributes = ' data-sbf-annotations-nodeuuid=' ~ parentnode.uuid.value ~ ' data-sbf-annotations-fileuuid=' ~ file_uuid|sbf_render|raw   ~ ' data-sbf-annotations-processors=chained_mobilenet_child' ~  ' data-sbf-annotations-flavorid =' ~ search_api_id |sbf_render|raw %}\r\n{% endif %}\r\n<img id=\"sbf-annotations-mobilenet{{search_api_id|sbf_render|escape('html_attr') }}\"   {{ annon_attributes}}  class=\"rounded\" src=\"http://localhost:8183/iiif/2/{{ sbf_file_uri|sbf_render|replace({'s3://': '' })|url_encode }}/full/320,/0/default.jpg\"/>"
             make_link: false
             path: ''
             absolute: false
@@ -2197,7 +2193,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{% set parentnode = bamboo_load_entity('node', parent_id|render|raw) %}\r\n{% set annon_attributes = null %}\r\n{% if parentnode  %} \r\n   {% set annon_attributes = ' data-sbf-annotations-nodeuuid=' ~ parentnode.uuid.value ~ ' data-sbf-annotations-fileuuid=' ~ file_uuid|render|raw  ~ ' data-sbf-annotations-processors=chained_vit_child'  ~ ' data-sbf-annotations-flavorid =' ~ search_api_id |render|raw %}\r\n{% endif %}\r\n<img id=\"sbf-annotations-vit{{search_api_id|escape('html_attr') }}\"   {{ annon_attributes}}  class=\"rounded\" src=\"http://localhost:8183/iiif/2/{{ sbf_file_uri|replace({'s3://': '' })|url_encode }}/full/320,/0/default.jpg\"/>"
+            text: "{% set parentnode = bamboo_load_entity('node', parent_id|sbf_render|raw) %}\r\n{% set annon_attributes = null %}\r\n{% if parentnode  %} \r\n   {% set annon_attributes = ' data-sbf-annotations-nodeuuid=' ~ parentnode.uuid.value ~ ' data-sbf-annotations-fileuuid=' ~ file_uuid|sbf_render|raw  ~ ' data-sbf-annotations-processors=chained_vit_child'  ~ ' data-sbf-annotations-flavorid =' ~ search_api_id |render|raw %}\r\n{% endif %}\r\n<img id=\"sbf-annotations-vit{{search_api_id|sbf_render|escape('html_attr') }}\"   {{ annon_attributes}}  class=\"rounded\" src=\"http://localhost:8183/iiif/2/{{ sbf_file_uri|sbf_render|replace({'s3://': '' })|url_encode }}/full/320,/0/default.jpg\"/>"
             make_link: false
             path: ''
             absolute: false
@@ -3094,7 +3090,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{% set parentnode = bamboo_load_entity('node', parent_id|render|raw) %}\r\n{% set annon_attributes = null %}\r\n{% if parentnode  %} \r\n{# ~ ' data-sbf-annotations-processors=chained_vit_child'  #}\r\n   {% set annon_attributes = ' data-sbf-annotations-nodeuuid=' ~ parentnode.uuid.value ~ ' data-sbf-annotations-fileuuid=' ~ file_uuid|render|raw   ~ ' data-sbf-annotations-flavorid =' ~ search_api_id |render|raw %}\r\n{% endif %}\r\n<img id=\"sbf-annotations-vit{{search_api_id|escape('html_attr') }}\"   {{ annon_attributes}}  class=\"rounded\" src=\"http://localhost:8183/iiif/2/{{ sbf_file_uri|replace({'s3://': '' })|url_encode }}/full/320,/0/default.jpg\"/>"
+            text: "{% set parentnode = bamboo_load_entity('node', parent_id|sbf_render|raw) %}\r\n{% set annon_attributes = null %}\r\n{% if parentnode  %} \r\n{# ~ ' data-sbf-annotations-processors=chained_vit_child'  #}\r\n   {% set annon_attributes = ' data-sbf-annotations-nodeuuid=' ~ parentnode.uuid.value ~ ' data-sbf-annotations-fileuuid=' ~ file_uuid|sbf_render|raw   ~ ' data-sbf-annotations-flavorid =' ~ search_api_id |sbf_render|raw %}\r\n{% endif %}\r\n<img id=\"sbf-annotations-vit{{search_api_id|sbf_render|escape('html_attr') }}\"   {{ annon_attributes}}  class=\"rounded\" src=\"http://localhost:8183/iiif/2/{{ sbf_file_uri|sbf_render|replace({'s3://': '' })|url_encode }}/full/320,/0/default.jpg\"/>"
             make_link: false
             path: ''
             absolute: false

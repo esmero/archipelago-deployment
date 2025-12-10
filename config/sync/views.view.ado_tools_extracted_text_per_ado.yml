@@ -488,10 +488,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              metadata_api: '0'
-              metadata_pro: '0'
             expose_fields: false
             placeholder: ''
             searched_fields_id: ''
@@ -873,7 +869,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<h5>\r\n{% set query = drupal_token('current-page:query:page_text')|render|trim|replace({'&quot;': '\"'}) %}\r\n{% if query is not empty and query != '[current-page:query:page_text]' %}\r\n<a href=\"{{ path('entity.node.canonical', {'node': parent_id}) }}#page/{{ sequence_id_int }}/search/{{ query|raw|url_encode }}\">{{ sbf_label|replace({'Sequence': 'Page'}) }}</a>\r\n{% else %}\r\n<a href=\"{{ path('entity.node.canonical', {'node': parent_id}) }}#page/{{ sequence_id_int }} \">{{ sbf_label|replace({'Sequence': 'Page'}) }}</a>\r\n{% endif %}\r\n</h5>"
+            text: "<h5>\r\n{% set query = drupal_token('current-page:query:page_text')|sbf_render|trim|replace({'&quot;': '\"'}) %}\r\n{% if query is not empty and query != '[current-page:query:page_text]' %}\r\n<a href=\"{{ path('entity.node.canonical', {'node': parent_id}) }}#page/{{ sequence_id_int }}/search/{{ query|raw|url_encode }}\">{{ sbf_label|replace({'Sequence': 'Page'}) }}</a>\r\n{% else %}\r\n<a href=\"{{ path('entity.node.canonical', {'node': parent_id}) }}#page/{{ sequence_id_int }} \">{{ sbf_label|replace({'Sequence': 'Page'}) }}</a>\r\n{% endif %}\r\n</h5>"
             make_link: false
             path: ''
             absolute: false
@@ -1179,10 +1175,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              metadata_api: '0'
-              metadata_pro: '0'
             expose_fields: false
             placeholder: ''
             searched_fields_id: ''

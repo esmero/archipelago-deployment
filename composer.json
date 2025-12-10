@@ -1,6 +1,6 @@
 {
     "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 10 /Archipelago projects with composer",
+    "description": "Project template for Drupal 11 /Archipelago projects with composer",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -17,12 +17,25 @@
         {
              "type": "composer",
              "url": "https://asset-packagist.org"
-        }
+        },
+        {
+         "type": "package",
+         "package": {
+            "name": "simeydotme/jquery-ui-slider-pips",
+            "version": "2.0.0",
+            "type": "drupal-library",
+            "source": {
+              "url": "https://github.com/simeydotme/jquery-ui-slider-pips",
+              "type": "git",
+              "reference": "2.0.0"
+            }
+         }
+       }
     ],
     "require": {
         "php": ">=8.1",
         "mglaman/composer-drupal-lenient": "^1",
-        "archipelago/ami": "1.0.0.x-dev",
+        "archipelago/ami": "2.0.0.x-dev",
         "archipelago/archipelago_subtheme": "1.5.0.x-dev",
         "aws/aws-php-sns-message-validator": "^1.5",
         "aws/aws-sdk-php": "^3.63",
@@ -31,29 +44,29 @@
         "composer/installers": "^1.9",
         "composer/semver": "^3.2",
         "cweagans/composer-patches": "^1",
-        "drupal/bamboo_twig": "5.x-dev",
+        "drupal/bamboo_twig": "^6",
         "drupal/bootstrap_barrio": "^5.5",
         "drupal/calendar": "^1.0@alpha",
-        "drupal/redis": "^1",
+        "drupal/redis": "^1.7",
         "drupal/config_inspector": "dev-2.1.x",
         "drupal/config_update": "2.0.x-dev",
         "drupal/context": "^5.0@RC",
-        "drupal/core": "^10.5",
-        "drupal/core-composer-scaffold": "^10.5",
-        "drupal/core-project-message": "^10.5",
-        "drupal/core-recommended": "^10.5",
-        "drupal/devel": "^5.5",
+        "drupal/core": "^11.2",
+        "drupal/core-composer-scaffold": "^11.2",
+        "drupal/core-project-message": "^11.2",
+        "drupal/core-recommended": "^11.2",
+        "drupal/devel": "^5.1",
         "drupal/display_field_copy": "^2.0",
-        "drupal/ds": "^3.23",
+        "drupal/ds": "^3.30",
         "drupal/facets": "2.0.x-dev",
         "drupal/field_permissions": "^1.0@RC",
-        "drupal/file_mdm": "^3.0",
-        "drupal/file_mdm_exif": "^2",
+        "drupal/file_mdm": "^3.1",
+        "drupal/file_mdm_exif": "^3",
         "drupal/flag": "^4.0",
         "drupal/google_api_client": "^4",
-        "drupal/imagemagick": "^4.0",
+        "drupal/imagemagick": "^4",
         "drupal/imce": "^3.0",
-        "drupal/inline_entity_form": "1.x-dev",
+        "drupal/inline_entity_form": "^3.0@RC",
         "drupal/jquery_ui_datepicker": "^2.0",
         "drupal/jquery_ui_slider": "^2.0",
         "drupal/jquery_ui_touch_punch": "^1.0.1",
@@ -64,10 +77,10 @@
         "drupal/restui": "^1.1",
         "drupal/role_theme_switcher": "^1.1",
         "drupal/s3fs": "3.x-dev",
-        "drupal/schema_metatag": "^1.3",
-        "drupal/search_api": "1.x-dev@dev",
+        "drupal/schema_metatag": "^3.0",
+        "drupal/search_api": "^1.4",
         "drupal/search_api_attachments": "^9.0",
-        "drupal/search_api_autocomplete": "^1.0",
+        "drupal/search_api_autocomplete": "^1.2",
         "drupal/search_api_solr": "^4.3",
         "drupal/smtp": "^1.0",
         "drupal/tokenuuid": "^2.0",
@@ -92,44 +105,48 @@
         "react/event-loop": "^1.5",
         "react/promise": "^3.2",
         "solarium/solarium": "^6",
-        "strawberryfield/format_strawberryfield": "1.6.0.x-dev",
-        "strawberryfield/strawberry_runners": "1.0.0.x-dev",
-        "strawberryfield/strawberryfield": "1.6.0.x-dev",
-        "strawberryfield/webform_strawberryfield": "1.6.0.x-dev",
+        "strawberryfield/format_strawberryfield": "2.0.0.x-dev",
+        "strawberryfield/strawberry_runners": "2.0.0.x-dev",
+        "strawberryfield/strawberryfield": "2.0.0.x-dev",
+        "strawberryfield/webform_strawberryfield": "2.0.0.x-dev",
         "swaggest/json-schema": "^0.12.10",
         "vlucas/phpdotenv": "^5.6",
         "webflo/drupal-finder": "^1.0.0",
         "wikibase/data-model": "9.6.1",
         "drupal/facets_date_range": "^1.0@beta",
-        "drupal/better_exposed_filters": "^7.1",
+        "drupal/better_exposed_filters": "^7",
         "monolog/monolog": "^2.9",
         "egulias/email-validator": "^4",
         "drupal/upgrade_status": "^4.3",
         "drupal/jquery_ui_effects": "^2.0",
-        "drupal/jquery_ui": "^1.6",
+        "drupal/jquery_ui": "^1.8",
         "archipelago/fragaria": "0.4.0.x-dev",
-        "drupal/color": "1.x-dev@dev",
-        "drupal/seven": "^1.0",
+        "drupal/color": "^2.0@alpha",
+        "drupal/seven": "^2.0@beta",
         "drupal/hal": "^2.0",
-        "drupal/ckeditor": "^1.0",
         "drupal/aggregator": "^2.2",
-        "drupal/classy": "^1.0",
+        "drupal/classy": "^2.0",
         "drupal/stable": "^2.0",
-        "drupal/form_mode_manager": "2.x-dev@dev",
+        "drupal/form_mode_manager": "^3.1",
         "drupal/rest_oai_pmh": "2.0.x-dev",
         "cebe/php-openapi": "^1.8",
         "league/openapi-psr7-validator": "0.22",
         "drupal/views_load_more": "^2.0@RC",
         "drupal/codemirror_editor": "^2.0",
         "ankitpokhrel/tus-php": "^2.4",
-        "archipelago/archipelago_subtheme_chiloe": "dev-main"
+        "archipelago/archipelago_subtheme_chiloe": "dev-main",
+        "composer": "*",
+        "drupal/ckeditor_lts": "^1.0",
+        "bower-asset/jquery-ui-slider-pips": "dev-master",
+        "simeydotme/jquery-ui-slider-pips": "^2.0",
+        "drupal/webform_bootstrap5": "11.0.x-dev@dev"
     },
     "require-dev": {
-        "drupal/core-dev": "^10.5",
+        "drupal/core-dev": "^11.2.10",
         "mglaman/drupal-check": "^1.1",
-        "phpcompatibility/php-compatibility": "dev-develop",
         "rector/rector": "^1",
-        "phpstan/phpstan": "^1"
+        "phpstan/phpstan": "^1",
+        "palantirnet/drupal-rector": "^0.21.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -215,20 +232,23 @@
         "enable-patching": true,
         "patches": {
            "drupal/facets": {
-             "D10.3 Facet Ajax fix": "https://www.drupal.org/files/issues/2024-08-10/3052574-session-not-set-warning-251.patch"
+             "D10.3+ Facet Ajax fix": "https://www.drupal.org/files/issues/2024-08-10/3052574-session-not-set-warning-251.patch"
            },
            "drupal/better_exposed_filters": {
-             "D10.3 Reset Fix": "https://www.drupal.org/files/issues/2024-07-08/3459811-6.patch"
+             "D10.3+ Reset Fix": "https://www.drupal.org/files/issues/2024-07-08/3459811-6.patch"
            },
            "ankitpokhrel/tus-php": {
              "Less Cache writes during upload fix": "patches/tus-file-cache.patch"
             },
            "league/openapi-psr7-validator" : {
              "Fixes OpenAPI 1.8 compat": "https://github.com/DiegoPino/openapi-psr7-validator/commit/94e9df4c152d0db46cfa475fa8bb319ff5ac551a.patch"
-            }
-	    },
+            },
+           "drupal/role_theme_switcher" : {
+             "D11 Role Theme Switcher compat": "https://git.drupalcode.org/project/role_theme_switcher/-/merge_requests/2.diff"
+             }
+	},
         "drupal-lenient": {
-            "allowed-list": ["drupal/form_mode_manager"]
+            "allowed-list": ["drupal/form_mode_manager", "drupal/role_theme_switcher"]
         }
     }
 }

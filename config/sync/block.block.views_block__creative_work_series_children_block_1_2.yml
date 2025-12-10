@@ -5,7 +5,6 @@ dependencies:
   config:
     - views.view.creative_work_series_children
   module:
-    - ctools
     - node
     - system
     - views
@@ -23,7 +22,7 @@ settings:
   label_display: '0'
   provider: views
   views_label: ''
-  items_per_page: none
+  items_per_page: null
   exposed: {  }
 visibility:
   'entity_bundle:node':

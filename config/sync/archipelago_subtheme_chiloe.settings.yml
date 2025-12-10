@@ -143,8 +143,8 @@ bootstrap_barrio_scroll_spy: ''
 bootstrap_barrio_google_fonts: dosis_opensans
 bootstrap_barrio_bootstrap_icons: 0
 bootstrap_barrio_icons: fontawesome
-bootstrap_barrio_base_primary_color: '#525AFF'
-bootstrap_barrio_base_secondary_color: '#F3E308'
+bootstrap_barrio_base_primary_color: '#af28fe'
+bootstrap_barrio_base_secondary_color: '#f3df16'
 bootstrap_barrio_body_color: bluegray-800
 bootstrap_barrio_body_bg_color: gray-100
 bootstrap_barrio_h1_color: base

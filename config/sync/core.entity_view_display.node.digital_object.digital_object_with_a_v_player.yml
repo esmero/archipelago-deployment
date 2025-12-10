@@ -65,10 +65,10 @@ third_party_settings:
             upload_json_key_source: ''
             embargo_json_key_source: ''
             hide_on_embargo: '0'
-            use_wavesurfer: true
+            use_wavesurfer: false
             wavesurfer_filesize_limit: '1 GB'
-            use_external_control: true
-            hide_native_control: true
+            use_external_control: false
+            hide_native_control: false
             use_external_control_shared: false
             external_control_element_active_class: bg-tertiary
             external_control_selector: .sbf_media_control
@@ -134,6 +134,7 @@ content:
     label: hidden
     settings:
       limit_access: edit
+      label: 'Raw Metadata (JSON)'
     third_party_settings: {  }
     weight: 5
     region: ds_content
