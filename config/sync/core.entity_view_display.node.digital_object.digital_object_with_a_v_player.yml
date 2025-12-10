@@ -55,7 +55,7 @@ third_party_settings:
             json_key_source: 'as:audio'
             max_width: '0'
             max_height: '50'
-            use_iiif_globals: '0'
+            use_iiif_globals: '1'
             number_media: 1
             jmespath:
               use_jmespath: false
@@ -65,11 +65,11 @@ third_party_settings:
             upload_json_key_source: ''
             embargo_json_key_source: ''
             hide_on_embargo: '0'
-            use_wavesurfer: false
+            use_wavesurfer: true
             wavesurfer_filesize_limit: '1 GB'
-            use_external_control: false
+            use_external_control: true
             hide_native_control: false
-            use_external_control_shared: false
+            use_external_control_shared: true
             external_control_element_active_class: bg-tertiary
             external_control_selector: .sbf_media_control
             viewer_overrides: "{\r\n        \"height\": 128,\r\n        \"width\": 720,\r\n        \"splitChannels\": false,\r\n        \"normalize\": false,\r\n        \"waveColor\": \"rgb(255, 156, 95)\",\r\n        \"progressColor\": \"#dd5e98\",\r\n        \"cursorColor\": \"#ddd5e9\",\r\n        \"cursorWidth\": 2,\r\n        \"barWidth\": null,\r\n        \"barGap\": null,\r\n        \"barRadius\": null,\r\n        \"barHeight\": null,\r\n        \"barAlign\": \"\",\r\n        \"minPxPerSec\": 1,\r\n        \"fillParent\": true,\r\n        \"autoplay\": false,\r\n        \"interact\": true,\r\n        \"dragToSeek\": false,\r\n        \"hideScrollbar\": false,\r\n        \"audioRate\": 1,\r\n        \"autoScroll\": true,\r\n        \"autoCenter\": true,\r\n        \"sampleRate\": 8000\r\n      }"
