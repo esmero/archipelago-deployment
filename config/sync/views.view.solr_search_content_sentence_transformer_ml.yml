@@ -378,16 +378,19 @@ display:
         type: search_api_none
         options: {  }
       empty:
-        result:
-          id: result
+        area:
+          id: area
           table: views
-          field: result
+          field: area
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: result
+          plugin_id: text
           empty: true
-          content: 'Oops! Sorry your search term did not match any indexed Digital Objects. Please try again.'
+          content:
+            value: " <div class=\"card\">\r\n      <div class=\"card-body\">\r\n            <p>To evaluate the ML Semantic (Text) search (via ML Strawberry Post processors, chained transformer from OCR), you need to make sure that:<p>\r\n            <ul>\r\n                  <li> Docker is using  \"esmero/esmero-nlp:1.4.2-amd64\" or \"esmero/esmero-nlp:1.4.2-arm64\" as esmero-nlp images</li>\r\n                  <li> You need to either (one of / or both):</li>\r\n                  <li>\r\n                        <ul>\r\n                              <li>Ingest Book or Page type of ADOs with PDFs/and or Images and let Hydroponics processor OCR chain the sentence transformer to generate vectorized Text representations</li>\r\n                              <li>Force re-reprocessing (Advanced Search and replace View)  all ADOs you want to test against checking the Pager Post processor (which chains then OCR and the Sentence transformer).</li>\r\n                        </ul>\r\n                  </li>\r\n            </ul>\r\n      </div>\r\n</div>"
+            format: basic_html
+          tokenize: false
       sorts:
         sbf_label:
           id: sbf_label
