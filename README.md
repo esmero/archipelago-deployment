@@ -19,7 +19,7 @@ Also:
 
 This release includes:
 - minio.io (latest) for local S3 with Console.
-- Updated Apache Solr 9.10.0 with the wizardly Solr OCR Highlight library [v0.9.4](https://github.com/dbmdz/solr-ocrhighlighting/releases/tag/wip) built by the Development Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter and team.
+- Updated Apache Solr 9.10.0 with updated wizardly Solr OCR Highlight library [v0.9.5](https://github.com/dbmdz/solr-ocrhighlighting/releases/tag/0.9.5) built by the Development Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter and team.
 - MySQL 8.0.44 (amd64/x86)/MariaDB 10.6.22(Arm64/M1/M2/M3/M4)
 - NGINX 1.29.3
 - Custom PHP-FPM 8.3 multi architecture, fine-tuned for Drupal 10/11 , WARC to WACZ processing, Tesseract 5 with JP2 support, PDFAlto and Composer 2.x, Drush 13.x-dev, FFMPEG, FIDO
