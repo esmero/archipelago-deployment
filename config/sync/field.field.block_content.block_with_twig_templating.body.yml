@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.block_with_twig_templating_
+    - block_content.type.block_with_twig_templating
     - field.storage.block_content.body
   module:
     - text
-id: block_content.block_with_twig_templating_.body
+id: block_content.block_with_twig_templating.body
 field_name: body
 entity_type: block_content
-bundle: block_with_twig_templating_
+bundle: block_with_twig_templating
 label: Body
 description: ''
 required: false

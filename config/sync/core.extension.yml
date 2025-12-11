@@ -18,6 +18,7 @@ module:
   block_content: 0
   breakpoint: 0
   ckeditor: 0
+  ckeditor5: 0
   codemirror_editor: 0
   color: 0
   comment: 0
@@ -100,6 +101,7 @@ module:
   search_api: 0
   search_api_autocomplete: 0
   search_api_solr: 0
+  search_api_solr_autocomplete: 0
   serialization: 0
   settings_tray: 0
   shortcut: 0

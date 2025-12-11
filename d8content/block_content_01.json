@@ -1,10 +1,10 @@
 {
   "data": {
-    "type": "block_content--block_with_twig_templating_",
+    "type": "block_content--block_with_twig_templating",
     "id": "1cdf7155-eb60-4f27-9e5e-64fffe93127a",
     "links": {
       "self": {
-        "href": "http://localhost:8001/jsonapi/block_content/block_with_twig_templating_/1cdf7155-eb60-4f27-9e5e-64fffe93127a"
+        "href": "http://localhost:8001/jsonapi/block_content/block_with_twig_templating/1cdf7155-eb60-4f27-9e5e-64fffe93127a"
       }
     },
     "attributes": {

@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.block_with_twig_templating_
+    - block_content.type.block_with_twig_templating
     - field.storage.block_content.field_twig_content
   module:
     - twig_field
-id: block_content.block_with_twig_templating_.field_twig_content
+id: block_content.block_with_twig_templating.field_twig_content
 field_name: field_twig_content
 entity_type: block_content
-bundle: block_with_twig_templating_
+bundle: block_with_twig_templating
 label: 'Twig Content'
 description: ''
 required: false
@@ -18,5 +18,5 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  display_mode: block_content.block_with_twig_templating_.default
+  display_mode: block_content.block_with_twig_templating.default
 field_type: twig
