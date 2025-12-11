@@ -1,10 +1,10 @@
 {
   "data": {
-    "type": "block_content--block_with_twig_templating_",
+    "type": "block_content--block_with_twig_templating",
     "id": "9aa72fb1-2817-44a7-8fb5-a3eb51166e83",
     "links": {
       "self": {
-        "href": "http://esmero-web/jsonapi/block_content/block_with_twig_templating_/9aa72fb1-2817-44a7-8fb5-a3eb51166e83?resourceVersion=id%3A10"
+        "href": "http://esmero-web/jsonapi/block_content/block_with_twig_templating/9aa72fb1-2817-44a7-8fb5-a3eb51166e83?resourceVersion=id%3A10"
       }
     },
     "attributes": {

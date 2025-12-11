@@ -3,9 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.block_with_twig_templating_
-id: block_content.block_with_twig_templating_
+    - block_content.type.block_with_twig_templating
+id: block_content.block_with_twig_templating
 target_entity_type_id: block_content
-target_bundle: block_with_twig_templating_
+target_bundle: block_with_twig_templating
 default_langcode: site_default
 language_alterable: false

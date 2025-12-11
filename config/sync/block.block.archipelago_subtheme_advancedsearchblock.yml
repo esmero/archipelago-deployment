@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:block_with_twig_templating_:9aa72fb1-2817-44a7-8fb5-a3eb51166e83'
+    - 'block_content:block_with_twig_templating:9aa72fb1-2817-44a7-8fb5-a3eb51166e83'
   module:
     - block_content
     - context
