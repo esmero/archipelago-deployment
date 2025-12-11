@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.restricted_html
+    - search_api_autocomplete.search.solr_search_content
   module:
     - comment
     - contact
