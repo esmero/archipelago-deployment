@@ -183,7 +183,14 @@ Archipelago is more fun without having to start writing Metadata Displays (in Tw
 docker exec -ti esmero-php bash -c 'scripts/archipelago/deploy.sh'
 ```
 
-Open your most loved Web Browser and point it to `http://localhost:8001`.
+Open your most loved Web Browser and point it to `http://localhost:8001` and log in as your 'admin' user.
+
+### Run any Pending Search API Tasks (New to Drupal Search API 1.4.x)
+
+This is new to us and specific to this version of Drupal's Search API.
+Please, Once logged in, navigate to <http://localhost:8001/admin/config/search/search-api> and press, if present obviuosly
+, the "Execute pending tasks" button (in blue). This is new behavior (during a deployment from cero) for Drupal Search API. It should take less tan a second and will inform the Search Index that there are indeed no OCRs/VTTs or ML annotations (strawberry flavors) in the system yet (something that was never an issue before). Eventually we will understand what changed in their November 2025 code making this extra step needed, and why also they removed the drush command that allows this to be run via the command line. Oh well.
+
 
 Note: It can take some time to start the first time (Drupal needs some warming up).
 
