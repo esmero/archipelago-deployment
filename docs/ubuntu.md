@@ -29,9 +29,6 @@ Happy deploying!
 - 2-8 Gbytes of RAM (8 Recommended, 16 if evaluating ML)
 - Install Docker if you don't have it already by running:
 
-
-
-
 # Add Docker's official GPG key:
 
 ```shell
@@ -44,7 +41,7 @@ sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 # Add the repository to Apt sources:
 
-````shell
+```shell
 sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
 Types: deb
 URIs: https://download.docker.com/linux/ubuntu
