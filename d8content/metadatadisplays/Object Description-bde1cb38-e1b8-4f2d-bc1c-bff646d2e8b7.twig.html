@@ -14,7 +14,7 @@
 {%- macro html_output(html_title, source_datum, list_wrapper, markdown, title_tag) -%} 
   {% set list_wrapper = list_wrapper|default("p") %}
   {% set markdown = markdown|default(false) %}
-  {% title_tag = title_tag|default("h3") %}
+  {% set title_tag = title_tag|default("h3") %}
   {# -- Macro note: if markdown is selected no wrapper will be used -#} 
   {%- if source_datum and source_datum|length > 0 -%} 
     {%- if html_title|length > 0 -%} 
