@@ -215,7 +215,8 @@
         "enable-patching": true,
         "patches": {
            "drupal/facets": {
-             "D10.3 Facet Ajax fix": "https://www.drupal.org/files/issues/2024-08-10/3052574-session-not-set-warning-251.patch"
+             "D10.3 Facet Ajax fix": "https://www.drupal.org/files/issues/2024-08-10/3052574-session-not-set-warning-251.patch",
+			 "Facet Summary Count fix": "https://raw.githubusercontent.com/esmero/archipelago-deployment-live/refs/heads/1.6.0/drupal/patches/2.x-facets-summarycount_returntype.patch"
            },
            "drupal/better_exposed_filters": {
              "D10.3 Reset Fix": "https://www.drupal.org/files/issues/2024-07-08/3459811-6.patch"
