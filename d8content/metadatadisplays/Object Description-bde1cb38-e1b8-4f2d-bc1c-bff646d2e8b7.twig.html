@@ -1,16 +1,20 @@
 {#- 
-Last updated December 5th, 2025. Adds Custom Media Controller and example inline 3D Viewer. Adds extra "title_tag" to html_output, defaults to h3
-Previously updated August 29, 2025 - update the Administrative Information section with additional elements.
-Previously updated 15/02/2024 to add |striptags to html_output macro 
-Previously updated 31/10/2023 for 1.3.0 
-- switched to Macro approach; added Nav-tabs for main description display and downloads menu. 
-- MACROS: 
-  - uses two macros originally created by Diego, 
-  - uses two macros originally created by Allison for internal-search referenced elements 
+- Last updated May 21st, 2026. Removes any default values for Macro arguments. Deprecated since https://symfony.com/blog/twig-3-26-0-released
+- Previously updated December 5th, 2025. Adds Custom Media Controller and example inline 3D Viewer. Adds extra "title_tag" to html_output, defaults to h3
+- Previously updated August 29, 2025 - update the Administrative Information section with additional elements.
+- Previously updated 15/02/2024 to add |striptags to html_output macro 
+- Previously updated 31/10/2023 for 1.3.0 
+  - switched to Macro approach; added Nav-tabs for main description display and downloads menu. 
+  - MACROS: 
+    - uses two macros originally created by Diego, 
+    - uses two macros originally created by Allison for internal-search referenced elements 
 - File downloads nav-tab 
 -#} 
 {#- ------ Macros Start ----- -#} 
-{%- macro html_output(html_title, source_datum, list_wrapper = "p", markdown = false, title_tag = "h3") -%} 
+{%- macro html_output(html_title, source_datum, list_wrapper, markdown, title_tag) -%} 
+  {% set list_wrapper = list_wrapper|default("p") %}
+  {% set markdown = markdown|default(false) %}
+  {% title_tag = title_tag|default("h3") %}
   {# -- Macro note: if markdown is selected no wrapper will be used -#} 
   {%- if source_datum and source_datum|length > 0 -%} 
     {%- if html_title|length > 0 -%} 
@@ -33,7 +37,8 @@ Previously updated 31/10/2023 for 1.3.0
     {%- endif -%} 
   {%- endif -%}
 {%- endmacro html_output -%} 
-{%- macro html_output_list(html_title, source_datum, markdown = false) -%} 
+{%- macro html_output_list(html_title, source_datum, markdown) -%}
+  {% set markdown = markdown|default(false) %}
   {# -- Macro note: if markdown is selected no wrapper will be used -#} 
   {%- if source_datum and source_datum|length > 0 -%} 
     {%- if html_title|length > 0 -%} 

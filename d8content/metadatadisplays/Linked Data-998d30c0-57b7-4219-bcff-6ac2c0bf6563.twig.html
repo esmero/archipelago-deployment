@@ -1,5 +1,6 @@
 {#
-- Updated 05/12/2025 for 1.6.0. Use a macro now and corrects dl/dt/dd hierarchy issues we had (W3C)
+- Last updated May 21st, 2026. Removes any default values for Macro arguments. Deprecated since https://symfony.com/blog/twig-3-26-0-released
+- Previously Updated 05/12/2025 for 1.6.0. Use a macro now and corrects dl/dt/dd hierarchy issues we had (W3C)
 - Previously Updated 31/10/2023 for 1.3.0 
 - Previously updated June ~ April 2023 for by Diego & Allison for 1.1.0 release: better HTML formatting.
 - Previously updated July 2022 by Allison for: Internal and external search for Pubmed subjects and comment out Europeana subjects for now--noting about API key; Include url_encode for search terms and adjust indentation for human readability.
@@ -7,19 +8,20 @@
 LC Subjects & Names, Getty Terms show FA Link Icon for external reference. Wikidata Subjects and Agents show Wikipedia W icon. VIAF shows vocab name in pill box.
 Placeholder FA icon and text for when no linked data is provided. #}
 {# Use for LoD elements with URI and label values#} 
-{%- macro html_output_search_lod(html_title, source_datum, search_facet, icon_type_classes = "fas fa-link fa-1x") -%} 
+{%- macro html_output_search_lod(html_title, source_datum, search_facet, icon_type_classes) -%} 
+  {% set icon_type_classes = icon_type_classes|default("fas fa-link fa-1x") %}
   {%- if source_datum and source_datum|length > 0 %} 
-  <dl> 
+  <dl>
     <dt class="text-truncate">{{html_title|default("LoD")}}</dt>
     {%- for source_data in source_datum -%}
-    <dd> 
+    <dd>
       <ul class="list-unstyled nav nav-pills">
 	  <li class="nav-item facet-item"><a class="py-1 nav-link" rel="nofollow" href="/search?f%5B0%5D={{search_facet}}%3A{{ source_data.label|url_encode }}" target="_blank" >{{ source_data.label }}</a></li> 
 	  <li class="nav-item"><a class="py-1 nav-link active" href="{{ source_data.uri }}" target="_blank"><i class="{{icon_type_classes}}"></i></a></li>
-      </ul> 
+      </ul>
     </dd>
     {%- endfor -%} 
-  </dl> 
+  </dl>
   {% endif -%} 
 {%- endmacro html_output_search_lod -%} 
 {% if data.subject_loc|length > 0 %}
