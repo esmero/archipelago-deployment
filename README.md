@@ -11,6 +11,7 @@ documentation-->
 # Archipelago Docker Deployment
 
 **Updated:** May 22nd 2026 (1.6.0 with improvements) for https://www.drupal.org/psa-2026-05-18 
+
 **Previously Updated:** Dec 3rd 2025 (1.6.0)
 
 This repository serves as bootstrap for a Archipelago 1.6.0 under Drupal 10 deployment on a localhost for development/testing/customizing and learning via Docker, providing a unified experience:
