@@ -10,7 +10,8 @@ documentation-->
 
 # Archipelago Docker Deployment
 
-**Updated:** Dec 3rd 2025 (1.6.0)
+**Updated:** May 22nd 2026 (1.6.0 with improvements) for https://www.drupal.org/psa-2026-05-18 
+**Previously Updated:** Dec 3rd 2025 (1.6.0)
 
 This repository serves as bootstrap for a Archipelago 1.6.0 under Drupal 10 deployment on a localhost for development/testing/customizing and learning via Docker, providing a unified experience:
 Also: 
@@ -20,12 +21,12 @@ Also:
 This release includes:
 - minio.io (latest) for local S3 with Console.
 - Updated Apache Solr 9.10.0 with updated wizardly Solr OCR Highlight library [v0.9.5](https://github.com/dbmdz/solr-ocrhighlighting/releases/tag/0.9.5) built by the Development Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter and team.
-- MySQL 8.0.44 (amd64/x86)/MariaDB 10.6.22(Arm64/M1/M2/M3/M4)
-- NGINX 1.29.3
+- MySQL 8.0.44 (amd64/x86)/MariaDB 10.6.24(Arm64/M1/M2/M3/M4)
+- NGINX 1.31.0
 - Custom PHP-FPM 8.3 multi architecture, fine-tuned for Drupal 10/11 , WARC to WACZ processing, Tesseract 5 with JP2 support, PDFAlto and Composer 2.x, Drush 13.x-dev, FFMPEG, FIDO
 - Natural Language Processing via NLPWEB64 multi architecture with FastText Language detection (Thanks Mike Bennett!) or alternatively Machine learning/ML containers/APIs. (Image similarity: YOLO,MobileNet,ViT(New),Insightface and Text transformer: SBERT) differentiated for `arm64` and `amd/intel/64`
 - Cantaloupe 6.0.5 Snapshot on Java 23 multi architecture as IIIF2/3 Server with precise Video Frame, PDF extraction, PDF Tiling support with tons of community and custom fixes.
-- A Skeleton Project setup to run latest Version of Drupal 10 (10.5.x), Updated Archipelago Chiloe Base theme based on Bootstrap 5 and Strawberry Field modules on 1.6.0 & friends on 1.0.0
+- A Skeleton Project setup to run latest Version of Drupal 10 (10.6.9), Updated Archipelago Chiloe Base theme based on Bootstrap 5 and Strawberry Field modules on 1.6.0 & friends on 1.0.0
 - Complete support for Apple Silicon *M1/M2/M3/M4* Machines and in general `arm64` architecture Chips like Raspberry Pi 4, with specially built arm64 docker containers. The only differences now between deployment strategies is the DB. Blazing fast OCR.
 
 The skeleton project contains all the pieces needed to run a local deployment of a vanilla Archipelago including (*YES*!) content provided as an optional feature from [archipelago-recyclables](https://github.com/esmero/archipelago-recyclables)
