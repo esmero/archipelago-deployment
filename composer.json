@@ -38,10 +38,10 @@
         "drupal/config_inspector": "dev-2.1.x",
         "drupal/config_update": "2.0.x-dev",
         "drupal/context": "^5.0@RC",
-        "drupal/core": "^10.5",
-        "drupal/core-composer-scaffold": "^10.5",
-        "drupal/core-project-message": "^10.5",
-        "drupal/core-recommended": "^10.5",
+        "drupal/core": "^10.6",
+        "drupal/core-composer-scaffold": "^10.6",
+        "drupal/core-project-message": "^10.6",
+        "drupal/core-recommended": "^10.6",
         "drupal/devel": "^5.5",
         "drupal/display_field_copy": "^2.0",
         "drupal/ds": "^3.23",
@@ -122,12 +122,13 @@
         "drupal/views_load_more": "^2.0@RC",
         "drupal/codemirror_editor": "^2.0",
         "ankitpokhrel/tus-php": "^2.4",
-        "archipelago/archipelago_subtheme_chiloe": "dev-main"
+        "archipelago/archipelago_subtheme_chiloe": "dev-main",
+        "drupal/coder": "^8"
     },
     "require-dev": {
-        "drupal/core-dev": "^10.5",
+        "drupal/core-dev": "^10.6",
         "mglaman/drupal-check": "^1.1",
-        "phpcompatibility/php-compatibility": "dev-develop",
+        "phpcompatibility/php-compatibility": "10.0.0-alpha2",
         "rector/rector": "^1",
         "phpstan/phpstan": "^1"
     },
