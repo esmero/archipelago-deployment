@@ -139,7 +139,8 @@
         "drupal/ckeditor_lts": "^1.0",
         "bower-asset/jquery-ui-slider-pips": "dev-master",
         "simeydotme/jquery-ui-slider-pips": "^2.0",
-        "drupal/webform_bootstrap5": "11.0.x-dev@dev"
+        "drupal/webform_bootstrap5": "11.0.x-dev@dev",
+        "drupal/action": "^0.2.2"
     },
     "require-dev": {
         "drupal/core-dev": "^11.3",
