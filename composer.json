@@ -51,10 +51,10 @@
         "drupal/config_inspector": "dev-2.1.x",
         "drupal/config_update": "2.0.x-dev",
         "drupal/context": "^5.0@RC",
-        "drupal/core": "^11.2",
-        "drupal/core-composer-scaffold": "^11.2",
-        "drupal/core-project-message": "^11.2",
-        "drupal/core-recommended": "^11.2",
+        "drupal/core": "^11.3",
+        "drupal/core-composer-scaffold": "^11.3",
+        "drupal/core-project-message": "^11.3",
+        "drupal/core-recommended": "^11.3",
         "drupal/devel": "^5.1",
         "drupal/display_field_copy": "^2.0",
         "drupal/ds": "^3.30",
@@ -142,7 +142,7 @@
         "drupal/webform_bootstrap5": "11.0.x-dev@dev"
     },
     "require-dev": {
-        "drupal/core-dev": "^11.2.10",
+        "drupal/core-dev": "^11.3",
         "mglaman/drupal-check": "^1.1",
         "rector/rector": "^1",
         "phpstan/phpstan": "^1",
