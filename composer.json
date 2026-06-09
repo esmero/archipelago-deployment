@@ -5,8 +5,8 @@
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "",
-            "role": ""
+            "name": "Diego Pino Navarro",
+            "role": "Maintainer"
         }
     ],
     "repositories": [
@@ -17,12 +17,16 @@
         {
              "type": "composer",
              "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/DiegoPino/tableschema-php"
         }
     ],
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.3",
         "mglaman/composer-drupal-lenient": "^1",
-        "archipelago/ami": "1.0.0.x-dev",
+        "archipelago/ami": "1.1.0.x-dev",
         "archipelago/archipelago_subtheme": "1.5.0.x-dev",
         "aws/aws-php-sns-message-validator": "^1.5",
         "aws/aws-sdk-php": "^3.63",
@@ -92,10 +96,10 @@
         "react/event-loop": "^1.5",
         "react/promise": "^3.2",
         "solarium/solarium": "^6",
-        "strawberryfield/format_strawberryfield": "1.6.0.x-dev",
-        "strawberryfield/strawberry_runners": "1.0.0.x-dev",
-        "strawberryfield/strawberryfield": "1.6.0.x-dev",
-        "strawberryfield/webform_strawberryfield": "1.6.0.x-dev",
+        "strawberryfield/format_strawberryfield": "1.7.0.x-dev",
+        "strawberryfield/strawberry_runners": "1.1.0.x-dev",
+        "strawberryfield/strawberryfield": "1.7.0.x-dev",
+        "strawberryfield/webform_strawberryfield": "1.7.0.x-dev",
         "swaggest/json-schema": "^0.12.10",
         "vlucas/phpdotenv": "^5.6",
         "webflo/drupal-finder": "^1.0.0",
@@ -122,8 +126,10 @@
         "drupal/views_load_more": "^2.0@RC",
         "drupal/codemirror_editor": "^2.0",
         "ankitpokhrel/tus-php": "^2.4",
-        "archipelago/archipelago_subtheme_chiloe": "dev-main",
+        "archipelago/archipelago_subtheme_chiloe": "1.7.0.x-dev",
         "drupal/coder": "^8"
+        "frictionlessdata/datapackage": "dev-ISSUE-56 as dev-main",
+        "frictionlessdata/tableschema": "dev-ISSUE-78 as v1.2.3",
     },
     "require-dev": {
         "drupal/core-dev": "^10.6",
@@ -217,7 +223,7 @@
         "patches": {
            "drupal/facets": {
              "D10.3 Facet Ajax fix": "https://www.drupal.org/files/issues/2024-08-10/3052574-session-not-set-warning-251.patch",
-			 "Facet Summary Count fix": "https://raw.githubusercontent.com/esmero/archipelago-deployment-live/refs/heads/1.6.0/drupal/patches/2.x-facets-summarycount_returntype.patch"
+	     "Facet Summary Count fix": "https://raw.githubusercontent.com/esmero/archipelago-deployment-live/refs/heads/1.7.0/drupal/patches/2.x-facets-summarycount_returntype.patch"
            },
            "drupal/better_exposed_filters": {
              "D10.3 Reset Fix": "https://www.drupal.org/files/issues/2024-07-08/3459811-6.patch"
@@ -228,7 +234,7 @@
            "league/openapi-psr7-validator" : {
              "Fixes OpenAPI 1.8 compat": "https://github.com/DiegoPino/openapi-psr7-validator/commit/94e9df4c152d0db46cfa475fa8bb319ff5ac551a.patch"
             }
-	    },
+	 },
         "drupal-lenient": {
             "allowed-list": ["drupal/form_mode_manager"]
         }
