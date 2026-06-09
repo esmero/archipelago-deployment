@@ -127,9 +127,9 @@
         "drupal/codemirror_editor": "^2.0",
         "ankitpokhrel/tus-php": "^2.4",
         "archipelago/archipelago_subtheme_chiloe": "1.7.0.x-dev",
-        "drupal/coder": "^8"
+        "drupal/coder": "^8",
         "frictionlessdata/datapackage": "dev-ISSUE-56 as dev-main",
-        "frictionlessdata/tableschema": "dev-ISSUE-78 as v1.2.3",
+        "frictionlessdata/tableschema": "dev-ISSUE-78 as v1.2.3"
     },
     "require-dev": {
         "drupal/core-dev": "^10.6",
