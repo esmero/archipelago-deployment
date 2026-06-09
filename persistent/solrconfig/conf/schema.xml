@@ -49,7 +49,7 @@
     that avoids logging every request
 -->
 
-<schema name="drupal-4.3.2-solr-9.x-0" version="1.6">
+<schema name="drupal-4.3.0-solr-10.x-0" version="1.6">
   <!-- attribute "name" is the name of this schema and is only used for display purposes.
        version="x.y" is Solr's version number for the schema syntax and
        semantics.  It should not normally be changed by applications.
@@ -219,6 +219,9 @@
   <dynamicField name="hts_*" type="pint" indexed="true" stored="false" docValues="true"/>
   <dynamicField name="htm_*" type="pints" indexed="true" stored="false" docValues="true"/>
 
+  <!-- Unindexed string fields that can be used to store values that won't be searchable but have docValues -->
+  <dynamicField name="zdvs_*" type="string" indexed="false" stored="true" docValues="true"/>
+  <dynamicField name="zdvm_*" type="strings" indexed="false" stored="true" docValues="true"/>
   <!-- Unindexed string fields that can be used to store values that won't be searchable -->
   <dynamicField name="zs_*" type="string" indexed="false" stored="true"/>
   <dynamicField name="zm_*" type="strings" indexed="false" stored="true"/>
@@ -236,9 +239,6 @@
   <dynamicField name="bboxm_*" type="bbox" indexed="true" stored="true" multiValued="true" />
   <dynamicField name="rpts_*" type="location_rpt" indexed="true" stored="true" multiValued="false" />
   <dynamicField name="rptm_*" type="location_rpt" indexed="true" stored="true" multiValued="true" />
-
-  <!-- External file fields -->
-  <dynamicField name="eff_*" type="file"/>
 
   <!-- A random sort field -->
   <dynamicField name="random_*" type="random" indexed="true" stored="true"/>
@@ -300,15 +300,6 @@
     <fieldType name="pfloats" class="solr.FloatPointField" docValues="true" multiValued="true"/>
     <fieldType name="plongs" class="solr.LongPointField" docValues="true" multiValued="true"/>
     <fieldType name="pdoubles" class="solr.DoublePointField" docValues="true" multiValued="true"/>
-
-    <!--
-     The ExternalFileField type gets values from an external file instead of the
-     index. This is useful for data such as rankings that might change frequently
-     and require different update frequencies than the documents they are
-     associated with.
-    -->
-    <fieldType name="file" keyField="id" defVal="1" stored="false" indexed="false" class="solr.ExternalFileField"/>
-
     <!-- The format for this date field is of the form 1995-12-31T23:59:59Z, and
          is a more restricted form of the canonical representation of dateTime
          http://www.w3.org/TR/xmlschema-2/#dateTime
