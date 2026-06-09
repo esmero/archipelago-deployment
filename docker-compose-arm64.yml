@@ -34,7 +34,7 @@ services:
   solr:
     container_name: esmero-solr
     restart: always
-    image: "solr:10 "
+    image: "solr:10"
     # If running Docker < 20.10.10 please uncomment the following lines
     # See https://solr.apache.org/guide/solr/latest/upgrade-notes/major-changes-in-solr-10.html
     #security_opt:
@@ -61,7 +61,7 @@ services:
   # see https://hub.docker.com/_/mysql/
   db:
     image: mariadb:11.4-noble
-    command: mysqld --transaction-isolation=READ-COMMITTED --default-authentication-plugin=mysql_native_password  --skip-log-bin --max_allowed_packet=256M --sort_buffer_size=512K --lower_case_table_names=1 --innodb_read_only_compressed=OFF
+    command: mariadbd --transaction-isolation=READ-COMMITTED --default-authentication-plugin=mysql_native_password  --skip-log-bin --max_allowed_packet=256M --sort_buffer_size=512K --lower_case_table_names=1 --innodb_read_only_compressed=OFF
     container_name: esmero-db
     restart: always
     environment:

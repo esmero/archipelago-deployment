@@ -33,7 +33,7 @@ services:
   solr:
     container_name: esmero-solr
     restart: always
-    image: "solr:10 "                 
+    image: "solr:10"                 
     # If running Docker < 20.10.10 please uncomment the following lines
     # See https://solr.apache.org/guide/solr/latest/upgrade-notes/major-changes-in-solr-10.html         
     #security_opt:
