@@ -69,7 +69,7 @@
         "drupal/role_theme_switcher": "^1.1",
         "drupal/s3fs": "3.x-dev",
         "drupal/schema_metatag": "^1.3",
-        "drupal/search_api": "1.x-dev@dev",
+        "drupal/search_api": "^1.41",
         "drupal/search_api_attachments": "^9.0",
         "drupal/search_api_autocomplete": "^1.0",
         "drupal/search_api_solr": "^4.x-dev",
@@ -228,10 +228,13 @@
            },
            "ankitpokhrel/tus-php": {
              "Less Cache writes during upload fix": "patches/tus-file-cache.patch"
-            },
+           },
            "league/openapi-psr7-validator" : {
              "Fixes OpenAPI 1.8 compat": "https://github.com/DiegoPino/openapi-psr7-validator/commit/94e9df4c152d0db46cfa475fa8bb319ff5ac551a.patch"
-            }
+           },
+           "drupal/search_api_solr": {
+             "Fixes Solr field prefixes on 4.x-dev": "https://git.drupalcode.org/project/search_api_solr/-/merge_requests/85.diff"
+           }
 	 },
         "drupal-lenient": {
             "allowed-list": ["drupal/form_mode_manager"]
