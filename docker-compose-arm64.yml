@@ -60,7 +60,7 @@ services:
       - /drupalconfig
   # see https://hub.docker.com/_/mysql/
   db:
-    image: mariadb:11.4-noble
+    image: mariadb:12.3-noble
     command: mariadbd --transaction-isolation=READ-COMMITTED --default-authentication-plugin=mysql_native_password  --skip-log-bin --max_allowed_packet=256M --sort_buffer_size=512K --lower_case_table_names=1 --innodb_read_only_compressed=OFF
     container_name: esmero-db
     restart: always
