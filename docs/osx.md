@@ -9,7 +9,7 @@ tags:
 ---
 documentation-->
 
-# Installing Archipelago (1.6.0) Drupal 10 on macOS
+# Installing Archipelago (1.7.0) Drupal 10 on macOS
 
 ## About running terminal commands
 
@@ -26,11 +26,11 @@ Happy deploying!
 ### OSX (macOS):
 
 - [Install Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
-  - For macOS `Ventura` or Higher on Intel (i5/i7) and Apple Silicon Chips (M1/M2/M3/M4) macOS Sonoma or higher, the latest tested version is: `4.47.0 (206054)` with Docker engine v28.4.0. You may go newer of course.
+  - For macOS `Ventura` or Higher on Intel (i5/i7) and Apple Silicon Chips (M1/M2/M3/M4/M5) macOS Sonoma or higher, the latest tested version is: `4.77.0 (228796)` with Docker engine v29.5.3. You may go newer of course.
   - In `Preferences` -> `General`: check under `Choose file sharing implementation for your containers` either the new `VirtioFS`(faster) or `gRPC FUSE` and restart. Specially if you are using your `$HOME` folder for deploying, e.g. `/Users/username`.
   - In `Preferences` -> `Resources`: a minimum of 4 Gbytes of RAM is needed and works; 8 Gbytes is faster and snappier. Go for 16 GBytes if you are going to evaluate the ML/AI features on large sets of images/text.
 - [Install Github Desktop](https://desktop.github.com).
-- At least 15 Gbytes of free space (to get started). 20 Gbytes if Running ML Containers
+- At least 15 Gbytes of free space (to get started). 30 Gbytes if Running ML Containers
 - Being able to open a terminal.
 
 **Note:** Most Recent Docker Desktop for macOS removed `docker-compose` and replace it with `docker compose`. We updated this documentation to reflect the newer version. If you are running an older one, either upgrade or please replace every mention of `docker composer` with the legacy `docker-compose` when going through the steps.
@@ -83,7 +83,7 @@ Ok, now we are ready to start. Depending on what type of Chip your Apple uses yo
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.6.0
+git checkout 1.7.0
 cp docker-compose-osx.yml docker-compose.yml
 docker compose pull
 docker compose up -d
@@ -94,7 +94,7 @@ docker compose up -d
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 1.6.0
+git checkout 1.7.0
 cp docker-compose-arm64.yml docker-compose.yml
 docker compose pull
 docker compose up -d
@@ -142,6 +142,7 @@ Note: You might see some warnings like these:
 
  `[warning] The "block_content:9aa72fb1-2817-44a7-8fb5-a3eb51166e83" was not found`
  `[warning] The "block_content:1cdf7155-eb60-4f27-9e5e-64fffe93127a" was not found`
+ `[warning] The "block_content:3920219e-ccb0-482d-b3f4-15475d5d60d1" was not found`
  `[warning] The "facets_summary_block:advance" was not found`
  `[warning] The "facets_summary_block:search_page_facet_summary" was not found`
  `[notice] Missing required data for configuration: role_theme_switcher.settings`
@@ -155,7 +156,7 @@ Once finished, this will give you an `admin` Drupal user with `archipelago` as p
  Note about Steps 2-3: You don't need to, nor should you do this more than once. You can destroy/stop/update, recreate your Docker containers, and start again (`git pull`), and your Drupal and Data will persist once you're past the `Installation complete` message. I repeat, all other containers' data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable, and stable inside your `web/` folder.
 
 
-Final Note/optional: In between releases (Post release announcement, the period between 1.6.0 and 1.7.0), you can always run:
+Final Note/optional: In between releases (Post release announcement, the period between 1.7.0 and 2.2.0 (Next release is D11 only!)), you can always run:
 
 ```shell
 docker exec -ti esmero-php bash -c "composer update archipelago/* strawberryfield/* -W"
@@ -192,8 +193,8 @@ Please, once logged in, navigate to <http://localhost:8001/admin/config/search/s
 the "Execute pending tasks" button (in blue). This is new behavior (during a deployment from cero) for Drupal Search API.
 It should take less tan a second and will inform the Search Index that there are indeed no OCRs/VTTs or ML annotations (strawberry flavors)
 in the system yet (something that was never an issue before). 
-Eventually we will understand what changed in their November 2025 code making this extra step needed,
-and why also they removed the drush command that allows this to be run via the command line. Oh well.
+We understand what changed in their November 2025 code making this extra step needed but they have not provided a solution.
+Also why did they removed the drush command that allows this to be run via the command line? Oh well.
 
 
 Note: It can take some time to start the first time (Drupal needs some warming up).
