@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
+    - filter.format.webform_default
+    - search_api_autocomplete.search.solr_search_content
   module:
     - comment
     - contact
@@ -29,4 +31,5 @@ permissions:
   - 'skip comment approval'
   - 'use search_api_autocomplete for solr_search_content'
   - 'use text format basic_html'
+  - 'use text format webform_default'
   - 'view media'

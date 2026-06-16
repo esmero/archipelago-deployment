@@ -9,7 +9,7 @@ dependencies:
 id: archipelago_subtheme_chiloe_sitebranding_2
 theme: archipelago_subtheme_chiloe
 region: top_header
-weight: -7
+weight: -27
 provider: null
 plugin: system_branding_block
 settings:

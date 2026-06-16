@@ -1,0 +1,25 @@
+uuid: 3aab516e-6481-40ed-b6eb-1c34a03c9bce
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:18fa77c1-8f18-408a-b300-03fb05be8118'
+  module:
+    - block_content
+  theme:
+    - archipelago_subtheme_chiloe
+id: archipelago_subtheme_chiloe_lightdarkbootstrapthemeswitcher
+theme: archipelago_subtheme_chiloe
+region: secondary_menu
+weight: -27
+provider: null
+plugin: 'block_content:18fa77c1-8f18-408a-b300-03fb05be8118'
+settings:
+  id: 'block_content:18fa77c1-8f18-408a-b300-03fb05be8118'
+  label: 'Light/Dark Bootstrap Theme Switcher'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,53 +1,34 @@
-uuid: 35f7daa8-e9b2-424e-96e5-86e74959126d
+uuid: 3f1dd2c6-09d0-4f03-8e39-8ebb199d8efb
 langcode: en
 status: true
 dependencies:
   config:
     - filter.format.basic_html
   module:
-    - ckeditor
-_core:
-  default_config_hash: AqlPmO16LvJI4D0Ih6u4GFQIzqr5OnLgAUSjcUGWk2g
+    - codemirror_editor
 format: basic_html
-editor: ckeditor
+editor: codemirror_editor
 settings:
-  toolbar:
-    rows:
-      -
-        -
-          name: Formatting
-          items:
-            - Bold
-            - Italic
-        -
-          name: Linking
-          items:
-            - DrupalLink
-            - DrupalUnlink
-        -
-          name: Lists
-          items:
-            - BulletedList
-            - NumberedList
-        -
-          name: Media
-          items:
-            - Blockquote
-            - DrupalImage
-        -
-          name: 'Block Formatting'
-          items:
-            - Format
-        -
-          name: Tools
-          items:
-            - Source
-  plugins: {  }
+  toolbar: true
+  buttons:
+    - bold
+    - italic
+    - underline
+    - strike-through
+    - list-numbered
+    - list-bullet
+    - link
+    - horizontal-rule
+    - undo
+    - redo
+    - clear-formatting
+    - enlarge
+    - shrink
+  lineWrapping: false
+  lineNumbers: true
+  foldGutter: false
+  autoCloseTags: true
+  styleActiveLine: false
+  mode: text/html
 image_upload:
-  status: true
-  scheme: public
-  directory: inline-images
-  max_size: null
-  max_dimensions:
-    width: null
-    height: null
+  status: false
