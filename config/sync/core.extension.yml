@@ -17,7 +17,6 @@ module:
   block: 0
   block_content: 0
   breakpoint: 0
-  ckeditor: 0
   ckeditor5: 0
   codemirror_editor: 0
   color: 0

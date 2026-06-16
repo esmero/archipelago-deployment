@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - codemirror_editor
     - editor
 _core:
   default_config_hash: hewPmBgni9jlDK_IjLxUx1HsTbinK-hdl0lOwjbteIY
@@ -10,6 +11,15 @@ name: 'Full HTML'
 format: full_html
 weight: 1
 filters:
+  codemirror_editor:
+    id: codemirror_editor
+    provider: codemirror_editor
+    status: true
+    weight: 0
+    settings:
+      lineWrapping: false
+      lineNumbers: true
+      foldGutter: false
   editor_file_reference:
     id: editor_file_reference
     provider: editor
@@ -49,3 +59,10 @@ filters:
     status: true
     weight: 12
     settings: {  }
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: true
+    weight: 0
+    settings:
+      filter_url_length: 72

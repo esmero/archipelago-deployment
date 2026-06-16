@@ -2,9 +2,9 @@ _core:
   default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
 langcode: en
 uuid: 6855e385-22b1-43ba-ae50-4180d276445f
-name: '{ Archipelago Commons 2.0.0 }'
+name: '{ Archipelago Commons 2.1.0 }'
 mail: repositorysupport@metro.org
-slogan: 'Live not for Battles Won. Live not for The-End-of-the-Song. Live in the along.'
+slogan: 'Not all those who wander are lost.'
 page:
   403: ''
   404: ''

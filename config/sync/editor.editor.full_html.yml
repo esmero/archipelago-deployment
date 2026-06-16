@@ -27,10 +27,4 @@ settings:
     ckeditor5_sourceEditing:
       allowed_tags: {  }
 image_upload:
-  status: true
-  scheme: public
-  directory: inline-images
-  max_size: null
-  max_dimensions:
-    width: null
-    height: null
+  status: false

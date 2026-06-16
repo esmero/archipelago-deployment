@@ -11,7 +11,7 @@ _core:
 id: archipelago_subtheme_chiloe_help
 theme: archipelago_subtheme_chiloe
 region: top_header
-weight: -8
+weight: -28
 provider: null
 plugin: help_block
 settings:

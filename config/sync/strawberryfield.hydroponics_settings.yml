@@ -1,5 +1,6 @@
 active: true
 time_to_expire: 0
+freespace_limit: 21474836480
 drush_path: /var/www/html/vendor/drush/drush/drush
 home_path: ''
 search_api_indexes:

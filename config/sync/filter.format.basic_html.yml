@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - codemirror_editor
     - editor
 _core:
   default_config_hash: P8ddpAIKtawJDi5SzOwCzVnnNYqONewSTJ6Xn0dW_aQ
@@ -10,6 +11,15 @@ name: 'Basic HTML'
 format: basic_html
 weight: 0
 filters:
+  codemirror_editor:
+    id: codemirror_editor
+    provider: codemirror_editor
+    status: true
+    weight: 0
+    settings:
+      lineWrapping: false
+      lineNumbers: true
+      foldGutter: false
   editor_file_reference:
     id: editor_file_reference
     provider: editor
@@ -42,6 +52,12 @@ filters:
     provider: filter
     status: true
     weight: 9
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: 10
     settings: {  }
   filter_image_lazy_load:
     id: filter_image_lazy_load
