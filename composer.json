@@ -115,7 +115,7 @@
         "drupal/hal": "^2.0",
         "drupal/ckeditor": "^1.0",
         "drupal/aggregator": "^2.2",
-        "drupal/classy": "^1.0",
+        "drupal/classy": "^2.0",
         "drupal/stable": "^2.0",
         "drupal/form_mode_manager": "2.x-dev@dev",
         "drupal/rest_oai_pmh": "2.0.x-dev",

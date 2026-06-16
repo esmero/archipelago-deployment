@@ -118,6 +118,10 @@ echo -e "Advanced Search Page Block\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/block_content/block_with_twig_templating_/9aa72fb1-2817-44a7-8fb5-a3eb51166e83 --data-binary @d8content/block_content_02.json;
 
+echo -e "The Theme Mode Switcher Block\n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/block_content/basic/3920219e-ccb0-482d-b3f4-15475d5d60d1 --data-binary @d8content/block_content_04.json;
+
 echo -e "Last pass, setting web owner to tmp files folder and clearing Drupal caches\n"
 
 chown -R www-data:www-data /var/www/html/web/sites/default/files
