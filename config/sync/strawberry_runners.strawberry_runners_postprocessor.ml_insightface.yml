@@ -26,6 +26,6 @@ pluginconfig:
   timeout: '300'
   weight: '0'
 pluginid: ml_insightface
-active: true
+active: 0
 parent: ''
 depth: 0

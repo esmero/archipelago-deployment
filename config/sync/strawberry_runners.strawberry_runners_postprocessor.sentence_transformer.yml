@@ -27,9 +27,10 @@ pluginconfig:
   nlp_url: 'http://esmero-nlp:6400'
   ml_method: /text/sentence_transformer
   iiif_server: 'http://esmero-cantaloupe:8182/iiif/2'
+  iiif_server_image_type: default.jpg
   timeout: '300'
   weight: '0'
 pluginid: ml_sentence_transformer
-active: true
+active: 0
 parent: ocr
 depth: 2

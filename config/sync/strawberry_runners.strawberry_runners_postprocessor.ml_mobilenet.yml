@@ -27,6 +27,6 @@ pluginconfig:
   weight: '0'
   use_inherited_region: 1
 pluginid: ml_mobilenet
-active: true
+active: 0
 parent: ''
 depth: 0
