@@ -5,8 +5,8 @@
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "",
-            "role": ""
+            "name": "Diego Pino Navarro",
+            "role": "Maintainer"
         }
     ],
     "repositories": [
@@ -17,6 +17,10 @@
         {
              "type": "composer",
              "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/DiegoPino/tableschema-php"
         },
         {
          "type": "package",
@@ -33,9 +37,9 @@
        }
     ],
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.3",
         "mglaman/composer-drupal-lenient": "^1",
-        "archipelago/ami": "2.0.0.x-dev",
+        "archipelago/ami": "2.1.0.x-dev",
         "archipelago/archipelago_subtheme": "1.5.0.x-dev",
         "aws/aws-php-sns-message-validator": "^1.5",
         "aws/aws-sdk-php": "^3.63",
@@ -81,7 +85,7 @@
         "drupal/search_api": "^1.4",
         "drupal/search_api_attachments": "^9.0",
         "drupal/search_api_autocomplete": "^1.2",
-        "drupal/search_api_solr": "^4.3",
+        "drupal/search_api_solr": "^4.x-dev",
         "drupal/smtp": "^1.0",
         "drupal/tokenuuid": "^2.0",
         "drupal/twig_field": "^2",
@@ -93,7 +97,6 @@
         "drupal/webformnavigation": "^2.0",
         "drupal/workflow": "^1.1",
         "drush/drush": "13.x-dev",
-        "maennchen/zipstream-php": "^2.1",
         "mixnode/mixnode-warcreader-php": "^0.0.6",
         "ml/json-ld": "^1.0",
         "mtdowling/jmespath.php": "^2.4",
@@ -105,10 +108,10 @@
         "react/event-loop": "^1.5",
         "react/promise": "^3.2",
         "solarium/solarium": "^6",
-        "strawberryfield/format_strawberryfield": "2.0.0.x-dev",
-        "strawberryfield/strawberry_runners": "2.0.0.x-dev",
-        "strawberryfield/strawberryfield": "2.0.0.x-dev",
-        "strawberryfield/webform_strawberryfield": "2.0.0.x-dev",
+        "strawberryfield/format_strawberryfield": "2.1.0.x-dev",
+        "strawberryfield/strawberry_runners": "2.1.0.x-dev",
+        "strawberryfield/strawberryfield": "2.1.0.x-dev",
+        "strawberryfield/webform_strawberryfield": "2.1.0.x-dev",
         "swaggest/json-schema": "^0.12.10",
         "vlucas/phpdotenv": "^5.6",
         "webflo/drupal-finder": "^1.0.0",
@@ -120,7 +123,7 @@
         "drupal/upgrade_status": "^4.3",
         "drupal/jquery_ui_effects": "^2.0",
         "drupal/jquery_ui": "^1.8",
-        "archipelago/fragaria": "0.4.0.x-dev",
+        "archipelago/fragaria": "0.5.0.x-dev",
         "drupal/color": "^2.0@alpha",
         "drupal/seven": "^2.0@beta",
         "drupal/hal": "^2.0",
@@ -130,17 +133,20 @@
         "drupal/form_mode_manager": "^3.1",
         "drupal/rest_oai_pmh": "2.0.x-dev",
         "cebe/php-openapi": "^1.8",
-        "league/openapi-psr7-validator": "0.22",
+        "league/openapi-psr7-validator": "0.24",
         "drupal/views_load_more": "^2.0@RC",
         "drupal/codemirror_editor": "^2.0",
         "ankitpokhrel/tus-php": "^2.4",
-        "archipelago/archipelago_subtheme_chiloe": "dev-main",
+        "archipelago/archipelago_subtheme_chiloe": "1.7.0.x-dev",
         "composer": "*",
         "drupal/ckeditor_lts": "^1.0",
         "bower-asset/jquery-ui-slider-pips": "dev-master",
         "simeydotme/jquery-ui-slider-pips": "^2.0",
         "drupal/webform_bootstrap5": "11.0.x-dev@dev",
-        "drupal/action": "^0.2.2"
+        "drupal/action": "^0.2.2",
+        "frictionlessdata/datapackage": "dev-ISSUE-56 as dev-main",
+        "frictionlessdata/tableschema": "dev-ISSUE-78 as v1.2.3",
+        "devizzent/cebe-php-openapi": "dev-master"
     },
     "require-dev": {
         "drupal/core-dev": "^11.3",
@@ -247,7 +253,10 @@
             },
            "drupal/role_theme_switcher" : {
              "D11 Role Theme Switcher compat": "https://git.drupalcode.org/project/role_theme_switcher/-/merge_requests/2.diff"
-             }
+            },
+            "drupal/search_api_solr": {
+             "Fixes Solr field prefixes on 4.x-dev": "https://git.drupalcode.org/project/search_api_solr/-/merge_requests/85.diff"
+            }
 	},
         "drupal-lenient": {
             "allowed-list": ["drupal/form_mode_manager", "drupal/role_theme_switcher"]
