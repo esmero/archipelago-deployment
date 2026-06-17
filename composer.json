@@ -12,29 +12,36 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://packages.drupal.org/8"
+            "url": "https://packages.drupal.org/8",
+            "exclude": [
+                "drupal/role_theme_switcher"
+            ]
         },
         {
-             "type": "composer",
-             "url": "https://asset-packagist.org"
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         },
         {
             "type": "vcs",
             "url": "https://github.com/DiegoPino/tableschema-php"
         },
         {
-         "type": "package",
-         "package": {
-            "name": "simeydotme/jquery-ui-slider-pips",
-            "version": "2.0.0",
-            "type": "drupal-library",
-            "source": {
-              "url": "https://github.com/simeydotme/jquery-ui-slider-pips",
-              "type": "git",
-              "reference": "2.0.0"
+            "type": "package",
+            "package": {
+                "name": "simeydotme/jquery-ui-slider-pips",
+                "version": "2.0.0",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/simeydotme/jquery-ui-slider-pips",
+                    "type": "git",
+                    "reference": "2.0.0"
+                }
             }
-         }
-       }
+        },
+        {
+            "type": "git",
+            "url": "https://git.drupalcode.org/issue/role_theme_switcher-3557239.git"
+        }
     ],
     "require": {
         "php": ">=8.3",
@@ -79,7 +86,6 @@
         "drupal/queue_ui": "^3.1",
         "drupal/quick_node_clone": "^1.1",
         "drupal/restui": "^1.1",
-        "drupal/role_theme_switcher": "^1.1",
         "drupal/s3fs": "3.x-dev",
         "drupal/schema_metatag": "^3.0",
         "drupal/search_api": "^1.4",
@@ -132,7 +138,6 @@
         "drupal/stable": "^2.0",
         "drupal/form_mode_manager": "^3.1",
         "drupal/rest_oai_pmh": "2.0.x-dev",
-        "cebe/php-openapi": "^1.8",
         "league/openapi-psr7-validator": "0.24",
         "drupal/views_load_more": "^2.0@RC",
         "drupal/codemirror_editor": "^2.0",
@@ -146,7 +151,9 @@
         "drupal/action": "^0.2.2",
         "frictionlessdata/datapackage": "dev-ISSUE-56 as dev-main",
         "frictionlessdata/tableschema": "dev-ISSUE-78 as v1.2.3",
-        "devizzent/cebe-php-openapi": "dev-master"
+        "devizzent/cebe-php-openapi": "dev-master",
+        "chx/drupal-issue-fork": "^1.0",
+        "drupal/role_theme_switcher": "dev-3557239-new-constructor-argument#9c1b9ffc9c33836bab5ac02bc05c3ff3fc37eae6"
     },
     "require-dev": {
         "drupal/core-dev": "^11.3",
@@ -172,7 +179,8 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
             "php-http/discovery": true,
-            "tbachert/spi": true
+            "tbachert/spi": true,
+            "chx/drupal-issue-fork": true
         },
         "preferred-install": {
             "archipelago/*": "source",
@@ -197,7 +205,7 @@
         ],
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-             "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
+            "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
@@ -211,8 +219,8 @@
             }
         },
         "installer-types": [
-             "npm-asset",
-             "bower-asset"
+            "npm-asset",
+            "bower-asset"
         ],
         "installer-paths": {
             "web/core": [
@@ -238,28 +246,28 @@
         },
         "enable-patching": true,
         "patches": {
-           "drupal/facets": {
-             "D10.3+ Facet Ajax fix": "https://www.drupal.org/files/issues/2024-08-10/3052574-session-not-set-warning-251.patch",
-			 "Facet Summary Count fix": "https://raw.githubusercontent.com/esmero/archipelago-deployment-live/refs/heads/1.6.0/drupal/patches/2.x-facets-summarycount_returntype.patch"
-           },
-           "drupal/better_exposed_filters": {
-             "D10.3+ Reset Fix": "https://www.drupal.org/files/issues/2024-07-08/3459811-6.patch"
-           },
-           "ankitpokhrel/tus-php": {
-             "Less Cache writes during upload fix": "patches/tus-file-cache.patch"
+            "drupal/facets": {
+                "D10.3+ Facet Ajax fix": "https://www.drupal.org/files/issues/2024-08-10/3052574-session-not-set-warning-251.patch",
+                "Facet Summary Count fix": "https://raw.githubusercontent.com/esmero/archipelago-deployment-live/refs/heads/1.6.0/drupal/patches/2.x-facets-summarycount_returntype.patch"
             },
-           "league/openapi-psr7-validator" : {
-             "Fixes OpenAPI 1.8 compat": "https://github.com/DiegoPino/openapi-psr7-validator/commit/94e9df4c152d0db46cfa475fa8bb319ff5ac551a.patch"
+            "drupal/better_exposed_filters": {
+                "D10.3+ Reset Fix": "https://www.drupal.org/files/issues/2024-07-08/3459811-6.patch"
             },
-           "drupal/role_theme_switcher" : {
-             "D11 Role Theme Switcher compat": "https://git.drupalcode.org/project/role_theme_switcher/-/merge_requests/2.diff"
+            "ankitpokhrel/tus-php": {
+                "Less Cache writes during upload fix": "patches/tus-file-cache.patch"
+            },
+            "league/openapi-psr7-validator": {
+                "Fixes OpenAPI 1.8 compat": "https://github.com/DiegoPino/openapi-psr7-validator/commit/94e9df4c152d0db46cfa475fa8bb319ff5ac551a.patch"
             },
             "drupal/search_api_solr": {
-             "Fixes Solr field prefixes on 4.x-dev": "https://git.drupalcode.org/project/search_api_solr/-/merge_requests/85.diff"
+                "Fixes Solr field prefixes on 4.x-dev": "https://git.drupalcode.org/project/search_api_solr/-/merge_requests/85.diff"
             }
-	},
+        },
         "drupal-lenient": {
-            "allowed-list": ["drupal/form_mode_manager", "drupal/role_theme_switcher"]
+            "allowed-list": [
+                "drupal/form_mode_manager",
+                "drupal/role_theme_switcher"
+            ]
         }
     }
 }
