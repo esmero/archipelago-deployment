@@ -8,10 +8,13 @@
             "reusable": true,
             "default_langcode": true,
             "body": {
-                "value": "<div class=\"m-3\">\r\n   <a href=\"https://github.com/esmero\" target=\"_blank\" rel=\"noopener\" title=\"Archipelago Commons + esmero\" class=\"button btn\">\r\n     <i class=\"fab fa-github fa-2x\"></i>\r\n  </a>\r\n    <a href=\"https://groups.google.com/g/archipelago-commons\" target=\"_blank\" rel=\"noopener\" title=\"Archipelago Commons Google Group\" class=\"button btn\">\r\n       <i class=\"fab fa-google fa-2x\"></i>\r\n    </a>\r\n    <a href=\"https://archipelagocommons.slack.com\" target=\"_blank\" rel=\"noopener\" title=\"Archipelago Commons Slack Channe\" class=\"button btn\">\r\n       <i class=\"fab fa-slack fa-2x\"></i>\r\n     </a>\r\n</div>  ",
-                "format": "full_html",
-                "summary": ""
+              "value": "<li class=\"nav-item align-items-center d-flex\" >\r\n  <i class=\"fas fa-sun\"></i>\r\n  <div class=\"mx-2 form-check form-switch\">\r\n    <input class=\"form-check-input form-checkbox\" type=\"checkbox\" role=\"switch\" id=\"themeToggler\" />\r\n    <label class=\"form-check-input-placeholder form-check-label\" for=\"themeToggler\" id=\"themeLabel\">Light Mode</label>\r\n  </div>\r\n  <i class=\"fas fa-moon\"></i>\r\n</li>",
+              "format": "full_html",
+              "processed": "<li class=\"nav-item align-items-center d-flex\">\n  <i class=\"fas fa-sun\"></i>\n  <div class=\"mx-2 form-check form-switch\">\n    <input class=\"form-check-input form-checkbox\" type=\"checkbox\" role=\"switch\" id=\"themeToggler\">\n    <label class=\"form-check-input-placeholder form-check-label\" for=\"themeToggler\" id=\"themeLabel\">Light Mode</label>\n  </div>\n  <i class=\"fas fa-moon\"></i>\n</li>",
+              "summary": ""
             }
         }
     }
 }
+
+
