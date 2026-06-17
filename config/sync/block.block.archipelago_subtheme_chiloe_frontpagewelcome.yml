@@ -20,8 +20,6 @@ settings:
   label: 'Front page welcome'
   label_display: '0'
   provider: block_content
-  status: true
-  info: ''
   view_mode: full
 visibility:
   request_path:
