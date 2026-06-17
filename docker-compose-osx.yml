@@ -23,7 +23,7 @@ services:
   php:
     container_name: esmero-php
     restart: always
-    image: "esmero/php-8.3-fpm:1.5.0-multiarch"
+    image: "esmero/php-8.3-fpm:1.7.0-multiarch"
     tty: true
     networks:
       - host-net
@@ -33,9 +33,9 @@ services:
   solr:
     container_name: esmero-solr
     restart: always
-    image: "solr:9.10.0"
+    image: "solr:10"                 
     # If running Docker < 20.10.10 please uncomment the following lines
-    # See https://solr.apache.org/guide/solr/latest/upgrade-notes/major-changes-in-solr-9.html#solr-9-8
+    # See https://solr.apache.org/guide/solr/latest/upgrade-notes/major-changes-in-solr-10.html         
     #security_opt:
     #  - seccomp:unconfined
     tty: true
@@ -59,7 +59,7 @@ services:
       - /drupalconfig
   # see https://hub.docker.com/_/mysql/
   db:
-    image: mysql:8.0.44
+    image: mysql:8.4
     command: mysqld --transaction-isolation=READ-COMMITTED --default-authentication-plugin=mysql_native_password  --skip-log-bin --max_allowed_packet=256M --sort_buffer_size=512K --lower_case_table_names=1
     container_name: esmero-db
     restart: always
@@ -87,7 +87,7 @@ services:
       - esmero-net
   iiif:
     container_name: esmero-cantaloupe
-    image: "esmero/cantaloupe-s3:6.0.5-noturbojpeg-multiarch"
+    image: "esmero/cantaloupe-s3:6.0.6-noturbojpeg-multiarch"
     restart: always
     environment:
       XMX: 2g
