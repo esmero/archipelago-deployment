@@ -1,0 +1,17 @@
+{
+    "data": {
+        "type": "block_content--basic",
+        "id": "3922a818-cb0d-438c-bdde-7761ff27cb19",
+        "attributes": {
+            "status": true,
+            "info": "Footer Links",
+            "reusable": true,
+            "default_langcode": true,
+            "body": {
+                "value": "<div class=\"m-3\">\r\n   <a href=\"https://github.com/esmero\" target=\"_blank\" rel=\"noopener\" title=\"Archipelago Commons + esmero\" class=\"button btn\">\r\n     <i class=\"fab fa-github fa-2x\"></i>\r\n  </a>\r\n    <a href=\"https://groups.google.com/g/archipelago-commons\" target=\"_blank\" rel=\"noopener\" title=\"Archipelago Commons Google Group\" class=\"button btn\">\r\n       <i class=\"fab fa-google fa-2x\"></i>\r\n    </a>\r\n    <a href=\"https://archipelagocommons.slack.com\" target=\"_blank\" rel=\"noopener\" title=\"Archipelago Commons Slack Channe\" class=\"button btn\">\r\n       <i class=\"fab fa-slack fa-2x\"></i>\r\n     </a>\r\n</div>  ",
+                "format": "full_html",
+                "summary": ""
+            }
+        }
+    }
+}
