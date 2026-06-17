@@ -120,7 +120,7 @@ curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Co
 
 echo -e "The Theme Mode Switcher Block\n"
 
-curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/block_content/basic/3920219e-ccb0-482d-b3f4-15475d5d60d1 --data-binary @d8content/block_content_04.json;
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/block_content/basic/18fa77c1-8f18-408a-b300-03fb05be8118 --data-binary @d8content/block_content_04.json;
 
 echo -e "Last pass, setting web owner to tmp files folder and clearing Drupal caches\n"
 
