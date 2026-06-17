@@ -1,30 +1,34 @@
-uuid: 704ceeac-a472-4b54-8d6e-0ac2b13e0937
+uuid: 6e0a65a1-d3a5-4b75-b427-e5f92bdf5696
 langcode: en
 status: true
 dependencies:
   config:
     - filter.format.full_html
   module:
-    - ckeditor5
+    - codemirror_editor
 format: full_html
-editor: ckeditor5
+editor: codemirror_editor
 settings:
-  toolbar:
-    items:
-      - heading
-      - bold
-      - italic
-      - '|'
-      - sourceEditing
-  plugins:
-    ckeditor5_heading:
-      enabled_headings:
-        - heading2
-        - heading3
-        - heading4
-        - heading5
-        - heading6
-    ckeditor5_sourceEditing:
-      allowed_tags: {  }
+  toolbar: true
+  buttons:
+    - bold
+    - italic
+    - underline
+    - strike-through
+    - list-numbered
+    - list-bullet
+    - link
+    - horizontal-rule
+    - undo
+    - redo
+    - clear-formatting
+    - enlarge
+    - shrink
+  lineWrapping: false
+  lineNumbers: false
+  foldGutter: false
+  autoCloseTags: true
+  styleActiveLine: false
+  mode: text/html
 image_upload:
   status: false
