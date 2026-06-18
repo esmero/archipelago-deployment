@@ -15,5 +15,5 @@ jobs:
               owner: 'esmero',
               repo: 'archipelago-documentation',
               workflow_id: 'ci.yml',
-              ref: '1.6.0',
+              ref: '1.7.0',
             });
