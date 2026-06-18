@@ -12,14 +12,14 @@ documentation-->
 
 **Last Updated:** Jun 17th 2026 for Drupal 10.6.11 during Archipelago 1.7.0 and 2.1.0 release day!
 
-**Previously Updated:** for 2.0.0, May 22nd 2026 (2.0.0 with improvements) for https://www.drupal.org/psa-2026-05-18 
+**Previously Updated:** for 1.6.0, May 22nd 2026 (2.0.0 with improvements) for https://www.drupal.org/psa-2026-05-18 
 
-**Previously Updated:** Dec 10th 2025 (2.0.0)
+**Previously Updated:** Dec 10th 2025 (1.6.0)
 
 This repository serves as bootstrap for a Archipelago 1.7.0 under Drupal 10 deployment on a localhost for development/testing/customizing and learning via Docker, providing a unified experience:
 Also: 
 
- - For Drupal 10, with same features (and a way more stable Drupal), please deploy [Archipelago 1.7.0](https://github.com/esmero/archipelago-deployment/tree/1.7.0)
+ - For Drupal 11, with same features please deploy [Archipelago 2.1.0](https://github.com/esmero/archipelago-deployment/tree/2.1.0)
  - For a public facing and production ready environment please deploy [Archipelago 1.7.0 Live](https://github.com/esmero/archipelago-deployment-live/tree/1.7.0)
 
 This release includes:
@@ -31,7 +31,7 @@ This release includes:
 - Updated Custom PHP-FPM 8.3 multi architecture, fine-tuned for Drupal 10/11 , WARC to WACZ processing, Tesseract 5 with JP2 support, PDFAlto(what a pain to build!) and latest Composer 2.x, Drush 13.x-dev, FFMPEG, FIDO, plus (NEW) Audiowave for Waveform to JSON extraction and BWFmetaedit for WAV files holding BWF metadata (Checksumming and other extras per stream).
 - Natural Language Processing via NLPWEB64 multi architecture with FastText Language detection (Thanks Mike Bennett!) or alternatively Machine learning/ML containers/APIs. (Image similarity: YOLO,MobileNet,ViT(New),Insightface and Text transformer: SBERT) differentiated for arm64 and amd/intel/64
 - New Cantaloupe 6.0.6 (our own versioning, but based on latest `dev` upstream) on Java 26, multi architecture, IIIF2/3 Server with precise Video Frame, PDF extraction, PDF Tiling support, new Jetty with tons of community and custom fixes.
-- A Skeleton Project setup to run latest Version of Drupal 11 (11.3.12), Updated Archipelago Chiloe Base theme based on Bootstrap 5 with Light/Dark Mode (for those late night dwellers) and Strawberry Field modules on 2.1.0.
+- A Skeleton Project setup to run latest Version of Drupal 10 (10.6.11), Updated Archipelago Chiloe Base theme based on Bootstrap 5 with Light/Dark Mode (for those late night dwellers) and Strawberry Field modules on 2.1.0.
 - Complete support for Apple Silicon M1/M2/M3/M4/M5 Machines and in general arm64 architecture Chips like Raspberry Pi 4, with specially built arm64 docker containers. The only differences now between deployment strategies is the DB. Blazing fast OCR.
 
 The skeleton project contains all the pieces needed to run a local deployment of a vanilla Archipelago including (*YES*!) content provided as an optional feature from [archipelago-recyclables](https://github.com/esmero/archipelago-recyclables)
