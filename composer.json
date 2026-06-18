@@ -233,7 +233,8 @@
              "Fixes OpenAPI 1.8 compat": "https://github.com/DiegoPino/openapi-psr7-validator/commit/94e9df4c152d0db46cfa475fa8bb319ff5ac551a.patch"
            },
            "drupal/search_api_solr": {
-             "Fixes Solr field prefixes on 4.x-dev": "https://git.drupalcode.org/project/search_api_solr/-/merge_requests/85.diff"
+             "Fixes Solr field prefixes on 4.x-dev": "https://git.drupalcode.org/project/search_api_solr/-/merge_requests/85.diff",
+             "Fixes Removed Legacy Hooks": "patches/drupal-10-search_api_solr_hook_legacy.patch"
            }
 	 },
         "drupal-lenient": {

@@ -1,0 +1,110 @@
+Index: search_api_solr.module
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/search_api_solr.module b/search_api_solr.module
+--- a/search_api_solr.module	
++++ b/search_api_solr.module	
+@@ -7,6 +7,7 @@
+ 
+ use Drupal\Core\Entity\EntityInterface;
+ use Drupal\Core\Form\FormStateInterface;
++use Drupal\Core\Routing\RouteMatchInterface;
+ use Drupal\Core\StringTranslation\TranslatableMarkup;
+ use Drupal\search_api\Entity\Server;
+ use Drupal\search_api_solr\Hook\SearchApiSolrHooks;
+@@ -145,3 +146,76 @@
+   }
+   return $valid_option;
+ }
++
++/**
++ * Implements hook_help().
++ */
++#[LegacyHook]
++function search_api_solr_help($route_name, RouteMatchInterface $route_match) {
++  \Drupal::service(SearchApiSolrHooks::class)->help($route_name, $route_match);
++}
++
++/**
++ * Implements hook_cron().
++ *
++ * Used to execute an optimization operation on all enabled Solr servers once a
++ * day.
++ *
++ * @throws \Drupal\Component\Plugin\Exception\PluginException
++ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
++ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
++ * @throws \Drupal\search_api\SearchApiException
++ * @throws \Drupal\search_api_solr\SearchApiSolrException
++ */
++#[LegacyHook]
++function search_api_solr_cron() {
++  \Drupal::service(SearchApiSolrHooks::class)->cron();
++}
++/**
++ * Implements hook_form_FORM_ID_alter().
++ */
++#[LegacyHook]
++function search_api_solr_form_search_api_index_form_alter(&$form, FormStateInterface $form_state, $form_id) {
++  \Drupal::service(SearchApiSolrHooks::class)->formSearchApiIndexFormAlter($form, $form_state, $form_id);
++}
++
++/**
++ * Implements hook_form_FORM_ID_alter().
++ */
++#[LegacyHook]
++function search_api_solr_form_search_api_index_fields_alter(&$form, FormStateInterface $form_state, $form_id) {
++  \Drupal::service(SearchApiSolrHooks::class)->formSearchApiIndexFieldsAlter($form, $form_state, $form_id);
++}
++
++/**
++ * Implements hook_views_data_alter().
++ *
++ * Remove fields from solr_document datasources from the views data. Datasource
++ * fields that have been added to the index would be duplicated in the Views Add
++ * fields list. Fields that aren't added to the index can't be displayed.
++ */
++#[LegacyHook]
++function search_api_solr_views_data_alter(array &$data) {
++  \Drupal::service(SearchApiSolrHooks::class)->viewsDataAlter($data);
++}
++
++/**
++ * Implements hook_entity_operation().
++ *
++ * Adds an operation to Solr servers to directly generate and download a config.
++ *
++ * @throws \Drupal\search_api\SearchApiException
++ */
++#[LegacyHook]
++function search_api_solr_entity_operation(EntityInterface $entity) {
++  return \Drupal::service(SearchApiSolrHooks::class)->entityOperation($entity);
++}
++
++/**
++ * Implements hook_entity_type_alter().
++ */
++#[LegacyHook]
++function search_api_solr_entity_type_alter(array &$entity_types) {
++  \Drupal::service(SearchApiSolrHooks::class)->entityTypeAlter($entity_types);
++}
++
+Index: search_api_solr.services.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/search_api_solr.services.yml b/search_api_solr.services.yml
+--- a/search_api_solr.services.yml	
++++ b/search_api_solr.services.yml	
+@@ -65,3 +65,7 @@
+     parent: search_api.indexing_batch_helper
+     calls:
+       - [setBatchStorage, ['@batch.storage']]
++
++  Drupal\search_api_solr\Hook\SearchApiSolrHooks:
++    class: Drupal\search_api_solr\Hook\SearchApiSolrHooks
++    autowire: true
+\ No newline at end of file
