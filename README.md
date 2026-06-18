@@ -10,7 +10,7 @@ documentation-->
 
 # Archipelago Docker Deployment
 
-**Updated:**Last updated: Jun 17th 2026 for Drupal 10.6.11 during Archipelago 1.7.0 and 2.1.0 release day!
+**Updated:** Last updated: Jun 17th 2026 for Drupal 10.6.11 during Archipelago 1.7.0 and 2.1.0 release day!
 
 **Previously Updated:** for 2.0.0, May 22nd 2026 (2.0.0 with improvements) for https://www.drupal.org/psa-2026-05-18 
 
