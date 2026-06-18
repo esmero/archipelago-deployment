@@ -1,6 +1,6 @@
 <!--documentation
 ---
-title: "Installing Archipelago (2.0.0) Drupal 11 on OSX (macOS)"
+title: "Installing Archipelago (2.1.0) Drupal 11 on OSX (macOS)"
 tags:
   - Archipelago-deployment
   - Drupal 11
@@ -9,7 +9,7 @@ tags:
 ---
 documentation-->
 
-# Installing Archipelago (2.0.0) Drupal 11 on macOS
+# Installing Archipelago (2.1.0) Drupal 11 on macOS
 
 ## About running terminal commands
 
@@ -83,18 +83,18 @@ Ok, now we are ready to start. Depending on what type of Chip your Apple uses yo
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 2.0.0
+git checkout 2.1.0
 cp docker-compose-osx.yml docker-compose.yml
 docker compose pull
 docker compose up -d
 ```
 
-## Step 1 (M1/M2/M3/M4): Docker Deployment on Apple Silicon Chips (M1/M2/M3)
+## Step 1 (M1/M2/M3/M4/M5): Docker Deployment on Apple Silicon Chips (M1/M2/M3/M4/M5)
 
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 2.0.0
+git checkout 2.1.0
 cp docker-compose-arm64.yml docker-compose.yml
 docker compose pull
 docker compose up -d
@@ -148,20 +148,18 @@ Note: You might see some warnings like these:
  
    Nothing to worry about. We will provide the missing part in Step 5.
 
-Note 2: Please be patient. This step takes since composer 2.x 25-30% longer because of how the most recent Drupal Installation code fetches translations and other resources (see `Performed install task`). This means progress might look like getting "stuck", go and get a coffee/tea and let it run to the end.
-
 Once finished, this will give you an `admin` Drupal user with `archipelago` as password (Change this if running on a public instance!).
 
  Note about Steps 2-3: You don't need to, nor should you do this more than once. You can destroy/stop/update, recreate your Docker containers, and start again (`git pull`), and your Drupal and Data will persist once you're past the `Installation complete` message. I repeat, all other containers' data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable, and stable inside your `web/` folder.
 
 
-Final Note/optional: In between releases (Post release announcement, the period between 2.0.0 and 2.1.0), you can always run:
+Final Note/optional: In between releases (Post release announcement, the period between 2.1.0 and 2.2.0), you can always run:
 
 ```shell
 docker exec -ti esmero-php bash -c "composer update archipelago/* strawberryfield/* -W"
 ```
 
-To fetch, under the same release version, any `Hot Fixes` and post release compatibility changes (e.g some weird deprecation introduced in a Drupal version we did not had at the time of the release)
+To fetch, under the same release version, any `Hot Fixes` and post release compatibility changes (e.g. some weird deprecation introduced in a Drupal version we did not had at the time of the release)
 
 ## Step 4: Create a "demo "and a "jsonapi" user using drush and assign your "admin" user the Administrator Role.
 
@@ -177,7 +175,7 @@ docker exec -ti esmero-php bash -c 'drush urol administrator "admin"'
 
 ## Step 5: Ingest some Metadata Displays to make playing much more interactive
 
-Archipelago is more fun without having to start writing Metadata Displays (in Twig) before you know what they actually are. Since you should now have a `jsonapi` user and jsonapi should be enabled, you can use that awesome functionality of D8 to get that done. We have 4 demo Metadata Display Entities that go well with the demo Webform we provided. To do that execute in your shell (copy and paste):
+Archipelago is more fun without having to start writing Metadata Displays (in Twig) before you know what they actually are. Since you should now have a `jsonapi` user and jsonapi should be enabled, you can use that awesome functionality to get that done. We have multiple demo Metadata Display Entities that go well with the demo Webform we provided. To do that execute in your shell (copy and paste):
 
 ```shell
 docker exec -ti esmero-php bash -c 'scripts/archipelago/deploy.sh'
@@ -192,8 +190,6 @@ Please, once logged in, navigate to <http://localhost:8001/admin/config/search/s
 the "Execute pending tasks" button (in blue). This is new behavior (during a deployment from cero) for Drupal Search API.
 It should take less tan a second and will inform the Search Index that there are indeed no OCRs/VTTs or ML annotations (strawberry flavors)
 in the system yet (something that was never an issue before). 
-Eventually we will understand what changed in their November 2025 code making this extra step needed,
-and why also they removed the drush command that allows this to be run via the command line. Oh well.
 
 Note: It can take some time to start the first time (Drupal needs some warming up).
 
