@@ -208,7 +208,7 @@ Once finished, this will give you an `admin` Drupal user with `archipelago` as p
 
 Note about Steps 2-3: You don't need to, nor should you do this more than once. You can destroy/stop/update, recreate your Docker containers, and start again (`git pull`), and your Drupal and Data will persist once you've passed the `Installation complete` message. I repeat, all other containers' data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable, and stable inside your `web/` folder.
 
-Final Note/optional: In between releases (Post release announcement, the period between 1.7.0 and 2.2.0), you can always run:
+Final Note/optional: In between releases (Post release announcement, the period between 2.1.0 and 2.2.0), you can always run:
 
 ```shell
 docker exec -ti esmero-php bash -c "composer update archipelago/* strawberryfield/* -W"
