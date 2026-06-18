@@ -19,8 +19,8 @@ documentation-->
 This repository serves as bootstrap for a Archipelago 2.0.0 under Drupal 11 deployment on a localhost for development/testing/customizing and learning via Docker, providing a unified experience:
 Also: 
 
- - For Drupal 10, with same features (and a way more stable Drupal), please deploy [Archipelago 1.6.0](https://github.com/esmero/archipelago-deployment/tree/1.6.0)
- - For a public facing and production ready environment please deploy [Archipelago 1.6.0 Live](https://github.com/esmero/archipelago-deployment-live/tree/1.6.0)
+ - For Drupal 10, with same features (and a way more stable Drupal), please deploy [Archipelago 1.7.0](https://github.com/esmero/archipelago-deployment/tree/1.7.0)
+ - For a public facing and production ready environment please deploy [Archipelago 1.7.0 Live](https://github.com/esmero/archipelago-deployment-live/tree/1.7.0)
 
 This release includes:
 
