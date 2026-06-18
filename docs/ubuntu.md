@@ -1,6 +1,8 @@
 <!--documentation
 ---
-title: "Installing Archipelago (2.0.0) Drupal 11 on Ubuntu 20.04+"
+
+title: "Installing Archipelago (2.1.0) Drupal 11 on Ubuntu 20.04+"
+
 tags:
   - Archipelago-deployment
   - Drupal 11
@@ -8,7 +10,8 @@ tags:
 ---
 documentation-->
 
-# Installing Archipelago (2.0.0) Drupal 11 on Ubuntu 20.04+
+
+# Installing Archipelago (2.1.0) Drupal 11 on Ubuntu 20.04+
 
 ## About running terminal commands
 
@@ -29,9 +32,6 @@ Happy deploying!
 - 2-8 Gbytes of RAM (8 Recommended, 16 if evaluating ML)
 - Install Docker if you don't have it already by running:
 
-
-
-
 # Add Docker's official GPG key:
 
 ```shell
@@ -40,11 +40,11 @@ sudo apt install ca-certificates curl apt-transport-https software-properties-co
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
-````
+```
 
 # Add the repository to Apt sources:
 
-````shell
+```shell
 sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
 Types: deb
 URIs: https://download.docker.com/linux/ubuntu
@@ -130,7 +130,7 @@ Now that you got it, let's deploy:
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 2.0.0
+git checkout 2.1.0
 ```
 
 
@@ -204,13 +204,11 @@ Note: You might see warnings like these:
  
   Nothing to worry about. We will provide the missing part in Step 5.
 
-Note 2: Please be patient. This step takes now 25-30% longer because of how the most recent Drupal Installation code fetches translations and other resources (see `Performed install task`). This means progress might look like getting "stuck", go and get a coffee/tea and let it run to the end.
-
 Once finished, this will give you an `admin` Drupal user with `archipelago` as password (change this if running on a public instance!) and also set the right Docker Container owner for your Drupal installation files.
 
 Note about Steps 2-3: You don't need to, nor should you do this more than once. You can destroy/stop/update, recreate your Docker containers, and start again (`git pull`), and your Drupal and Data will persist once you've passed the `Installation complete` message. I repeat, all other containers' data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable, and stable inside your `web/` folder.
 
-Final Note/optional: In between releases (Post release announcement, the period between 1.6.0 and 1.7.0), you can always run:
+Final Note/optional: In between releases (Post release announcement, the period between 1.7.0 and 2.2.0), you can always run:
 
 ```shell
 docker exec -ti esmero-php bash -c "composer update archipelago/* strawberryfield/* -W"
@@ -231,7 +229,7 @@ docker exec -ti esmero-php bash -c 'drush urol administrator "admin"'
 
 ## Step 5: Ingest some Metadata Displays to make playing much more interactive
 
-Archipelago is more fun without having to start writing Metadata Displays (in Twig) before you know what they actually are. Since you should now have a `jsonapi` user and jsonapi should be enabled, you can use that awesome functionality of D8 to get that done. We have 4 demo Metadata Display Entities that go well with the demo Webform we provided. To do that execute in your shell (copy and paste):
+Archipelago is more fun without having to start writing Metadata Displays (in Twig) before you know what they actually are. Since you should now have a `jsonapi` user and jsonapi should be enabled, you can use that awesome functionality to get that done. We have 4 demo Metadata Display Entities that go well with the demo Webform we provided. To do that execute in your shell (copy and paste):
 
 ```shell
 docker exec -ti esmero-php bash -c 'scripts/archipelago/deploy.sh'
@@ -246,8 +244,6 @@ Please, once logged in, navigate to <http://localhost:8001/admin/config/search/s
 the "Execute pending tasks" button (in blue). This is new behavior (during a deployment from cero) for Drupal Search API.
 It should take less tan a second and will inform the Search Index that there are indeed no OCRs/VTTs or ML annotations (strawberry flavors)
 in the system yet (something that was never an issue before). 
-Eventually we will understand what changed in their November 2025 code making this extra step needed,
-and why also they removed the drush command that allows this to be run via the command line. Oh well.
 
 Note: It can take some time to start the first time (Drupal needs some warming up). The Ubuntu deployment is WAY faster than the OSX deployment because of the way the bind mount volumes are handled by the driver. Our experience is that Archipelago basically reacts instantly!
 
