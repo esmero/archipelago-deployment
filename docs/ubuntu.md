@@ -226,7 +226,7 @@ docker exec -ti esmero-php bash -c 'drush urol administrator "admin"'
 
 ## Step 5: Ingest some Metadata Displays to make playing much more interactive
 
-Archipelago is more fun without having to start writing Metadata Displays (in Twig) before you know what they actually are. Since you should now have a `jsonapi` user and jsonapi should be enabled, you can use that awesome functionality to get that done. We have 4 demo Metadata Display Entities that go well with the demo Webform we provided. To do that execute in your shell (copy and paste):
+Archipelago is more fun without having to start writing Metadata Displays (in Twig) before you know what they actually are. Since you should now have a `jsonapi` user and jsonapi should be enabled, you can use that awesome functionality to get that done. We have multiple demo Metadata Display Entities that go well with the demo Webform we provided. To do that execute in your shell (copy and paste):
 
 ```shell
 docker exec -ti esmero-php bash -c 'scripts/archipelago/deploy.sh'
