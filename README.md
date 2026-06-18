@@ -10,7 +10,7 @@ documentation-->
 
 # Archipelago Docker Deployment
 
-**Updated:**Last updated: Jun 17th 2026 for Drupal 11.3.12 during Archipelago 1.7.0 and 2.1.0 release day!
+**Last updated:** Jun 17th 2026 for Drupal 11.3.12 during Archipelago 1.7.0 and 2.1.0 release day!
 
 **Previously Updated:** for 2.0.0, May 22nd 2026 (2.0.0 with improvements) for https://www.drupal.org/psa-2026-05-18 
 
@@ -20,7 +20,7 @@ This repository serves as bootstrap for a Archipelago 2.0.0 under Drupal 11 depl
 Also: 
 
  - For Drupal 10, with same features (and a way more stable Drupal), please deploy [Archipelago 1.7.0](https://github.com/esmero/archipelago-deployment/tree/1.7.0)
- - For a public facing and production ready environment please deploy [Archipelago 1.7.0 Live](https://github.com/esmero/archipelago-deployment-live/tree/1.7.0)
+ - For a public facing and production ready environment please deploy [Archipelago 2.1.0 Live](https://github.com/esmero/archipelago-deployment-live/tree/2.1.0)
 
 This release includes:
 
