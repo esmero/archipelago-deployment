@@ -10,7 +10,9 @@ documentation-->
 
 # Archipelago Docker Deployment
 
-**Last updated:** Jun 17th 2026 for Drupal 11.3.12 during Archipelago 1.7.0 and 2.1.0 release day!
+**Last Updated:** Sept 15th 2026, replaces removed stock `minio/minio:latest` with `cgr.dev/chainguard/minio:latest`
+
+**Previously Updated:** Jun 17th 2026 for Drupal 11.3.12 during Archipelago 1.7.0 and 2.1.0 release day!
 
 **Previously Updated:** for 2.0.0, May 22nd 2026 (2.0.0 with improvements) for https://www.drupal.org/psa-2026-05-18 
 
@@ -24,7 +26,7 @@ Also:
 
 This release includes:
 
-- minio.io (latest) for local S3 with Console.
+- minio.io (latest from cgr.dev/chainguard ) for local S3 with Console.
 - Updated Apache Solr 10.0 with custom built and updated wizardly Solr OCR Highlight library [v0.10](https://github.com/dbmdz/solr-ocrhighlighting) coded and maintained by the Development Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter and team.
 - MySQL 8.4(amd64/x86) or MariaDB 12.3 (Arm64/M1/M2/M3/M4/M5)
 - Updated NGINX 1.31.1
