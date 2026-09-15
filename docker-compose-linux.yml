@@ -104,7 +104,7 @@ services:
   minio:
     container_name: esmero-minio
     restart: always
-    image: minio/minio:latest
+    image: cgr.dev/chainguard/minio:latest
     volumes:
          - ${PWD}/persistent/miniodata:/data:cached
     ports:
