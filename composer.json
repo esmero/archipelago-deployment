@@ -43,9 +43,9 @@
         "drupal/config_update": "2.0.x-dev",
         "drupal/context": "^5.0@RC",
         "drupal/core": "^10.6",
-        "drupal/core-composer-scaffold": "^10.6",
-        "drupal/core-project-message": "^10.6",
-        "drupal/core-recommended": "^10.6",
+        "drupal/core-composer-scaffold": "10.6.19",
+        "drupal/core-project-message": "10.6.19",
+        "drupal/core-recommended": "10.6.19",
         "drupal/devel": "^5.5",
         "drupal/display_field_copy": "^2.0",
         "drupal/ds": "^3.23",
@@ -130,7 +130,7 @@
         "devizzent/cebe-php-openapi": "dev-master"
     },
     "require-dev": {
-        "drupal/core-dev": "^10.6",
+        "drupal/core-dev": "10.6.19",
         "mglaman/drupal-check": "^1.1",
         "phpcompatibility/php-compatibility": "10.0.0-alpha2",
         "rector/rector": "^1",

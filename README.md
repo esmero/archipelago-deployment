@@ -10,7 +10,9 @@ documentation-->
 
 # Archipelago Docker Deployment
 
-**Last Updated:** Sept 15th 2026, replaces removed stock `minio/minio:latest` with `cgr.dev/chainguard/minio:latest`
+**Last Updated:** Oct 14th 2026, for Drupal 10.6.19`
+
+**Previously Updated:** Sept 15th 2026, replaces removed stock `minio/minio:latest` with `cgr.dev/chainguard/minio:latest`
 
 **Previously Updated:** Jun 17th 2026 for Drupal 10.6.11 during Archipelago 1.7.0 and 2.1.0 release day!
 
