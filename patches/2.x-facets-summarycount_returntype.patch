@@ -1,0 +1,21 @@
+diff --git a/src/Plugin/facets/facet_source/SearchApiDisplay.php b/src/Plugin/facets/facet_source/SearchApiDisplay.php
+index 9c91741..f0dde54 100644
+--- a/src/Plugin/facets/facet_source/SearchApiDisplay.php
++++ b/src/Plugin/facets/facet_source/SearchApiDisplay.php
+@@ -449,7 +449,7 @@ class SearchApiDisplay extends FacetSourcePluginBase implements SearchApiFacetSo
+   /**
+    * {@inheritdoc}
+    */
+-  public function getCount(): string {
++  public function getCount(): ?string {
+     $search_id = $this->getDisplay()->getPluginId();
+     if ($search_id && !empty($search_id)) {
+       if ($this->searchApiQueryHelper->getResults($search_id) !== NULL) {
+@@ -457,6 +457,7 @@ class SearchApiDisplay extends FacetSourcePluginBase implements SearchApiFacetSo
+           ->getResultCount();
+       }
+     }
++    return NULL;
+   }
+ 
+   /**
