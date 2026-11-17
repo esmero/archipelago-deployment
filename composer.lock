@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b515a7333c1edacb454c8f86a7772e1a",
+    "content-hash": "f7dc6d78a6ba745cb91e1713cab164bb",
     "packages": [
         {
             "name": "ankitpokhrel/tus-php",
@@ -3356,29 +3356,26 @@
         },
         {
             "name": "drupal/context",
-            "version": "5.0.0-rc2",
+            "version": "dev-5.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/context.git",
-                "reference": "5.0.0-rc2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/context-5.0.0-rc2.zip",
-                "reference": "5.0.0-rc2",
-                "shasum": "05e866f01bc57b5346d52a5b6230fdd13e21695d"
+                "reference": "f93bde5f147175729b51878795b9d37154089b83"
             },
             "require": {
                 "drupal/core": "^9.3 || ^10 || ^11"
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-5.x": "5.x-dev"
+                },
                 "drupal": {
-                    "version": "5.0.0-rc2",
-                    "datestamp": "1741253306",
+                    "version": "5.0.0-rc1+5-dev",
+                    "datestamp": "1741249778",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -3475,8 +3472,7 @@
                 "source": "https://github.com/oddhill/context",
                 "issues": "https://github.com/oddhill/context/issues",
                 "docs": "https://github.com/oddhill/context"
-            },
-            "published-time": "2025-03-06T09:28:21+00:00"
+            }
         },
         {
             "name": "drupal/core",
@@ -23718,7 +23714,7 @@
         "drupal/color": 15,
         "drupal/config_inspector": 20,
         "drupal/config_update": 20,
-        "drupal/context": 5,
+        "drupal/context": 20,
         "drupal/facets": 20,
         "drupal/facets_date_range": 10,
         "drupal/form_mode_manager": 20,

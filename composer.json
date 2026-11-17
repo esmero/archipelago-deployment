@@ -57,7 +57,7 @@
     "drupal/redis": "^1.7",
     "drupal/config_inspector": "dev-2.1.x",
     "drupal/config_update": "2.0.x-dev",
-    "drupal/context": "^5.0@RC",
+    "drupal/context": "^5.x-dev",
     "drupal/core": "^11.4",
     "drupal/core-composer-scaffold": "^11.4",
     "drupal/core-project-message": "^11.4",
