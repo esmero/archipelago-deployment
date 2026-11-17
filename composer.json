@@ -149,7 +149,6 @@
     "jfcherng/php-diff": "^7",
     "drupal/diff": "^2",
     "devizzent/cebe-php-openapi": "dev-master",
-    "chx/drupal-issue-fork": "^1.0",
     "drupal/role_theme_switcher": "dev-3557239-new-constructor-argument#9c1b9ffc9c33836bab5ac02bc05c3ff3fc37eae6"
   },
   "require-dev": {
@@ -245,11 +244,8 @@
     "patches": {
       "drupal/facets": {
         "D10.3+ Facet Ajax fix": "https://www.drupal.org/files/issues/2024-08-10/3052574-session-not-set-warning-251.patch",
-        "Facet Summary Count fix": "https://raw.githubusercontent.com/esmero/archipelago-deployment/refs/heads/2.2.0/drupal/patches/2.x-facets-summarycount_returntype.patch",
+        "Facet Summary Count fix": "https://raw.githubusercontent.com/esmero/archipelago-deployment/refs/heads/2.2.0/patches/2.x-facets-summarycount_returntype.patch",
         "Soft limit fix": "https://www.drupal.org/files/issues/2026-04-03/3516400-soft-limit-settings-facets-undefined-fix_0.patch"
-      },
-      "drupal/better_exposed_filters": {
-        "D10.3+ Reset Fix": "https://www.drupal.org/files/issues/2024-07-08/3459811-6.patch"
       },
       "ankitpokhrel/tus-php": {
         "Less Cache writes during upload fix": "patches/tus-file-cache.patch",
