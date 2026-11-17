@@ -1,0 +1,190 @@
+diff --git a/src/Cache/FileStore.php b/src/Cache/FileStore.php
+index 92b854d..0b4db91 100644
+--- a/src/Cache/FileStore.php
++++ b/src/Cache/FileStore.php
+@@ -23,10 +23,10 @@ class FileStore extends AbstractCache
+      * @param string|null $cacheDir
+      * @param string|null $cacheFile
+      */
+-    public function __construct(string $cacheDir = null, string $cacheFile = null)
++    public function __construct(?string $cacheDir = null, ?string $cacheFile = null)
+     {
+-        $cacheDir  = $cacheDir ?? Config::get('file.dir');
+-        $cacheFile = $cacheFile ?? Config::get('file.name');
++        $cacheDir ??= Config::get('file.dir');
++        $cacheFile ??= Config::get('file.name');
+ 
+         $this->setCacheDir($cacheDir);
+         $this->setCacheFile($cacheFile);
+@@ -134,7 +134,7 @@ class FileStore extends AbstractCache
+      *
+      * @return mixed
+      */
+-    protected function lock(string $path, int $type = LOCK_SH, callable $cb = null, $fopenType = FILE::READ_BINARY)
++    protected function lock(string $path, int $type = LOCK_SH, ?callable $cb = null, $fopenType = FILE::READ_BINARY)
+     {
+         $out    = false;
+         $handle = @fopen($path, $fopenType);
+diff --git a/src/Commands/ExpirationCommand.php b/src/Commands/ExpirationCommand.php
+index 3e07036..8bf8e18 100644
+--- a/src/Commands/ExpirationCommand.php
++++ b/src/Commands/ExpirationCommand.php
+@@ -10,6 +10,9 @@ use Symfony\Component\Console\Input\InputArgument;
+ use Symfony\Component\Console\Input\InputInterface;
+ use Symfony\Component\Console\Output\OutputInterface;
+ 
++#[\Symfony\Component\Console\Attribute\AsCommand(name: 'tus:expired', description: 'Remove expired uploads.', help: <<<'TXT'
++Deletes all expired uploads to free server resources. Values can be redis, file or apcu. Defaults to file.
++TXT)]
+ class ExpirationCommand extends Command
+ {
+     /** @var TusServer */
+@@ -18,12 +21,9 @@ class ExpirationCommand extends Command
+     /**
+      * {@inheritDoc}
+      */
+-    protected function configure()
++    protected function configure(): void
+     {
+         $this
+-            ->setName('tus:expired')
+-            ->setDescription('Remove expired uploads.')
+-            ->setHelp('Deletes all expired uploads to free server resources. Values can be redis, file or apcu. Defaults to file.')
+             ->addArgument(
+                 'cache-adapter',
+                 InputArgument::OPTIONAL,
+diff --git a/src/Config.php b/src/Config.php
+index c9f9cc4..39ca790 100644
+--- a/src/Config.php
++++ b/src/Config.php
+@@ -5,7 +5,7 @@ namespace TusPhp;
+ class Config
+ {
+     /** @const string */
+-    private const DEFAULT_CONFIG_PATH = __DIR__ . '/Config/server.php';
++    private const string DEFAULT_CONFIG_PATH = __DIR__ . '/Config/server.php';
+ 
+     /** @var array */
+     protected static $config = [];
+@@ -58,7 +58,7 @@ class Config
+      *
+      * @return mixed
+      */
+-    public static function get(string $key = null)
++    public static function get(?string $key = null)
+     {
+         self::set();
+ 
+diff --git a/src/File.php b/src/File.php
+index 8fc2416..70ce826 100644
+--- a/src/File.php
++++ b/src/File.php
+@@ -58,7 +58,7 @@ class File
+      * @param string|null    $name
+      * @param Cacheable|null $cache
+      */
+-    public function __construct(string $name = null, Cacheable $cache = null)
++    public function __construct(?string $name = null, ?Cacheable $cache = null)
+     {
+         $this->name  = $name;
+         $this->cache = $cache;
+@@ -74,7 +74,7 @@ class File
+      *
+      * @return File
+      */
+-    public function setMeta(int $offset, int $fileSize, string $filePath, string $location = null): self
++    public function setMeta(int $offset, int $fileSize, string $filePath, ?string $location = null): self
+     {
+         $this->offset   = $offset;
+         $this->fileSize = $fileSize;
+diff --git a/src/Middleware/Cors.php b/src/Middleware/Cors.php
+index 4a1722e..71ff6cc 100644
+--- a/src/Middleware/Cors.php
++++ b/src/Middleware/Cors.php
+@@ -8,7 +8,7 @@ use TusPhp\Response;
+ class Cors implements TusMiddleware
+ {
+     /** @const int 24 hours access control max age header */
+-    private const HEADER_ACCESS_CONTROL_MAX_AGE = 86400;
++    private const int HEADER_ACCESS_CONTROL_MAX_AGE = 86400;
+ 
+     /**
+      * {@inheritDoc}
+diff --git a/src/Middleware/Middleware.php b/src/Middleware/Middleware.php
+index b261e4d..e11e754 100644
+--- a/src/Middleware/Middleware.php
++++ b/src/Middleware/Middleware.php
+@@ -39,7 +39,7 @@ class Middleware
+     {
+         foreach ($middleware as $m) {
+             if ($m instanceof TusMiddleware) {
+-                $this->globalMiddleware[\get_class($m)] = $m;
++                $this->globalMiddleware[$m::class] = $m;
+             } elseif (\is_string($m)) {
+                 $this->globalMiddleware[$m] = new $m();
+             }
+diff --git a/src/Response.php b/src/Response.php
+index fd897aa..7c40656 100644
+--- a/src/Response.php
++++ b/src/Response.php
+@@ -114,7 +114,7 @@ class Response
+      */
+     public function download(
+         $file,
+-        string $name = null,
++        ?string $name = null,
+         array $headers = [],
+         string $disposition = ResponseHeaderBag::DISPOSITION_ATTACHMENT
+     ): BinaryFileResponse {
+diff --git a/src/Tus/AbstractTus.php b/src/Tus/AbstractTus.php
+index f3f17d3..6bcb2e9 100644
+--- a/src/Tus/AbstractTus.php
++++ b/src/Tus/AbstractTus.php
+@@ -53,7 +53,7 @@ abstract class AbstractTus
+             $this->cache = $cache;
+         }
+ 
+-        $prefix = 'tus:' . strtolower((new \ReflectionClass(static::class))->getShortName()) . ':';
++        $prefix = 'tus:' . strtolower(new \ReflectionClass(static::class)->getShortName()) . ':';
+ 
+         $this->cache->setPrefix($prefix);
+ 
+diff --git a/src/Tus/Client.php b/src/Tus/Client.php
+index d771b84..0c135da 100644
+--- a/src/Tus/Client.php
++++ b/src/Tus/Client.php
+@@ -85,7 +85,7 @@ class Client extends AbstractTus
+      *
+      * @return Client
+      */
+-    public function file(string $file, string $name = null): self
++    public function file(string $file, ?string $name = null): self
+     {
+         $this->filePath = $file;
+ 
+@@ -221,7 +221,7 @@ class Client extends AbstractTus
+      */
+     public function setMetadata(array $items): self
+     {
+-        $items = array_map('base64_encode', $items);
++        $items = array_map(base64_encode(...), $items);
+ 
+         $this->metadata = $items;
+ 
+diff --git a/src/Tus/Server.php b/src/Tus/Server.php
+index 8c4d353..256c171 100644
+--- a/src/Tus/Server.php
++++ b/src/Tus/Server.php
+@@ -47,10 +47,10 @@ class Server extends AbstractTus
+     ];
+ 
+     /** @const int 460 Checksum Mismatch */
+-    private const HTTP_CHECKSUM_MISMATCH = 460;
++    private const int HTTP_CHECKSUM_MISMATCH = 460;
+ 
+     /** @const string Default checksum algorithm */
+-    private const DEFAULT_CHECKSUM_ALGORITHM = 'sha256';
++    private const string DEFAULT_CHECKSUM_ALGORITHM = 'sha256';
+ 
+     /** @var Request */
+     protected $request;
