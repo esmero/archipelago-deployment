@@ -1,3 +1,6 @@
+_core:
+  default_config_hash: GgQPFR9_W7yU3PXDjhT5ktVYWuoA5S4H-y88-l_5t_g
+langcode: en
 local_tasks:
   node:
     position: secondary
@@ -13,6 +16,3 @@ local_tasks:
     position: secondary
   taxonomy_term:
     position: secondary
-langcode: en
-_core:
-  default_config_hash: GgQPFR9_W7yU3PXDjhT5ktVYWuoA5S4H-y88-l_5t_g

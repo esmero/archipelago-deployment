@@ -189,10 +189,8 @@ solr_configs:
               name: indexPath
               VALUE: ./und
 text_files:
-  stopwords: |
-
-  protwords: |
-
+  stopwords: ''
+  protwords: ''
   accents: |
     # À => A
     "\u00C0" => "A"

@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: ysHEvvazIuaJ5BdY0dUw2_my_Q5hM8ypdXwFfaIrvMw
 toolbar_items:
   - devel.cache_clear
   - devel.container_info.service
@@ -9,5 +11,3 @@ toolbar_items:
   - devel.run_cron
   - devel.state_system_page
   - devel.session
-_core:
-  default_config_hash: ysHEvvazIuaJ5BdY0dUw2_my_Q5hM8ypdXwFfaIrvMw

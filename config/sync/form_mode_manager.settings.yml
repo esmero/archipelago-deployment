@@ -1,3 +1,6 @@
+_core:
+  default_config_hash: oS5Qfo4ThgQoDFRG6QjffXGPQFwPKc3CAj6tzbNEN4Q
+langcode: en
 form_modes:
   node:
     to_exclude: {  }
@@ -7,6 +10,3 @@ form_modes:
   commerce_order_item:
     to_exclude:
       add_to_cart: add_to_cart
-langcode: en
-_core:
-  default_config_hash: oS5Qfo4ThgQoDFRG6QjffXGPQFwPKc3CAj6tzbNEN4Q

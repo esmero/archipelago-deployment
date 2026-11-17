@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: 2QzULf0zovJQx3J06Y9rufzzfi-CY2CTTlEfJJh2Qyw
 check:
   disabled_extensions: false
   interval_days: 7
@@ -9,5 +11,3 @@ notification:
   emails:
     - repositorysupport@metro.org
   threshold: all
-_core:
-  default_config_hash: 2QzULf0zovJQx3J06Y9rufzzfi-CY2CTTlEfJJh2Qyw

@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: u0ZqkNrnyVSnHXGBP0zlKY9dP1ZARzJZ9VSovzU_eDg
 ifd_map:
   0:
     type: 0
@@ -31,5 +33,3 @@ configuration:
       enabled: true
       expiration: 172800
       disallowed_paths: {  }
-_core:
-  default_config_hash: u0ZqkNrnyVSnHXGBP0zlKY9dP1ZARzJZ9VSovzU_eDg

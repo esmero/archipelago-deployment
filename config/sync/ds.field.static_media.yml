@@ -1,9 +1,9 @@
 id: static_media
 label: '🍓 Dah woozh'
 ui_limit: 'digital_object|*'
-properties:
-  field_id: node.digital_object.field_descriptive_metadata
 type: display_field_copy
 type_label: 'Copy field'
 entities:
   node: node
+properties:
+  field_id: node.digital_object.field_descriptive_metadata

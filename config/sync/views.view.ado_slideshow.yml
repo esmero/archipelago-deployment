@@ -305,14 +305,14 @@ display:
         type: views_bootstrap_carousel
         options:
           grouping: {  }
-          interval: '5000'
-          keyboard: 0
-          ride: 1
-          navigation: 0
-          indicators: 0
-          pause: 1
-          use_caption: 1
-          wrap: 1
+          interval: 5000
+          keyboard: false
+          ride: '1'
+          navigation: false
+          indicators: false
+          pause: true
+          use_caption: true
+          wrap: true
           effect: slide
           image: field_descriptive_metadata
           title: title

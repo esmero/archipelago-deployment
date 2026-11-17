@@ -1,34 +1,34 @@
-access_key: ''
-secret_key: ''
-use_instance_profile: false
+_core:
+  default_config_hash: XB-f-XhPo-I1_3q7Xf3WpnuGRr2ioacLa0iKWYAPwJg
 credentials_file: ''
 bucket: archipelago
 region: us-east-1
 use_cname: false
+domain_root: none
 use_customhost: true
 hostname: 'http://esmero-minio:9000'
 domain: 'localhost:9000/minio/archipelago/'
+use_path_style_endpoint: true
+disable_version_sync: true
 cache_control_header: ''
 encryption: ''
 use_https: false
 ignore_cache: false
+read_only: false
+disable_cert_verify: false
 redirect_styles_ttl: 0
-no_rewrite_cssjs: false
 root_folder: ''
 public_folder: ''
 private_folder: ''
 presigned_urls: ''
 saveas: ''
 torrents: ''
-_core:
-  default_config_hash: XB-f-XhPo-I1_3q7Xf3WpnuGRr2ioacLa0iKWYAPwJg
-use_path_style_endpoint: true
-use_credentials_cache: false
-credentials_cache_dir: ''
-disable_version_sync: true
-read_only: false
 use_cssjs_host: false
 cssjs_host: ''
-domain_root: none
-disable_cert_verify: false
+use_credentials_cache: false
+credentials_cache_dir: ''
 disable_shared_config_files: false
+access_key: ''
+secret_key: ''
+use_instance_profile: false
+no_rewrite_cssjs: false

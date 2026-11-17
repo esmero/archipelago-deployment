@@ -5,5 +5,5 @@ fido_exec_path: /usr/bin/fido
 identify_exec_path: /usr/bin/identify
 pdfinfo_exec_path: /usr/bin/pdfinfo
 mediainfo_exec_path: /usr/bin/mediainfo
-delete_tempfiles: true
 bwfmetaedit_exec_path: /usr/bin/bwfmetaedit
+delete_tempfiles: true

@@ -17,3 +17,4 @@ metadatadisplayentity_uuid: 4dff9ccc-e455-4cc9-ab73-922d44b971ab
 cache: true
 active: true
 hide_on_embargo: false
+minify_json: false
