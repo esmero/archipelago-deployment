@@ -21,7 +21,7 @@ processor_configs:
     weights:
       build: '30'
     settings:
-      link_text: ''
+      link_text: 'Reset Filters'
       position: after
   sbf_last_active_facets:
     processor_id: sbf_last_active_facets
@@ -31,17 +31,12 @@ processor_configs:
       enable: 1
       enable_empty_message: 1
       enable_query: 1
+      multiple_query: 0
       quote_query: false
       text:
         format: plain_text
         value: 'No results found.'
 facets:
-  date_of_original:
-    checked: true
-    label: 'Date of Original'
-    separator: ', '
-    show_count: false
-    weight: 0
   descriptive_metadata_agent_labels:
     checked: true
     label: '🍓 Strawberry (Descriptive Metadata source) » agents'
@@ -75,6 +70,12 @@ facets:
   mime_type:
     checked: true
     label: 'MIME Type'
+    separator: ', '
+    show_count: false
+    weight: 0
+  date_of_original_page:
+    checked: true
+    label: 'Date ETDF'
     separator: ', '
     show_count: false
     weight: 0
