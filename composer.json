@@ -236,9 +236,6 @@
       "drupal/context": {
         "PHP 8.4 deprecations": "https://www.drupal.org/files/issues/2025-03-17/context-fix-php-84-deprecations-3513516-62.patch"
       },
-      "drupal/core": {
-        "Fix Ajax Contextual Links JS" : "patches/drupal_contextual_trigger.patch"
-      },
       "ankitpokhrel/tus-php": {
         "Less Cache writes during upload fix": "patches/tus-file-cache.patch",
         "PHP84 compatibility": "patches/tus-php-archipelago-PHP84.patch"
