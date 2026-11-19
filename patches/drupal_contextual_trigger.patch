@@ -1,0 +1,12 @@
+--- a/core/modules/contextual/js/contextual.js
++++ b/core/modules/contextual/js/contextual.js
+@@ -234,6 +234,9 @@
+       render() {
+         const isOpen = this.model.get('isOpen');
+         const trigger = this.el.querySelector('.trigger');
++        if (!trigger) {
++          return this;
++        }
+         trigger.textContent = Drupal.t('@action @title configuration options', {
+           '@action': !isOpen ? this.strings.open : this.strings.close,
+           '@title': this.title,
