@@ -233,10 +233,10 @@
         "Facet Summary Count fix": "https://raw.githubusercontent.com/esmero/archipelago-deployment/refs/heads/2.2.0/patches/2.x-facets-summarycount_returntype.patch",
         "Soft limit fix": "https://www.drupal.org/files/issues/2026-04-03/3516400-soft-limit-settings-facets-undefined-fix_0.patch"
       },
-      "drupal/context: {
+      "drupal/context": {
         "PHP 8.4 deprecations": "https://www.drupal.org/files/issues/2025-03-17/context-fix-php-84-deprecations-3513516-62.patch"
       },
-      "drupal/contextual" : {
+      "drupal/contextual": {
         "Fix Ajax Contextual links" : "patches/drupal_contextual_trigger.patch"
       },
       "ankitpokhrel/tus-php": {

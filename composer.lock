@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "02daee46a6cfdc84fe91fd568f3a175e",
+    "content-hash": "ad3e26d44b252ec7391a90425486afa8",
     "packages": [
         {
             "name": "ankitpokhrel/tus-php",
@@ -183,12 +183,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme_chiloe.git",
-                "reference": "39ca32ad762cc1af751887dbe2b4d5bcd4f00dc6"
+                "reference": "7465a73a84cf513f90da5b3fc5ecb8614f9a2e19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme_chiloe/zipball/39ca32ad762cc1af751887dbe2b4d5bcd4f00dc6",
-                "reference": "39ca32ad762cc1af751887dbe2b4d5bcd4f00dc6",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme_chiloe/zipball/7465a73a84cf513f90da5b3fc5ecb8614f9a2e19",
+                "reference": "7465a73a84cf513f90da5b3fc5ecb8614f9a2e19",
                 "shasum": ""
             },
             "require": {
@@ -213,8 +213,8 @@
                 "issues": "https://github.com/esmero/archipelago_subtheme_chiloe/issues",
                 "source": "https://github.com/esmero/archipelago_subtheme_chiloe/tree/2.2.0"
             },
-            "time": "2026-11-17T16:47:14+00:00",
-            "published-time": "2026-11-17T16:47:18+00:00"
+            "time": "2026-11-19T22:12:20+00:00",
+            "published-time": "2026-11-19T22:12:27+00:00"
         },
         {
             "name": "archipelago/fragaria",
@@ -430,16 +430,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.405.0",
+            "version": "3.406.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "7e8a4a8ed7b812a9ae9fc6e921fe3ee5ed7ce8b0"
+                "reference": "fb4a935ea1e7d550cccb9d647f76b9e6e2b98736"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7e8a4a8ed7b812a9ae9fc6e921fe3ee5ed7ce8b0",
-                "reference": "7e8a4a8ed7b812a9ae9fc6e921fe3ee5ed7ce8b0",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fb4a935ea1e7d550cccb9d647f76b9e6e2b98736",
+                "reference": "fb4a935ea1e7d550cccb9d647f76b9e6e2b98736",
                 "shasum": ""
             },
             "require": {
@@ -521,10 +521,10 @@
             "support": {
                 "forum": "https://github.com/aws/aws-sdk-php/discussions",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.405.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.406.0"
             },
-            "time": "2026-11-18T19:30:10+00:00",
-            "published-time": "2026-11-18T19:37:49+00:00"
+            "time": "2026-11-19T19:20:42+00:00",
+            "published-time": "2026-11-19T19:28:13+00:00"
         },
         {
             "name": "behat/mink",
@@ -3934,6 +3934,10 @@
             ],
             "description": "Provides a number of utility and helper APIs for Drupal developers and site builders.",
             "homepage": "https://www.drupal.org/project/ctools",
+            "keywords": [
+                "Actively maintained",
+                "Administration tools"
+            ],
             "support": {
                 "source": "https://git.drupalcode.org/project/ctools",
                 "issues": "https://www.drupal.org/project/issues/ctools"
@@ -8994,16 +8998,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.13.4",
+            "version": "2.13.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "ad5e3f872690e1151e1171de2963150fc45ea1e3"
+                "reference": "5aa00c5418afbe3f435910af0e98cb03d659c49d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/ad5e3f872690e1151e1171de2963150fc45ea1e3",
-                "reference": "ad5e3f872690e1151e1171de2963150fc45ea1e3",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/5aa00c5418afbe3f435910af0e98cb03d659c49d",
+                "reference": "5aa00c5418afbe3f435910af0e98cb03d659c49d",
                 "shasum": ""
             },
             "require": {
@@ -9093,7 +9097,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.13.4"
+                "source": "https://github.com/guzzle/psr7/tree/2.13.5"
             },
             "funding": [
                 {
@@ -9109,8 +9113,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-11-17T16:15:51+00:00",
-            "published-time": "2026-11-17T16:16:24+00:00"
+            "time": "2026-11-19T20:34:53+00:00",
+            "published-time": "2026-11-19T20:36:04+00:00"
         },
         {
             "name": "halaxa/json-machine",
@@ -14428,12 +14432,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/format_strawberryfield.git",
-                "reference": "78aec2f1d8016d26492a1c8f9a6715d9bf2c120b"
+                "reference": "5f0de1b032ba512b4791658625b81224140ba703"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/78aec2f1d8016d26492a1c8f9a6715d9bf2c120b",
-                "reference": "78aec2f1d8016d26492a1c8f9a6715d9bf2c120b",
+                "url": "https://api.github.com/repos/esmero/format_strawberryfield/zipball/5f0de1b032ba512b4791658625b81224140ba703",
+                "reference": "5f0de1b032ba512b4791658625b81224140ba703",
                 "shasum": ""
             },
             "require": {
@@ -14473,8 +14477,8 @@
                 "issues": "https://github.com/esmero/format_strawberryfield/issues",
                 "source": "https://github.com/esmero/format_strawberryfield/tree/2.2.0"
             },
-            "time": "2026-11-17T18:56:09+00:00",
-            "published-time": "2026-11-17T18:56:16+00:00"
+            "time": "2026-11-19T18:55:39+00:00",
+            "published-time": "2026-11-19T18:55:46+00:00"
         },
         {
             "name": "strawberryfield/strawberry_runners",
