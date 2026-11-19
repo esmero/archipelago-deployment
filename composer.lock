@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e1d583a1f261f5fa4a116b9ff13f77a9",
+    "content-hash": "630509e0850439bcc82c65704787f34d",
     "packages": [
         {
             "name": "ankitpokhrel/tus-php",
@@ -183,12 +183,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/esmero/archipelago_subtheme_chiloe.git",
-                "reference": "1924891e6db5fc0698a14cf12edd9af0b7c4494c"
+                "reference": "de877f58f7714c1c47cf5ae9a4ea4e4070bd96b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esmero/archipelago_subtheme_chiloe/zipball/1924891e6db5fc0698a14cf12edd9af0b7c4494c",
-                "reference": "1924891e6db5fc0698a14cf12edd9af0b7c4494c",
+                "url": "https://api.github.com/repos/esmero/archipelago_subtheme_chiloe/zipball/de877f58f7714c1c47cf5ae9a4ea4e4070bd96b0",
+                "reference": "de877f58f7714c1c47cf5ae9a4ea4e4070bd96b0",
                 "shasum": ""
             },
             "require": {
@@ -213,8 +213,8 @@
                 "issues": "https://github.com/esmero/archipelago_subtheme_chiloe/issues",
                 "source": "https://github.com/esmero/archipelago_subtheme_chiloe/tree/2.2.0"
             },
-            "time": "2026-11-19T22:56:49+00:00",
-            "published-time": "2026-11-19T22:56:55+00:00"
+            "time": "2026-11-19T23:48:07+00:00",
+            "published-time": "2026-11-19T23:48:14+00:00"
         },
         {
             "name": "archipelago/fragaria",
