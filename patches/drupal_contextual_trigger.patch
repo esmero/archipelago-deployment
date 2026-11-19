@@ -1,12 +1,13 @@
 --- a/core/modules/contextual/js/contextual.js
-+++ b/core/modules/contextual/js/contextual.js
-@@ -234,6 +234,9 @@
-       render() {
-         const isOpen = this.model.get('isOpen');
-         const trigger = this.el.querySelector('.trigger');
++++ b/core/modules/contextual/js/contextual.js (date 1795129329819)
+@@ -365,6 +365,9 @@
+ 
+         this.$contextual.find('.contextual-links').prop('hidden', !isOpen);
+         const trigger = this.$contextual.find('.trigger').get(0);
 +        if (!trigger) {
 +          return this;
 +        }
          trigger.textContent = Drupal.t('@action @title configuration options', {
            '@action': !isOpen ? this.strings.open : this.strings.close,
            '@title': this.title,
+
