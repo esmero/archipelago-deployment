@@ -24,19 +24,6 @@
     {
       "type": "git",
       "url": "https://git.drupalcode.org/issue/role_theme_switcher-3557239.git"
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "simeydotme/jquery-ui-slider-pips",
-        "version": "2.0.0",
-        "type": "drupal-library",
-        "source": {
-          "url": "https://github.com/simeydotme/jquery-ui-slider-pips",
-          "type": "git",
-          "reference": "2.0.0"
-        }
-      }
     }
   ],
   "require": {
@@ -140,8 +127,7 @@
     "archipelago/archipelago_subtheme_chiloe": "2.2.0.x-dev",
     "composer": "*",
     "drupal/ckeditor_lts": "^1.0",
-    "bower-asset/jquery-ui-slider-pips": "dev-master",
-    "simeydotme/jquery-ui-slider-pips": "^2.0",
+    "bower-asset/jquery-ui-slider-pips": "2.0.1",
     "drupal/webform_bootstrap5": "11.0.x-dev@dev",
     "drupal/action": "^0.2.2",
     "drupal/tracker": "^1.1",
