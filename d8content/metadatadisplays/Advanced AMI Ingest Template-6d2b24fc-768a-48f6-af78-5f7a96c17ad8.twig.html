@@ -1,0 +1,371 @@
+{
+{# Last updated by Allison - October 2026.
+Created by Allison September 2026. 
+AMI Ingest Template created for AMI's Demo Tutorial Set using metadata elements:
+- required by Archipelago
+- most elements carried over from the DCMNY Metadata Template + Guidelines
+- most elements also map directly to the default Archipelago data modeling + configurations
+#}
+    "ismemberof": [],
+    "ispartof": [],
+    {% if data.sequence_id|length > 0 %}
+    "sequence_id": {{ data.sequence_id|json_encode|raw }},
+    {% endif %}	
+    "type": {{ data.type|json_encode|raw }},
+    "label": {{ data.label|json_encode|raw }},
+	{# Creator/Contributor section below : for creator_lod mappings #}
+	{# Dates EDTF section below : for date_created_edtf and date_issued_edtf mappings #}
+    {% if data.description|length > 0 and data.description is not iterable %}
+     "description": {{ data.description|split('|@|')|json_encode|raw }},
+     {% elseif data.description is iterable %} 
+     "description": {{ data.description|json_encode|raw }},
+    {% endif %}
+    {% if data.language|length > 0 %}
+    "language": {{ data.language|split('|@|')|json_encode|raw }},
+    {% endif %} 
+	{% if data.local_identifier|length > 0 %}
+    "local_identifier": {{ data.local_identifier|split('|@|')|json_encode|raw }},
+    {% endif %} 
+    {% if data.note|length > 0 %}
+    "note": {{ data.note|split('|@|')|json_encode|raw }},
+    {% endif %}
+    {% if data.note_publishinginfo|length > 0 %}
+    "note_publishinginfo": {{ data.note_publishinginfo|split('|@|')|json_encode|raw }},
+    {% endif %}
+    {% if data.owner|length > 0 %}
+    "owner": {{ data.owner|json_encode|raw }},
+    {% endif %}	
+ 	{% if data.physical_description_extent|length > 0 %}
+	"physical_description_extent": {{ data.physical_description_extent|split('|@|')|json_encode|raw }},
+	{% endif %}
+ 	{% if data.physical_description_note_condition|length > 0 %}
+	"physical_description_note_condition": {{ data.physical_description_note_condition|split('|@|')|json_encode|raw }},
+	{% endif %}
+    {% if data.place_of_publication|length > 0 %}
+    "place_of_publication": {{ data.place_of_publication|json_encode|raw }},
+    {% endif %} 
+    {% if data.publisher|length > 0 %}
+    "publisher": {{ data.publisher|json_encode|raw }},
+    {% endif %}
+	{% if data.related_item_host_location_url|length > 0 %}
+	"related_item_host_location_url": {{ data.related_item_host_location_url|split('|@|')|json_encode|raw }},
+	{% endif %}
+    {% if data.related_item_host_title_info_title|length > 0 %}
+    "related_item_host_title_info_title": {{ data.related_item_host_title_info_title|split('|@|')|json_encode|raw }},
+    {% endif %}
+    {% if data.related_item_note|length > 0 %}
+    "related_item_note": {{ data.related_item_note|split('|@|')|json_encode|raw }},
+    {% endif %}
+    {% if data.rights|length > 0 %}
+    "rights": {{ data.rights|json_encode|raw }},
+    {% endif %}
+{# Subject topics, names, genre, geographic, Wikidata #}
+{# Local subjects : accounts for singular or plural source column for subject_local or subjects_local #}
+	{% if data.subjects_local|length > 0 %}
+	"subjects_local": {{ data.subjects_local|split('|@|')|json_encode|raw }},
+	{% endif %} 
+	{% if data.subjects_local_names|length > 0 %}
+	"subjects_local_names": {{ data.subjects_local_names|split('|@|')|json_encode|raw }},
+	{% endif %}
+    {% if data.subject_local|length > 0 %}
+	"subjects_local": {{ data.subject_local|split('|@|')|json_encode|raw }},
+	{% endif %} 
+	{% if data.subject_local_personal_names|length > 0 %}
+	"subjects_local_personal_names": {{ data.subject_local_personal_names|split('|@|')|json_encode|raw }},
+	{% endif %} 
+{# From JSON-encoded data or LoD Reconiliation #}	
+    {% if data.subject_loc|length > 0 %}
+	"subject_loc": {{ data.subject_loc|json_encode|raw }},
+	{% endif %} 
+  {#- LCSH from Lod Rec -#}
+    {% set subject_loc = [] %}
+      {% for source, reconciliated in data_lod %}
+        {% if ('subject' in source) and reconciliated.loc_subjects_thing and reconciliated.loc_subjects_thing|length > 0 %}
+           {% set subject_loc = subject_loc|merge(reconciliated.loc_subjects_thing) %}
+           {% set subject_loc = subject_loc|reduce((unique, item) => item in unique ? unique : unique|merge([item]), []) %}
+        {% endif %}
+      {% endfor %}
+      {% if subject_loc|length > 0 %}
+      "subject_loc": {{ subject_loc|json_encode|raw }},
+      {% endif %}
+	{% if data.subject_lcnaf_personal_names|length > 0 %}
+    "subject_lcnaf_personal_names": {{ data.subject_lcnaf_personal_names|json_encode|raw }},
+	{% endif %} 
+	{% if data.subject_lcnaf_corporate_names|length > 0 %}
+    "subject_lcnaf_corporate_names": {{ data.subject_lcnaf_corporate_names|json_encode|raw }},
+	{% endif %}
+  {# <-- SUBJECTS: PERSONAL NAMES from Lod Rec #}
+      {# We initialize an empty variable named the same as our JSON key distination #}
+       {% set subject_lcnaf_personal_names = [] %}
+       {# We iterate over all Linked Open Data ('data_lod') and get the Source Key ('source') and for each source all reconciliated vocabs/values ('reconciliated') #}
+       {% for source, reconciliated in data_lod %}
+       {# We check if the 'source' contains the word subject AND if in reconciliated 'loc_rdftype_personalname' vocab exists and it has values #}
+         {% if ('subject' in source) and reconciliated.loc_rdftype_personalname and reconciliated.loc_rdftype_personalname|length > 0 %}
+            {# We add (|merge) to the previously initialized/or already with data 'subject_lcnaf_personal_names' variable the values found in 'reconciliated.loc_rdftype_personalname' #}
+            {% set subject_lcnaf_personal_names = subject_lcnaf_personal_names|merge(reconciliated.loc_rdftype_personalname) %}
+            {% set subject_lcnaf_personal_names = subject_lcnaf_personal_names|reduce((unique, item) => item in unique ? unique : unique|merge([item]), []) %}
+         {% endif %}
+       {% endfor %}     
+       {# We check if the new 'subject_lcnaf_personal_names' variable accumulated any data and is not empty #}
+       {% if subject_lcnaf_personal_names|length > 0 %}
+       {# We assign  'subject_lcnaf_personal_names' variable instead of any data coming from the original `data` or `data_lod` #}
+       "subject_lcnaf_personal_names": {{ subject_lcnaf_personal_names|json_encode|raw }},
+       {% endif %}    
+  {# SUBJECTS: PERSONAL NAMES from Lod Rec--> #}
+  {# <-- SUBJECTS: CORPORATE NAMES from Lod Rec #}
+      {% set subject_lcnaf_corporate_names = [] %}
+       {% for source, reconciliated in data_lod %}
+         {% if ('subject' in source) and reconciliated.loc_rdftype_corporatename and reconciliated.loc_rdftype_corporatename|length > 0 %}
+            {% set subject_lcnaf_corporate_names = subject_lcnaf_corporate_names|merge(reconciliated.loc_rdftype_corporatename) %}
+            {% set subject_lcnaf_corporate_names = subject_lcnaf_corporate_names|reduce((unique, item) => item in unique ? unique : unique|merge([item]), []) %}
+         {% endif %}
+       {% endfor %}  
+       {% if subject_lcnaf_corporate_names|length > 0 %}
+       	"subject_lcnaf_corporate_names": {{ subject_lcnaf_corporate_names|json_encode|raw }},
+       {% endif %}  
+  {# SUBJECTS: CORPORATE NAMES from Lod Rec --> #}
+  {# Geographic Subjects #}  
+	{% if data.subject_lcnaf_geographic_names|length > 0 %}		
+    "subject_lcnaf_geographic_names": {{ data.subject_lcnaf_geographic_names|json_encode|raw }},
+	{% endif %}
+	{% if data.subject_lcnaf_geographic_names|length > 0 %}		
+    "subject_lcnaf_geographic_names": {{ data_lod.subject_lcnaf_geographic_names.loc_rdftype_geographic|json_encode|raw }},
+	{% endif %} 
+    {% if data.subject_geographic|length > 0 %}
+    "subject_lcnaf_geographic_names": {{ data_lod.subject_geographic.loc_rdftype_geographic|json_encode|raw }}, 
+    {% endif %} 
+    {% if data.subject_cartographic_coordinates|length > 0 %}
+    "subject_cartographic_coordinates": {{ data.subject_cartographic_coordinates|split('|@|')|json_encode|raw }},
+    {% endif %}
+   {# Use straight geographic_location already JSON-encoded value if present #}
+    {% if data.geographic_location|length > 0 %}
+    "geographic_location": {{ data.geographic_location|json_encode|raw }}, 
+    {% endif %}	
+   {#- use coordinates for Nominatim search, if provided -#}
+    {% if data.subject_cartographic_coordinates|length > 0 %}
+    {% set nominatim_from_coordinates = ami_lod_reconcile(data.subject_cartographic_coordinates,'nominatim;thing;reverse','en') -%}
+    "geographic_location": {{ nominatim_from_coordinates|json_encode|raw }},
+    {% endif %}	    
+   {#- use label value for Nominatim search -#}
+    {% if data.subject_geographic|length > 0 %}
+    {% set nominatim_from_label = ami_lod_reconcile(data.mods_subject_geographic,'nominatim;thing;search','en') -%}
+    "geographic_location": {{ nominatim_from_label|json_encode|raw }},
+    {% endif %}	
+  {# Genre - Getty AAT and LCGFT #} 	
+	{% if data.subject_lcgft_terms|length > 0 %}	 
+    "subject_lcgft_terms": {{ data.subject_lcgft_terms|json_encode|raw }},
+	{% endif %} 
+	{# For LoD Rec #}
+      {% if data.subject_genre_lcgft|length > 0 %}
+      "subject_lcgft_terms": {{ data_lod.subject_genre_lcgft.loc_genreforms_thing|json_encode|raw }},
+      {% endif %}	 
+	{% if data.term_aat_getty|length > 0 %}	
+    "term_aat_getty": {{ data.term_aat_getty|json_encode|raw }},
+	{% endif %}  
+	{# For LoD Rec #}
+      {% if data.subject_genre_getty|length > 0 %}
+      "term_aat_getty": {{ data_lod.subject_genre_getty.getty_aat_exact|json_encode|raw }},
+      {% endif %}
+      {% if data.subject_genre_getty|length > 0 %}
+      "term_aat_getty": {{ data_lod.subject_genre_getty.getty_aat_terms|json_encode|raw }},
+      {% endif %}	
+  {#- Wikidata: sourced from LoD Rec'd subject_wikidata -#}
+    {% set subject_wikidata = [] %}
+      {% for source, reconciliated in data_lod %}
+        {% if ('subject' in source) and reconciliated.wikidata_subjects_thing and reconciliated.wikidata_subjects_thing|length > 0 %}
+           {% set subject_wikidata = subject_wikidata|merge(reconciliated.wikidata_subjects_thing) %}
+           {% set subject_wikidata = subject_wikidata|reduce((unique, item) => item in unique ? unique : unique|merge([item]), []) %}
+        {% endif %}
+      {% endfor %}
+      {% if subject_wikidata|length > 0 %}
+      "subject_wikidata": {{ subject_wikidata|json_encode|raw }},
+      {% endif %}
+	{% if data.edm_agent|length > 0 %} 
+    "edm_agent": {{ data.edm_agent|json_encode|raw }},
+	{% endif %}  
+  {#- MeSH: sourced from subject_local -#}
+	{% if data.pubmed_mesh|length > 0 %}	
+    "pubmed_mesh": {{ data.pubmed_mesh|json_encode|raw }},
+	{% endif %} 
+      {% set pubmed_mesh = [] %}
+      {% for source, reconciliated in data_lod %}
+        {% if ('subject' in source) and reconciliated.mesh_term_startswith and reconciliated.mesh_term_startswith|length > 0 %}
+           {% set pubmed_mesh = pubmed_mesh|merge(reconciliated.mesh_term_startswith) %}
+        {% endif %}
+      {% endfor %}
+      {% if pubmed_mesh|length > 0 %}
+      "pubmed_mesh": {{ pubmed_mesh|json_encode|raw }},
+      {% endif %}    
+{# End of Subject topics, names, genre, geographic, Wikidata #}
+
+{# New EDTF dates simple mapping option:
+ - minimal cleaning/replacement
+ - likely too simple for approximate/inferred/etc sitatuions?
+ - how to better adaprt for SDSU staff date/data entry needs?
+#}
+	{% if data.date_created_edtf|length > 2 %}
+      {% if data.date_created_edtf is defined and not empty %}
+    	{% set datecleaned = data['date_created_edtf']|replace({"circa ":"~", "Circa ":"~"}) %}
+    	"date_created_edtf": {
+        	"date_to": "",
+        	"date_free": {{ datecleaned|json_encode|raw }},
+        	"date_from": "",
+        	"date_type": "date_free"
+        },        
+      {% endif %}
+    {% endif %}
+    {% if data.date_issued_edtf|length > 2 %}
+      {% if data.date_issued_edtf is defined and not empty %}
+    	{% set datecleaned = data['date_issued_edtf']|replace({"circa ":"~", "Circa ":"~"}) %}
+    	"date_issued_edtf": {
+        	"date_to": "",
+        	"date_free": {{ datecleaned|json_encode|raw }},
+        	"date_from": "",
+        	"date_type": "date_free"
+        },        
+      {% endif %}
+    {% endif %}
+{# Generalized creator_lod mapping from different 'name_type_role_namepart' source columns. #}
+    {% if data.creator_lod|length > 0 %}
+    "creator_lod": {{ data.creator_lod|json_encode|raw }},
+    {% endif %}
+    {#- START Names from LoD and Name Columns in CSV with/without URIS. -#} 
+    {# Updated February 28 2023, by Allison; Previously updated by Diego late 2022.
+    - changed to map from different 'name_type_role_namepart' instead of 'mods_name_type_role_namepart'
+   	- Checks/logic for name_type_role_composed_or_more_namepart
+    - Check first IF for a given namepart there is already reconciliaton. 
+    - IF not i check if there is a matching valueuri, 
+    - IF NOT i leave the URL empty and use the value in the namepart (label) only?
+    - Only check/use name_corporate/personal_namepart field IF there are no other fields
+    - That specify Roles. Since normally in ISLANDORA that field (no role) is a Catch all names one
+    - And in that case USE creator as the default ROLE
+    #}
+    {%~ set creator_lod = [] -%} 
+    {# Used to keep track of parts after the type (corporate, etc) that are no roles but authority properties. 
+    - kept for now, though probably will not be encountered in non I7 legacy data #}
+    {%  set roles_that_are_no_roles = ['authority_naf','authority_marcrelator',''] %}
+    {# Used to keep track of the ones that are reconciled already #}
+    {%- set name_has_creator_lod = [] -%}
+    {%- for key,value in data_lod -%}
+      {%- if key starts with 'name_' and key ends with '_namepart' -%}
+      {# If there is name_SOMETHING_namepart in data_lod we keep track so we 
+      do not try afterwards to use that Sources KEY from the CSV.
+      #}
+        {%- set name_has_creator_lod = name_has_creator_lod|merge([key]) -%}
+      {# Now we remove 'name_' and '_namepart' #}
+        {%- set name_type_and_role = key|replace({'name_':'', '_namepart':''}) -%}
+      {# We will only target personal or corporate. If any of those are missing we skip? #}
+        {% set name_type = null %}
+        {%- if name_type_and_role starts with 'personal_' -%}
+           {% set name_type = 'personal' %}
+        {%- elseif name_type_and_role starts with 'corporate_' -%}
+      	   {%- set name_type = 'corporate' -%}
+        {%- endif -%}
+        {%- if name_type is not empty -%}
+        {#- Now we remove 'type', e.g 'corporate_' -#}
+          {%- set name_role = name_type_and_role|replace({(name_type ~ '_'):''}) -%}
+          {# in case the name_role contains one of roles_that_are_no_roles, e.g
+          something like `creator_authority_marcrelator` we remove that #}
+          {% for role_that_is_no_role in roles_that_are_no_roles %}
+             {%- set name_role = name_role|replace({(role_that_is_no_role):''}) -%}
+          {% endfor %}
+          {# After removing all what can not be a role if we end with an empty #}
+          {% if name_role|trim|length == 0 %}
+             {%- set name_role = "creator" %}
+          {% else %}
+            {%- set name_role = name_role|replace({'\\/':'//' , '_':' '})|trim -%}
+          {% endif %}
+        {#- we iterate over all possible vocabularies and fetch the reconciliated names from them (if any) -#}
+          {%- for approach, names in value -%} 
+        {#- if there are actually name pairs (name and uri) that were reconciliated we use them -#}
+            {%- if names|length > 0 -%}
+              {#- we call the ami_lod_reconcile twig extension with the role label using the LoC Relators endpoint in english and get 1 result -#}
+              {%- set role_uri = ami_lod_reconcile(name_role|lower|capitalize,'loc;relators;thing','en',1) -%}
+              {#- for each found name pair in a list of possible LoD reconciliated elements we generate the final structure that goes into "creator_lod" json key -#}
+              {%- for name in names -%} 
+                {%- set creator_lod = creator_lod|merge([{'role_label': name_role|lower|capitalize, 'role_uri': role_uri[0].uri, "agent_type": name_type, "name_label": name.label, "name_uri": name.uri}]) -%}     
+             {%- endfor -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {% endif -%}
+      {%- endif -%} 
+    {%- endfor -%}
+    {# Now go for the RAW CSV data for names #}
+    {%- for key,value in data -%}
+    {# here we skip values previously fetched from LoD and stored in name_has_creator_lod #}
+      {%- if key not in name_has_creator_lod and key starts with 'name_' and key ends with '_namepart' -%}
+      {# If there is name_SOMETHING_namepart in data_lod we keep track so we 
+      do not try afterwards to use that Sources KEY from the CSV.#}
+        {%- set name_has_creator_lod = name_has_creator_lod|merge([key]) -%}
+      {# Now we remove 'name_' and '_namepart' #}
+        {%- set name_type_and_role = key|replace({'name_':'', '_namepart':''}) -%}
+      {# We will only target personal or corporate. If any of those are missing we skip? #}
+        {%- set name_type = null -%}
+        {%- if name_type_and_role starts with 'personal_' -%}
+           {%- set name_type = 'personal' -%}
+        {%- elseif name_type_and_role starts with 'corporate_' -%}
+      	   {%- set name_type = 'corporate' -%}
+        {%- endif -%}
+        {% if name_type is not empty %}
+        {# Now we remove 'type', e.g 'corporate_' #}
+          {%- set name_role = name_type_and_role|replace({(name_type ~ '_'):''}) -%}
+          {# in case the name_role contains one of roles_that_are_no_roles, e.g
+          something like `creator_authority_marcrelator` we remove that #}
+          {% for role_that_is_no_role in roles_that_are_no_roles %}
+             {%- set name_role = name_role|replace({(role_that_is_no_role):''}) -%}
+          {% endfor %}
+          {# After removing all what can not be a role if we end with an empty #}
+          {% if name_role|trim|length == 0 %}
+             {%- set name_role = "creator" %}
+          {% else %}
+            {%- set name_role = name_role|replace({'\\/':'//' , '_':' '})|trim -%}
+          {% endif %}
+          {# Now we check if there is a corresponding _valueuri for this #}
+          {% set name_uris = [] %}
+          {%- if data[('name_' ~ name_type_and_role ~ '_valueuri')] is not empty 
+          and data[('name_' ~ name_type_and_role ~ '_valueuri')] != '' -%}
+            {%- set name_uris = data[('name_' ~ name_type_and_role ~ '_valueuri')]|split('|@|') -%}
+          {%- endif -%}
+          {%- set role_uri = ami_lod_reconcile(name_role|lower|capitalize,'loc;relators;thing','en',1) -%}
+        {#- we split and iterate over the value of the name key -#}
+        {# NOTE. THIS IS TARGETING Anything after the year 1000, or 2000 #}
+          {%- for index,name in value|replace({'|@|1':', 1', '|@|2':', 2', '|@|-':', -'})|split('|@|') -%}
+            {%- if name is not empty and name|trim != '' -%}
+              {%- set name_uri = null -%}
+              {# Here we can check if one of the names IS not a name (e.g a year? #}
+              {#- we call the ami_lod_reconcile twig extension with the role label using the LoC Relators endpoint in english and get 1 result -#}
+              {%- if name_uris[index] is defined and name_uris[index] is not empty -%}
+                 {%- set name_uri = name_uris[index] -%}
+              {%- endif -%}
+              {%- set creator_lod = creator_lod|merge([{'role_label': name_role|lower|capitalize, 'role_uri': role_uri[0].uri, "agent_type": name_type, "name_label": name, "name_uri": name_uri}]) -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor ~%}
+    {# per Diego, use reduce filter + other logic for depulicating #}
+	{% set creator_lod = creator_lod|reduce((unique, item) => item in unique ? unique : unique|merge([item]), []) %}    
+    "creator_lod": {{ creator_lod|json_encode|raw -}},
+    {#- END Names from LoD and MODSesque CSV with/without URIS. -#}
+{# End of slightly modified creator_lod section #}     
+    "audios": [],
+    "images": [],
+    "models": [],
+    "videos": [],
+    "documents": [],
+    "as:generator": {
+        "type": "Create",
+        "actor": {
+            "url": {{ setURL|json_encode|raw }},
+            "name": "ami",
+            "type": "Service"
+        },
+        "endTime": "{{"now"|date("c")}}",
+        "summary": "Generator",
+        "@context": "https:\/\/www.w3.org\/ns\/activitystreams"
+    },
+    {% if data.website_url|length > 0 %}
+    "website_url": {{ data.website_url|json_encode|raw }},
+    {% endif %}
+    "upload_associated_warcs": []
+}
