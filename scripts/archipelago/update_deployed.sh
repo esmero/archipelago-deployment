@@ -89,9 +89,9 @@ echo -e "DataCite Schema V4 \n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/4003250e-a596-4c29-a7e3-d55ff1009d44 --data-binary @'d8content/DataCite V4 Default Template for 1.6.0+-4003250e-a596-4c29-a7e3-d55ff1009d44.json';
 
-echo -e "Advanced AMI Ingest Template\n"
+# echo -e "Advanced AMI Ingest Template\n"
 
-curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/6d2b24fc-768a-48f6-af78-5f7a96c17ad8 --data-binary @'d8content/Advanced AMI Ingest Template-6d2b24fc-768a-48f6-af78-5f7a96c17ad8.json';
+# curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/6d2b24fc-768a-48f6-af78-5f7a96c17ad8 --data-binary @'d8content/Advanced AMI Ingest Template-6d2b24fc-768a-48f6-af78-5f7a96c17ad8.json';
 
 echo -e "Updating Menu Items\n"
 
@@ -108,9 +108,9 @@ echo -e "Updating your Demo AMI Set\n"
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/ami_set_entity/ami_set_entity/5e537ff6-3b84-4540-afef-94e5e81e4768  --data-binary @d8content/ami_set_entity_01.json;
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/octet-stream' -H 'Content-Disposition: file; filename="ami_set_entity_01.csv"' -XPOST http://esmero-web/jsonapi/ami_set_entity/ami_set_entity/5e537ff6-3b84-4540-afef-94e5e81e4768/source_data  --data-binary @d8content/ami_set_entity_01.csv;
 
-echo -e "Updating your Tutorial AMI Set\n"
-curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/ami_set_entity/ami_set_entity/b218fcb5-1985-4318-ae3b-b1fc75b10791  --data-binary @d8content/ami_set_entity_02.json;
-curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/octet-stream' -H 'Content-Disposition: file; filename="ami_set_entity_02.csv"' -XPOST http://esmero-web/jsonapi/ami_set_entity/ami_set_entity/b218fcb5-1985-4318-ae3b-b1fc75b10791/source_data  --data-binary @d8content/ami_set_entity_02.csv;
+# echo -e "Updating your Tutorial AMI Set\n"
+# curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/ami_set_entity/ami_set_entity/b218fcb5-1985-4318-ae3b-b1fc75b10791  --data-binary @d8content/ami_set_entity_02.json;
+# curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/octet-stream' -H 'Content-Disposition: file; filename="ami_set_entity_02.csv"' -XPOST http://esmero-web/jsonapi/ami_set_entity/ami_set_entity/b218fcb5-1985-4318-ae3b-b1fc75b10791/source_data  --data-binary @d8content/ami_set_entity_02.csv;
 
 echo -e "A welcome message\n"
 
