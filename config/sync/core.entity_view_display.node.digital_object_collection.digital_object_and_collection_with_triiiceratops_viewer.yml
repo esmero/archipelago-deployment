@@ -1,0 +1,101 @@
+uuid: 83227a92-0afa-48e2-832c-b4e5f80a2ba9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.digital_object_and_collection_with_triiiceratops_viewer
+    - field.field.node.digital_object_collection.body
+    - field.field.node.digital_object_collection.field_descriptive_metadata
+    - node.type.digital_object_collection
+  module:
+    - ds
+    - field_layout
+    - format_strawberryfield
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+        classes:
+          layout_class: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      ds_content:
+        - field_descriptive_metadata
+        - 'display_field_copy:node-raw_metadata'
+        - 'display_field_copy:node-extra_metadata_collection'
+    fields:
+      'display_field_copy:node-extra_metadata_collection':
+        plugin_id: 'display_field_copy:node-extra_metadata_collection'
+        weight: 2
+        label: hidden
+        formatter: strawberry_default_formatter
+      'display_field_copy:node-raw_metadata':
+        plugin_id: 'display_field_copy:node-raw_metadata'
+        weight: 1
+        label: hidden
+        formatter: strawberry_metadata_formatter
+        settings:
+          formatter:
+            label: 'Descriptive Metadata'
+            specs: 'http://schema.org'
+            metadatadisplayentity_uuid: bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7
+            metadatadisplayentity_uselabel: '0'
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: node.digital_object_collection.digital_object_and_collection_with_triiiceratops_viewer
+targetEntityType: node
+bundle: digital_object_collection
+mode: digital_object_and_collection_with_triiiceratops_viewer
+content:
+  field_descriptive_metadata:
+    type: strawberry_triiiceratops_formatter
+    label: hidden
+    settings:
+      mediasource:
+        metadataexposeentity: metadataexposeentity
+      viewer_overrides: '{ "gallery": { "open": true } } '
+      viewer_theme_overrides: "{\r\n\"primary\": \"var(--bb-primary, #59656f)\"\r\n}"
+      main_mediasource: metadataexposeentity
+      metadataexposeentity_source: iiifmanifest3cws_multiple
+      enabled_plugins:
+        plugin-image-manipulation: plugin-image-manipulation
+        plugin-av: plugin-av
+        plugin-pdf-export: plugin-pdf-export
+        plugin-image-export: plugin-image-export
+        plugin-annotation-editor: plugin-annotation-editor
+      webannotations: '1'
+      webannotations_storage: single
+      content_state_drop: '1'
+      content_state_url_update: '1'
+      max_width: '0'
+      max_height: '720'
+      upload_json_key_source: ''
+      embargo_json_key_source: ''
+      use_iiif_globals: '1'
+      iiif_base_url: 'http://localhost:8183/iiif/2'
+      iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+      hide_on_embargo: 0
+      manifestnodelist_json_key_source: isrelatedto
+      manifesturl_json_key_source: iiifmanifest
+    third_party_settings: {  }
+    weight: 0
+    region: ds_content
+hidden:
+  body: true
+  content_moderation_control: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

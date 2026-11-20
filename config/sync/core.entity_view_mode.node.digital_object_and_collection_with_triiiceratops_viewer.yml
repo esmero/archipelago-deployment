@@ -1,0 +1,11 @@
+uuid: 62ae54af-5413-40cc-8498-2fe3f2efc4da
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.digital_object_and_collection_with_triiiceratops_viewer
+label: 'Digital Object and Collection with Triiiceratops Viewer'
+description: null
+targetEntityType: node
+cache: true
