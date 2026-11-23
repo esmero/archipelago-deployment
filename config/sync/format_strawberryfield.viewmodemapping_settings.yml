@@ -154,3 +154,8 @@ type_to_viewmode:
     view_mode: digital_object_with_mirador_viewer
     active: true
     weight: 30
+  -
+    jsontype: MultispectralImage
+    view_mode: digital_object_with_iiif_choice_manifest
+    active: true
+    weight: 32

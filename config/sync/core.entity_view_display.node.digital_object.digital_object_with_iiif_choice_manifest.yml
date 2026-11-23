@@ -1,0 +1,109 @@
+uuid: 36c95908-336d-457a-95c3-257e13c36dcc
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.digital_object_with_iiif_choice_manifest
+    - field.field.node.digital_object.body
+    - field.field.node.digital_object.field_descriptive_metadata
+    - node.type.digital_object
+  module:
+    - ds
+    - field_layout
+    - strawberryfield
+    - text
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+        classes:
+          layout_class: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      ds_content:
+        - links
+        - body
+        - 'display_field_copy:node-field_descriptive_metadata_image'
+        - 'display_field_copy:node-formatted_metadata'
+        - field_descriptive_metadata
+    fields:
+      'display_field_copy:node-field_descriptive_metadata_image':
+        plugin_id: 'display_field_copy:node-field_descriptive_metadata_image'
+        weight: 2
+        label: hidden
+        formatter: strawberry_mirador_formatter
+        settings:
+          formatter:
+            iiif_base_url: 'http://localhost:8183/iiif/2'
+            iiif_base_url_internal: 'http://esmero-cantaloupe:8182/iiif/2'
+            custom_js: false
+            mirador_version: 4
+            mediasource:
+              manifestnodelist: manifestnodelist
+              metadataexposeentity: metadataexposeentity
+              manifesturl: manifesturl
+            main_mediasource: metadataexposeentity
+            metadataexposeentity_source: iiifmanifestchoice
+            manifestnodelist_json_key_source: isrelatedto
+            manifesturl_json_key_source: iiifmanifest
+            max_width: '0'
+            max_height: '960'
+            use_iiif_globals: '1'
+            hide_on_embargo: '1'
+            viewer_overrides: "{\r\n    \"window\": {\r\n        \"allowClose\": false,\r\n        \"allowFullscreen\": true,\r\n        \"allowMaximize\": false,\r\n        \"allowTopMenuButton\": true,\r\n        \"allowWindowSideBar\": true,\r\n        \"sideBarPanel\": \"layers\",\r\n        \"defaultSidebarPanelHeight\": 201,\r\n        \"defaultSidebarPanelWidth\": 235,\r\n        \"defaultView\": \"single\",\r\n        \"hideWindowTitle\": true,\r\n        \"sideBarOpen\": true,\r\n        \"switchCanvasOnSearch\": true,\r\n        \"panels\": {\r\n           \"info\": true,\r\n            \"attribution\": true,\r\n            \"canvas\": true,\r\n            \"annotations\": false,\r\n            \"search\": true,\r\n            \"layers\": true\r\n        }\r\n    },\r\n    \"workspace\": {\r\n        \"draggingEnabled\": true,\r\n        \"allowNewWindows\": true,\r\n        \"isWorkspaceAddVisible\": false,\r\n        \"showZoomControls\": true\r\n    },\r\n    \"workspaceControlPanel\": {\r\n        \"enabled\": false\r\n    }\r\n}"
+      'display_field_copy:node-formatted_metadata':
+        plugin_id: 'display_field_copy:node-formatted_metadata'
+        weight: 3
+        label: hidden
+        formatter: strawberry_metadata_formatter
+        settings:
+          formatter:
+            label: 'Descriptive Metadata'
+            specs: 'http://schema.org'
+            metadatadisplayentity_uuid: bde1cb38-e1b8-4f2d-bc1c-bff646d2e8b7
+            metadatadisplayentity_uselabel: '0'
+id: node.digital_object.digital_object_with_iiif_choice_manifest
+targetEntityType: node
+bundle: digital_object
+mode: digital_object_with_iiif_choice_manifest
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: ds_content
+  field_descriptive_metadata:
+    type: strawberry_default_formatter
+    label: hidden
+    settings:
+      limit_access: edit
+      label: 'Raw Metadata (JSON)'
+    third_party_settings: {  }
+    weight: 4
+    region: ds_content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: ds_content
+hidden:
+  content_moderation_control: true
+  langcode: true
+  search_api_excerpt: true
