@@ -11,7 +11,7 @@ dependencies:
 id: archipelago_subtheme_chiloe_useraccountmenu
 theme: archipelago_subtheme_chiloe
 region: header
-weight: 0
+weight: -25
 provider: null
 plugin: 'system_menu_block:account'
 settings:

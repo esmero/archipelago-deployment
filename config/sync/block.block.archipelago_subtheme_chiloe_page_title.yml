@@ -11,7 +11,7 @@ _core:
 id: archipelago_subtheme_chiloe_page_title
 theme: archipelago_subtheme_chiloe
 region: header
-weight: -8
+weight: -26
 provider: null
 plugin: page_title_block
 settings:
