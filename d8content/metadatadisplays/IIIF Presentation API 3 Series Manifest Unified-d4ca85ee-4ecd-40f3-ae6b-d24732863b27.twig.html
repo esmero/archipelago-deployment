@@ -1,89 +1,125 @@
 {#-
-Updated 05/12/2025 for 1.6.0. IIIF Presentation API 3 Series Manifest Unified 
+This Template generates IIIF 3.0 API Manifest capable of handling Digital Objects and Creative Works Series using a Drupal Views
+using the Solr Indexed RAW JSON field to avoid pre-rendering canvases. It is more efficient/less memory/less CPU.
+Right now only Renders as:image based Children Canvases, but can be extended to deal with all media
+
+Last updated Nov 19 2026 by Diego Pino for 2.2.0. 
+     - Ensures Array for requiredStatement
+     - Improves logic on ispartof to accumuluate both ispartof and ismemberof with better validation
+     - requiredStatement label should be Rights not Attribution 
+     - rename description to summary
+     - switch to the more common creator_lod instead of edm_agent
+     - use ";" notation on page number for PDF based thumbnails 
+     - Fixes extra comma (legacy based on loop.last) when Child ADO has multiple images
+     - Adds Text based Annotations to the Top processing
+     
+Previously updated 05/12/2025 for 1.6.0. IIIF Presentation API 3 Series Manifest Unified 
 - Uses a single Search API Views, paged, bringing children up to two level downs. -
 Sorts by more far away Sequence id, then lowering to its own.
 Also adds the "," before instead at the end. That way we always know IF we will end outputting. I should have known this before!
-Updated 31/05/2024 for 1.4.0 & Scrapbook. Content Search API matching the exposed manifest iiifmanifest3cws_scrapbook
-Updated 31/05/2024 for 1.4.0 & Scrapbook. 3 levels down of canvases
-Updated 31/11/2023 for 1.3.0. Fixes Video/Audio Urls when attached directly to a top object
+Previously updated 31/05/2024 for 1.4.0 & Scrapbook. Content Search API matching the exposed manifest iiifmanifest3cws_scrapbook
+Previously updated 31/05/2024 for 1.4.0 & Scrapbook. 3 levels down of canvases
+Previously updated 31/11/2023 for 1.3.0. Fixes Video/Audio Urls when attached directly to a top object
 
 Previously Updated 31/10/2023 for 1.3.0 
 
 - Includes top level objects too now.
-
-This Template generates IIIF 3.0 API Manifest for Creative Works Series using a Drupal Views
-JSON to be used by a Drupal Views (REST) to generate a simpler to parse/join listing of Canvases
-For a Creative Works Series Manifest
-
 Structures passed from Archipelago are
 - node
   The full Node entity
 - data
   The Full JSON Structure converted in an Array
 - iiif_server
-  The publicly available IIIF Server (Global Setting)
-
+  The publicly available IIIF Server (Global Setting)​ 
 Since JSON was decoded into the 'data' values are valid PHP but could not
 be valid JSON when outputting. So We use data.description|json_encode|raw
 Without Double quotes.
 -#}
 {%- set structureCanvasIds = [] %}
+{# with 150 being Cantaloupe's setup PDF rastering resolution and 72 what PDFINFO produces by default #} 
 {%- set pdf_resolution = (150/72) %} 
-{%- set max_thumb_width = 240 -%}
 {%- set baseurl =  url('<front>')|render -%} 
-{% set Webserverurl =  url('<front>')|render|replace({':8001/':''}) ~ ':8183/iiif/2/' %}
-{% set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl %}
-{% set currenturl = url('<current>')|render %}
-{% if node.id %}
+{%- set Webserverurl =  baseurl -%} 
+{%- set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl -%} 
+{%- set currenturl = url('<current>')|render -%} 
+{%- set parentcollectionurl = '' -%}
+{%- set parentnodeurl = '' %}
+{%- set nodeid = node.id|default(1) %}
+{%- set max_thumb_width = 240 -%}
+{# Defines a limit of how many Children Nodes (View Pages) it will be allowed to get via a Drupal View) #}
+{%- set max_views_pages = 500 -%}
+{%- set itemCount = 0 -%}
+{%- if node.id -%}
 	{# this is needed to the View Argument can conform to the format even when no node exists when saving the template #}
     {% set nodeid = node.id %}
     {% set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) %}
 {% else %}
     {% set nodeid = 1 %} 
     {% set nodeurl = currenturl %}
-{% endif%}
-{% set len = language.getId() ? language.getId() : "en" %}
-{% set computed_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %}
+{%- endif -%}
+{%- if attribute(data, 'ismemberof') %} 
+    {%- if attribute(data, 'ismemberof') is iterable -%} 
+	    {%- for collection in attribute(data, 'ismemberof') -%} 
+		   {%- set parentcollectionurl = url('entity.node.canonical', {'node': collection}, {'absolute': true}) -%} 
+	    {%- endfor -%} 
+	{%- else -%} 
+		{%- set parentcollectionurl = url('entity.node.canonical', {'node': attribute(data, 'ismemberof')}, {'absolute': true}) -%} 
+    {%- endif -%} 
+{%- endif -%} 
+{%- if attribute(data, 'ispartof') -%} 
+    {%- if attribute(data, 'ispartof') is iterable -%} 
+	{%- for child in attribute(data, 'ispartof') -%} 
+		{%- set parentnodeurl = url('entity.node.canonical', {'node': child}, {'absolute': true}) -%} 
+	{%- endfor -%} 
+	{%- else -%} 
+		{%- set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ispartof')}, {'absolute': true}) -%} 
+   {%- endif -%} 
+{%- endif -%} 
+{%- set len = language.getId() ? language.getId() : "en" -%}
+{# Modify to match your less permissive creative commons licence using HTTP (not HTTPS)
+to ensure IIIF Presentation 3.0 validation #}
+{% set computed_rights = "http://creativecommons.org/licenses/by-nc-nd/4.0/" %}
+{% set local_rights = computed_rights %} 
 {% if data.rights|length > 0 or data.rights_statements|length > 0 %}
 	{% if data.rights|length > 0 %}
-		{% set computed_rights = data.rights %}
+		{% set local_rights = (data.rights is iterable) ? data.rights[0] : data.rights  %} 
 	{% endif %}
 {% elseif data.rights_statements|length > 0 %}
 	{% if data.rights_statements in ['In Copyright'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/InC/1.0/" %}
+		{% set local_rights = "http://rightsstatements.org/vocab/InC/1.0/" %} 
 	{% endif %}
 	{% if data.rights_statements in ['In Copyright - EU Orphan Work'] %} 
-    	{% set computed_rights = "http://rightsstatements.org/vocab/InC-OW-EU/1.0/" %}
+    	{% set local_rights = "http://rightsstatements.org/vocab/InC-OW-EU/1.0/" %} 
 	{% endif %}
 	{% if data.rights_statements in ['In Copyright - Educational Use Permitted'] %} 
-	   	{% set computed_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %}
+	   	{% set local_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %} 
 	{% endif %}
 	{% if data.rights_statements in ['In Copyright - Non-Commercial Use Permitted'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/InC-NC/1.0/" %}
+		{% set local_rights = "http://rightsstatements.org/vocab/InC-NC/1.0/" %} 
 	{% endif %}
 	{% if data.rights_statements in ['In Copyright - Rights-holder(s) Unlocatable or Unidentifiable'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/InC-RUU/1.0/" %}
+		{% set local_rights = "http://rightsstatements.org/vocab/InC-RUU/1.0/" %} 
 	{% endif %}
 	{% if data.rights_statements in ['No Copyright - Contractual Restrictions'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-CR/1.0/" %}
+		{% set local_rights = "http://rightsstatements.org/vocab/NoC-CR/1.0/" %} 
 	{% endif %} 
 	{% if data.rights_statements in ['No Copyright - Non-Commercial Use Only'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-NC/1.0/" %}
+		{% set local_rights = "http://rightsstatements.org/vocab/NoC-NC/1.0/" %} 
 	{% endif %}
 	{% if data.rights_statements in ['No Copyright - Other Known Legal Restrictions'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-OKLR/1.0/" %}
+		{% set local_rights = "http://rightsstatements.org/vocab/NoC-OKLR/1.0/" %} 
 	{% endif %}
 	{% if data.rights_statements in ['No Copyright - United States'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-US/1.0/" %}
+		{% set local_rights = "http://rightsstatements.org/vocab/NoC-US/1.0/" %} 
 	{% endif %} 
 	{% if data.rights_statements in ['Copyright Not Evaluated'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/CNE/1.0/" %}
+		{% set local_rights = "http://rightsstatements.org/vocab/CNE/1.0/" %} 
 	{% endif %}
 	{% if data.rights_statements in ['Copyright Undetermined'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/UND/1.0/" %}
+		{% set local_rights = "http://rightsstatements.org/vocab/UND/1.0/" %} 
 	{% endif %}
 	{% if data.rights_statements in ['No Known Copyright'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/NKC/1.0/" %}
+		{% set local_rights = "http://rightsstatements.org/vocab/NKC/1.0/" %} 
 	{% endif %}
 {% endif %}
 {
@@ -99,13 +135,15 @@ Without Double quotes.
 {{ node.label|json_encode|raw }}
 ]
 },
+  "rights": {{ computed_rights|json_encode|raw }},
+  "summary": { "en": [{{ data.description is iterable ? data.description[0]|markdown_2_html|json_encode|raw :  data.description|markdown_2_html|json_encode|raw }}]},
+  "behavior": ["paged"],
 "requiredStatement": {
-"label": { "en": [ "Attribution" ] },
-"value": { "en": [ "Provided by Archipelago Deployment" ] }
+    "label": {  "{{ len }}": [ "Rights" ] }, 
+    "value": {  "{{ len }}": [ {{ local_rights|json_encode|raw }} ] } 
 },
-"rights": {{ computed_rights|json_encode|raw }},
 "metadata": [
-{% for agent in attribute(data, 'edm_agent') %}
+{% for agent in attribute(data, 'creator_lod') %}
     {
     "label": {
     "{{ len }}": [
@@ -127,7 +165,7 @@ Without Double quotes.
 },
 "value": {
 "{{ len }}": [
-{{ data.description|json_encode|raw }}
+          {{ data.description is iterable ? data.description[0]|markdown_2_html|json_encode|raw :  data.description|markdown_2_html|json_encode|raw }} 
 ]
 }
 },
@@ -139,7 +177,8 @@ Without Double quotes.
 },
 "value":  {
 "{{ len }}": [
-   "{{ node.getChangedTime|date("F jS \\a\\t g:ia") }}"
+        {{ "now"|date('Y-m-d\\TH:i:s\\Z', 'UTC')|json_encode|raw }}
+        {# node.getChangedTime|date('Y-m-d\\TH:i:s\\Z')|json_encode|raw #} 
     ]
   }
 },
@@ -151,42 +190,21 @@ Without Double quotes.
 },
 "value": {
   "{{ len }}": [
-     {{ computed_rights|json_encode|raw }}
+          {{ local_rights|json_encode|raw }} 
      ]
     }
   }
 ],
-{# New Jan 2023:added to bring IIIF CWS and IIIF Normal V3 in sync #}
-{%- if attribute(data, 'ismemberof') %}
-    {%- if attribute(data, 'ismemberof') is iterable -%}
-	    {%- for collection in attribute(data, 'ismemberof') -%}
-           {% set parentnode = bamboo_load_entity('node', collection) %}
-           {% if parentnode %}
-             {%  set parentcollectionurl = url('format_strawberryfield.metadatadisplay_caster', {'node': parentnode.uuid.value, 'metadataexposeconfig_entity': 'iiifmanifest3collection', 'format':'default.jsonld'}, {'absolute': true}) -%}
-	       {% endif %}
-        {%- endfor -%}
-	{%- else -%}
-         {% set parentnode = bamboo_load_entity('node',  attribute(data, 'ismemberof')) %}
-        {% if parentnode %}
-          {%  set parentcollectionurl = url('format_strawberryfield.metadatadisplay_caster', {'node': parentnode.uuid.value, 'metadataexposeconfig_entity': 'iiifmanifest3collection', 'format':'default.jsonld'}, {'absolute': true}) -%}
+{%- set partof_iiif = [] -%}
+{%- if parentcollectionurl != '' -%} 
+   {% set partof_iiif = [{ "id": parentcollectionurl|render ~ "/metadata/iiifmanifest3collection/default.jsonld", "type": "Manifest" }] %}
         {%- endif -%}
+{%- if parentnodeurl != '' %}
+  {% set partof_iiif = partof_iiif|merge([{ "id": parentnodeurl|render ~ "/metadata/iiifmanifest3collection/default.jsonld", "type": "Manifest" }])%}
   {%- endif -%}
-{%- endif -%}
-{%- if attribute(data, 'ispartof') -%}
-   {%- if attribute(data, 'ispartof') is iterable -%}
-	    {%- for child in attribute(data, 'ispartof') -%}
-           {% set parentnode = bamboo_load_entity('node', child) %}
-           {% if parentnode %}
-             {%  set parentcollectionurl = url('format_strawberryfield.metadatadisplay_caster', {'node': parentnode.uuid.value, 'metadataexposeconfig_entity': 'iiifmanifest3cws', 'format':'default.jsonld'}, {'absolute': true}) -%}
-	       {% endif %}
-        {%- endfor -%}
-	{%- else -%}
-         {% set parentnode = bamboo_load_entity('node',  attribute(data, 'ispartof')) %}
-        {% if parentnode %}
-          {%  set parentcollectionurl = url('format_strawberryfield.metadatadisplay_caster', {'node': parentnode.uuid.value, 'metadataexposeconfig_entity': 'iiifmanifest3cws', 'format':'default.jsonld'}, {'absolute': true}) -%}
-        {%- endif -%}
-  {%- endif -%}
-{%- endif -%}
+{% if partof_iiif is not empty %}
+  "partOf": {{ partof_iiif|json_encode|raw }},
+{% endif %}
 {%- if node.uuid.value -%} 
     "service": [
         { 
@@ -200,7 +218,7 @@ Without Double quotes.
             "profile": "http://iiif.io/api/search/1/search" 
         }, 
         { 
-            "@id": "{{ baseurl }}iiifcontentsearch/v1/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest3cws_multiple/mode/advanced/page/0",
+            "@id": "{{ baseurl }}iiifcontentsearch/v0/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest3cws_multiple/mode/advanced/page/0",
             "@context": "http://iiif.io/api/search/0/context.json", 
             "profile": "http://iiif.io/api/search/0/search" 
         }
@@ -239,7 +257,7 @@ Without Double quotes.
          {% set structureCanvasIds = structureCanvasIds|merge([canvasId]) %} 
          {% set thumbnail %} 
   "thumbnail": [{ 
-  "id": "{{ cantaloupeid }}/full/{{thumb_width}},/0/default.jpg?page={{ pagenumber }}", 
+  "id": "{{ cantaloupeid ~ ';' ~  pagenumber }}/full/{{thumb_width}},/0/default.jpg", 
   "type": "Image", 
   "format": "image/jpeg", 
   "width": {{ thumb_width }}, 
@@ -375,7 +393,7 @@ Without Double quotes.
           ] 
         } 
       ] 
-  {#- Annotations for this canvas 
+{#- Annotations for this canvas 
  "annotations": [ 
         { 
           "id": "https://iiif.io/api/cookbook/recipe/0021-tagging/page/p2/1", 
@@ -396,11 +414,47 @@ Without Double quotes.
           ] 
         } 
       ] 
- -#}  
-      {%- if data["ap:annotationCollection"][cantaloupeid ~ '/info.json'] is defined %} 
+-#}
+{#- starts Pure Text annotation and direct Image annotations-#}
+{% set texts = [] %}
+{%- for text_uuid, text_file in data["as:text"] %} 
+   {# only generate an annotation if text and image where uploaded to the same key OR
+   there is exactly a single Image #}
+  {% if (text_file["dr:for"] == page["dr:for"] or data["as:image"]|length == 1) and text_file["dr:mimetype"] == "text\/plain" %}
+    {% set texts = texts|merge([{'dr:uuid': text_file['dr:uuid'], 'name': text_file['name']}]) %}
+  {% endif %}
+{%- endfor %}
+{% if texts|length > 0 or data["ap:annotationCollection"][cantaloupeid ~ '/info.json'] is defined %}
        , 
        "annotations": [ 
+{%- if texts|length > 0 -%}
            { 
+           "id": "{{ nodeurl }}/iiif/subtitles/s{{ itemCount }}", 
+           "type": "AnnotationPage", 
+           "items": [
+  {%- for text_file in texts %} 
+            {
+              "id": "{{ nodeurl }}/iiif/text/p{{ itemCount }}/{{ text_file['dr:uuid'] }}", 
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "body": {
+                "id": "{{ Webserverurl }}do/{{ node.uuid.value }}/file/{{ text_file['dr:uuid'] }}/download/{{  text_file["name"] }}",
+                "type": "Text",
+                "format": "text/plain",
+                "label": {
+                  "en": [
+                    "{{ text_file.name  }}"
+                  ]
+                },
+                "language": "en"
+              },
+              "target": "{{ nodeurl }}/iiif/canvas/p{{ itemCount }}" 
+            }{{ not loop.last ? ',' : '' }}       
+  {% endfor -%} 
+{%- endif -%}
+{% if data["ap:annotationCollection"][cantaloupeid ~ '/info.json'] is defined %}
+    {%- if texts|length > 0 -%},{% endif %}
+            {
            "id": "{{ nodeurl }}/iiif/comments/p{{ itemCount }}", 
            "type": "AnnotationPage", 
            "items": [ 
@@ -443,8 +497,10 @@ Without Double quotes.
                {% endif %} 
        }{{ not loop.last ? ',' : '' }}       
        {% endfor -%} 
-       ]}] 
       {% endif %} 
+      ]}]
+      {% endif %} 
+{#- ends Pure text and Direct Image annotation -#}  
     }{{ not loop.last ? ',' : '' }} 
 {% endfor %}
 {#- Video Manifest -#}
@@ -519,13 +575,48 @@ Without Double quotes.
           ] 
         } 
       ] 
+    {#- starts subtitle annotation -#}
+          {% set vtts = [] %}
+          {%- for text_uuid, subtitle_track in data["as:text"] %} 
+              {% if subtitle_track["dr:for"] == video["dr:for"] and subtitle_track["dr:mimetype"] == "text\/vtt" %}
+              {% set vtts = vtts|merge([{'dr:uuid': subtitle_track['dr:uuid'], 'name': subtitle_track['name']}]) %}
+              {% endif %}
+          {%- endfor %}
+       {% if vtts|length > 0 %}
+       , 
+       "annotations": [{ 
+           "id": "{{ nodeurl }}/iiif/subtitles/s{{ itemCount }}", 
+           "type": "AnnotationPage", 
+           "items": [ 
+{%- for subtitle_track in vtts %} 
+            {
+              "id": "{{ nodeurl }}/iiif/subtitles/p{{ itemCount }}/{{ subtitle_track['dr:uuid'] }}", 
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "body": {
+                "id": "{{ Webserverurl }}do/{{ node.uuid.value }}/file/{{ subtitle_track['dr:uuid'] }}/download/{{  subtitle_track["name"] }}",
+                "type": "Text",
+                "format": "text/vtt",
+                "label": {
+                  "en": [
+                    "{{ subtitle_track.name  }}"
+                  ]
+                },
+                "language": "en"
+              },
+              "target": "{{ nodeurl }}/iiif/canvas/p{{ itemCount }}" 
+    }{{ not loop.last ? ',' : '' }} 
+       {% endfor -%} 
+       ]}]
+      {% endif %} 
+{#- ends subtitle annotation -#}  
     }{{ not loop.last ? ',' : '' }} 
   {% endfor %} 
 {% endif %} 
 {# Audio Manifest #} 
 {%- if (attribute(data, 'as:audio')|length > 0) -%} 
   {%- if itemCount > 0 -%} 
-, 
+,
   {%- endif -%} 
 {#- Count Audios upfront -#} 
 {%- set audio_count = attribute(data, 'as:audio')|length -%} 
@@ -571,8 +662,6 @@ Without Double quotes.
 {#-- END TOP LEVEL --#}
 {# start fetch all children using a View and attach them as Items #}
 {# since Scrapbooks might have Empty Pages and InsetGroups are always empty we will Fix here 3 levels and used "nid"#}
-
-{% set max_views_pages = 500 %}
 {% set break_views = false %}
 {% set children_data_had_image = false %}
 {# This assumes that if the Pager of the view returns 50, this will limit the total to 5000 #}
@@ -732,7 +821,7 @@ Without Double quotes.
        {% endfor -%} 
        ]}]
       {% endif %} 
-    }{{ not loop.last ? ',' : '' }} 
+    }
 {% endfor %}
    {# end this should be a macro #}
    {# not loop.last and children_data_had_image ? ', ---' : '---' #} 
