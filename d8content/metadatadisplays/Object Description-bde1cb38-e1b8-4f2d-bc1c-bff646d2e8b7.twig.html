@@ -1,8 +1,9 @@
 {#- 
-- Last updated May 21st, 2026. Removes any default values for Macro arguments. Deprecated since https://symfony.com/blog/twig-3-26-0-released
+- Last updated by Allison November 2026, to add MultispectralImage + IIIF Choice mapping for Downloads menu.
+- Previously updated May 21st, 2026. Removes any default values for Macro arguments. Deprecated since https://symfony.com/blog/twig-3-26-0-released
 - Previously updated December 5th, 2025. Adds Custom Media Controller and example inline 3D Viewer. Adds extra "title_tag" to html_output, defaults to h3
 - Previously updated August 29, 2025 - update the Administrative Information section with additional elements.
-- Previously updated 15/02/2024 to add |striptags to html_output macro 
+- Previously updated 15/02/2024 t o add |striptags to html_output macro 
 - Previously updated 31/10/2023 for 1.3.0 
   - switched to Macro approach; added Nav-tabs for main description display and downloads menu. 
   - MACROS: 
@@ -118,11 +119,14 @@ one macro for simple non-LoD elements; second for LoD elements with URI and labe
     <li><a download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/dc/dc.xml">Dublin Core</a></li> 
     <li><a download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/geojson/geojson.json">GeoJSON</a></li> 
   {% if not file_download_restricted %} 
-    {% if data.type not in ['Collection','CreativeWorkSeries'] %} 
+    {% if data.type not in ['Collection','CreativeWorkSeries','MultispectralImage'] %} 
     <li><a rel="nofollow" download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifest/default.jsonld">IIIF Presentation Manifest 3.0</a></li> 
     <li><a rel="nofollow" download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifestv2/default.jsonld">IIIF Presentation Manifest 2.1</a></li> 
     {% elseif data.type == 'CreativeWorkSeries' %} 
     <li><a rel="nofollow" download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifest3cws/default.jsonld">IIIF Presentation Manifest 3.0</a></li> 
+    {% elseif data.type == 'MultispectralImage' %} 
+    <li><a rel="nofollow" download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifestchoice/default.jsonld">IIIF Choice Manifest</a></li> 
+
     {% else %} 
     <li><a rel="nofollow" download class="dropdown-item" href="/do/{{ node.uuid.value }}/metadata/iiifmanifest3collection/default.jsonld">IIIF Presentation Manifest 3.0</a></li> 
     {% endif %} 
