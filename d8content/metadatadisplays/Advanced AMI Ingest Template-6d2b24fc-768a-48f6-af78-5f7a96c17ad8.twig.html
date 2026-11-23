@@ -1,5 +1,5 @@
 {
-{# Last updated by Allison - October 2026.
+{# Last updated by Allison - November 2026.
 Created by Allison September 2026. 
 AMI Ingest Template created for AMI's Demo Tutorial Set using metadata elements:
 - required by Archipelago
@@ -229,6 +229,7 @@ AMI Ingest Template created for AMI's Demo Tutorial Set using metadata elements:
     {% if data.creator_lod|length > 0 %}
     "creator_lod": {{ data.creator_lod|json_encode|raw }},
     {% endif %}
+  {% if data.creator_lod|length < 0 %}
     {#- START Names from LoD and Name Columns in CSV with/without URIS. -#} 
     {# Updated February 28 2023, by Allison; Previously updated by Diego late 2022.
     - changed to map from different 'name_type_role_namepart' instead of 'mods_name_type_role_namepart'
@@ -346,6 +347,7 @@ AMI Ingest Template created for AMI's Demo Tutorial Set using metadata elements:
     {# per Diego, use reduce filter + other logic for depulicating #}
 	{% set creator_lod = creator_lod|reduce((unique, item) => item in unique ? unique : unique|merge([item]), []) %}    
     "creator_lod": {{ creator_lod|json_encode|raw -}},
+  {% endif %}  
     {#- END Names from LoD and MODSesque CSV with/without URIS. -#}
 {# End of slightly modified creator_lod section #}     
     "audios": [],
