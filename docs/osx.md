@@ -1,6 +1,6 @@
 <!--documentation
 ---
-title: "Installing Archipelago (2.1.0) Drupal 11 on OSX (macOS)"
+title: "Installing Archipelago (2.2.0) Drupal 11 on OSX (macOS)"
 tags:
   - Archipelago-deployment
   - Drupal 11
@@ -9,7 +9,7 @@ tags:
 ---
 documentation-->
 
-# Installing Archipelago (2.1.0) Drupal 11 on macOS
+# Installing Archipelago (2.2.0) Drupal 11 on macOS
 
 ## About running terminal commands
 
@@ -26,7 +26,7 @@ Happy deploying!
 ### OSX (macOS):
 
 - [Install Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
-  - For macOS `Ventura` or Higher on Intel (i5/i7) and Apple Silicon Chips (M1/M2/M3/M4) macOS Sonoma or higher, the latest tested version is: `4.47.0 (206054)` with Docker engine v28.4.0. You may go newer of course.
+  - For macOS `Ventura` or Higher on Intel (i5/i7) and Apple Silicon Chips (M1/M2/M3/M4/M5) macOS Sonoma or higher, the latest tested version is: `4.99.0 (245822)` with Docker engine v29.9.3. You may go newer of course.
   - In `Preferences` -> `General`: check under `Choose file sharing implementation for your containers` either the new `VirtioFS`(faster) or `gRPC FUSE` and restart. Specially if you are using your `$HOME` folder for deploying, e.g. `/Users/username`.
   - In `Preferences` -> `Resources`: a minimum of 4 Gbytes of RAM is needed and works; 8 Gbytes is faster and snappier. Go for 16 GBytes if you are going to evaluate the ML/AI features on large sets of images/text.
 - [Install Github Desktop](https://desktop.github.com).
@@ -83,7 +83,7 @@ Ok, now we are ready to start. Depending on what type of Chip your Apple uses yo
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 2.1.0
+git checkout 2.2.0
 cp docker-compose-osx.yml docker-compose.yml
 docker compose pull
 docker compose up -d
@@ -94,7 +94,7 @@ docker compose up -d
 ```shell
 git clone https://github.com/esmero/archipelago-deployment.git archipelago-deployment
 cd archipelago-deployment
-git checkout 2.1.0
+git checkout 2.2.0
 cp docker-compose-arm64.yml docker-compose.yml
 docker compose pull
 docker compose up -d
@@ -153,7 +153,7 @@ Once finished, this will give you an `admin` Drupal user with `archipelago` as p
  Note about Steps 2-3: You don't need to, nor should you do this more than once. You can destroy/stop/update, recreate your Docker containers, and start again (`git pull`), and your Drupal and Data will persist once you're past the `Installation complete` message. I repeat, all other containers' data is persisted inside the `persistent/` folder contained in this cloned git repository. Drupal and all its code is visible, editable, and stable inside your `web/` folder.
 
 
-Final Note/optional: In between releases (Post release announcement, the period between 2.1.0 and 2.2.0), you can always run:
+Final Note/optional: In between releases (Post release announcement, the period between 2.2.0 and 2.3.0), you can always run:
 
 ```shell
 docker exec -ti esmero-php bash -c "composer update archipelago/* strawberryfield/* -W"
