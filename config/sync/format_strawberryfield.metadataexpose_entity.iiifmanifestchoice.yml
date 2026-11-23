@@ -1,0 +1,20 @@
+uuid: 84db3933-e858-46b1-b784-177a5bbe753e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: iiifmanifestchoice
+label: iiifmanifestchoice
+target_entity_types:
+  digital_object: digital_object
+  article: 0
+  digital_object_collection: 0
+  page: 0
+  webform: 0
+source_entityfield_name: null
+metadatadisplayentity_uuid: 99b0d299-67b4-4c53-b2d2-3e86593c8a21
+cache: true
+active: true
+hide_on_embargo: false
+minify_json: false

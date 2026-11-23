@@ -39,3 +39,4 @@ options: |-
   Scrapbook: Scrapbook
   InsetGroup: InsetGroup
   ML: 'ML (Evaluation of ML tools)'
+  MultispectralImage: MultispectralImage
