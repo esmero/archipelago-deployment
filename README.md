@@ -30,7 +30,7 @@ This release includes:
 - minio.io (latest from cgr.dev/chainguard ) for local S3 with Console.
 - Updated Apache Solr 10.0 with custom built and updated wizardly Solr OCR Highlight library [v0.11](https://github.com/dbmdz/solr-ocrhighlighting) coded and maintained by the Development Team at the [Bavarian State Library](https://github.com/dbmdz). Thanks Johannes Baiter and team.
 - MySQL 8.4(amd64/x86) or MariaDB 12.3 (Arm64/M1/M2/M3/M4/M5)
-- Updated NGINX 1.39
+- Updated NGINX 1.31.9
 - Updated & Custom PHP-FPM 8.4+ (new to this release) multi architecture, fine-tuned for Drupal 11, WARC to WACZ processing, Tesseract 5 with JP2 support, PDFAlto(what a pain to build!) and latest Composer 2.x, Drush 13.x-dev, FFMPEG, FIDO, plus Audiowave for Waveform to JSON extraction and BWFmetaedit for WAV files holding BWF metadata (Checksumming and other extras per stream).
 - Natural Language Processing via NLPWEB64 multi architecture with FastText Language detection (Thanks Mike Bennett!) or alternatively Machine learning/ML containers/APIs. (Image similarity: YOLO,MobileNet,ViT(New),Insightface and Text transformer: SBERT) differentiated for arm64 and amd/intel/64
 - Newest Cantaloupe (our own versioning, but based on latest `dev` upstream) on Java 27, multi architecture, IIIF2/3 Server with precise Video Frame, PDF extraction, PDF Tiling support, new Jetty with tons of community and custom fixes.
