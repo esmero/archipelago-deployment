@@ -1,6 +1,16 @@
 {# This Template generates IIIF 3.0 Presentation API Manifest from a Strawberry Field 
-JSON. 
-Updated 17/06/2024 for 1.4.0 
+JSON.
+Last updated Nov 19 2026 by Diego Pino for 2.2.0. 
+     - Ensures Array for requiredStatement
+     - Improves logic on ispartof to accumuluate both ispartof and ismemberof with better validation
+     - requiredStatement label should be Rights not Attribution 
+     - rename description to summary
+     - switch to the more common creator_lod instead of edm_agent
+     - use ";" notation on page number for PDF based thumbnails 
+Previously updated by Allison September 21, 2026 to correct for IIIF President 3.0 validation errors:
+     - description to process only the first value if iterable,
+     - set the computed rights statement to CC-NC-ND by default -- https://creativecommons.org/licenses/by-nc-nd/4.0/,
+Previously updated on 17/06/2024 for 1.4.0 
 Changes: 
   - Plain Text added as supplementing for Images if present. Processed in the same block as direct Annotations
   - VTTs added as supplementing for Videos if present.
@@ -32,13 +42,15 @@ Without Double quotes.
 {%- set Webserverurl =  baseurl -%} 
 {%- set IIIFserverurl = iiif_server ? iiif_server ~ '/': Webserverurl -%} 
 {%- set currenturl = url('<current>')|render -%} 
-{%- set parentcollectionurl = '' -%} 
-{%- set itemCount = 0 -%} 
-{%- if node.id %} 
+{%- set parentcollectionurl = '' -%}
+{%- set parentnodeurl = '' %}
+{%- set max_thumb_width = 240 -%}
+{%- set itemCount = 0 -%}
+{%- if node.id %}
     {%- set nodeurl = url('entity.node.canonical', {'node': node.id}, {'absolute': true}) -%} 
-{%- else -%} 
+{%- else -%}
     {%- set nodeurl = currenturl -%} 
-{%- endif -%} 
+{%- endif -%}
 {%- if attribute(data, 'ismemberof') %} 
     {%- if attribute(data, 'ismemberof') is iterable -%} 
 	    {%- for collection in attribute(data, 'ismemberof') -%} 
@@ -57,84 +69,88 @@ Without Double quotes.
 		{%- set parentnodeurl = url('entity.node.canonical', {'node': attribute(data, 'ispartof')}, {'absolute': true}) -%} 
    {%- endif -%} 
 {%- endif -%} 
-{%- set len = language.getId() ? language.getId() : "en" -%} 
-{% set computed_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %} 
+{%- set len = language.getId() ? language.getId() : "en" -%}
+{# Modify to match your less permissive creative commons licence using HTTP (not HTTPS)
+to ensure IIIF Presentation 3.0 validation #}
+{% set computed_rights = "http://creativecommons.org/licenses/by-nc-nd/4.0/" %}
+{% set local_rights = computed_rights %} 
 {% if data.rights|length > 0 or data.rights_statements|length > 0 %} 
 	{% if data.rights|length > 0 %} 
-		{% set computed_rights = data.rights %} 
+		{% set local_rights = (data.rights is iterable) ? data.rights[0] : data.rights  %} 
 	{% endif %} 
 {% elseif data.rights_statements|length > 0 %} 
 	{% if data.rights_statements in ['In Copyright'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/InC/1.0/" %} 
+		{% set local_rights = "http://rightsstatements.org/vocab/InC/1.0/" %} 
 	{% endif %} 
 	{% if data.rights_statements in ['In Copyright - EU Orphan Work'] %} 
-    	{% set computed_rights = "http://rightsstatements.org/vocab/InC-OW-EU/1.0/" %} 
+    	{% set local_rights = "http://rightsstatements.org/vocab/InC-OW-EU/1.0/" %} 
 	{% endif %} 
 	{% if data.rights_statements in ['In Copyright - Educational Use Permitted'] %} 
-	   	{% set computed_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %} 
+	   	{% set local_rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/" %} 
 	{% endif %} 
 	{% if data.rights_statements in ['In Copyright - Non-Commercial Use Permitted'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/InC-NC/1.0/" %} 
+		{% set local_rights = "http://rightsstatements.org/vocab/InC-NC/1.0/" %} 
 	{% endif %} 
 	{% if data.rights_statements in ['In Copyright - Rights-holder(s) Unlocatable or Unidentifiable'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/InC-RUU/1.0/" %} 
+		{% set local_rights = "http://rightsstatements.org/vocab/InC-RUU/1.0/" %} 
 	{% endif %} 
 	{% if data.rights_statements in ['No Copyright - Contractual Restrictions'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-CR/1.0/" %} 
+		{% set local_rights = "http://rightsstatements.org/vocab/NoC-CR/1.0/" %} 
 	{% endif %} 
 	{% if data.rights_statements in ['No Copyright - Non-Commercial Use Only'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-NC/1.0/" %} 
+		{% set local_rights = "http://rightsstatements.org/vocab/NoC-NC/1.0/" %} 
 	{% endif %} 
 	{% if data.rights_statements in ['No Copyright - Other Known Legal Restrictions'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-OKLR/1.0/" %} 
+		{% set local_rights = "http://rightsstatements.org/vocab/NoC-OKLR/1.0/" %} 
 	{% endif %} 
 	{% if data.rights_statements in ['No Copyright - United States'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/NoC-US/1.0/" %} 
+		{% set local_rights = "http://rightsstatements.org/vocab/NoC-US/1.0/" %} 
 	{% endif %} 
 	{% if data.rights_statements in ['Copyright Not Evaluated'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/CNE/1.0/" %} 
+		{% set local_rights = "http://rightsstatements.org/vocab/CNE/1.0/" %} 
 	{% endif %} 
 	{% if data.rights_statements in ['Copyright Undetermined'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/UND/1.0/" %} 
+		{% set local_rights = "http://rightsstatements.org/vocab/UND/1.0/" %} 
 	{% endif %} 
 	{% if data.rights_statements in ['No Known Copyright'] %} 
-		{% set computed_rights = "http://rightsstatements.org/vocab/NKC/1.0/" %} 
+		{% set local_rights = "http://rightsstatements.org/vocab/NKC/1.0/" %} 
 	{% endif %} 
 {% endif %} 
-{%- set max_thumb_width = 240 -%}{ 
-  "@context": [ 
+{
+  "@context": [
   "http://www.w3.org/ns/anno.jsonld", 
   "http://iiif.io/api/presentation/3/context.json" 
-  ], 
+  ],
   "type": "Manifest", 
   "id": "{{ currenturl }}", 
-  "label": { 
-    "{{ len }}": [ 
-      {{ node.label|json_encode|raw }} 
-    ] 
-  }, 
-  "rights": {{ computed_rights|json_encode|raw }},  
+  "label": {
+    "{{ len }}": [
+      {{ node.label|json_encode|raw }}
+    ]
+  },
+  "rights": {{ computed_rights|json_encode|raw }},
+  "summary": { "en": [{{ data.description is iterable ? data.description[0]|markdown_2_html|json_encode|raw :  data.description|markdown_2_html|json_encode|raw }}]},
   "behavior": ["paged"],
   "requiredStatement": { 
-    "label": { "en": [ "Attribution" ] }, 
-    "value": { "en": [ "Provided by Archipelago Deployment" ] } 
-  }, 
-  "metadata": [ 
-{% for agent in attribute(data, 'edm_agent') %} 
-    { 
-      "label": { 
-        "{{ len }}": [ 
-          {{ agent.role_label|json_encode|raw }} 
-        ] 
+    "label": {  "{{ len }}": [ "Rights" ] }, 
+    "value": {  "{{ len }}": [ {{ local_rights|json_encode|raw }} ] } 
+  },
+  "metadata": [
+{% for agent in attribute(data, 'creator_lod') %}
+    {
+      "label": {
+        "{{ len }}": [
+          {{ agent.role_label|json_encode|raw }}
+        ]
       }, 
-      "value": { 
-        "{{ len }}": [ 
-          {{ agent.name_label|json_encode|raw }} 
+      "value": {
+        "{{ len }}": [
+          {{ agent.name_label|json_encode|raw }}
         ] 
       } 
     }, 
 {% endfor %} 
-    { 
+    {
       "label": { 
         "{{ len }}": [ 
           "description" 
@@ -142,7 +158,7 @@ Without Double quotes.
       }, 
       "value": { 
         "{{ len }}": [ 
-          {{ data.description|markdown_2_html|json_encode|raw }} 
+          {{ data.description is iterable ? data.description[0]|markdown_2_html|json_encode|raw :  data.description|markdown_2_html|json_encode|raw }} 
         ] 
       } 
     }, 
@@ -154,8 +170,8 @@ Without Double quotes.
       }, 
       "value":  { 
         "{{ len }}": [ 
-        {{ "now"|date("F jS \\a\\t g:ia")|json_encode|raw }}
-         {# node.getChangedTime|date("F jS \\a\\t g:ia")|json_encode|raw #} 
+        {{ "now"|date('Y-m-d\\TH:i:s\\Z', 'UTC')|json_encode|raw }}
+        {# node.getChangedTime|date('Y-m-d\\TH:i:s\\Z')|json_encode|raw #} 
         ] 
       } 
     }, 
@@ -167,19 +183,21 @@ Without Double quotes.
       }, 
       "value": { 
         "{{ len }}": [ 
-          {{ computed_rights|json_encode|raw }} 
+          {{ local_rights|json_encode|raw }} 
         ] 
       } 
     } 
-  ], 
-{% if attribute(data, 'ismemberof') -%} 
-  "within": "{{ parentcollectionurl }}", 
-  "partOf": [ { "id": "{{ parentcollectionurl }}/metadata/iiifmanifest3collection/default.jsonld", "type": "Manifest" } ], 
-{%- endif -%} 
-{%- if attribute(data, 'ispartof') %} 
-  "within": "{{ parentnodeurl }}", 
-  "partOf": [ { "id": "{{ parentnodeurl }}/metadata/iiifmanifest3cws/default.jsonld", "type": "Manifest" } ], 
+  ],
+{%- set partof_iiif = [] -%}
+{%- if parentcollectionurl != '' -%} 
+   {% set partof_iiif = [{ "id": parentcollectionurl|render ~ "/metadata/iiifmanifest3collection/default.jsonld", "type": "Manifest" }] %}
 {%- endif -%}
+{%- if parentnodeurl != '' %}
+  {% set partof_iiif = partof_iiif|merge([{ "id": parentnodeurl|render ~ "/metadata/iiifmanifest3collection/default.jsonld", "type": "Manifest" }])%}
+{%- endif -%}
+{% if partof_iiif is not empty %}
+  "partOf": {{ partof_iiif|json_encode|raw }},
+{% endif %}
 {# Allison: add note why we have 3 services. SearchService2 is the current one, no viewer supports it, SearchService1 is for Mirador, http://iiif.io/api/search/0/search is for UV #}
 {%- if node.uuid.value -%}
     "service": [ 
@@ -235,7 +253,7 @@ Without Double quotes.
          {% set structureCanvasIds = structureCanvasIds|merge([canvasId]) %} 
          {% set thumbnail %} 
   "thumbnail": [{ 
-  "id": "{{ cantaloupeid }}/full/{{thumb_width}},/0/default.jpg?page={{ pagenumber }}", 
+  "id": "{{ cantaloupeid ~ ';' ~  pagenumber }}/full/{{thumb_width}},/0/default.jpg", 
   "type": "Image", 
   "format": "image/jpeg", 
   "width": {{ thumb_width }}, 

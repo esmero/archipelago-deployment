@@ -9,9 +9,9 @@ echo -e  "Linked Data Block HTML\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @'d8content/Linked Data-998d30c0-57b7-4219-bcff-6ac2c0bf6563.json';
 
-echo -e "IIIF 3.0 Manifest for Images and Mirador\n"
+echo -e "IIIF 3.0 Manifest\n"
 
-curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @d8content/metadatadisplay_entity_03.json;
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @'d8content/IIIF Presentation API 3.0 Manifest-ad7aab5a-4bb3-43f2-8328-2b62895a3821.json';
 
 echo -e "MODS 3.7\n"
 
@@ -57,7 +57,7 @@ echo -e "IIIF 3.0 Manifest for Creative Work Series Parents\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @'d8content/IIIF Presentation API 3 Creative Works Series Manifest-6c405928-9ae8-4557-b062-91fcf2b0af0a.json';
 
-echo -e "IIIF 3.0 Manifest for Simple and Creative Work Series (Unified)\n"
+echo -e "IIIF 3.0 Manifest for Digital Objects and and Creative Work Series (Unified + single View based)\n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @'d8content/IIIF Presentation API 3 Series Manifest Unified-d4ca85ee-4ecd-40f3-ae6b-d24732863b27.json';
 
