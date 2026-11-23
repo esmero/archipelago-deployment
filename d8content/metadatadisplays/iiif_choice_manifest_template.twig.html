@@ -1,4 +1,6 @@
-{# Last updated by Allison September 21, 2026 to correct for IIIF President 3.0 validation errors:
+{# Last updated by Allison November 2026 to accommodate the latest 2.2.0 IIIF 3.0 template changes (that were not available/part of public release
+at the time this IIIF Choice Manifest template was made for DCMNY + older Archipelago version originally).
+Previously updated by Allison September 21, 2026 to correct for IIIF President 3.0 validation errors:
      - specifically: Allison changed the 'description' to process only the first value if iterable,
      set the computed rights statement to CC-NC-ND by default -- https://creativecommons.org/licenses/by-nc-nd/4.0/,
      moved the value for data.rights to the "requiredStatement" property,
@@ -77,7 +79,7 @@ Without Double quotes.
     ] 
   }, 
   "rights": {{ computed_rights|json_encode|raw }},   
-  
+    "summary": { "en": [{{ data.description is iterable ? data.description[0]|markdown_2_html|json_encode|raw :  data.description|markdown_2_html|json_encode|raw }}]},
   "requiredStatement": { 
     "label": { "en": [ "Attribution" ] }, 
     "value": { "en": {{ data.rights|json_encode|raw }} }
@@ -250,6 +252,7 @@ Without Double quotes.
 }
 }, 
 {%- endif -%}
+{# old navdate + changedTime 
 {
 "label": {
 "{{ len }}": [
@@ -262,6 +265,20 @@ Without Double quotes.
     ]
   }
 },
+#}
+    { 
+      "label": { 
+        "{{ len }}": [ 
+          "navDate" 
+        ] 
+      }, 
+      "value":  { 
+        "{{ len }}": [ 
+        {{ "now"|date('Y-m-d\\TH:i:s\\Z', 'UTC')|json_encode|raw }}
+        {# node.getChangedTime|date('Y-m-d\\TH:i:s\\Z')|json_encode|raw #} 
+        ] 
+      } 
+    }, 
 {
 "label": {
    "{{ len }}": [
@@ -275,14 +292,26 @@ Without Double quotes.
     }
   }
 ],
+{# older ismemberof/ispartof logic 
 {% if attribute(data, 'ismemberof') -%}  
   "partOf": [ { "id": "{{ parentcollectionurl }}/metadata/iiifmanifest3collection/default.jsonld", "type": "Manifest" } ], 
 {%- endif -%} 
 {%- if attribute(data, 'ispartof') %} 
   "partOf": [ { "id": "{{ parentnodeurl }}/metadata/iiifmanifest3cws/default.jsonld", "type": "Manifest" } ], 
 {%- endif -%} 
+#}
+{%- set partof_iiif = [] -%}
+{%- if parentcollectionurl != '' -%} 
+   {% set partof_iiif = [{ "id": parentcollectionurl|render ~ "/metadata/iiifmanifest3collection/default.jsonld", "type": "Manifest" }] %}
+{%- endif -%}
+{%- if parentnodeurl != '' %}
+  {% set partof_iiif = partof_iiif|merge([{ "id": parentnodeurl|render ~ "/metadata/iiifmanifest3collection/default.jsonld", "type": "Manifest" }])%}
+{%- endif -%}
+{% if partof_iiif is not empty %}
+  "partOf": {{ partof_iiif|json_encode|raw }},
+{% endif %}
 
-{#
+{# ~updated the third service @id to v0 --but not relevant for this particular IIIF Choice manifest usage
 {%- if node.uuid.value -%} 
     "service": [ 
         { 
@@ -296,7 +325,7 @@ Without Double quotes.
             "profile": "http://iiif.io/api/search/1/search" 
         }, 
         { 
-            "@id": "{{ baseurl }}iiifcontentsearch/v1/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest/mode/advanced/page/0", 
+            "@id": "{{ baseurl }}iiifcontentsearch/v0/do/{{ node.uuid.value }}/metadatadisplayexposed/iiifmanifest/mode/advanced/page/0", 
             "@context": "http://iiif.io/api/search/0/context.json", 
             "profile": "http://iiif.io/api/search/0/search" 
         } 
