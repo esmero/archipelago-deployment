@@ -1,5 +1,5 @@
 {# Last updated by Allison November 2026 to accommodate the latest 2.2.0 IIIF 3.0 template changes (that were not available/part of public release
-at the time this IIIF Choice Manifest template was made for DCMNY + older Archipelago version originally).
+at the time this IIIF Choice Manifest template was made for DCMNY + older Archipelago version originally.
 Previously updated by Allison September 21, 2026 to correct for IIIF President 3.0 validation errors:
      - specifically: Allison changed the 'description' to process only the first value if iterable,
      set the computed rights statement to CC-NC-ND by default -- https://creativecommons.org/licenses/by-nc-nd/4.0/,
@@ -227,17 +227,18 @@ Without Double quotes.
     }, 
   {%-  endfor -%}
 {%- endif -%}
-{
-"label": {
-  "{{- len -}}": [ "Description"] },
-  {% if data.description|length > 0 and data.description is iterable %}
-  "value": {"{{- len -}}": [ {{- data.description[0]|json_encode|raw -}} ]}
-  {% else %} 
-   {% if data.description|length > 0 %}
-     "value": {"{{- len -}}": [ {{- data.description[0]|json_encode|raw -}} ]}
-   {% endif %}
-  {% endif %}    
-        },
+    {
+      "label": { 
+        "{{ len }}": [ 
+          "description" 
+        ] 
+      }, 
+      "value": { 
+        "{{ len }}": [ 
+          {{ data.description is iterable ? data.description[0]|markdown_2_html|json_encode|raw :  data.description|markdown_2_html|json_encode|raw }} 
+        ] 
+      } 
+    }, 
         
 {%- if data.note is not empty -%}
 {
