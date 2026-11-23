@@ -89,6 +89,10 @@ echo -e "DataCite Schema V4 \n"
 
 curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/4003250e-a596-4c29-a7e3-d55ff1009d44 --data-binary @'d8content/DataCite V4 Default Template for 1.6.0+-4003250e-a596-4c29-a7e3-d55ff1009d44.json';
 
+echo -e "IIIF Presentation 3 - Multispectral Images Only - Choice \n"
+
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/99b0d299-67b4-4c53-b2d2-3e86593c8a21 --data-binary @'d8content/d8content/IIIF_Choice_Template-99b0d299-67b4-4c53-b2d2-3e86593c8a21.json';
+
 # echo -e "Advanced AMI Ingest Template\n"
 
 # curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPATCH http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity/6d2b24fc-768a-48f6-af78-5f7a96c17ad8 --data-binary @'d8content/Advanced AMI Ingest Template-6d2b24fc-768a-48f6-af78-5f7a96c17ad8.json';
