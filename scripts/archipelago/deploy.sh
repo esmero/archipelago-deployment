@@ -91,7 +91,7 @@ curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Co
 
 echo -e "IIIF Presentation 3 - Multispectral Images Only - Choice \n"
 
-curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @'d8content/d8content/IIIF_Choice_Template-99b0d299-67b4-4c53-b2d2-3e86593c8a21.json';
+curl -w "\n" --user jsonapi:jsonapi -H 'Accept: application/vnd.api+json' -H 'Content-type: application/vnd.api+json' -XPOST http://esmero-web/jsonapi/metadatadisplay_entity/metadatadisplay_entity --data-binary @'d8content/IIIF_Choice_Template-99b0d299-67b4-4c53-b2d2-3e86593c8a21.json';
 
 # echo -e "Advanced AMI Ingest Template\n"
 
