@@ -47,7 +47,7 @@ This is our first Drupal 11 only release but most importantly a complete refacto
 
 [Step by Step deployment on macOS](docs/osx.md)
 
-## Ubuntu 20.04+:
+## Ubuntu 24.04+:
 
 [Step by Step deployment on Ubuntu](docs/ubuntu.md)
 
