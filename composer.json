@@ -233,9 +233,6 @@
         "Facet Summary Count fix": "https://raw.githubusercontent.com/esmero/archipelago-deployment/refs/heads/2.2.0/patches/2.x-facets-summarycount_returntype.patch",
         "Soft limit fix": "https://www.drupal.org/files/issues/2026-04-03/3516400-soft-limit-settings-facets-undefined-fix_0.patch"
       },
-      "drupal/context": {
-        "PHP 8.4 deprecations": "https://www.drupal.org/files/issues/2025-03-17/context-fix-php-84-deprecations-3513516-62.patch"
-      },
       "ankitpokhrel/tus-php": {
         "Less Cache writes during upload fix": "patches/tus-file-cache.patch",
         "PHP84 compatibility": "patches/tus-php-archipelago-PHP84.patch"
